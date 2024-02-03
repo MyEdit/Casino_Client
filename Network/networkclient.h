@@ -2,11 +2,11 @@
 #define NETWORKCLIENT_H
 
 #include <winsock2.h> // [Для себя] Для работы нужно добавить LIBS += -lws2_32 в .pro файл
-#include <Message.h>
+#include <Utils/Message.h>
 #include <thread>
 #include <Constants.h>
 #include <QSharedPointer>
-#include <PacketTypes.h>
+#include <Network/PacketTypes.h>
 
 class NetworkClient
 {

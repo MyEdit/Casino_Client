@@ -1,6 +1,6 @@
 #include "window_auth.h"
 #include "ui_window_auth.h"
-#include <networkclient.h>
+#include <Network/networkclient.h>
 
 Window_Auth::Window_Auth(QWidget *parent) : QMainWindow(parent), ui(new Ui::Window_Auth)
 {

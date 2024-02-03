@@ -16,19 +16,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    GUI/window_auth.cpp \
+    Network/networkclient.cpp \
     main.cpp \
-    networkclient.cpp \
-    window_auth.cpp
 
 HEADERS += \
     Constants.h \
-    Message.h \
-    PacketTypes.h \
-    networkclient.h \
-    window_auth.h
+    GUI/window_auth.h \
+    Network/PacketTypes.h \
+    Network/networkclient.h \
+    Utils/Message.h \
 
 FORMS += \
-    window_auth.ui
+    GUI/window_auth.ui \
 
 LIBS += -lws2_32
 

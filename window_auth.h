@@ -15,6 +15,9 @@ public:
     Window_Auth(QWidget *parent = nullptr);
     ~Window_Auth();
 
+private slots:
+    void on_Button_Auth_clicked();
+
 private:
     Ui::Window_Auth *ui;
 };

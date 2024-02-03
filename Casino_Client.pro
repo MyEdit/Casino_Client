@@ -17,13 +17,20 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
+    networkclient.cpp \
     window_auth.cpp
 
 HEADERS += \
+    Constants.h \
+    Message.h \
+    PacketTypes.h \
+    networkclient.h \
     window_auth.h
 
 FORMS += \
     window_auth.ui
+
+LIBS += -lws2_32
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -16,23 +16,32 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    GUI/window_admin.cpp \
     GUI/window_auth.cpp \
+    Network/PacketsActions/p_authorization.cpp \
     Network/networkclient.cpp \
     main.cpp \
 
 HEADERS += \
     Constants.h \
+    GUI/window_admin.h \
     GUI/window_auth.h \
     Network/PacketTypes.h \
+    Network/PacketsActions/p_authorization.h \
     Network/networkclient.h \
     Utils/Message.h \
 
 FORMS += \
+    GUI/window_admin.ui \
     GUI/window_auth.ui \
 
 LIBS += -lws2_32
+QT += core
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+RESOURCES += \
+    Resources.qrc

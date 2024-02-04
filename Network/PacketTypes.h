@@ -1,7 +1,7 @@
 #ifndef PACKET_H
 #define PACKET_H
 
-enum PacketTypes
+enum class PacketTypes
 {
     P_Authorization,
     P_Notification,

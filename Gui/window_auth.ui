@@ -27,7 +27,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>C:/Users/Ортем/Downloads/—Pngtree—fluid gradient decorative suspension element_4045429.png</pixmap>
+     <pixmap resource="../Resources.qrc">:/photos/resources/Window_Auth_Background.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -91,6 +91,8 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="../Resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

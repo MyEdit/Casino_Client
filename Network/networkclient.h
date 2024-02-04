@@ -7,6 +7,7 @@
 #include <Constants.h>
 #include <QSharedPointer>
 #include <Network/PacketTypes.h>
+#include <Network/PacketsActions/p_authorization.h>
 
 class NetworkClient
 {
@@ -15,6 +16,7 @@ private:
     SOCKADDR_IN serverAddress;
 
     void configuration();
+    static void packetHandler(PacketTypes packettype);
     static void clientHandler();
 
 public:

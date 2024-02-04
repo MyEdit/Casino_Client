@@ -46,14 +46,59 @@ bool NetworkClient::connectToServer()
     return true;
 }
 
+//По мере необходимости будет дополняться
+void NetworkClient::packetHandler(PacketTypes packettype)
+{
+    switch(packettype)
+    {
+        case(PacketTypes::P_Authorization):
+        {
+            P_Authorization::openMainWindow();
+            break;
+        }
+        case(PacketTypes::P_Notification):
+        {
+            break;
+        }
+        case(PacketTypes::P_DeleteTable):
+        {
+            break;
+        }
+        case(PacketTypes::P_AddTable):
+        {
+            break;
+        }
+        case(PacketTypes::P_ConnectPlayerToTable):
+        {
+            break;
+        }
+        case(PacketTypes::P_SendModel):
+        {
+            break;
+        }
+        case(PacketTypes::P_SendTables):
+        {
+            break;
+        }
+        default:
+        {
+            Message::logWarn("Client send unknown packettype");
+            break;
+        }
+    }
+}
+
 //Обработка всех входящих сообщений от сервера
 void NetworkClient::clientHandler()
 {
-    //char message[256];
+    PacketTypes packettype;
     while(true)
     {
-        //recv(serverSocket, message, sizeof(message), 0); //Ожидает входящего сообщения и сует его в message
-        //Message::logInfo(message);
+        if (recv(serverSocket, (char*)&packettype, sizeof(PacketTypes), 0) <= 0)
+        {
+            Message::logError("Impossible...");
+        }
+        packetHandler(packettype);
     }
 }
 

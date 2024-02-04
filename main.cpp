@@ -1,4 +1,4 @@
-#include "Gui/window_auth.h"
+#include "GUI/window_auth.h"
 #include <QApplication>
 #include <Network/networkclient.h>
 

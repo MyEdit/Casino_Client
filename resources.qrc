@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/photos">
+        <file>resources/Window_Auth_Background.png</file>
+    </qresource>
+</RCC>

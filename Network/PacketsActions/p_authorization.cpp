@@ -1,9 +1,12 @@
 #include "p_authorization.h"
-#include <QMetaObject>
-#include <QCoreApplication>
 
 void P_Authorization::openMainWindow()
 {
     Message::logInfo("Open form...");
-    //Вот тут надо открыть форму window_admin.ui
+
+    QWidget* currentForm = QApplication::activeWindow();
+    currentForm->close();
+
+    Window_Admin* w = new Window_Admin;
+    w->show();
 }

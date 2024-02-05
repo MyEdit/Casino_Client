@@ -6,20 +6,24 @@
 #include <thread>
 #include <Constants.h>
 #include <QSharedPointer>
+#include <QObject>
 #include <Network/PacketTypes.h>
 #include <Network/PacketsActions/p_authorization.h>
+#include <Network/clienthandler.h>
 
-class NetworkClient
+class NetworkClient : public QObject
 {
+    Q_OBJECT
+
 private:
-    static SOCKET serverSocket;
     SOCKADDR_IN serverAddress;
 
     void configuration();
-    static void packetHandler(PacketTypes packettype);
-    static void clientHandler();
+    void packetHandler(PacketTypes packettype);
 
 public:
+    static SOCKET serverSocket;
+
     bool init();
     bool connectToServer();
     static void sendToServer(QString message);

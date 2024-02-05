@@ -1,4 +1,4 @@
-#ifndef WINDOW_AUTH_H
+﻿#ifndef WINDOW_AUTH_H
 #define WINDOW_AUTH_H
 
 #include <QMainWindow>

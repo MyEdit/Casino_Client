@@ -1,5 +1,12 @@
 <RCC>
     <qresource prefix="/photos">
         <file>resources/Window_Auth_Background.png</file>
+        <file>resources/recess.png</file>
+        <file>resources/TestStuffPhoto.jpg</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file>resources/exit.png</file>
+        <file>resources/clearSearch.png</file>
+        <file>resources/search.png</file>
     </qresource>
 </RCC>

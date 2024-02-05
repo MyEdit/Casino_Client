@@ -1,4 +1,4 @@
-QT       += core gui
+QT += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -16,22 +16,33 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    GUI/TabWidgets/allusers.cpp \
+    GUI/TabWidgets/creategametable.cpp \
+    GUI/TabWidgets/existingtables.cpp \
     GUI/window_admin.cpp \
     GUI/window_auth.cpp \
     Network/PacketsActions/p_authorization.cpp \
+    Network/clienthandler.cpp \
     Network/networkclient.cpp \
-    main.cpp \
+    main.cpp
 
 HEADERS += \
-    Constants.h \
+    GUI/TabWidgets/allusers.h \
+    GUI/TabWidgets/creategametable.h \
+    GUI/TabWidgets/existingtables.h \
     GUI/window_admin.h \
     GUI/window_auth.h \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
+    Network/clienthandler.h \
     Network/networkclient.h \
     Utils/Message.h \
+    Constants.h \
 
 FORMS += \
+    GUI/TabWidgets/allusers.ui \
+    GUI/TabWidgets/creategametable.ui \
+    GUI/TabWidgets/existingtables.ui \
     GUI/window_admin.ui \
     GUI/window_auth.ui \
 

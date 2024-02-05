@@ -1,4 +1,4 @@
-#ifndef PACKET_H
+﻿#ifndef PACKET_H
 #define PACKET_H
 
 enum class PacketTypes

@@ -34,14 +34,18 @@ bool NetworkClient::connectToServer()
         return false;
     }
 
-    if (connect(serverSocket, (SOCKADDR*)&serverAddress, sizeof(serverAddress)) != 0) //Коннект к серверу
+    if (_WINSOCKAPI_::connect(serverSocket, (SOCKADDR*)&serverAddress, sizeof(serverAddress)) != 0) //Коннект к серверу
     {
         Message::logError("Failed connect to server!");
         return false;
     }
 
-    std::thread handler(clientHandler);
-    handler.detach();
+    ClientHandler* clientHandler = new ClientHandler();
+
+    qRegisterMetaType<PacketTypes>("PacketTypes");
+    QObject::connect(clientHandler, &ClientHandler::signalPacketHandler, this, &NetworkClient::packetHandler);
+
+    clientHandler->start();
     Message::logInfo("Connection successful!");
     return true;
 }
@@ -85,20 +89,6 @@ void NetworkClient::packetHandler(PacketTypes packettype)
             Message::logWarn("Client send unknown packettype");
             break;
         }
-    }
-}
-
-//Обработка всех входящих сообщений от сервера
-void NetworkClient::clientHandler()
-{
-    PacketTypes packettype;
-    while(true)
-    {
-        if (recv(serverSocket, (char*)&packettype, sizeof(PacketTypes), 0) <= 0)
-        {
-            Message::logError("Impossible...");
-        }
-        packetHandler(packettype);
     }
 }
 

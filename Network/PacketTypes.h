@@ -12,4 +12,10 @@ enum class PacketTypes
     P_SendTables
 };
 
+enum class ModelTypes
+{
+    Users,
+    Tables
+};
+
 #endif // PACKET_H

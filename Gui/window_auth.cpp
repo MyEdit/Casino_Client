@@ -17,7 +17,7 @@ void Window_Auth::on_Button_Auth_clicked()
     QString password = ui->textBox_Password->text();
 
     PacketTypes packettype = PacketTypes::P_Authorization;
-    NetworkClient::sendToServer((char*)&packettype, sizeof(PacketTypes));
-    NetworkClient::sendToServer((char*)login.toUtf8().constData());
-    NetworkClient::sendToServer((char*)password.toUtf8().constData());
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(login.toUtf8().constData());
+    NetworkClient::sendToServer(password.toUtf8().constData());
 }

@@ -31,7 +31,7 @@ public:
     template<typename T>
     static void sendToServer(const T data, int size)
     {
-        send(serverSocket, (char*)data, size, 0);
+        send(serverSocket, reinterpret_cast<const char*>(data), size, 0);
     }
 };
 

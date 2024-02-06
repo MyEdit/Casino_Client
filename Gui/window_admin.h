@@ -40,6 +40,7 @@ private:
     void rendering_ExistingTablesTab();
     void rendering_AllUsersTab();
     void prepareStyleSheets();
+    void uploadingPhotoEmployee();
 
 private slots:
     void on_buttonExit_clicked();

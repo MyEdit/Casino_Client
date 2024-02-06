@@ -60,6 +60,11 @@ void NetworkClient::packetHandler(PacketTypes packettype)
             P_Authorization::openMainWindow();
             break;
         }
+        case(PacketTypes::P_SendModel):
+        {
+            //TODO: Сейчас сюда влетает пакет, нужно реализовать функционал считывания типа модели, самой модели и установки ее в соответствующий TableView
+            break;
+        }
         case(PacketTypes::P_Notification):
         {
             break;
@@ -73,10 +78,6 @@ void NetworkClient::packetHandler(PacketTypes packettype)
             break;
         }
         case(PacketTypes::P_ConnectPlayerToTable):
-        {
-            break;
-        }
-        case(PacketTypes::P_SendModel):
         {
             break;
         }

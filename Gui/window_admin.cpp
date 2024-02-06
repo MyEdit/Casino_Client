@@ -1,5 +1,7 @@
 ﻿#include "window_admin.h"
 #include "ui_window_admin.h"
+#include <QPainter>
+#include <QBitmap>
 
 Window_Admin::Window_Admin(QWidget *parent) : QMainWindow(parent), ui(new Ui::Window_Admin)
 {
@@ -8,6 +10,7 @@ Window_Admin::Window_Admin(QWidget *parent) : QMainWindow(parent), ui(new Ui::Wi
     prepareStyleSheets();
     assigningValues();
     completionTabWidget();
+    uploadingPhotoEmployee();
 
     ui->label_2->setVisible(false);
     ui->label_3->setVisible(false);
@@ -16,6 +19,24 @@ Window_Admin::Window_Admin(QWidget *parent) : QMainWindow(parent), ui(new Ui::Wi
 Window_Admin::~Window_Admin()
 {
     delete ui;
+}
+
+void Window_Admin::uploadingPhotoEmployee()
+{
+    QPixmap photo(":/photos/resources/TestStuffPhoto.jpg");
+
+    QPixmap roundedPhoto(photo.size());
+    roundedPhoto.fill(Qt::transparent);
+    QPainterPath path;
+    path.addRoundedRect(0, 0, photo.width(), photo.height(), photo.width() / 2, photo.height() / 2);
+
+    QPainter painter(&roundedPhoto);
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    painter.setClipPath(path);
+    painter.drawPixmap(0, 0, photo);
+
+    ui->photo->setScaledContents(true);
+    ui->photo->setPixmap(roundedPhoto);
 }
 
 void Window_Admin::assigningValues()

@@ -231,6 +231,9 @@ public:
         FIO_employee->setText(QApplication::translate("Window_Admin", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
         pushButton_2->setText(QString());
         plug->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        buttonCreateTable->setToolTip(QString());
+#endif // QT_NO_TOOLTIP
         buttonCreateTable->setText(QApplication::translate("Window_Admin", "\320\241\320\276\320\267\320\264\320\260\321\202\321\214 \321\201\321\202\320\276\320\273", nullptr));
         label->setText(QString());
         buttonExistingTables->setText(QApplication::translate("Window_Admin", "\320\241\320\276\320\267\320\264\320\260\320\275\320\275\321\213\320\265 \321\201\321\202\320\276\320\273\321\213", nullptr));

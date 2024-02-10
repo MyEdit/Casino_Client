@@ -1,13 +1,13 @@
-#include "networkclient.h"
+п»ї#include "networkclient.h"
 
 SOCKET NetworkClient::serverSocket = INVALID_SOCKET;
 
-//Инициилизация
+//РРЅРёС†РёРёР»РёР·Р°С†РёСЏ
 bool NetworkClient::init()
 {
     WSAData wsaData;
-    WORD DLLVersion = MAKEWORD(2, 1); //Запрашиваемая версия либы winsock
-    if (WSAStartup(DLLVersion, &wsaData) != 0) //Загрузка библиотеки winsock
+    WORD DLLVersion = MAKEWORD(2, 1); //Р—Р°РїСЂР°С€РёРІР°РµРјР°СЏ РІРµСЂСЃРёСЏ Р»РёР±С‹ winsock
+    if (WSAStartup(DLLVersion, &wsaData) != 0) //Р—Р°РіСЂСѓР·РєР° Р±РёР±Р»РёРѕС‚РµРєРё winsock
     {
         Message::logError("WSA library failed to load!");
         return false;
@@ -16,16 +16,16 @@ bool NetworkClient::init()
     return true;
 }
 
-//Заполнение информации об адресе сокета
+//Р—Р°РїРѕР»РЅРµРЅРёРµ РёРЅС„РѕСЂРјР°С†РёРё РѕР± Р°РґСЂРµСЃРµ СЃРѕРєРµС‚Р°
 void NetworkClient::configuration()
 {
     serverAddress.sin_addr.s_addr = inet_addr(ADDRESS);
     serverAddress.sin_port = htons(PORT);
-    serverAddress.sin_family = AF_INET; //Интернет протокол
-    serverSocket = socket(AF_INET, SOCK_STREAM, 0); //Создаю сокет
+    serverAddress.sin_family = AF_INET; //РРЅС‚РµСЂРЅРµС‚ РїСЂРѕС‚РѕРєРѕР»
+    serverSocket = socket(AF_INET, SOCK_STREAM, 0); //РЎРѕР·РґР°СЋ СЃРѕРєРµС‚
 }
 
-//Коннект к серверу
+//РљРѕРЅРЅРµРєС‚ Рє СЃРµСЂРІРµСЂСѓ
 bool NetworkClient::connectToServer()
 {
     if (!serverAddress.sin_port)
@@ -34,69 +34,27 @@ bool NetworkClient::connectToServer()
         return false;
     }
 
-    if (_WINSOCKAPI_::connect(serverSocket, (SOCKADDR*)&serverAddress, sizeof(serverAddress)) != 0) //Коннект к серверу
+    if (_WINSOCKAPI_::connect(serverSocket, (SOCKADDR*)&serverAddress, sizeof(serverAddress)) != 0) //РљРѕРЅРЅРµРєС‚ Рє СЃРµСЂРІРµСЂСѓ
     {
         Message::logError("Failed connect to server!");
         return false;
     }
 
-    ClientHandler* clientHandler = new ClientHandler();
+    PacketHandler* packetHandler = new PacketHandler();
 
-    qRegisterMetaType<PacketTypes>("PacketTypes");
-    QObject::connect(clientHandler, &ClientHandler::signalPacketHandler, this, &NetworkClient::packetHandler);
+    //РљРѕРЅРЅРµРєС‚С‹ СЃ СЃРёРіРЅР°Р»Р°РјРё РёР· РїРѕС‚РѕРєР° РѕР±СЂР°Р±РѕС‚С‡РёРєР° РїР°РєРµС‚РѕРІ
+    QObject::connect(packetHandler, &PacketHandler::signalOpenForm, this, &P_Authorization::openMainWindow);
+    QObject::connect(packetHandler, &PacketHandler::signalSetModelAllUsers, this, &P_Authorization::setModelAllUsers); //TODO: РџРѕ Р»РѕРіРёРєРµ СЌС‚РѕС‚ СЃРёРіРЅР°Р» РґРѕР»Р¶РµРЅ РѕР±СЂР°Р±Р°С‚С‹РІР°С‚СЊСЃСЏ РІ P_SendModel Р° РЅРµ РІ P_Authorization
 
-    clientHandler->start();
+    packetHandler->start();
     Message::logInfo("Connection successful!");
     return true;
 }
 
-//По мере необходимости будет дополняться
-void NetworkClient::packetHandler(PacketTypes packettype)
-{
-    switch(packettype)
-    {
-        case(PacketTypes::P_Authorization):
-        {
-            P_Authorization::openMainWindow();
-            break;
-        }
-        case(PacketTypes::P_SendModel):
-        {
-            //TODO: Сейчас сюда влетает пакет, нужно реализовать функционал считывания типа модели, самой модели и установки ее в соответствующий TableView
-            break;
-        }
-        case(PacketTypes::P_Notification):
-        {
-            break;
-        }
-        case(PacketTypes::P_DeleteTable):
-        {
-            break;
-        }
-        case(PacketTypes::P_AddTable):
-        {
-            break;
-        }
-        case(PacketTypes::P_ConnectPlayerToTable):
-        {
-            break;
-        }
-        case(PacketTypes::P_SendTables):
-        {
-            break;
-        }
-        default:
-        {
-            Message::logWarn("Client send unknown packettype");
-            break;
-        }
-    }
-}
-
-//Отправка пакета серверу
+//РћС‚РїСЂР°РІРєР° РїР°РєРµС‚Р° СЃРµСЂРІРµСЂСѓ
 void NetworkClient::sendToServer(QString message)
 {
     int message_size = message.size();
-    send(serverSocket, (char*)&message_size, sizeof(int), 0);
-    send(serverSocket, (char*)message.toUtf8().constData(), message_size, 0);
+    send(serverSocket, reinterpret_cast<const char*>(&message_size), sizeof(int), 0);
+    send(serverSocket, reinterpret_cast<const char*>(message.toUtf8().constData()), message_size, 0);
 }

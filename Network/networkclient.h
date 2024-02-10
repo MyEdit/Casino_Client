@@ -1,7 +1,7 @@
-#ifndef NETWORKCLIENT_H
+п»ї#ifndef NETWORKCLIENT_H
 #define NETWORKCLIENT_H
 
-#include <winsock2.h> // [Для себя] Для работы нужно добавить LIBS += -lws2_32 в .pro файл
+#include <winsock2.h> // [РґР»СЏ СЃРµР±СЏ] РґР»СЏ СЂР°Р±РѕС‚С‹ РЅСѓР¶РЅРѕ РґРѕР±Р°РІРёС‚СЊ LIBS += -lws2_32 РІ .pro С„Р°Р№Р»
 #include <Utils/Message.h>
 #include <thread>
 #include <Constants.h>
@@ -9,7 +9,8 @@
 #include <QObject>
 #include <Network/PacketTypes.h>
 #include <Network/PacketsActions/p_authorization.h>
-#include <Network/clienthandler.h>
+#include <Network/PacketsActions/p_sendmodel.h>
+#include <Network/packethandler.h>
 
 class NetworkClient : public QObject
 {
@@ -19,7 +20,6 @@ private:
     SOCKADDR_IN serverAddress;
 
     void configuration();
-    void packetHandler(PacketTypes packettype);
 
 public:
     static SOCKET serverSocket;
@@ -29,7 +29,7 @@ public:
     static void sendToServer(QString message);
 
     template<typename T>
-    static void sendToServer(const T data, int size)
+    static void sendToServer(const T data, const int size)
     {
         send(serverSocket, reinterpret_cast<const char*>(data), size, 0);
     }

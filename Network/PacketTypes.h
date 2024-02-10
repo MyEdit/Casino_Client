@@ -1,6 +1,8 @@
 ﻿#ifndef PACKET_H
 #define PACKET_H
 
+//TODO: Переименовать класс или засунуть все перечисления в Constants.h
+
 enum class PacketTypes
 {
     P_Authorization,

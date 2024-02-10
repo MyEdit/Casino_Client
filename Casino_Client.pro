@@ -1,4 +1,4 @@
-QT += core gui
+QT += core gui sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,30 +19,37 @@ SOURCES += \
     GUI/TabWidgets/allusers.cpp \
     GUI/TabWidgets/creategametable.cpp \
     GUI/TabWidgets/existingtables.cpp \
+    GUI/TabWidgets/welcome.cpp \
     GUI/window_admin.cpp \
     GUI/window_auth.cpp \
     Network/PacketsActions/p_authorization.cpp \
-    Network/clienthandler.cpp \
+    Network/PacketsActions/p_sendmodel.cpp \
     Network/networkclient.cpp \
-    main.cpp
+    Network/packethandler.cpp \
+    Utils/serializer.cpp \
+    main.cpp \
 
 HEADERS += \
     GUI/TabWidgets/allusers.h \
     GUI/TabWidgets/creategametable.h \
     GUI/TabWidgets/existingtables.h \
+    GUI/TabWidgets/welcome.h \
     GUI/window_admin.h \
     GUI/window_auth.h \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
-    Network/clienthandler.h \
+    Network/PacketsActions/p_sendmodel.h \
     Network/networkclient.h \
+    Network/packethandler.h \
     Utils/Message.h \
+    Utils/serializer.h \
     Constants.h \
 
 FORMS += \
     GUI/TabWidgets/allusers.ui \
     GUI/TabWidgets/creategametable.ui \
     GUI/TabWidgets/existingtables.ui \
+    GUI/TabWidgets/welcome.ui \
     GUI/window_admin.ui \
     GUI/window_auth.ui \
 

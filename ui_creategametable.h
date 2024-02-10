@@ -212,7 +212,46 @@ public:
         QFont font3;
         font3.setFamily(QString::fromUtf8("Segoe UI"));
         font3.setPointSize(16);
+        font3.setBold(true);
+        font3.setWeight(75);
         create->setFont(font3);
+        create->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px 15px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}\n"
+"\n"
+"/* \n"
+"(QPushButton {\n"
+"    background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:0, y2:1, stop:0.393258 rgba(247, 84, 225, 255), stop:1 rgba(106, 90, 205, 255));\n"
+"    border-radius: 10px;\n"
+"    padding-left: 35px;\n"
+"    padding-right: 35px;\n"
+"    padding-top: 5px;\n"
+"    padding-bottom: 5px;\n"
+"    color: white;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:0, y2:1, stop:0.393258 rgba(220, 60, 190, 255), stop:1 rgba(90, 76, 175, 255));\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}\n"
+"*/\n"
+""));
 
         horizontalLayout_7->addWidget(create);
 

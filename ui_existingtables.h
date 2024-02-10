@@ -46,6 +46,7 @@ public:
     QCheckBox *sorting_2;
     QSpacerItem *horizontalSpacer_13;
     QPushButton *moreDetailed_2;
+    QPushButton *pushButton;
     QTableView *tableView;
     QHBoxLayout *horizontalLayout_6;
     QSpacerItem *horizontalSpacer_9;
@@ -61,20 +62,13 @@ public:
     QLineEdit *pageNumberToNavigate_2;
     QSpacerItem *horizontalSpacer_16;
     QPushButton *nextButton_2;
-    QHBoxLayout *horizontalLayout_7;
-    QSpacerItem *horizontalSpacer_11;
-    QPushButton *numberRows_11;
-    QPushButton *numberRows_16;
-    QPushButton *numberRows_21;
-    QPushButton *automaticNumberRows_2;
-    QSpacerItem *horizontalSpacer_12;
     QLabel *status;
 
     void setupUi(QWidget *ExistingTables)
     {
         if (ExistingTables->objectName().isEmpty())
             ExistingTables->setObjectName(QString::fromUtf8("ExistingTables"));
-        ExistingTables->resize(965, 635);
+        ExistingTables->resize(1184, 768);
         verticalLayout = new QVBoxLayout(ExistingTables);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout_9 = new QHBoxLayout();
@@ -96,24 +90,6 @@ public:
         font1.setBold(true);
         font1.setWeight(75);
         searchColumn_2->setFont(font1);
-        searchColumn_2->setStyleSheet(QString::fromUtf8("QComboBox {    \n"
-"	background-color: #0E9252;    \n"
-"	border: 1px solid #2980b9;    \n"
-"	color: #ffffff;    \n"
-"	padding: 5px;    \n"
-"	border-radius: 3px;\n"
-"}\n"
-"\n"
-"QComboBox:hover {   \n"
-"	background-color: #42A977;    \n"
-"	border: 1px solid #1c6da5;\n"
-"}\n"
-"\n"
-"QComboBox:disabled {   \n"
-"	background-color: #d3d3d3;    \n"
-"	color: #555555;   \n"
-"	border: 1px solid #a3a3a3;\n"
-"}"));
 
         horizontalLayout_9->addWidget(searchColumn_2);
 
@@ -132,27 +108,20 @@ public:
         pushButton_search_2 = new QPushButton(ExistingTables);
         pushButton_search_2->setObjectName(QString::fromUtf8("pushButton_search_2"));
         pushButton_search_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background-color: #3498db;\n"
-"	border: 1px solid #2980b9;\n"
-"	color: #ffffff;\n"
-"	padding: 5px 10px;\n"
-"	border-radius: 3px;\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px 15px;\n"
+"    color: black;\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"	background-color: #2184cb;\n"
-"	border: 1px solid #1c6da5;\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"	background-color: #1a548b;\n"
-"	border: 1px solid #174172;\n"
-"}\n"
-"\n"
-"QPushButton:disabled {\n"
-"	background-color: #d3d3d3;\n"
-"	color: #555555;\n"
-"	border: 1px solid #a3a3a3;\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/icons/resources/search.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -164,27 +133,20 @@ public:
         clearSearch_2 = new QPushButton(ExistingTables);
         clearSearch_2->setObjectName(QString::fromUtf8("clearSearch_2"));
         clearSearch_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background-color: #3498db;\n"
-"	border: 1px solid #2980b9;\n"
-"	color: #ffffff;\n"
-"	padding: 5px 10px;\n"
-"	border-radius: 3px;\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px 15px;\n"
+"    color: black;\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"	background-color: #2184cb;\n"
-"	border: 1px solid #1c6da5;\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"	background-color: #1a548b;\n"
-"	border: 1px solid #174172;\n"
-"}\n"
-"\n"
-"QPushButton:disabled {\n"
-"	background-color: #d3d3d3;\n"
-"	color: #555555;\n"
-"	border: 1px solid #a3a3a3;\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/icons/resources/clearSearch.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -211,24 +173,6 @@ public:
         sortingColumn_2 = new QComboBox(ExistingTables);
         sortingColumn_2->setObjectName(QString::fromUtf8("sortingColumn_2"));
         sortingColumn_2->setFont(font1);
-        sortingColumn_2->setStyleSheet(QString::fromUtf8("QComboBox {    \n"
-"	background-color: #0E9252;    \n"
-"	border: 1px solid #2980b9;    \n"
-"	color: #ffffff;    \n"
-"	padding: 5px;    \n"
-"	border-radius: 3px;\n"
-"}\n"
-"\n"
-"QComboBox:hover {   \n"
-"	background-color: #42A977;    \n"
-"	border: 1px solid #1c6da5;\n"
-"}\n"
-"\n"
-"QComboBox:disabled {   \n"
-"	background-color: #d3d3d3;    \n"
-"	color: #555555;   \n"
-"	border: 1px solid #a3a3a3;\n"
-"}"));
 
         horizontalLayout_8->addWidget(sortingColumn_2);
 
@@ -258,24 +202,6 @@ public:
         font2.setBold(true);
         font2.setWeight(75);
         typeSorting_2->setFont(font2);
-        typeSorting_2->setStyleSheet(QString::fromUtf8("QComboBox {    \n"
-"	background-color: #0E9252;    \n"
-"	border: 1px solid #2980b9;    \n"
-"	color: #ffffff;    \n"
-"	padding: 5px;    \n"
-"	border-radius: 3px;\n"
-"}\n"
-"\n"
-"QComboBox:hover {   \n"
-"	background-color: #42A977;    \n"
-"	border: 1px solid #1c6da5;\n"
-"}\n"
-"\n"
-"QComboBox:disabled {   \n"
-"	background-color: #d3d3d3;    \n"
-"	color: #555555;   \n"
-"	border: 1px solid #a3a3a3;\n"
-"}"));
 
         horizontalLayout_8->addWidget(typeSorting_2);
 
@@ -291,32 +217,47 @@ public:
 
         moreDetailed_2 = new QPushButton(ExistingTables);
         moreDetailed_2->setObjectName(QString::fromUtf8("moreDetailed_2"));
-        moreDetailed_2->setFont(font);
+        moreDetailed_2->setFont(font2);
         moreDetailed_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background-color: #3498db;\n"
-"	border: 1px solid #2980b9;\n"
-"	color: #ffffff;\n"
-"	padding: 5px 10px;\n"
-"	border-radius: 3px;\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px 15px;\n"
+"    color: black;\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"	background-color: #2184cb;\n"
-"	border: 1px solid #1c6da5;\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"	background-color: #1a548b;\n"
-"	border: 1px solid #174172;\n"
-"}\n"
-"\n"
-"QPushButton:disabled {\n"
-"	background-color: #d3d3d3;\n"
-"	color: #555555;\n"
-"	border: 1px solid #a3a3a3;\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
 
         horizontalLayout_8->addWidget(moreDetailed_2);
+
+        pushButton = new QPushButton(ExistingTables);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setFont(font2);
+        pushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px 15px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+
+        horizontalLayout_8->addWidget(pushButton);
 
 
         verticalLayout->addLayout(horizontalLayout_8);
@@ -371,29 +312,28 @@ public:
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
         prevButton_2 = new QPushButton(ExistingTables);
         prevButton_2->setObjectName(QString::fromUtf8("prevButton_2"));
-        prevButton_2->setFont(font);
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Segoe UI"));
+        font4.setPointSize(18);
+        prevButton_2->setFont(font4);
         prevButton_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background-color: #3498db;\n"
-"	border: 1px solid #2980b9;\n"
-"	color: #ffffff;\n"
-"	padding: 5px 10px;\n"
-"	border-radius: 3px;\n"
+"	background-color: white;\n"
+"    border: 2px solid black; /* \320\264\320\276\320\261\320\260\320\262\320\273\321\217\320\265\320\274 \320\276\320\261\320\262\320\276\320\264\320\272\321\203 */\n"
+"    border-radius: 10px;\n"
+"    border-radius: 10px;\n"
+"    padding-left: 15px;\n"
+"    padding-right: 15px;\n"
+"	padding-bottom: 3px;\n"
+"    color: black;\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"	background-color: #2184cb;\n"
-"	border: 1px solid #1c6da5;\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"	background-color: #1a548b;\n"
-"	border: 1px solid #174172;\n"
-"}\n"
-"\n"
-"QPushButton:disabled {\n"
-"	background-color: #d3d3d3;\n"
-"	color: #555555;\n"
-"	border: 1px solid #a3a3a3;\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
 
         horizontalLayout_10->addWidget(prevButton_2);
@@ -421,72 +361,31 @@ public:
 
         nextButton_2 = new QPushButton(ExistingTables);
         nextButton_2->setObjectName(QString::fromUtf8("nextButton_2"));
-        nextButton_2->setFont(font);
+        nextButton_2->setFont(font4);
         nextButton_2->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background-color: #3498db;\n"
-"	border: 1px solid #2980b9;\n"
-"	color: #ffffff;\n"
-"	padding: 5px 10px;\n"
-"	border-radius: 3px;\n"
+"	background-color: white;\n"
+"    border: 2px solid black; /* \320\264\320\276\320\261\320\260\320\262\320\273\321\217\320\265\320\274 \320\276\320\261\320\262\320\276\320\264\320\272\321\203 */\n"
+"    border-radius: 10px;\n"
+"    border-radius: 10px;\n"
+"    padding-left: 15px;\n"
+"    padding-right: 15px;\n"
+"	padding-bottom: 3px;\n"
+"    color: black;\n"
 "}\n"
 "\n"
 "QPushButton:hover {\n"
-"	background-color: #2184cb;\n"
-"	border: 1px solid #1c6da5;\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
 "}\n"
 "\n"
 "QPushButton:pressed {\n"
-"	background-color: #1a548b;\n"
-"	border: 1px solid #174172;\n"
-"}\n"
-"\n"
-"QPushButton:disabled {\n"
-"	background-color: #d3d3d3;\n"
-"	color: #555555;\n"
-"	border: 1px solid #a3a3a3;\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
 
         horizontalLayout_10->addWidget(nextButton_2);
 
 
         verticalLayout->addLayout(horizontalLayout_10);
-
-        horizontalLayout_7 = new QHBoxLayout();
-        horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
-        horizontalSpacer_11 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_7->addItem(horizontalSpacer_11);
-
-        numberRows_11 = new QPushButton(ExistingTables);
-        numberRows_11->setObjectName(QString::fromUtf8("numberRows_11"));
-        numberRows_11->setFont(font);
-
-        horizontalLayout_7->addWidget(numberRows_11);
-
-        numberRows_16 = new QPushButton(ExistingTables);
-        numberRows_16->setObjectName(QString::fromUtf8("numberRows_16"));
-        numberRows_16->setFont(font);
-
-        horizontalLayout_7->addWidget(numberRows_16);
-
-        numberRows_21 = new QPushButton(ExistingTables);
-        numberRows_21->setObjectName(QString::fromUtf8("numberRows_21"));
-        numberRows_21->setFont(font);
-
-        horizontalLayout_7->addWidget(numberRows_21);
-
-        automaticNumberRows_2 = new QPushButton(ExistingTables);
-        automaticNumberRows_2->setObjectName(QString::fromUtf8("automaticNumberRows_2"));
-        automaticNumberRows_2->setFont(font);
-
-        horizontalLayout_7->addWidget(automaticNumberRows_2);
-
-        horizontalSpacer_12 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_7->addItem(horizontalSpacer_12);
-
-
-        verticalLayout->addLayout(horizontalLayout_7);
 
         status = new QLabel(ExistingTables);
         status->setObjectName(QString::fromUtf8("status"));
@@ -514,17 +413,14 @@ public:
 
         sorting_2->setText(QApplication::translate("ExistingTables", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
         moreDetailed_2->setText(QApplication::translate("ExistingTables", "\320\237\320\276\320\264\321\200\320\276\320\261\320\275\320\265\320\265", nullptr));
+        pushButton->setText(QApplication::translate("ExistingTables", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
         label_5->setText(QApplication::translate("ExistingTables", "\320\242\320\265\320\272\321\203\321\211\320\260\321\217 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\260:", nullptr));
         labelCurrentPage_2->setText(QApplication::translate("ExistingTables", "1", nullptr));
         label_7->setText(QApplication::translate("ExistingTables", "/", nullptr));
         labelMaxPage_2->setText(QApplication::translate("ExistingTables", "????", nullptr));
-        prevButton_2->setText(QApplication::translate("ExistingTables", " <<", nullptr));
+        prevButton_2->setText(QApplication::translate("ExistingTables", "<<", nullptr));
         label_12->setText(QApplication::translate("ExistingTables", "\320\237\320\265\321\200\320\265\320\271\321\202\320\270 \320\272 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\265 \342\204\226:", nullptr));
         nextButton_2->setText(QApplication::translate("ExistingTables", ">>", nullptr));
-        numberRows_11->setText(QApplication::translate("ExistingTables", "10", nullptr));
-        numberRows_16->setText(QApplication::translate("ExistingTables", "15", nullptr));
-        numberRows_21->setText(QApplication::translate("ExistingTables", "20", nullptr));
-        automaticNumberRows_2->setText(QApplication::translate("ExistingTables", "\320\220\320\262\321\202\320\276", nullptr));
         status->setText(QString());
     } // retranslateUi
 

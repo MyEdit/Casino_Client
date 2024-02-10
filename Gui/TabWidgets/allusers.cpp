@@ -1,4 +1,4 @@
-#include "allusers.h"
+﻿#include "allusers.h"
 #include "ui_allusers.h"
 
 AllUsers::AllUsers(QWidget *parent) :
@@ -11,4 +11,9 @@ AllUsers::AllUsers(QWidget *parent) :
 AllUsers::~AllUsers()
 {
     delete ui;
+}
+
+void AllUsers::setModel(QStandardItemModel* model)
+{
+    ui->tableView->setModel(model);
 }

@@ -310,7 +310,48 @@
         <font>
          <family>Segoe UI</family>
          <pointsize>16</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 15px;
+    color: black;
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 88, 255);
+	color: white;
+}
+
+QPushButton:pressed {
+	background-color: rgba(220, 60, 190, 255);
+}
+
+/* 
+(QPushButton {
+    background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:0, y2:1, stop:0.393258 rgba(247, 84, 225, 255), stop:1 rgba(106, 90, 205, 255));
+    border-radius: 10px;
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(spread:pad, x1:1, y1:1, x2:0, y2:1, stop:0.393258 rgba(220, 60, 190, 255), stop:1 rgba(90, 76, 175, 255));
+}
+
+QPushButton:pressed {
+	background-color: rgba(220, 60, 190, 255);
+}
+*/
+</string>
        </property>
        <property name="text">
         <string>Создать</string>

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>965</width>
-    <height>635</height>
+    <width>1184</width>
+    <height>768</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -39,26 +39,6 @@
          <bold>true</bold>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QComboBox {    
-	background-color: #0E9252;    
-	border: 1px solid #2980b9;    
-	color: #ffffff;    
-	padding: 5px;    
-	border-radius: 3px;
-}
-
-QComboBox:hover {   
-	background-color: #42A977;    
-	border: 1px solid #1c6da5;
-}
-
-QComboBox:disabled {   
-	background-color: #d3d3d3;    
-	color: #555555;   
-	border: 1px solid #a3a3a3;
-}</string>
-       </property>
       </widget>
      </item>
      <item>
@@ -89,27 +69,20 @@ QComboBox:disabled {
       <widget class="QPushButton" name="pushButton_search_2">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-	background-color: #3498db;
-	border: 1px solid #2980b9;
-	color: #ffffff;
-	padding: 5px 10px;
-	border-radius: 3px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 15px;
+    color: black;
 }
 
 QPushButton:hover {
-	background-color: #2184cb;
-	border: 1px solid #1c6da5;
+    background-color: rgb(100, 88, 255);
+	color: white;
 }
 
 QPushButton:pressed {
-	background-color: #1a548b;
-	border: 1px solid #174172;
-}
-
-QPushButton:disabled {
-	background-color: #d3d3d3;
-	color: #555555;
-	border: 1px solid #a3a3a3;
+	background-color: rgba(220, 60, 190, 255);
 }</string>
        </property>
        <property name="text">
@@ -131,27 +104,20 @@ QPushButton:disabled {
       <widget class="QPushButton" name="clearSearch_2">
        <property name="styleSheet">
         <string notr="true">QPushButton {
-	background-color: #3498db;
-	border: 1px solid #2980b9;
-	color: #ffffff;
-	padding: 5px 10px;
-	border-radius: 3px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 15px;
+    color: black;
 }
 
 QPushButton:hover {
-	background-color: #2184cb;
-	border: 1px solid #1c6da5;
+    background-color: rgb(100, 88, 255);
+	color: white;
 }
 
 QPushButton:pressed {
-	background-color: #1a548b;
-	border: 1px solid #174172;
-}
-
-QPushButton:disabled {
-	background-color: #d3d3d3;
-	color: #555555;
-	border: 1px solid #a3a3a3;
+	background-color: rgba(220, 60, 190, 255);
 }</string>
        </property>
        <property name="text">
@@ -209,26 +175,6 @@ QPushButton:disabled {
          <bold>true</bold>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QComboBox {    
-	background-color: #0E9252;    
-	border: 1px solid #2980b9;    
-	color: #ffffff;    
-	padding: 5px;    
-	border-radius: 3px;
-}
-
-QComboBox:hover {   
-	background-color: #42A977;    
-	border: 1px solid #1c6da5;
-}
-
-QComboBox:disabled {   
-	background-color: #d3d3d3;    
-	color: #555555;   
-	border: 1px solid #a3a3a3;
-}</string>
-       </property>
       </widget>
      </item>
      <item>
@@ -265,26 +211,6 @@ QComboBox:disabled {
          <weight>75</weight>
          <bold>true</bold>
         </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QComboBox {    
-	background-color: #0E9252;    
-	border: 1px solid #2980b9;    
-	color: #ffffff;    
-	padding: 5px;    
-	border-radius: 3px;
-}
-
-QComboBox:hover {   
-	background-color: #42A977;    
-	border: 1px solid #1c6da5;
-}
-
-QComboBox:disabled {   
-	background-color: #d3d3d3;    
-	color: #555555;   
-	border: 1px solid #a3a3a3;
-}</string>
        </property>
        <item>
         <property name="text">
@@ -329,36 +255,64 @@ QComboBox:disabled {
        <property name="font">
         <font>
          <family>Segoe UI</family>
-         <pointsize>12</pointsize>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-	background-color: #3498db;
-	border: 1px solid #2980b9;
-	color: #ffffff;
-	padding: 5px 10px;
-	border-radius: 3px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 15px;
+    color: black;
 }
 
 QPushButton:hover {
-	background-color: #2184cb;
-	border: 1px solid #1c6da5;
+    background-color: rgb(100, 88, 255);
+	color: white;
 }
 
 QPushButton:pressed {
-	background-color: #1a548b;
-	border: 1px solid #174172;
-}
-
-QPushButton:disabled {
-	background-color: #d3d3d3;
-	color: #555555;
-	border: 1px solid #a3a3a3;
+	background-color: rgba(220, 60, 190, 255);
 }</string>
        </property>
        <property name="text">
         <string>Подробнее</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 15px;
+    color: black;
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 88, 255);
+	color: white;
+}
+
+QPushButton:pressed {
+	background-color: rgba(220, 60, 190, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string>Добавить</string>
        </property>
       </widget>
      </item>
@@ -467,36 +421,32 @@ QPushButton:disabled {
        <property name="font">
         <font>
          <family>Segoe UI</family>
-         <pointsize>12</pointsize>
+         <pointsize>18</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-	background-color: #3498db;
-	border: 1px solid #2980b9;
-	color: #ffffff;
-	padding: 5px 10px;
-	border-radius: 3px;
+	background-color: white;
+    border: 2px solid black; /* добавляем обводку */
+    border-radius: 10px;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+	padding-bottom: 3px;
+    color: black;
 }
 
 QPushButton:hover {
-	background-color: #2184cb;
-	border: 1px solid #1c6da5;
+    background-color: rgb(100, 88, 255);
+	color: white;
 }
 
 QPushButton:pressed {
-	background-color: #1a548b;
-	border: 1px solid #174172;
-}
-
-QPushButton:disabled {
-	background-color: #d3d3d3;
-	color: #555555;
-	border: 1px solid #a3a3a3;
+	background-color: rgba(220, 60, 190, 255);
 }</string>
        </property>
        <property name="text">
-        <string> &lt;&lt;</string>
+        <string>&lt;&lt;</string>
        </property>
       </widget>
      </item>
@@ -560,120 +510,34 @@ QPushButton:disabled {
        <property name="font">
         <font>
          <family>Segoe UI</family>
-         <pointsize>12</pointsize>
+         <pointsize>18</pointsize>
         </font>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-	background-color: #3498db;
-	border: 1px solid #2980b9;
-	color: #ffffff;
-	padding: 5px 10px;
-	border-radius: 3px;
+	background-color: white;
+    border: 2px solid black; /* добавляем обводку */
+    border-radius: 10px;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+	padding-bottom: 3px;
+    color: black;
 }
 
 QPushButton:hover {
-	background-color: #2184cb;
-	border: 1px solid #1c6da5;
+    background-color: rgb(100, 88, 255);
+	color: white;
 }
 
 QPushButton:pressed {
-	background-color: #1a548b;
-	border: 1px solid #174172;
-}
-
-QPushButton:disabled {
-	background-color: #d3d3d3;
-	color: #555555;
-	border: 1px solid #a3a3a3;
+	background-color: rgba(220, 60, 190, 255);
 }</string>
        </property>
        <property name="text">
         <string>&gt;&gt;</string>
        </property>
       </widget>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_7">
-     <item>
-      <spacer name="horizontalSpacer_11">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="numberRows_11">
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>10</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="numberRows_16">
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>15</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="numberRows_21">
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>20</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="automaticNumberRows_2">
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Авто</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_12">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
      </item>
     </layout>
    </item>

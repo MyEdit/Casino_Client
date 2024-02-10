@@ -44,41 +44,7 @@
       <property name="horizontalSpacing">
        <number>0</number>
       </property>
-      <item row="0" column="1">
-       <widget class="QPushButton" name="buttonCreateTable">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Segoe UI</family>
-          <pointsize>10</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="toolTip">
-         <string/>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-	background-color: rgb(255, 255, 255);
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    color: rgb(51, 41, 123);
-	padding: 5px;
-	text-align: left;
-}</string>
-        </property>
-        <property name="text">
-         <string>Создать стол</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
+      <item row="0" column="2">
        <widget class="QLabel" name="label_2">
         <property name="enabled">
          <bool>true</bool>
@@ -94,7 +60,7 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="1" column="1">
        <widget class="QPushButton" name="buttonAllUsers">
         <property name="minimumSize">
          <size>
@@ -105,7 +71,7 @@
         <property name="font">
          <font>
           <family>Segoe UI</family>
-          <pointsize>10</pointsize>
+          <pointsize>12</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -124,7 +90,7 @@
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="0" column="1">
        <widget class="QPushButton" name="buttonExistingTables">
         <property name="minimumSize">
          <size>
@@ -135,7 +101,7 @@
         <property name="font">
          <font>
           <family>Segoe UI</family>
-          <pointsize>10</pointsize>
+          <pointsize>12</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -154,26 +120,7 @@
         </property>
        </widget>
       </item>
-      <item row="0" column="2">
-       <widget class="QLabel" name="label">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap resource="../Resources.qrc">:/photos/resources/recess.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
+      <item row="1" column="2">
        <widget class="QLabel" name="label_3">
         <property name="text">
          <string/>
@@ -190,6 +137,9 @@
        <spacer name="horizontalSpacer">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -219,7 +169,7 @@
       <property name="font">
        <font>
         <family>Segoe UI</family>
-        <pointsize>10</pointsize>
+        <pointsize>14</pointsize>
         <weight>75</weight>
         <bold>true</bold>
        </font>
@@ -242,8 +192,8 @@
       </property>
       <property name="iconSize">
        <size>
-        <width>24</width>
-        <height>24</height>
+        <width>32</width>
+        <height>32</height>
        </size>
       </property>
      </widget>
@@ -311,7 +261,7 @@
         <property name="font">
          <font>
           <family>Segoe UI</family>
-          <pointsize>10</pointsize>
+          <pointsize>14</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>
@@ -331,7 +281,7 @@
         <property name="font">
          <font>
           <family>Segoe UI</family>
-          <pointsize>10</pointsize>
+          <pointsize>14</pointsize>
           <weight>75</weight>
           <bold>true</bold>
          </font>

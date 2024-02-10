@@ -18,6 +18,6 @@ void Window_Auth::on_Button_Auth_clicked()
 
     PacketTypes packettype = PacketTypes::P_Authorization;
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
-    NetworkClient::sendToServer(login.toUtf8().constData());
-    NetworkClient::sendToServer(password.toUtf8().constData());
+    NetworkClient::sendToServer(login);
+    NetworkClient::sendToServer(password);
 }

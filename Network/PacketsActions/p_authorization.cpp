@@ -1,16 +1,24 @@
-#include "p_authorization.h"
+ï»¿#include "p_authorization.h"
+
+Window_Admin* P_Authorization::adminW;
 
 void P_Authorization::openMainWindow()
 {
     QWidget* currentForm = QApplication::activeWindow();
     currentForm->close();
 
-    Window_Admin* w = new Window_Admin;
-    w->show();
+    adminW = new Window_Admin;
+    adminW->show();
 
-    //Çàïðàøèâàþ ó ñåðâåðà ìîäåëü ñ äàííûìè "Ïîëüçîâàòåëè"
+    //Ð—Ð°Ð¿Ñ€Ð°ÑˆÐ¸Ð²Ð°ÑŽ Ñƒ ÑÐµÑ€Ð²ÐµÑ€Ð° Ð¼Ð¾Ð´ÐµÐ»ÑŒ Ñ Ð´Ð°Ð½Ð½Ñ‹Ð¼Ð¸ "ÐŸÐ¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ð¸"
     PacketTypes packettype = PacketTypes::P_SendModel;
     ModelTypes modeltype = ModelTypes::Users;
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&modeltype, sizeof(ModelTypes));
+}
+
+void P_Authorization::setModelAllUsers(QStandardItemModel* model)
+{
+    if(adminW)
+        adminW->setModel_AllUsersTab(model);
 }

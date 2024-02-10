@@ -250,6 +250,7 @@ Makefile: Casino_Client.pro ../../QTCreator/5.12.7/mingw73_64/mkspecs/win32-g++/
 		Casino_Client.pro \
 		../../QTCreator/5.12.7/mingw73_64/lib/Qt5Widgets.prl \
 		../../QTCreator/5.12.7/mingw73_64/lib/Qt5Gui.prl \
+		../../QTCreator/5.12.7/mingw73_64/lib/Qt5Sql.prl \
 		../../QTCreator/5.12.7/mingw73_64/lib/Qt5Core.prl \
 		../../QTCreator/5.12.7/mingw73_64/lib/qtmain.prl
 	$(QMAKE) -o Makefile Casino_Client.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -440,6 +441,7 @@ Makefile: Casino_Client.pro ../../QTCreator/5.12.7/mingw73_64/mkspecs/win32-g++/
 Casino_Client.pro:
 ../../QTCreator/5.12.7/mingw73_64/lib/Qt5Widgets.prl:
 ../../QTCreator/5.12.7/mingw73_64/lib/Qt5Gui.prl:
+../../QTCreator/5.12.7/mingw73_64/lib/Qt5Sql.prl:
 ../../QTCreator/5.12.7/mingw73_64/lib/Qt5Core.prl:
 ../../QTCreator/5.12.7/mingw73_64/lib/qtmain.prl:
 qmake: FORCE

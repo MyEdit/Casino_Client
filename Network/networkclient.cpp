@@ -1,6 +1,7 @@
 ﻿#include "networkclient.h"
 
 SOCKET NetworkClient::serverSocket = INVALID_SOCKET;
+PacketHandler* NetworkClient::packetHandler;
 
 //Инициилизация
 bool NetworkClient::init()
@@ -40,11 +41,13 @@ bool NetworkClient::connectToServer()
         return false;
     }
 
-    PacketHandler* packetHandler = new PacketHandler();
+    qRegisterMetaType<QPair<ModelTypes, QStandardItemModel*>>("QPair<ModelTypes, QStandardItemModel*>");
+
+    packetHandler = new PacketHandler();
 
     //Коннекты с сигналами из потока обработчика пакетов
     QObject::connect(packetHandler, &PacketHandler::signalOpenForm, this, &P_Authorization::openMainWindow);
-    QObject::connect(packetHandler, &PacketHandler::signalSetModelAllUsers, this, &P_Authorization::setModelAllUsers); //TODO: По логике этот сигнал должен обрабатываться в P_SendModel а не в P_Authorization
+    QObject::connect(packetHandler, &PacketHandler::signalSetModel, this, &P_SendModel::setModel);
 
     packetHandler->start();
     Message::logInfo("Connection successful!");
@@ -57,4 +60,14 @@ void NetworkClient::sendToServer(QString message)
     int message_size = message.size();
     send(serverSocket, reinterpret_cast<const char*>(&message_size), sizeof(int), 0);
     send(serverSocket, reinterpret_cast<const char*>(message.toUtf8().constData()), message_size, 0);
+}
+
+//Парс и получение пакета от сервера с неизвестной длинной
+QString NetworkClient::getMessageFromServer()
+{
+    int size;
+    recv(serverSocket, reinterpret_cast<char*>(&size), sizeof(int), 0);
+    QByteArray buffer(size, 0);
+    recv(serverSocket, buffer.data(), size, 0);
+    return QString(buffer);
 }

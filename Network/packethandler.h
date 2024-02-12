@@ -2,9 +2,12 @@
 #define CLIENTHANDLER_H
 
 #include <QThread>
-#include <Network/PacketTypes.h>
-#include <Network/PacketsActions/p_authorization.h>
-#include <Network/PacketsActions/p_sendmodel.h>
+#include "Network/PacketTypes.h"
+#include "Network/PacketsActions/p_authorization.h"
+#include "Network/PacketsActions/p_sendmodel.h"
+#include "Network/PacketsActions/p_query.h"
+
+class NetworkClient;
 
 class PacketHandler : public QThread
 {
@@ -17,7 +20,8 @@ private:
 
 signals:
     void signalOpenForm();
-    void signalSetModelAllUsers(QStandardItemModel* model);
+    void signalSetModel(QPair<ModelTypes, QStandardItemModel*>);
+    void signalSetQueryModel(QString);
 };
 
 #endif // CLIENTHANDLER_H

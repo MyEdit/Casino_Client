@@ -1,6 +1,8 @@
 ﻿#include "p_sendmodel.h"
 
-QStandardItemModel* P_SendModel::getModelFromServer()
+QMap<ModelTypes, std::function<void(QStandardItemModel*)>> P_SendModel::setModelFunctions;
+
+QPair<ModelTypes, QStandardItemModel *> P_SendModel::getModelFromServer()
 {
     ModelTypes modeltype;
     QByteArray receivedData;
@@ -11,6 +13,39 @@ QStandardItemModel* P_SendModel::getModelFromServer()
     receivedData.resize(dataSize);
     recv(NetworkClient::serverSocket, receivedData.data(), dataSize, 0);
 
-    return Serializer::deserializationDataModel(receivedData);
+    QStandardItemModel* model = Serializer::deserializationDataModel(receivedData);
+    return {modeltype, model};
 }
 
+void P_SendModel::setModel(QPair<ModelTypes, QStandardItemModel*> set)
+{
+    ModelTypes modeltype = set.first;
+    QStandardItemModel* model = set.second;
+
+    if (setModelFunctions.size() == 0)
+        initMapFunctions();
+
+    if (!setModelFunctions.contains(modeltype))
+    {
+        Message::logWarn("Unknown model type");
+        return;
+    }
+
+    if(!P_Authorization::adminW)
+        return;
+
+    setModelFunctions[modeltype](model);
+}
+
+//Инициилизирует мапу ModelTypes -> Функция добавления модели
+void P_SendModel::initMapFunctions()
+{
+    setModelFunctions.insert(ModelTypes::Users, [&](QStandardItemModel* model)
+    {
+        P_Authorization::adminW->setModel_AllUsersTab(model);
+    });
+    setModelFunctions.insert(ModelTypes::ExistingTables, [&](QStandardItemModel* model)
+    {
+        P_Authorization::adminW->setModel_ExistingTab(model);
+    });
+}

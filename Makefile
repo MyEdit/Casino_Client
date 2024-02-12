@@ -224,7 +224,6 @@ Makefile: Casino_Client.pro ../../QTCreator/5.12.7/mingw73_64/mkspecs/win32-g++/
 		../../QTCreator/5.12.7/mingw73_64/mkspecs/features/qt_config.prf \
 		../../QTCreator/5.12.7/mingw73_64/mkspecs/win32-g++/qmake.conf \
 		../../QTCreator/5.12.7/mingw73_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		../../QTCreator/5.12.7/mingw73_64/mkspecs/features/exclusive_builds.prf \
 		../../QTCreator/5.12.7/mingw73_64/mkspecs/features/toolchain.prf \
 		../../QTCreator/5.12.7/mingw73_64/mkspecs/features/default_pre.prf \
@@ -415,7 +414,6 @@ Makefile: Casino_Client.pro ../../QTCreator/5.12.7/mingw73_64/mkspecs/win32-g++/
 ../../QTCreator/5.12.7/mingw73_64/mkspecs/features/qt_config.prf:
 ../../QTCreator/5.12.7/mingw73_64/mkspecs/win32-g++/qmake.conf:
 ../../QTCreator/5.12.7/mingw73_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 ../../QTCreator/5.12.7/mingw73_64/mkspecs/features/exclusive_builds.prf:
 ../../QTCreator/5.12.7/mingw73_64/mkspecs/features/toolchain.prf:
 ../../QTCreator/5.12.7/mingw73_64/mkspecs/features/default_pre.prf:

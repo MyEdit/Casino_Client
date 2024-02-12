@@ -1,10 +1,10 @@
-#ifndef WINDOW_AUTH_H
+﻿#ifndef WINDOW_AUTH_H
 #define WINDOW_AUTH_H
 
 #include <QMainWindow>
-#include <Network/networkclient.h>
-#include <Network/PacketsActions/p_authorization.h>
-#include <GUI/window_admin.h>
+#include "Network/networkclient.h"
+#include "Network/PacketsActions/p_authorization.h"
+#include "GUI/window_admin.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Window_Auth; }

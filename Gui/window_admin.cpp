@@ -1,7 +1,5 @@
 ﻿#include "window_admin.h"
 #include "ui_window_admin.h"
-#include <QPainter>
-#include <QBitmap>
 
 Window_Admin::Window_Admin(QWidget *parent) : QMainWindow(parent), ui(new Ui::Window_Admin)
 {
@@ -15,6 +13,7 @@ Window_Admin::Window_Admin(QWidget *parent) : QMainWindow(parent), ui(new Ui::Wi
 
     ui->label_2->setVisible(false);
     ui->label_3->setVisible(false);
+    ui->label_4->setVisible(false);
 }
 
 Window_Admin::~Window_Admin()
@@ -42,16 +41,6 @@ void Window_Admin::uploadingPhotoEmployee()
 
 void Window_Admin::assigningValues()
 {
-    //По хорошему этот кусок кода переделать на цикл, в C# у всех элементов было свойство tag, в котором можно было хранить доп инфу об объекте, может и тут есть аналог, если есть то можно сделать так
-    /*
-    for(QPushButton* button : ВсеКнопкиНаФорме)
-    {
-        if(button.tag.equals("NavButton"))
-        {
-            buttonSwitchingTab.push_back(button);
-        }
-    }
-    */
     buttonSwitchingTab.push_back(ui->buttonExistingTables);
     buttonSwitchingTab.push_back(ui->buttonAllUsers);
 
@@ -65,6 +54,11 @@ void Window_Admin::assigningValues()
 void Window_Admin::setModel_AllUsersTab(QStandardItemModel* model)
 {
     allUsersTab->setModel(model);
+}
+
+void Window_Admin::setModel_ExistingTab(QStandardItemModel* model)
+{
+    existingTablesTab->setModel(model);
 }
 
 void Window_Admin::settingWindowPosition()
@@ -169,4 +163,23 @@ void Window_Admin::rendering_WelcomeTab()
 {
     welcomeTab = QSharedPointer<Welcome>::create("Администратор");
     ui->tabWidget->addTab(welcomeTab.data(), "");
+}
+
+/////////////////ИВЕНТЫ/////////////////
+
+void Window_Admin::showEvent(QShowEvent* event)
+{
+    QMainWindow::showEvent(event);
+
+    PacketTypes packettype = PacketTypes::P_SendModel;
+
+    //Запрашиваю у сервера модель с данными "Пользователи"
+    ModelTypes users = ModelTypes::Users;
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&users, sizeof(ModelTypes));
+
+    //Запрашиваю у сервера модель с данными "Игровые столы"
+    ModelTypes existingTables = ModelTypes::ExistingTables;
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&existingTables, sizeof(ModelTypes));
 }

@@ -8,10 +8,16 @@
 #include <QLabel>
 #include <QMap>
 #include <QScreen>
-#include <GUI/TabWidgets/creategametable.h>
-#include <GUI/TabWidgets/existingtables.h>
-#include <GUI/TabWidgets/allusers.h>
-#include <GUI/TabWidgets/welcome.h>
+#include <QPainter>
+#include <QBitmap>
+#include "GUI/TabWidgets/creategametable.h"
+#include "GUI/TabWidgets/existingtables.h"
+#include "GUI/TabWidgets/allusers.h"
+#include "GUI/TabWidgets/welcome.h"
+#include "Network/networkclient.h"
+
+class P_Authorization;
+class ExistingTables;
 
 namespace Ui {
 class Window_Admin;
@@ -37,6 +43,7 @@ public:
     ~Window_Admin();
 
     void setModel_AllUsersTab(QStandardItemModel* model);
+    void setModel_ExistingTab(QStandardItemModel* model);
 
 private:
     void onNavigationsButton_clicked();
@@ -49,6 +56,7 @@ private:
     void prepareStyleSheets();
     void uploadingPhotoEmployee();
     void settingWindowPosition();
+    void showEvent(QShowEvent* event) override;
 
 private slots:
     void on_buttonExit_clicked();

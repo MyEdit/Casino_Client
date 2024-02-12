@@ -31,7 +31,7 @@ void PacketHandler::packetHandler(PacketTypes packettype)
         }
         case(PacketTypes::P_SendModel):
         {
-            emit signalSetModelAllUsers(P_SendModel::getModelFromServer());
+            emit signalSetModel(P_SendModel::getModelFromServer());
             break;
         }
         case(PacketTypes::P_Notification):
@@ -51,6 +51,15 @@ void PacketHandler::packetHandler(PacketTypes packettype)
             break;
         }
         case(PacketTypes::P_SendTables):
+        {
+            break;
+        }
+        case(PacketTypes::P_QueryWithoutResponce):
+        {
+            emit signalSetQueryModel(NetworkClient::getMessageFromServer());
+            break;
+        }
+        case(PacketTypes::P_Query):
         {
             break;
         }

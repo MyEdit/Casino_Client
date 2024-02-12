@@ -54,6 +54,7 @@ SOURCES       = GUI\TabWidgets\allusers.cpp \
 		GUI\window_admin.cpp \
 		GUI\window_auth.cpp \
 		Network\PacketsActions\p_authorization.cpp \
+		Network\PacketsActions\p_query.cpp \
 		Network\PacketsActions\p_sendmodel.cpp \
 		Network\networkclient.cpp \
 		Network\packethandler.cpp \
@@ -75,6 +76,7 @@ OBJECTS       = debug/allusers.o \
 		debug/window_admin.o \
 		debug/window_auth.o \
 		debug/p_authorization.o \
+		debug/p_query.o \
 		debug/p_sendmodel.o \
 		debug/networkclient.o \
 		debug/packethandler.o \
@@ -99,6 +101,7 @@ DIST          =  GUI\TabWidgets\allusers.h \
 		GUI\window_auth.h \
 		Network\PacketTypes.h \
 		Network\PacketsActions\p_authorization.h \
+		Network\PacketsActions\p_query.h \
 		Network\PacketsActions\p_sendmodel.h \
 		Network\networkclient.h \
 		Network\packethandler.h \
@@ -111,6 +114,7 @@ DIST          =  GUI\TabWidgets\allusers.h \
 		GUI\window_admin.cpp \
 		GUI\window_auth.cpp \
 		Network\PacketsActions\p_authorization.cpp \
+		Network\PacketsActions\p_query.cpp \
 		Network\PacketsActions\p_sendmodel.cpp \
 		Network\networkclient.cpp \
 		Network\packethandler.cpp \
@@ -135,10 +139,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) Casino_Client.zip $(SOURCES) $(DIST) Casino_Client.pro ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\spec_pre.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\qdevice.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\device_config.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\common\sanitize.conf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\common\gcc-base.conf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\common\g++-base.conf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\common\angle.conf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\win32\windows_vulkan_sdk.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\common\windows-vulkan.conf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\common\g++-win32.conf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\qconfig.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3danimation.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3danimation_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dcore.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dextras.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dinput.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dlogic.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquick.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3drender.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3drender_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_axbase.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_axbase_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_axcontainer.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_axserver.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_axserver_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_bluetooth.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_charts.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_charts_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_concurrent.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_core.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_core_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_datavisualization.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_datavisualization_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_dbus.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_dbus_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_designer.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_designer_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_edid_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_gamepad.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_gui.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_gui_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_help.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_help_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_location.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_location_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_multimedia.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_network.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_network_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_networkauth.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_networkauth_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_nfc.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_nfc_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_opengl.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_opengl_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_openglextensions.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_positioning.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_positioning_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_positioningquick.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_positioningquick_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_printsupport.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_purchasing.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_purchasing_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_qml.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_qml_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_qmltest.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quick.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quick_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quickshapes_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_remoteobjects.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_remoteobjects_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_repparser.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_repparser_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_script.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_script_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_scripttools.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_scripttools_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_scxml.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_scxml_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_sensors.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_sensors_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_serialbus.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_serialport.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_serialport_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_sql.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_sql_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_svg.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_svg_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_testlib.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_testlib_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_texttospeech.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_uiplugin.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_uitools.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_uitools_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_vulkan_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_webchannel.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_websockets.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_websockets_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_widgets.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_widgets_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_winextras.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_winextras_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_xml.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_xml_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\qt_functions.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\qt_config.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\win32-g++\qmake.conf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\spec_post.prf .qmake.stash ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\exclusive_builds.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\toolchain.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\default_pre.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\win32\default_pre.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\resolve_config.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\exclusive_builds_post.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\default_post.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\build_pass.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\qml_debug.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\precompile_header.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\warn_on.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\qt.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\resources.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\moc.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\win32\opengl.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\uic.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\qmake_use.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\file_copies.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\win32\windows.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\testcase_targets.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\exceptions.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\yacc.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\lex.prf Casino_Client.pro Resources.qrc ..\..\QTCreator\5.12.7\mingw73_64\lib\Qt5Widgetsd.prl ..\..\QTCreator\5.12.7\mingw73_64\lib\Qt5Guid.prl ..\..\QTCreator\5.12.7\mingw73_64\lib\Qt5Sqld.prl ..\..\QTCreator\5.12.7\mingw73_64\lib\Qt5Cored.prl ..\..\QTCreator\5.12.7\mingw73_64\lib\qtmaind.prl   Resources.qrc ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\data\dummy.cpp GUI\TabWidgets\allusers.h GUI\TabWidgets\creategametable.h GUI\TabWidgets\existingtables.h GUI\TabWidgets\welcome.h GUI\window_admin.h GUI\window_auth.h Network\PacketTypes.h Network\PacketsActions\p_authorization.h Network\PacketsActions\p_sendmodel.h Network\networkclient.h Network\packethandler.h Utils\Message.h Utils\serializer.h Constants.h  GUI\TabWidgets\allusers.cpp GUI\TabWidgets\creategametable.cpp GUI\TabWidgets\existingtables.cpp GUI\TabWidgets\welcome.cpp GUI\window_admin.cpp GUI\window_auth.cpp Network\PacketsActions\p_authorization.cpp Network\PacketsActions\p_sendmodel.cpp Network\networkclient.cpp Network\packethandler.cpp Utils\serializer.cpp main.cpp GUI\TabWidgets\allusers.ui GUI\TabWidgets\creategametable.ui GUI\TabWidgets\existingtables.ui GUI\TabWidgets\welcome.ui GUI\window_admin.ui GUI\window_auth.ui    
+	$(ZIP) Casino_Client.zip $(SOURCES) $(DIST) Casino_Client.pro ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\spec_pre.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\qdevice.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\device_config.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\common\sanitize.conf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\common\gcc-base.conf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\common\g++-base.conf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\common\angle.conf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\win32\windows_vulkan_sdk.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\common\windows-vulkan.conf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\common\g++-win32.conf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\qconfig.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3danimation.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3danimation_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dcore.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dcore_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dextras.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dextras_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dinput.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dinput_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dlogic.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dlogic_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquick.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquick_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickextras.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickextras_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickinput.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickinput_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickrender.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickrender_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3drender.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_3drender_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_accessibility_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_axbase.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_axbase_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_axcontainer.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_axcontainer_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_axserver.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_axserver_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_bluetooth.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_bluetooth_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_bootstrap_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_charts.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_charts_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_concurrent.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_concurrent_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_core.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_core_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_datavisualization.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_datavisualization_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_dbus.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_dbus_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_designer.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_designer_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_designercomponents_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_edid_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_egl_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_fb_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_gamepad.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_gamepad_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_gui.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_gui_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_help.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_help_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_location.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_location_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_multimedia.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_multimedia_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_network.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_network_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_networkauth.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_networkauth_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_nfc.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_nfc_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_opengl.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_opengl_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_openglextensions.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_openglextensions_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_packetprotocol_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_positioning.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_positioning_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_positioningquick.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_positioningquick_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_printsupport.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_printsupport_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_purchasing.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_purchasing_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_qml.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_qml_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_qmldebug_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_qmldevtools_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_qmltest.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_qmltest_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quick.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quick_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quickparticles_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quickshapes_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quickwidgets.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_quickwidgets_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_remoteobjects.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_remoteobjects_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_repparser.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_repparser_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_script.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_script_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_scripttools.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_scripttools_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_scxml.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_scxml_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_sensors.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_sensors_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_serialbus.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_serialbus_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_serialport.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_serialport_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_sql.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_sql_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_svg.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_svg_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_testlib.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_testlib_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_texttospeech.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_texttospeech_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_theme_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_uiplugin.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_uitools.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_uitools_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_virtualkeyboard_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_vulkan_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_webchannel.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_webchannel_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_websockets.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_websockets_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_widgets.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_widgets_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_winextras.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_winextras_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_xml.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_xml_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\qt_functions.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\qt_config.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\win32-g++\qmake.conf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\spec_post.prf .qmake.stash ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\exclusive_builds.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\toolchain.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\default_pre.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\win32\default_pre.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\resolve_config.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\exclusive_builds_post.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\default_post.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\build_pass.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\qml_debug.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\precompile_header.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\warn_on.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\qt.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\resources.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\moc.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\win32\opengl.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\uic.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\qmake_use.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\file_copies.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\win32\windows.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\testcase_targets.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\exceptions.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\yacc.prf ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\lex.prf Casino_Client.pro Resources.qrc ..\..\QTCreator\5.12.7\mingw73_64\lib\Qt5Widgetsd.prl ..\..\QTCreator\5.12.7\mingw73_64\lib\Qt5Guid.prl ..\..\QTCreator\5.12.7\mingw73_64\lib\Qt5Sqld.prl ..\..\QTCreator\5.12.7\mingw73_64\lib\Qt5Cored.prl ..\..\QTCreator\5.12.7\mingw73_64\lib\qtmaind.prl   Resources.qrc ..\..\QTCreator\5.12.7\mingw73_64\mkspecs\features\data\dummy.cpp GUI\TabWidgets\allusers.h GUI\TabWidgets\creategametable.h GUI\TabWidgets\existingtables.h GUI\TabWidgets\welcome.h GUI\window_admin.h GUI\window_auth.h Network\PacketTypes.h Network\PacketsActions\p_authorization.h Network\PacketsActions\p_query.h Network\PacketsActions\p_sendmodel.h Network\networkclient.h Network\packethandler.h Utils\Message.h Utils\serializer.h Constants.h  GUI\TabWidgets\allusers.cpp GUI\TabWidgets\creategametable.cpp GUI\TabWidgets\existingtables.cpp GUI\TabWidgets\welcome.cpp GUI\window_admin.cpp GUI\window_auth.cpp Network\PacketsActions\p_authorization.cpp Network\PacketsActions\p_query.cpp Network\PacketsActions\p_sendmodel.cpp Network\networkclient.cpp Network\packethandler.cpp Utils\serializer.cpp main.cpp GUI\TabWidgets\allusers.ui GUI\TabWidgets\creategametable.ui GUI\TabWidgets\existingtables.ui GUI\TabWidgets\welcome.ui GUI\window_admin.ui GUI\window_auth.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\allusers.o debug\creategametable.o debug\existingtables.o debug\welcome.o debug\window_admin.o debug\window_auth.o debug\p_authorization.o debug\p_sendmodel.o debug\networkclient.o debug\packethandler.o debug\serializer.o debug\main.o debug\qrc_Resources.o debug\moc_allusers.o debug\moc_creategametable.o debug\moc_existingtables.o debug\moc_welcome.o debug\moc_window_admin.o debug\moc_window_auth.o debug\moc_p_authorization.o debug\moc_networkclient.o debug\moc_packethandler.o
+	-$(DEL_FILE) debug\allusers.o debug\creategametable.o debug\existingtables.o debug\welcome.o debug\window_admin.o debug\window_auth.o debug\p_authorization.o debug\p_query.o debug\p_sendmodel.o debug\networkclient.o debug\packethandler.o debug\serializer.o debug\main.o debug\qrc_Resources.o debug\moc_allusers.o debug\moc_creategametable.o debug\moc_existingtables.o debug\moc_welcome.o debug\moc_window_admin.o debug\moc_window_auth.o debug\moc_p_authorization.o debug\moc_networkclient.o debug\moc_packethandler.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -285,6 +289,7 @@ debug/moc_allusers.cpp: GUI/TabWidgets/allusers.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qstandarditemmodel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qabstractitemmodel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qicon.h \
+		Utils/Message.h \
 		debug/moc_predefs.h \
 		../../QTCreator/5.12.7/mingw73_64/bin/moc.exe
 	D:\QTCreator\5.12.7\mingw73_64\bin\moc.exe $(DEFINES) --include "D:/C++ Projects/Casino_Client/debug/moc_predefs.h" -ID:/QTCreator/5.12.7/mingw73_64/mkspecs/win32-g++ -I"D:/C++ Projects/Casino_Client" -ID:/QTCreator/5.12.7/mingw73_64/include -ID:/QTCreator/5.12.7/mingw73_64/include/QtWidgets -ID:/QTCreator/5.12.7/mingw73_64/include/QtGui -ID:/QTCreator/5.12.7/mingw73_64/include/QtANGLE -ID:/QTCreator/5.12.7/mingw73_64/include/QtSql -ID:/QTCreator/5.12.7/mingw73_64/include/QtCore -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/QTCreator/Tools/mingw730_64/x86_64-w64-mingw32/include GUI\TabWidgets\allusers.h -o debug\moc_allusers.cpp
@@ -501,6 +506,76 @@ debug/moc_existingtables.cpp: GUI/TabWidgets/existingtables.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qfiledevice.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qvector2d.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtouchdevice.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QStandardItemModel \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qstandarditemmodel.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qicon.h \
+		Utils/Message.h \
+		Network/PacketTypes.h \
+		Network/networkclient.h \
+		Constants.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSharedPointer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QObject \
+		Network/PacketsActions/p_authorization.h \
+		GUI/window_admin.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMainWindow \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmainwindow.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qtabwidget.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QTabBar \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qtabbar.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QPushButton \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qpushbutton.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QLabel \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qlabel.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qframe.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QScreen \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qscreen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QList \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QRect \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
+		GUI/TabWidgets/creategametable.h \
+		GUI/TabWidgets/existingtables.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
+		GUI/TabWidgets/allusers.h \
+		GUI/TabWidgets/welcome.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qdatetime.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QApplication \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qapplication.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qcoreapplication.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qeventloop.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdesktopwidget.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qguiapplication.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qinputmethod.h \
+		Network/PacketsActions/p_sendmodel.h \
+		Utils/serializer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonDocument \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsondocument.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonvalue.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonArray \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonarray.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonObject \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonobject.h \
+		Network/packethandler.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QThread \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h \
+		Network/PacketsActions/p_query.h \
 		debug/moc_predefs.h \
 		../../QTCreator/5.12.7/mingw73_64/bin/moc.exe
 	D:\QTCreator\5.12.7\mingw73_64\bin\moc.exe $(DEFINES) --include "D:/C++ Projects/Casino_Client/debug/moc_predefs.h" -ID:/QTCreator/5.12.7/mingw73_64/mkspecs/win32-g++ -I"D:/C++ Projects/Casino_Client" -ID:/QTCreator/5.12.7/mingw73_64/include -ID:/QTCreator/5.12.7/mingw73_64/include/QtWidgets -ID:/QTCreator/5.12.7/mingw73_64/include/QtGui -ID:/QTCreator/5.12.7/mingw73_64/include/QtANGLE -ID:/QTCreator/5.12.7/mingw73_64/include/QtSql -ID:/QTCreator/5.12.7/mingw73_64/include/QtCore -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/QTCreator/Tools/mingw730_64/x86_64-w64-mingw32/include GUI\TabWidgets\existingtables.h -o debug\moc_existingtables.cpp
@@ -740,16 +815,55 @@ debug/moc_window_admin.cpp: GUI/window_admin.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
 		GUI/TabWidgets/creategametable.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QWidget \
 		GUI/TabWidgets/existingtables.h \
-		GUI/TabWidgets/allusers.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QStandardItemModel \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qstandarditemmodel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		Utils/Message.h \
+		Network/PacketTypes.h \
+		Network/networkclient.h \
+		Constants.h \
+		Network/PacketsActions/p_authorization.h \
+		GUI/window_admin.h \
+		GUI/TabWidgets/allusers.h \
 		GUI/TabWidgets/welcome.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qdatetime.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QApplication \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qapplication.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qcoreapplication.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qeventloop.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdesktopwidget.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qguiapplication.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qinputmethod.h \
+		Network/PacketsActions/p_sendmodel.h \
+		Utils/serializer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonDocument \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsondocument.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonvalue.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonArray \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonarray.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonObject \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonobject.h \
+		Network/packethandler.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QThread \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h \
+		Network/PacketsActions/p_query.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
 		debug/moc_predefs.h \
 		../../QTCreator/5.12.7/mingw73_64/bin/moc.exe
 	D:\QTCreator\5.12.7\mingw73_64\bin\moc.exe $(DEFINES) --include "D:/C++ Projects/Casino_Client/debug/moc_predefs.h" -ID:/QTCreator/5.12.7/mingw73_64/mkspecs/win32-g++ -I"D:/C++ Projects/Casino_Client" -ID:/QTCreator/5.12.7/mingw73_64/include -ID:/QTCreator/5.12.7/mingw73_64/include/QtWidgets -ID:/QTCreator/5.12.7/mingw73_64/include/QtGui -ID:/QTCreator/5.12.7/mingw73_64/include/QtANGLE -ID:/QTCreator/5.12.7/mingw73_64/include/QtSql -ID:/QTCreator/5.12.7/mingw73_64/include/QtCore -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/QTCreator/Tools/mingw730_64/x86_64-w64-mingw32/include GUI\window_admin.h -o debug\moc_window_admin.cpp
@@ -885,13 +999,26 @@ debug/moc_window_auth.cpp: GUI/window_auth.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
 		GUI/TabWidgets/creategametable.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QWidget \
 		GUI/TabWidgets/existingtables.h \
-		GUI/TabWidgets/allusers.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QStandardItemModel \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qstandarditemmodel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
+		GUI/TabWidgets/allusers.h \
 		GUI/TabWidgets/welcome.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qdatetime.h \
@@ -914,6 +1041,7 @@ debug/moc_window_auth.cpp: GUI/window_auth.h \
 		Network/packethandler.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QThread \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h \
+		Network/PacketsActions/p_query.h \
 		debug/moc_predefs.h \
 		../../QTCreator/5.12.7/mingw73_64/bin/moc.exe
 	D:\QTCreator\5.12.7\mingw73_64\bin\moc.exe $(DEFINES) --include "D:/C++ Projects/Casino_Client/debug/moc_predefs.h" -ID:/QTCreator/5.12.7/mingw73_64/mkspecs/win32-g++ -I"D:/C++ Projects/Casino_Client" -ID:/QTCreator/5.12.7/mingw73_64/include -ID:/QTCreator/5.12.7/mingw73_64/include/QtWidgets -ID:/QTCreator/5.12.7/mingw73_64/include/QtGui -ID:/QTCreator/5.12.7/mingw73_64/include/QtANGLE -ID:/QTCreator/5.12.7/mingw73_64/include/QtSql -ID:/QTCreator/5.12.7/mingw73_64/include/QtCore -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/QTCreator/Tools/mingw730_64/x86_64-w64-mingw32/include GUI\window_auth.h -o debug\moc_window_auth.cpp
@@ -1049,13 +1177,26 @@ debug/moc_p_authorization.cpp: Network/PacketsActions/p_authorization.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
 		GUI/TabWidgets/creategametable.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QWidget \
 		GUI/TabWidgets/existingtables.h \
-		GUI/TabWidgets/allusers.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QStandardItemModel \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qstandarditemmodel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
+		GUI/TabWidgets/allusers.h \
 		GUI/TabWidgets/welcome.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qdatetime.h \
@@ -1078,6 +1219,7 @@ debug/moc_p_authorization.cpp: Network/PacketsActions/p_authorization.h \
 		Network/packethandler.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QThread \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h \
+		Network/PacketsActions/p_query.h \
 		debug/moc_predefs.h \
 		../../QTCreator/5.12.7/mingw73_64/bin/moc.exe
 	D:\QTCreator\5.12.7\mingw73_64\bin\moc.exe $(DEFINES) --include "D:/C++ Projects/Casino_Client/debug/moc_predefs.h" -ID:/QTCreator/5.12.7/mingw73_64/mkspecs/win32-g++ -I"D:/C++ Projects/Casino_Client" -ID:/QTCreator/5.12.7/mingw73_64/include -ID:/QTCreator/5.12.7/mingw73_64/include/QtWidgets -ID:/QTCreator/5.12.7/mingw73_64/include/QtGui -ID:/QTCreator/5.12.7/mingw73_64/include/QtANGLE -ID:/QTCreator/5.12.7/mingw73_64/include/QtSql -ID:/QTCreator/5.12.7/mingw73_64/include/QtCore -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++ -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/x86_64-w64-mingw32 -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include/c++/backward -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include -ID:/QTCreator/Tools/mingw730_64/lib/gcc/x86_64-w64-mingw32/7.3.0/include-fixed -ID:/QTCreator/Tools/mingw730_64/x86_64-w64-mingw32/include Network\PacketsActions\p_authorization.h -o debug\moc_p_authorization.cpp
@@ -1192,6 +1334,7 @@ debug/moc_networkclient.cpp: Network/networkclient.h \
 		Network/packethandler.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QThread \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h \
+		Network/PacketsActions/p_query.h \
 		GUI/window_admin.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMainWindow \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmainwindow.h \
@@ -1228,9 +1371,22 @@ debug/moc_networkclient.cpp: Network/networkclient.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
 		GUI/TabWidgets/creategametable.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QWidget \
 		GUI/TabWidgets/existingtables.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
 		GUI/TabWidgets/allusers.h \
 		GUI/TabWidgets/welcome.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
@@ -1356,6 +1512,7 @@ debug/moc_packethandler.cpp: Network/packethandler.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonObject \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonobject.h \
 		Network/packethandler.h \
+		Network/PacketsActions/p_query.h \
 		GUI/window_admin.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMainWindow \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmainwindow.h \
@@ -1392,9 +1549,22 @@ debug/moc_packethandler.cpp: Network/packethandler.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
 		GUI/TabWidgets/creategametable.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QWidget \
 		GUI/TabWidgets/existingtables.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
 		GUI/TabWidgets/allusers.h \
 		GUI/TabWidgets/welcome.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
@@ -1561,6 +1731,7 @@ debug/allusers.o: GUI/TabWidgets/allusers.cpp GUI/TabWidgets/allusers.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qstandarditemmodel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qabstractitemmodel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qicon.h \
+		Utils/Message.h \
 		ui_allusers.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QVariant \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QApplication \
@@ -1849,10 +2020,48 @@ debug/existingtables.o: GUI/TabWidgets/existingtables.cpp GUI/TabWidgets/existin
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qfiledevice.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qvector2d.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtouchdevice.h \
-		ui_existingtables.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QVariant \
-		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QIcon \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QStandardItemModel \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qstandarditemmodel.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qabstractitemmodel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qicon.h \
+		Utils/Message.h \
+		Network/PacketTypes.h \
+		Network/networkclient.h \
+		Constants.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSharedPointer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QObject \
+		Network/PacketsActions/p_authorization.h \
+		GUI/window_admin.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMainWindow \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmainwindow.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qtabwidget.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QTabBar \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qtabbar.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QPushButton \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qpushbutton.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QLabel \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qlabel.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qframe.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QScreen \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qscreen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QList \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QRect \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
+		GUI/TabWidgets/creategametable.h \
+		GUI/TabWidgets/allusers.h \
+		GUI/TabWidgets/welcome.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qdatetime.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QApplication \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qapplication.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qcoreapplication.h \
@@ -1860,9 +2069,31 @@ debug/existingtables.o: GUI/TabWidgets/existingtables.cpp GUI/TabWidgets/existin
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdesktopwidget.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qguiapplication.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qinputmethod.h \
+		Network/PacketsActions/p_sendmodel.h \
+		Utils/serializer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonDocument \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsondocument.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonvalue.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonArray \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonarray.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonObject \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonobject.h \
+		Network/packethandler.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QThread \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h \
+		Network/PacketsActions/p_query.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
+		ui_existingtables.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QVariant \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QIcon \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QCheckBox \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qcheckbox.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qabstractbutton.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QComboBox \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qcombobox.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -1873,11 +2104,7 @@ debug/existingtables.o: GUI/TabWidgets/existingtables.cpp GUI/TabWidgets/existin
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qslider.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qabstractslider.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qstyle.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qtabbar.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qtabwidget.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qrubberband.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qframe.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qabstractitemmodel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QHBoxLayout \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qboxlayout.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qlayout.h \
@@ -1888,16 +2115,10 @@ debug/existingtables.o: GUI/TabWidgets/existingtables.cpp GUI/TabWidgets/existin
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qabstractitemview.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qabstractscrollarea.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qitemselectionmodel.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QLabel \
-		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qlabel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QLineEdit \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qlineedit.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextcursor.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextformat.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QPushButton \
-		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qpushbutton.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QSpacerItem \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QTableView \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qtableview.h \
@@ -2155,19 +2376,23 @@ debug/window_admin.o: GUI/window_admin.cpp GUI/window_admin.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
 		GUI/TabWidgets/creategametable.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QWidget \
 		GUI/TabWidgets/existingtables.h \
-		GUI/TabWidgets/allusers.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QStandardItemModel \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qstandarditemmodel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qabstractitemmodel.h \
-		GUI/TabWidgets/welcome.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
-		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qdatetime.h \
-		ui_window_admin.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QVariant \
-		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QIcon \
+		Utils/Message.h \
+		Network/PacketTypes.h \
+		Network/networkclient.h \
+		Constants.h \
+		Network/PacketsActions/p_authorization.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QApplication \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qapplication.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qcoreapplication.h \
@@ -2175,6 +2400,33 @@ debug/window_admin.o: GUI/window_admin.cpp GUI/window_admin.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdesktopwidget.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qguiapplication.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qinputmethod.h \
+		Network/PacketsActions/p_sendmodel.h \
+		Utils/serializer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonDocument \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsondocument.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonvalue.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonArray \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonarray.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonObject \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonobject.h \
+		Network/packethandler.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QThread \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h \
+		Network/PacketsActions/p_query.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
+		GUI/TabWidgets/allusers.h \
+		GUI/TabWidgets/welcome.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qdatetime.h \
+		ui_window_admin.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QVariant \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QIcon \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QGridLayout \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qgridlayout.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qlayout.h \
@@ -2182,13 +2434,7 @@ debug/window_admin.o: GUI/window_admin.cpp GUI/window_admin.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qboxlayout.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QSpacerItem \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QTabWidget \
-		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QVBoxLayout \
-		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
-		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
-		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\window_admin.o GUI\window_admin.cpp
 
 debug/window_auth.o: GUI/window_auth.cpp GUI/window_auth.h \
@@ -2322,13 +2568,26 @@ debug/window_auth.o: GUI/window_auth.cpp GUI/window_auth.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
 		GUI/TabWidgets/creategametable.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QWidget \
 		GUI/TabWidgets/existingtables.h \
-		GUI/TabWidgets/allusers.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QStandardItemModel \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qstandarditemmodel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
+		GUI/TabWidgets/allusers.h \
 		GUI/TabWidgets/welcome.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qdatetime.h \
@@ -2351,6 +2610,7 @@ debug/window_auth.o: GUI/window_auth.cpp GUI/window_auth.h \
 		Network/packethandler.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QThread \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h \
+		Network/PacketsActions/p_query.h \
 		ui_window_auth.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QVariant \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QGridLayout \
@@ -2362,8 +2622,6 @@ debug/window_auth.o: GUI/window_auth.cpp GUI/window_auth.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qlineedit.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextcursor.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextformat.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QSpacerItem
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\window_auth.o GUI\window_auth.cpp
 
@@ -2476,6 +2734,7 @@ debug/p_authorization.o: Network/PacketsActions/p_authorization.cpp Network/Pack
 		Network/packethandler.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QThread \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h \
+		Network/PacketsActions/p_query.h \
 		GUI/window_admin.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMainWindow \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmainwindow.h \
@@ -2512,9 +2771,22 @@ debug/p_authorization.o: Network/PacketsActions/p_authorization.cpp Network/Pack
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
 		GUI/TabWidgets/creategametable.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QWidget \
 		GUI/TabWidgets/existingtables.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
 		GUI/TabWidgets/allusers.h \
 		GUI/TabWidgets/welcome.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
@@ -2527,6 +2799,181 @@ debug/p_authorization.o: Network/PacketsActions/p_authorization.cpp Network/Pack
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qguiapplication.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qinputmethod.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\p_authorization.o Network\PacketsActions\p_authorization.cpp
+
+debug/p_query.o: Network/PacketsActions/p_query.cpp Network/PacketsActions/p_query.h \
+		Network/networkclient.h \
+		Utils/Message.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qdebug.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qalgorithms.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qglobal.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qconfig-bootstrapped.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qconfig.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtcore-config.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qsystemdetection.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qprocessordetection.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qcompilerdetection.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtypeinfo.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qsysinfo.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qlogging.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qflags.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qatomic.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasicatomic.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qatomic_bootstrap.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qgenericatomic.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qatomic_cxx11.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qatomic_msvc.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qglobalstatic.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qmutex.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qnumeric.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qversiontagging.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qhash.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qchar.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qiterator.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qlist.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qrefcount.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qarraydata.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qhashfunctions.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qstring.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbytearray.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qnamespace.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qstringliteral.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qstringalgorithms.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qstringview.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qstringbuilder.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qpair.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbytearraylist.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qstringlist.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qregexp.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qstringmatcher.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qmap.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtextstream.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qiodevice.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qobject.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qobjectdefs.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qobjectdefs_impl.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qcoreevent.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qscopedpointer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qmetatype.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qvarlengtharray.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qcontainerfwd.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qobject_impl.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qlocale.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qvariant.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qshareddata.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qvector.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qpoint.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qset.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qcontiguouscache.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qsharedpointer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qsharedpointer_impl.h \
+		Constants.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSharedPointer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QObject \
+		Network/PacketTypes.h \
+		Network/PacketsActions/p_authorization.h \
+		GUI/window_admin.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMainWindow \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmainwindow.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qtwidgetsglobal.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtguiglobal.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtgui-config.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qtwidgets-config.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qwidget.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qwindowdefs.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qwindowdefs_win.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qmargins.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpaintdevice.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qrect.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qsize.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpalette.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qcolor.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qrgb.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qrgba64.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbrush.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qmatrix.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpolygon.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qregion.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qdatastream.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qline.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtransform.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainterpath.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qimage.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpixelformat.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpixmap.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qfont.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qfontmetrics.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qfontinfo.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qsizepolicy.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qcursor.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qkeysequence.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qevent.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qurl.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qurlquery.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qfile.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qfiledevice.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qvector2d.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtouchdevice.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qtabwidget.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qicon.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QTabBar \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qtabbar.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QPushButton \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qpushbutton.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qabstractbutton.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QLabel \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qlabel.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qframe.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QScreen \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qscreen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QList \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QRect \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
+		GUI/TabWidgets/creategametable.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QWidget \
+		GUI/TabWidgets/existingtables.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QStandardItemModel \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qstandarditemmodel.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
+		GUI/TabWidgets/allusers.h \
+		GUI/TabWidgets/welcome.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qdatetime.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QApplication \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qapplication.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qcoreapplication.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qeventloop.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdesktopwidget.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qguiapplication.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qinputmethod.h \
+		Network/PacketsActions/p_sendmodel.h \
+		Utils/serializer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonDocument \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsondocument.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonvalue.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonArray \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonarray.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonObject \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonobject.h \
+		Network/packethandler.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QThread \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\p_query.o Network\PacketsActions\p_query.cpp
 
 debug/p_sendmodel.o: Network/PacketsActions/p_sendmodel.cpp Network/PacketsActions/p_sendmodel.h \
 		Network/networkclient.h \
@@ -2659,13 +3106,26 @@ debug/p_sendmodel.o: Network/PacketsActions/p_sendmodel.cpp Network/PacketsActio
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
 		GUI/TabWidgets/creategametable.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QWidget \
 		GUI/TabWidgets/existingtables.h \
-		GUI/TabWidgets/allusers.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QStandardItemModel \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qstandarditemmodel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
+		GUI/TabWidgets/allusers.h \
 		GUI/TabWidgets/welcome.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qdatetime.h \
@@ -2679,6 +3139,7 @@ debug/p_sendmodel.o: Network/PacketsActions/p_sendmodel.cpp Network/PacketsActio
 		Network/packethandler.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QThread \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h \
+		Network/PacketsActions/p_query.h \
 		Utils/serializer.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QJsonDocument \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsondocument.h \
@@ -2819,13 +3280,26 @@ debug/networkclient.o: Network/networkclient.cpp Network/networkclient.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
 		GUI/TabWidgets/creategametable.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QWidget \
 		GUI/TabWidgets/existingtables.h \
-		GUI/TabWidgets/allusers.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QStandardItemModel \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qstandarditemmodel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
+		GUI/TabWidgets/allusers.h \
 		GUI/TabWidgets/welcome.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qdatetime.h \
@@ -2847,7 +3321,8 @@ debug/networkclient.o: Network/networkclient.cpp Network/networkclient.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonobject.h \
 		Network/packethandler.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QThread \
-		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h \
+		Network/PacketsActions/p_query.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\networkclient.o Network\networkclient.cpp
 
 debug/packethandler.o: Network/packethandler.cpp Network/packethandler.h \
@@ -2995,9 +3470,22 @@ debug/packethandler.o: Network/packethandler.cpp Network/packethandler.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
 		GUI/TabWidgets/creategametable.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QWidget \
 		GUI/TabWidgets/existingtables.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
 		GUI/TabWidgets/allusers.h \
 		GUI/TabWidgets/welcome.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
@@ -3008,7 +3496,8 @@ debug/packethandler.o: Network/packethandler.cpp Network/packethandler.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qeventloop.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdesktopwidget.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qguiapplication.h \
-		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qinputmethod.h
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qinputmethod.h \
+		Network/PacketsActions/p_query.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\packethandler.o Network\packethandler.cpp
 
 debug/serializer.o: Utils/serializer.cpp Utils/serializer.h \
@@ -3242,13 +3731,26 @@ debug/main.o: main.cpp GUI/window_auth.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSize \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QSizeF \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QTransform \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QPainter \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpainter.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qtextoption.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qpen.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QBitmap \
+		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qbitmap.h \
 		GUI/TabWidgets/creategametable.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QWidget \
 		GUI/TabWidgets/existingtables.h \
-		GUI/TabWidgets/allusers.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/QStandardItemModel \
 		../../QTCreator/5.12.7/mingw73_64/include/QtGui/qstandarditemmodel.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qabstractitemmodel.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QMutex \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTimer \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qtimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qbasictimer.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/QMessageBox \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qmessagebox.h \
+		../../QTCreator/5.12.7/mingw73_64/include/QtWidgets/qdialog.h \
+		GUI/TabWidgets/allusers.h \
 		GUI/TabWidgets/welcome.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QTime \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qdatetime.h \
@@ -3270,7 +3772,8 @@ debug/main.o: main.cpp GUI/window_auth.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qjsonobject.h \
 		Network/packethandler.h \
 		../../QTCreator/5.12.7/mingw73_64/include/QtCore/QThread \
-		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h
+		../../QTCreator/5.12.7/mingw73_64/include/QtCore/qthread.h \
+		Network/PacketsActions/p_query.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o main.cpp
 
 debug/qrc_Resources.o: debug/qrc_Resources.cpp 

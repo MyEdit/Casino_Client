@@ -17,7 +17,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_9">
      <item>
-      <widget class="QLabel" name="label_11">
+      <widget class="QLabel" name="label">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -30,7 +30,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="searchColumn_2">
+      <widget class="QComboBox" name="searchColumn">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -42,7 +42,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="searchText_2">
+      <widget class="QLineEdit" name="searchText">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -52,7 +52,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_2">
+      <widget class="QCheckBox" name="checkBox">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -66,7 +66,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_search_2">
+      <widget class="QPushButton" name="pushButton_search">
        <property name="styleSheet">
         <string notr="true">QPushButton {
     background-color: white;
@@ -101,7 +101,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="clearSearch_2">
+      <widget class="QPushButton" name="clearSearch">
        <property name="styleSheet">
         <string notr="true">QPushButton {
     background-color: white;
@@ -153,7 +153,7 @@ QPushButton:pressed {
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_8">
      <item>
-      <widget class="QLabel" name="label_9">
+      <widget class="QLabel" name="label_3">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -166,7 +166,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="sortingColumn_2">
+      <widget class="QComboBox" name="sortingColumn">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -178,7 +178,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_10">
+      <widget class="QLabel" name="label_2">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -197,7 +197,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QComboBox" name="typeSorting_2">
+      <widget class="QComboBox" name="typeSorting">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -225,7 +225,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="sorting_2">
+      <widget class="QCheckBox" name="sorting">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -251,7 +251,7 @@ QPushButton:pressed {
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="moreDetailed_2">
+      <widget class="QPushButton" name="moreDetailed">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -284,7 +284,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="addTable">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -344,7 +344,7 @@ QPushButton:pressed {
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label_5">
+      <widget class="QLabel" name="label_4">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -357,7 +357,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="labelCurrentPage_2">
+      <widget class="QLabel" name="labelCurrentPage">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -372,7 +372,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_7">
+      <widget class="QLabel" name="label_5">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -385,7 +385,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="labelMaxPage_2">
+      <widget class="QLabel" name="labelMaxPage">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -417,7 +417,7 @@ QPushButton:pressed {
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_10">
      <item>
-      <widget class="QPushButton" name="prevButton_2">
+      <widget class="QPushButton" name="prevButton">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -464,7 +464,7 @@ QPushButton:pressed {
       </spacer>
      </item>
      <item>
-      <widget class="QLabel" name="label_12">
+      <widget class="QLabel" name="label_6">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -477,7 +477,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="pageNumberToNavigate_2">
+      <widget class="QLineEdit" name="pageNumberToNavigate">
        <property name="maximumSize">
         <size>
          <width>50</width>
@@ -506,7 +506,7 @@ QPushButton:pressed {
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="nextButton_2">
+      <widget class="QPushButton" name="nextButton">
        <property name="font">
         <font>
          <family>Segoe UI</family>

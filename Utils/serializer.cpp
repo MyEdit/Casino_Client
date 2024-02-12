@@ -1,27 +1,46 @@
-#include "serializer.h"
+﻿#include "serializer.h"
 
 QStandardItemModel* Serializer::deserializationDataModel(QByteArray receivedData)
 {
     QStandardItemModel* model = new QStandardItemModel();
+
     QJsonDocument jsonDoc = QJsonDocument::fromJson(receivedData);
-
-    if (!jsonDoc.isNull() && jsonDoc.isObject())
+    if (!jsonDoc.isNull() && jsonDoc.isArray())
     {
-        QJsonObject resultObject = jsonDoc.object();
-        QJsonArray rowsArray = resultObject["rows"].toArray();
+        QJsonArray rowsArray = jsonDoc.array();
 
-        for (const QJsonValue& rowValue : rowsArray)
+        QStringList headers;
+        if (!rowsArray.isEmpty() && rowsArray.first().isObject())
         {
-            QJsonObject rowObject = rowValue.toObject();
-            QList<QStandardItem*> rowItems;
-            for (const QString& key : rowObject.keys())
+            QJsonObject headerObject = rowsArray.first().toObject();
+            if (headerObject.contains("headers"))
             {
-                QStandardItem* item = new QStandardItem(rowObject[key].toString());
-                rowItems.append(item);
+                QJsonArray headerArray = headerObject["headers"].toArray();
+                for (const auto& headerValue : headerArray)
+                {
+                    if (headerValue.isString())
+                        headers.append(headerValue.toString());
+                }
+            }
+        }
+
+        for (int i = 1; i < rowsArray.size(); ++i)
+        {
+            QJsonObject rowObject = rowsArray[i].toObject();
+            QList<QStandardItem*> rowItems;
+            for (const QString& header : headers)
+            {
+                if (rowObject.contains(header))
+                {
+                    QStandardItem* item = new QStandardItem(rowObject[header].toString());
+                    rowItems.append(item);
+                }
             }
             model->appendRow(rowItems);
         }
+
+        model->setHorizontalHeaderLabels(headers);
     }
 
-    return  model;
+    return model;
 }

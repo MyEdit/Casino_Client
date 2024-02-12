@@ -2,7 +2,8 @@
 #define ALLUSERS_H
 
 #include <QWidget>
-#include <QStandardItemModel>
+#include "QStandardItemModel"
+#include "Utils/Message.h"
 
 namespace Ui {
 class AllUsers;
@@ -18,6 +19,9 @@ public:
     ~AllUsers();
 
     void setModel(QStandardItemModel* model);
+
+private:
+    void workingWithTableView();
 };
 
 #endif // ALLUSERS_H

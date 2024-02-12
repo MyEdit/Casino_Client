@@ -1,6 +1,6 @@
-#include "GUI/window_auth.h"
+﻿#include "GUI/window_auth.h"
 #include <QApplication>
-#include <Network/networkclient.h>
+#include "Network/networkclient.h"
 
 NetworkClient network;
 

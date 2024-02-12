@@ -11,13 +11,24 @@ enum class PacketTypes
     P_AddTable,
     P_ConnectPlayerToTable,
     P_SendModel,
-    P_SendTables
+    P_SendTables,
+    P_QueryWithoutResponce,
+    P_Query
 };
 
 enum class ModelTypes
 {
     Users,
-    Tables
+    ExistingTables
+};
+
+enum class QueryTypes
+{
+    CountEntrites,  //колиество записей
+    NumberRow,      //номер строки
+    CreateEntry,    //Добавить запись
+    UpdateEntry,    //Изменить запись
+    DeleteEntry     //Удалить запись
 };
 
 #endif // PACKET_H

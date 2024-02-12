@@ -23,6 +23,7 @@ SOURCES += \
     GUI/window_admin.cpp \
     GUI/window_auth.cpp \
     Network/PacketsActions/p_authorization.cpp \
+    Network/PacketsActions/p_query.cpp \
     Network/PacketsActions/p_sendmodel.cpp \
     Network/networkclient.cpp \
     Network/packethandler.cpp \
@@ -38,6 +39,7 @@ HEADERS += \
     GUI/window_auth.h \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
+    Network/PacketsActions/p_query.h \
     Network/PacketsActions/p_sendmodel.h \
     Network/networkclient.h \
     Network/packethandler.h \

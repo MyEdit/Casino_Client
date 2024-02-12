@@ -28,20 +28,22 @@ class Ui_Window_Admin
 public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
-    QSpacerItem *verticalSpacer_2;
-    QGridLayout *gridLayout_3;
-    QLabel *label_2;
-    QPushButton *buttonAllUsers;
-    QPushButton *buttonExistingTables;
-    QLabel *label_3;
-    QSpacerItem *horizontalSpacer;
-    QSpacerItem *verticalSpacer;
-    QPushButton *buttonExit;
     QTabWidget *tabWidget;
-    QLabel *photo;
     QVBoxLayout *verticalLayout;
     QLabel *FIO_employee;
     QLabel *post;
+    QPushButton *buttonExit;
+    QGridLayout *gridLayout_3;
+    QPushButton *buttonAllUsers;
+    QSpacerItem *horizontalSpacer;
+    QLabel *label_2;
+    QLabel *label_3;
+    QPushButton *buttonExistingTables;
+    QPushButton *pushButton;
+    QLabel *label_4;
+    QLabel *photo;
+    QSpacerItem *verticalSpacer;
+    QSpacerItem *verticalSpacer_2;
 
     void setupUi(QMainWindow *Window_Admin)
     {
@@ -57,94 +59,6 @@ public:
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setHorizontalSpacing(0);
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout->addItem(verticalSpacer_2, 12, 0, 1, 2);
-
-        gridLayout_3 = new QGridLayout();
-        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
-        gridLayout_3->setHorizontalSpacing(0);
-        label_2 = new QLabel(centralwidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setEnabled(true);
-        label_2->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
-        label_2->setScaledContents(true);
-
-        gridLayout_3->addWidget(label_2, 0, 2, 1, 1);
-
-        buttonAllUsers = new QPushButton(centralwidget);
-        buttonAllUsers->setObjectName(QString::fromUtf8("buttonAllUsers"));
-        buttonAllUsers->setMinimumSize(QSize(0, 40));
-        QFont font;
-        font.setFamily(QString::fromUtf8("Segoe UI"));
-        font.setPointSize(12);
-        font.setBold(true);
-        font.setWeight(75);
-        buttonAllUsers->setFont(font);
-        buttonAllUsers->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background: transparent;\n"
-"    border: none;\n"
-"	color: rgb(255, 255, 255);\n"
-"	padding: 5px;\n"
-"	text-align: left;\n"
-"}"));
-
-        gridLayout_3->addWidget(buttonAllUsers, 1, 1, 1, 1);
-
-        buttonExistingTables = new QPushButton(centralwidget);
-        buttonExistingTables->setObjectName(QString::fromUtf8("buttonExistingTables"));
-        buttonExistingTables->setMinimumSize(QSize(0, 40));
-        buttonExistingTables->setFont(font);
-        buttonExistingTables->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background: transparent;\n"
-"    border: none;\n"
-"	color: rgb(255, 255, 255);\n"
-"	padding: 5px;\n"
-"	text-align: left;\n"
-"}"));
-
-        gridLayout_3->addWidget(buttonExistingTables, 0, 1, 1, 1);
-
-        label_3 = new QLabel(centralwidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
-        label_3->setScaledContents(true);
-
-        gridLayout_3->addWidget(label_3, 1, 2, 1, 1);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
-
-        gridLayout_3->addItem(horizontalSpacer, 0, 0, 1, 1);
-
-
-        gridLayout->addLayout(gridLayout_3, 8, 0, 1, 2);
-
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout->addItem(verticalSpacer, 6, 0, 1, 2);
-
-        buttonExit = new QPushButton(centralwidget);
-        buttonExit->setObjectName(QString::fromUtf8("buttonExit"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Segoe UI"));
-        font1.setPointSize(14);
-        font1.setBold(true);
-        font1.setWeight(75);
-        buttonExit->setFont(font1);
-        buttonExit->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background: transparent;\n"
-"    border: none;\n"
-"	color: rgb(255, 255, 255);\n"
-"	padding: 5px;\n"
-"	text-align: left;\n"
-"}"));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/icons/resources/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        buttonExit->setIcon(icon);
-        buttonExit->setIconSize(QSize(32, 32));
-
-        gridLayout->addWidget(buttonExit, 13, 0, 1, 2);
-
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setStyleSheet(QString::fromUtf8("QTabWidget::pane {\n"
@@ -160,19 +74,17 @@ public:
 
         gridLayout->addWidget(tabWidget, 0, 2, 15, 1);
 
-        photo = new QLabel(centralwidget);
-        photo->setObjectName(QString::fromUtf8("photo"));
-        photo->setMinimumSize(QSize(65, 65));
-        photo->setMaximumSize(QSize(65, 65));
-
-        gridLayout->addWidget(photo, 2, 0, 1, 1);
-
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(5, -1, 5, -1);
         FIO_employee = new QLabel(centralwidget);
         FIO_employee->setObjectName(QString::fromUtf8("FIO_employee"));
-        FIO_employee->setFont(font1);
+        QFont font;
+        font.setFamily(QString::fromUtf8("Segoe UI"));
+        font.setPointSize(14);
+        font.setBold(true);
+        font.setWeight(75);
+        FIO_employee->setFont(font);
         FIO_employee->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	color: rgb(255, 255, 255);\n"
 "}"));
@@ -181,7 +93,7 @@ public:
 
         post = new QLabel(centralwidget);
         post->setObjectName(QString::fromUtf8("post"));
-        post->setFont(font1);
+        post->setFont(font);
         post->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	color: rgb(255, 255, 255);\n"
 "}"));
@@ -190,6 +102,117 @@ public:
 
 
         gridLayout->addLayout(verticalLayout, 2, 1, 1, 1);
+
+        buttonExit = new QPushButton(centralwidget);
+        buttonExit->setObjectName(QString::fromUtf8("buttonExit"));
+        buttonExit->setFont(font);
+        buttonExit->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
+"	color: rgb(255, 255, 255);\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
+"}"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icons/resources/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buttonExit->setIcon(icon);
+        buttonExit->setIconSize(QSize(32, 32));
+
+        gridLayout->addWidget(buttonExit, 13, 0, 1, 2);
+
+        gridLayout_3 = new QGridLayout();
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        gridLayout_3->setHorizontalSpacing(0);
+        buttonAllUsers = new QPushButton(centralwidget);
+        buttonAllUsers->setObjectName(QString::fromUtf8("buttonAllUsers"));
+        buttonAllUsers->setMinimumSize(QSize(0, 40));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Segoe UI"));
+        font1.setPointSize(12);
+        font1.setBold(true);
+        font1.setWeight(75);
+        buttonAllUsers->setFont(font1);
+        buttonAllUsers->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
+"	color: rgb(255, 255, 255);\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
+"}"));
+
+        gridLayout_3->addWidget(buttonAllUsers, 1, 1, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        gridLayout_3->addItem(horizontalSpacer, 0, 0, 1, 1);
+
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setEnabled(true);
+        label_2->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
+        label_2->setScaledContents(true);
+
+        gridLayout_3->addWidget(label_2, 0, 2, 1, 1);
+
+        label_3 = new QLabel(centralwidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
+        label_3->setScaledContents(true);
+
+        gridLayout_3->addWidget(label_3, 1, 2, 1, 1);
+
+        buttonExistingTables = new QPushButton(centralwidget);
+        buttonExistingTables->setObjectName(QString::fromUtf8("buttonExistingTables"));
+        buttonExistingTables->setMinimumSize(QSize(0, 40));
+        buttonExistingTables->setFont(font1);
+        buttonExistingTables->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
+"	color: rgb(255, 255, 255);\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
+"}"));
+
+        gridLayout_3->addWidget(buttonExistingTables, 0, 1, 1, 1);
+
+        pushButton = new QPushButton(centralwidget);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setMinimumSize(QSize(0, 40));
+        pushButton->setFont(font1);
+        pushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
+"	color: rgb(255, 255, 255);\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
+"}"));
+
+        gridLayout_3->addWidget(pushButton, 2, 1, 1, 1);
+
+        label_4 = new QLabel(centralwidget);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
+        label_4->setScaledContents(true);
+
+        gridLayout_3->addWidget(label_4, 2, 2, 1, 1);
+
+
+        gridLayout->addLayout(gridLayout_3, 7, 0, 2, 2);
+
+        photo = new QLabel(centralwidget);
+        photo->setObjectName(QString::fromUtf8("photo"));
+        photo->setMinimumSize(QSize(65, 65));
+        photo->setMaximumSize(QSize(65, 65));
+
+        gridLayout->addWidget(photo, 2, 0, 1, 1);
+
+        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        gridLayout->addItem(verticalSpacer, 6, 0, 1, 2);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer_2, 12, 0, 1, 2);
 
         Window_Admin->setCentralWidget(centralwidget);
 
@@ -204,14 +227,16 @@ public:
     void retranslateUi(QMainWindow *Window_Admin)
     {
         Window_Admin->setWindowTitle(QApplication::translate("Window_Admin", "MainWindow", nullptr));
-        label_2->setText(QString());
-        buttonAllUsers->setText(QApplication::translate("Window_Admin", "\320\222\321\201\320\265 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\320\270", nullptr));
-        buttonExistingTables->setText(QApplication::translate("Window_Admin", "\320\241\320\276\320\267\320\264\320\260\320\275\320\275\321\213\320\265 \321\201\321\202\320\276\320\273\321\213", nullptr));
-        label_3->setText(QString());
-        buttonExit->setText(QApplication::translate("Window_Admin", "\320\222\321\213\321\205\320\276\320\264", nullptr));
-        photo->setText(QString());
         FIO_employee->setText(QApplication::translate("Window_Admin", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
         post->setText(QApplication::translate("Window_Admin", "\320\220\320\264\320\274\320\270\320\275\320\270\321\201\321\202\321\200\320\260\321\202\320\276\321\200", nullptr));
+        buttonExit->setText(QApplication::translate("Window_Admin", "\320\222\321\213\321\205\320\276\320\264", nullptr));
+        buttonAllUsers->setText(QApplication::translate("Window_Admin", "\320\237\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\320\270", nullptr));
+        label_2->setText(QString());
+        label_3->setText(QString());
+        buttonExistingTables->setText(QApplication::translate("Window_Admin", "\320\230\320\263\321\200\320\276\320\262\321\213\320\265 \321\201\321\202\320\276\320\273\321\213", nullptr));
+        pushButton->setText(QApplication::translate("Window_Admin", "\320\241\320\276\321\202\321\200\321\203\320\264\320\275\320\270\320\272\320\270", nullptr));
+        label_4->setText(QString());
+        photo->setText(QString());
     } // retranslateUi
 
 };

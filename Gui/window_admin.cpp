@@ -11,9 +11,10 @@ Window_Admin::Window_Admin(QWidget *parent) : QMainWindow(parent), ui(new Ui::Wi
     uploadingPhotoEmployee();
     settingWindowPosition();
 
-    ui->label_2->setVisible(false);
-    ui->label_3->setVisible(false);
-    ui->label_4->setVisible(false);
+
+    QMap<QPushButton*, QLabel*>::iterator i;
+    for (i = selectedButton.begin(); i != selectedButton.end(); i++)
+        i.value()->setVisible(false);
 }
 
 Window_Admin::~Window_Admin()
@@ -43,11 +44,18 @@ void Window_Admin::assigningValues()
 {
     buttonSwitchingTab.push_back(ui->buttonExistingTables);
     buttonSwitchingTab.push_back(ui->buttonAllUsers);
+    buttonSwitchingTab.push_back(ui->buttonStaff);
+    buttonSwitchingTab.push_back(ui->buttonBlackList);
+    buttonSwitchingTab.push_back(ui->buttonLoanApplocations);
 
     selectedButton =
-    { 
+    {
         {ui->buttonExistingTables, ui->label_2},
-        {ui->buttonAllUsers, ui->label_3}
+        {ui->buttonAllUsers, ui->label_3},
+        {ui->buttonStaff, ui->label_4},
+        {ui->buttonBlackList, ui->label_5},
+        {ui->buttonLoanApplocations, ui->label},
+        {ui->pushButton, ui->label_6}
     };
 }
 
@@ -109,6 +117,21 @@ void Window_Admin::on_buttonAllUsers_clicked()
 void Window_Admin::on_buttonExit_clicked()
 {
     close();
+}
+
+void Window_Admin::on_buttonStaff_clicked()
+{
+    onNavigationsButton_clicked();
+}
+
+void Window_Admin::on_buttonBlackList_clicked()
+{
+    onNavigationsButton_clicked();
+}
+
+void Window_Admin::on_buttonLoanApplocations_clicked()
+{
+    onNavigationsButton_clicked();
 }
 
 /////////////////РЕНДЕР/////////////////
@@ -183,3 +206,4 @@ void Window_Admin::showEvent(QShowEvent* event)
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&existingTables, sizeof(ModelTypes));
 }
+

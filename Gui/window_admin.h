@@ -62,6 +62,9 @@ private slots:
     void on_buttonExit_clicked();
     void on_buttonExistingTables_clicked();
     void on_buttonAllUsers_clicked();
+    void on_buttonStaff_clicked();
+    void on_buttonBlackList_clicked();
+    void on_buttonLoanApplocations_clicked();
 };
 
 #endif // WINDOW_ADMIN_H

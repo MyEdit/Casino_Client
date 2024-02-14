@@ -24,9 +24,9 @@ void ExistingTables::workingWithTableView()
     workingIsTableView->settingVisualTableView();
 }
 
-void ExistingTables::setModel(QStandardItemModel* model)
+void ExistingTables::setModel(ModelData model)
 {
-    workingIsTableView->setModel(model);
+    workingIsTableView->acceptModel(model);
 }
 
 void ExistingTables::setValueToMaxPage(QString rowCount)
@@ -88,35 +88,35 @@ void ExistingTables::updateCurrentPageInLabel(int currentPage)
 //Надо перенести в класс поиска
 void ExistingTables::searchInModels()
 {
-    if(ui->searchText->text().isEmpty())
-        return;
+//    if(ui->searchText->text().isEmpty())
+//        return;
 
-    bool resultSearchInModel = false;
-    _like = ui->searchText->text();
-    _column = ui->searchColumn->currentText();
+//    bool resultSearchInModel = false;
+//    _like = ui->searchText->text();
+//    _column = ui->searchColumn->currentText();
 
-    for (QSharedPointer<QStandardItemModel> model : _models)
-    {
-        for (int row = 0; row < model->rowCount(); row++)
-        {
-            QModelIndex index = model->index(row, ui->searchColumn->currentIndex() + 1);
-            QVariant data = model->data(index);
+//    for (QSharedPointer<QStandardItemModel> model : _models)
+//    {
+//        for (int row = 0; row < model->rowCount(); row++)
+//        {
+//            QModelIndex index = model->index(row, ui->searchColumn->currentIndex() + 1);
+//            QVariant data = model->data(index);
 
-            if (_typeSearch == "%")
-                resultSearchInModel = data.toString().startsWith(_like, Qt::CaseInsensitive);
-            else
-                resultSearchInModel = (data.toString().compare(_like, Qt::CaseInsensitive) == 0);
+//            if (_typeSearch == "%")
+//                resultSearchInModel = data.toString().startsWith(_like, Qt::CaseInsensitive);
+//            else
+//                resultSearchInModel = (data.toString().compare(_like, Qt::CaseInsensitive) == 0);
 
-            if (resultSearchInModel)
-            {
-                double resultRow = model->data(model->index(row, 0)).toDouble();
-                _currentPage = std::ceil(resultRow / _rowsPerPage);
-                setModel(model.data());
-                ui->tableView->setCurrentIndex(index);
-                return;
-            }
-        }
-    }
+//            if (resultSearchInModel)
+//            {
+//                double resultRow = model->data(model->index(row, 0)).toDouble();
+//                _currentPage = std::ceil(resultRow / _rowsPerPage);
+//                setModel(model.data());
+//                ui->tableView->setCurrentIndex(index);
+//                return;
+//            }
+//        }
+//    }
 
 //    searchInDB();
 }

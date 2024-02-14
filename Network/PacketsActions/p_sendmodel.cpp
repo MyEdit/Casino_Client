@@ -1,26 +1,27 @@
 ﻿#include "p_sendmodel.h"
 
-QMap<ModelTypes, std::function<void(QStandardItemModel*)>> P_SendModel::setModelFunctions;
+QMap<ModelTypes, std::function<void(ModelData)>> P_SendModel::setModelFunctions;
 
-QPair<ModelTypes, QStandardItemModel *> P_SendModel::getModelFromServer()
+ModelData P_SendModel::getModelFromServer()
 {
     ModelTypes modeltype;
+    ModelLoadingType modelLoadingType;
     QByteArray receivedData;
     int dataSize;
 
     recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&modeltype), sizeof(ModelTypes), 0);
+    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&modelLoadingType), sizeof(ModelLoadingType), 0);
     recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&dataSize), sizeof(int), 0);
     receivedData.resize(dataSize);
     recv(NetworkClient::serverSocket, receivedData.data(), dataSize, 0);
 
     QStandardItemModel* model = Serializer::deserializationDataModel(receivedData);
-    return {modeltype, model};
+    return {modeltype, modelLoadingType, model};
 }
 
-void P_SendModel::setModel(QPair<ModelTypes, QStandardItemModel*> set)
+void P_SendModel::setModel(ModelData set)
 {
-    ModelTypes modeltype = set.first;
-    QStandardItemModel* model = set.second;
+    ModelTypes modeltype = set.modelTypes;
 
     if (setModelFunctions.size() == 0)
         initMapFunctions();
@@ -34,17 +35,17 @@ void P_SendModel::setModel(QPair<ModelTypes, QStandardItemModel*> set)
     if(!P_Authorization::adminW)
         return;
 
-    setModelFunctions[modeltype](model);
+    setModelFunctions[modeltype](set);
 }
 
 //Инициилизирует мапу ModelTypes -> Функция добавления модели
 void P_SendModel::initMapFunctions()
 {
-    setModelFunctions.insert(ModelTypes::Users, [&](QStandardItemModel* model)
+    setModelFunctions.insert(ModelTypes::Users, [&](ModelData model)
     {
         P_Authorization::adminW->setModel_AllUsersTab(model);
     });
-    setModelFunctions.insert(ModelTypes::ExistingTables, [&](QStandardItemModel* model)
+    setModelFunctions.insert(ModelTypes::ExistingTables, [&](ModelData model)
     {
         P_Authorization::adminW->setModel_ExistingTab(model);
     });

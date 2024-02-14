@@ -59,12 +59,12 @@ void Window_Admin::assigningValues()
     };
 }
 
-void Window_Admin::setModel_AllUsersTab(QStandardItemModel* model)
+void Window_Admin::setModel_AllUsersTab(ModelData model)
 {
-    allUsersTab->setModel(model);
+//    allUsersTab->setModel(model);
 }
 
-void Window_Admin::setModel_ExistingTab(QStandardItemModel* model)
+void Window_Admin::setModel_ExistingTab(ModelData model)
 {
     existingTablesTab->setModel(model);
 }
@@ -198,12 +198,16 @@ void Window_Admin::showEvent(QShowEvent* event)
 
     //Запрашиваю у сервера модель с данными "Пользователи"
     ModelTypes users = ModelTypes::Users;
+    ModelLoadingType modelLoadingTypeUsers = ModelLoadingType::Central;
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&modelLoadingTypeUsers, sizeof(ModelLoadingType));
     NetworkClient::sendToServer(&users, sizeof(ModelTypes));
 
     //Запрашиваю у сервера модель с данными "Игровые столы"
     ModelTypes existingTables = ModelTypes::ExistingTables;
+    ModelLoadingType modelLoadingTypeExistingTables = ModelLoadingType::Central;
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&modelLoadingTypeExistingTables, sizeof(ModelLoadingType));
     NetworkClient::sendToServer(&existingTables, sizeof(ModelTypes));
 }
 

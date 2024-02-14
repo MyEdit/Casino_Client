@@ -11,11 +11,11 @@
 class P_SendModel
 {
 public:
-    static QPair<ModelTypes, QStandardItemModel*> getModelFromServer();
-    static void setModel(QPair<ModelTypes, QStandardItemModel*>);
+    static ModelData getModelFromServer();
+    static void setModel(ModelData);
 
 private:
-    static QMap<ModelTypes, std::function<void(QStandardItemModel*)>> setModelFunctions;
+    static QMap<ModelTypes, std::function<void(ModelData)>> setModelFunctions;
     static void initMapFunctions();
 
     friend class NetworkClient;

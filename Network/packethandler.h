@@ -20,7 +20,7 @@ private:
 
 signals:
     void signalOpenForm();
-    void signalSetModel(QPair<ModelTypes, QStandardItemModel*>);
+    void signalSetModel(ModelData);
     void signalSetQueryModel(QString);
 };
 

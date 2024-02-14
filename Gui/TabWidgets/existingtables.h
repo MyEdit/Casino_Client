@@ -47,7 +47,7 @@ public:
     explicit ExistingTables(QWidget *parent = nullptr);
     ~ExistingTables();
 
-    void setModel(QStandardItemModel* model);
+    void setModel(ModelData model);
 
 private:
     void workingWithTableView();

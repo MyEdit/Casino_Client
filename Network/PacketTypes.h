@@ -2,6 +2,7 @@
 #define PACKET_H
 
 //TODO: Переименовать класс или засунуть все перечисления в Constants.h
+#include <QStandardItemModel>
 
 enum class PacketTypes
 {
@@ -29,6 +30,20 @@ enum class QueryTypes
     CreateEntry,    //Добавить запись
     UpdateEntry,    //Изменить запись
     DeleteEntry     //Удалить запись
+};
+
+enum class ModelLoadingType
+{
+    Next,
+    Central,
+    Prev
+};
+
+struct ModelData
+{
+    ModelTypes modelTypes;
+    ModelLoadingType modelLoadingType;
+    QStandardItemModel* model;
 };
 
 #endif // PACKET_H

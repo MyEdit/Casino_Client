@@ -6,12 +6,14 @@
 #include <QHeaderView>
 #include <QStandardItemModel>
 #include "Utils/Message.h"
+#include "Network/PacketTypes.h"
 
 class WorkingIsTableView
 {
     QTableView* _tableView;
     QVector<QComboBox*>* _boxsNameColumn;
     QVector<QString> _headers;
+    QVector<QSharedPointer<QStandardItemModel>> _models;
 
 public:
     WorkingIsTableView(QTableView* table, QVector<QComboBox*>* boxsNameColumn = nullptr);
@@ -20,6 +22,7 @@ public:
     void setModel(QStandardItemModel* model);
     void setValueNameColumn();
     QVector<QString> getColumnHeaders();
+    void acceptModel(ModelData structModel);
 };
 
 #endif // WORKINGISTABLEVIEW_H

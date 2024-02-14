@@ -42,8 +42,8 @@ public:
     explicit Window_Admin(QWidget *parent = nullptr);
     ~Window_Admin();
 
-    void setModel_AllUsersTab(QStandardItemModel* model);
-    void setModel_ExistingTab(QStandardItemModel* model);
+    void setModel_AllUsersTab(ModelData model);
+    void setModel_ExistingTab(ModelData model);
 
 private:
     void onNavigationsButton_clicked();

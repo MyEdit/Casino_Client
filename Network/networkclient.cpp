@@ -41,7 +41,8 @@ bool NetworkClient::connectToServer()
         return false;
     }
 
-    qRegisterMetaType<QPair<ModelTypes, QStandardItemModel*>>("QPair<ModelTypes, QStandardItemModel*>");
+    qRegisterMetaType<ModelData>("ModelData");
+
 
     packetHandler = new PacketHandler();
 

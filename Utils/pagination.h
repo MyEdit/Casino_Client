@@ -29,6 +29,9 @@ public:
     void prev();
     void next();
     void setMaxPage(QString rowCount);
+
+signals:
+    int updateCurrentPageInLabel(int currentPage);
 };
 
 #endif // PAGINATION_H

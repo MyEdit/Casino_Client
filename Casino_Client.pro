@@ -29,6 +29,7 @@ SOURCES += \
     Network/packethandler.cpp \
     Utils/pagination.cpp \
     Utils/serializer.cpp \
+    Utils/workingistableview.cpp \
     main.cpp \
 
 HEADERS += \
@@ -47,7 +48,8 @@ HEADERS += \
     Utils/Message.h \
     Utils/pagination.h \
     Utils/serializer.h \
-    Constants.h \
+    Constants.h \ \
+    Utils/workingistableview.h
 
 FORMS += \
     GUI/TabWidgets/allusers.ui \

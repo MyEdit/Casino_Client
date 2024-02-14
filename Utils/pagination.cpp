@@ -19,6 +19,8 @@ void Pagination::updateTablePage()
         bool rowVisible = (row >= startIndex && row < endIndex);
         _tableView->setRowHidden(row, !rowVisible);
     }
+
+    emit updateCurrentPageInLabel(_currentPage);
 }
 
 int Pagination::currentPageInModel()

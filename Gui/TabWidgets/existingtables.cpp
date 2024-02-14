@@ -7,11 +7,11 @@ ExistingTables::ExistingTables(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    workingWithTableView();
     assigningValues();
     creatingObjects();
     connects();
     getMaxPage();
+    workingWithTableView();
 }
 
 ExistingTables::~ExistingTables()
@@ -19,87 +19,14 @@ ExistingTables::~ExistingTables()
     delete ui;
 }
 
-//По хорошему эту и всё что относиться к визуалу перенести в отдельный класс
 void ExistingTables::workingWithTableView()
 {
-    ui->tableView->setStyleSheet("selection-background-color: rgb(42, 117, 255);");
-    ui->tableView->setWordWrap(false);
-
-    //Устанавливка жирного шрифта для заголовков столбцов
-    QFont font = ui->tableView->horizontalHeader()->font();
-    font.setBold(true);
-    ui->tableView->horizontalHeader()->setFont(font);
-
-    //Скрыть номер строк в tableView
-    ui->tableView->verticalHeader()->setVisible(false);
-
-    ui->tableView->horizontalHeader()->setStyleSheet("QHeaderView { font-size: 14pt; }");
-
-    //Устанавка растягивания для заголовков строк и столбцов на по размеру содержимого
-    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
-    //Устанавка растягивания для строк и столбцов на всю высоту
-    ui->tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
-
-    //Запрет редактирования данных в ячейке
-    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-
-    //Для выделения всей строки
-    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    workingIsTableView->settingVisualTableView();
 }
 
 void ExistingTables::setModel(QStandardItemModel* model)
-{  
-    if(model->rowCount() == 0)
-    {
-        Message::logWarn("Данных нет");
-        return;
-    }
-
-    ui->tableView->setModel(model);
-
-    ui->tableView->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-
-    for (int col = 1; col < model->columnCount(); ++col)
-    {
-        QString originalHeaderText = model->headerData(col, Qt::Horizontal).toString();
-        QString wrappedHeaderText = originalHeaderText.replace(" ", "\n");
-        model->setHeaderData(col, Qt::Horizontal, wrappedHeaderText);
-    }
-
-    if(_headers.isEmpty())
-        setValueNameColumn();
-}
-
-void ExistingTables::setValueNameColumn()
 {
-    _headers = getColumnHeaders();
-    for(QString nameColumn : _headers)
-    {
-        ui->sortingColumn->blockSignals(true);
-        ui->sortingColumn->addItem(nameColumn);
-        ui->sortingColumn->blockSignals(false);
-
-        ui->searchColumn->blockSignals(true);
-        ui->searchColumn->addItem(nameColumn);
-        ui->searchColumn->blockSignals(false);
-    }
-}
-
-QVector<QString> ExistingTables::getColumnHeaders()
-{
-    QVector<QString> headers;
-    QAbstractItemModel* model = ui->tableView->model();
-    int columnCount = model->columnCount();
-
-    for (int column = 0; column < columnCount; ++column)
-    {
-        QString header = model->headerData(column, Qt::Horizontal).toString();
-        header = header.replace("\n", " ");
-        headers.push_back(header);
-    }
-
-    return headers;
+    workingIsTableView->setModel(model);
 }
 
 void ExistingTables::setValueToMaxPage(QString rowCount)
@@ -125,6 +52,9 @@ void ExistingTables::assigningValues()
     _searchTimer.setSingleShot(true);
     _goToPageTimer.setSingleShot(true);
     _resizeTimer.setSingleShot(true);
+
+    boxsNameColumn.push_back(ui->searchColumn);
+    boxsNameColumn.push_back(ui->sortingColumn);
 }
 
 void ExistingTables::creatingObjects()
@@ -133,6 +63,7 @@ void ExistingTables::creatingObjects()
         _models.push_back(QSharedPointer<QStandardItemModel>::create());
 
     pagination = new Pagination(this, ui->tableView, ui->prevButton, ui->nextButton);
+    workingIsTableView = new WorkingIsTableView(ui->tableView, &boxsNameColumn);
 }
 
 void ExistingTables::connects()
@@ -141,18 +72,17 @@ void ExistingTables::connects()
     connect(&_searchTimer, &QTimer::timeout, this, &ExistingTables::searchInModels);
     connect(ui->prevButton, &QPushButton::clicked, pagination, &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination, &Pagination::next);
+    connect(pagination, &Pagination::updateCurrentPageInLabel, this, &ExistingTables::updateCurrentPageInLabel);
 }
 
 void ExistingTables::updateTablePage()
 {
-    updateCurrentPageInLabel();
-
     pagination->updateTablePage();
 }
 
-void ExistingTables::updateCurrentPageInLabel()
+void ExistingTables::updateCurrentPageInLabel(int currentPage)
 {
-    ui->labelCurrentPage->setText(QString::number(_currentPage));
+    ui->labelCurrentPage->setText(QString::number(currentPage));
 }
 
 //Надо перенести в класс поиска

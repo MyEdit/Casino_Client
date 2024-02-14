@@ -11,6 +11,7 @@
 #include <QTimer>
 #include <QMessageBox>
 #include "Utils/pagination.h"
+#include "Utils/workingistableview.h"
 
 class Window_Admin;
 
@@ -38,7 +39,9 @@ class ExistingTables : public QWidget
     QTimer _goToPageTimer;
     QMap<int, QString> _typesSorting;
     QVector<QSharedPointer<QStandardItemModel>> _models;
+    QVector<QComboBox*> boxsNameColumn;
     Pagination* pagination;
+    WorkingIsTableView* workingIsTableView;
 
 public:
     explicit ExistingTables(QWidget *parent = nullptr);
@@ -48,12 +51,10 @@ public:
 
 private:
     void workingWithTableView();
-    void setValueNameColumn();
-    QVector<QString> getColumnHeaders();
     void setValueToMaxPage(QString rowCount);
     void assigningValues();
     void updateTablePage();
-    void updateCurrentPageInLabel();
+    void updateCurrentPageInLabel(int currentPage);
     void searchInModels();
     void creatingObjects();
     void connects();

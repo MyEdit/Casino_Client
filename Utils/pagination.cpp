@@ -6,9 +6,7 @@ Pagination::Pagination(QWidget* parent, QTableView* table, QPushButton* prevButt
     _tableView(table),
     _prevButton(prevButton),
     _nextButton(nextButton)
-{
-    assigningValues();
-}
+{}
 
 void Pagination::updateTablePage()
 {
@@ -31,14 +29,6 @@ int Pagination::currentPageInModel()
         pageModel = _maxPageModel;
 
     return pageModel;
-}
-
-void Pagination::assigningValues()
-{
-    _currentPage = 1;
-    _rowsPerPage = 10;
-    _maxPageModel = 5;
-    _minPageModel = 1;
 }
 
 void Pagination::setMaxPage(QString rowCount)

@@ -1,6 +1,10 @@
 # Compiled class file
 *.Debug
 *.Release
+*.o
+*.user
+*.user.*
+Makefile.*
 
 /debug
 /release

@@ -19,6 +19,7 @@ ExistingTables::~ExistingTables()
     delete ui;
 }
 
+//По хорошему эту и всё что относиться к визуалу перенести в отдельный класс
 void ExistingTables::workingWithTableView()
 {
     ui->tableView->setStyleSheet("selection-background-color: rgb(42, 117, 255);");
@@ -103,19 +104,16 @@ QVector<QString> ExistingTables::getColumnHeaders()
 
 void ExistingTables::setValueToMaxPage(QString rowCount)
 {
-    _maxPage = static_cast<int>(std::ceil(rowCount.toDouble() / _rowsPerPage));
-    ui->labelMaxPage->setText(QString::number(_maxPage));
+    pagination->setMaxPage(rowCount);
+    ui->labelMaxPage->setText(QString::number(pagination->getMaxPage()));
 }
 
 void ExistingTables::assigningValues()
 {
     _currentPage = 1;
     _rowsPerPage = 10;
-    _maxPageModel = 5;
-    _minPageModel = 1;
     _typeSearch = "%";
 
-    _autoNumRows = false;
     _sortingOn = false;
 
     _typesSorting =
@@ -133,27 +131,23 @@ void ExistingTables::creatingObjects()
 {
     for(int i = 0; i < 3; i++)
         _models.push_back(QSharedPointer<QStandardItemModel>::create());
+
+    pagination = new Pagination(this, ui->tableView, ui->prevButton, ui->nextButton);
 }
 
 void ExistingTables::connects()
 {
     connect(NetworkClient::packetHandler, &PacketHandler::signalSetQueryModel, this, &ExistingTables::setValueToMaxPage);
     connect(&_searchTimer, &QTimer::timeout, this, &ExistingTables::searchInModels);
+    connect(ui->prevButton, &QPushButton::clicked, pagination, &Pagination::prev);
+    connect(ui->nextButton, &QPushButton::clicked, pagination, &Pagination::next);
 }
 
 void ExistingTables::updateTablePage()
 {
     updateCurrentPageInLabel();
 
-    int startIndex = (currentPageInModel() - 1) * _rowsPerPage;
-    int endIndex = startIndex + _rowsPerPage;
-
-    int rowCountModel = ui->tableView->model()->rowCount();
-    for (int row = 0; row < rowCountModel; row++)
-    {
-        bool rowVisible = (row >= startIndex && row < endIndex);
-        ui->tableView->setRowHidden(row, !rowVisible);
-    }
+    pagination->updateTablePage();
 }
 
 void ExistingTables::updateCurrentPageInLabel()
@@ -161,16 +155,7 @@ void ExistingTables::updateCurrentPageInLabel()
     ui->labelCurrentPage->setText(QString::number(_currentPage));
 }
 
-int ExistingTables::currentPageInModel()
-{
-    int pageModel = _currentPage % _maxPageModel;
-
-    if(pageModel == 0)
-        pageModel = _maxPageModel;
-
-    return pageModel;
-}
-
+//Надо перенести в класс поиска
 void ExistingTables::searchInModels()
 {
     if(ui->searchText->text().isEmpty())
@@ -204,54 +189,6 @@ void ExistingTables::searchInModels()
     }
 
 //    searchInDB();
-}
-
-void ExistingTables::on_prevButton_clicked()
-{
-    if(_currentPage > 1)
-    {
-        ui->nextButton->setEnabled(true);
-        if(currentPageInModel() == _minPageModel)
-        {
-//            if (!_prevTreadModel->isRunning())
-//            {
-//                if(_models[2]->rowCount() != 0)
-//                    goToPrevModel();
-//            }
-//            else
-                ui->prevButton->setEnabled(false);
-        }
-        else
-        {
-            _currentPage--;
-            updateTablePage();
-        }
-    }
-}
-
-void ExistingTables::on_nextButton_clicked()
-{
-    if(_currentPage < _maxPage)
-    {
-        ui->prevButton->setEnabled(true);
-        if(currentPageInModel() == _maxPageModel)
-        {
-//            if(!_nextTreadModel->isRun())
-//            {
-//                if(_models[1]->rowCount() != 0)
-//                    goToNextModel();
-//            }
-//            else
-                ui->nextButton->setEnabled(false);
-        }
-        else
-        {
-            _currentPage++;
-            updateTablePage();
-        }
-    }
-    else
-        QMessageBox::warning(this, "Внимание", "Данных больше нет!", QMessageBox::Ok);
 }
 
 void ExistingTables::getMaxPage()

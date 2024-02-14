@@ -10,6 +10,7 @@
 #include <math.h>
 #include <QTimer>
 #include <QMessageBox>
+#include "Utils/pagination.h"
 
 class Window_Admin;
 
@@ -24,10 +25,6 @@ class ExistingTables : public QWidget
     QVector<QString> _headers;
     int _currentPage;
     int _rowsPerPage;
-    int _maxPageModel;
-    int _minPageModel;
-    int _maxPage;
-    bool _autoNumRows;
     bool _sortingOn;
     QString _filter;
     QString _columtSort;
@@ -41,6 +38,7 @@ class ExistingTables : public QWidget
     QTimer _goToPageTimer;
     QMap<int, QString> _typesSorting;
     QVector<QSharedPointer<QStandardItemModel>> _models;
+    Pagination* pagination;
 
 public:
     explicit ExistingTables(QWidget *parent = nullptr);
@@ -56,15 +54,12 @@ private:
     void assigningValues();
     void updateTablePage();
     void updateCurrentPageInLabel();
-    int currentPageInModel();
     void searchInModels();
     void creatingObjects();
     void connects();
     void getMaxPage();
 
 private slots:
-    void on_prevButton_clicked();
-    void on_nextButton_clicked();
     void on_searchText_textChanged(const QString &arg1);
 };
 

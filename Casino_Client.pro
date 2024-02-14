@@ -27,6 +27,7 @@ SOURCES += \
     Network/PacketsActions/p_sendmodel.cpp \
     Network/networkclient.cpp \
     Network/packethandler.cpp \
+    Utils/pagination.cpp \
     Utils/serializer.cpp \
     main.cpp \
 
@@ -44,6 +45,7 @@ HEADERS += \
     Network/networkclient.h \
     Network/packethandler.h \
     Utils/Message.h \
+    Utils/pagination.h \
     Utils/serializer.h \
     Constants.h \
 

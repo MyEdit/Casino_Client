@@ -197,17 +197,33 @@ void Window_Admin::showEvent(QShowEvent* event)
     PacketTypes packettype = PacketTypes::P_SendModel;
 
     //Запрашиваю у сервера модель с данными "Пользователи"
-    ModelTypes users = ModelTypes::Users;
-    ModelLoadingType modelLoadingTypeUsers = ModelLoadingType::Central;
-    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
-    NetworkClient::sendToServer(&modelLoadingTypeUsers, sizeof(ModelLoadingType));
-    NetworkClient::sendToServer(&users, sizeof(ModelTypes));
+//    ModelTypes users = ModelTypes::Users;
+//    ModelLoadingType modelLoadingTypeUsers = ModelLoadingType::Central;
+//    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+//    NetworkClient::sendToServer(&modelLoadingTypeUsers, sizeof(ModelLoadingType));
+//    NetworkClient::sendToServer(&users, sizeof(ModelTypes));
 
     //Запрашиваю у сервера модель с данными "Игровые столы"
+    int offset = 0;
     ModelTypes existingTables = ModelTypes::ExistingTables;
     ModelLoadingType modelLoadingTypeExistingTables = ModelLoadingType::Central;
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&modelLoadingTypeExistingTables, sizeof(ModelLoadingType));
     NetworkClient::sendToServer(&existingTables, sizeof(ModelTypes));
+    NetworkClient::sendToServer(&offset, sizeof(int));
+
+    modelLoadingTypeExistingTables = ModelLoadingType::Prev;
+    offset = -50;
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&modelLoadingTypeExistingTables, sizeof(ModelLoadingType));
+    NetworkClient::sendToServer(&existingTables, sizeof(ModelTypes));
+    NetworkClient::sendToServer(&offset, sizeof(int));
+
+    modelLoadingTypeExistingTables = ModelLoadingType::Next;
+    offset = 50;
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&modelLoadingTypeExistingTables, sizeof(ModelLoadingType));
+    NetworkClient::sendToServer(&existingTables, sizeof(ModelTypes));
+    NetworkClient::sendToServer(&offset, sizeof(int));
 }
 

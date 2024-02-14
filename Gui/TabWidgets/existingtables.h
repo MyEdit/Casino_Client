@@ -14,6 +14,7 @@
 #include "Utils/workingistableview.h"
 
 class Window_Admin;
+class Pagination;
 
 namespace Ui {
 class ExistingTables;

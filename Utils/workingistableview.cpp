@@ -89,8 +89,3 @@ QVector<QString> WorkingIsTableView::getColumnHeaders()
 
     return headers;
 }
-
-void WorkingIsTableView::acceptModel(ModelData structModel)
-{
-    setModel(structModel.model);
-}

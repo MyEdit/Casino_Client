@@ -26,7 +26,7 @@ void ExistingTables::workingWithTableView()
 
 void ExistingTables::setModel(ModelData model)
 {
-    workingIsTableView->acceptModel(model);
+    pagination->acceptModel(model);
 }
 
 void ExistingTables::setValueToMaxPage(QString rowCount)
@@ -62,8 +62,8 @@ void ExistingTables::creatingObjects()
     for(int i = 0; i < 3; i++)
         _models.push_back(QSharedPointer<QStandardItemModel>::create());
 
-    pagination = new Pagination(this, ui->tableView, ui->prevButton, ui->nextButton);
     workingIsTableView = new WorkingIsTableView(ui->tableView, &boxsNameColumn);
+    pagination = new Pagination(this, ui->tableView, ui->prevButton, ui->nextButton, workingIsTableView);
 }
 
 void ExistingTables::connects()

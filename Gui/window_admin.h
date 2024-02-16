@@ -57,6 +57,7 @@ private:
     void uploadingPhotoEmployee();
     void settingWindowPosition();
     void showEvent(QShowEvent* event) override;
+    void requestModel(int offset, ModelTypes modelType, ModelLoadingType modelLoadingType);
 
 private slots:
     void on_buttonExit_clicked();

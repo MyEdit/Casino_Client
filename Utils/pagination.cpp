@@ -142,7 +142,7 @@ void Pagination::goToPrevModel()
 void Pagination::loadingModel(ModelLoadingType type, int offset)
 {
     PacketTypes packettype = PacketTypes::P_SendModel;
-    ModelTypes existingTables = ModelTypes::ExistingTables;
+    ModelTypes existingTables = ModelTypes::ActiveTables;
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&type, sizeof(ModelLoadingType));
     NetworkClient::sendToServer(&existingTables, sizeof(ModelTypes));

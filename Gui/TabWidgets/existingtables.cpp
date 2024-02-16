@@ -125,7 +125,7 @@ void ExistingTables::getMaxPage()
 {
     PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
     QueryTypes queryTypes = QueryTypes::CountEntrites;
-    ModelTypes modelTypes = ModelTypes::ExistingTables;
+    ModelTypes modelTypes = ModelTypes::ActiveTables;
 
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&queryTypes, sizeof(QueryTypes));

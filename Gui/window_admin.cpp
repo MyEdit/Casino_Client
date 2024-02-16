@@ -205,7 +205,7 @@ void Window_Admin::showEvent(QShowEvent* event)
 
     //Запрашиваю у сервера модель с данными "Игровые столы"
     int offset = 0;
-    ModelTypes existingTables = ModelTypes::ExistingTables;
+    ModelTypes existingTables = ModelTypes::ActiveTables;
     ModelLoadingType modelLoadingTypeExistingTables = ModelLoadingType::Central;
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&modelLoadingTypeExistingTables, sizeof(ModelLoadingType));

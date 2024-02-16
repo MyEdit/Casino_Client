@@ -23,7 +23,7 @@ class Pagination : public QWidget
     int _maxPage;
     WorkingIsTableView* _workingIsTableView;
     QVector<QSharedPointer<QStandardItemModel>> _models;
-    ModelTypes _modelTypes = ModelTypes::ExistingTables; //Перенести в кноструктор
+    ModelTypes _modelTypes = ModelTypes::ActiveTables; //Перенести в кноструктор
 
 public:
     Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, WorkingIsTableView* workingIsTableView);

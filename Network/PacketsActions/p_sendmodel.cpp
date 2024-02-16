@@ -45,7 +45,7 @@ void P_SendModel::initMapFunctions()
     {
         P_Authorization::adminW->setModel_AllUsersTab(model);
     });
-    setModelFunctions.insert(ModelTypes::ExistingTables, [&](ModelData model)
+    setModelFunctions.insert(ModelTypes::ActiveTables, [&](ModelData model)
     {
         P_Authorization::adminW->setModel_ExistingTab(model);
     });

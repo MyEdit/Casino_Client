@@ -21,7 +21,7 @@ private:
 signals:
     void signalOpenForm();
     void signalSetModel(ModelData);
-    void signalSetQueryModel(QString);
+    void signalSetQueryModel(QueryData*);
 };
 
 #endif // CLIENTHANDLER_H

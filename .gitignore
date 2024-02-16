@@ -40,3 +40,4 @@ Makefile
 *.app
 /debug
 /release
+.qmake.stash

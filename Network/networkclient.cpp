@@ -42,7 +42,7 @@ bool NetworkClient::connectToServer()
     }
 
     qRegisterMetaType<ModelData>("ModelData");
-
+    qRegisterMetaType<ModelData>("QueryData");
 
     packetHandler = new PacketHandler();
 

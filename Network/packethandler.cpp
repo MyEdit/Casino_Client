@@ -56,7 +56,7 @@ void PacketHandler::packetHandler(PacketTypes packettype)
         }
         case(PacketTypes::P_QueryWithoutResponce):
         {
-            emit signalSetQueryModel(NetworkClient::getMessageFromServer());
+            emit signalSetQueryModel(P_Query::getResultFromServer());
             break;
         }
         case(PacketTypes::P_Query):

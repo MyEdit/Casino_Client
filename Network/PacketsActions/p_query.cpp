@@ -1,9 +1,13 @@
 ﻿#include "p_query.h"
 
-QString P_Query::getResultFromServer()
+QueryData* P_Query::getResultFromServer()
 {
-    QString result;
+    ModelTypes type;
+    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&type), sizeof(ModelTypes), 0);
+    QString result = NetworkClient::getMessageFromServer();
 
-    return result ;
+    QueryData* answer = new QueryData{type, result};
+
+    return answer;
 }
 

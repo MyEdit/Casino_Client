@@ -13,7 +13,6 @@
 #include "Utils/pagination.h"
 #include "Utils/workingistableview.h"
 
-class Window_Admin;
 class Pagination;
 
 namespace Ui {
@@ -24,25 +23,10 @@ class ExistingTables : public QWidget
 {
     Q_OBJECT
     Ui::ExistingTables *ui;
-    QVector<QString> _headers;
-    int _currentPage;
-    int _rowsPerPage;
-    bool _sortingOn;
-    QString _filter;
-    QString _columtSort;
-    QString _typeSort;
-    QString _typeSearch;
-    QMutex _mutex;
-    QTimer _resizeTimer;
-    QString _like;
-    QString _column;
-    QTimer _searchTimer;
-    QTimer _goToPageTimer;
-    QMap<int, QString> _typesSorting;
-    QVector<QSharedPointer<QStandardItemModel>> _models;
     QVector<QComboBox*> boxsNameColumn;
     Pagination* pagination;
     WorkingIsTableView* workingIsTableView;
+    ModelTypes modelTypes;
 
 public:
     explicit ExistingTables(QWidget *parent = nullptr);
@@ -52,17 +36,11 @@ public:
 
 private:
     void workingWithTableView();
-    void setValueToMaxPage(QString rowCount);
+    void setValueToMaxPage(int maxPage);
     void assigningValues();
-    void updateTablePage();
     void updateCurrentPageInLabel(int currentPage);
-    void searchInModels();
     void creatingObjects();
     void connects();
-    void getMaxPage();
-
-private slots:
-    void on_searchText_textChanged(const QString &arg1);
 };
 
 #endif // EXISTINGTABLES_H

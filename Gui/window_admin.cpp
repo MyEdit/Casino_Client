@@ -61,7 +61,7 @@ void Window_Admin::assigningValues()
 
 void Window_Admin::setModel_AllUsersTab(ModelData model)
 {
-//    allUsersTab->setModel(model);
+    allUsersTab->setModel(model);
 }
 
 void Window_Admin::setModel_ExistingTab(ModelData model)
@@ -159,16 +159,10 @@ void Window_Admin::completionTabWidget()
     ui->tabWidget->tabBar()->hide();
 
     rendering_WelcomeTab();
-    rendering_CreateGameTableTab();
     rendering_ExistingTablesTab();
     rendering_AllUsersTab();
 }
 
-void Window_Admin::rendering_CreateGameTableTab()
-{
-    createGameTableTab = QSharedPointer<CreateGameTable>::create();
-    ui->tabWidget->addTab(createGameTableTab.data(), "С");
-}
 
 void Window_Admin::rendering_ExistingTablesTab()
 {
@@ -187,32 +181,3 @@ void Window_Admin::rendering_WelcomeTab()
     welcomeTab = QSharedPointer<Welcome>::create("Администратор");
     ui->tabWidget->addTab(welcomeTab.data(), "");
 }
-
-/////////////////ИВЕНТЫ/////////////////
-
-void Window_Admin::showEvent(QShowEvent* event)
-{
-    QMainWindow::showEvent(event);
-
-    //Запрашиваю у сервера модель с данными "Пользователи"
-//    ModelTypes users = ModelTypes::Users;
-//    ModelLoadingType modelLoadingTypeUsers = ModelLoadingType::Central;
-//    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
-//    NetworkClient::sendToServer(&modelLoadingTypeUsers, sizeof(ModelLoadingType));
-//    NetworkClient::sendToServer(&users, sizeof(ModelTypes));
-
-    //Запрашиваю у сервера модель с данными "Игровые столы"
-    requestModel(0, ModelTypes::ActiveTables, ModelLoadingType::Central);
-    requestModel(-50, ModelTypes::ActiveTables, ModelLoadingType::Central);
-    requestModel(50, ModelTypes::ActiveTables, ModelLoadingType::Central);
-}
-
-void Window_Admin::requestModel(int offset, ModelTypes modelType, ModelLoadingType modelLoadingType)
-{
-    PacketTypes packettype = PacketTypes::P_SendModel;
-    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
-    NetworkClient::sendToServer(&modelLoadingType, sizeof(ModelLoadingType));
-    NetworkClient::sendToServer(&modelType, sizeof(ModelTypes));
-    NetworkClient::sendToServer(&offset, sizeof(int));
-}
-

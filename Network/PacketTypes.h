@@ -52,4 +52,10 @@ struct ModelData
     QStandardItemModel* model;
 };
 
+struct QueryData
+{
+    ModelTypes modelTypes;
+    QString result;
+};
+
 #endif // PACKET_H

@@ -1,70 +1,81 @@
 ﻿#include "pagination.h"
 #include <QDebug>
 
-Pagination::Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, WorkingIsTableView* workingIsTableView) :
+Pagination::Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, WorkingIsTableView* workingIsTableView, ModelTypes modelTypes) :
     QWidget(parent),
-    _tableView(table),
-    _prevButton(prevButton),
-    _nextButton(nextButton),
-    _workingIsTableView(workingIsTableView)
+    tableView(table),
+    prevButton(prevButton),
+    nextButton(nextButton),
+    workingIsTableView(workingIsTableView),
+    modelTypes(modelTypes)
 {
     for(int i = 0; i < 3; i++)
-        _models.push_back(QSharedPointer<QStandardItemModel>::create());
+        models.push_back(QSharedPointer<QStandardItemModel>::create());
+
+    assigningValues();
+    connects();
+    loadingMaxPage();
+    initializationStartModel();
 }
 
 void Pagination::updateTablePage()
 {
-    int startIndex = (currentPageInModel() - 1) * _rowsPerPage;
-    int endIndex = startIndex + _rowsPerPage;
+    int startIndex = (currentPageInModel() - 1) * rowsPerPage;
+    int endIndex = startIndex + rowsPerPage;
 
-    int rowCountModel = _tableView->model()->rowCount();
+    int rowCountModel = tableView->model()->rowCount();
     for (int row = 0; row < rowCountModel; row++)
     {
         bool rowVisible = (row >= startIndex && row < endIndex);
-        _tableView->setRowHidden(row, !rowVisible);
+        tableView->setRowHidden(row, !rowVisible);
     }
 
-    emit updateCurrentPageInLabel(_currentPage);
+    emit updateCurrentPageInLabel(currentPage);
 }
 
 int Pagination::currentPageInModel()
 {
-    int pageModel = _currentPage % _maxPageModel;
+    int pageModel = currentPage % maxPageModel;
 
     if(pageModel == 0)
-        pageModel = _maxPageModel;
+        pageModel = maxPageModel;
 
     return pageModel;
 }
 
-void Pagination::setMaxPage(QString rowCount)
+void Pagination::setMaxPage(QueryData *resultQuery)
 {
-    _maxPage = static_cast<int>(std::ceil(rowCount.toDouble() / _rowsPerPage));
+    if(resultQuery->modelTypes == modelTypes)
+    {
+        QString rowCount = resultQuery->result;
+        maxPage = static_cast<int>(std::ceil(rowCount.toDouble() / rowsPerPage));
+        emit setMaxPageInLabel(maxPage);
+    }
 }
 
 int Pagination::getMaxPage()
 {
-    return _maxPage;
+    return maxPage;
 }
 
 void Pagination::prev()
 {
-    if(_currentPage > 1)
+    if(currentPage > 1)
     {
-        _nextButton->setEnabled(true);
-        if(currentPageInModel() == _minPageModel)
+        nextButton->setEnabled(true);
+        if(currentPageInModel() == minPageModel)
         {
-//            if (!_prevTreadModel->isRunning())
-//            {
-                if(_models[2]->rowCount() != 0)
-                    goToPrevModel();
-//            }
-//            else
-//                _prevButton->setEnabled(false);
+            //            if (!prevTreadModel->isRunning())
+            //            {
+            if(models[2]->rowCount() != 0)
+                goToPrevModel();
+            //            }
+            //            else
+            //                prevButton->setEnabled(false);
         }
         else
         {
-            _currentPage--;
+            currentPage--;
             updateTablePage();
         }
     }
@@ -72,22 +83,22 @@ void Pagination::prev()
 
 void Pagination::next()
 {
-    if(_currentPage < _maxPage)
+    if(currentPage < maxPage)
     {
-        _prevButton->setEnabled(true);
-        if(currentPageInModel() == _maxPageModel)
+        prevButton->setEnabled(true);
+        if(currentPageInModel() == maxPageModel)
         {
-//            if(!_nextTreadModel->isRun())
-//            {
-                if(_models[1]->rowCount() != 0)
-                    goToNextModel();
-//            }
-//            else
-//                _nextButton->setEnabled(false);
+            //            if(!nextTreadModel->isRun())
+            //            {
+            if(models[1]->rowCount() != 0)
+                goToNextModel();
+            //            }
+            //            else
+            //                nextButton->setEnabled(false);
         }
         else
         {
-            _currentPage++;
+            currentPage++;
             updateTablePage();
         }
     }
@@ -100,40 +111,41 @@ void Pagination::acceptModel(ModelData structModel)
     switch (structModel.modelLoadingType)
     {
     case ModelLoadingType::Next:
-        _models[1] = QSharedPointer<QStandardItemModel>(structModel.model);
+        models[1] = QSharedPointer<QStandardItemModel>(structModel.model);
         break;
 
     case ModelLoadingType::Central:
-        _models[0] = QSharedPointer<QStandardItemModel>(structModel.model);
-        _workingIsTableView->setModel(_models[0].data());
+        models[0] = QSharedPointer<QStandardItemModel>(structModel.model);
+        workingIsTableView->setModel(models[0].data());
+        updateTablePage();
         break;
 
     case ModelLoadingType::Prev:
-        _models[2] = QSharedPointer<QStandardItemModel>(structModel.model);
+        models[2] = QSharedPointer<QStandardItemModel>(structModel.model);
         break;
     }
 }
 
 void Pagination::goToNextModel()
 {
-    _currentPage++;
+    currentPage++;
 
-    _workingIsTableView->setModel(_models[1].data());
-    std::rotate(_models.begin(), _models.begin() + 1, _models.end());
+    workingIsTableView->setModel(models[1].data());
+    std::rotate(models.begin(), models.begin() + 1, models.end());
 
-    int nextOffset = (_currentPage + _maxPageModel - 1) * _rowsPerPage;
+    int nextOffset = (currentPage + maxPageModel - 1) * rowsPerPage;
     loadingModel(ModelLoadingType::Next, nextOffset);
     updateTablePage();
 }
 
 void Pagination::goToPrevModel()
 {
-    _currentPage--;
+    currentPage--;
 
-    _workingIsTableView->setModel(_models[2].data());
-    std::rotate(_models.begin(), _models.begin() + (_models.size() - 1), _models.end());
+    workingIsTableView->setModel(models[2].data());
+    std::rotate(models.begin(), models.begin() + (models.size() - 1), models.end());
 
-    int prevOffset = (_currentPage - _maxPageModel * 2) * _rowsPerPage;
+    int prevOffset = (currentPage - maxPageModel * 2) * rowsPerPage;
     loadingModel(ModelLoadingType::Prev, prevOffset);
 
     updateTablePage();
@@ -142,12 +154,45 @@ void Pagination::goToPrevModel()
 void Pagination::loadingModel(ModelLoadingType type, int offset)
 {
     PacketTypes packettype = PacketTypes::P_SendModel;
-    ModelTypes existingTables = ModelTypes::ActiveTables;
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&type, sizeof(ModelLoadingType));
-    NetworkClient::sendToServer(&existingTables, sizeof(ModelTypes));
+    NetworkClient::sendToServer(&modelTypes, sizeof(ModelTypes));
     NetworkClient::sendToServer(&offset, sizeof(int));
 }
 
+void Pagination::initializationStartModel()
+{
+    int setPages = currentPage - currentPageInModel();
 
+    int startOffset = setPages * rowsPerPage;
+    int nextOffset = (setPages + maxPageModel) * rowsPerPage;
+    int prevOffset = (setPages - maxPageModel) * rowsPerPage;
+
+    loadingModel(ModelLoadingType::Central, startOffset);
+    loadingModel(ModelLoadingType::Next, nextOffset);
+    loadingModel(ModelLoadingType::Prev, prevOffset);
+}
+
+void Pagination::loadingMaxPage()
+{
+    PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
+    QueryTypes queryTypes = QueryTypes::CountEntrites;
+
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&queryTypes, sizeof(QueryTypes));
+    NetworkClient::sendToServer(&modelTypes, sizeof(ModelTypes));
+}
+
+void Pagination::assigningValues()
+{
+    currentPage = 1;
+    rowsPerPage = 10;
+    maxPageModel = 5;
+    minPageModel = 1;
+}
+
+void Pagination::connects()
+{
+    connect(NetworkClient::packetHandler, &PacketHandler::signalSetQueryModel, this, &Pagination::setMaxPage);
+}
 

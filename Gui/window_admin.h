@@ -10,7 +10,6 @@
 #include <QScreen>
 #include <QPainter>
 #include <QBitmap>
-#include "GUI/TabWidgets/creategametable.h"
 #include "GUI/TabWidgets/existingtables.h"
 #include "GUI/TabWidgets/allusers.h"
 #include "GUI/TabWidgets/welcome.h"
@@ -18,6 +17,7 @@
 
 class P_Authorization;
 class ExistingTables;
+class AllUsers;
 
 namespace Ui {
 class Window_Admin;
@@ -33,7 +33,6 @@ class Window_Admin : public QMainWindow
     QVector<QPushButton*> buttonSwitchingTab;
     QMap<QPushButton*, QLabel*> selectedButton;
 
-    QSharedPointer<CreateGameTable> createGameTableTab;
     QSharedPointer<ExistingTables> existingTablesTab;
     QSharedPointer<AllUsers> allUsersTab;
     QSharedPointer<Welcome> welcomeTab;
@@ -49,15 +48,12 @@ private:
     void onNavigationsButton_clicked();
     void assigningValues();
     void completionTabWidget();
-    void rendering_CreateGameTableTab();
     void rendering_ExistingTablesTab();
     void rendering_AllUsersTab();
     void rendering_WelcomeTab();
     void prepareStyleSheets();
     void uploadingPhotoEmployee();
     void settingWindowPosition();
-    void showEvent(QShowEvent* event) override;
-    void requestModel(int offset, ModelTypes modelType, ModelLoadingType modelLoadingType);
 
 private slots:
     void on_buttonExit_clicked();

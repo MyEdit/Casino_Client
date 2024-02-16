@@ -4,6 +4,14 @@
 #include <QWidget>
 #include "QStandardItemModel"
 #include "Utils/Message.h"
+#include "Network/PacketTypes.h"
+#include "Network/networkclient.h"
+#include <QMutex>
+#include <math.h>
+#include <QTimer>
+#include <QMessageBox>
+#include "Utils/pagination.h"
+#include "Utils/workingistableview.h"
 
 namespace Ui {
 class AllUsers;
@@ -13,15 +21,24 @@ class AllUsers : public QWidget
 {
     Q_OBJECT
     Ui::AllUsers *ui;
+    QVector<QComboBox*> boxsNameColumn;
+    Pagination* pagination;
+    WorkingIsTableView* workingIsTableView;
+    ModelTypes modelTypes;
 
 public:
     explicit AllUsers(QWidget *parent = nullptr);
     ~AllUsers();
 
-    void setModel(QStandardItemModel* model);
+    void setModel(ModelData model);
 
 private:
     void workingWithTableView();
+    void setValueToMaxPage(int maxPage);
+    void assigningValues();
+    void updateCurrentPageInLabel(int currentPage);
+    void creatingObjects();
+    void connects();
 };
 
 #endif // ALLUSERS_H

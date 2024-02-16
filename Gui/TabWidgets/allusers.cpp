@@ -6,6 +6,10 @@ AllUsers::AllUsers(QWidget *parent) :
     ui(new Ui::AllUsers)
 {
     ui->setupUi(this);
+
+    assigningValues();
+    creatingObjects();
+    connects();
     workingWithTableView();
 }
 
@@ -14,50 +18,44 @@ AllUsers::~AllUsers()
     delete ui;
 }
 
-void AllUsers::setModel(QStandardItemModel* model)
-{
-    if(model->rowCount() == 0)
-    {
-        Message::logWarn("Данных нет");
-        return;
-    }
-
-    ui->tableView->setModel(model);
-
-    ui->tableView->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
-
-    for (int col = 1; col < model->columnCount(); ++col)
-    {
-        QString originalHeaderText = model->headerData(col, Qt::Horizontal).toString();
-        QString wrappedHeaderText = originalHeaderText.replace(" ", "\n");
-        model->setHeaderData(col, Qt::Horizontal, wrappedHeaderText);
-    }
-}
-
 void AllUsers::workingWithTableView()
 {
-    ui->tableView->setStyleSheet("selection-background-color: rgb(42, 117, 255);");
-    ui->tableView->setWordWrap(false);
+    workingIsTableView->settingVisualTableView();
+}
 
-    //Устанавливка жирного шрифта для заголовков столбцов
-    QFont font = ui->tableView->horizontalHeader()->font();
-    font.setBold(true);
-    ui->tableView->horizontalHeader()->setFont(font);
+void AllUsers::setModel(ModelData model)
+{
+    pagination->acceptModel(model);
+}
 
-    //Скрыть номер строк в tableView
-    ui->tableView->verticalHeader()->setVisible(false);
+void AllUsers::setValueToMaxPage(int maxPage)
+{
+    ui->labelMaxPage->setText(QString::number(maxPage));
+}
 
-    ui->tableView->horizontalHeader()->setStyleSheet("QHeaderView { font-size: 14pt; }");
+void AllUsers::assigningValues()
+{
+    boxsNameColumn.push_back(ui->searchColumn);
+    boxsNameColumn.push_back(ui->sortingColumn);
 
-    //Устанавка растягивания для заголовков строк и столбцов на по размеру содержимого
-    ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    modelTypes = ModelTypes::Users;
+}
 
-    //Устанавка растягивания для строк и столбцов на всю высоту
-    ui->tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+void AllUsers::creatingObjects()
+{
+    workingIsTableView = new WorkingIsTableView(ui->tableView, &boxsNameColumn);
+    pagination = new Pagination(this, ui->tableView, ui->prevButton, ui->nextButton, workingIsTableView, modelTypes);
+}
 
-    //Запрет редактирования данных в ячейке
-    ui->tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+void AllUsers::connects()
+{
+    connect(ui->prevButton, &QPushButton::clicked, pagination, &Pagination::prev);
+    connect(ui->nextButton, &QPushButton::clicked, pagination, &Pagination::next);
+    connect(pagination, &Pagination::updateCurrentPageInLabel, this, &AllUsers::updateCurrentPageInLabel);
+    connect(pagination, &Pagination::setMaxPageInLabel, this, &AllUsers::setValueToMaxPage);
+}
 
-    //Для выделения всей строки
-    ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+void AllUsers::updateCurrentPageInLabel(int currentPage)
+{
+    ui->labelCurrentPage->setText(QString::number(currentPage));
 }

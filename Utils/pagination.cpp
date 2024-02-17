@@ -168,6 +168,8 @@ void Pagination::initializationStartModel()
     int nextOffset = (setPages + maxPageModel) * rowsPerPage;
     int prevOffset = (setPages - maxPageModel) * rowsPerPage;
 
+    emit blockSignals(false); //Отсюда сигнал почему-то не идёт
+
     loadingModel(ModelLoadingType::Central, startOffset);
     loadingModel(ModelLoadingType::Next, nextOffset);
     loadingModel(ModelLoadingType::Prev, prevOffset);
@@ -196,3 +198,14 @@ void Pagination::connects()
     connect(NetworkClient::packetHandler, &PacketHandler::signalSetQueryModel, this, &Pagination::setMaxPage);
 }
 
+void Pagination::goToPage(int currentPage)
+{
+    int setPages = this->currentPage - currentPageInModel();
+
+    this->currentPage = (currentPage > maxPage) ? maxPage : currentPage;
+
+    if(setPages < this->currentPage && this->currentPage <= (setPages + maxPageModel))
+        updateTablePage();
+    else
+        initializationStartModel();
+}

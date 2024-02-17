@@ -25,6 +25,7 @@ class AllUsers : public QWidget
     Pagination* pagination;
     WorkingIsTableView* workingIsTableView;
     ModelTypes modelTypes;
+    QTimer goToPageTimer;
 
 public:
     explicit AllUsers(QWidget *parent = nullptr);
@@ -38,7 +39,9 @@ private:
     void assigningValues();
     void updateCurrentPageInLabel(int currentPage);
     void creatingObjects();
+    void goToPage();
     void connects();
+    void blockingInterface(bool flag);
 };
 
 #endif // ALLUSERS_H

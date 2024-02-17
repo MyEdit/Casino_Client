@@ -57,6 +57,8 @@ void WorkingIsTableView::setModel(QStandardItemModel* model)
 
     if(_headers.isEmpty())
         setValueNameColumn();
+
+    emit unlockInterface(true);
 }
 
 void WorkingIsTableView::setValueNameColumn()

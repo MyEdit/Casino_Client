@@ -3,13 +3,16 @@
 
 #include <QTableView>
 #include <QComboBox>
+#include <QWidget>
 #include <QHeaderView>
 #include <QStandardItemModel>
 #include "Utils/Message.h"
 #include "Network/PacketTypes.h"
 
-class WorkingIsTableView
+class WorkingIsTableView : public QWidget
 {
+    Q_OBJECT
+
     QTableView* _tableView;
     QVector<QComboBox*>* _boxsNameColumn;
     QVector<QString> _headers;
@@ -23,6 +26,9 @@ public:
 private:
     void setValueNameColumn();
     QVector<QString> getColumnHeaders();
+
+signals:
+    void unlockInterface(bool);
 };
 
 #endif // WORKINGISTABLEVIEW_H

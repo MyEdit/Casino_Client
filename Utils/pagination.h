@@ -37,6 +37,7 @@ public:
     void setMaxPage(QueryData* rowCount);
     void acceptModel(ModelData structModel);
     void loadingMaxPage();
+    void goToPage(int currentPage);
 
 private:
     void goToNextModel();
@@ -47,8 +48,9 @@ private:
     void connects();
 
 signals:
-    int updateCurrentPageInLabel(int currentPage);
-    int setMaxPageInLabel(int maxPage);
+    void updateCurrentPageInLabel(int);
+    void setMaxPageInLabel(int);
+    void blockInterface(bool);
 };
 
 #endif // PAGINATION_H

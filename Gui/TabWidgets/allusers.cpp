@@ -39,6 +39,8 @@ void AllUsers::assigningValues()
     boxsNameColumn.push_back(ui->sortingColumn);
 
     modelTypes = ModelTypes::Users;
+
+    goToPageTimer.setSingleShot(true);
 }
 
 void AllUsers::creatingObjects()
@@ -51,11 +53,49 @@ void AllUsers::connects()
 {
     connect(ui->prevButton, &QPushButton::clicked, pagination, &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination, &Pagination::next);
+    connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &AllUsers::goToPage);
+
     connect(pagination, &Pagination::updateCurrentPageInLabel, this, &AllUsers::updateCurrentPageInLabel);
     connect(pagination, &Pagination::setMaxPageInLabel, this, &AllUsers::setValueToMaxPage);
+    connect(pagination, &Pagination::blockInterface, this, &AllUsers::blockingInterface);
+
+    connect(workingIsTableView, &WorkingIsTableView::unlockInterface, this, &AllUsers::blockingInterface);
+
+    connect(&goToPageTimer, &QTimer::timeout, this, [=]()
+    {
+        if(!ui->pageNumberToNavigate->text().isEmpty())
+        {
+//            _like.clear();
+            pagination->goToPage(ui->pageNumberToNavigate->text().toInt());
+        }
+    });
 }
 
 void AllUsers::updateCurrentPageInLabel(int currentPage)
 {
     ui->labelCurrentPage->setText(QString::number(currentPage));
+}
+
+void AllUsers::goToPage()
+{
+    if(ui->pageNumberToNavigate->text() == "0")
+        ui->pageNumberToNavigate->clear();
+
+    goToPageTimer.start(1000);
+}
+
+
+void AllUsers::blockingInterface(bool flag)
+{
+    QList<QPushButton*> pushbuttons = this->findChildren<QPushButton*>();
+    for(QPushButton* pushbutton : pushbuttons)
+        pushbutton->setEnabled(flag);
+
+    QList<QComboBox*> comboBoxs = this->findChildren<QComboBox*>();
+    for(QComboBox* comboBox : comboBoxs)
+        comboBox->setEnabled(flag);
+
+    ui->sorting->setEnabled(flag);
+    ui->pageNumberToNavigate->setEnabled(flag);
+    ui->searchText->setEnabled(flag);
 }

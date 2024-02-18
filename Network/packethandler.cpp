@@ -14,6 +14,7 @@ void PacketHandler::clientHandler()
         {
             //TODO: Вот тут, надо реализовать блокировку всех потоков и попытку реконнекта к серверу т.к в эту часть кода можно попасть только тогда, когда связь с сервером потеряна
             Message::logError("Сonnection to server was lost or an error occurred");
+            return; //Временно, дабы при дисконнекте от сервера приложение не висло
         }
         packetHandler(packettype);
     }

@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
         notification->setAlertProperties(TypeMessage::Error, "Произошла ошибка при инициилизации сетевого кода", &w);
     }
 
-    if (!network.connectToServer())
+    if (!network.start())
     {
         notification->setAlertProperties(TypeMessage::Error, "Произошла ошибка при подключении к серверу", &w);
     }

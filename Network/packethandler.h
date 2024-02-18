@@ -18,6 +18,7 @@ private:
     void run() override;
     void clientHandler();
     void packetHandler(PacketTypes packettype);
+    void tryReconnectToServer();
 
 signals:
     void signalOpenForm();

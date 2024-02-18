@@ -1,6 +1,7 @@
 ﻿#include "networkclient.h"
 
 SOCKET NetworkClient::serverSocket = INVALID_SOCKET;
+SOCKADDR_IN NetworkClient::serverAddress;
 PacketHandler* NetworkClient::packetHandler;
 
 //Инициилизация
@@ -35,11 +36,24 @@ bool NetworkClient::connectToServer()
         return false;
     }
 
+    if (serverSocket == INVALID_SOCKET)
+    {
+        configuration();
+    }
+
     if (_WINSOCKAPI_::connect(serverSocket, (SOCKADDR*)&serverAddress, sizeof(serverAddress)) != 0) //Коннект к серверу
     {
         Message::logError("Failed connect to server!");
         return false;
     }
+
+    return true;
+}
+
+bool NetworkClient::start()
+{
+    if (!connectToServer())
+        return false;
 
     qRegisterMetaType<ModelData>("ModelData");
     qRegisterMetaType<ModelData>("QueryData");
@@ -52,7 +66,6 @@ bool NetworkClient::connectToServer()
     QObject::connect(packetHandler, &PacketHandler::signalViewNotification, this, &P_Notification::viewNotification);
 
     packetHandler->start();
-    Message::logInfo("Connection successful!");
     return true;
 }
 
@@ -72,4 +85,11 @@ QString NetworkClient::getMessageFromServer()
     QByteArray buffer(size, 0);
     recv(serverSocket, buffer.data(), size, 0);
     return QString(buffer);
+}
+
+void NetworkClient::onServerDisconnected()
+{
+    Message::logError("Сonnection to server was lost or an error occurred");
+    closesocket(serverSocket);
+    serverSocket = INVALID_SOCKET;
 }

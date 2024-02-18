@@ -19,24 +19,28 @@ class NetworkClient : public QObject
     Q_OBJECT
 
 private:
-    SOCKADDR_IN serverAddress;
+    static SOCKADDR_IN serverAddress;
 
-    void configuration();
+    static void configuration();
+    static bool connectToServer();
 
 public:
     static SOCKET serverSocket;
     static PacketHandler* packetHandler;
 
     bool init();
-    bool connectToServer();
+    bool start();
     static void sendToServer(QString message);
     static QString getMessageFromServer();
+    static void onServerDisconnected();
 
     template<typename T>
     static void sendToServer(const T data, const int size)
     {
         send(serverSocket, reinterpret_cast<const char*>(data), size, 0);
     }
+
+    friend class PacketHandler;
 };
 
 #endif // NETWORKCLIENT_H

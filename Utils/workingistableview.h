@@ -13,15 +13,16 @@ class WorkingIsTableView : public QWidget
 {
     Q_OBJECT
 
-    QTableView* _tableView;
-    QVector<QComboBox*>* _boxsNameColumn;
-    QVector<QString> _headers;
+    QTableView* tableView;
+    QVector<QComboBox*>* boxsNameColumn;
+    QVector<QString> headers;
 
 public:
     WorkingIsTableView(QTableView* table, QVector<QComboBox*>* boxsNameColumn = nullptr);
 
     void settingVisualTableView();
-    void setModel(QStandardItemModel* model);
+    void setModel(QSharedPointer<QStandardItemModel> model);
+    void setCurrentIndex(QModelIndex index);
 
 private:
     void setValueNameColumn();

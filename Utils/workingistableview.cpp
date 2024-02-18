@@ -1,42 +1,42 @@
 ﻿#include "workingistableview.h"
 
 WorkingIsTableView::WorkingIsTableView(QTableView* table, QVector<QComboBox*>* boxsNameColumn) :
-    _tableView(table),
-    _boxsNameColumn(boxsNameColumn)
+    tableView(table),
+    boxsNameColumn(boxsNameColumn)
 {
 
 }
 
 void WorkingIsTableView::settingVisualTableView()
 {
-    _tableView->setStyleSheet("selection-background-color: rgb(42, 117, 255);");
-    _tableView->setWordWrap(false);
+    tableView->setStyleSheet("selection-background-color: rgb(42, 117, 255);");
+    tableView->setWordWrap(false);
 
     //Устанавливка жирного шрифта для заголовков столбцов
-    QFont font = _tableView->horizontalHeader()->font();
+    QFont font = tableView->horizontalHeader()->font();
     font.setBold(true);
-    _tableView->horizontalHeader()->setFont(font);
+    tableView->horizontalHeader()->setFont(font);
 
     //Скрыть номер строк в tableView
-    _tableView->verticalHeader()->setVisible(false);
+    tableView->verticalHeader()->setVisible(false);
 
-    _tableView->horizontalHeader()->setStyleSheet("QHeaderView { font-size: 14pt; }");
+    tableView->horizontalHeader()->setStyleSheet("QHeaderView { font-size: 14pt; }");
 
     //Устанавка растягивания для заголовков строк и столбцов на по размеру содержимого
-    _tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     //Устанавка растягивания для строк и столбцов на всю высоту
-    _tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    tableView->verticalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     //Запрет редактирования данных в ячейке
-    _tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
     //Для выделения всей строки
-    _tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
+    tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
 }
 
 
-void WorkingIsTableView::setModel(QStandardItemModel* model)
+void WorkingIsTableView::setModel(QSharedPointer<QStandardItemModel> model)
 {
     if(model->rowCount() == 0)
     {
@@ -44,9 +44,9 @@ void WorkingIsTableView::setModel(QStandardItemModel* model)
         return;
     }
 
-    _tableView->setModel(model);
+    tableView->setModel(model.data());
 
-    _tableView->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
+    tableView->horizontalHeader()->setSectionResizeMode(0, QHeaderView::ResizeToContents);
 
     for (int col = 1; col < model->columnCount(); ++col)
     {
@@ -55,7 +55,7 @@ void WorkingIsTableView::setModel(QStandardItemModel* model)
         model->setHeaderData(col, Qt::Horizontal, wrappedHeaderText);
     }
 
-    if(_headers.isEmpty())
+    if(headers.isEmpty())
         setValueNameColumn();
 
     emit unlockInterface(true);
@@ -63,11 +63,11 @@ void WorkingIsTableView::setModel(QStandardItemModel* model)
 
 void WorkingIsTableView::setValueNameColumn()
 {
-    _headers = getColumnHeaders();
+    headers = getColumnHeaders();
 
-    for(QComboBox* boxNameColumn : *_boxsNameColumn)
+    for(QComboBox* boxNameColumn : *boxsNameColumn)
     {
-        for(QString nameColumn : _headers)
+        for(QString nameColumn : headers)
         {
             boxNameColumn->blockSignals(true);
             boxNameColumn->addItem(nameColumn);
@@ -79,7 +79,7 @@ void WorkingIsTableView::setValueNameColumn()
 QVector<QString> WorkingIsTableView::getColumnHeaders()
 {
     QVector<QString> headers;
-    QAbstractItemModel* model =_tableView->model();
+    QAbstractItemModel* model =tableView->model();
     int columnCount = model->columnCount();
 
     for (int column = 0; column < columnCount; ++column)
@@ -90,4 +90,9 @@ QVector<QString> WorkingIsTableView::getColumnHeaders()
     }
 
     return headers;
+}
+
+void WorkingIsTableView::setCurrentIndex(QModelIndex index)
+{
+    tableView->setCurrentIndex(index);
 }

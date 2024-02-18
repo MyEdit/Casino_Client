@@ -26,6 +26,8 @@ class AllUsers : public QWidget
     WorkingIsTableView* workingIsTableView;
     ModelTypes modelTypes;
     QTimer goToPageTimer;
+    QTimer searchTimer;
+    QString typeSearch;
 
 public:
     explicit AllUsers(QWidget *parent = nullptr);
@@ -42,6 +44,9 @@ private:
     void goToPage();
     void connects();
     void blockingInterface(bool flag);
+    void search();
+    void blockAndOperate(QObject* widget, const std::function<void()>& operation);
+    void selectTypeSearch(int arg);
 };
 
 #endif // ALLUSERS_H

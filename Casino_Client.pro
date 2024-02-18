@@ -30,6 +30,7 @@ SOURCES += \
     Network/networkclient.cpp \
     Network/packethandler.cpp \
     Utils/pagination.cpp \
+    Utils/searchmodule.cpp \
     Utils/serializer.cpp \
     Utils/workingistableview.cpp \
     main.cpp \
@@ -51,8 +52,10 @@ HEADERS += \
     Network/packethandler.h \
     Utils/Message.h \
     Utils/pagination.h \
+    Utils/searchmodule.h \
     Utils/serializer.h \
     Constants.h \ \
+    Utils/windowtracker.h \
     Utils/workingistableview.h
 
 FORMS += \

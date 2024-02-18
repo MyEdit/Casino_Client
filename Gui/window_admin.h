@@ -14,6 +14,7 @@
 #include "GUI/TabWidgets/allusers.h"
 #include "GUI/TabWidgets/welcome.h"
 #include "Network/networkclient.h"
+#include "Utils/windowtracker.h"
 
 class P_Authorization;
 class ExistingTables;
@@ -54,6 +55,7 @@ private:
     void prepareStyleSheets();
     void uploadingPhotoEmployee();
     void settingWindowPosition();
+    void changeEvent(QEvent *event);
 
 private slots:
     void on_buttonExit_clicked();

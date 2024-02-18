@@ -42,7 +42,10 @@ void ExistingTables::assigningValues()
 
     modelTypes = ModelTypes::ActiveTables;
 
+    typeSearch = '%';
+
     goToPageTimer.setSingleShot(true);
+    searchTimer.setSingleShot(true);
 }
 
 void ExistingTables::creatingObjects()
@@ -56,6 +59,8 @@ void ExistingTables::connects()
     connect(ui->prevButton, &QPushButton::clicked, pagination, &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination, &Pagination::next);
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &ExistingTables::goToPage);
+    connect(ui->searchText, &QLineEdit::textChanged, this, &ExistingTables::search);
+    connect(ui->checkBox, &QCheckBox::stateChanged, this, &ExistingTables::selectTypeSearch);
 
     connect(pagination, &Pagination::updateCurrentPageInLabel, this, &ExistingTables::updateCurrentPageInLabel);
     connect(pagination, &Pagination::setMaxPageInLabel, this, &ExistingTables::setValueToMaxPage);
@@ -65,11 +70,12 @@ void ExistingTables::connects()
 
     connect(&goToPageTimer, &QTimer::timeout, this, [=]()
     {
-        if(!ui->pageNumberToNavigate->text().isEmpty())
-        {
-//            _like.clear();
-            pagination->goToPage(ui->pageNumberToNavigate->text().toInt());
-        }
+        pagination->goToPage(ui->pageNumberToNavigate->text().toInt());
+    });
+
+    connect(&searchTimer, &QTimer::timeout, this, [=]()
+    {
+        pagination->search(ui->searchText->text(), typeSearch, ui->searchColumn->currentIndex());
     });
 }
 
@@ -78,10 +84,20 @@ void ExistingTables::updateCurrentPageInLabel(int currentPage)
     ui->labelCurrentPage->setText(QString::number(currentPage));
 }
 
+void ExistingTables::blockAndOperate(QObject* widget, const std::function<void()>& operation)
+{
+    widget->blockSignals(true);
+    operation();
+    widget->blockSignals(false);
+}
+
 void ExistingTables::goToPage()
 {
     if(ui->pageNumberToNavigate->text() == "0")
-        ui->pageNumberToNavigate->clear();
+    {
+        blockAndOperate(ui->pageNumberToNavigate, [&]() {ui->pageNumberToNavigate->clear();});
+        return;
+    }
 
     goToPageTimer.start(1000);
 }
@@ -101,3 +117,17 @@ void ExistingTables::blockingInterface(bool flag)
     ui->searchText->setEnabled(flag);
 }
 
+void ExistingTables::search()
+{
+    searchTimer.start(1000);
+}
+
+void ExistingTables::selectTypeSearch(int arg)
+{
+    if(arg == 2)
+        typeSearch.clear();
+    else if(arg == 0)
+        typeSearch = '%';
+
+    search();
+}

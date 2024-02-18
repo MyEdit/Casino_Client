@@ -34,7 +34,6 @@ public:
     Notification();
     void setAlertProperties(TypeMessage typeMessage, QString text, QWidget* parentForm);
 
-
 private:
     void setupUI();
     void setupConnections();

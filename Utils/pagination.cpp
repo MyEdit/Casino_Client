@@ -9,9 +9,7 @@ Pagination::Pagination(QWidget* parent, QTableView* table, QPushButton* prevButt
     workingIsTableView(workingIsTableView),
     modelTypes(modelTypes)
 {
-    for(int i = 0; i < 3; i++)
-        models.push_back(QSharedPointer<QStandardItemModel>::create());
-
+    creatingObjects();
     assigningValues();
     connects();
 }
@@ -20,6 +18,14 @@ void Pagination::start()
 {
     loadingMaxPage();
     initializationStartModel();
+}
+
+void Pagination::creatingObjects()
+{
+    for(int i = 0; i < 3; i++)
+        models.push_back(QSharedPointer<QStandardItemModel>::create());
+
+    searchModule = new SearchModule(this, workingIsTableView);
 }
 
 void Pagination::updateTablePage()
@@ -120,7 +126,7 @@ void Pagination::acceptModel(ModelData structModel)
 
     case ModelLoadingType::Central:
         models[0] = QSharedPointer<QStandardItemModel>(structModel.model);
-        workingIsTableView->setModel(models[0].data());
+        workingIsTableView->setModel(models[0]);
         updateTablePage();
         break;
 
@@ -134,7 +140,7 @@ void Pagination::goToNextModel()
 {
     currentPage++;
 
-    workingIsTableView->setModel(models[1].data());
+    workingIsTableView->setModel(models[1]);
     std::rotate(models.begin(), models.begin() + 1, models.end());
 
     int nextOffset = (currentPage + maxPageModel - 1) * rowsPerPage;
@@ -146,7 +152,7 @@ void Pagination::goToPrevModel()
 {
     currentPage--;
 
-    workingIsTableView->setModel(models[2].data());
+    workingIsTableView->setModel(models[2]);
     std::rotate(models.begin(), models.begin() + (models.size() - 1), models.end());
 
     int prevOffset = (currentPage - maxPageModel * 2) * rowsPerPage;
@@ -212,4 +218,15 @@ void Pagination::goToPage(int currentPage)
         updateTablePage();
     else
         initializationStartModel();
+}
+
+void Pagination::search(QString searchText, QString typeSearch, int columnCurrentIndex)
+{
+    if(searchText.isEmpty())
+        return;
+
+    for (QSharedPointer<QStandardItemModel> model : models)
+        searchModule->searchInModels(model, searchText, typeSearch, columnCurrentIndex, currentPage, rowsPerPage);
+
+//    searchInDB();
 }

@@ -1,5 +1,8 @@
 ﻿#include "notification.h"
 
+#include "Constants.h"
+#include <QDebug>
+
 Notification::Notification()
 {
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
@@ -113,7 +116,7 @@ void Notification::setupUI()
     mainLayout->addWidget(textLabel, 2, 1);
     mainLayout->addWidget(progressBar, 3, 0, 1, 2);
 
-    setFixedWidth(300);
+//    setFixedWidth(300);
 }
 
 void Notification::setupConnections()

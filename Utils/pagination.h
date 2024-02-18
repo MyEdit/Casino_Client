@@ -8,7 +8,10 @@
 #include <QPushButton>
 #include <QLabel>
 #include "Utils/workingistableview.h"
+#include "Utils/searchmodule.h"
 #include "Network/networkclient.h"
+
+class SearchModule;
 
 class Pagination : public QWidget
 {
@@ -23,6 +26,7 @@ class Pagination : public QWidget
     int minPageModel = 1;
     int maxPage;
     WorkingIsTableView* workingIsTableView;
+    SearchModule* searchModule;
     QVector<QSharedPointer<QStandardItemModel>> models;
     ModelTypes modelTypes;
 
@@ -39,6 +43,7 @@ public:
     void loadingMaxPage();
     void goToPage(int currentPage);
     void start();
+    void search(QString searchText, QString typeSearch, int columnCurrentIndex);
 
 private:
     void goToNextModel();
@@ -47,6 +52,7 @@ private:
     void initializationStartModel();
     void assigningValues();
     void connects();
+    void creatingObjects();
 
 signals:
     void updateCurrentPageInLabel(int);

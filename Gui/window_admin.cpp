@@ -1,6 +1,8 @@
 ﻿#include "window_admin.h"
 #include "ui_window_admin.h"
 
+QWidget* WindowTracker::activeWindow = nullptr;
+
 Window_Admin::Window_Admin(QWidget *parent) : QMainWindow(parent), ui(new Ui::Window_Admin)
 {
     ui->setupUi(this);
@@ -163,7 +165,6 @@ void Window_Admin::completionTabWidget()
     rendering_AllUsersTab();
 }
 
-
 void Window_Admin::rendering_ExistingTablesTab()
 {
     existingTablesTab = QSharedPointer<ExistingTables>::create();
@@ -180,4 +181,12 @@ void Window_Admin::rendering_WelcomeTab()
 {
     welcomeTab = QSharedPointer<Welcome>::create("Администратор");
     ui->tabWidget->addTab(welcomeTab.data(), "");
+}
+
+
+/////////////////ИВЕНТЫ/////////////////
+void Window_Admin::changeEvent(QEvent *event)
+{
+    QMainWindow::changeEvent(event);
+    WindowTracker::activeWindow = this;
 }

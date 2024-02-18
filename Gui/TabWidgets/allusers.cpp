@@ -42,7 +42,10 @@ void AllUsers::assigningValues()
 
     modelTypes = ModelTypes::Users;
 
+    typeSearch = '%';
+
     goToPageTimer.setSingleShot(true);
+    searchTimer.setSingleShot(true);
 }
 
 void AllUsers::creatingObjects()
@@ -56,6 +59,8 @@ void AllUsers::connects()
     connect(ui->prevButton, &QPushButton::clicked, pagination, &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination, &Pagination::next);
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &AllUsers::goToPage);
+    connect(ui->searchText, &QLineEdit::textChanged, this, &AllUsers::search);
+    connect(ui->checkBox, &QCheckBox::stateChanged, this, &AllUsers::selectTypeSearch);
 
     connect(pagination, &Pagination::updateCurrentPageInLabel, this, &AllUsers::updateCurrentPageInLabel);
     connect(pagination, &Pagination::setMaxPageInLabel, this, &AllUsers::setValueToMaxPage);
@@ -65,11 +70,12 @@ void AllUsers::connects()
 
     connect(&goToPageTimer, &QTimer::timeout, this, [=]()
     {
-        if(!ui->pageNumberToNavigate->text().isEmpty())
-        {
-//            _like.clear();
-            pagination->goToPage(ui->pageNumberToNavigate->text().toInt());
-        }
+        pagination->goToPage(ui->pageNumberToNavigate->text().toInt());
+    });
+
+    connect(&searchTimer, &QTimer::timeout, this, [=]()
+    {
+        pagination->search(ui->searchText->text(), typeSearch, ui->searchColumn->currentIndex());
     });
 }
 
@@ -78,14 +84,23 @@ void AllUsers::updateCurrentPageInLabel(int currentPage)
     ui->labelCurrentPage->setText(QString::number(currentPage));
 }
 
+void AllUsers::blockAndOperate(QObject* widget, const std::function<void()>& operation)
+{
+    widget->blockSignals(true);
+    operation();
+    widget->blockSignals(false);
+}
+
 void AllUsers::goToPage()
 {
     if(ui->pageNumberToNavigate->text() == "0")
-        ui->pageNumberToNavigate->clear();
+    {
+        blockAndOperate(ui->pageNumberToNavigate, [&]() {ui->pageNumberToNavigate->clear();});
+        return;
+    }
 
     goToPageTimer.start(1000);
 }
-
 
 void AllUsers::blockingInterface(bool flag)
 {
@@ -100,4 +115,19 @@ void AllUsers::blockingInterface(bool flag)
     ui->sorting->setEnabled(flag);
     ui->pageNumberToNavigate->setEnabled(flag);
     ui->searchText->setEnabled(flag);
+}
+
+void AllUsers::search()
+{
+    searchTimer.start(1000);
+}
+
+void AllUsers::selectTypeSearch(int arg)
+{
+    if(arg == 2)
+        typeSearch.clear();
+    else if(arg == 0)
+        typeSearch = '%';
+
+    search();
 }

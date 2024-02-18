@@ -70,12 +70,12 @@ void ExistingTables::connects()
 
     connect(&goToPageTimer, &QTimer::timeout, this, [=]()
     {
-        pagination->goToPage(ui->pageNumberToNavigate->text().toInt());
+        pagination->goToPage(ui->pageNumberToNavigate->text());
     });
 
     connect(&searchTimer, &QTimer::timeout, this, [=]()
     {
-        pagination->search(ui->searchText->text(), typeSearch, ui->searchColumn->currentIndex());
+        pagination->search(ui->searchText->text(), typeSearch, ui->searchColumn);
     });
 }
 

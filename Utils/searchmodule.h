@@ -12,7 +12,8 @@ class SearchModule
 public:
     SearchModule(Pagination* pagination, WorkingIsTableView* workingIsTableView);
 
-    void searchInModels(QSharedPointer<QStandardItemModel> model, QString searchText, QString typeSearch, int columnCurrentIndex, int& currentPage, int rowsPerPage);
+    bool searchInModels(QSharedPointer<QStandardItemModel> model, QString searchText, QString typeSearch, int columnCurrentIndex, int& currentPage, int rowsPerPage);
+    void searchInDB(ModelTypes modelType, QString searchText);
 };
 
 #endif // SEARCH_H

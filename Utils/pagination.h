@@ -29,6 +29,9 @@ class Pagination : public QWidget
     SearchModule* searchModule;
     QVector<QSharedPointer<QStandardItemModel>> models;
     ModelTypes modelTypes;
+    QString searchText;
+    QString typeSearch;
+    QComboBox* column;
 
 public:
     Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, WorkingIsTableView* workingIsTableView, ModelTypes modelTypes);
@@ -38,12 +41,12 @@ public:
     void updateTablePage();
     void prev();
     void next();
-    void setMaxPage(QueryData* rowCount);
+    void setMaxPage(QString rowCount);
     void acceptModel(ModelData structModel);
     void loadingMaxPage();
-    void goToPage(int currentPage);
+    void goToPage(QString page);
     void start();
-    void search(QString searchText, QString typeSearch, int columnCurrentIndex);
+    void search(QString searchText, QString typeSearch, QComboBox* column);
 
 private:
     void goToNextModel();
@@ -53,6 +56,7 @@ private:
     void assigningValues();
     void connects();
     void creatingObjects();
+    void distributor(QueryData* data);
 
 signals:
     void updateCurrentPageInLabel(int);

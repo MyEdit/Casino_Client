@@ -29,7 +29,8 @@ enum class QueryTypes
     NumberRow,      //номер строки
     CreateEntry,    //Добавить запись
     UpdateEntry,    //Изменить запись
-    DeleteEntry     //Удалить запись
+    DeleteEntry,    //Удалить запись
+    Search          //Поиск
 };
 
 enum class ModelLoadingType
@@ -55,6 +56,7 @@ struct ModelData
 struct QueryData
 {
     ModelTypes modelTypes;
+    QueryTypes queryTypes;
     QString result;
 };
 

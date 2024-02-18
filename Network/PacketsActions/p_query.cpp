@@ -3,10 +3,13 @@
 QueryData* P_Query::getResultFromServer()
 {
     ModelTypes type;
-    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&type), sizeof(ModelTypes), 0);
-    QString result = NetworkClient::getMessageFromServer();
+    QueryTypes queryTypes;
 
-    QueryData* answer = new QueryData{type, result};
+    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&type), sizeof(ModelTypes), 0);
+    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&queryTypes), sizeof(QueryTypes), 0);
+
+    QString result = NetworkClient::getMessageFromServer();
+    QueryData* answer = new QueryData{type, queryTypes, result};
 
     return answer;
 }

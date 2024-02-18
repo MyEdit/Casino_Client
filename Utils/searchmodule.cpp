@@ -7,7 +7,7 @@ SearchModule::SearchModule(Pagination* pagination, WorkingIsTableView *workingIs
 
 }
 
-void SearchModule::searchInModels(QSharedPointer<QStandardItemModel> model, QString searchText, QString typeSearch, int columnCurrentIndex, int& currentPage, int rowsPerPage)
+bool SearchModule::searchInModels(QSharedPointer<QStandardItemModel> model, QString searchText, QString typeSearch, int columnCurrentIndex, int& currentPage, int rowsPerPage)
 {
     bool resultSearchInModel = false;
     for (int row = 0; row < model->rowCount(); row++)
@@ -26,8 +26,20 @@ void SearchModule::searchInModels(QSharedPointer<QStandardItemModel> model, QStr
             currentPage = std::ceil(resultRow / rowsPerPage);
             workingIsTableView->setModel(model);
             workingIsTableView->setCurrentIndex(index);
-            return;
+            break;
         }
     }
-//    searchInDB();
+
+    return resultSearchInModel;
+}
+
+void SearchModule::searchInDB(ModelTypes modelType, QString searchText)
+{
+    PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
+    QueryTypes queryTypes = QueryTypes::Search;
+
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&queryTypes, sizeof(QueryTypes));
+    NetworkClient::sendToServer(&modelType, sizeof(ModelTypes));
+    NetworkClient::sendToServer(searchText);
 }

@@ -53,14 +53,10 @@ int Pagination::currentPageInModel()
     return pageModel;
 }
 
-void Pagination::setMaxPage(QueryData *resultQuery)
+void Pagination::setMaxPage(QString rowCount)
 {
-    if(resultQuery->modelTypes == modelTypes)
-    {
-        QString rowCount = resultQuery->result;
-        maxPage = static_cast<int>(std::ceil(rowCount.toDouble() / rowsPerPage));
-        emit setMaxPageInLabel(maxPage);
-    }
+    maxPage = static_cast<int>(std::ceil(rowCount.toDouble() / rowsPerPage));
+    emit setMaxPageInLabel(maxPage);
 }
 
 int Pagination::getMaxPage()
@@ -205,11 +201,12 @@ void Pagination::assigningValues()
 
 void Pagination::connects()
 {
-    connect(NetworkClient::packetHandler, &PacketHandler::signalSetQueryModel, this, &Pagination::setMaxPage);
+    connect(NetworkClient::packetHandler, &PacketHandler::signalSetQueryModel, this, &Pagination::distributor);
 }
 
-void Pagination::goToPage(int currentPage)
+void Pagination::goToPage(QString page)
 {
+    int currentPage = page.toInt();
     int setPages = this->currentPage - currentPageInModel();
 
     this->currentPage = (currentPage > maxPage) ? maxPage : currentPage;
@@ -218,15 +215,49 @@ void Pagination::goToPage(int currentPage)
         updateTablePage();
     else
         initializationStartModel();
+
+    if(!searchText.isEmpty())
+        search(searchText, typeSearch, column);
 }
 
-void Pagination::search(QString searchText, QString typeSearch, int columnCurrentIndex)
+void Pagination::search(QString searchText, QString typeSearch, QComboBox* column)
 {
     if(searchText.isEmpty())
         return;
 
-    for (QSharedPointer<QStandardItemModel> model : models)
-        searchModule->searchInModels(model, searchText, typeSearch, columnCurrentIndex, currentPage, rowsPerPage);
+    this->searchText = searchText;
+    this->typeSearch = typeSearch;
+    this->column = column;
 
-//    searchInDB();
+    for (QSharedPointer<QStandardItemModel> model : models)
+    {
+        if(searchModule->searchInModels(model, searchText, typeSearch, column->currentIndex(), currentPage, rowsPerPage))
+        {
+            updateTablePage();
+            return;
+        }
+    }
+
+    searchModule->searchInDB(modelTypes, column->currentText() + "/" + searchText + "/" + typeSearch);
+}
+
+void Pagination::distributor(QueryData* data)
+{
+    if(data->modelTypes != modelTypes)
+        return;
+
+    switch (data->queryTypes)
+    {
+    case QueryTypes::CountEntrites:
+        setMaxPage(data->result);
+        break;
+
+    case QueryTypes::Search:
+        goToPage(data->result);
+        break;
+
+    default:
+        Message::logWarn("Я не знаю что делать");
+        break;
+    }
 }

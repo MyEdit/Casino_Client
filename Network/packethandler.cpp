@@ -10,14 +10,25 @@ void PacketHandler::clientHandler()
     PacketTypes packettype;
     while(true)
     {
-        if (recv(NetworkClient::serverSocket, (char*)&packettype, sizeof(PacketTypes), 0) <= 0)
+        if (recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&packettype), sizeof(PacketTypes), 0) <= 0)
         {
-            //TODO: Вот тут, надо реализовать блокировку всех потоков и попытку реконнекта к серверу т.к в эту часть кода можно попасть только тогда, когда связь с сервером потеряна
-            Message::logError("Сonnection to server was lost or an error occurred");
-            return; //Временно, дабы при дисконнекте от сервера приложение не висло
+            NetworkClient::onServerDisconnected();
+            tryReconnectToServer();
+            continue;
         }
         packetHandler(packettype);
     }
+}
+
+void PacketHandler::tryReconnectToServer()
+{
+    //TODO: Тут нужно вызвать окно с таймером реконнекта
+    while(!NetworkClient::connectToServer())
+    {
+        sleep(5);
+    }
+    //TODO: Сделать новый тип пакета P_Reconnection и отсылать отсюда серверу свой ник, дабы он по возможности добавил его в мапу Conections (Ведь сервер мог перезагрузиться, следовательно и мапа Conections тогда будет пуста)
+    Message::logInfo("Reconnect to server successful");
 }
 
 void PacketHandler::packetHandler(PacketTypes packettype)

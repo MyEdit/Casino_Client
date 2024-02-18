@@ -6,6 +6,7 @@
 #include "Network/PacketsActions/p_authorization.h"
 #include "Network/PacketsActions/p_sendmodel.h"
 #include "Network/PacketsActions/p_query.h"
+#include "Network/PacketsActions/p_notification.h"
 
 class NetworkClient;
 
@@ -22,6 +23,7 @@ signals:
     void signalOpenForm();
     void signalSetModel(ModelData);
     void signalSetQueryModel(QueryData*);
+    void signalViewNotification(QString);
 };
 
 #endif // CLIENTHANDLER_H

@@ -36,6 +36,7 @@ void PacketHandler::packetHandler(PacketTypes packettype)
         }
         case(PacketTypes::P_Notification):
         {
+            emit signalViewNotification(P_Notification::getTextNotification());
             break;
         }
         case(PacketTypes::P_DeleteTable):

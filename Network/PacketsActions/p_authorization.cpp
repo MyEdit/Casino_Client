@@ -4,9 +4,7 @@ Window_Admin* P_Authorization::adminW;
 
 void P_Authorization::openMainWindow()
 {
-    QWidget* currentForm = QApplication::activeWindow();
-    currentForm->close();
-
+    qApp->activeWindow()->close();
     adminW = new Window_Admin;
     adminW->show();
 }

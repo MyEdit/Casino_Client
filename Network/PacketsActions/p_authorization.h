@@ -3,7 +3,6 @@
 
 #include "Network/networkclient.h"
 #include "GUI/window_admin.h"
-#include <QApplication>
 
 class Window_Admin;
 

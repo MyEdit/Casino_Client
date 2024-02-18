@@ -20,9 +20,11 @@ SOURCES += \
     GUI/TabWidgets/creategametable.cpp \
     GUI/TabWidgets/existingtables.cpp \
     GUI/TabWidgets/welcome.cpp \
+    GUI/notification.cpp \
     GUI/window_admin.cpp \
     GUI/window_auth.cpp \
     Network/PacketsActions/p_authorization.cpp \
+    Network/PacketsActions/p_notification.cpp \
     Network/PacketsActions/p_query.cpp \
     Network/PacketsActions/p_sendmodel.cpp \
     Network/networkclient.cpp \
@@ -37,10 +39,12 @@ HEADERS += \
     GUI/TabWidgets/creategametable.h \
     GUI/TabWidgets/existingtables.h \
     GUI/TabWidgets/welcome.h \
+    GUI/notification.h \
     GUI/window_admin.h \
     GUI/window_auth.h \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
+    Network/PacketsActions/p_notification.h \
     Network/PacketsActions/p_query.h \
     Network/PacketsActions/p_sendmodel.h \
     Network/networkclient.h \

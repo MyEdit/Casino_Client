@@ -49,6 +49,7 @@ bool NetworkClient::connectToServer()
     //Коннекты с сигналами из потока обработчика пакетов
     QObject::connect(packetHandler, &PacketHandler::signalOpenForm, this, &P_Authorization::openMainWindow);
     QObject::connect(packetHandler, &PacketHandler::signalSetModel, this, &P_SendModel::setModel);
+    QObject::connect(packetHandler, &PacketHandler::signalViewNotification, this, &P_Notification::viewNotification);
 
     packetHandler->start();
     Message::logInfo("Connection successful!");

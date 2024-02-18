@@ -238,7 +238,7 @@ void Pagination::search(QString searchText, QString typeSearch, QComboBox* colum
         }
     }
 
-    searchModule->searchInDB(modelTypes, column->currentText() + "/" + searchText + "/" + typeSearch);
+//    searchModule->searchInDB(modelTypes, column->currentText() + "/" + searchText + "/" + typeSearch);
 }
 
 void Pagination::distributor(QueryData* data)
@@ -253,8 +253,12 @@ void Pagination::distributor(QueryData* data)
         break;
 
     case QueryTypes::Search:
-        goToPage(data->result);
+    {
+        QString page = data->result;
+        page.chop(1);
+        goToPage(page);
         break;
+    }
 
     default:
         Message::logWarn("Я не знаю что делать");

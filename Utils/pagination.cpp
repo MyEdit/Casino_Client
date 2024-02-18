@@ -14,6 +14,10 @@ Pagination::Pagination(QWidget* parent, QTableView* table, QPushButton* prevButt
 
     assigningValues();
     connects();
+}
+
+void Pagination::start()
+{
     loadingMaxPage();
     initializationStartModel();
 }
@@ -168,7 +172,7 @@ void Pagination::initializationStartModel()
     int nextOffset = (setPages + maxPageModel) * rowsPerPage;
     int prevOffset = (setPages - maxPageModel) * rowsPerPage;
 
-    emit blockSignals(false); //Отсюда сигнал почему-то не идёт
+    emit blockInterface(false);
 
     loadingModel(ModelLoadingType::Central, startOffset);
     loadingModel(ModelLoadingType::Next, nextOffset);

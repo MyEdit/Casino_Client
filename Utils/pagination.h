@@ -38,6 +38,7 @@ public:
     void acceptModel(ModelData structModel);
     void loadingMaxPage();
     void goToPage(int currentPage);
+    void start();
 
 private:
     void goToNextModel();

@@ -57,10 +57,14 @@ void Notification::setAlertProperties(TypeMessage typeMessage, QString text, QWi
     setStyleSheet(QString("background-color: %1;").arg(backgroundColor));
     progressBar->setStyleSheet(QString("QProgressBar::chunk { background-color: %1; }").arg(progressBarColor));
     iconLabel->setPixmap(icon.pixmap(iconLabel->size()));
+
+    adjustSize(); //Автоматическая настройка размера
+
     showNotification();
 }
 
-void Notification::showNotification() {
+void Notification::showNotification()
+{
     positionAlertBox();
     show();
     timer.start(1);
@@ -70,13 +74,14 @@ void Notification::updateProgressBar()
 {
     progressBar->setValue(progressBar->value() + 1);
     if (progressBar->value() == progressBar->maximum())
+    {
         close();
+        delete this; //освободить память после окончания таймера
+    }
 }
 
 void Notification::setupUI()
 {
-    setFixedSize(300, 80);
-
     QFont titleFont;
     titleFont.setFamily("Segoe UI");
     titleFont.setPointSize(12);
@@ -107,6 +112,8 @@ void Notification::setupUI()
     mainLayout->addWidget(titleLabel, 1, 1);
     mainLayout->addWidget(textLabel, 2, 1);
     mainLayout->addWidget(progressBar, 3, 0, 1, 2);
+
+    setFixedWidth(300);
 }
 
 void Notification::setupConnections()

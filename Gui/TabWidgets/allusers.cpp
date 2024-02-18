@@ -11,6 +11,8 @@ AllUsers::AllUsers(QWidget *parent) :
     creatingObjects();
     connects();
     workingWithTableView();
+
+    pagination->start();
 }
 
 AllUsers::~AllUsers()

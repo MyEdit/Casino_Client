@@ -11,6 +11,8 @@ ExistingTables::ExistingTables(QWidget *parent) :
     creatingObjects();
     connects();
     workingWithTableView();
+
+    pagination->start();
 }
 
 ExistingTables::~ExistingTables()
@@ -93,8 +95,6 @@ void ExistingTables::blockingInterface(bool flag)
     QList<QComboBox*> comboBoxs = this->findChildren<QComboBox*>();
     for(QComboBox* comboBox : comboBoxs)
         comboBox->setEnabled(flag);
-
-    qDebug() << flag;
 
     ui->sorting->setEnabled(flag);
     ui->pageNumberToNavigate->setEnabled(flag);

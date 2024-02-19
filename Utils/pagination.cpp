@@ -55,7 +55,7 @@ int Pagination::currentPageInModel()
 
 void Pagination::setMaxPage(QString rowCount)
 {
-    maxPage = static_cast<int>(std::ceil(rowCount.toDouble() / rowsPerPage));
+    maxPage = std::ceil(rowCount.toDouble() / rowsPerPage);
     emit setMaxPageInLabel(maxPage);
 }
 
@@ -91,6 +91,7 @@ void Pagination::next()
 {
     if(currentPage < maxPage)
     {
+        qDebug() << currentPage;
         prevButton->setEnabled(true);
         if(currentPageInModel() == maxPageModel)
         {
@@ -206,6 +207,9 @@ void Pagination::connects()
 
 void Pagination::goToPage(QString page)
 {
+    if(page.isEmpty())
+        return;
+
     int currentPage = page.toInt();
     int setPages = this->currentPage - currentPageInModel();
 
@@ -234,11 +238,13 @@ void Pagination::search(QString searchText, QString typeSearch, QComboBox* colum
         if(searchModule->searchInModels(model, searchText, typeSearch, column->currentIndex(), currentPage, rowsPerPage))
         {
             updateTablePage();
+            this->searchText.clear();
+            this->typeSearch.clear();
             return;
         }
     }
 
-//    searchModule->searchInDB(modelTypes, column->currentText() + "/" + searchText + "/" + typeSearch);
+    searchModule->searchInDB(modelTypes, column->currentText() + "|" + searchText + "|" + typeSearch);
 }
 
 void Pagination::distributor(QueryData* data)
@@ -254,8 +260,7 @@ void Pagination::distributor(QueryData* data)
 
     case QueryTypes::Search:
     {
-        QString page = data->result;
-        page.chop(1);
+        QString page = QString::number(std::ceil(data->result.toDouble() / rowsPerPage));
         goToPage(page);
         break;
     }

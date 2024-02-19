@@ -82,7 +82,7 @@ QVector<QString> WorkingIsTableView::getColumnHeaders()
     QAbstractItemModel* model =tableView->model();
     int columnCount = model->columnCount();
 
-    for (int column = 0; column < columnCount; ++column)
+    for (int column = 1; column < columnCount; ++column)
     {
         QString header = model->headerData(column, Qt::Horizontal).toString();
         header = header.replace("\n", " ");

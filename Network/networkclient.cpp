@@ -72,7 +72,7 @@ bool NetworkClient::start()
 //Отправка пакета серверу
 void NetworkClient::sendToServer(QString message)
 {
-    int message_size = message.size();
+    int message_size = message.toUtf8().size();
     send(serverSocket, reinterpret_cast<const char*>(&message_size), sizeof(int), 0);
     send(serverSocket, reinterpret_cast<const char*>(message.toUtf8().constData()), message_size, 0);
 }

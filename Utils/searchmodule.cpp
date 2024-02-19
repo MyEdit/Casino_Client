@@ -12,7 +12,7 @@ bool SearchModule::searchInModels(QSharedPointer<QStandardItemModel> model, QStr
     bool resultSearchInModel = false;
     for (int row = 0; row < model->rowCount(); row++)
     {
-        QModelIndex index = model->index(row, columnCurrentIndex);
+        QModelIndex index = model->index(row, columnCurrentIndex + 1);
         QVariant data = model->data(index);
 
         if (typeSearch == "%")
@@ -22,6 +22,7 @@ bool SearchModule::searchInModels(QSharedPointer<QStandardItemModel> model, QStr
 
         if (resultSearchInModel)
         {
+            qDebug() << index;
             double resultRow = model->data(model->index(row, 0)).toDouble();
             currentPage = std::ceil(resultRow / rowsPerPage);
             workingIsTableView->setModel(model);

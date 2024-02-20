@@ -40,12 +40,11 @@ void ExistingTables::assigningValues()
     boxsNameColumn.push_back(ui->searchColumn);
     boxsNameColumn.push_back(ui->sortingColumn);
 
-    modelTypes = ModelTypes::ActiveTables;
+    modelTypes = ModelTypes::TestTable;
 
     typeSearch = '%';
 
     goToPageTimer.setSingleShot(true);
-    searchTimer.setSingleShot(true);
 }
 
 void ExistingTables::creatingObjects()
@@ -58,6 +57,7 @@ void ExistingTables::connects()
 {
     connect(ui->prevButton, &QPushButton::clicked, pagination, &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination, &Pagination::next);
+    connect(ui->pushButton_search, &QPushButton::clicked, this, &ExistingTables::search);
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &ExistingTables::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &ExistingTables::search);
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &ExistingTables::selectTypeSearch);
@@ -71,11 +71,6 @@ void ExistingTables::connects()
     connect(&goToPageTimer, &QTimer::timeout, this, [=]()
     {
         pagination->goToPage(ui->pageNumberToNavigate->text());
-    });
-
-    connect(&searchTimer, &QTimer::timeout, this, [=]()
-    {
-        pagination->search(ui->searchText->text(), typeSearch, ui->searchColumn);
     });
 }
 
@@ -119,7 +114,7 @@ void ExistingTables::blockingInterface(bool flag)
 
 void ExistingTables::search()
 {
-    searchTimer.start(1000);
+    pagination->search(ui->searchText->text(), typeSearch, ui->searchColumn);
 }
 
 void ExistingTables::selectTypeSearch(int arg)

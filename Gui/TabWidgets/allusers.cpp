@@ -45,7 +45,6 @@ void AllUsers::assigningValues()
     typeSearch = '%';
 
     goToPageTimer.setSingleShot(true);
-    searchTimer.setSingleShot(true);
 }
 
 void AllUsers::creatingObjects()
@@ -58,6 +57,7 @@ void AllUsers::connects()
 {
     connect(ui->prevButton, &QPushButton::clicked, pagination, &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination, &Pagination::next);
+    connect(ui->pushButton_search, &QPushButton::clicked, this, &AllUsers::search);
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &AllUsers::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &AllUsers::search);
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &AllUsers::selectTypeSearch);
@@ -71,11 +71,6 @@ void AllUsers::connects()
     connect(&goToPageTimer, &QTimer::timeout, this, [=]()
     {
         pagination->goToPage(ui->pageNumberToNavigate->text());
-    });
-
-    connect(&searchTimer, &QTimer::timeout, this, [=]()
-    {
-        pagination->search(ui->searchText->text(), typeSearch, ui->searchColumn);
     });
 }
 
@@ -119,7 +114,7 @@ void AllUsers::blockingInterface(bool flag)
 
 void AllUsers::search()
 {
-    searchTimer.start(1000);
+    pagination->search(ui->searchText->text(), typeSearch, ui->searchColumn);
 }
 
 void AllUsers::selectTypeSearch(int arg)

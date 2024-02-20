@@ -20,10 +20,10 @@ class Pagination : public QWidget
     QTableView* tableView;
     QPushButton* prevButton;
     QPushButton* nextButton;
-    int currentPage = 1;
-    int rowsPerPage = 10;
-    int maxPageModel = 5;
-    int minPageModel = 1;
+    int currentPage;
+    int rowsPerPage;
+    int maxPageModel;
+    int minPageModel;
     int maxPage;
     WorkingIsTableView* workingIsTableView;
     SearchModule* searchModule;
@@ -32,6 +32,7 @@ class Pagination : public QWidget
     QString searchText;
     QString typeSearch;
     QComboBox* column;
+    QTimer searchTimer;
 
 public:
     Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, WorkingIsTableView* workingIsTableView, ModelTypes modelTypes);
@@ -47,6 +48,7 @@ public:
     void goToPage(QString page);
     void start();
     void search(QString searchText, QString typeSearch, QComboBox* column);
+    void searchInDb();
 
 private:
     void goToNextModel();

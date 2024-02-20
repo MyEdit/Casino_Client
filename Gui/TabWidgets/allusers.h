@@ -26,7 +26,6 @@ class AllUsers : public QWidget
     WorkingIsTableView* workingIsTableView;
     ModelTypes modelTypes;
     QTimer goToPageTimer;
-    QTimer searchTimer;
     QString typeSearch;
 
 public:

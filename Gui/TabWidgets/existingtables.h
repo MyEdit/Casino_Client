@@ -11,7 +11,6 @@
 #include <QTimer>
 #include <QMessageBox>
 #include "Utils/pagination.h"
-#include "Utils/workingistableview.h"
 
 class Pagination;
 
@@ -28,7 +27,6 @@ class ExistingTables : public QWidget
     WorkingIsTableView* workingIsTableView;
     ModelTypes modelTypes;
     QTimer goToPageTimer;
-    QTimer searchTimer;
     QString typeSearch;
 
 public:

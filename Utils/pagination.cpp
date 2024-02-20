@@ -91,7 +91,6 @@ void Pagination::next()
 {
     if(currentPage < maxPage)
     {
-        qDebug() << currentPage;
         prevButton->setEnabled(true);
         if(currentPageInModel() == maxPageModel)
         {
@@ -198,11 +197,14 @@ void Pagination::assigningValues()
     rowsPerPage = 10;
     maxPageModel = 5;
     minPageModel = 1;
+    searchTimer.setSingleShot(true);
 }
 
 void Pagination::connects()
 {
     connect(NetworkClient::packetHandler, &PacketHandler::signalSetQueryModel, this, &Pagination::distributor);
+
+    connect(&searchTimer, &QTimer::timeout, this, &Pagination::searchInDb);
 }
 
 void Pagination::goToPage(QString page)
@@ -244,6 +246,11 @@ void Pagination::search(QString searchText, QString typeSearch, QComboBox* colum
         }
     }
 
+    searchTimer.start(1000);
+}
+
+void Pagination::searchInDb()
+{
     searchModule->searchInDB(modelTypes, column->currentText() + "|" + searchText + "|" + typeSearch);
 }
 

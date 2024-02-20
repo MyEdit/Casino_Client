@@ -49,4 +49,8 @@ void P_SendModel::initMapFunctions()
     {
         P_Authorization::adminW->setModel_ExistingTab(model);
     });
+    setModelFunctions.insert(ModelTypes::TestTable, [&](ModelData model)
+    {
+        P_Authorization::adminW->setModel_ExistingTab(model);
+    });
 }

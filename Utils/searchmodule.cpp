@@ -22,7 +22,6 @@ bool SearchModule::searchInModels(QSharedPointer<QStandardItemModel> model, QStr
 
         if (resultSearchInModel)
         {
-            qDebug() << index;
             double resultRow = model->data(model->index(row, 0)).toDouble();
             currentPage = std::ceil(resultRow / rowsPerPage);
             workingIsTableView->setModel(model);

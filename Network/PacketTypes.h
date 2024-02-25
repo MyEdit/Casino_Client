@@ -44,7 +44,8 @@ enum class ModelLoadingType
 enum class Roles
 {
     Admin = 1,
-    TableManager = 2
+    TableManager = 2,
+    User = 3
 };
 
 struct ModelData

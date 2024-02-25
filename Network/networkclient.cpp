@@ -57,6 +57,7 @@ bool NetworkClient::start()
 
     qRegisterMetaType<ModelData>("ModelData");
     qRegisterMetaType<ModelData>("QueryData");
+    qRegisterMetaType<Roles>("Roles");
 
     packetHandler = new PacketHandler();
 

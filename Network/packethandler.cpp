@@ -38,7 +38,7 @@ void PacketHandler::packetHandler(PacketTypes packettype)
     {
         case(PacketTypes::P_Authorization):
         {
-            emit signalOpenForm();
+            emit signalOpenForm(P_Authorization::getRole());
             break;
         }
         case(PacketTypes::P_SendModel):

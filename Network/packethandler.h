@@ -21,7 +21,7 @@ private:
     void tryReconnectToServer();
 
 signals:
-    void signalOpenForm();
+    void signalOpenForm(Roles role);
     void signalSetModel(ModelData);
     void signalSetQueryModel(QueryData*);
     void signalViewNotification(QString);

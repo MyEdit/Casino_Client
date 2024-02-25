@@ -25,7 +25,7 @@ void Pagination::creatingObjects()
     for(int i = 0; i < 3; i++)
         models.push_back(QSharedPointer<QStandardItemModel>::create());
 
-    searchModule = new SearchModule(this, workingIsTableView);
+    searchModule = new SearchModule(workingIsTableView);
 }
 
 void Pagination::updateTablePage()
@@ -203,7 +203,6 @@ void Pagination::assigningValues()
 void Pagination::connects()
 {
     connect(NetworkClient::packetHandler, &PacketHandler::signalSetQueryModel, this, &Pagination::distributor);
-
     connect(&searchTimer, &QTimer::timeout, this, &Pagination::searchInDb);
 }
 
@@ -239,9 +238,9 @@ void Pagination::search(QString searchText, QString typeSearch, QComboBox* colum
     {
         if(searchModule->searchInModels(model, searchText, typeSearch, column->currentIndex(), currentPage, rowsPerPage))
         {
-            updateTablePage();
             this->searchText.clear();
             this->typeSearch.clear();
+            updateTablePage();
             return;
         }
     }
@@ -276,4 +275,21 @@ void Pagination::distributor(QueryData* data)
         Message::logWarn("Я не знаю что делать");
         break;
     }
+}
+
+void Pagination::refreshStartModel()
+{
+//    columtSort = (_sortingOn) ? _sortingColumn->currentText() : "";
+//    typeSort = _typesSorting[_typeSorting->currentIndex()];
+
+//    blockingInterface(false);
+
+//    labelMaxPage->setText("????");
+//    labelCurrentPage->setText("1");
+
+//    pageNumberToNavigate->clear();
+    currentPage = 1;
+
+//    _getMaxPageTread->getMaxPage(_tableWorkInDB, _rowsPerPage, _filter);
+    initializationStartModel();
 }

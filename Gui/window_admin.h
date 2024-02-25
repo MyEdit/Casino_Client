@@ -2,17 +2,14 @@
 #define WINDOW_ADMIN_H
 
 #include <QMainWindow>
-#include <QTabBar>
 #include <QSharedPointer>
-#include <QPushButton>
-#include <QLabel>
 #include <QMap>
 #include <QScreen>
 #include <QPainter>
 #include <QBitmap>
-#include "GUI/TabWidgets/existingtables.h"
-#include "GUI/TabWidgets/allusers.h"
-#include "GUI/TabWidgets/welcome.h"
+#include "Gui/TabWidgets/existingtables.h"
+#include "Gui/TabWidgets/allusers.h"
+#include "Gui/TabWidgets/welcome.h"
 #include "Network/networkclient.h"
 #include "Utils/windowtracker.h"
 

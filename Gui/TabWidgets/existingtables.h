@@ -1,16 +1,12 @@
 ﻿#ifndef EXISTINGTABLES_H
 #define EXISTINGTABLES_H
 
-#include <QWidget>
 #include "QStandardItemModel"
-#include "Utils/Message.h"
 #include "Network/PacketTypes.h"
-#include "Network/networkclient.h"
-#include <QMutex>
 #include <math.h>
-#include <QTimer>
 #include <QMessageBox>
 #include "Utils/pagination.h"
+#include "BaseClass/baseclasssearchwindow.h"
 
 class Pagination;
 
@@ -18,16 +14,10 @@ namespace Ui {
 class ExistingTables;
 }
 
-class ExistingTables : public QWidget
+class ExistingTables : public BaseClassSearchWindow
 {
-    Q_OBJECT
     Ui::ExistingTables *ui;
-    QVector<QComboBox*> boxsNameColumn;
     Pagination* pagination;
-    WorkingIsTableView* workingIsTableView;
-    ModelTypes modelTypes;
-    QTimer goToPageTimer;
-    QString typeSearch;
 
 public:
     explicit ExistingTables(QWidget *parent = nullptr);
@@ -36,17 +26,17 @@ public:
     void setModel(ModelData model);
 
 private:
-    void workingWithTableView();
     void setValueToMaxPage(int maxPage);
     void assigningValues();
     void updateCurrentPageInLabel(int currentPage);
     void creatingObjects();
     void goToPage();
     void connects();
-    void blockingInterface(bool flag);
     void search();
-    void blockAndOperate(QObject* widget, const std::function<void()>& operation);
     void selectTypeSearch(int arg);
+    void sort();
+    void sorting(int arg);
+    void onHeaderClicked(int logicalIndex);
 };
 
 #endif // EXISTINGTABLES_H

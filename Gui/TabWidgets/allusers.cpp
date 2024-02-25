@@ -2,7 +2,7 @@
 #include "ui_allusers.h"
 
 AllUsers::AllUsers(QWidget *parent) :
-    QWidget(parent),
+    BaseClassSearchWindow(parent),
     ui(new Ui::AllUsers)
 {
     ui->setupUi(this);
@@ -20,10 +20,6 @@ AllUsers::~AllUsers()
     delete ui;
 }
 
-void AllUsers::workingWithTableView()
-{
-    workingIsTableView->settingVisualTableView();
-}
 
 void AllUsers::setModel(ModelData model)
 {
@@ -58,9 +54,17 @@ void AllUsers::connects()
     connect(ui->prevButton, &QPushButton::clicked, pagination, &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination, &Pagination::next);
     connect(ui->pushButton_search, &QPushButton::clicked, this, &AllUsers::search);
+
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &AllUsers::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &AllUsers::search);
+
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &AllUsers::selectTypeSearch);
+    connect(ui->sorting, &QCheckBox::stateChanged, this, &AllUsers::sorting);
+
+    connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AllUsers::sort);
+    connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AllUsers::sort);
+
+    connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &AllUsers::onHeaderClicked);
 
     connect(pagination, &Pagination::updateCurrentPageInLabel, this, &AllUsers::updateCurrentPageInLabel);
     connect(pagination, &Pagination::setMaxPageInLabel, this, &AllUsers::setValueToMaxPage);
@@ -79,13 +83,6 @@ void AllUsers::updateCurrentPageInLabel(int currentPage)
     ui->labelCurrentPage->setText(QString::number(currentPage));
 }
 
-void AllUsers::blockAndOperate(QObject* widget, const std::function<void()>& operation)
-{
-    widget->blockSignals(true);
-    operation();
-    widget->blockSignals(false);
-}
-
 void AllUsers::goToPage()
 {
     if(ui->pageNumberToNavigate->text() == "0")
@@ -95,21 +92,6 @@ void AllUsers::goToPage()
     }
 
     goToPageTimer.start(1000);
-}
-
-void AllUsers::blockingInterface(bool flag)
-{
-    QList<QPushButton*> pushbuttons = this->findChildren<QPushButton*>();
-    for(QPushButton* pushbutton : pushbuttons)
-        pushbutton->setEnabled(flag);
-
-    QList<QComboBox*> comboBoxs = this->findChildren<QComboBox*>();
-    for(QComboBox* comboBox : comboBoxs)
-        comboBox->setEnabled(flag);
-
-    ui->sorting->setEnabled(flag);
-    ui->pageNumberToNavigate->setEnabled(flag);
-    ui->searchText->setEnabled(flag);
 }
 
 void AllUsers::search()
@@ -125,4 +107,39 @@ void AllUsers::selectTypeSearch(int arg)
         typeSearch = '%';
 
     search();
+}
+
+void AllUsers::sort()
+{
+    if(!sortingOn)
+        return;
+
+    pagination->refreshStartModel();
+}
+
+void AllUsers::sorting(int arg)
+{
+    sortingOn = (arg == 2) ? true : false;
+    sort();
+}
+
+void AllUsers::onHeaderClicked(int logicalIndex)
+{
+    if(!sortingOn)
+        return;
+
+    QString headerText = ui->tableView->model()->headerData(logicalIndex, Qt::Horizontal).toString();
+    headerText = headerText.replace("\n", " ");
+
+    if (ui->sortingColumn->currentText() == headerText)
+    {
+        int currentSortIndex = ui->typeSorting->currentIndex();
+        currentSortIndex = (currentSortIndex + 1) % ui->typeSorting->count();
+        ui->typeSorting->setCurrentIndex(currentSortIndex);
+    }
+    else
+        settingValueInComboBox(ui->sortingColumn, headerText);
+
+    if(ui->searchColumn->currentText() != headerText)
+        settingValueInComboBox(ui->searchColumn, headerText);
 }

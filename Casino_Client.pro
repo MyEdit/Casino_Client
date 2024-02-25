@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    BaseClass/baseclasssearchwindow.cpp \
     GUI/TabWidgets/allusers.cpp \
     GUI/TabWidgets/creategametable.cpp \
     GUI/TabWidgets/existingtables.cpp \
@@ -33,9 +34,10 @@ SOURCES += \
     Utils/searchmodule.cpp \
     Utils/serializer.cpp \
     Utils/workingistableview.cpp \
-    main.cpp \
+    main.cpp
 
 HEADERS += \
+    BaseClass/baseclasssearchwindow.h \
     GUI/TabWidgets/allusers.h \
     GUI/TabWidgets/creategametable.h \
     GUI/TabWidgets/existingtables.h \
@@ -54,7 +56,7 @@ HEADERS += \
     Utils/pagination.h \
     Utils/searchmodule.h \
     Utils/serializer.h \
-    Constants.h \ \
+    Constants.h \
     Utils/windowtracker.h \
     Utils/workingistableview.h
 

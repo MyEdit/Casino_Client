@@ -1,7 +1,6 @@
 ﻿#include "searchmodule.h"
 
-SearchModule::SearchModule(Pagination* pagination, WorkingIsTableView *workingIsTableView) :
-    pagination(pagination),
+SearchModule::SearchModule(WorkingIsTableView *workingIsTableView) :
     workingIsTableView(workingIsTableView)
 {
 

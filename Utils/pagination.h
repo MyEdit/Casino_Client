@@ -10,6 +10,7 @@
 #include "Utils/workingistableview.h"
 #include "Utils/searchmodule.h"
 #include "Network/networkclient.h"
+#include "QTimer"
 
 class SearchModule;
 
@@ -38,17 +39,13 @@ public:
     Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, WorkingIsTableView* workingIsTableView, ModelTypes modelTypes);
 
     int getMaxPage();
-    int currentPageInModel();
-    void updateTablePage();
     void prev();
     void next();
-    void setMaxPage(QString rowCount);
     void acceptModel(ModelData structModel);
-    void loadingMaxPage();
     void goToPage(QString page);
-    void start();
     void search(QString searchText, QString typeSearch, QComboBox* column);
-    void searchInDb();
+    void refreshStartModel();
+    void start();
 
 private:
     void goToNextModel();
@@ -59,6 +56,11 @@ private:
     void connects();
     void creatingObjects();
     void distributor(QueryData* data);
+    void searchInDb();
+    void loadingMaxPage();
+    void updateTablePage();
+    int currentPageInModel();
+    void setMaxPage(QString rowCount);
 
 signals:
     void updateCurrentPageInLabel(int);

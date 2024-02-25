@@ -2,7 +2,7 @@
 #define P_AUTHORIZATION_H
 
 #include "Network/networkclient.h"
-#include "GUI/window_admin.h"
+#include "Gui/window_admin.h"
 
 class Window_Admin;
 

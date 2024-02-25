@@ -72,7 +72,7 @@
     background-color: white;
     border: 1px solid black;
     border-radius: 10px;
-    padding: 5px 15px;
+    padding: 5px;
     color: black;
 }
 
@@ -107,7 +107,7 @@ QPushButton:pressed {
     background-color: white;
     border: 1px solid black;
     border-radius: 10px;
-    padding: 5px 15px;
+    padding: 5px;
     color: black;
 }
 
@@ -251,39 +251,6 @@ QPushButton:pressed {
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="moreDetailed">
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 5px 15px;
-    color: black;
-}
-
-QPushButton:hover {
-    background-color: rgb(100, 88, 255);
-	color: white;
-}
-
-QPushButton:pressed {
-	background-color: rgba(220, 60, 190, 255);
-}</string>
-       </property>
-       <property name="text">
-        <string>Подробнее</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <widget class="QPushButton" name="addTable">
        <property name="font">
         <font>
@@ -298,7 +265,7 @@ QPushButton:pressed {
     background-color: white;
     border: 1px solid black;
     border-radius: 10px;
-    padding: 5px 15px;
+    padding: 5px;
     color: black;
 }
 
@@ -312,7 +279,97 @@ QPushButton:pressed {
 }</string>
        </property>
        <property name="text">
-        <string>Добавить</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="../../Resources.qrc">
+         <normaloff>:/icons/resources/add.png</normaloff>:/icons/resources/add.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="moreDetailed">
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    color: black;
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 88, 255);
+	color: white;
+}
+
+QPushButton:pressed {
+	background-color: rgba(220, 60, 190, 255);
+}</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../Resources.qrc">
+         <normaloff>:/icons/resources/edited.png</normaloff>:/icons/resources/edited.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    color: black;
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 88, 255);
+	color: white;
+}
+
+QPushButton:pressed {
+	background-color: rgba(220, 60, 190, 255);
+}</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../Resources.qrc">
+         <normaloff>:/icons/resources/delete.png</normaloff>:/icons/resources/delete.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -427,18 +484,15 @@ QPushButton:pressed {
        <property name="styleSheet">
         <string notr="true">QPushButton {
 	background-color: white;
-    border: 2px solid black; /* добавляем обводку */
+    border: 2px solid black; 
     border-radius: 10px;
     border-radius: 10px;
     padding-left: 15px;
     padding-right: 15px;
-	padding-bottom: 3px;
-    color: black;
 }
 
 QPushButton:hover {
     background-color: rgb(100, 88, 255);
-	color: white;
 }
 
 QPushButton:pressed {
@@ -446,7 +500,17 @@ QPushButton:pressed {
 }</string>
        </property>
        <property name="text">
-        <string>&lt;&lt;</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="../../Resources.qrc">
+         <normaloff>:/icons/resources/prev.png</normaloff>:/icons/resources/prev.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
        </property>
       </widget>
      </item>
@@ -516,18 +580,15 @@ QPushButton:pressed {
        <property name="styleSheet">
         <string notr="true">QPushButton {
 	background-color: white;
-    border: 2px solid black; /* добавляем обводку */
+    border: 2px solid black; 
     border-radius: 10px;
     border-radius: 10px;
     padding-left: 15px;
     padding-right: 15px;
-	padding-bottom: 3px;
-    color: black;
 }
 
 QPushButton:hover {
     background-color: rgb(100, 88, 255);
-	color: white;
 }
 
 QPushButton:pressed {
@@ -535,7 +596,17 @@ QPushButton:pressed {
 }</string>
        </property>
        <property name="text">
-        <string>&gt;&gt;</string>
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="../../Resources.qrc">
+         <normaloff>:/icons/resources/next.png</normaloff>:/icons/resources/next.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
        </property>
       </widget>
      </item>

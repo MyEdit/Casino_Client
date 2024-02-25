@@ -1,16 +1,18 @@
 ﻿#ifndef SEARCH_H
 #define SEARCH_H
 
-#include "Utils/pagination.h"
+#include "Utils/workingistableview.h"
+#include "Network/networkclient.h"
+#include <math.h>
+
 class Pagination;
 
 class SearchModule
 {
-    Pagination* pagination;
     WorkingIsTableView* workingIsTableView;
 
 public:
-    SearchModule(Pagination* pagination, WorkingIsTableView* workingIsTableView);
+    SearchModule(WorkingIsTableView* workingIsTableView);
 
     bool searchInModels(QSharedPointer<QStandardItemModel> model, QString searchText, QString typeSearch, int columnCurrentIndex, int& currentPage, int rowsPerPage);
     void searchInDB(ModelTypes modelType, QString searchText);

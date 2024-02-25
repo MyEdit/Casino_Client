@@ -9,8 +9,8 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     Notification* notification = new Notification();
-
     Window_Auth w;
+    WindowTracker::activeWindow = &w;
     w.show();
 
     if (!network.init())

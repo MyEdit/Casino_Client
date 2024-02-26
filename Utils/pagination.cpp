@@ -17,7 +17,7 @@ Pagination::Pagination(QWidget* parent, QTableView* table, QPushButton* prevButt
 void Pagination::start()
 {
     loadingMaxPage();
-    initializationStartModel();
+    initializationModels();
 }
 
 void Pagination::creatingObjects()
@@ -32,6 +32,12 @@ void Pagination::updateTablePage()
 {
     int startIndex = (currentPageInModel() - 1) * rowsPerPage;
     int endIndex = startIndex + rowsPerPage;
+
+    if(!tableView->model())
+    {
+        emit blockInterface(true);
+        return;
+    }
 
     int rowCountModel = tableView->model()->rowCount();
     for (int row = 0; row < rowCountModel; row++)
@@ -164,9 +170,10 @@ void Pagination::loadingModel(ModelLoadingType type, int offset)
     NetworkClient::sendToServer(&type, sizeof(ModelLoadingType));
     NetworkClient::sendToServer(&modelTypes, sizeof(ModelTypes));
     NetworkClient::sendToServer(&offset, sizeof(int));
+    NetworkClient::sendToServer(querySort);
 }
 
-void Pagination::initializationStartModel()
+void Pagination::initializationModels()
 {
     int setPages = currentPage - currentPageInModel();
 
@@ -219,7 +226,7 @@ void Pagination::goToPage(QString page)
     if(setPages < this->currentPage && this->currentPage <= (setPages + maxPageModel))
         updateTablePage();
     else
-        initializationStartModel();
+        initializationModels();
 
     if(!searchText.isEmpty())
         search(searchText, typeSearch, column);
@@ -250,7 +257,7 @@ void Pagination::search(QString searchText, QString typeSearch, QComboBox* colum
 
 void Pagination::searchInDb()
 {
-    searchModule->searchInDB(modelTypes, column->currentText() + "|" + searchText + "|" + typeSearch);
+    searchModule->searchInDB(modelTypes, column->currentText() + "|" + searchText + typeSearch + "|" + querySort);
 }
 
 void Pagination::distributor(QueryData* data)
@@ -277,19 +284,14 @@ void Pagination::distributor(QueryData* data)
     }
 }
 
-void Pagination::refreshStartModel()
+void Pagination::reloadModels()
 {
-//    columtSort = (_sortingOn) ? _sortingColumn->currentText() : "";
-//    typeSort = _typesSorting[_typeSorting->currentIndex()];
-
-//    blockingInterface(false);
-
-//    labelMaxPage->setText("????");
-//    labelCurrentPage->setText("1");
-
-//    pageNumberToNavigate->clear();
     currentPage = 1;
+    loadingMaxPage();
+    initializationModels();
+}
 
-//    _getMaxPageTread->getMaxPage(_tableWorkInDB, _rowsPerPage, _filter);
-    initializationStartModel();
+void Pagination::setSort(QString sort)
+{
+    querySort = sort;
 }

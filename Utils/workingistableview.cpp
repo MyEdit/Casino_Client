@@ -2,10 +2,7 @@
 
 WorkingIsTableView::WorkingIsTableView(QTableView* table, QVector<QComboBox*>* boxsNameColumn) :
     tableView(table),
-    boxsNameColumn(boxsNameColumn)
-{
-
-}
+    boxsNameColumn(boxsNameColumn) {}
 
 void WorkingIsTableView::settingVisualTableView()
 {

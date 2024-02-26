@@ -51,18 +51,10 @@ void BaseClassSearchWindow::setModel(ModelData model)
     pagination->acceptModel(model);
 }
 
-void BaseClassSearchWindow::sort()
-{
-    if(!sortingOn)
-        return;
-
-    pagination->refreshStartModel(); //нужно добавитть передачу как сортировать
-}
-
 void BaseClassSearchWindow::sorting(int arg)
 {
     sortingOn = (arg == 2) ? true : false;
-    sort();
+    prepReloadModels();
 }
 
 void BaseClassSearchWindow::selectTypeSearch(int arg)

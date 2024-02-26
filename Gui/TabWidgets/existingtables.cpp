@@ -31,6 +31,12 @@ void ExistingTables::assigningValues()
     sortingOn = false;
 
     goToPageTimer.setSingleShot(true);
+
+    typesSorting =
+    {
+        {0, " ASC"},
+        {1, " DESC"}
+    };
 }
 
 void ExistingTables::creatingObjects()
@@ -51,8 +57,8 @@ void ExistingTables::connects()
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &ExistingTables::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &ExistingTables::sorting);
 
-    connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ExistingTables::sort);
-    connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ExistingTables::sort);
+    connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ExistingTables::prepReloadModels);
+    connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ExistingTables::prepReloadModels);
 
     connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &ExistingTables::onHeaderClicked);
 
@@ -109,3 +115,23 @@ void ExistingTables::onHeaderClicked(int logicalIndex)
     if(ui->searchColumn->currentText() != headerText)
         settingValueInComboBox(ui->searchColumn, headerText);
 }
+
+void ExistingTables::prepReloadModels()
+{
+    if(sortingOn)
+    {
+        QString column = ui->sortingColumn->currentText();
+        QString typeSort = typesSorting[ui->typeSorting->currentIndex()];
+        pagination->setSort("ORDER BY [" + column + "] " + typeSort);
+    }
+    else
+        pagination->setSort("");
+
+    ui->labelMaxPage->setText("????");
+    ui->labelCurrentPage->setText("1");
+
+    ui->pageNumberToNavigate->clear();
+
+    pagination->reloadModels();
+}
+

@@ -31,6 +31,12 @@ void AllUsers::assigningValues()
     sortingOn = false;
 
     goToPageTimer.setSingleShot(true);
+
+    typesSorting =
+    {
+        {0, "ASC"},
+        {1, "DESC"}
+    };
 }
 
 void AllUsers::creatingObjects()
@@ -51,8 +57,8 @@ void AllUsers::connects()
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &AllUsers::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &AllUsers::sorting);
 
-    connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AllUsers::sort);
-    connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AllUsers::sort);
+    connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AllUsers::prepReloadModels);
+    connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AllUsers::prepReloadModels);
 
     connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &AllUsers::onHeaderClicked);
 
@@ -108,4 +114,23 @@ void AllUsers::onHeaderClicked(int logicalIndex)
 
     if(ui->searchColumn->currentText() != headerText)
         settingValueInComboBox(ui->searchColumn, headerText);
+}
+
+void AllUsers::prepReloadModels()
+{
+    if(sortingOn)
+    {
+        QString column = ui->sortingColumn->currentText();
+        QString typeSort = typesSorting[ui->typeSorting->currentIndex()];
+        pagination->setSort("ORDER BY [" + column + "] " + typeSort);
+    }
+    else
+        pagination->setSort("");
+
+    ui->labelMaxPage->setText("????");
+    ui->labelCurrentPage->setText("1");
+
+    ui->pageNumberToNavigate->clear();
+
+    pagination->reloadModels();
 }

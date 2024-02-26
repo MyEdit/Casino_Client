@@ -27,6 +27,7 @@ protected:
     QTimer goToPageTimer;
     QString typeSearch;
     bool sortingOn;
+    QMap<int, QString> typesSorting;
 
 public:
     BaseClassSearchWindow(QWidget *parent);
@@ -38,7 +39,6 @@ protected:
     void blockAndOperate(QObject* widget, const std::function<void()>& operation);
     void blockingInterface(bool flag);
     void settingValueInComboBox(QComboBox* comboBox, QString& headerText);
-    void sort();
     void sorting(int arg);
     void selectTypeSearch(int arg);
     void baseSetting();
@@ -50,6 +50,7 @@ protected:
     virtual void updateCurrentPageInLabel(int currentPage) = 0;
     virtual void goToPage() = 0;
     virtual void onHeaderClicked(int logicalIndex) = 0;
+    virtual void prepReloadModels() = 0;
 };
 
 #endif // BASECLASSSEARCHWINDOW_H

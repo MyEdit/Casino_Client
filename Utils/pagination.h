@@ -34,6 +34,7 @@ class Pagination : public QWidget
     QString typeSearch;
     QComboBox* column;
     QTimer searchTimer;
+    QString querySort;
 
 public:
     Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, WorkingIsTableView* workingIsTableView, ModelTypes modelTypes);
@@ -44,14 +45,15 @@ public:
     void acceptModel(ModelData structModel);
     void goToPage(QString page);
     void search(QString searchText, QString typeSearch, QComboBox* column);
-    void refreshStartModel();
+    void reloadModels();
     void start();
+    void setSort(QString sort);
 
 private:
     void goToNextModel();
     void goToPrevModel();
     void loadingModel(ModelLoadingType type, int offset);
-    void initializationStartModel();
+    void initializationModels();
     void assigningValues();
     void connects();
     void creatingObjects();

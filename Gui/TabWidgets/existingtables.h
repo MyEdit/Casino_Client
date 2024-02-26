@@ -21,6 +21,7 @@ public:
     ~ExistingTables();
 
 private:
+    void prepReloadModels() override;
     void setValueToMaxPage(int maxPage) override;
     void assigningValues() override;
     void updateCurrentPageInLabel(int currentPage) override;

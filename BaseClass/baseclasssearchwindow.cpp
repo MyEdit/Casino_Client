@@ -1,4 +1,5 @@
 ﻿#include "baseclasssearchwindow.h"
+#include "Utils/pagination.h" //если перенести в заголовочный то возникают ошибки
 
 BaseClassSearchWindow::BaseClassSearchWindow(QWidget *parent) :
     QWidget(parent)
@@ -43,4 +44,43 @@ void BaseClassSearchWindow::settingValueInComboBox(QComboBox* comboBox, QString&
     int comboBoxIndex = comboBox->findText(headerText);
     if (comboBoxIndex != -1)
         comboBox->setCurrentIndex(comboBoxIndex);
+}
+
+void BaseClassSearchWindow::setModel(ModelData model)
+{
+    pagination->acceptModel(model);
+}
+
+void BaseClassSearchWindow::sort()
+{
+    if(!sortingOn)
+        return;
+
+    pagination->refreshStartModel(); //нужно добавитть передачу как сортировать
+}
+
+void BaseClassSearchWindow::sorting(int arg)
+{
+    sortingOn = (arg == 2) ? true : false;
+    sort();
+}
+
+void BaseClassSearchWindow::selectTypeSearch(int arg)
+{
+    if(arg == 2)
+        typeSearch.clear();
+    else if(arg == 0)
+        typeSearch = '%';
+
+    search();
+}
+
+void BaseClassSearchWindow::baseSetting()
+{
+    assigningValues();
+    creatingObjects();
+    connects();
+    workingWithTableView();
+
+    pagination->start();
 }

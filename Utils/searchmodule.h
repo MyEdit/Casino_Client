@@ -5,8 +5,6 @@
 #include "Network/networkclient.h"
 #include <math.h>
 
-class Pagination;
-
 class SearchModule
 {
     WorkingIsTableView* workingIsTableView;

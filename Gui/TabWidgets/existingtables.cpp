@@ -7,22 +7,12 @@ ExistingTables::ExistingTables(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    assigningValues();
-    creatingObjects();
-    connects();
-    workingWithTableView();
-
-    pagination->start();
+    baseSetting();
 }
 
 ExistingTables::~ExistingTables()
 {
     delete ui;
-}
-
-void ExistingTables::setModel(ModelData model)
-{
-    pagination->acceptModel(model);
 }
 
 void ExistingTables::setValueToMaxPage(int maxPage)
@@ -97,30 +87,6 @@ void ExistingTables::goToPage()
 void ExistingTables::search()
 {
     pagination->search(ui->searchText->text(), typeSearch, ui->searchColumn);
-}
-
-void ExistingTables::selectTypeSearch(int arg)
-{
-    if(arg == 2)
-        typeSearch.clear();
-    else if(arg == 0)
-        typeSearch = '%';
-
-    search();
-}
-
-void ExistingTables::sort()
-{
-    if(!sortingOn)
-        return;
-
-    pagination->refreshStartModel();
-}
-
-void ExistingTables::sorting(int arg)
-{
-    sortingOn = (arg == 2) ? true : false;
-    sort();
 }
 
 void ExistingTables::onHeaderClicked(int logicalIndex)

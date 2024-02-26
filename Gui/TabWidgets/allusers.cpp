@@ -7,23 +7,12 @@ AllUsers::AllUsers(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    assigningValues();
-    creatingObjects();
-    connects();
-    workingWithTableView();
-
-    pagination->start();
+    baseSetting();
 }
 
 AllUsers::~AllUsers()
 {
     delete ui;
-}
-
-
-void AllUsers::setModel(ModelData model)
-{
-    pagination->acceptModel(model);
 }
 
 void AllUsers::setValueToMaxPage(int maxPage)
@@ -39,6 +28,7 @@ void AllUsers::assigningValues()
     modelTypes = ModelTypes::Users;
 
     typeSearch = '%';
+    sortingOn = false;
 
     goToPageTimer.setSingleShot(true);
 }
@@ -97,30 +87,6 @@ void AllUsers::goToPage()
 void AllUsers::search()
 {
     pagination->search(ui->searchText->text(), typeSearch, ui->searchColumn);
-}
-
-void AllUsers::selectTypeSearch(int arg)
-{
-    if(arg == 2)
-        typeSearch.clear();
-    else if(arg == 0)
-        typeSearch = '%';
-
-    search();
-}
-
-void AllUsers::sort()
-{
-    if(!sortingOn)
-        return;
-
-    pagination->refreshStartModel();
-}
-
-void AllUsers::sorting(int arg)
-{
-    sortingOn = (arg == 2) ? true : false;
-    sort();
 }
 
 void AllUsers::onHeaderClicked(int logicalIndex)

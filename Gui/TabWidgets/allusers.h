@@ -9,10 +9,7 @@
 #include <QTimer>
 #include <QMessageBox>
 #include "Utils/pagination.h"
-#include "Utils/workingistableview.h"
 #include "BaseClass/baseclasssearchwindow.h"
-
-class Pagination;
 
 namespace Ui {
 class AllUsers;
@@ -22,26 +19,20 @@ class AllUsers : public BaseClassSearchWindow
 {
     Q_OBJECT
     Ui::AllUsers *ui;
-    Pagination* pagination;
 
 public:
     explicit AllUsers(QWidget *parent = nullptr);
     ~AllUsers();
 
-    void setModel(ModelData model);
-
 private:
-    void setValueToMaxPage(int maxPage);
-    void assigningValues();
-    void updateCurrentPageInLabel(int currentPage);
-    void creatingObjects();
-    void goToPage();
-    void connects();
-    void search();
-    void selectTypeSearch(int arg);
-    void sort();
-    void sorting(int arg);
-    void onHeaderClicked(int logicalIndex);
+    void setValueToMaxPage(int maxPage) override;
+    void assigningValues() override;
+    void updateCurrentPageInLabel(int currentPage) override;
+    void creatingObjects() override;
+    void goToPage() override;
+    void connects() override;
+    void search() override;
+    void onHeaderClicked(int logicalIndex) override;
 };
 
 #endif // ALLUSERS_H

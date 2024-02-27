@@ -1,4 +1,5 @@
 ﻿#include "packethandler.h"
+#include "Gui/reconnecting.h"
 
 void PacketHandler::run()
 {
@@ -25,6 +26,7 @@ void PacketHandler::tryReconnectToServer()
     //TODO: Тут нужно вызвать окно с таймером реконнекта
     while(!NetworkClient::connectToServer())
     {
+
         sleep(5);
     }
     //TODO: Сделать новый тип пакета P_Reconnection и отсылать отсюда серверу свой ник, дабы он по возможности добавил его в мапу Conections (Ведь сервер мог перезагрузиться, следовательно и мапа Conections тогда будет пуста)

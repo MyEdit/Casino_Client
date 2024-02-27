@@ -1,9 +1,6 @@
-﻿#include "notification.h"
+﻿#include "reconnecting.h"
 
-#include "Constants.h"
-#include <QDebug>
-
-Notification::Notification()
+Reconnecting::Reconnecting()
 {
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
     setAttribute(Qt::WA_TranslucentBackground); //для скругления
@@ -12,7 +9,7 @@ Notification::Notification()
     setupConnections();
 }
 
-void Notification::paintEvent(QPaintEvent *event)
+void Reconnecting::paintEvent(QPaintEvent *event)
 {
     QWidget::paintEvent(event);
 
@@ -24,56 +21,38 @@ void Notification::paintEvent(QPaintEvent *event)
     painter.drawRoundedRect(contentsRect(), 10, 10); //радиус скругления
 }
 
-void Notification::setAlertProperties(TypeMessage typeMessage, QString text, QWidget* parentForm)
+void Reconnecting::setAlertProperties(QWidget* parentForm)
 {
     _parentForm = parentForm;
 
-    QString title;
+    QString title = "Пропало соединение с сервером";
+    QString message = "Идет переподключение";
     QString backgroundColor;
     QString progressBarColor;
-    QIcon icon;
+    QIcon icon(":/icons/resources/update.png");
 
-    switch (typeMessage)
-    {
-    case TypeMessage::Information :
-        title = "Информация";
-        backgroundColor = "#9bf29e";
-        progressBarColor = "#0d5901";
-        icon = style()->standardIcon(QStyle::SP_MessageBoxInformation);
-        break;
-    case TypeMessage::Warning :
-        title = "Внимание";
-        backgroundColor = "#fcb786";
-        progressBarColor = "#f80";
-        icon = style()->standardIcon(QStyle::SP_MessageBoxWarning);
-        break;
-    case TypeMessage::Error :
-        title = "Ошибка";
-        backgroundColor = "#ff8585";
-        progressBarColor = "#f00";
-        icon = style()->standardIcon(QStyle::SP_MessageBoxCritical);
-        break;
-    }
+    backgroundColor = "#ff8585";
+    progressBarColor = "#f00";
 
     titleLabel->setText(title);
-    textLabel->setText(text);
+    textLabel->setText(message);
     setStyleSheet(QString("background-color: %1;").arg(backgroundColor));
     progressBar->setStyleSheet(QString("QProgressBar::chunk { background-color: %1; }").arg(progressBarColor));
     iconLabel->setPixmap(icon.pixmap(iconLabel->size()));
 
     adjustSize(); //Автоматическая настройка размера
 
-    showNotification();
+    showReconnecting();
 }
 
-void Notification::showNotification()
+void Reconnecting::showReconnecting()
 {
     positionAlertBox();
     show();
     timer.start(1);
 }
 
-void Notification::updateProgressBar()
+void Reconnecting::updateProgressBar()
 {
     progressBar->setValue(progressBar->value() + 1);
     if (progressBar->value() == progressBar->maximum())
@@ -83,7 +62,7 @@ void Notification::updateProgressBar()
     }
 }
 
-void Notification::setupUI()
+void Reconnecting::setupUI()
 {
     QFont titleFont;
     titleFont.setFamily("Segoe UI");
@@ -117,12 +96,12 @@ void Notification::setupUI()
     mainLayout->addWidget(progressBar, 3, 0, 1, 2);
 }
 
-void Notification::setupConnections()
+void Reconnecting::setupConnections()
 {
-    connect(&timer, &QTimer::timeout, this, &Notification::updateProgressBar);
+    connect(&timer, &QTimer::timeout, this, &Reconnecting::updateProgressBar);
 }
 
-void Notification::positionAlertBox()
+void Reconnecting::positionAlertBox()
 {
     if (_parentForm) {
         QPoint parentPos = _parentForm->mapToGlobal(QPoint(0, 0));

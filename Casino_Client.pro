@@ -22,6 +22,7 @@ SOURCES += \
     GUI/TabWidgets/existingtables.cpp \
     GUI/TabWidgets/welcome.cpp \
     GUI/notification.cpp \
+    GUI/reconnecting.cpp \
     GUI/window_admin.cpp \
     GUI/window_auth.cpp \
     Network/PacketsActions/p_authorization.cpp \
@@ -43,6 +44,7 @@ HEADERS += \
     GUI/TabWidgets/existingtables.h \
     GUI/TabWidgets/welcome.h \
     GUI/notification.h \
+    GUI/reconnecting.h \
     GUI/window_admin.h \
     GUI/window_auth.h \
     Network/PacketTypes.h \

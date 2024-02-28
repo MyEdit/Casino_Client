@@ -124,7 +124,8 @@ void Notification::setupConnections()
 
 void Notification::positionAlertBox()
 {
-    if (_parentForm) {
+    if (_parentForm)
+    {
         QPoint parentPos = _parentForm->mapToGlobal(QPoint(0, 0));
         int x = parentPos.x() + _parentForm->width() - width() - 15;
         int y = parentPos.y() + _parentForm->height() - height() - 15;

@@ -1,6 +1,6 @@
 ﻿#include <QApplication>
-#include "GUI/notification.h"
-#include "GUI/window_auth.h"
+#include "Gui/notification.h"
+#include "Gui/window_auth.h"
 #include "Network/networkclient.h"
 
 NetworkClient network;

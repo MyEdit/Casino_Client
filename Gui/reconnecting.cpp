@@ -103,17 +103,18 @@ void Reconnecting::setupConnections()
 
 void Reconnecting::positionAlertBox()
 {
-    if (_parentForm) {
-        QPoint parentPos = _parentForm->mapToGlobal(QPoint(0, 0));
-        int x = parentPos.x() + _parentForm->width() - width() - 15;
-        int y = parentPos.y() + _parentForm->height() - height() - 15;
+    if (_parentForm)
+    {
+        QPoint parentCenter = _parentForm->mapToGlobal(_parentForm->rect().center());
+        int x = parentCenter.x() - width() / 2;
+        int y = parentCenter.y() - height() / 2;
         move(x, y);
     }
     else
     {
         QRect screenGeometry = QGuiApplication::primaryScreen()->availableGeometry();
-        int x = screenGeometry.width() - width() - 15;
-        int y = screenGeometry.height() - height() - 15;
+        int x = (screenGeometry.width() - width()) / 2;
+        int y = (screenGeometry.height() - height()) / 2;
         move(x, y);
     }
 }

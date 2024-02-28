@@ -57,8 +57,8 @@ void ExistingTables::connects()
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &ExistingTables::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &ExistingTables::sorting);
 
-    connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ExistingTables::prepReloadModels);
-    connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ExistingTables::prepReloadModels);
+    connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ExistingTables::sort);
+    connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ExistingTables::sort);
 
     connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &ExistingTables::onHeaderClicked);
 

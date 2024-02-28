@@ -57,8 +57,8 @@ void AllUsers::connects()
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &AllUsers::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &AllUsers::sorting);
 
-    connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AllUsers::prepReloadModels);
-    connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AllUsers::prepReloadModels);
+    connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AllUsers::sort);
+    connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &AllUsers::sort);
 
     connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &AllUsers::onHeaderClicked);
 

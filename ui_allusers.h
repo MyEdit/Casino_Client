@@ -47,6 +47,7 @@ public:
     QSpacerItem *horizontalSpacer_13;
     QPushButton *moreDetailed;
     QPushButton *addTable;
+    QPushButton *pushButton;
     QTableView *tableView;
     QHBoxLayout *horizontalLayout_6;
     QSpacerItem *horizontalSpacer_9;
@@ -111,7 +112,7 @@ public:
 "    background-color: white;\n"
 "    border: 1px solid black;\n"
 "    border-radius: 10px;\n"
-"    padding: 5px 15px;\n"
+"    padding: 5px;\n"
 "    color: black;\n"
 "}\n"
 "\n"
@@ -136,7 +137,7 @@ public:
 "    background-color: white;\n"
 "    border: 1px solid black;\n"
 "    border-radius: 10px;\n"
-"    padding: 5px 15px;\n"
+"    padding: 5px;\n"
 "    color: black;\n"
 "}\n"
 "\n"
@@ -222,7 +223,7 @@ public:
 "    background-color: white;\n"
 "    border: 1px solid black;\n"
 "    border-radius: 10px;\n"
-"    padding: 5px 15px;\n"
+"    padding: 5px;\n"
 "    color: black;\n"
 "}\n"
 "\n"
@@ -234,6 +235,10 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/icons/resources/add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        moreDetailed->setIcon(icon2);
+        moreDetailed->setIconSize(QSize(32, 32));
 
         horizontalLayout_8->addWidget(moreDetailed);
 
@@ -244,7 +249,7 @@ public:
 "    background-color: white;\n"
 "    border: 1px solid black;\n"
 "    border-radius: 10px;\n"
-"    padding: 5px 15px;\n"
+"    padding: 5px;\n"
 "    color: black;\n"
 "}\n"
 "\n"
@@ -256,8 +261,21 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/icons/resources/edited.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addTable->setIcon(icon3);
+        addTable->setIconSize(QSize(32, 32));
 
         horizontalLayout_8->addWidget(addTable);
+
+        pushButton = new QPushButton(AllUsers);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/icons/resources/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton->setIcon(icon4);
+        pushButton->setIconSize(QSize(32, 32));
+
+        horizontalLayout_8->addWidget(pushButton);
 
 
         verticalLayout->addLayout(horizontalLayout_8);
@@ -317,13 +335,10 @@ public:
         font4.setPointSize(18);
         prevButton->setFont(font4);
         prevButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background-color: white;\n"
-"    border: 2px solid black; /* \320\264\320\276\320\261\320\260\320\262\320\273\321\217\320\265\320\274 \320\276\320\261\320\262\320\276\320\264\320\272\321\203 */\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
 "    border-radius: 10px;\n"
-"    border-radius: 10px;\n"
-"    padding-left: 15px;\n"
-"    padding-right: 15px;\n"
-"	padding-bottom: 3px;\n"
+"    padding: 5px;\n"
 "    color: black;\n"
 "}\n"
 "\n"
@@ -335,6 +350,10 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/icons/resources/prev.png"), QSize(), QIcon::Normal, QIcon::Off);
+        prevButton->setIcon(icon5);
+        prevButton->setIconSize(QSize(32, 32));
 
         horizontalLayout_10->addWidget(prevButton);
 
@@ -363,13 +382,10 @@ public:
         nextButton->setObjectName(QString::fromUtf8("nextButton"));
         nextButton->setFont(font4);
         nextButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background-color: white;\n"
-"    border: 2px solid black; /* \320\264\320\276\320\261\320\260\320\262\320\273\321\217\320\265\320\274 \320\276\320\261\320\262\320\276\320\264\320\272\321\203 */\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
 "    border-radius: 10px;\n"
-"    border-radius: 10px;\n"
-"    padding-left: 15px;\n"
-"    padding-right: 15px;\n"
-"	padding-bottom: 3px;\n"
+"    padding: 5px;\n"
 "    color: black;\n"
 "}\n"
 "\n"
@@ -381,6 +397,10 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/icons/resources/next.png"), QSize(), QIcon::Normal, QIcon::Off);
+        nextButton->setIcon(icon6);
+        nextButton->setIconSize(QSize(32, 32));
 
         horizontalLayout_10->addWidget(nextButton);
 
@@ -412,15 +432,32 @@ public:
         typeSorting->setItemText(1, QApplication::translate("AllUsers", "\320\237\320\276 \321\203\320\261\321\213\320\262\320\260\320\275\320\270\321\216", nullptr));
 
         sorting->setText(QApplication::translate("AllUsers", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
-        moreDetailed->setText(QApplication::translate("AllUsers", "\320\237\320\276\320\264\321\200\320\276\320\261\320\275\320\265\320\265", nullptr));
-        addTable->setText(QApplication::translate("AllUsers", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214", nullptr));
+        moreDetailed->setText(QString());
+        addTable->setText(QString());
+        pushButton->setStyleSheet(QApplication::translate("AllUsers", "QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}", nullptr));
+        pushButton->setText(QString());
         label_4->setText(QApplication::translate("AllUsers", "\320\242\320\265\320\272\321\203\321\211\320\260\321\217 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\260:", nullptr));
         labelCurrentPage->setText(QApplication::translate("AllUsers", "1", nullptr));
         label_5->setText(QApplication::translate("AllUsers", "/", nullptr));
         labelMaxPage->setText(QApplication::translate("AllUsers", "????", nullptr));
-        prevButton->setText(QApplication::translate("AllUsers", "<<", nullptr));
+        prevButton->setText(QString());
         label_6->setText(QApplication::translate("AllUsers", "\320\237\320\265\321\200\320\265\320\271\321\202\320\270 \320\272 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\265 \342\204\226:", nullptr));
-        nextButton->setText(QApplication::translate("AllUsers", ">>", nullptr));
+        nextButton->setText(QString());
         status->setText(QString());
     } // retranslateUi
 

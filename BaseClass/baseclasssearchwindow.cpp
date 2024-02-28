@@ -76,3 +76,9 @@ void BaseClassSearchWindow::baseSetting()
 
     pagination->start();
 }
+
+void BaseClassSearchWindow::sort()
+{
+    if(sortingOn)
+        prepReloadModels();
+}

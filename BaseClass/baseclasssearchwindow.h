@@ -42,6 +42,7 @@ protected:
     void sorting(int arg);
     void selectTypeSearch(int arg);
     void baseSetting();
+    void sort();
     virtual void search() = 0;
     virtual void setValueToMaxPage(int maxPage) = 0;
     virtual void assigningValues() = 0;

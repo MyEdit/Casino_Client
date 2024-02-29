@@ -11,9 +11,3 @@ void P_Notification::viewNotification(QString message)
     Notification* notification = new Notification();
     notification->setAlertProperties(TypeMessage::Information, message, WindowTracker::activeWindow);
 }
-
-void P_Notification::viewReconnecting()
-{
-    Reconnecting* reconnecting = new Reconnecting();
-    reconnecting->setAlertProperties(WindowTracker::activeWindow);
-}

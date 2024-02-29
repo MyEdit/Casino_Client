@@ -65,7 +65,9 @@ bool NetworkClient::start()
     QObject::connect(packetHandler, &PacketHandler::signalOpenForm, this, &P_Authorization::openMainWindow);
     QObject::connect(packetHandler, &PacketHandler::signalSetModel, this, &P_SendModel::setModel);
     QObject::connect(packetHandler, &PacketHandler::signalViewNotification, this, &P_Notification::viewNotification);
-    QObject::connect(packetHandler, &PacketHandler::signalReconnecting, this, &P_Notification::viewReconnecting);
+    QObject::connect(packetHandler, &PacketHandler::signalReconnecting, this, &P_Reconnecting::viewReconnecting);
+    QObject::connect(packetHandler, &PacketHandler::signalFinishReconnecting, this, &P_Reconnecting::stopReconnecting);
+
     packetHandler->start();
     return true;
 }

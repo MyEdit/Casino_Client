@@ -2,7 +2,7 @@
 #define RECONNECTING_H
 
 #include <QTimer>
-#include <QMainWindow>
+#include <QDialog>
 #include <QLabel>
 #include <QProgressBar>
 #include <QApplication>
@@ -13,7 +13,7 @@
 #include <QPainter>
 #include <QStyle>
 
-class Reconnecting : public QWidget
+class Reconnecting : public QDialog
 {
     Q_OBJECT
 

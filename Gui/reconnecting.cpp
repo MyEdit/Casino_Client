@@ -2,6 +2,8 @@
 
 Reconnecting::Reconnecting()
 {
+    setWindowModality(Qt::ApplicationModal);
+    setWindowFlags(Qt::FramelessWindowHint);
     setWindowFlags(Qt::FramelessWindowHint | Qt::WindowStaysOnTopHint);
     setAttribute(Qt::WA_TranslucentBackground); //для скругления
 
@@ -57,8 +59,8 @@ void Reconnecting::updateProgressBar()
     progressBar->setValue(progressBar->value() + 1);
     if (progressBar->value() == progressBar->maximum())
     {
-        close();
-        delete this; //освободить память после окончания таймера
+        progressBar->setValue(progressBar->minimum());
+        updateProgressBar();
     }
 }
 
@@ -85,7 +87,7 @@ void Reconnecting::setupUI()
     textLabel->setWordWrap(true);
     textLabel->setFont(textFont);
 
-    int time = 1500;
+    int time = 5000;
     progressBar = new QProgressBar(this);
     progressBar->setTextVisible(false);
     progressBar->setRange(0, time);

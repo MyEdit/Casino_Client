@@ -26,6 +26,7 @@ signals:
     void signalSetQueryModel(QueryData*);
     void signalViewNotification(QString);
     void signalReconnecting();
+    void signalFinishReconnecting();
 };
 
 #endif // CLIENTHANDLER_H

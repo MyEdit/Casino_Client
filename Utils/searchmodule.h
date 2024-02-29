@@ -13,7 +13,7 @@ public:
     SearchModule(WorkingIsTableView* workingIsTableView);
 
     bool searchInModels(QSharedPointer<QStandardItemModel> model, QString searchText, QString typeSearch, int columnCurrentIndex, int& currentPage, int rowsPerPage);
-    void searchInDB(ModelTypes modelType, QString searchText);
+    void searchInDB(ModelTypes modelType, QString table, QString column, QString searchText, QString sort);
 };
 
 #endif // SEARCH_H

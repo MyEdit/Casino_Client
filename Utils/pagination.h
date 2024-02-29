@@ -33,8 +33,8 @@ class Pagination : public QWidget
     QString searchText;
     QString typeSearch;
     QComboBox* column;
-    QTimer searchTimer;
     QString querySort;
+    QTimer searchTimer;
 
 public:
     Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, WorkingIsTableView* workingIsTableView, ModelTypes modelTypes);
@@ -58,11 +58,12 @@ private:
     void connects();
     void creatingObjects();
     void distributor(QueryData* data);
-    void searchInDb();
     void loadingMaxPage();
     void updateTablePage();
     int currentPageInModel();
     void setMaxPage(QString rowCount);
+    void searchInModel();
+    void searchInDB();
 
 signals:
     void updateCurrentPageInLabel(int);

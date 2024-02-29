@@ -136,6 +136,9 @@ void Pagination::acceptModel(ModelData structModel)
         models[2] = QSharedPointer<QStandardItemModel>(structModel.model);
         break;
     }
+
+    if(!searchText.isEmpty())
+        searchInModel();
 }
 
 void Pagination::goToNextModel()
@@ -190,12 +193,18 @@ void Pagination::initializationModels()
 
 void Pagination::loadingMaxPage()
 {
+    if (P_SendModel::tableNames.size() == 0)
+        P_SendModel::initMapTableNames();
+
     PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
+    QString query = "SELECT COUNT(*) FROM " + P_SendModel::tableNames[modelTypes];
+
     QueryTypes queryTypes = QueryTypes::CountEntrites;
 
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&queryTypes, sizeof(QueryTypes));
     NetworkClient::sendToServer(&modelTypes, sizeof(ModelTypes));
+    NetworkClient::sendToServer(query);
 }
 
 void Pagination::assigningValues()
@@ -210,7 +219,7 @@ void Pagination::assigningValues()
 void Pagination::connects()
 {
     connect(NetworkClient::packetHandler, &PacketHandler::signalSetQueryModel, this, &Pagination::distributor);
-    connect(&searchTimer, &QTimer::timeout, this, &Pagination::searchInDb);
+    connect(&searchTimer, &QTimer::timeout, this, &Pagination::searchInDB);
 }
 
 void Pagination::goToPage(QString page)
@@ -227,9 +236,6 @@ void Pagination::goToPage(QString page)
         updateTablePage();
     else
         initializationModels();
-
-    if(!searchText.isEmpty())
-        search(searchText, typeSearch, column);
 }
 
 void Pagination::search(QString searchText, QString typeSearch, QComboBox* column)
@@ -241,12 +247,17 @@ void Pagination::search(QString searchText, QString typeSearch, QComboBox* colum
     this->typeSearch = typeSearch;
     this->column = column;
 
+    searchInModel();
+}
+
+void Pagination::searchInModel()
+{
     for (QSharedPointer<QStandardItemModel> model : models)
     {
         if(searchModule->searchInModels(model, searchText, typeSearch, column->currentIndex(), currentPage, rowsPerPage))
         {
-            this->searchText.clear();
-            this->typeSearch.clear();
+            searchText.clear();
+            typeSearch.clear();
             updateTablePage();
             return;
         }
@@ -255,9 +266,9 @@ void Pagination::search(QString searchText, QString typeSearch, QComboBox* colum
     searchTimer.start(1000);
 }
 
-void Pagination::searchInDb()
+void Pagination::searchInDB()
 {
-    searchModule->searchInDB(modelTypes, column->currentText() + "|" + searchText + typeSearch + "|" + querySort);
+    searchModule->searchInDB(modelTypes, P_SendModel::tableNames[modelTypes], column->currentText(), searchText + typeSearch, querySort);
 }
 
 void Pagination::distributor(QueryData* data)

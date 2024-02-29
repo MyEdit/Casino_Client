@@ -25,20 +25,21 @@ bool SearchModule::searchInModels(QSharedPointer<QStandardItemModel> model, QStr
             currentPage = std::ceil(resultRow / rowsPerPage);
             workingIsTableView->setModel(model);
             workingIsTableView->setCurrentIndex(index);
-            break;
+            return resultSearchInModel;
         }
     }
 
     return resultSearchInModel;
 }
 
-void SearchModule::searchInDB(ModelTypes modelType, QString searchText)
+void SearchModule::searchInDB(ModelTypes modelType, QString table, QString column, QString searchText, QString sort)
 {
     PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
     QueryTypes queryTypes = QueryTypes::Search;
+    QString query = "SELECT numbered_rows.№ FROM (SELECT ROW_NUMBER() OVER (" + sort + ") AS №, * FROM " + table + ") AS numbered_rows WHERE numbered_rows." + column + " LIKE '" + searchText + "'";
 
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&queryTypes, sizeof(QueryTypes));
     NetworkClient::sendToServer(&modelType, sizeof(ModelTypes));
-    NetworkClient::sendToServer(searchText);
+    NetworkClient::sendToServer(query);
 }

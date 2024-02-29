@@ -13,6 +13,8 @@ class P_SendModel
 public:
     static ModelData getModelFromServer();
     static void setModel(ModelData);
+    static QMap<ModelTypes, QString> tableNames;
+    static void initMapTableNames();
 
 private:
     static QMap<ModelTypes, std::function<void(ModelData)>> setModelFunctions;

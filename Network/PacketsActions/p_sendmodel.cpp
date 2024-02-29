@@ -1,6 +1,7 @@
 ﻿#include "p_sendmodel.h"
 
 QMap<ModelTypes, std::function<void(ModelData)>> P_SendModel::setModelFunctions;
+QMap<ModelTypes, QString> P_SendModel::tableNames;
 
 ModelData P_SendModel::getModelFromServer()
 {
@@ -54,3 +55,11 @@ void P_SendModel::initMapFunctions()
         P_Authorization::adminW->setModel_ExistingTab(model);
     });
 }
+
+void P_SendModel::initMapTableNames()
+{
+    tableNames.insert(ModelTypes::Users, "Users");
+    tableNames.insert(ModelTypes::ActiveTables, "ActiveTables");
+    tableNames.insert(ModelTypes::TestTable, "name");
+}
+

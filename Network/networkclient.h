@@ -11,7 +11,7 @@
 #include "Network/PacketsActions/p_authorization.h"
 #include "Network/PacketsActions/p_sendmodel.h"
 #include "Network/packethandler.h"
-#include "Network/PacketsActions/p_reconnecting.h"
+#include "Network/PacketsActions/p_reconnection.h"
 
 class PacketHandler;
 

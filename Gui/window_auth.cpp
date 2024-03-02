@@ -13,11 +13,5 @@ Window_Auth::~Window_Auth()
 
 void Window_Auth::on_Button_Auth_clicked()
 {
-    QString login = ui->textBox_Login->text();
-    QString password = ui->textBox_Password->text();
-
-    PacketTypes packettype = PacketTypes::P_Authorization;
-    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
-    NetworkClient::sendToServer(login);
-    NetworkClient::sendToServer(password);
+    P_Authorization::sendData(ui->textBox_Login->text(), ui->textBox_Password->text());
 }

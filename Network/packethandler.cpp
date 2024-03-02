@@ -24,7 +24,6 @@ void PacketHandler::tryReconnectToServer()
 {
     emit signalReconnecting();
 
-    //TODO: Тут нужно вызвать окно с таймером реконнекта
     while(!NetworkClient::connectToServer())
     {   
         sleep(5);
@@ -32,7 +31,7 @@ void PacketHandler::tryReconnectToServer()
 
     emit signalFinishReconnecting();
 
-    //TODO: Сделать новый тип пакета P_Reconnection и отсылать отсюда серверу свой ник, дабы он по возможности добавил его в мапу Conections (Ведь сервер мог перезагрузиться, следовательно и мапа Conections тогда будет пуста)
+    P_Reconnection::sendUserData(P_Authorization::getActualNickname());
     Message::logInfo("Reconnect to server successful");
 }
 

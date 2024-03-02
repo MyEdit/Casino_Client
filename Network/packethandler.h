@@ -2,6 +2,7 @@
 #define CLIENTHANDLER_H
 
 #include <QThread>
+#include "GUI/Notification/notification.h"
 #include "Network/PacketTypes.h"
 #include "Network/PacketsActions/p_authorization.h"
 #include "Network/PacketsActions/p_sendmodel.h"
@@ -24,7 +25,7 @@ signals:
     void signalOpenForm(Roles role);
     void signalSetModel(ModelData);
     void signalSetQueryModel(QueryData*);
-    void signalViewNotification(QString);
+    void signalViewNotification(QPair<TypeMessage, QString>);
     void signalReconnecting();
     void signalFinishReconnecting();
 };

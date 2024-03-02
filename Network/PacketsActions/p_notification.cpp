@@ -1,13 +1,15 @@
 ﻿#include "p_notification.h"
 #include "Utils/windowtracker.h"
 
-QString P_Notification::getTextNotification()
+QPair<TypeMessage, QString> P_Notification::getTextNotification()
 {
-    return NetworkClient::getMessageFromServer();
+    TypeMessage typeMessage;
+    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&typeMessage), sizeof(typeMessage), 0);
+    return QPair<TypeMessage, QString>(typeMessage, NetworkClient::getMessageFromServer());
 }
 
-void P_Notification::viewNotification(QString message)
+void P_Notification::viewNotification(QPair<TypeMessage, QString> message)
 {
     Notification* notification = new Notification();
-    notification->setAlertProperties(TypeMessage::Information, message, WindowTracker::activeWindow);
+    notification->setAlertProperties(message.first, message.second, WindowTracker::activeWindow);
 }

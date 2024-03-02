@@ -1,7 +1,7 @@
 ﻿#ifndef P_RECONNECTING_H
 #define P_RECONNECTING_H
 
-#include "Gui/reconnecting.h"
+#include "Gui/Notification/reconnecting.h"
 #include "Utils/windowtracker.h"
 
 class P_Reconnecting

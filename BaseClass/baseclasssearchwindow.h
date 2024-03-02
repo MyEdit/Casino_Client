@@ -21,8 +21,8 @@ class BaseClassSearchWindow : public QWidget
 
 protected:
     QVector<QComboBox*> boxsNameColumn;
-    Pagination* pagination;
-    WorkingIsTableView* workingIsTableView;
+    QSharedPointer<Pagination> pagination;
+    QSharedPointer<WorkingIsTableView> workingIsTableView;
     ModelTypes modelTypes;
     QTimer goToPageTimer;
     QString typeSearch;
@@ -52,6 +52,8 @@ protected:
     virtual void goToPage() = 0;
     virtual void onHeaderClicked(int logicalIndex) = 0;
     virtual void prepReloadModels() = 0;
+    virtual void openCreatRecotd() = 0;
+    virtual void openEditRecotd() = 0;
 };
 
 #endif // BASECLASSSEARCHWINDOW_H

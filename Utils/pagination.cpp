@@ -1,7 +1,7 @@
 ﻿#include "pagination.h"
 #include <QDebug>
 
-Pagination::Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, WorkingIsTableView* workingIsTableView, ModelTypes modelTypes) :
+Pagination::Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes) :
     QWidget(parent),
     tableView(table),
     prevButton(prevButton),
@@ -25,7 +25,7 @@ void Pagination::creatingObjects()
     for(int i = 0; i < 3; i++)
         models.push_back(QSharedPointer<QStandardItemModel>::create());
 
-    searchModule = new SearchModule(workingIsTableView);
+    searchModule = QSharedPointer<SearchModule>::create(workingIsTableView);
 }
 
 void Pagination::updateTablePage()
@@ -77,13 +77,8 @@ void Pagination::prev()
         nextButton->setEnabled(true);
         if(currentPageInModel() == minPageModel)
         {
-            //            if (!prevTreadModel->isRunning())
-            //            {
             if(models[2]->rowCount() != 0)
                 goToPrevModel();
-            //            }
-            //            else
-            //                prevButton->setEnabled(false);
         }
         else
         {
@@ -100,13 +95,8 @@ void Pagination::next()
         prevButton->setEnabled(true);
         if(currentPageInModel() == maxPageModel)
         {
-            //            if(!nextTreadModel->isRun())
-            //            {
             if(models[1]->rowCount() != 0)
                 goToNextModel();
-            //            }
-            //            else
-            //                nextButton->setEnabled(false);
         }
         else
         {
@@ -173,6 +163,7 @@ void Pagination::loadingModel(ModelLoadingType type, int offset)
     NetworkClient::sendToServer(&type, sizeof(ModelLoadingType));
     NetworkClient::sendToServer(&modelTypes, sizeof(ModelTypes));
     NetworkClient::sendToServer(&offset, sizeof(int));
+    NetworkClient::sendToServer(P_SendModel::tableNames[modelTypes]);
     NetworkClient::sendToServer(querySort);
 }
 
@@ -290,7 +281,7 @@ void Pagination::distributor(QueryData* data)
     }
 
     default:
-        Message::logWarn("Я не знаю что делать");
+        Message::logWarn("Тип запроса не известен");
         break;
     }
 }

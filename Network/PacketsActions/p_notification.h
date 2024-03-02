@@ -2,7 +2,7 @@
 #define P_NOTIFICATION_H
 
 #include "Network/networkclient.h"
-#include "Gui/notification.h"
+#include "Gui/Notification/notification.h"
 
 class P_Notification
 {

@@ -44,15 +44,22 @@ void P_SendModel::initMapFunctions()
 {
     setModelFunctions.insert(ModelTypes::Users, [&](ModelData model)
     {
-        P_Authorization::adminW->setModel_AllUsersTab(model);
+        P_Authorization::adminW->setModel_UsersTab(model);
     });
+
     setModelFunctions.insert(ModelTypes::ActiveTables, [&](ModelData model)
     {
-        P_Authorization::adminW->setModel_ExistingTab(model);
+        P_Authorization::adminW->setModel_ActiveTablesTab(model);
     });
-    setModelFunctions.insert(ModelTypes::TestTable, [&](ModelData model)
+
+    setModelFunctions.insert(ModelTypes::Banlist, [&](ModelData model)
     {
-        P_Authorization::adminW->setModel_ExistingTab(model);
+        P_Authorization::adminW->setModel_BanListTab(model);
+    });
+
+    setModelFunctions.insert(ModelTypes::StuffUsers, [&](ModelData model)
+    {
+        P_Authorization::adminW->setModel_StuffUsersTab(model);
     });
 }
 
@@ -60,6 +67,7 @@ void P_SendModel::initMapTableNames()
 {
     tableNames.insert(ModelTypes::Users, "Users");
     tableNames.insert(ModelTypes::ActiveTables, "ActiveTables");
-    tableNames.insert(ModelTypes::TestTable, "name");
+    tableNames.insert(ModelTypes::StuffUsers, "StuffUsers");
+    tableNames.insert(ModelTypes::Banlist, "Banlist");
 }
 

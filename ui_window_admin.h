@@ -36,15 +36,15 @@ public:
     QGridLayout *gridLayout_3;
     QSpacerItem *horizontalSpacer;
     QLabel *label;
-    QPushButton *buttonBlackList;
+    QPushButton *banList;
     QLabel *label_4;
-    QPushButton *buttonStaff;
+    QPushButton *stuffUsers;
     QPushButton *buttonLoanApplocations;
     QLabel *label_5;
     QLabel *label_3;
-    QPushButton *buttonAllUsers;
+    QPushButton *users;
     QLabel *label_2;
-    QPushButton *buttonExistingTables;
+    QPushButton *activeTables;
     QPushButton *pushButton;
     QLabel *label_6;
     QLabel *photo;
@@ -140,16 +140,16 @@ public:
 
         gridLayout_3->addWidget(label, 4, 2, 1, 1);
 
-        buttonBlackList = new QPushButton(centralwidget);
-        buttonBlackList->setObjectName(QString::fromUtf8("buttonBlackList"));
-        buttonBlackList->setMinimumSize(QSize(0, 40));
+        banList = new QPushButton(centralwidget);
+        banList->setObjectName(QString::fromUtf8("banList"));
+        banList->setMinimumSize(QSize(0, 40));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Segoe UI"));
         font1.setPointSize(12);
         font1.setBold(true);
         font1.setWeight(75);
-        buttonBlackList->setFont(font1);
-        buttonBlackList->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        banList->setFont(font1);
+        banList->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
 "	color: rgb(255, 255, 255);\n"
@@ -157,7 +157,7 @@ public:
 "	text-align: left;\n"
 "}"));
 
-        gridLayout_3->addWidget(buttonBlackList, 3, 1, 1, 1);
+        gridLayout_3->addWidget(banList, 3, 1, 1, 1);
 
         label_4 = new QLabel(centralwidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
@@ -166,11 +166,11 @@ public:
 
         gridLayout_3->addWidget(label_4, 2, 2, 1, 1);
 
-        buttonStaff = new QPushButton(centralwidget);
-        buttonStaff->setObjectName(QString::fromUtf8("buttonStaff"));
-        buttonStaff->setMinimumSize(QSize(0, 40));
-        buttonStaff->setFont(font1);
-        buttonStaff->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        stuffUsers = new QPushButton(centralwidget);
+        stuffUsers->setObjectName(QString::fromUtf8("stuffUsers"));
+        stuffUsers->setMinimumSize(QSize(0, 40));
+        stuffUsers->setFont(font1);
+        stuffUsers->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
 "	color: rgb(255, 255, 255);\n"
@@ -178,7 +178,7 @@ public:
 "	text-align: left;\n"
 "}"));
 
-        gridLayout_3->addWidget(buttonStaff, 2, 1, 1, 1);
+        gridLayout_3->addWidget(stuffUsers, 2, 1, 1, 1);
 
         buttonLoanApplocations = new QPushButton(centralwidget);
         buttonLoanApplocations->setObjectName(QString::fromUtf8("buttonLoanApplocations"));
@@ -208,11 +208,11 @@ public:
 
         gridLayout_3->addWidget(label_3, 1, 2, 1, 1);
 
-        buttonAllUsers = new QPushButton(centralwidget);
-        buttonAllUsers->setObjectName(QString::fromUtf8("buttonAllUsers"));
-        buttonAllUsers->setMinimumSize(QSize(0, 40));
-        buttonAllUsers->setFont(font1);
-        buttonAllUsers->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        users = new QPushButton(centralwidget);
+        users->setObjectName(QString::fromUtf8("users"));
+        users->setMinimumSize(QSize(0, 40));
+        users->setFont(font1);
+        users->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
 "	color: rgb(255, 255, 255);\n"
@@ -220,7 +220,7 @@ public:
 "	text-align: left;\n"
 "}"));
 
-        gridLayout_3->addWidget(buttonAllUsers, 1, 1, 1, 1);
+        gridLayout_3->addWidget(users, 1, 1, 1, 1);
 
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
@@ -230,11 +230,11 @@ public:
 
         gridLayout_3->addWidget(label_2, 0, 2, 1, 1);
 
-        buttonExistingTables = new QPushButton(centralwidget);
-        buttonExistingTables->setObjectName(QString::fromUtf8("buttonExistingTables"));
-        buttonExistingTables->setMinimumSize(QSize(0, 40));
-        buttonExistingTables->setFont(font1);
-        buttonExistingTables->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        activeTables = new QPushButton(centralwidget);
+        activeTables->setObjectName(QString::fromUtf8("activeTables"));
+        activeTables->setMinimumSize(QSize(0, 40));
+        activeTables->setFont(font1);
+        activeTables->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
 "	color: rgb(255, 255, 255);\n"
@@ -242,7 +242,7 @@ public:
 "	text-align: left;\n"
 "}"));
 
-        gridLayout_3->addWidget(buttonExistingTables, 0, 1, 1, 1);
+        gridLayout_3->addWidget(activeTables, 0, 1, 1, 1);
 
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
@@ -299,15 +299,15 @@ public:
         FIO_employee->setText(QApplication::translate("Window_Admin", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
         post->setText(QApplication::translate("Window_Admin", "\320\220\320\264\320\274\320\270\320\275\320\270\321\201\321\202\321\200\320\260\321\202\320\276\321\200", nullptr));
         buttonExit->setText(QApplication::translate("Window_Admin", "\320\222\321\213\321\205\320\276\320\264", nullptr));
-        buttonBlackList->setText(QApplication::translate("Window_Admin", "\320\247\321\221\321\200\320\275\321\213\320\271 \321\201\320\277\320\270\321\201\320\276\320\272", nullptr));
+        banList->setText(QApplication::translate("Window_Admin", "\320\247\321\221\321\200\320\275\321\213\320\271 \321\201\320\277\320\270\321\201\320\276\320\272", nullptr));
         label_4->setText(QString());
-        buttonStaff->setText(QApplication::translate("Window_Admin", "\320\241\320\276\321\202\321\200\321\203\320\264\320\275\320\270\320\272\320\270", nullptr));
+        stuffUsers->setText(QApplication::translate("Window_Admin", "\320\241\320\276\321\202\321\200\321\203\320\264\320\275\320\270\320\272\320\270", nullptr));
         buttonLoanApplocations->setText(QApplication::translate("Window_Admin", "\320\227\320\260\321\217\320\262\320\272\320\270 \320\275\320\260 \320\272\321\200\320\265\320\264\320\270\321\202\321\213", nullptr));
         label_5->setText(QString());
         label_3->setText(QString());
-        buttonAllUsers->setText(QApplication::translate("Window_Admin", "\320\237\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\320\270", nullptr));
+        users->setText(QApplication::translate("Window_Admin", "\320\237\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\320\270", nullptr));
         label_2->setText(QString());
-        buttonExistingTables->setText(QApplication::translate("Window_Admin", "\320\230\320\263\321\200\320\276\320\262\321\213\320\265 \321\201\321\202\320\276\320\273\321\213", nullptr));
+        activeTables->setText(QApplication::translate("Window_Admin", "\320\230\320\263\321\200\320\276\320\262\321\213\320\265 \321\201\321\202\320\276\320\273\321\213", nullptr));
         pushButton->setText(QApplication::translate("Window_Admin", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217 \321\202\321\200\320\260\320\275\320\267\320\260\320\272\321\206\320\270\320\271\n"
 "(\320\277\320\273\320\260\321\202\320\265\320\266\320\265\320\271)?", nullptr));
         label_6->setText(QString());

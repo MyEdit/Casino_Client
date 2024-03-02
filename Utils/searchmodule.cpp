@@ -1,6 +1,6 @@
 ﻿#include "searchmodule.h"
 
-SearchModule::SearchModule(WorkingIsTableView *workingIsTableView) :
+SearchModule::SearchModule(QSharedPointer<WorkingIsTableView> workingIsTableView) :
     workingIsTableView(workingIsTableView)
 {
 

@@ -19,7 +19,7 @@ void WorkingIsTableView::settingVisualTableView()
 
     tableView->horizontalHeader()->setStyleSheet("QHeaderView { font-size: 14pt; }");
 
-    //Устанавка растягивания для заголовков строк и столбцов на по размеру содержимого
+    //Устанавка растягивания для заголовков строк и столбцов по размеру содержимого
     tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     //Устанавка растягивания для строк и столбцов на всю высоту
@@ -37,7 +37,13 @@ void WorkingIsTableView::setModel(QSharedPointer<QStandardItemModel> model)
 {
     if(model->rowCount() == 0)
     {
-        Message::logWarn("Данных нет");
+        QStandardItemModel* emptyModel = new QStandardItemModel;
+        emptyModel->setHorizontalHeaderItem(0, new QStandardItem(""));
+        QStandardItem* item = new QStandardItem("Данных нет");
+        item->setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+        emptyModel->setItem(0, 0, item);
+        tableView->setModel(emptyModel);
+        emit unlockInterface(true);
         return;
     }
 

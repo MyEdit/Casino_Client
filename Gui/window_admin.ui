@@ -173,7 +173,7 @@
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QPushButton" name="buttonBlackList">
+       <widget class="QPushButton" name="banList">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -216,7 +216,7 @@
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QPushButton" name="buttonStaff">
+       <widget class="QPushButton" name="stuffUsers">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -302,7 +302,7 @@
        </widget>
       </item>
       <item row="1" column="1">
-       <widget class="QPushButton" name="buttonAllUsers">
+       <widget class="QPushButton" name="users">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -348,7 +348,7 @@
        </widget>
       </item>
       <item row="0" column="1">
-       <widget class="QPushButton" name="buttonExistingTables">
+       <widget class="QPushButton" name="activeTables">
         <property name="minimumSize">
          <size>
           <width>0</width>

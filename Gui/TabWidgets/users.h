@@ -1,24 +1,28 @@
-﻿#ifndef EXISTINGTABLES_H
-#define EXISTINGTABLES_H
+﻿#ifndef ALLUSERS_H
+#define ALLUSERS_H
 
+#include <QWidget>
 #include "QStandardItemModel"
 #include "Network/PacketTypes.h"
+#include <QMutex>
 #include <math.h>
+#include <QTimer>
 #include <QMessageBox>
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
 
 namespace Ui {
-class ExistingTables;
+class Users;
 }
 
-class ExistingTables : public BaseClassSearchWindow
+class Users : public BaseClassSearchWindow
 {
-    Ui::ExistingTables *ui;
+    Q_OBJECT
+    Ui::Users *ui;
 
 public:
-    explicit ExistingTables(QWidget *parent = nullptr);
-    ~ExistingTables();
+    explicit Users(QWidget *parent = nullptr);
+    ~Users();
 
 private:
     void prepReloadModels() override;
@@ -30,6 +34,8 @@ private:
     void connects() override;
     void search() override;
     void onHeaderClicked(int logicalIndex) override;
+    void openCreatRecotd() override;
+    void openEditRecotd() override;
 };
 
-#endif // EXISTINGTABLES_H
+#endif // ALLUSERS_H

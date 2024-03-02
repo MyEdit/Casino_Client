@@ -21,7 +21,8 @@ enum class ModelTypes
 {
     Users,
     ActiveTables,
-    TestTable
+    StuffUsers,
+    Banlist
 };
 
 enum class QueryTypes

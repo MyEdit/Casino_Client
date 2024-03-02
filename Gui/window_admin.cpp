@@ -44,31 +44,41 @@ void Window_Admin::uploadingPhotoEmployee()
 
 void Window_Admin::assigningValues()
 {
-    buttonSwitchingTab.push_back(ui->buttonExistingTables);
-    buttonSwitchingTab.push_back(ui->buttonAllUsers);
-    buttonSwitchingTab.push_back(ui->buttonStaff);
-    buttonSwitchingTab.push_back(ui->buttonBlackList);
+    buttonSwitchingTab.push_back(ui->activeTables);
+    buttonSwitchingTab.push_back(ui->users);
+    buttonSwitchingTab.push_back(ui->stuffUsers);
+    buttonSwitchingTab.push_back(ui->banList);
     buttonSwitchingTab.push_back(ui->buttonLoanApplocations);
 
     selectedButton =
     {
-        {ui->buttonExistingTables, ui->label_2},
-        {ui->buttonAllUsers, ui->label_3},
-        {ui->buttonStaff, ui->label_4},
-        {ui->buttonBlackList, ui->label_5},
+        {ui->activeTables, ui->label_2},
+        {ui->users, ui->label_3},
+        {ui->stuffUsers, ui->label_4},
+        {ui->banList, ui->label_5},
         {ui->buttonLoanApplocations, ui->label},
         {ui->pushButton, ui->label_6}
     };
 }
 
-void Window_Admin::setModel_AllUsersTab(ModelData model)
+void Window_Admin::setModel_UsersTab(ModelData model)
 {
-    allUsersTab->setModel(model);
+    users->setModel(model);
 }
 
-void Window_Admin::setModel_ExistingTab(ModelData model)
+void Window_Admin::setModel_ActiveTablesTab(ModelData model)
 {
-    existingTablesTab->setModel(model);
+    activeTables->setModel(model);
+}
+
+void Window_Admin::setModel_BanListTab(ModelData model)
+{
+    banList->setModel(model);
+}
+
+void Window_Admin::setModel_StuffUsersTab(ModelData model)
+{
+    stuffUsers->setModel(model);
 }
 
 void Window_Admin::settingWindowPosition()
@@ -104,15 +114,15 @@ void Window_Admin::onNavigationsButton_clicked()
     selectedButton[selectButton]->setVisible(true);
 }
 
-void Window_Admin::on_buttonExistingTables_clicked()
+void Window_Admin::on_activeTables_clicked()
 {
-    ui->tabWidget->setCurrentWidget(existingTablesTab.get());
+    ui->tabWidget->setCurrentWidget(activeTables.get());
     onNavigationsButton_clicked();
 }
 
-void Window_Admin::on_buttonAllUsers_clicked()
+void Window_Admin::on_users_clicked()
 {
-    ui->tabWidget->setCurrentWidget(allUsersTab.get());
+    ui->tabWidget->setCurrentWidget(users.get());
     onNavigationsButton_clicked();
 }
 
@@ -121,13 +131,15 @@ void Window_Admin::on_buttonExit_clicked()
     close();
 }
 
-void Window_Admin::on_buttonStaff_clicked()
+void Window_Admin::on_stuffUsers_clicked()
 {
+    ui->tabWidget->setCurrentWidget(stuffUsers.get());
     onNavigationsButton_clicked();
 }
 
-void Window_Admin::on_buttonBlackList_clicked()
+void Window_Admin::on_banList_clicked()
 {
+    ui->tabWidget->setCurrentWidget(banList.get());
     onNavigationsButton_clicked();
 }
 
@@ -161,20 +173,22 @@ void Window_Admin::completionTabWidget()
     ui->tabWidget->tabBar()->hide();
 
     rendering_WelcomeTab();
-    rendering_ExistingTablesTab();
-    rendering_AllUsersTab();
+    rendering_ActiveTablesTab();
+    rendering_UsersTab();
+    rendering_BanListTab();
+    rendering_StuffUsersTab();
 }
 
-void Window_Admin::rendering_ExistingTablesTab()
+void Window_Admin::rendering_ActiveTablesTab()
 {
-    existingTablesTab = QSharedPointer<ExistingTables>::create();
-    ui->tabWidget->addTab(existingTablesTab.data(), "");
+    activeTables = QSharedPointer<ActiveTables>::create();
+    ui->tabWidget->addTab(activeTables.data(), "");
 }
 
-void Window_Admin::rendering_AllUsersTab()
+void Window_Admin::rendering_UsersTab()
 {
-    allUsersTab = QSharedPointer<AllUsers>::create();
-    ui->tabWidget->addTab(allUsersTab.data(), "");
+    users = QSharedPointer<Users>::create();
+    ui->tabWidget->addTab(users.data(), "");
 }
 
 void Window_Admin::rendering_WelcomeTab()
@@ -183,6 +197,17 @@ void Window_Admin::rendering_WelcomeTab()
     ui->tabWidget->addTab(welcomeTab.data(), "");
 }
 
+void Window_Admin::rendering_BanListTab()
+{
+    banList = QSharedPointer<BanList>::create();
+    ui->tabWidget->addTab(banList.data(), "");
+}
+
+void Window_Admin::rendering_StuffUsersTab()
+{
+    stuffUsers = QSharedPointer<StuffUsers>::create();
+    ui->tabWidget->addTab(stuffUsers.data(), "");
+}
 
 /////////////////ИВЕНТЫ/////////////////
 void Window_Admin::changeEvent(QEvent *event)

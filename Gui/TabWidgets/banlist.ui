@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AllUsers</class>
- <widget class="QWidget" name="AllUsers">
+ <class>BanList</class>
+ <widget class="QWidget" name="BanList">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1015</width>
-    <height>640</height>
+    <width>918</width>
+    <height>614</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -148,6 +148,38 @@ QPushButton:pressed {
        </property>
       </spacer>
      </item>
+     <item>
+      <widget class="QPushButton" name="refreshData">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    color: black;
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 88, 255);
+	color: white;
+}
+
+QPushButton:pressed {
+	background-color: rgba(220, 60, 190, 255);
+}</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../Resources.qrc">
+         <normaloff>:/icons/resources/update.png</normaloff>:/icons/resources/update.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
@@ -251,7 +283,7 @@ QPushButton:pressed {
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="moreDetailed">
+      <widget class="QPushButton" name="addBan">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -294,7 +326,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="addTable">
+      <widget class="QPushButton" name="editBan">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -337,7 +369,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="deleteBan">
        <property name="styleSheet">
         <string>QPushButton {
     background-color: white;
@@ -422,7 +454,7 @@ QPushButton:pressed {
         </font>
        </property>
        <property name="text">
-        <string>1</string>
+        <string>0</string>
        </property>
       </widget>
      </item>

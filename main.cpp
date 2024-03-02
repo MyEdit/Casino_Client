@@ -1,5 +1,5 @@
 ﻿#include <QApplication>
-#include "Gui/notification.h"
+#include "Gui/Notification/notification.h"
 #include "Gui/window_auth.h"
 #include "Network/networkclient.h"
 

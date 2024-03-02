@@ -1,5 +1,4 @@
 ﻿#include "packethandler.h"
-#include "Gui/reconnecting.h"
 
 void PacketHandler::run()
 {

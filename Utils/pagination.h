@@ -26,8 +26,8 @@ class Pagination : public QWidget
     int maxPageModel;
     int minPageModel;
     int maxPage;
-    WorkingIsTableView* workingIsTableView;
-    SearchModule* searchModule;
+    QSharedPointer<WorkingIsTableView> workingIsTableView;
+    QSharedPointer<SearchModule> searchModule;
     QVector<QSharedPointer<QStandardItemModel>> models;
     ModelTypes modelTypes;
     QString searchText;
@@ -37,7 +37,7 @@ class Pagination : public QWidget
     QTimer searchTimer;
 
 public:
-    Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, WorkingIsTableView* workingIsTableView, ModelTypes modelTypes);
+    Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes);
 
     int getMaxPage();
     void prev();

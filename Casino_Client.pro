@@ -17,14 +17,17 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     BaseClass/baseclasssearchwindow.cpp \
-    GUI/TabWidgets/allusers.cpp \
-    GUI/TabWidgets/creategametable.cpp \
-    GUI/TabWidgets/existingtables.cpp \
+    GUI/TabWidgets/activetables.cpp \
+    GUI/TabWidgets/banlist.cpp \
+    GUI/TabWidgets/stuffusers.cpp \
+    GUI/TabWidgets/users.cpp \
     GUI/TabWidgets/welcome.cpp \
-    GUI/notification.cpp \
-    GUI/reconnecting.cpp \
     GUI/window_admin.cpp \
     GUI/window_auth.cpp \
+    Gui/Notification/notification.cpp \
+    Gui/Notification/reconnecting.cpp \
+    Gui/WorkingWithRecords/Add/add_table.cpp \
+    Gui/WorkingWithRecords/Edit/edit_table.cpp \
     Network/PacketsActions/p_authorization.cpp \
     Network/PacketsActions/p_notification.cpp \
     Network/PacketsActions/p_query.cpp \
@@ -40,14 +43,17 @@ SOURCES += \
 
 HEADERS += \
     BaseClass/baseclasssearchwindow.h \
-    GUI/TabWidgets/allusers.h \
-    GUI/TabWidgets/creategametable.h \
-    GUI/TabWidgets/existingtables.h \
+    GUI/TabWidgets/activetables.h \
+    GUI/TabWidgets/banlist.h \
+    GUI/TabWidgets/stuffusers.h \
+    GUI/TabWidgets/users.h \
     GUI/TabWidgets/welcome.h \
-    GUI/notification.h \
-    GUI/reconnecting.h \
     GUI/window_admin.h \
     GUI/window_auth.h \
+    Gui/Notification/notification.h \
+    Gui/Notification/reconnecting.h \
+    Gui/WorkingWithRecords/Add/add_table.h \
+    Gui/WorkingWithRecords/Edit/edit_table.h \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
     Network/PacketsActions/p_notification.h \
@@ -65,12 +71,15 @@ HEADERS += \
     Utils/workingistableview.h
 
 FORMS += \
-    GUI/TabWidgets/allusers.ui \
-    GUI/TabWidgets/creategametable.ui \
-    GUI/TabWidgets/existingtables.ui \
+    GUI/TabWidgets/activetables.ui \
+    GUI/TabWidgets/banlist.ui \
+    GUI/TabWidgets/stuffusers.ui \
+    GUI/TabWidgets/users.ui \
     GUI/TabWidgets/welcome.ui \
     GUI/window_admin.ui \
     GUI/window_auth.ui \
+    Gui/WorkingWithRecords/Add/add_table.ui \
+    Gui/WorkingWithRecords/Edit/edit_table.ui
 
 LIBS += -lws2_32
 QT += core

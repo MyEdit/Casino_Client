@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>ExistingTables</class>
- <widget class="QWidget" name="ExistingTables">
+ <class>ActiveTables</class>
+ <widget class="QWidget" name="ActiveTables">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -147,6 +147,41 @@ QPushButton:pressed {
         </size>
        </property>
       </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="refreshData">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    color: black;
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 88, 255);
+	color: white;
+}
+
+QPushButton:pressed {
+	background-color: rgba(220, 60, 190, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="../../Resources.qrc">
+         <normaloff>:/icons/resources/update.png</normaloff>:/icons/resources/update.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -294,7 +329,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="moreDetailed">
+      <widget class="QPushButton" name="editTable">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -334,7 +369,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="deleteTable">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -424,7 +459,7 @@ QPushButton:pressed {
         </font>
        </property>
        <property name="text">
-        <string>1</string>
+        <string>0</string>
        </property>
       </widget>
      </item>

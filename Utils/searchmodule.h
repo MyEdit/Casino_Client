@@ -7,10 +7,10 @@
 
 class SearchModule
 {
-    WorkingIsTableView* workingIsTableView;
+    QSharedPointer<WorkingIsTableView> workingIsTableView;
 
 public:
-    SearchModule(WorkingIsTableView* workingIsTableView);
+    SearchModule(QSharedPointer<WorkingIsTableView> workingIsTableView);
 
     bool searchInModels(QSharedPointer<QStandardItemModel> model, QString searchText, QString typeSearch, int columnCurrentIndex, int& currentPage, int rowsPerPage);
     void searchInDB(ModelTypes modelType, QString table, QString column, QString searchText, QString sort);

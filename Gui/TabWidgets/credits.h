@@ -1,5 +1,5 @@
-﻿#ifndef BANLIST_H
-#define BANLIST_H
+﻿#ifndef CREDITS_H
+#define CREDITS_H
 
 #include "QStandardItemModel"
 #include "Network/PacketTypes.h"
@@ -7,20 +7,18 @@
 #include <QMessageBox>
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
-#include "Gui/WorkingWithRecords/Add/add_ban.h"
 
 namespace Ui {
-class BanList;
+class Credits;
 }
 
-class BanList : public BaseClassSearchWindow
+class Credits : public BaseClassSearchWindow
 {
-    Ui::BanList *ui;
-    QSharedPointer<Add_Ban> addBan;
+    Ui::Credits *ui;
 
 public:
-    explicit BanList(QWidget *parent = nullptr);
-    ~BanList();
+    explicit Credits(QWidget *parent = nullptr);
+    ~Credits();
 
 private:
     void prepReloadModels() override;
@@ -36,4 +34,4 @@ private:
     void openEditRecotd() override;
 };
 
-#endif // BANLIST_H
+#endif // CREDITS_H

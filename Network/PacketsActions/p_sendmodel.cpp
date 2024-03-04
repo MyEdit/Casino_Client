@@ -61,6 +61,16 @@ void P_SendModel::initMapFunctions()
     {
         P_Authorization::adminW->setModel_StuffUsersTab(model);
     });
+
+    setModelFunctions.insert(ModelTypes::Payments, [&](ModelData model)
+    {
+        P_Authorization::adminW->setModel_PaymentsTab(model);
+    });
+
+    setModelFunctions.insert(ModelTypes::Credits, [&](ModelData model)
+    {
+        P_Authorization::adminW->setModel_CreditsTab(model);
+    });
 }
 
 void P_SendModel::initMapTableNames()
@@ -69,5 +79,7 @@ void P_SendModel::initMapTableNames()
     tableNames.insert(ModelTypes::ActiveTables, "ActiveTables");
     tableNames.insert(ModelTypes::StuffUsers, "StuffUsers");
     tableNames.insert(ModelTypes::Banlist, "Banlist");
+    tableNames.insert(ModelTypes::Credits, "Credits");
+    tableNames.insert(ModelTypes::Payments, "Payments");
 }
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>StuffUsers</class>
- <widget class="QWidget" name="StuffUsers">
+ <class>Payments</class>
+ <widget class="QWidget" name="Payments">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1037</width>
-    <height>586</height>
+    <width>1035</width>
+    <height>668</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -286,7 +286,7 @@ QPushButton:pressed {
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="addStuffUser">
+      <widget class="QPushButton" name="addPayments">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -329,7 +329,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="editStuffUser">
+      <widget class="QPushButton" name="editPayments">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -356,9 +356,6 @@ QPushButton:pressed {
 	background-color: rgba(220, 60, 190, 255);
 }</string>
        </property>
-       <property name="text">
-        <string/>
-       </property>
        <property name="icon">
         <iconset resource="../../Resources.qrc">
          <normaloff>:/icons/resources/edited.png</normaloff>:/icons/resources/edited.png</iconset>
@@ -372,9 +369,17 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="deleteStuffUser">
+      <widget class="QPushButton" name="deletePayments">
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+         <weight>75</weight>
+         <bold>true</bold>
+        </font>
+       </property>
        <property name="styleSheet">
-        <string>QPushButton {
+        <string notr="true">QPushButton {
     background-color: white;
     border: 1px solid black;
     border-radius: 10px;
@@ -390,9 +395,6 @@ QPushButton:hover {
 QPushButton:pressed {
 	background-color: rgba(220, 60, 190, 255);
 }</string>
-       </property>
-       <property name="text">
-        <string/>
        </property>
        <property name="icon">
         <iconset resource="../../Resources.qrc">

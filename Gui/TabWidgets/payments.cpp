@@ -1,31 +1,31 @@
-﻿#include "activetables.h"
-#include "ui_activetables.h"
+﻿#include "payments.h"
+#include "ui_payments.h"
 
-ActiveTables::ActiveTables(QWidget *parent) :
+Payments::Payments(QWidget *parent) :
     BaseClassSearchWindow(parent),
-    ui(new Ui::ActiveTables)
+    ui(new Ui::Payments)
 {
     ui->setupUi(this);
 
     baseSetting();
 }
 
-ActiveTables::~ActiveTables()
+Payments::~Payments()
 {
     delete ui;
 }
 
-void ActiveTables::setValueToMaxPage(int maxPage)
+void Payments::setValueToMaxPage(int maxPage)
 {
     ui->labelMaxPage->setText(QString::number(maxPage));
 }
 
-void ActiveTables::assigningValues()
+void Payments::assigningValues()
 {
     boxsNameColumn.push_back(ui->searchColumn);
     boxsNameColumn.push_back(ui->sortingColumn);
 
-    modelTypes = ModelTypes::ActiveTables;
+    modelTypes = ModelTypes::Payments;
 
     typeSearch = '%';
     sortingOn = false;
@@ -34,45 +34,42 @@ void ActiveTables::assigningValues()
 
     typesSorting =
     {
-        {0, " ASC"},
-        {1, " DESC"}
+        {0, "ASC"},
+        {1, "DESC"}
     };
 }
 
-void ActiveTables::creatingObjects()
+void Payments::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>::create(ui->tableView, &boxsNameColumn);
     pagination = QSharedPointer<Pagination>::create(this, ui->tableView, ui->prevButton, ui->nextButton, workingIsTableView, modelTypes);
-
-    addTable = QSharedPointer<Add_Table>::create();
-    editTable = QSharedPointer<Edit_Table>::create();
 }
 
-void ActiveTables::connects()
+void Payments::connects()
 {
     connect(ui->prevButton, &QPushButton::clicked, pagination.get(), &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination.get(), &Pagination::next);
-    connect(ui->pushButton_search, &QPushButton::clicked, this, &ActiveTables::search);
-    connect(ui->addTable, &QPushButton::clicked, this, &ActiveTables::openCreatRecotd);
-    connect(ui->editTable, &QPushButton::clicked, this, &ActiveTables::openEditRecotd);
-    connect(ui->refreshData, &QPushButton::clicked, this, &ActiveTables::prepReloadModels);
+    connect(ui->pushButton_search, &QPushButton::clicked, this, &Payments::search);
+    connect(ui->addPayments, &QPushButton::clicked, this, &Payments::openCreatRecotd);
+    connect(ui->editPayments, &QPushButton::clicked, this, &Payments::openEditRecotd);
+    connect(ui->refreshData, &QPushButton::clicked, this, &Payments::prepReloadModels);
 
-    connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &ActiveTables::goToPage);
-    connect(ui->searchText, &QLineEdit::textChanged, this, &ActiveTables::search);
+    connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &Payments::goToPage);
+    connect(ui->searchText, &QLineEdit::textChanged, this, &Payments::search);
 
-    connect(ui->checkBox, &QCheckBox::stateChanged, this, &ActiveTables::selectTypeSearch);
-    connect(ui->sorting, &QCheckBox::stateChanged, this, &ActiveTables::sorting);
+    connect(ui->checkBox, &QCheckBox::stateChanged, this, &Payments::selectTypeSearch);
+    connect(ui->sorting, &QCheckBox::stateChanged, this, &Payments::sorting);
 
-    connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ActiveTables::sort);
-    connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ActiveTables::sort);
+    connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Payments::sort);
+    connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Payments::sort);
 
-    connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &ActiveTables::onHeaderClicked);
+    connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &Payments::onHeaderClicked);
 
-    connect(pagination.get(), &Pagination::updateCurrentPageInLabel, this, &ActiveTables::updateCurrentPageInLabel);
-    connect(pagination.get(), &Pagination::setMaxPageInLabel, this, &ActiveTables::setValueToMaxPage);
-    connect(pagination.get(), &Pagination::blockInterface, this, &ActiveTables::blockingInterface);
+    connect(pagination.get(), &Pagination::updateCurrentPageInLabel, this, &Payments::updateCurrentPageInLabel);
+    connect(pagination.get(), &Pagination::setMaxPageInLabel, this, &Payments::setValueToMaxPage);
+    connect(pagination.get(), &Pagination::blockInterface, this, &Payments::blockingInterface);
 
-    connect(workingIsTableView.get(), &WorkingIsTableView::unlockInterface, this, &ActiveTables::blockingInterface);
+    connect(workingIsTableView.get(), &WorkingIsTableView::unlockInterface, this, &Payments::blockingInterface);
 
     connect(&goToPageTimer, &QTimer::timeout, this, [=]()
     {
@@ -80,12 +77,12 @@ void ActiveTables::connects()
     });
 }
 
-void ActiveTables::updateCurrentPageInLabel(int currentPage)
+void Payments::updateCurrentPageInLabel(int currentPage)
 {
     ui->labelCurrentPage->setText(QString::number(currentPage));
 }
 
-void ActiveTables::goToPage()
+void Payments::goToPage()
 {
     if(ui->pageNumberToNavigate->text() == "0")
     {
@@ -96,12 +93,12 @@ void ActiveTables::goToPage()
     goToPageTimer.start(1000);
 }
 
-void ActiveTables::search()
+void Payments::search()
 {
     pagination->search(ui->searchText->text(), typeSearch, ui->searchColumn);
 }
 
-void ActiveTables::onHeaderClicked(int logicalIndex)
+void Payments::onHeaderClicked(int logicalIndex)
 {
     if(!sortingOn)
         return;
@@ -122,7 +119,7 @@ void ActiveTables::onHeaderClicked(int logicalIndex)
         settingValueInComboBox(ui->searchColumn, headerText);
 }
 
-void ActiveTables::prepReloadModels()
+void Payments::prepReloadModels()
 {
     if(sortingOn)
     {
@@ -141,12 +138,12 @@ void ActiveTables::prepReloadModels()
     pagination->reloadModels();
 }
 
-void ActiveTables::openCreatRecotd()
+void Payments::openCreatRecotd()
 {
-    addTable->show();
+
 }
 
-void ActiveTables::openEditRecotd()
+void Payments::openEditRecotd()
 {
-    editTable->show();
+
 }

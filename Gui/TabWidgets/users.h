@@ -17,7 +17,6 @@ class Users;
 
 class Users : public BaseClassSearchWindow
 {
-    Q_OBJECT
     Ui::Users *ui;
 
 public:

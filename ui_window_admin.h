@@ -39,13 +39,13 @@ public:
     QPushButton *banList;
     QLabel *label_4;
     QPushButton *stuffUsers;
-    QPushButton *buttonLoanApplocations;
+    QPushButton *credits;
     QLabel *label_5;
     QLabel *label_3;
     QPushButton *users;
     QLabel *label_2;
     QPushButton *activeTables;
-    QPushButton *pushButton;
+    QPushButton *payments;
     QLabel *label_6;
     QLabel *photo;
     QSpacerItem *verticalSpacer;
@@ -180,11 +180,11 @@ public:
 
         gridLayout_3->addWidget(stuffUsers, 2, 1, 1, 1);
 
-        buttonLoanApplocations = new QPushButton(centralwidget);
-        buttonLoanApplocations->setObjectName(QString::fromUtf8("buttonLoanApplocations"));
-        buttonLoanApplocations->setMinimumSize(QSize(0, 40));
-        buttonLoanApplocations->setFont(font1);
-        buttonLoanApplocations->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        credits = new QPushButton(centralwidget);
+        credits->setObjectName(QString::fromUtf8("credits"));
+        credits->setMinimumSize(QSize(0, 40));
+        credits->setFont(font1);
+        credits->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
 "	color: rgb(255, 255, 255);\n"
@@ -192,7 +192,7 @@ public:
 "	text-align: left;\n"
 "}"));
 
-        gridLayout_3->addWidget(buttonLoanApplocations, 4, 1, 1, 1);
+        gridLayout_3->addWidget(credits, 4, 1, 1, 1);
 
         label_5 = new QLabel(centralwidget);
         label_5->setObjectName(QString::fromUtf8("label_5"));
@@ -244,11 +244,11 @@ public:
 
         gridLayout_3->addWidget(activeTables, 0, 1, 1, 1);
 
-        pushButton = new QPushButton(centralwidget);
-        pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        pushButton->setMinimumSize(QSize(0, 40));
-        pushButton->setFont(font1);
-        pushButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        payments = new QPushButton(centralwidget);
+        payments->setObjectName(QString::fromUtf8("payments"));
+        payments->setMinimumSize(QSize(0, 40));
+        payments->setFont(font1);
+        payments->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
 "	color: rgb(255, 255, 255);\n"
@@ -256,7 +256,7 @@ public:
 "	text-align: left;\n"
 "}"));
 
-        gridLayout_3->addWidget(pushButton, 5, 1, 1, 1);
+        gridLayout_3->addWidget(payments, 5, 1, 1, 1);
 
         label_6 = new QLabel(centralwidget);
         label_6->setObjectName(QString::fromUtf8("label_6"));
@@ -302,14 +302,13 @@ public:
         banList->setText(QApplication::translate("Window_Admin", "\320\247\321\221\321\200\320\275\321\213\320\271 \321\201\320\277\320\270\321\201\320\276\320\272", nullptr));
         label_4->setText(QString());
         stuffUsers->setText(QApplication::translate("Window_Admin", "\320\241\320\276\321\202\321\200\321\203\320\264\320\275\320\270\320\272\320\270", nullptr));
-        buttonLoanApplocations->setText(QApplication::translate("Window_Admin", "\320\227\320\260\321\217\320\262\320\272\320\270 \320\275\320\260 \320\272\321\200\320\265\320\264\320\270\321\202\321\213", nullptr));
+        credits->setText(QApplication::translate("Window_Admin", "\320\227\320\260\321\217\320\262\320\272\320\270 \320\275\320\260 \320\272\321\200\320\265\320\264\320\270\321\202\321\213", nullptr));
         label_5->setText(QString());
         label_3->setText(QString());
         users->setText(QApplication::translate("Window_Admin", "\320\237\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\320\270", nullptr));
         label_2->setText(QString());
         activeTables->setText(QApplication::translate("Window_Admin", "\320\230\320\263\321\200\320\276\320\262\321\213\320\265 \321\201\321\202\320\276\320\273\321\213", nullptr));
-        pushButton->setText(QApplication::translate("Window_Admin", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217 \321\202\321\200\320\260\320\275\320\267\320\260\320\272\321\206\320\270\320\271\n"
-"(\320\277\320\273\320\260\321\202\320\265\320\266\320\265\320\271)?", nullptr));
+        payments->setText(QApplication::translate("Window_Admin", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217 \321\202\321\200\320\260\320\275\320\267\320\260\320\272\321\206\320\270\320\271", nullptr));
         label_6->setText(QString());
         photo->setText(QString());
     } // retranslateUi

@@ -13,10 +13,11 @@ Window_Admin::Window_Admin(QWidget *parent) : QMainWindow(parent), ui(new Ui::Wi
     uploadingPhotoEmployee();
     settingWindowPosition();
 
-
     QMap<QPushButton*, QLabel*>::iterator i;
     for (i = selectedButton.begin(); i != selectedButton.end(); i++)
         i.value()->setVisible(false);
+
+    ui->tabWidget->setCurrentWidget(welcomeTab.get());
 }
 
 Window_Admin::~Window_Admin()
@@ -48,7 +49,8 @@ void Window_Admin::assigningValues()
     buttonSwitchingTab.push_back(ui->users);
     buttonSwitchingTab.push_back(ui->stuffUsers);
     buttonSwitchingTab.push_back(ui->banList);
-    buttonSwitchingTab.push_back(ui->buttonLoanApplocations);
+    buttonSwitchingTab.push_back(ui->credits);
+    buttonSwitchingTab.push_back(ui->payments);
 
     selectedButton =
     {
@@ -56,8 +58,8 @@ void Window_Admin::assigningValues()
         {ui->users, ui->label_3},
         {ui->stuffUsers, ui->label_4},
         {ui->banList, ui->label_5},
-        {ui->buttonLoanApplocations, ui->label},
-        {ui->pushButton, ui->label_6}
+        {ui->credits, ui->label},
+        {ui->payments, ui->label_6}
     };
 }
 
@@ -79,6 +81,16 @@ void Window_Admin::setModel_BanListTab(ModelData model)
 void Window_Admin::setModel_StuffUsersTab(ModelData model)
 {
     stuffUsers->setModel(model);
+}
+
+void Window_Admin::setModel_CreditsTab(ModelData model)
+{
+    credits->setModel(model);
+}
+
+void Window_Admin::setModel_PaymentsTab(ModelData model)
+{
+    payments->setModel(model);
 }
 
 void Window_Admin::settingWindowPosition()
@@ -143,8 +155,15 @@ void Window_Admin::on_banList_clicked()
     onNavigationsButton_clicked();
 }
 
-void Window_Admin::on_buttonLoanApplocations_clicked()
+void Window_Admin::on_credits_clicked()
 {
+    ui->tabWidget->setCurrentWidget(credits.get());
+    onNavigationsButton_clicked();
+}
+
+void Window_Admin::on_payments_clicked()
+{
+    ui->tabWidget->setCurrentWidget(payments.get());
     onNavigationsButton_clicked();
 }
 
@@ -177,6 +196,8 @@ void Window_Admin::completionTabWidget()
     rendering_UsersTab();
     rendering_BanListTab();
     rendering_StuffUsersTab();
+    rendering_CreditsTab();
+    rendering_PaymentsTab();
 }
 
 void Window_Admin::rendering_ActiveTablesTab()
@@ -207,6 +228,18 @@ void Window_Admin::rendering_StuffUsersTab()
 {
     stuffUsers = QSharedPointer<StuffUsers>::create();
     ui->tabWidget->addTab(stuffUsers.data(), "");
+}
+
+void Window_Admin::rendering_CreditsTab()
+{
+    credits = QSharedPointer<Credits>::create();
+    ui->tabWidget->addTab(credits.data(), "");
+}
+
+void Window_Admin::rendering_PaymentsTab()
+{
+    payments = QSharedPointer<Payments>::create();
+    ui->tabWidget->addTab(payments.data(), "");
 }
 
 /////////////////ИВЕНТЫ/////////////////

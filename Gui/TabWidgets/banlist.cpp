@@ -43,6 +43,8 @@ void BanList::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>::create(ui->tableView, &boxsNameColumn);
     pagination = QSharedPointer<Pagination>::create(this, ui->tableView, ui->prevButton, ui->nextButton, workingIsTableView, modelTypes);
+
+    addBan = QSharedPointer<Add_Ban>::create();
 }
 
 void BanList::connects()
@@ -140,7 +142,7 @@ void BanList::prepReloadModels()
 
 void BanList::openCreatRecotd()
 {
-
+    addBan->show();
 }
 
 void BanList::openEditRecotd()

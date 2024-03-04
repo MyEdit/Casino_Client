@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'users.ui'
+** Form generated from reading UI file 'payments.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.12.7
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_USERS_H
-#define UI_USERS_H
+#ifndef UI_PAYMENTS_H
+#define UI_PAYMENTS_H
 
 #include <QtCore/QVariant>
 #include <QtGui/QIcon>
@@ -26,7 +26,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Users
+class Ui_Payments
 {
 public:
     QVBoxLayout *verticalLayout;
@@ -46,9 +46,9 @@ public:
     QComboBox *typeSorting;
     QCheckBox *sorting;
     QSpacerItem *horizontalSpacer_13;
-    QPushButton *addUser;
-    QPushButton *editUser;
-    QPushButton *deleteUser;
+    QPushButton *addPayments;
+    QPushButton *editPayments;
+    QPushButton *deletePayments;
     QTableView *tableView;
     QHBoxLayout *horizontalLayout_6;
     QSpacerItem *horizontalSpacer_9;
@@ -66,16 +66,16 @@ public:
     QPushButton *nextButton;
     QLabel *status;
 
-    void setupUi(QWidget *Users)
+    void setupUi(QWidget *Payments)
     {
-        if (Users->objectName().isEmpty())
-            Users->setObjectName(QString::fromUtf8("Users"));
-        Users->resize(1015, 640);
-        verticalLayout = new QVBoxLayout(Users);
+        if (Payments->objectName().isEmpty())
+            Payments->setObjectName(QString::fromUtf8("Payments"));
+        Payments->resize(1035, 668);
+        verticalLayout = new QVBoxLayout(Payments);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        label = new QLabel(Users);
+        label = new QLabel(Payments);
         label->setObjectName(QString::fromUtf8("label"));
         QFont font;
         font.setFamily(QString::fromUtf8("Segoe UI"));
@@ -84,7 +84,7 @@ public:
 
         horizontalLayout_9->addWidget(label);
 
-        searchColumn = new QComboBox(Users);
+        searchColumn = new QComboBox(Payments);
         searchColumn->setObjectName(QString::fromUtf8("searchColumn"));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Segoe UI"));
@@ -95,19 +95,19 @@ public:
 
         horizontalLayout_9->addWidget(searchColumn);
 
-        searchText = new QLineEdit(Users);
+        searchText = new QLineEdit(Payments);
         searchText->setObjectName(QString::fromUtf8("searchText"));
         searchText->setFont(font);
 
         horizontalLayout_9->addWidget(searchText);
 
-        checkBox = new QCheckBox(Users);
+        checkBox = new QCheckBox(Payments);
         checkBox->setObjectName(QString::fromUtf8("checkBox"));
         checkBox->setFont(font);
 
         horizontalLayout_9->addWidget(checkBox);
 
-        pushButton_search = new QPushButton(Users);
+        pushButton_search = new QPushButton(Payments);
         pushButton_search->setObjectName(QString::fromUtf8("pushButton_search"));
         pushButton_search->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: white;\n"
@@ -132,7 +132,7 @@ public:
 
         horizontalLayout_9->addWidget(pushButton_search);
 
-        clearSearch = new QPushButton(Users);
+        clearSearch = new QPushButton(Payments);
         clearSearch->setObjectName(QString::fromUtf8("clearSearch"));
         clearSearch->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: white;\n"
@@ -161,7 +161,7 @@ public:
 
         horizontalLayout_9->addItem(horizontalSpacer_14);
 
-        refreshData = new QPushButton(Users);
+        refreshData = new QPushButton(Payments);
         refreshData->setObjectName(QString::fromUtf8("refreshData"));
         refreshData->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: white;\n"
@@ -191,19 +191,19 @@ public:
 
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
-        label_3 = new QLabel(Users);
+        label_3 = new QLabel(Payments);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setFont(font);
 
         horizontalLayout_8->addWidget(label_3);
 
-        sortingColumn = new QComboBox(Users);
+        sortingColumn = new QComboBox(Payments);
         sortingColumn->setObjectName(QString::fromUtf8("sortingColumn"));
         sortingColumn->setFont(font1);
 
         horizontalLayout_8->addWidget(sortingColumn);
 
-        label_2 = new QLabel(Users);
+        label_2 = new QLabel(Payments);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
@@ -214,7 +214,7 @@ public:
 
         horizontalLayout_8->addWidget(label_2);
 
-        typeSorting = new QComboBox(Users);
+        typeSorting = new QComboBox(Payments);
         typeSorting->addItem(QString());
         typeSorting->addItem(QString());
         typeSorting->setObjectName(QString::fromUtf8("typeSorting"));
@@ -232,7 +232,7 @@ public:
 
         horizontalLayout_8->addWidget(typeSorting);
 
-        sorting = new QCheckBox(Users);
+        sorting = new QCheckBox(Payments);
         sorting->setObjectName(QString::fromUtf8("sorting"));
         sorting->setFont(font);
 
@@ -242,10 +242,10 @@ public:
 
         horizontalLayout_8->addItem(horizontalSpacer_13);
 
-        addUser = new QPushButton(Users);
-        addUser->setObjectName(QString::fromUtf8("addUser"));
-        addUser->setFont(font2);
-        addUser->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        addPayments = new QPushButton(Payments);
+        addPayments->setObjectName(QString::fromUtf8("addPayments"));
+        addPayments->setFont(font2);
+        addPayments->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: white;\n"
 "    border: 1px solid black;\n"
 "    border-radius: 10px;\n"
@@ -263,15 +263,15 @@ public:
 "}"));
         QIcon icon3;
         icon3.addFile(QString::fromUtf8(":/icons/resources/add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addUser->setIcon(icon3);
-        addUser->setIconSize(QSize(32, 32));
+        addPayments->setIcon(icon3);
+        addPayments->setIconSize(QSize(32, 32));
 
-        horizontalLayout_8->addWidget(addUser);
+        horizontalLayout_8->addWidget(addPayments);
 
-        editUser = new QPushButton(Users);
-        editUser->setObjectName(QString::fromUtf8("editUser"));
-        editUser->setFont(font2);
-        editUser->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        editPayments = new QPushButton(Payments);
+        editPayments->setObjectName(QString::fromUtf8("editPayments"));
+        editPayments->setFont(font2);
+        editPayments->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: white;\n"
 "    border: 1px solid black;\n"
 "    border-radius: 10px;\n"
@@ -289,24 +289,41 @@ public:
 "}"));
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/icons/resources/edited.png"), QSize(), QIcon::Normal, QIcon::Off);
-        editUser->setIcon(icon4);
-        editUser->setIconSize(QSize(32, 32));
+        editPayments->setIcon(icon4);
+        editPayments->setIconSize(QSize(32, 32));
 
-        horizontalLayout_8->addWidget(editUser);
+        horizontalLayout_8->addWidget(editPayments);
 
-        deleteUser = new QPushButton(Users);
-        deleteUser->setObjectName(QString::fromUtf8("deleteUser"));
+        deletePayments = new QPushButton(Payments);
+        deletePayments->setObjectName(QString::fromUtf8("deletePayments"));
+        deletePayments->setFont(font2);
+        deletePayments->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
         QIcon icon5;
         icon5.addFile(QString::fromUtf8(":/icons/resources/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
-        deleteUser->setIcon(icon5);
-        deleteUser->setIconSize(QSize(32, 32));
+        deletePayments->setIcon(icon5);
+        deletePayments->setIconSize(QSize(32, 32));
 
-        horizontalLayout_8->addWidget(deleteUser);
+        horizontalLayout_8->addWidget(deletePayments);
 
 
         verticalLayout->addLayout(horizontalLayout_8);
 
-        tableView = new QTableView(Users);
+        tableView = new QTableView(Payments);
         tableView->setObjectName(QString::fromUtf8("tableView"));
         QFont font3;
         font3.setFamily(QString::fromUtf8("Segoe UI"));
@@ -321,25 +338,25 @@ public:
 
         horizontalLayout_6->addItem(horizontalSpacer_9);
 
-        label_4 = new QLabel(Users);
+        label_4 = new QLabel(Payments);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setFont(font);
 
         horizontalLayout_6->addWidget(label_4);
 
-        labelCurrentPage = new QLabel(Users);
+        labelCurrentPage = new QLabel(Payments);
         labelCurrentPage->setObjectName(QString::fromUtf8("labelCurrentPage"));
         labelCurrentPage->setFont(font1);
 
         horizontalLayout_6->addWidget(labelCurrentPage);
 
-        label_5 = new QLabel(Users);
+        label_5 = new QLabel(Payments);
         label_5->setObjectName(QString::fromUtf8("label_5"));
         label_5->setFont(font);
 
         horizontalLayout_6->addWidget(label_5);
 
-        labelMaxPage = new QLabel(Users);
+        labelMaxPage = new QLabel(Payments);
         labelMaxPage->setObjectName(QString::fromUtf8("labelMaxPage"));
         labelMaxPage->setFont(font1);
 
@@ -354,7 +371,7 @@ public:
 
         horizontalLayout_10 = new QHBoxLayout();
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
-        prevButton = new QPushButton(Users);
+        prevButton = new QPushButton(Payments);
         prevButton->setObjectName(QString::fromUtf8("prevButton"));
         QFont font4;
         font4.setFamily(QString::fromUtf8("Segoe UI"));
@@ -387,13 +404,13 @@ public:
 
         horizontalLayout_10->addItem(horizontalSpacer_15);
 
-        label_6 = new QLabel(Users);
+        label_6 = new QLabel(Payments);
         label_6->setObjectName(QString::fromUtf8("label_6"));
         label_6->setFont(font);
 
         horizontalLayout_10->addWidget(label_6);
 
-        pageNumberToNavigate = new QLineEdit(Users);
+        pageNumberToNavigate = new QLineEdit(Payments);
         pageNumberToNavigate->setObjectName(QString::fromUtf8("pageNumberToNavigate"));
         pageNumberToNavigate->setMaximumSize(QSize(50, 16777215));
         pageNumberToNavigate->setFont(font);
@@ -404,7 +421,7 @@ public:
 
         horizontalLayout_10->addItem(horizontalSpacer_16);
 
-        nextButton = new QPushButton(Users);
+        nextButton = new QPushButton(Payments);
         nextButton->setObjectName(QString::fromUtf8("nextButton"));
         nextButton->setFont(font4);
         nextButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -433,57 +450,39 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_10);
 
-        status = new QLabel(Users);
+        status = new QLabel(Payments);
         status->setObjectName(QString::fromUtf8("status"));
 
         verticalLayout->addWidget(status);
 
 
-        retranslateUi(Users);
+        retranslateUi(Payments);
 
-        QMetaObject::connectSlotsByName(Users);
+        QMetaObject::connectSlotsByName(Payments);
     } // setupUi
 
-    void retranslateUi(QWidget *Users)
+    void retranslateUi(QWidget *Payments)
     {
-        Users->setWindowTitle(QApplication::translate("Users", "Form", nullptr));
-        label->setText(QApplication::translate("Users", "\320\237\320\276\320\270\321\201\320\272:", nullptr));
-        checkBox->setText(QApplication::translate("Users", "\320\242\320\276\321\207\320\275\320\276\320\265 \n"
+        Payments->setWindowTitle(QApplication::translate("Payments", "Form", nullptr));
+        label->setText(QApplication::translate("Payments", "\320\237\320\276\320\270\321\201\320\272:", nullptr));
+        checkBox->setText(QApplication::translate("Payments", "\320\242\320\276\321\207\320\275\320\276\320\265 \n"
 "\321\201\320\276\320\262\320\277\320\260\320\264\320\265\320\275\320\270\320\265", nullptr));
         pushButton_search->setText(QString());
         clearSearch->setText(QString());
         refreshData->setText(QString());
-        label_3->setText(QApplication::translate("Users", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \321\201\321\202\320\276\320\273\320\261\320\265\321\206:", nullptr));
-        label_2->setText(QApplication::translate("Users", "\320\277\320\276", nullptr));
-        typeSorting->setItemText(0, QApplication::translate("Users", "\320\237\320\276 \320\262\320\276\320\267\321\200\320\260\321\201\321\202\320\260\320\275\320\270\321\216", nullptr));
-        typeSorting->setItemText(1, QApplication::translate("Users", "\320\237\320\276 \321\203\320\261\321\213\320\262\320\260\320\275\320\270\321\216", nullptr));
+        label_3->setText(QApplication::translate("Payments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \321\201\321\202\320\276\320\273\320\261\320\265\321\206:", nullptr));
+        label_2->setText(QApplication::translate("Payments", "\320\277\320\276", nullptr));
+        typeSorting->setItemText(0, QApplication::translate("Payments", "\320\237\320\276 \320\262\320\276\320\267\321\200\320\260\321\201\321\202\320\260\320\275\320\270\321\216", nullptr));
+        typeSorting->setItemText(1, QApplication::translate("Payments", "\320\237\320\276 \321\203\320\261\321\213\320\262\320\260\320\275\320\270\321\216", nullptr));
 
-        sorting->setText(QApplication::translate("Users", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
-        addUser->setText(QString());
-        editUser->setText(QString());
-        deleteUser->setStyleSheet(QApplication::translate("Users", "QPushButton {\n"
-"    background-color: white;\n"
-"    border: 1px solid black;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px;\n"
-"    color: black;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(100, 88, 255);\n"
-"	color: white;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: rgba(220, 60, 190, 255);\n"
-"}", nullptr));
-        deleteUser->setText(QString());
-        label_4->setText(QApplication::translate("Users", "\320\242\320\265\320\272\321\203\321\211\320\260\321\217 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\260:", nullptr));
-        labelCurrentPage->setText(QApplication::translate("Users", "0", nullptr));
-        label_5->setText(QApplication::translate("Users", "/", nullptr));
-        labelMaxPage->setText(QApplication::translate("Users", "????", nullptr));
+        sorting->setText(QApplication::translate("Payments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
+        addPayments->setText(QString());
+        label_4->setText(QApplication::translate("Payments", "\320\242\320\265\320\272\321\203\321\211\320\260\321\217 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\260:", nullptr));
+        labelCurrentPage->setText(QApplication::translate("Payments", "0", nullptr));
+        label_5->setText(QApplication::translate("Payments", "/", nullptr));
+        labelMaxPage->setText(QApplication::translate("Payments", "????", nullptr));
         prevButton->setText(QString());
-        label_6->setText(QApplication::translate("Users", "\320\237\320\265\321\200\320\265\320\271\321\202\320\270 \320\272 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\265 \342\204\226:", nullptr));
+        label_6->setText(QApplication::translate("Payments", "\320\237\320\265\321\200\320\265\320\271\321\202\320\270 \320\272 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\265 \342\204\226:", nullptr));
         nextButton->setText(QString());
         status->setText(QString());
     } // retranslateUi
@@ -491,9 +490,9 @@ public:
 };
 
 namespace Ui {
-    class Users: public Ui_Users {};
+    class Payments: public Ui_Payments {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_USERS_H
+#endif // UI_PAYMENTS_H

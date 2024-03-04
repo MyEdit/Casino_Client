@@ -26,6 +26,10 @@ SOURCES += \
     GUI/window_auth.cpp \
     Gui/Notification/notification.cpp \
     Gui/Notification/reconnecting.cpp \
+    Gui/TabWidgets/credits.cpp \
+    Gui/TabWidgets/payments.cpp \
+    Gui/WorkingWithRecords/Add/add_ban.cpp \
+    Gui/WorkingWithRecords/Add/add_stuffuser.cpp \
     Gui/WorkingWithRecords/Add/add_table.cpp \
     Gui/WorkingWithRecords/Edit/edit_table.cpp \
     Network/PacketsActions/p_authorization.cpp \
@@ -52,6 +56,10 @@ HEADERS += \
     GUI/window_auth.h \
     Gui/Notification/notification.h \
     Gui/Notification/reconnecting.h \
+    Gui/TabWidgets/credits.h \
+    Gui/TabWidgets/payments.h \
+    Gui/WorkingWithRecords/Add/add_ban.h \
+    Gui/WorkingWithRecords/Add/add_stuffuser.h \
     Gui/WorkingWithRecords/Add/add_table.h \
     Gui/WorkingWithRecords/Edit/edit_table.h \
     Network/PacketTypes.h \
@@ -78,6 +86,10 @@ FORMS += \
     GUI/TabWidgets/welcome.ui \
     GUI/window_admin.ui \
     GUI/window_auth.ui \
+    Gui/TabWidgets/credits.ui \
+    Gui/TabWidgets/payments.ui \
+    Gui/WorkingWithRecords/Add/add_ban.ui \
+    Gui/WorkingWithRecords/Add/add_stuffuser.ui \
     Gui/WorkingWithRecords/Add/add_table.ui \
     Gui/WorkingWithRecords/Edit/edit_table.ui
 

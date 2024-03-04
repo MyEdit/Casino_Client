@@ -246,7 +246,7 @@
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QPushButton" name="buttonLoanApplocations">
+       <widget class="QPushButton" name="credits">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -378,7 +378,7 @@
        </widget>
       </item>
       <item row="5" column="1">
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="payments">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -403,8 +403,7 @@
 }</string>
         </property>
         <property name="text">
-         <string>История транзакций
-(платежей)?</string>
+         <string>История транзакций</string>
         </property>
        </widget>
       </item>

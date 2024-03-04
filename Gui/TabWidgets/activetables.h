@@ -17,7 +17,7 @@ class ActiveTables;
 class ActiveTables : public BaseClassSearchWindow
 {
     Ui::ActiveTables *ui;
-    QSharedPointer<Add_Table> createTable;
+    QSharedPointer<Add_Table> addTable;
     QSharedPointer<Edit_Table> editTable;
 
 public:

@@ -516,16 +516,16 @@ QPushButton:pressed {
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background-color: white;
-    border: 1px solid black;
+	background-color: white;
+    border: 2px solid black; 
     border-radius: 10px;
-    padding: 5px;
-    color: black;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 QPushButton:hover {
     background-color: rgb(100, 88, 255);
-	color: white;
 }
 
 QPushButton:pressed {
@@ -612,16 +612,16 @@ QPushButton:pressed {
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
-    background-color: white;
-    border: 1px solid black;
+	background-color: white;
+    border: 2px solid black; 
     border-radius: 10px;
-    padding: 5px;
-    color: black;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 QPushButton:hover {
     background-color: rgb(100, 88, 255);
-	color: white;
 }
 
 QPushButton:pressed {

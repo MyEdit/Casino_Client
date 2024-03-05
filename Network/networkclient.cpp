@@ -65,7 +65,7 @@ bool NetworkClient::start()
     //Коннекты с сигналами из потока обработчика пакетов
     QObject::connect(packetHandler, &PacketHandler::signalOpenForm, this, &P_Authorization::openMainWindow);
     QObject::connect(packetHandler, &PacketHandler::signalSetModel, this, &P_SendModel::setModel);
-    QObject::connect(packetHandler, &PacketHandler::signalViewNotification, this, &P_Notification::viewNotification);
+    QObject::connect(packetHandler, &PacketHandler::signalViewNotification, this, &NotificationUtil::viewNotification);
     QObject::connect(packetHandler, &PacketHandler::signalReconnecting, this, &P_Reconnection::viewReconnecting);
     QObject::connect(packetHandler, &PacketHandler::signalFinishReconnecting, this, &P_Reconnection::stopReconnecting);
 

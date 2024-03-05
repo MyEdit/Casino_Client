@@ -41,7 +41,7 @@
       </widget>
      </item>
      <item row="0" column="1">
-      <widget class="QLineEdit" name="name">
+      <widget class="QLineEdit" name="InputName">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -57,7 +57,7 @@
       </widget>
      </item>
      <item row="1" column="1">
-      <widget class="QLineEdit" name="login">
+      <widget class="QLineEdit" name="InputLogin">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -143,7 +143,7 @@ QPushButton:pressed {
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="bottonSave">
+        <widget class="QPushButton" name="buttonSave">
          <property name="font">
           <font>
            <family>Segoe UI</family>
@@ -200,7 +200,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item row="3" column="1">
-      <widget class="QComboBox" name="role">
+      <widget class="QComboBox" name="ComboBoxRoles">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -240,7 +240,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item row="2" column="1">
-      <widget class="QLineEdit" name="password">
+      <widget class="QLineEdit" name="InputPassword">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
          <horstretch>0</horstretch>

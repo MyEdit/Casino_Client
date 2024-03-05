@@ -8,19 +8,18 @@ NetworkClient network;
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    Notification* notification = new Notification();
     Window_Auth w;
     WindowTracker::activeWindow = &w;
     w.show();
 
     if (!network.init())
     {
-        notification->setAlertProperties(TypeMessage::Error, "Произошла ошибка при инициилизации сетевого кода", &w);
+        NotificationUtil::viewNotification({TypeMessage::Error, "Произошла ошибка при инициилизации сетевого кода"});
     }
 
     if (!network.start())
     {
-        notification->setAlertProperties(TypeMessage::Error, "Произошла ошибка при подключении к серверу", &w);
+        NotificationUtil::viewNotification({TypeMessage::Error, "Произошла ошибка при подключении к серверу"});
     }
 
     return a.exec();

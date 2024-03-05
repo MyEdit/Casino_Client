@@ -55,14 +55,6 @@ void PacketHandler::packetHandler(PacketTypes packettype)
             emit signalViewNotification(P_Notification::getTextNotification());
             break;
         }
-        case(PacketTypes::P_DeleteTable):
-        {
-            break;
-        }
-        case(PacketTypes::P_AddTable):
-        {
-            break;
-        }
         case(PacketTypes::P_ConnectPlayerToTable):
         {
             break;

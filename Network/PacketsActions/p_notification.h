@@ -7,7 +7,6 @@
 class P_Notification
 {
 public:
-    static void viewNotification(QPair<TypeMessage, QString> message);
     static QPair<TypeMessage, QString> getTextNotification();
 };
 

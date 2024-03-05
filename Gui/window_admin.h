@@ -48,7 +48,7 @@ class Window_Admin : public QMainWindow
     QSharedPointer<Welcome> welcomeTab;
 
 public:
-    explicit Window_Admin(QString fio, QWidget *parent = nullptr);
+    explicit Window_Admin(QString fullName, QWidget *parent = nullptr);
     ~Window_Admin();
 
     void setModel_UsersTab(ModelData model);

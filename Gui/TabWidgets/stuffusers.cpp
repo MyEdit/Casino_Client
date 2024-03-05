@@ -143,10 +143,10 @@ void StuffUsers::prepReloadModels()
 
 void StuffUsers::openCreatRecotd()
 {
-    addStuffUser->addShow();
+    addStuffUser->show();
 }
 
 void StuffUsers::openEditRecotd()
 {
-    updateStuffUser->updateShow();
+    updateStuffUser->show();
 }

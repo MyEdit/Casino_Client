@@ -25,18 +25,14 @@ class W_StuffUser : public QWidget
     };
 
     Ui::W_StuffUser *ui;
+    WorkingWithDataType type;
     const PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
     const ModelTypes modeltype = ModelTypes::StuffUsers;
     const QueryTypes querytype = QueryTypes::CreateEntry;
 
-    WorkingWithDataType type;
-
 public:
-    explicit W_StuffUser(WorkingWithDataType type, QWidget *parent = nullptr);
+    explicit W_StuffUser(WorkingWithDataType type, QWidget *parent = nullptr); //TODO: нужно передоавть сюда данные из выбранной строки, можно наверное для это использовать StuffUserData, если WorkingWithDataType == Add, то пихать туда nullptr
     ~W_StuffUser();
-
-    void addShow();
-    void updateShow(); //TODO: нужно передоавть сюда данные из выбранной строки, можно наверное для это использовать StuffUserData
 
 private:
     QString getName();

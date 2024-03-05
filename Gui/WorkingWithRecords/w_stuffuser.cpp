@@ -23,10 +23,11 @@ void W_StuffUser::add()
         return;
     }
 
-    QString query = "INSERT INTO StuffUsers (Name, Login, Password, ID_Role) "
-                    "VALUES ('%1', '%2', '%3', %4)";
-
-    query = query.arg(inputData.name).arg(inputData.login).arg(inputData.password).arg(static_cast<int>(inputData.role));
+    QString query = QString("INSERT INTO StuffUsers (Name, Login, Password, ID_Role) VALUES ('%1', '%2', '%3', %4)")
+            .arg(inputData.name)
+            .arg(inputData.login)
+            .arg(inputData.password)
+            .arg(static_cast<int>(inputData.role));
 
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&modeltype, sizeof(ModelTypes));
@@ -36,29 +37,30 @@ void W_StuffUser::add()
     this->close();
 }
 
+//По хорошему объединить его с add, и назвать метод on_buttonSave_clicked, и лишь по WorkingWithDataType подменять запрос
 void W_StuffUser::update()
 {
-
+    //TODO: Coming soon...
 }
 
 void W_StuffUser::connects()
 {
     switch (type)
     {
-    case WorkingWithDataType::Add:
-    {
-        connect(ui->buttonSave, &QPushButton::clicked, this, &W_StuffUser::add);
-        connect(ui->buttonReset, &QPushButton::clicked, this, &W_StuffUser::clearInput);
-        setWindowTitle("Добавление сотрудника");
-        break;
-    }
-    case WorkingWithDataType::Update:
-    {
-        connect(ui->buttonSave, &QPushButton::clicked, this, &W_StuffUser::update);
-        connect(ui->buttonReset, &QPushButton::clicked, this, &W_StuffUser::resetInputs);
-        setWindowTitle("Редактирование сотрудника");
-        break;
-    }
+        case WorkingWithDataType::Add:
+        {
+            connect(ui->buttonSave, &QPushButton::clicked, this, &W_StuffUser::add);
+            connect(ui->buttonReset, &QPushButton::clicked, this, &W_StuffUser::clearInput);
+            setWindowTitle("Добавление сотрудника");
+            break;
+        }
+        case WorkingWithDataType::Update:
+        {
+            connect(ui->buttonSave, &QPushButton::clicked, this, &W_StuffUser::update);
+            connect(ui->buttonReset, &QPushButton::clicked, this, &W_StuffUser::resetInputs);
+            setWindowTitle("Редактирование сотрудника");
+            break;
+        }
     };
 }
 
@@ -107,7 +109,7 @@ Roles W_StuffUser::getRole()
 
 void W_StuffUser::resetInputs()
 {
-
+    //TODO: Coming soon...
 }
 
 void W_StuffUser::clearInput()
@@ -117,22 +119,4 @@ void W_StuffUser::clearInput()
         lineEdit->clear();
     }
     ui->ComboBoxRoles->setCurrentIndex(0);
-}
-
-void W_StuffUser::addShow()
-{
-    connect(ui->buttonSave, &QPushButton::clicked, this, &W_StuffUser::add);
-    connect(ui->buttonReset, &QPushButton::clicked, this, &W_StuffUser::clearInput);
-    setWindowTitle("Добавление сотрудника");
-    show();
-}
-
-void W_StuffUser::updateShow()
-{
-    //TODO: добавить здесь заполенение палей входными данными
-
-    connect(ui->buttonSave, &QPushButton::clicked, this, &W_StuffUser::update);
-    connect(ui->buttonReset, &QPushButton::clicked, this, &W_StuffUser::resetInputs);
-    setWindowTitle("Редактирование сотрудника");
-    show();
 }

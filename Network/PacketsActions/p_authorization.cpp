@@ -8,9 +8,9 @@ void P_Authorization::openMainWindow(User user)
 {
     WindowTracker::activeWindow->close();
 
-    if (user.role== Roles::Admin)
+    if (user.role == Roles::Admin)
     {
-        adminW = new Window_Admin(user.fio); //TODO: передавать в конструктор формы роль и тут же в зависимости от роли открывать соответствующую форму
+        adminW = new Window_Admin(user.fullName); //TODO: передавать в конструктор формы роль и тут же в зависимости от роли открывать соответствующую форму
         adminW->show();
     }
 }
@@ -19,9 +19,9 @@ User P_Authorization::getUser()
 {
     Roles role;
     recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&role), sizeof(role), 0);
-    QString fio = NetworkClient::getMessageFromServer();
+    QString fullName = NetworkClient::getMessageFromServer();
 
-    return {role, fio};
+    return {role, fullName};
 }
 
 void P_Authorization::sendData(QString login, QString password)

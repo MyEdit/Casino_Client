@@ -74,7 +74,7 @@ enum class WorkingWithDataType
 struct User
 {
     Roles role;
-    QString fio;
+    QString fullName;
 };
 
 #endif // PACKET_H

@@ -187,7 +187,7 @@ void Pagination::loadingMaxPage()
     if (P_SendModel::tableNames.size() == 0)
         P_SendModel::initMapTableNames();
 
-    PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
+    PacketTypes packettype = PacketTypes::P_Query;
     QString query = "SELECT COUNT(*) FROM " + P_SendModel::tableNames[modelTypes];
 
     QueryTypes queryTypes = QueryTypes::CountEntrites;

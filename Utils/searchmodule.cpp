@@ -34,7 +34,7 @@ bool SearchModule::searchInModels(QSharedPointer<QStandardItemModel> model, QStr
 
 void SearchModule::searchInDB(ModelTypes modelType, QString table, QString column, QString searchText, QString sort)
 {
-    PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
+    PacketTypes packettype = PacketTypes::P_Query;
     QueryTypes queryTypes = QueryTypes::Search;
     QString query = "SELECT numbered_rows.№ FROM (SELECT ROW_NUMBER() OVER (" + sort + ") AS №, * FROM " + table + ") AS numbered_rows WHERE numbered_rows." + column + " LIKE '" + searchText + "'";
 

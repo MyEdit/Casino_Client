@@ -9,6 +9,8 @@
 #include "BaseClass/baseclasssearchwindow.h"
 #include "Gui/WorkingWithRecords/Add/add_stuffuser.h"
 
+class Add_StuffUser;
+
 namespace Ui {
 class StuffUsers;
 }

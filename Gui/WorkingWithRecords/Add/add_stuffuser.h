@@ -1,8 +1,8 @@
-#ifndef ADD_STUFFUSER_H
+﻿#ifndef ADD_STUFFUSER_H
 #define ADD_STUFFUSER_H
 
 #include <QWidget>
-//#include "Network/networkclient.h" //TODO: При включении, ошибит и ссылается на class StuffUsers. 19 строка QSharedPointer<Add_StuffUser> addStuffUser;
+#include "Network/networkclient.h"
 #include "Network/PacketTypes.h"
 #include "Utils/notificationutil.h"
 #include "Utils/Message.h"

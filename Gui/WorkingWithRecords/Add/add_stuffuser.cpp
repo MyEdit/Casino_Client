@@ -1,4 +1,4 @@
-#include "add_stuffuser.h"
+﻿#include "add_stuffuser.h"
 #include "ui_add_stuffuser.h"
 
 Add_StuffUser::Add_StuffUser(QWidget *parent) : QWidget(parent), ui(new Ui::Add_StuffUser)
@@ -22,10 +22,15 @@ void Add_StuffUser::on_buttonSave_clicked()
         return;
     }
 
-    //NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
-    //NetworkClient::sendToServer(&modeltype, sizeof(ModelTypes));
-    //NetworkClient::sendToServer(&querytype, sizeof(QueryTypes));
-    //NetworkClient::sendToServer(&inputData, sizeof(StuffUserData));
+    QString query = "INSERT INTO StuffUsers (Name, Login, Password, ID_Role) "
+                    "VALUES ('%1', '%2', '%3', %4)";
+
+    query = query.arg(inputData.name).arg(inputData.login).arg(inputData.password).arg(static_cast<int>(inputData.role));
+
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&modeltype, sizeof(ModelTypes));
+    NetworkClient::sendToServer(&querytype, sizeof(QueryTypes));
+    NetworkClient::sendToServer(query);
 
     this->close();
 }
@@ -43,9 +48,7 @@ bool Add_StuffUser::validateInputData(StuffUserData inputData)
     for (QString value : {inputData.name, inputData.login, inputData.password})
     {
         if (value.isEmpty())
-        {
             return false;
-        }
     }
 
     return true;

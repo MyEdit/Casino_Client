@@ -28,17 +28,17 @@ public:
     QGridLayout *gridLayout_2;
     QGridLayout *gridLayout;
     QLabel *labelPassword;
-    QLineEdit *name;
-    QLineEdit *login;
+    QLineEdit *InputName;
+    QLineEdit *InputLogin;
     QLabel *labelRole;
     QHBoxLayout *horizontalLayout_4;
     QPushButton *buttonReset;
     QSpacerItem *horizontalSpacer;
-    QPushButton *bottonSave;
+    QPushButton *buttonSave;
     QLabel *labelLogin;
-    QComboBox *role;
+    QComboBox *ComboBoxRoles;
     QLabel *labelName;
-    QLineEdit *password;
+    QLineEdit *InputPassword;
 
     void setupUi(QWidget *Add_StuffUser)
     {
@@ -66,27 +66,27 @@ public:
 
         gridLayout->addWidget(labelPassword, 2, 0, 1, 1);
 
-        name = new QLineEdit(Add_StuffUser);
-        name->setObjectName(QString::fromUtf8("name"));
+        InputName = new QLineEdit(Add_StuffUser);
+        InputName->setObjectName(QString::fromUtf8("InputName"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(name->sizePolicy().hasHeightForWidth());
-        name->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(InputName->sizePolicy().hasHeightForWidth());
+        InputName->setSizePolicy(sizePolicy1);
         QFont font1;
         font1.setFamily(QString::fromUtf8("Segoe UI"));
         font1.setPointSize(14);
-        name->setFont(font1);
+        InputName->setFont(font1);
 
-        gridLayout->addWidget(name, 0, 1, 1, 1);
+        gridLayout->addWidget(InputName, 0, 1, 1, 1);
 
-        login = new QLineEdit(Add_StuffUser);
-        login->setObjectName(QString::fromUtf8("login"));
-        sizePolicy1.setHeightForWidth(login->sizePolicy().hasHeightForWidth());
-        login->setSizePolicy(sizePolicy1);
-        login->setFont(font1);
+        InputLogin = new QLineEdit(Add_StuffUser);
+        InputLogin->setObjectName(QString::fromUtf8("InputLogin"));
+        sizePolicy1.setHeightForWidth(InputLogin->sizePolicy().hasHeightForWidth());
+        InputLogin->setSizePolicy(sizePolicy1);
+        InputLogin->setFont(font1);
 
-        gridLayout->addWidget(login, 1, 1, 1, 1);
+        gridLayout->addWidget(InputLogin, 1, 1, 1, 1);
 
         labelRole = new QLabel(Add_StuffUser);
         labelRole->setObjectName(QString::fromUtf8("labelRole"));
@@ -125,10 +125,10 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer);
 
-        bottonSave = new QPushButton(Add_StuffUser);
-        bottonSave->setObjectName(QString::fromUtf8("bottonSave"));
-        bottonSave->setFont(font1);
-        bottonSave->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        buttonSave = new QPushButton(Add_StuffUser);
+        buttonSave->setObjectName(QString::fromUtf8("buttonSave"));
+        buttonSave->setFont(font1);
+        buttonSave->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: white;\n"
 "    border: 1px solid black;\n"
 "    border-radius: 10px;\n"
@@ -145,7 +145,7 @@ public:
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
 
-        horizontalLayout_4->addWidget(bottonSave);
+        horizontalLayout_4->addWidget(buttonSave);
 
 
         gridLayout->addLayout(horizontalLayout_4, 5, 0, 1, 2);
@@ -159,13 +159,13 @@ public:
 
         gridLayout->addWidget(labelLogin, 1, 0, 1, 1);
 
-        role = new QComboBox(Add_StuffUser);
-        role->setObjectName(QString::fromUtf8("role"));
-        sizePolicy1.setHeightForWidth(role->sizePolicy().hasHeightForWidth());
-        role->setSizePolicy(sizePolicy1);
-        role->setFont(font1);
+        ComboBoxRoles = new QComboBox(Add_StuffUser);
+        ComboBoxRoles->setObjectName(QString::fromUtf8("ComboBoxRoles"));
+        sizePolicy1.setHeightForWidth(ComboBoxRoles->sizePolicy().hasHeightForWidth());
+        ComboBoxRoles->setSizePolicy(sizePolicy1);
+        ComboBoxRoles->setFont(font1);
 
-        gridLayout->addWidget(role, 3, 1, 1, 1);
+        gridLayout->addWidget(ComboBoxRoles, 3, 1, 1, 1);
 
         labelName = new QLabel(Add_StuffUser);
         labelName->setObjectName(QString::fromUtf8("labelName"));
@@ -176,13 +176,13 @@ public:
 
         gridLayout->addWidget(labelName, 0, 0, 1, 1);
 
-        password = new QLineEdit(Add_StuffUser);
-        password->setObjectName(QString::fromUtf8("password"));
-        sizePolicy1.setHeightForWidth(password->sizePolicy().hasHeightForWidth());
-        password->setSizePolicy(sizePolicy1);
-        password->setFont(font1);
+        InputPassword = new QLineEdit(Add_StuffUser);
+        InputPassword->setObjectName(QString::fromUtf8("InputPassword"));
+        sizePolicy1.setHeightForWidth(InputPassword->sizePolicy().hasHeightForWidth());
+        InputPassword->setSizePolicy(sizePolicy1);
+        InputPassword->setFont(font1);
 
-        gridLayout->addWidget(password, 2, 1, 1, 1);
+        gridLayout->addWidget(InputPassword, 2, 1, 1, 1);
 
 
         gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
@@ -199,7 +199,7 @@ public:
         labelPassword->setText(QApplication::translate("Add_StuffUser", "\320\237\320\260\321\200\320\276\320\273\321\214:", nullptr));
         labelRole->setText(QApplication::translate("Add_StuffUser", "\320\240\320\276\320\273\321\214:", nullptr));
         buttonReset->setText(QApplication::translate("Add_StuffUser", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
-        bottonSave->setText(QApplication::translate("Add_StuffUser", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", nullptr));
+        buttonSave->setText(QApplication::translate("Add_StuffUser", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", nullptr));
         labelLogin->setText(QApplication::translate("Add_StuffUser", "\320\233\320\276\320\263\320\270\320\275:", nullptr));
         labelName->setText(QApplication::translate("Add_StuffUser", "\320\244\320\230\320\236:", nullptr));
     } // retranslateUi

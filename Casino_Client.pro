@@ -28,10 +28,9 @@ SOURCES += \
     Gui/Notification/reconnecting.cpp \
     Gui/TabWidgets/credits.cpp \
     Gui/TabWidgets/payments.cpp \
-    Gui/WorkingWithRecords/Add/add_ban.cpp \
-    Gui/WorkingWithRecords/Add/add_stuffuser.cpp \
-    Gui/WorkingWithRecords/Add/add_table.cpp \
-    Gui/WorkingWithRecords/Edit/edit_table.cpp \
+    Gui/WorkingWithRecords/w_ban.cpp \
+    Gui/WorkingWithRecords/w_stuffuser.cpp \
+    Gui/WorkingWithRecords/w_table.cpp \
     Network/PacketsActions/p_authorization.cpp \
     Network/PacketsActions/p_notification.cpp \
     Network/PacketsActions/p_query.cpp \
@@ -58,10 +57,9 @@ HEADERS += \
     Gui/Notification/reconnecting.h \
     Gui/TabWidgets/credits.h \
     Gui/TabWidgets/payments.h \
-    Gui/WorkingWithRecords/Add/add_ban.h \
-    Gui/WorkingWithRecords/Add/add_stuffuser.h \
-    Gui/WorkingWithRecords/Add/add_table.h \
-    Gui/WorkingWithRecords/Edit/edit_table.h \
+    Gui/WorkingWithRecords/w_ban.h \
+    Gui/WorkingWithRecords/w_stuffuser.h \
+    Gui/WorkingWithRecords/w_table.h \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
     Network/PacketsActions/p_notification.h \
@@ -88,10 +86,9 @@ FORMS += \
     GUI/window_auth.ui \
     Gui/TabWidgets/credits.ui \
     Gui/TabWidgets/payments.ui \
-    Gui/WorkingWithRecords/Add/add_ban.ui \
-    Gui/WorkingWithRecords/Add/add_stuffuser.ui \
-    Gui/WorkingWithRecords/Add/add_table.ui \
-    Gui/WorkingWithRecords/Edit/edit_table.ui
+    Gui/WorkingWithRecords/w_ban.ui \
+    Gui/WorkingWithRecords/w_stuffuser.ui \
+    Gui/WorkingWithRecords/w_table.ui
 
 LIBS += -lws2_32
 QT += core

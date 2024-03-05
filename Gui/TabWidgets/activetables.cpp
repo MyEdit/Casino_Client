@@ -45,7 +45,6 @@ void ActiveTables::creatingObjects()
     pagination = QSharedPointer<Pagination>::create(this, ui->tableView, ui->prevButton, ui->nextButton, workingIsTableView, modelTypes);
 
     addTable = QSharedPointer<Add_Table>::create();
-    editTable = QSharedPointer<Edit_Table>::create();
 }
 
 void ActiveTables::connects()
@@ -148,5 +147,5 @@ void ActiveTables::openCreatRecotd()
 
 void ActiveTables::openEditRecotd()
 {
-    editTable->show();
+
 }

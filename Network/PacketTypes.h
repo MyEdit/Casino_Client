@@ -65,4 +65,10 @@ struct QueryData
     QString result;
 };
 
+enum class WorkingWithDataType
+{
+    Add,
+    Update
+};
+
 #endif // PACKET_H

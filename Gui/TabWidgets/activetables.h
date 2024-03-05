@@ -7,8 +7,7 @@
 #include <QMessageBox>
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
-#include "Gui/WorkingWithRecords/Add/add_table.h"
-#include "Gui/WorkingWithRecords/Edit/edit_table.h"
+#include "Gui/WorkingWithRecords/w_table.h"
 
 namespace Ui {
 class ActiveTables;
@@ -18,7 +17,6 @@ class ActiveTables : public BaseClassSearchWindow
 {
     Ui::ActiveTables *ui;
     QSharedPointer<Add_Table> addTable;
-    QSharedPointer<Edit_Table> editTable;
 
 public:
     explicit ActiveTables(QWidget *parent = nullptr);

@@ -44,7 +44,8 @@ void StuffUsers::creatingObjects()
     workingIsTableView = QSharedPointer<WorkingIsTableView>::create(ui->tableView, &boxsNameColumn);
     pagination = QSharedPointer<Pagination>::create(this, ui->tableView, ui->prevButton, ui->nextButton, workingIsTableView, modelTypes);
 
-    addStuffUser = QSharedPointer<Add_StuffUser>::create();
+    addStuffUser = QSharedPointer<W_StuffUser>::create(WorkingWithDataType::Add);
+    updateStuffUser = QSharedPointer<W_StuffUser>::create(WorkingWithDataType::Update);
 }
 
 void StuffUsers::connects()
@@ -142,10 +143,10 @@ void StuffUsers::prepReloadModels()
 
 void StuffUsers::openCreatRecotd()
 {
-    addStuffUser->show();
+    addStuffUser->addShow();
 }
 
 void StuffUsers::openEditRecotd()
 {
-
+    updateStuffUser->updateShow();
 }

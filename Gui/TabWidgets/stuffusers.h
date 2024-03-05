@@ -7,9 +7,9 @@
 #include <QMessageBox>
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
-#include "Gui/WorkingWithRecords/Add/add_stuffuser.h"
+#include "Gui/WorkingWithRecords/w_stuffuser.h"
 
-class Add_StuffUser;
+class W_StuffUser;
 
 namespace Ui {
 class StuffUsers;
@@ -18,7 +18,8 @@ class StuffUsers;
 class StuffUsers : public BaseClassSearchWindow
 {
     Ui::StuffUsers *ui;
-    QSharedPointer<Add_StuffUser> addStuffUser;
+    QSharedPointer<W_StuffUser> addStuffUser;
+    QSharedPointer<W_StuffUser> updateStuffUser;
 
 public:
     explicit StuffUsers(QWidget *parent = nullptr);

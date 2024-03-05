@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'add_stuffuser.ui'
+** Form generated from reading UI file 'w_stuffuser.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.12.7
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_ADD_STUFFUSER_H
-#define UI_ADD_STUFFUSER_H
+#ifndef UI_W_STUFFUSER_H
+#define UI_W_STUFFUSER_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -22,7 +22,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Add_StuffUser
+class Ui_W_StuffUser
 {
 public:
     QGridLayout *gridLayout_2;
@@ -40,16 +40,16 @@ public:
     QLabel *labelName;
     QLineEdit *InputPassword;
 
-    void setupUi(QWidget *Add_StuffUser)
+    void setupUi(QWidget *W_StuffUser)
     {
-        if (Add_StuffUser->objectName().isEmpty())
-            Add_StuffUser->setObjectName(QString::fromUtf8("Add_StuffUser"));
-        Add_StuffUser->resize(452, 248);
-        gridLayout_2 = new QGridLayout(Add_StuffUser);
+        if (W_StuffUser->objectName().isEmpty())
+            W_StuffUser->setObjectName(QString::fromUtf8("W_StuffUser"));
+        W_StuffUser->resize(452, 248);
+        gridLayout_2 = new QGridLayout(W_StuffUser);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        labelPassword = new QLabel(Add_StuffUser);
+        labelPassword = new QLabel(W_StuffUser);
         labelPassword->setObjectName(QString::fromUtf8("labelPassword"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
@@ -66,7 +66,7 @@ public:
 
         gridLayout->addWidget(labelPassword, 2, 0, 1, 1);
 
-        InputName = new QLineEdit(Add_StuffUser);
+        InputName = new QLineEdit(W_StuffUser);
         InputName->setObjectName(QString::fromUtf8("InputName"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
@@ -80,7 +80,7 @@ public:
 
         gridLayout->addWidget(InputName, 0, 1, 1, 1);
 
-        InputLogin = new QLineEdit(Add_StuffUser);
+        InputLogin = new QLineEdit(W_StuffUser);
         InputLogin->setObjectName(QString::fromUtf8("InputLogin"));
         sizePolicy1.setHeightForWidth(InputLogin->sizePolicy().hasHeightForWidth());
         InputLogin->setSizePolicy(sizePolicy1);
@@ -88,7 +88,7 @@ public:
 
         gridLayout->addWidget(InputLogin, 1, 1, 1, 1);
 
-        labelRole = new QLabel(Add_StuffUser);
+        labelRole = new QLabel(W_StuffUser);
         labelRole->setObjectName(QString::fromUtf8("labelRole"));
         sizePolicy.setHeightForWidth(labelRole->sizePolicy().hasHeightForWidth());
         labelRole->setSizePolicy(sizePolicy);
@@ -99,7 +99,7 @@ public:
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        buttonReset = new QPushButton(Add_StuffUser);
+        buttonReset = new QPushButton(W_StuffUser);
         buttonReset->setObjectName(QString::fromUtf8("buttonReset"));
         buttonReset->setFont(font1);
         buttonReset->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -125,7 +125,7 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer);
 
-        buttonSave = new QPushButton(Add_StuffUser);
+        buttonSave = new QPushButton(W_StuffUser);
         buttonSave->setObjectName(QString::fromUtf8("buttonSave"));
         buttonSave->setFont(font1);
         buttonSave->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -150,7 +150,7 @@ public:
 
         gridLayout->addLayout(horizontalLayout_4, 5, 0, 1, 2);
 
-        labelLogin = new QLabel(Add_StuffUser);
+        labelLogin = new QLabel(W_StuffUser);
         labelLogin->setObjectName(QString::fromUtf8("labelLogin"));
         sizePolicy.setHeightForWidth(labelLogin->sizePolicy().hasHeightForWidth());
         labelLogin->setSizePolicy(sizePolicy);
@@ -159,7 +159,7 @@ public:
 
         gridLayout->addWidget(labelLogin, 1, 0, 1, 1);
 
-        ComboBoxRoles = new QComboBox(Add_StuffUser);
+        ComboBoxRoles = new QComboBox(W_StuffUser);
         ComboBoxRoles->setObjectName(QString::fromUtf8("ComboBoxRoles"));
         sizePolicy1.setHeightForWidth(ComboBoxRoles->sizePolicy().hasHeightForWidth());
         ComboBoxRoles->setSizePolicy(sizePolicy1);
@@ -167,7 +167,7 @@ public:
 
         gridLayout->addWidget(ComboBoxRoles, 3, 1, 1, 1);
 
-        labelName = new QLabel(Add_StuffUser);
+        labelName = new QLabel(W_StuffUser);
         labelName->setObjectName(QString::fromUtf8("labelName"));
         sizePolicy.setHeightForWidth(labelName->sizePolicy().hasHeightForWidth());
         labelName->setSizePolicy(sizePolicy);
@@ -176,7 +176,7 @@ public:
 
         gridLayout->addWidget(labelName, 0, 0, 1, 1);
 
-        InputPassword = new QLineEdit(Add_StuffUser);
+        InputPassword = new QLineEdit(W_StuffUser);
         InputPassword->setObjectName(QString::fromUtf8("InputPassword"));
         sizePolicy1.setHeightForWidth(InputPassword->sizePolicy().hasHeightForWidth());
         InputPassword->setSizePolicy(sizePolicy1);
@@ -188,28 +188,28 @@ public:
         gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
 
 
-        retranslateUi(Add_StuffUser);
+        retranslateUi(W_StuffUser);
 
-        QMetaObject::connectSlotsByName(Add_StuffUser);
+        QMetaObject::connectSlotsByName(W_StuffUser);
     } // setupUi
 
-    void retranslateUi(QWidget *Add_StuffUser)
+    void retranslateUi(QWidget *W_StuffUser)
     {
-        Add_StuffUser->setWindowTitle(QApplication::translate("Add_StuffUser", "\320\224\320\276\320\261\320\260\320\262\320\273\320\265\320\275\320\270\320\265 \321\201\320\276\321\202\321\200\321\203\320\264\320\275\320\270\320\272\320\260", nullptr));
-        labelPassword->setText(QApplication::translate("Add_StuffUser", "\320\237\320\260\321\200\320\276\320\273\321\214:", nullptr));
-        labelRole->setText(QApplication::translate("Add_StuffUser", "\320\240\320\276\320\273\321\214:", nullptr));
-        buttonReset->setText(QApplication::translate("Add_StuffUser", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
-        buttonSave->setText(QApplication::translate("Add_StuffUser", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", nullptr));
-        labelLogin->setText(QApplication::translate("Add_StuffUser", "\320\233\320\276\320\263\320\270\320\275:", nullptr));
-        labelName->setText(QApplication::translate("Add_StuffUser", "\320\244\320\230\320\236:", nullptr));
+        W_StuffUser->setWindowTitle(QApplication::translate("W_StuffUser", "\320\224\320\276\320\261\320\260\320\262\320\273\320\265\320\275\320\270\320\265 \321\201\320\276\321\202\321\200\321\203\320\264\320\275\320\270\320\272\320\260", nullptr));
+        labelPassword->setText(QApplication::translate("W_StuffUser", "\320\237\320\260\321\200\320\276\320\273\321\214:", nullptr));
+        labelRole->setText(QApplication::translate("W_StuffUser", "\320\240\320\276\320\273\321\214:", nullptr));
+        buttonReset->setText(QApplication::translate("W_StuffUser", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
+        buttonSave->setText(QApplication::translate("W_StuffUser", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", nullptr));
+        labelLogin->setText(QApplication::translate("W_StuffUser", "\320\233\320\276\320\263\320\270\320\275:", nullptr));
+        labelName->setText(QApplication::translate("W_StuffUser", "\320\244\320\230\320\236:", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class Add_StuffUser: public Ui_Add_StuffUser {};
+    class W_StuffUser: public Ui_W_StuffUser {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_ADD_STUFFUSER_H
+#endif // UI_W_STUFFUSER_H

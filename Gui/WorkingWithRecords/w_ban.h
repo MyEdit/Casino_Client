@@ -1,10 +1,10 @@
-#ifndef ADD_BAN_H
+﻿#ifndef ADD_BAN_H
 #define ADD_BAN_H
 
 #include <QWidget>
 
 namespace Ui {
-class Add_Ban;
+class W_Ban;
 }
 
 class Add_Ban : public QWidget
@@ -16,7 +16,7 @@ public:
     ~Add_Ban();
 
 private:
-    Ui::Add_Ban *ui;
+    Ui::W_Ban *ui;
 };
 
 #endif // ADD_BAN_H

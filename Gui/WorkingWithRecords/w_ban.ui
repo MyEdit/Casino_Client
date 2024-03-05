@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Add_Ban</class>
- <widget class="QWidget" name="Add_Ban">
+ <class>W_Ban</class>
+ <widget class="QWidget" name="W_Ban">
   <property name="geometry">
    <rect>
     <x>0</x>

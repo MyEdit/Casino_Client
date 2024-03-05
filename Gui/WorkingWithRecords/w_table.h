@@ -1,10 +1,10 @@
-#ifndef ADD_TABLE_H
+﻿#ifndef ADD_TABLE_H
 #define ADD_TABLE_H
 
 #include <QWidget>
 
 namespace Ui {
-class Add_Table;
+class W_Table;
 }
 
 class Add_Table : public QWidget
@@ -16,7 +16,7 @@ public:
     ~Add_Table();
 
 private:
-    Ui::Add_Table *ui;
+    Ui::W_Table *ui;
 };
 
 #endif // ADD_TABLE_H

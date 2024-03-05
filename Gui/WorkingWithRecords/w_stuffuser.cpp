@@ -1,18 +1,19 @@
-﻿#include "add_stuffuser.h"
-#include "ui_add_stuffuser.h"
+﻿#include "w_stuffuser.h"
+#include "ui_w_stuffuser.h"
 
-Add_StuffUser::Add_StuffUser(QWidget *parent) : QWidget(parent), ui(new Ui::Add_StuffUser)
+W_StuffUser::W_StuffUser(WorkingWithDataType type, QWidget *parent) : QWidget(parent), ui(new Ui::W_StuffUser), type(type)
 {
     ui->setupUi(this);
     loadComboBoxRole();
+    connects();
 }
 
-Add_StuffUser::~Add_StuffUser()
+W_StuffUser::~W_StuffUser()
 {
     delete ui;
 }
 
-void Add_StuffUser::on_buttonSave_clicked()
+void W_StuffUser::add()
 {
     StuffUserData inputData { getName(), getLogin(), getPassword(), getRole() };
 
@@ -35,12 +36,33 @@ void Add_StuffUser::on_buttonSave_clicked()
     this->close();
 }
 
-void Add_StuffUser::on_buttonReset_clicked()
+void W_StuffUser::update()
 {
-    resetInputs();
+
 }
 
-bool Add_StuffUser::validateInputData(StuffUserData inputData)
+void W_StuffUser::connects()
+{
+    switch (type)
+    {
+    case WorkingWithDataType::Add:
+    {
+        connect(ui->buttonSave, &QPushButton::clicked, this, &W_StuffUser::add);
+        connect(ui->buttonReset, &QPushButton::clicked, this, &W_StuffUser::clearInput);
+        setWindowTitle("Добавление сотрудника");
+        break;
+    }
+    case WorkingWithDataType::Update:
+    {
+        connect(ui->buttonSave, &QPushButton::clicked, this, &W_StuffUser::update);
+        connect(ui->buttonReset, &QPushButton::clicked, this, &W_StuffUser::resetInputs);
+        setWindowTitle("Редактирование сотрудника");
+        break;
+    }
+    };
+}
+
+bool W_StuffUser::validateInputData(StuffUserData inputData)
 {
     if (inputData.role == Roles::None)
         return false;
@@ -54,7 +76,7 @@ bool Add_StuffUser::validateInputData(StuffUserData inputData)
     return true;
 }
 
-void Add_StuffUser::loadComboBoxRole()
+void W_StuffUser::loadComboBoxRole()
 {
     //TODO: Обдумать использование метапрограммирования для заполнения комбобоксов, может действительно проще и удобнее
     //создать под каждый енум свой класс и использовать такой подход за место стандартных игр с индексами
@@ -63,31 +85,54 @@ void Add_StuffUser::loadComboBoxRole()
     ui->ComboBoxRoles->addItem("Распорядитель столов");
 }
 
-QString Add_StuffUser::getName()
+QString W_StuffUser::getName()
 {
     return ui->InputName->text();
 }
 
-QString Add_StuffUser::getLogin()
+QString W_StuffUser::getLogin()
 {
     return ui->InputLogin->text();
 }
 
-QString Add_StuffUser::getPassword()
+QString W_StuffUser::getPassword()
 {
     return ui->InputPassword->text();
 }
 
-Roles Add_StuffUser::getRole()
+Roles W_StuffUser::getRole()
 {
     return static_cast<Roles>(ui->ComboBoxRoles->currentIndex() + 1);
 }
 
-void Add_StuffUser::resetInputs()
+void W_StuffUser::resetInputs()
+{
+
+}
+
+void W_StuffUser::clearInput()
 {
     for(QLineEdit* lineEdit : this->findChildren<QLineEdit*>())
     {
         lineEdit->clear();
     }
     ui->ComboBoxRoles->setCurrentIndex(0);
+}
+
+void W_StuffUser::addShow()
+{
+    connect(ui->buttonSave, &QPushButton::clicked, this, &W_StuffUser::add);
+    connect(ui->buttonReset, &QPushButton::clicked, this, &W_StuffUser::clearInput);
+    setWindowTitle("Добавление сотрудника");
+    show();
+}
+
+void W_StuffUser::updateShow()
+{
+    //TODO: добавить здесь заполенение палей входными данными
+
+    connect(ui->buttonSave, &QPushButton::clicked, this, &W_StuffUser::update);
+    connect(ui->buttonReset, &QPushButton::clicked, this, &W_StuffUser::resetInputs);
+    setWindowTitle("Редактирование сотрудника");
+    show();
 }

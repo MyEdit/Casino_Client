@@ -6,7 +6,7 @@ QString P_Authorization::nickname;
 
 void P_Authorization::openMainWindow(Roles role)
 {
-    qApp->activeWindow()->close();
+    WindowTracker::activeWindow->close();
 
     if (role == Roles::Admin)
     {

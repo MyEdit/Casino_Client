@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'add_table.ui'
+** Form generated from reading UI file 'w_table.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.12.7
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_ADD_TABLE_H
-#define UI_ADD_TABLE_H
+#ifndef UI_W_TABLE_H
+#define UI_W_TABLE_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -22,7 +22,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_Add_Table
+class Ui_W_Table
 {
 public:
     QGridLayout *gridLayout_2;
@@ -42,16 +42,16 @@ public:
     QSpacerItem *horizontalSpacer;
     QPushButton *bottonSave;
 
-    void setupUi(QWidget *Add_Table)
+    void setupUi(QWidget *W_Table)
     {
-        if (Add_Table->objectName().isEmpty())
-            Add_Table->setObjectName(QString::fromUtf8("Add_Table"));
-        Add_Table->resize(459, 288);
-        gridLayout_2 = new QGridLayout(Add_Table);
+        if (W_Table->objectName().isEmpty())
+            W_Table->setObjectName(QString::fromUtf8("W_Table"));
+        W_Table->resize(459, 296);
+        gridLayout_2 = new QGridLayout(W_Table);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        labelBetStep = new QLabel(Add_Table);
+        labelBetStep = new QLabel(W_Table);
         labelBetStep->setObjectName(QString::fromUtf8("labelBetStep"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
@@ -68,7 +68,7 @@ public:
 
         gridLayout->addWidget(labelBetStep, 2, 0, 1, 1);
 
-        minBalance = new QLineEdit(Add_Table);
+        minBalance = new QLineEdit(W_Table);
         minBalance->setObjectName(QString::fromUtf8("minBalance"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
@@ -82,7 +82,7 @@ public:
 
         gridLayout->addWidget(minBalance, 3, 1, 1, 1);
 
-        minBet = new QLineEdit(Add_Table);
+        minBet = new QLineEdit(W_Table);
         minBet->setObjectName(QString::fromUtf8("minBet"));
         sizePolicy1.setHeightForWidth(minBet->sizePolicy().hasHeightForWidth());
         minBet->setSizePolicy(sizePolicy1);
@@ -90,7 +90,7 @@ public:
 
         gridLayout->addWidget(minBet, 1, 1, 1, 1);
 
-        maxPlayer = new QLineEdit(Add_Table);
+        maxPlayer = new QLineEdit(W_Table);
         maxPlayer->setObjectName(QString::fromUtf8("maxPlayer"));
         sizePolicy1.setHeightForWidth(maxPlayer->sizePolicy().hasHeightForWidth());
         maxPlayer->setSizePolicy(sizePolicy1);
@@ -98,7 +98,7 @@ public:
 
         gridLayout->addWidget(maxPlayer, 0, 1, 1, 1);
 
-        labelNameGame = new QLabel(Add_Table);
+        labelNameGame = new QLabel(W_Table);
         labelNameGame->setObjectName(QString::fromUtf8("labelNameGame"));
         sizePolicy.setHeightForWidth(labelNameGame->sizePolicy().hasHeightForWidth());
         labelNameGame->setSizePolicy(sizePolicy);
@@ -108,7 +108,7 @@ public:
 
         gridLayout->addWidget(labelNameGame, 4, 0, 1, 1);
 
-        nameGame = new QComboBox(Add_Table);
+        nameGame = new QComboBox(W_Table);
         nameGame->setObjectName(QString::fromUtf8("nameGame"));
         sizePolicy1.setHeightForWidth(nameGame->sizePolicy().hasHeightForWidth());
         nameGame->setSizePolicy(sizePolicy1);
@@ -116,7 +116,7 @@ public:
 
         gridLayout->addWidget(nameGame, 4, 1, 1, 1);
 
-        labelMaxPlayer = new QLabel(Add_Table);
+        labelMaxPlayer = new QLabel(W_Table);
         labelMaxPlayer->setObjectName(QString::fromUtf8("labelMaxPlayer"));
         sizePolicy.setHeightForWidth(labelMaxPlayer->sizePolicy().hasHeightForWidth());
         labelMaxPlayer->setSizePolicy(sizePolicy);
@@ -125,7 +125,7 @@ public:
 
         gridLayout->addWidget(labelMaxPlayer, 0, 0, 1, 1);
 
-        betStep = new QLineEdit(Add_Table);
+        betStep = new QLineEdit(W_Table);
         betStep->setObjectName(QString::fromUtf8("betStep"));
         sizePolicy1.setHeightForWidth(betStep->sizePolicy().hasHeightForWidth());
         betStep->setSizePolicy(sizePolicy1);
@@ -133,7 +133,7 @@ public:
 
         gridLayout->addWidget(betStep, 2, 1, 1, 1);
 
-        labelMinBet = new QLabel(Add_Table);
+        labelMinBet = new QLabel(W_Table);
         labelMinBet->setObjectName(QString::fromUtf8("labelMinBet"));
         sizePolicy.setHeightForWidth(labelMinBet->sizePolicy().hasHeightForWidth());
         labelMinBet->setSizePolicy(sizePolicy);
@@ -142,7 +142,7 @@ public:
 
         gridLayout->addWidget(labelMinBet, 1, 0, 1, 1);
 
-        labelMinBalance = new QLabel(Add_Table);
+        labelMinBalance = new QLabel(W_Table);
         labelMinBalance->setObjectName(QString::fromUtf8("labelMinBalance"));
         sizePolicy.setHeightForWidth(labelMinBalance->sizePolicy().hasHeightForWidth());
         labelMinBalance->setSizePolicy(sizePolicy);
@@ -153,7 +153,7 @@ public:
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        buttonReset = new QPushButton(Add_Table);
+        buttonReset = new QPushButton(W_Table);
         buttonReset->setObjectName(QString::fromUtf8("buttonReset"));
         buttonReset->setFont(font1);
         buttonReset->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -179,7 +179,7 @@ public:
 
         horizontalLayout_4->addItem(horizontalSpacer);
 
-        bottonSave = new QPushButton(Add_Table);
+        bottonSave = new QPushButton(W_Table);
         bottonSave->setObjectName(QString::fromUtf8("bottonSave"));
         bottonSave->setFont(font1);
         bottonSave->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -208,31 +208,31 @@ public:
         gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
 
 
-        retranslateUi(Add_Table);
+        retranslateUi(W_Table);
 
-        QMetaObject::connectSlotsByName(Add_Table);
+        QMetaObject::connectSlotsByName(W_Table);
     } // setupUi
 
-    void retranslateUi(QWidget *Add_Table)
+    void retranslateUi(QWidget *W_Table)
     {
-        Add_Table->setWindowTitle(QApplication::translate("Add_Table", "\320\224\320\276\320\261\320\260\320\262\320\273\320\265\320\275\320\270\320\265 \321\201\321\202\320\276\320\273\320\260", nullptr));
-        labelBetStep->setText(QApplication::translate("Add_Table", "\320\234\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\321\213\320\271 \321\210\320\260\320\263 \n"
+        W_Table->setWindowTitle(QApplication::translate("W_Table", "\320\224\320\276\320\261\320\260\320\262\320\273\320\265\320\275\320\270\320\265 \321\201\321\202\320\276\320\273\320\260", nullptr));
+        labelBetStep->setText(QApplication::translate("W_Table", "\320\234\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\321\213\320\271 \321\210\320\260\320\263 \n"
 "\320\277\320\276\320\262\321\213\321\210\320\265\320\275\320\270\321\217 \321\201\321\202\320\260\320\262\320\272\320\270:", nullptr));
-        labelNameGame->setText(QApplication::translate("Add_Table", "\320\230\320\263\321\200\320\260:", nullptr));
-        labelMaxPlayer->setText(QApplication::translate("Add_Table", "\320\234\320\260\320\272\321\201\320\270\320\274\320\260\320\273\321\214\320\275\320\276\320\265 \n"
+        labelNameGame->setText(QApplication::translate("W_Table", "\320\230\320\263\321\200\320\260:", nullptr));
+        labelMaxPlayer->setText(QApplication::translate("W_Table", "\320\234\320\260\320\272\321\201\320\270\320\274\320\260\320\273\321\214\320\275\320\276\320\265 \n"
 "\320\272\320\276\320\273-\320\262\320\276 \320\270\320\263\321\200\320\276\320\272\320\276\320\262:", nullptr));
-        labelMinBet->setText(QApplication::translate("Add_Table", "\320\234\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \321\201\321\202\320\260\320\262\320\272\320\260:", nullptr));
-        labelMinBalance->setText(QApplication::translate("Add_Table", "\320\234\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\321\213\320\271 \320\261\321\216\320\264\320\266\320\265\321\202:", nullptr));
-        buttonReset->setText(QApplication::translate("Add_Table", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
-        bottonSave->setText(QApplication::translate("Add_Table", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", nullptr));
+        labelMinBet->setText(QApplication::translate("W_Table", "\320\234\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \321\201\321\202\320\260\320\262\320\272\320\260:", nullptr));
+        labelMinBalance->setText(QApplication::translate("W_Table", "\320\234\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\321\213\320\271 \320\261\321\216\320\264\320\266\320\265\321\202:", nullptr));
+        buttonReset->setText(QApplication::translate("W_Table", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
+        bottonSave->setText(QApplication::translate("W_Table", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class Add_Table: public Ui_Add_Table {};
+    class W_Table: public Ui_W_Table {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_ADD_TABLE_H
+#endif // UI_W_TABLE_H

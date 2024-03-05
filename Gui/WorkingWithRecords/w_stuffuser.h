@@ -9,10 +9,10 @@
 
 namespace Ui
 {
-    class Add_StuffUser;
+    class W_StuffUser;
 }
 
-class Add_StuffUser : public QWidget
+class W_StuffUser : public QWidget
 {
     Q_OBJECT
 
@@ -24,14 +24,19 @@ class Add_StuffUser : public QWidget
         Roles role;
     };
 
-    Ui::Add_StuffUser *ui;
+    Ui::W_StuffUser *ui;
     const PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
     const ModelTypes modeltype = ModelTypes::StuffUsers;
     const QueryTypes querytype = QueryTypes::CreateEntry;
 
+    WorkingWithDataType type;
+
 public:
-    explicit Add_StuffUser(QWidget *parent = nullptr);
-    ~Add_StuffUser();
+    explicit W_StuffUser(WorkingWithDataType type, QWidget *parent = nullptr);
+    ~W_StuffUser();
+
+    void addShow();
+    void updateShow(); //TODO: нужно передоавть сюда данные из выбранной строки, можно наверное для это использовать StuffUserData
 
 private:
     QString getName();
@@ -40,11 +45,11 @@ private:
     Roles getRole();
     void loadComboBoxRole();
     void resetInputs();
+    void clearInput();
     bool validateInputData(StuffUserData inputData);
-
-private slots:
-    void on_buttonSave_clicked();
-    void on_buttonReset_clicked();
+    void add();
+    void update();
+    void connects();
 };
 
 #endif // ADD_STUFFUSER_H

@@ -7,7 +7,7 @@
 #include <QMessageBox>
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
-#include "Gui/WorkingWithRecords/Add/add_ban.h"
+#include "Gui/WorkingWithRecords/w_ban.h"
 
 namespace Ui {
 class BanList;

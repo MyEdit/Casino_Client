@@ -1,9 +1,9 @@
-#include "add_table.h"
-#include "ui_add_table.h"
+﻿#include "w_table.h"
+#include "ui_w_table.h"
 
 Add_Table::Add_Table(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Add_Table)
+    ui(new Ui::W_Table)
 {
     ui->setupUi(this);
 }

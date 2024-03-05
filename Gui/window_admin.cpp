@@ -3,7 +3,7 @@
 
 QWidget* WindowTracker::activeWindow = nullptr;
 
-Window_Admin::Window_Admin(QWidget *parent) : QMainWindow(parent), ui(new Ui::Window_Admin)
+Window_Admin::Window_Admin(QString fio, QWidget *parent) : QMainWindow(parent), ui(new Ui::Window_Admin)
 {
     ui->setupUi(this);
 
@@ -18,6 +18,8 @@ Window_Admin::Window_Admin(QWidget *parent) : QMainWindow(parent), ui(new Ui::Wi
         i.value()->setVisible(false);
 
     ui->tabWidget->setCurrentWidget(welcomeTab.get());
+
+    ui->FIO_employee->setText(fio);
 }
 
 Window_Admin::~Window_Admin()

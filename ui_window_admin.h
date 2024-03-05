@@ -94,6 +94,7 @@ public:
         FIO_employee->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	color: rgb(255, 255, 255);\n"
 "}"));
+        FIO_employee->setWordWrap(true);
 
         verticalLayout->addWidget(FIO_employee);
 

@@ -83,6 +83,9 @@
         <property name="text">
          <string>Иванов И.И.</string>
         </property>
+        <property name="wordWrap">
+         <bool>true</bool>
+        </property>
        </widget>
       </item>
       <item>

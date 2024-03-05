@@ -42,7 +42,7 @@ void PacketHandler::packetHandler(PacketTypes packettype)
     {
         case(PacketTypes::P_Authorization):
         {
-            emit signalOpenForm(P_Authorization::getRole());
+            emit signalOpenForm(P_Authorization::getUser());
             break;
         }
         case(PacketTypes::P_SendModel):

@@ -18,10 +18,10 @@ public:
     static Window_Admin* adminW;
 
     static void sendData(QString login, QString password);
-    static void openMainWindow(Roles role);
+    static void openMainWindow(User user);
     static void setActualNickname(QString nickname);
     static QString& getActualNickname();
-    static Roles getRole();
+    static User getUser();
 };
 
 #endif // P_AUTHORIZATION_H

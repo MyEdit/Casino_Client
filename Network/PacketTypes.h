@@ -71,4 +71,10 @@ enum class WorkingWithDataType
     Update
 };
 
+struct User
+{
+    Roles role;
+    QString fio;
+};
+
 #endif // PACKET_H

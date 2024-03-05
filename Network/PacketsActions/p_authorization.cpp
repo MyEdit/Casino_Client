@@ -4,22 +4,24 @@ const PacketTypes P_Authorization::packettype = PacketTypes::P_Authorization;
 Window_Admin* P_Authorization::adminW;
 QString P_Authorization::nickname;
 
-void P_Authorization::openMainWindow(Roles role)
+void P_Authorization::openMainWindow(User user)
 {
     WindowTracker::activeWindow->close();
 
-    if (role == Roles::Admin)
+    if (user.role== Roles::Admin)
     {
-        adminW = new Window_Admin; //TODO: передавать в конструктор формы роль и тут же в зависимости от роли открывать соответствующую форму
+        adminW = new Window_Admin(user.fio); //TODO: передавать в конструктор формы роль и тут же в зависимости от роли открывать соответствующую форму
         adminW->show();
     }
 }
 
-Roles P_Authorization::getRole()
+User P_Authorization::getUser()
 {
     Roles role;
     recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&role), sizeof(role), 0);
-    return role;
+    QString fio = NetworkClient::getMessageFromServer();
+
+    return {role, fio};
 }
 
 void P_Authorization::sendData(QString login, QString password)

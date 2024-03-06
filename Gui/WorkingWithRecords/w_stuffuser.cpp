@@ -32,7 +32,7 @@ void W_StuffUser::onLoadForm()
             break;
         }
         default:
-            break;
+            this->close();
     };
 }
 

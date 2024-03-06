@@ -18,27 +18,30 @@ class W_StuffUser : public QWidget
     Q_OBJECT
 
     Ui::W_StuffUser *ui;
-    WorkingWithDataType type;
-    QSharedPointer<StuffUser> stuffUser;
+    QueryTypes actionType;
+    QSharedPointer<StuffUser> defaultStuffUser;
     const PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
-    const ModelTypes modeltype = ModelTypes::StuffUsers;
-    const QueryTypes querytype = QueryTypes::CreateEntry;
 
 public:
-    explicit W_StuffUser(WorkingWithDataType type, QSharedPointer<StuffUser> stuffUser = nullptr, QWidget *parent = nullptr); //TODO: нужно передоавть сюда данные из выбранной строки, можно наверное для это использовать StuffUserData, если WorkingWithDataType == Add, то пихать туда nullptr
+    explicit W_StuffUser(QueryTypes actionType, QSharedPointer<StuffUser> defaultStuffUser = QSharedPointer<StuffUser>(new StuffUser()), QWidget *parent = nullptr);
     ~W_StuffUser();
+
+private slots:
+    void on_buttonSave_clicked();
 
 private:
     QString getName();
     QString getLogin();
     QString getPassword();
     Roles getRole();
+
     void loadComboBoxRole();
-    void resetInputs();
     void clearInput();
-    void add();
-    void update();
-    void connects();
+    void setDefaultValues();
+    void onLoadForm();
+
+    QString getInsertQuery(QSharedPointer<StuffUser> stuffUser);
+    QString getUpdateQuery(QSharedPointer<StuffUser> stuffUser);
 };
 
 #endif // ADD_STUFFUSER_H

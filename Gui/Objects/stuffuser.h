@@ -6,21 +6,27 @@
 
 class StuffUser
 {
-    int id;
+    int id {0};
     QString fullName;
     QString login;
     QString password;
     Roles role;
 
 public:
-    StuffUser(int id, QString fullName, QString login, QString password, Roles role);
+    StuffUser();
     StuffUser(QString fullName, QString login, QString password, Roles role);
+    StuffUser(int id, QString fullName, QString login, QString password, Roles role);
 
     int getID();
     QString getFullName();
     QString getLogin();
     QString getPassword();
     Roles getRole();
+
+    void setFullName(QString fullName);
+    void setLogin(QString login);
+    void setPassword(QString password);
+    void setRole(Roles role);
 
     bool inputDataIsValid();
 };

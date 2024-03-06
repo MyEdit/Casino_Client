@@ -140,6 +140,7 @@ void StuffUsers::prepReloadModels()
 
 void StuffUsers::openCreatRecotd()
 {
+    addStuffUser = QSharedPointer<W_StuffUser>::create(QueryTypes::CreateEntry);
     addStuffUser->show();
 }
 
@@ -155,6 +156,6 @@ void StuffUsers::openEditRecotd()
     if (!stuffUser->inputDataIsValid())
         return;
 
-    updateStuffUser = QSharedPointer<W_StuffUser>::create(WorkingWithDataType::Update, stuffUser);
+    updateStuffUser = QSharedPointer<W_StuffUser>::create(QueryTypes::UpdateEntry, stuffUser);
     updateStuffUser->show();
 }

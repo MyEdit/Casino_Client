@@ -1,12 +1,12 @@
 ﻿#include "w_stuffuser.h"
 #include "ui_w_stuffuser.h"
 
-W_StuffUser::W_StuffUser(WorkingWithDataType type, QSharedPointer<StuffUser> stuffUser, QWidget *parent)
-    : QWidget(parent), ui(new Ui::W_StuffUser), type(type), stuffUser(stuffUser)
+W_StuffUser::W_StuffUser(QueryTypes actionType, QSharedPointer<StuffUser> defaultStuffUser, QWidget *parent)
+    : QWidget(parent), ui(new Ui::W_StuffUser), actionType(actionType), defaultStuffUser(defaultStuffUser)
 {
     ui->setupUi(this);
     loadComboBoxRole();
-    connects();
+    onLoadForm();
 }
 
 W_StuffUser::~W_StuffUser()
@@ -14,9 +14,32 @@ W_StuffUser::~W_StuffUser()
     delete ui;
 }
 
-void W_StuffUser::add()
+void W_StuffUser::onLoadForm()
 {
-    stuffUser = QSharedPointer<StuffUser>::create(getName(), getLogin(), getPassword(), getRole());
+    switch (actionType)
+    {
+        case QueryTypes::CreateEntry:
+        {
+            connect(ui->buttonReset, &QPushButton::clicked, this, &W_StuffUser::clearInput);
+            setWindowTitle("Добавление сотрудника");
+            break;
+        }
+        case QueryTypes::UpdateEntry:
+        {
+            connect(ui->buttonReset, &QPushButton::clicked, this, &W_StuffUser::setDefaultValues);
+            setWindowTitle("Редактирование сотрудника");
+            setDefaultValues();
+            break;
+        }
+        default:
+            break;
+    };
+}
+
+void W_StuffUser::on_buttonSave_clicked()
+{
+    QSharedPointer<StuffUser> stuffUser = QSharedPointer<StuffUser>::create(defaultStuffUser->getID(), getName(), getLogin(), getPassword(), getRole());
+    QString query;
 
     if (!stuffUser->inputDataIsValid())
     {
@@ -24,52 +47,39 @@ void W_StuffUser::add()
         return;
     }
 
-    QString query = QString("INSERT INTO StuffUsers (Name, Login, Password, ID_Role) VALUES ('%1', '%2', '%3', %4)")
-            .arg(stuffUser->getFullName())
-            .arg(stuffUser->getLogin())
-            .arg(stuffUser->getPassword())
-            .arg(static_cast<int>(stuffUser->getRole()));
+    if (actionType == QueryTypes::CreateEntry)
+        query = getInsertQuery(stuffUser);
+    else
+        query = getUpdateQuery(stuffUser);
 
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
-    NetworkClient::sendToServer(&modeltype, sizeof(ModelTypes)); //TODO: Удалить
-    NetworkClient::sendToServer(&querytype, sizeof(QueryTypes));
+    NetworkClient::sendToServer(&actionType, sizeof(QueryTypes));
     NetworkClient::sendToServer(query);
 
     this->close();
 }
 
-//По хорошему объединить его с add, и назвать метод on_buttonSave_clicked, и лишь по WorkingWithDataType подменять запрос
-void W_StuffUser::update()
+QString W_StuffUser::getInsertQuery(QSharedPointer<StuffUser> stuffUser)
 {
-    //TODO: Coming soon...
+    return QString("INSERT INTO StuffUsers (Name, Login, Password, ID_Role) VALUES ('%1', '%2', '%3', %4)")
+            .arg(stuffUser->getFullName())
+            .arg(stuffUser->getLogin())
+            .arg(stuffUser->getPassword())
+            .arg(static_cast<int>(stuffUser->getRole()));
 }
 
-void W_StuffUser::connects()
+QString W_StuffUser::getUpdateQuery(QSharedPointer<StuffUser> stuffUser)
 {
-    switch (type)
-    {
-        case WorkingWithDataType::Add:
-        {
-            connect(ui->buttonSave, &QPushButton::clicked, this, &W_StuffUser::add);
-            connect(ui->buttonReset, &QPushButton::clicked, this, &W_StuffUser::clearInput);
-            setWindowTitle("Добавление сотрудника");
-            break;
-        }
-        case WorkingWithDataType::Update:
-        {
-            connect(ui->buttonSave, &QPushButton::clicked, this, &W_StuffUser::update);
-            connect(ui->buttonReset, &QPushButton::clicked, this, &W_StuffUser::resetInputs);
-            setWindowTitle("Редактирование сотрудника");
-            break;
-        }
-    };
+    return QString("UPDATE StuffUsers SET Name = '%1', Login = '%2', Password = '%3', ID_Role = %4 WHERE ID_StuffUser = %5")
+            .arg(stuffUser->getFullName())
+            .arg(stuffUser->getLogin())
+            .arg(stuffUser->getPassword())
+            .arg(static_cast<int>(stuffUser->getRole()))
+            .arg(stuffUser->getID());
 }
 
 void W_StuffUser::loadComboBoxRole()
 {
-    //TODO: Обдумать использование метапрограммирования для заполнения комбобоксов, может действительно проще и удобнее
-    //создать под каждый енум свой класс и использовать такой подход за место стандартных игр с индексами
-    //ui->ComboBoxRoles->addItem("Администратор", QVariant::fromValue(Roles::Admin));
     ui->ComboBoxRoles->addItem("Администратор");
     ui->ComboBoxRoles->addItem("Распорядитель столов");
 }
@@ -94,9 +104,12 @@ Roles W_StuffUser::getRole()
     return static_cast<Roles>(ui->ComboBoxRoles->currentIndex() + 1);
 }
 
-void W_StuffUser::resetInputs()
+void W_StuffUser::setDefaultValues()
 {
-    //TODO: Coming soon...
+    ui->InputName->setText(defaultStuffUser->getFullName());
+    ui->InputLogin->setText(defaultStuffUser->getLogin());
+    ui->InputPassword->setText(defaultStuffUser->getPassword());
+    ui->ComboBoxRoles->setCurrentIndex(static_cast<int>(defaultStuffUser->getRole()) - 1);
 }
 
 void W_StuffUser::clearInput()

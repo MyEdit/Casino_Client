@@ -65,12 +65,6 @@ struct QueryData
     QString result;
 };
 
-enum class WorkingWithDataType
-{
-    Add,
-    Update
-};
-
 struct User
 {
     Roles role;

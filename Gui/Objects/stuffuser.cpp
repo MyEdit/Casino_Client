@@ -1,16 +1,20 @@
 #include "stuffuser.h"
 
-StuffUser::StuffUser(int id, QString fullName, QString login, QString password, Roles role)
+StuffUser::StuffUser()
 {
-    this->id = id;
+}
+
+StuffUser::StuffUser(QString fullName, QString login, QString password, Roles role)
+{
     this->fullName = fullName;
     this->login = login;
     this->password = password;
     this->role = role;
 }
 
-StuffUser::StuffUser(QString fullName, QString login, QString password, Roles role)
+StuffUser::StuffUser(int id, QString fullName, QString login, QString password, Roles role)
 {
+    this->id = id;
     this->fullName = fullName;
     this->login = login;
     this->password = password;
@@ -40,6 +44,26 @@ QString StuffUser::getPassword()
 Roles StuffUser::getRole()
 {
     return role;
+}
+
+void StuffUser::setFullName(QString fullName)
+{
+    this->fullName = fullName;
+}
+
+void StuffUser::setLogin(QString login)
+{
+    this->login = login;
+}
+
+void StuffUser::setPassword(QString password)
+{
+    this->password = password;
+}
+
+void StuffUser::setRole(Roles role)
+{
+    this->role = role;
 }
 
 bool StuffUser::inputDataIsValid()

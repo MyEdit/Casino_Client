@@ -43,9 +43,6 @@ void StuffUsers::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>::create(ui->tableView, &boxsNameColumn);
     pagination = QSharedPointer<Pagination>::create(this, ui->tableView, ui->prevButton, ui->nextButton, workingIsTableView, modelTypes);
-
-    addStuffUser = QSharedPointer<W_StuffUser>::create(WorkingWithDataType::Add);
-    updateStuffUser = QSharedPointer<W_StuffUser>::create(WorkingWithDataType::Update);
 }
 
 void StuffUsers::connects()
@@ -148,5 +145,16 @@ void StuffUsers::openCreatRecotd()
 
 void StuffUsers::openEditRecotd()
 {
+    int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
+    QString fullName = getValueFromSelectedRow(ui->tableView, 2).toString();
+    QString login = getValueFromSelectedRow(ui->tableView, 3).toString();
+    QString password = getValueFromSelectedRow(ui->tableView, 4).toString();
+    Roles role = static_cast<Roles>(getValueFromSelectedRow(ui->tableView, 5).toInt());
+
+    QSharedPointer<StuffUser> stuffUser = QSharedPointer<StuffUser>::create(id, fullName, login, password, role);
+    if (!stuffUser->inputDataIsValid())
+        return;
+
+    updateStuffUser = QSharedPointer<W_StuffUser>::create(WorkingWithDataType::Update, stuffUser);
     updateStuffUser->show();
 }

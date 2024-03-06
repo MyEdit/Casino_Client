@@ -1,7 +1,8 @@
 ﻿#include "w_stuffuser.h"
 #include "ui_w_stuffuser.h"
 
-W_StuffUser::W_StuffUser(WorkingWithDataType type, QWidget *parent) : QWidget(parent), ui(new Ui::W_StuffUser), type(type)
+W_StuffUser::W_StuffUser(WorkingWithDataType type, QSharedPointer<StuffUser> stuffUser, QWidget *parent)
+    : QWidget(parent), ui(new Ui::W_StuffUser), type(type), stuffUser(stuffUser)
 {
     ui->setupUi(this);
     loadComboBoxRole();
@@ -15,22 +16,22 @@ W_StuffUser::~W_StuffUser()
 
 void W_StuffUser::add()
 {
-    StuffUserData inputData { getName(), getLogin(), getPassword(), getRole() };
+    stuffUser = QSharedPointer<StuffUser>::create(getName(), getLogin(), getPassword(), getRole());
 
-    if (!validateInputData(inputData))
+    if (!stuffUser->inputDataIsValid())
     {
         NotificationUtil::viewNotification({TypeMessage::Error, "Заполнены не все поля"});
         return;
     }
 
     QString query = QString("INSERT INTO StuffUsers (Name, Login, Password, ID_Role) VALUES ('%1', '%2', '%3', %4)")
-            .arg(inputData.name)
-            .arg(inputData.login)
-            .arg(inputData.password)
-            .arg(static_cast<int>(inputData.role));
+            .arg(stuffUser->getFullName())
+            .arg(stuffUser->getLogin())
+            .arg(stuffUser->getPassword())
+            .arg(static_cast<int>(stuffUser->getRole()));
 
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
-    NetworkClient::sendToServer(&modeltype, sizeof(ModelTypes));
+    NetworkClient::sendToServer(&modeltype, sizeof(ModelTypes)); //TODO: Удалить
     NetworkClient::sendToServer(&querytype, sizeof(QueryTypes));
     NetworkClient::sendToServer(query);
 
@@ -62,20 +63,6 @@ void W_StuffUser::connects()
             break;
         }
     };
-}
-
-bool W_StuffUser::validateInputData(StuffUserData inputData)
-{
-    if (inputData.role == Roles::None)
-        return false;
-
-    for (QString value : {inputData.name, inputData.login, inputData.password})
-    {
-        if (value.isEmpty())
-            return false;
-    }
-
-    return true;
 }
 
 void W_StuffUser::loadComboBoxRole()

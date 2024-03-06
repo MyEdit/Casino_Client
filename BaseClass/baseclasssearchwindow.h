@@ -43,6 +43,7 @@ protected:
     void selectTypeSearch(int arg);
     void baseSetting();
     void sort();
+    QVariant getValueFromSelectedRow(QTableView* tableView, int collumn);
     virtual void search() = 0;
     virtual void setValueToMaxPage(int maxPage) = 0;
     virtual void assigningValues() = 0;

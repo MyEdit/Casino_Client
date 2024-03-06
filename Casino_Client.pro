@@ -24,13 +24,14 @@ SOURCES += \
     GUI/TabWidgets/welcome.cpp \
     GUI/window_admin.cpp \
     GUI/window_auth.cpp \
-    Gui/Notification/notification.cpp \
-    Gui/Notification/reconnecting.cpp \
-    Gui/TabWidgets/credits.cpp \
-    Gui/TabWidgets/payments.cpp \
-    Gui/WorkingWithRecords/w_ban.cpp \
-    Gui/WorkingWithRecords/w_stuffuser.cpp \
-    Gui/WorkingWithRecords/w_table.cpp \
+    GUI/Notification/notification.cpp \
+    GUI/Notification/reconnecting.cpp \
+    GUI/Objects/stuffuser.cpp \
+    GUI/TabWidgets/credits.cpp \
+    GUI/TabWidgets/payments.cpp \
+    GUI/WorkingWithRecords/w_ban.cpp \
+    GUI/WorkingWithRecords/w_stuffuser.cpp \
+    GUI/WorkingWithRecords/w_table.cpp \
     Network/PacketsActions/p_authorization.cpp \
     Network/PacketsActions/p_notification.cpp \
     Network/PacketsActions/p_query.cpp \
@@ -53,13 +54,14 @@ HEADERS += \
     GUI/TabWidgets/welcome.h \
     GUI/window_admin.h \
     GUI/window_auth.h \
-    Gui/Notification/notification.h \
-    Gui/Notification/reconnecting.h \
-    Gui/TabWidgets/credits.h \
-    Gui/TabWidgets/payments.h \
-    Gui/WorkingWithRecords/w_ban.h \
-    Gui/WorkingWithRecords/w_stuffuser.h \
-    Gui/WorkingWithRecords/w_table.h \
+    GUI/Notification/notification.h \
+    GUI/Notification/reconnecting.h \
+    GUI/Objects/stuffuser.h \
+    GUI/TabWidgets/credits.h \
+    GUI/TabWidgets/payments.h \
+    GUI/WorkingWithRecords/w_ban.h \
+    GUI/WorkingWithRecords/w_stuffuser.h \
+    GUI/WorkingWithRecords/w_table.h \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
     Network/PacketsActions/p_notification.h \
@@ -84,11 +86,11 @@ FORMS += \
     GUI/TabWidgets/welcome.ui \
     GUI/window_admin.ui \
     GUI/window_auth.ui \
-    Gui/TabWidgets/credits.ui \
-    Gui/TabWidgets/payments.ui \
-    Gui/WorkingWithRecords/w_ban.ui \
-    Gui/WorkingWithRecords/w_stuffuser.ui \
-    Gui/WorkingWithRecords/w_table.ui
+    GUI/TabWidgets/credits.ui \
+    GUI/TabWidgets/payments.ui \
+    GUI/WorkingWithRecords/w_ban.ui \
+    GUI/WorkingWithRecords/w_stuffuser.ui \
+    GUI/WorkingWithRecords/w_table.ui
 
 LIBS += -lws2_32
 QT += core

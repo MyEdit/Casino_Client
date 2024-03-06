@@ -18,7 +18,7 @@ class StuffUsers;
 class StuffUsers : public BaseClassSearchWindow
 {
     Ui::StuffUsers *ui;
-    QSharedPointer<W_StuffUser> addStuffUser;
+    QSharedPointer<W_StuffUser> addStuffUser = QSharedPointer<W_StuffUser>::create(WorkingWithDataType::Add, nullptr);
     QSharedPointer<W_StuffUser> updateStuffUser;
 
 public:

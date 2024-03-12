@@ -43,8 +43,6 @@ void ActiveTables::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>::create(ui->tableView, &boxsNameColumn);
     pagination = QSharedPointer<Pagination>::create(this, ui->tableView, ui->prevButton, ui->nextButton, workingIsTableView, modelTypes);
-
-    addTable = QSharedPointer<Add_Table>::create();
 }
 
 void ActiveTables::connects()
@@ -142,10 +140,24 @@ void ActiveTables::prepReloadModels()
 
 void ActiveTables::openCreatRecotd()
 {
+    addTable = QSharedPointer<W_Table>::create(QueryTypes::CreateEntry);
     addTable->show();
 }
 
 void ActiveTables::openEditRecotd()
 {
+    int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
+    QString maxPlayers = getValueFromSelectedRow(ui->tableView, 2).toString();
+    QString numPlayers = getValueFromSelectedRow(ui->tableView, 3).toString();
+    QString minBet = getValueFromSelectedRow(ui->tableView, 4).toString();
+    QString betStep = getValueFromSelectedRow(ui->tableView, 5).toString();
+    QString minBalance = getValueFromSelectedRow(ui->tableView, 6).toString();
+    QString nameGame = getValueFromSelectedRow(ui->tableView, 7).toString();
 
+    QSharedPointer<ActiveTable> activeTable = QSharedPointer<ActiveTable>::create(id, maxPlayers, numPlayers, minBet, betStep, minBalance, nameGame);
+    if (!activeTable->inputDataIsValid())
+        return;
+
+    updateTable = QSharedPointer<W_Table>::create(QueryTypes::UpdateEntry, activeTable);
+    updateTable->show();
 }

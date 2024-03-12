@@ -61,7 +61,7 @@ void W_StuffUser::on_buttonSave_clicked()
 
 QString W_StuffUser::getInsertQuery(QSharedPointer<StuffUser> stuffUser)
 {
-    return QString("INSERT INTO StuffUsers (Name, Login, Password, ID_Role) VALUES ('%1', '%2', '%3', %4)")
+    return QString("INSERT INTO StuffUsers (Name, Login, Password, ID_Role) VALUES ('%1', '%2', '%3', '%4')")
             .arg(stuffUser->getFullName())
             .arg(stuffUser->getLogin())
             .arg(stuffUser->getPassword())
@@ -70,7 +70,7 @@ QString W_StuffUser::getInsertQuery(QSharedPointer<StuffUser> stuffUser)
 
 QString W_StuffUser::getUpdateQuery(QSharedPointer<StuffUser> stuffUser)
 {
-    return QString("UPDATE StuffUsers SET Name = '%1', Login = '%2', Password = '%3', ID_Role = %4 WHERE ID_StuffUser = %5")
+    return QString("UPDATE StuffUsers SET Name = '%1', Login = '%2', Password = '%3', ID_Role = '%4' WHERE ID_StuffUser = '%5'")
             .arg(stuffUser->getFullName())
             .arg(stuffUser->getLogin())
             .arg(stuffUser->getPassword())

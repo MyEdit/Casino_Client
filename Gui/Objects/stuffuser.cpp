@@ -1,8 +1,4 @@
-#include "stuffuser.h"
-
-StuffUser::StuffUser()
-{
-}
+﻿#include "stuffuser.h"
 
 StuffUser::StuffUser(QString fullName, QString login, QString password, Roles role)
 {

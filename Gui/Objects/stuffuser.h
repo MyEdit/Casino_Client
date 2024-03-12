@@ -1,4 +1,4 @@
-#ifndef STUFFUSER_H
+﻿#ifndef STUFFUSER_H
 #define STUFFUSER_H
 
 #include <QString>
@@ -13,7 +13,7 @@ class StuffUser
     Roles role;
 
 public:
-    StuffUser();
+    StuffUser() {};
     StuffUser(QString fullName, QString login, QString password, Roles role);
     StuffUser(int id, QString fullName, QString login, QString password, Roles role);
 

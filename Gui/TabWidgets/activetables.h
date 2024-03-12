@@ -9,6 +9,8 @@
 #include "BaseClass/baseclasssearchwindow.h"
 #include "Gui/WorkingWithRecords/w_table.h"
 
+class W_Table;
+
 namespace Ui {
 class ActiveTables;
 }
@@ -16,7 +18,8 @@ class ActiveTables;
 class ActiveTables : public BaseClassSearchWindow
 {
     Ui::ActiveTables *ui;
-    QSharedPointer<Add_Table> addTable;
+    QSharedPointer<W_Table> addTable;
+    QSharedPointer<W_Table> updateTable;
 
 public:
     explicit ActiveTables(QWidget *parent = nullptr);

@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     BaseClass/baseclasssearchwindow.cpp \
+    GUI/Objects/activetable.cpp \
     GUI/TabWidgets/activetables.cpp \
     GUI/TabWidgets/banlist.cpp \
     GUI/TabWidgets/stuffusers.cpp \
@@ -47,6 +48,7 @@ SOURCES += \
 
 HEADERS += \
     BaseClass/baseclasssearchwindow.h \
+    GUI/Objects/activetable.h \
     GUI/TabWidgets/activetables.h \
     GUI/TabWidgets/banlist.h \
     GUI/TabWidgets/stuffusers.h \

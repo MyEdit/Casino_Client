@@ -140,10 +140,23 @@ void Users::prepReloadModels()
 
 void Users::openCreatRecotd()
 {
-
+    addUser = QSharedPointer<W_User>::create(QueryTypes::CreateEntry);
+    addUser->show();
 }
 
 void Users::openEditRecotd()
 {
+    int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
+    QString name = getValueFromSelectedRow(ui->tableView, 2).toString();
+    QString passport = getValueFromSelectedRow(ui->tableView, 3).toString();
+    QString balance = getValueFromSelectedRow(ui->tableView, 4).toString();
+    QString logim = getValueFromSelectedRow(ui->tableView, 5).toString();
+    QString password = getValueFromSelectedRow(ui->tableView, 6).toString();
 
+    QSharedPointer<User> user = QSharedPointer<User>::create(id, name, passport, balance, logim, password);
+    if (!user->inputDataIsValid())
+        return;
+
+    updateUser = QSharedPointer<W_User>::create(QueryTypes::UpdateEntry, user);
+    updateUser->show();
 }

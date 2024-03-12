@@ -10,6 +10,9 @@
 #include <QMessageBox>
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
+#include "Gui/WorkingWithRecords/w_user.h"
+
+class W_User;
 
 namespace Ui {
 class Users;
@@ -18,6 +21,8 @@ class Users;
 class Users : public BaseClassSearchWindow
 {
     Ui::Users *ui;
+    QSharedPointer<W_User> addUser;
+    QSharedPointer<W_User> updateUser;
 
 public:
     explicit Users(QWidget *parent = nullptr);

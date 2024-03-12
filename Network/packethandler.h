@@ -22,7 +22,7 @@ private:
     void tryReconnectToServer();
 
 signals:
-    void signalOpenForm(User user);
+    void signalOpenForm(UserData user);
     void signalSetModel(ModelData);
     void signalSetQueryModel(QueryData*);
     void signalViewNotification(QPair<TypeMessage, QString>);

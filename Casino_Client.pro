@@ -18,11 +18,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     BaseClass/baseclasssearchwindow.cpp \
     GUI/Objects/activetable.cpp \
+    GUI/Objects/user.cpp \
     GUI/TabWidgets/activetables.cpp \
     GUI/TabWidgets/banlist.cpp \
     GUI/TabWidgets/stuffusers.cpp \
     GUI/TabWidgets/users.cpp \
     GUI/TabWidgets/welcome.cpp \
+    GUI/WorkingWithRecords/w_user.cpp \
     GUI/window_admin.cpp \
     GUI/window_auth.cpp \
     GUI/Notification/notification.cpp \
@@ -49,11 +51,13 @@ SOURCES += \
 HEADERS += \
     BaseClass/baseclasssearchwindow.h \
     GUI/Objects/activetable.h \
+    GUI/Objects/user.h \
     GUI/TabWidgets/activetables.h \
     GUI/TabWidgets/banlist.h \
     GUI/TabWidgets/stuffusers.h \
     GUI/TabWidgets/users.h \
     GUI/TabWidgets/welcome.h \
+    GUI/WorkingWithRecords/w_user.h \
     GUI/window_admin.h \
     GUI/window_auth.h \
     GUI/Notification/notification.h \
@@ -86,6 +90,7 @@ FORMS += \
     GUI/TabWidgets/stuffusers.ui \
     GUI/TabWidgets/users.ui \
     GUI/TabWidgets/welcome.ui \
+    GUI/WorkingWithRecords/w_user.ui \
     GUI/window_admin.ui \
     GUI/window_auth.ui \
     GUI/TabWidgets/credits.ui \

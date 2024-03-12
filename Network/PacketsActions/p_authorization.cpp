@@ -4,7 +4,7 @@ const PacketTypes P_Authorization::packettype = PacketTypes::P_Authorization;
 Window_Admin* P_Authorization::adminW;
 QString P_Authorization::nickname;
 
-void P_Authorization::openMainWindow(User user)
+void P_Authorization::openMainWindow(UserData user)
 {
     WindowTracker::activeWindow->close();
 
@@ -15,7 +15,7 @@ void P_Authorization::openMainWindow(User user)
     }
 }
 
-User P_Authorization::getUser()
+UserData P_Authorization::getUser()
 {
     Roles role;
     recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&role), sizeof(role), 0);

@@ -15,6 +15,7 @@ class W_Table;
 class W_Table : public QWidget
 {
     Q_OBJECT
+
     Ui::W_Table *ui;
     QueryTypes actionType;
     QSharedPointer<ActiveTable> defaultActiveTable;
@@ -38,6 +39,7 @@ private:
     void clearInput();
     void setDefaultValues();
     void onLoadForm();
+    void customizationLiteEdit();
 
     QString getInsertQuery(QSharedPointer<ActiveTable> activeTable);
     QString getUpdateQuery(QSharedPointer<ActiveTable> activeTable);

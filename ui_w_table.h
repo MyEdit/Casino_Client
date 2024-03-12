@@ -28,13 +28,13 @@ public:
     QGridLayout *gridLayout_2;
     QGridLayout *gridLayout;
     QLabel *labelBetStep;
-    QLineEdit *minBalance;
-    QLineEdit *minBet;
-    QLineEdit *maxPlayer;
+    QLineEdit *InputMinBalance;
+    QLineEdit *InputMinBet;
+    QLineEdit *InputMaxPlayer;
     QLabel *labelNameGame;
     QComboBox *nameGame;
     QLabel *labelMaxPlayer;
-    QLineEdit *betStep;
+    QLineEdit *InputBetStep;
     QLabel *labelMinBet;
     QLabel *labelMinBalance;
     QHBoxLayout *horizontalLayout_4;
@@ -46,7 +46,7 @@ public:
     {
         if (W_Table->objectName().isEmpty())
             W_Table->setObjectName(QString::fromUtf8("W_Table"));
-        W_Table->resize(459, 296);
+        W_Table->resize(472, 317);
         gridLayout_2 = new QGridLayout(W_Table);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout = new QGridLayout();
@@ -68,35 +68,35 @@ public:
 
         gridLayout->addWidget(labelBetStep, 2, 0, 1, 1);
 
-        minBalance = new QLineEdit(W_Table);
-        minBalance->setObjectName(QString::fromUtf8("minBalance"));
+        InputMinBalance = new QLineEdit(W_Table);
+        InputMinBalance->setObjectName(QString::fromUtf8("InputMinBalance"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Preferred);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(minBalance->sizePolicy().hasHeightForWidth());
-        minBalance->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(InputMinBalance->sizePolicy().hasHeightForWidth());
+        InputMinBalance->setSizePolicy(sizePolicy1);
         QFont font1;
         font1.setFamily(QString::fromUtf8("Segoe UI"));
         font1.setPointSize(14);
-        minBalance->setFont(font1);
+        InputMinBalance->setFont(font1);
 
-        gridLayout->addWidget(minBalance, 3, 1, 1, 1);
+        gridLayout->addWidget(InputMinBalance, 3, 1, 1, 1);
 
-        minBet = new QLineEdit(W_Table);
-        minBet->setObjectName(QString::fromUtf8("minBet"));
-        sizePolicy1.setHeightForWidth(minBet->sizePolicy().hasHeightForWidth());
-        minBet->setSizePolicy(sizePolicy1);
-        minBet->setFont(font1);
+        InputMinBet = new QLineEdit(W_Table);
+        InputMinBet->setObjectName(QString::fromUtf8("InputMinBet"));
+        sizePolicy1.setHeightForWidth(InputMinBet->sizePolicy().hasHeightForWidth());
+        InputMinBet->setSizePolicy(sizePolicy1);
+        InputMinBet->setFont(font1);
 
-        gridLayout->addWidget(minBet, 1, 1, 1, 1);
+        gridLayout->addWidget(InputMinBet, 1, 1, 1, 1);
 
-        maxPlayer = new QLineEdit(W_Table);
-        maxPlayer->setObjectName(QString::fromUtf8("maxPlayer"));
-        sizePolicy1.setHeightForWidth(maxPlayer->sizePolicy().hasHeightForWidth());
-        maxPlayer->setSizePolicy(sizePolicy1);
-        maxPlayer->setFont(font1);
+        InputMaxPlayer = new QLineEdit(W_Table);
+        InputMaxPlayer->setObjectName(QString::fromUtf8("InputMaxPlayer"));
+        sizePolicy1.setHeightForWidth(InputMaxPlayer->sizePolicy().hasHeightForWidth());
+        InputMaxPlayer->setSizePolicy(sizePolicy1);
+        InputMaxPlayer->setFont(font1);
 
-        gridLayout->addWidget(maxPlayer, 0, 1, 1, 1);
+        gridLayout->addWidget(InputMaxPlayer, 0, 1, 1, 1);
 
         labelNameGame = new QLabel(W_Table);
         labelNameGame->setObjectName(QString::fromUtf8("labelNameGame"));
@@ -125,13 +125,13 @@ public:
 
         gridLayout->addWidget(labelMaxPlayer, 0, 0, 1, 1);
 
-        betStep = new QLineEdit(W_Table);
-        betStep->setObjectName(QString::fromUtf8("betStep"));
-        sizePolicy1.setHeightForWidth(betStep->sizePolicy().hasHeightForWidth());
-        betStep->setSizePolicy(sizePolicy1);
-        betStep->setFont(font1);
+        InputBetStep = new QLineEdit(W_Table);
+        InputBetStep->setObjectName(QString::fromUtf8("InputBetStep"));
+        sizePolicy1.setHeightForWidth(InputBetStep->sizePolicy().hasHeightForWidth());
+        InputBetStep->setSizePolicy(sizePolicy1);
+        InputBetStep->setFont(font1);
 
-        gridLayout->addWidget(betStep, 2, 1, 1, 1);
+        gridLayout->addWidget(InputBetStep, 2, 1, 1, 1);
 
         labelMinBet = new QLabel(W_Table);
         labelMinBet->setObjectName(QString::fromUtf8("labelMinBet"));

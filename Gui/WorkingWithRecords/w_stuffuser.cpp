@@ -7,6 +7,7 @@ W_StuffUser::W_StuffUser(QueryTypes actionType, QSharedPointer<StuffUser> defaul
     ui->setupUi(this);
     loadComboBoxRole();
     onLoadForm();
+    customizationLiteEdit();
 }
 
 W_StuffUser::~W_StuffUser()
@@ -119,4 +120,9 @@ void W_StuffUser::clearInput()
         lineEdit->clear();
     }
     ui->ComboBoxRoles->setCurrentIndex(0);
+}
+
+void W_StuffUser::customizationLiteEdit()
+{
+    ui->InputName->setValidator(new QRegExpValidator(QRegExp("[^\\d\\W_]+"))); // Для установки что можно вводить только текст
 }

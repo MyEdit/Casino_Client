@@ -7,6 +7,7 @@ W_Table::W_Table(QueryTypes actionType, QSharedPointer<ActiveTable> defaultActiv
     ui->setupUi(this);
     loadComboBoxNameGame();
     onLoadForm();
+    customizationLiteEdit();
 }
 
 W_Table::~W_Table()
@@ -39,23 +40,23 @@ void W_Table::on_bottonSave_clicked()
 
 QString W_Table::getMaxPlayers()
 {
-    return ui->maxPlayer->text();
+    return ui->InputMaxPlayer->text();
 }
 
 
 QString W_Table::getMinBet()
 {
-    return ui->minBet->text();
+    return ui->InputMinBet->text();
 }
 
 QString W_Table::getBetStep()
 {
-    return ui->betStep->text();
+    return ui->InputBetStep->text();
 }
 
 QString W_Table::getMinBalance()
 {
-    return ui->minBalance->text();
+    return ui->InputMinBalance->text();
 }
 
 QString W_Table::getNameGame()
@@ -81,10 +82,10 @@ void W_Table::clearInput()
 
 void W_Table::setDefaultValues()
 {
-    ui->maxPlayer->setText(defaultActiveTable->getMaxPlayers());
-    ui->minBet->setText(defaultActiveTable->getMinBet());
-    ui->betStep->setText(defaultActiveTable->getBetStep());
-    ui->minBalance->setText(defaultActiveTable->getMinBalance());
+    ui->InputMaxPlayer->setText(defaultActiveTable->getMaxPlayers());
+    ui->InputMinBet->setText(defaultActiveTable->getMinBet());
+    ui->InputBetStep->setText(defaultActiveTable->getBetStep());
+    ui->InputMinBalance->setText(defaultActiveTable->getMinBalance());
     ui->nameGame->setCurrentText(defaultActiveTable->getNameGame());
 }
 
@@ -131,4 +132,13 @@ QString W_Table::getUpdateQuery(QSharedPointer<ActiveTable> activeTable)
             .arg(activeTable->getMinBalance())
             .arg(activeTable->getNameGame())
             .arg(activeTable->getID());
+}
+
+void W_Table::customizationLiteEdit()
+{
+    //setValidator(new QRegExpValidator(QRegExp("[^\\d\\W_]+"))) Для установки что можно вводить только текст
+    ui->InputMaxPlayer->setValidator(new QIntValidator(this)); //ввот только цифр
+    ui->InputMinBet->setValidator(new QIntValidator(this));
+    ui->InputBetStep->setValidator(new QIntValidator(this));
+    ui->InputMinBalance->setValidator(new QIntValidator(this));
 }

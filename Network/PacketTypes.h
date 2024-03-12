@@ -65,7 +65,7 @@ struct QueryData
     QString result;
 };
 
-struct User
+struct UserData
 {
     Roles role;
     QString fullName;

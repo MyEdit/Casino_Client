@@ -39,6 +39,7 @@ private:
     void clearInput();
     void setDefaultValues();
     void onLoadForm();
+    void customizationLiteEdit();
 
     QString getInsertQuery(QSharedPointer<StuffUser> stuffUser);
     QString getUpdateQuery(QSharedPointer<StuffUser> stuffUser);

@@ -53,8 +53,8 @@ protected:
     virtual void goToPage() = 0;
     virtual void onHeaderClicked(int logicalIndex) = 0;
     virtual void prepReloadModels() = 0;
-    virtual void openCreatRecotd() = 0;
-    virtual void openEditRecotd() = 0;
+    virtual void openCreatRecotd() {};
+    virtual void openEditRecotd() {};
 };
 
 #endif // BASECLASSSEARCHWINDOW_H

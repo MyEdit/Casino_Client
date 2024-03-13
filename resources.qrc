@@ -14,5 +14,6 @@
         <file>resources/update.png</file>
         <file>resources/next.png</file>
         <file>resources/prev.png</file>
+        <file>resources/ban.png</file>
     </qresource>
 </RCC>

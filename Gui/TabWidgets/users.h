@@ -11,8 +11,10 @@
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
 #include "Gui/WorkingWithRecords/w_user.h"
+#include "Gui/WorkingWithRecords/w_ban.h"
 
 class W_User;
+class W_Ban;
 
 namespace Ui {
 class Users;
@@ -21,6 +23,7 @@ class Users;
 class Users : public BaseClassSearchWindow
 {
     Ui::Users *ui;
+    QSharedPointer<W_Ban> addBan;
     QSharedPointer<W_User> addUser;
     QSharedPointer<W_User> updateUser;
 
@@ -40,6 +43,7 @@ private:
     void onHeaderClicked(int logicalIndex) override;
     void openCreatRecotd() override;
     void openEditRecotd() override;
+    void openCreateBan();
 };
 
 #endif // ALLUSERS_H

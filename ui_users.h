@@ -49,6 +49,7 @@ public:
     QPushButton *addUser;
     QPushButton *editUser;
     QPushButton *deleteUser;
+    QPushButton *addBun;
     QTableView *tableView;
     QHBoxLayout *horizontalLayout_6;
     QSpacerItem *horizontalSpacer_9;
@@ -303,6 +304,31 @@ public:
 
         horizontalLayout_8->addWidget(deleteUser);
 
+        addBun = new QPushButton(Users);
+        addBun->setObjectName(QString::fromUtf8("addBun"));
+        addBun->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/icons/resources/ban.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addBun->setIcon(icon6);
+        addBun->setIconSize(QSize(32, 32));
+
+        horizontalLayout_8->addWidget(addBun);
+
 
         verticalLayout->addLayout(horizontalLayout_8);
 
@@ -376,9 +402,9 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon6;
-        icon6.addFile(QString::fromUtf8(":/icons/resources/prev.png"), QSize(), QIcon::Normal, QIcon::Off);
-        prevButton->setIcon(icon6);
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/icons/resources/prev.png"), QSize(), QIcon::Normal, QIcon::Off);
+        prevButton->setIcon(icon7);
         prevButton->setIconSize(QSize(32, 32));
 
         horizontalLayout_10->addWidget(prevButton);
@@ -423,9 +449,9 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon7;
-        icon7.addFile(QString::fromUtf8(":/icons/resources/next.png"), QSize(), QIcon::Normal, QIcon::Off);
-        nextButton->setIcon(icon7);
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/icons/resources/next.png"), QSize(), QIcon::Normal, QIcon::Off);
+        nextButton->setIcon(icon8);
         nextButton->setIconSize(QSize(32, 32));
 
         horizontalLayout_10->addWidget(nextButton);

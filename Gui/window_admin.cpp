@@ -3,14 +3,14 @@
 
 QWidget* WindowTracker::activeWindow = nullptr;
 
-Window_Admin::Window_Admin(QString fullName, QWidget *parent) : QMainWindow(parent), ui(new Ui::Window_Admin)
+Window_Admin::Window_Admin(Roles role, QString fullName, QWidget *parent) : QMainWindow(parent), ui(new Ui::Window_Admin), role(role), fullName(fullName)
 {
     ui->setupUi(this);
 
     prepareStyleSheets();
     assigningValues();
     completionTabWidget();
-    uploadingPhotoEmployee();
+    settingEmployeeInformation();
     settingWindowPosition();
 
     QMap<QPushButton*, QLabel*>::iterator i;
@@ -18,13 +18,49 @@ Window_Admin::Window_Admin(QString fullName, QWidget *parent) : QMainWindow(pare
         i.value()->setVisible(false);
 
     ui->tabWidget->setCurrentWidget(welcomeTab.get());
-
-    ui->FIO_employee->setText(fullName);
 }
 
 Window_Admin::~Window_Admin()
 {
     delete ui;
+}
+
+void Window_Admin::settingEmployeeInformation()
+{
+    ui->FIO_employee->setText(fullName);
+    ui->post->setText(definingrRole());
+    uploadingPhotoEmployee();
+}
+
+QString Window_Admin::definingrRole()
+{
+    QString nameRole;
+
+    switch (role)
+    {
+    case Roles::Admin:
+    {
+        nameRole = "Администратор";
+        break;
+    }
+    case Roles::TableManager:
+    {
+        nameRole = "Роспорядитель столов";
+        break;
+    }
+    case Roles::User:
+    {
+        nameRole = "Игрок";
+        break;
+    }
+    case Roles::None:
+    {
+        nameRole = "Не известная роль";
+        break;
+    }
+    }
+
+    return nameRole;
 }
 
 void Window_Admin::uploadingPhotoEmployee()
@@ -193,6 +229,36 @@ void Window_Admin::completionTabWidget()
 {
     ui->tabWidget->tabBar()->hide();
 
+    if(role == Roles::User)
+    {
+        rendoringForUser();
+    }
+
+    if(role == Roles::TableManager)
+    {
+        rendoringForTableManager();
+    }
+
+    if(role == Roles::Admin)
+    {
+        rendoringForAdmin();
+    }
+}
+
+void Window_Admin::rendoringForTableManager()
+{
+    rendering_WelcomeTab();
+    rendering_ActiveTablesTab();
+    rendering_UsersTab();
+    rendering_BanListTab();
+
+    ui->stuffUsers->hide();
+    ui->credits->hide();
+    ui->payments->hide();
+}
+
+void Window_Admin::rendoringForAdmin()
+{
     rendering_WelcomeTab();
     rendering_ActiveTablesTab();
     rendering_UsersTab();
@@ -200,6 +266,19 @@ void Window_Admin::completionTabWidget()
     rendering_StuffUsersTab();
     rendering_CreditsTab();
     rendering_PaymentsTab();
+}
+
+void Window_Admin::rendoringForUser()
+{
+    rendering_WelcomeTab();
+
+    ui->activeTables->hide();
+    ui->users->hide();
+    ui->stuffUsers->hide();
+    ui->banList->hide();
+    ui->stuffUsers->hide();
+    ui->credits->hide();
+    ui->payments->hide();
 }
 
 void Window_Admin::rendering_ActiveTablesTab()
@@ -216,7 +295,7 @@ void Window_Admin::rendering_UsersTab()
 
 void Window_Admin::rendering_WelcomeTab()
 {
-    welcomeTab = QSharedPointer<Welcome>::create("Администратор");
+    welcomeTab = QSharedPointer<Welcome>::create(definingrRole());
     ui->tabWidget->addTab(welcomeTab.data(), "");
 }
 

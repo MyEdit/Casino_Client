@@ -34,6 +34,8 @@ class Window_Admin : public QMainWindow
     Q_OBJECT
 
     Ui::Window_Admin *ui;
+    Roles role;
+    QString fullName;
     QString inactiveButtonStyleSheet;
     QString activeButtonStyleSheet;
     QVector<QPushButton*> buttonSwitchingTab;
@@ -48,7 +50,7 @@ class Window_Admin : public QMainWindow
     QSharedPointer<Welcome> welcomeTab;
 
 public:
-    explicit Window_Admin(QString fullName, QWidget *parent = nullptr);
+    explicit Window_Admin(Roles role, QString fullName, QWidget *parent = nullptr);
     ~Window_Admin();
 
     void setModel_UsersTab(ModelData model);
@@ -73,6 +75,11 @@ private:
     void uploadingPhotoEmployee();
     void settingWindowPosition();
     void changeEvent(QEvent *event);
+    void settingEmployeeInformation();
+    QString definingrRole();
+    void rendoringForTableManager();
+    void rendoringForAdmin();
+    void rendoringForUser();
 
 private slots:
     void on_buttonExit_clicked();

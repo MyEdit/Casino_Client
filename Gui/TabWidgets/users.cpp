@@ -53,6 +53,7 @@ void Users::connects()
     connect(ui->addUser, &QPushButton::clicked, this, &Users::openCreatRecotd);
     connect(ui->editUser, &QPushButton::clicked, this, &Users::openEditRecotd);
     connect(ui->refreshData, &QPushButton::clicked, this, &Users::prepReloadModels);
+    connect(ui->addBun, &QPushButton::clicked, this, &Users::openCreateBan);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &Users::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &Users::search);
@@ -159,4 +160,15 @@ void Users::openEditRecotd()
 
     updateUser = QSharedPointer<W_User>::create(QueryTypes::UpdateEntry, user);
     updateUser->show();
+}
+
+void Users::openCreateBan()
+{
+    int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
+    QString name = getValueFromSelectedRow(ui->tableView, 2).toString();
+
+    QSharedPointer<Ban> ban = QSharedPointer<Ban>::create(id, name);
+
+    addBan = QSharedPointer<W_Ban>::create(QueryTypes::CreateEntry, ban);
+    addBan->show();
 }

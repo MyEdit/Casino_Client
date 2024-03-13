@@ -46,7 +46,6 @@ public:
     QComboBox *typeSorting;
     QCheckBox *sorting;
     QSpacerItem *horizontalSpacer_13;
-    QPushButton *addBan;
     QPushButton *editBan;
     QPushButton *deleteBan;
     QTableView *tableView;
@@ -242,32 +241,6 @@ public:
 
         horizontalLayout_8->addItem(horizontalSpacer_13);
 
-        addBan = new QPushButton(BanList);
-        addBan->setObjectName(QString::fromUtf8("addBan"));
-        addBan->setFont(font2);
-        addBan->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: white;\n"
-"    border: 1px solid black;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px;\n"
-"    color: black;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(100, 88, 255);\n"
-"	color: white;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: rgba(220, 60, 190, 255);\n"
-"}"));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/icons/resources/add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addBan->setIcon(icon3);
-        addBan->setIconSize(QSize(32, 32));
-
-        horizontalLayout_8->addWidget(addBan);
-
         editBan = new QPushButton(BanList);
         editBan->setObjectName(QString::fromUtf8("editBan"));
         editBan->setFont(font2);
@@ -287,18 +260,18 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/icons/resources/edited.png"), QSize(), QIcon::Normal, QIcon::Off);
-        editBan->setIcon(icon4);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/icons/resources/edited.png"), QSize(), QIcon::Normal, QIcon::Off);
+        editBan->setIcon(icon3);
         editBan->setIconSize(QSize(32, 32));
 
         horizontalLayout_8->addWidget(editBan);
 
         deleteBan = new QPushButton(BanList);
         deleteBan->setObjectName(QString::fromUtf8("deleteBan"));
-        QIcon icon5;
-        icon5.addFile(QString::fromUtf8(":/icons/resources/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
-        deleteBan->setIcon(icon5);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/icons/resources/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
+        deleteBan->setIcon(icon4);
         deleteBan->setIconSize(QSize(32, 32));
 
         horizontalLayout_8->addWidget(deleteBan);
@@ -376,9 +349,9 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon6;
-        icon6.addFile(QString::fromUtf8(":/icons/resources/prev.png"), QSize(), QIcon::Normal, QIcon::Off);
-        prevButton->setIcon(icon6);
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/icons/resources/prev.png"), QSize(), QIcon::Normal, QIcon::Off);
+        prevButton->setIcon(icon5);
         prevButton->setIconSize(QSize(32, 32));
 
         horizontalLayout_10->addWidget(prevButton);
@@ -423,9 +396,9 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon7;
-        icon7.addFile(QString::fromUtf8(":/icons/resources/next.png"), QSize(), QIcon::Normal, QIcon::Off);
-        nextButton->setIcon(icon7);
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/icons/resources/next.png"), QSize(), QIcon::Normal, QIcon::Off);
+        nextButton->setIcon(icon6);
         nextButton->setIconSize(QSize(32, 32));
 
         horizontalLayout_10->addWidget(nextButton);
@@ -458,7 +431,6 @@ public:
         typeSorting->setItemText(1, QApplication::translate("BanList", "\320\237\320\276 \321\203\320\261\321\213\320\262\320\260\320\275\320\270\321\216", nullptr));
 
         sorting->setText(QApplication::translate("BanList", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
-        addBan->setText(QString());
         editBan->setText(QString());
         deleteBan->setStyleSheet(QApplication::translate("BanList", "QPushButton {\n"
 "    background-color: white;\n"

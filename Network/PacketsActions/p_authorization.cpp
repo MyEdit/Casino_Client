@@ -8,9 +8,9 @@ void P_Authorization::openMainWindow(UserData user)
 {
     WindowTracker::activeWindow->close();
 
-    if (user.role == Roles::Admin)
+    if (user.role != Roles::None)
     {
-        adminW = new Window_Admin(user.fullName); //TODO: передавать в конструктор формы роль и тут же в зависимости от роли открывать соответствующую форму
+        adminW = new Window_Admin(user.role, user.fullName);
         adminW->show();
     }
 }

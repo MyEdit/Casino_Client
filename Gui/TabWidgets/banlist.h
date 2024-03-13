@@ -9,6 +9,8 @@
 #include "BaseClass/baseclasssearchwindow.h"
 #include "Gui/WorkingWithRecords/w_ban.h"
 
+class W_Ban;
+
 namespace Ui {
 class BanList;
 }
@@ -16,7 +18,7 @@ class BanList;
 class BanList : public BaseClassSearchWindow
 {
     Ui::BanList *ui;
-    QSharedPointer<Add_Ban> addBan;
+    QSharedPointer<W_Ban> updateBan;
 
 public:
     explicit BanList(QWidget *parent = nullptr);
@@ -32,7 +34,6 @@ private:
     void connects() override;
     void search() override;
     void onHeaderClicked(int logicalIndex) override;
-    void openCreatRecotd() override;
     void openEditRecotd() override;
 };
 

@@ -194,6 +194,7 @@ public:
         InputBalance->setObjectName(QString::fromUtf8("InputBalance"));
         sizePolicy1.setHeightForWidth(InputBalance->sizePolicy().hasHeightForWidth());
         InputBalance->setSizePolicy(sizePolicy1);
+        InputBalance->setFont(font1);
 
         gridLayout->addWidget(InputBalance, 2, 1, 1, 1);
 

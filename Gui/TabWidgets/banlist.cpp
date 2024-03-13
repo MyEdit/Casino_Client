@@ -43,8 +43,6 @@ void BanList::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>::create(ui->tableView, &boxsNameColumn);
     pagination = QSharedPointer<Pagination>::create(this, ui->tableView, ui->prevButton, ui->nextButton, workingIsTableView, modelTypes);
-
-    addBan = QSharedPointer<Add_Ban>::create();
 }
 
 void BanList::connects()
@@ -52,7 +50,6 @@ void BanList::connects()
     connect(ui->prevButton, &QPushButton::clicked, pagination.get(), &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination.get(), &Pagination::next);
     connect(ui->pushButton_search, &QPushButton::clicked, this, &BanList::search);
-    connect(ui->addBan, &QPushButton::clicked, this, &BanList::openCreatRecotd);
     connect(ui->editBan, &QPushButton::clicked, this, &BanList::openEditRecotd);
     connect(ui->refreshData, &QPushButton::clicked, this, &BanList::prepReloadModels);
 
@@ -140,12 +137,16 @@ void BanList::prepReloadModels()
     pagination->reloadModels();
 }
 
-void BanList::openCreatRecotd()
-{
-    addBan->show();
-}
-
 void BanList::openEditRecotd()
 {
+    int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
+    QString fullName = getValueFromSelectedRow(ui->tableView, 2).toString();
+    QString reason = getValueFromSelectedRow(ui->tableView, 3).toString();
 
+    QSharedPointer<Ban> ban = QSharedPointer<Ban>::create(id, fullName, reason);
+    if (!ban->inputDataIsValid())
+        return;
+
+    updateBan = QSharedPointer<W_Ban>::create(QueryTypes::UpdateEntry, ban);
+    updateBan->show();
 }

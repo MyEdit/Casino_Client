@@ -103,7 +103,7 @@ void W_User::onLoadForm()
 
 void W_User::customizationLiteEdit()
 {
-    ui->InputName->setValidator(new QRegExpValidator(QRegExp("[^\\d\\W_]+")));
+    ui->InputName->setValidator(new QRegExpValidator(QRegExp("[^\\d\\W_]+(\\s+[^\\d\\W_]+)*")));
     ui->InputPassport->setValidator(new QIntValidator(this));
     ui->InputBalance->setValidator(new QIntValidator(this));
 }

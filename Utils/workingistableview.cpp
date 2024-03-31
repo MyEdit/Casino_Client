@@ -42,6 +42,7 @@ void WorkingIsTableView::setModel(QSharedPointer<QStandardItemModel> model)
         QStandardItem* item = new QStandardItem("Данных нет");
         item->setTextAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
         emptyModel->setItem(0, 0, item);
+        tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
         tableView->setModel(emptyModel);
         emit unlockInterface(true);
         return;

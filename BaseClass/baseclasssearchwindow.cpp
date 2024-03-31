@@ -88,3 +88,24 @@ QVariant BaseClassSearchWindow::getValueFromSelectedRow(QTableView* tableView, i
     QModelIndex currentDiscount = tableView->currentIndex();
     return tableView->model()->data(tableView->model()->index(currentDiscount.row(), collumn), 0);
 }
+
+void BaseClassSearchWindow::deleteRecord(QString table, QString idColumn, int id)
+{
+    if(id == 0)
+    {
+        Notification* notification = new Notification();
+        notification->setAlertProperties(TypeMessage::Error, "Не выбрана запись для удаления", WindowTracker::activeWindow);
+        return;
+    }
+
+    //PRAGMA foreign_keys = ON; - для включения каскадного удаления (приколы SQLite, что оно по умолчанию всегда выключено)
+    QString query = "DELETE FROM %1 WHERE %2 = %3";
+    query = query.arg(table).arg(idColumn).arg(id);
+
+    QueryTypes actionType = QueryTypes::DeleteEntry;
+    PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
+
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&actionType, sizeof(QueryTypes));
+    NetworkClient::sendToServer(query);
+}

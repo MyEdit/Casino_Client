@@ -37,6 +37,7 @@ private:
     void onHeaderClicked(int logicalIndex) override;
     void openCreatRecotd() override;
     void openEditRecotd() override;
+    void deleting() override;
 };
 
 #endif // STUFFUSERS_H

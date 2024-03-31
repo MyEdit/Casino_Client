@@ -43,6 +43,7 @@ protected:
     void selectTypeSearch(int arg);
     void baseSetting();
     void sort();
+    void deleteRecord(QString table, QString idColumn, int id);
     QVariant getValueFromSelectedRow(QTableView* tableView, int collumn);
     virtual void search() = 0;
     virtual void setValueToMaxPage(int maxPage) = 0;
@@ -55,6 +56,7 @@ protected:
     virtual void prepReloadModels() = 0;
     virtual void openCreatRecotd() {};
     virtual void openEditRecotd() {};
+    virtual void deleting() {};
 };
 
 #endif // BASECLASSSEARCHWINDOW_H

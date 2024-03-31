@@ -52,6 +52,7 @@ void Users::connects()
     connect(ui->pushButton_search, &QPushButton::clicked, this, &Users::search);
     connect(ui->addUser, &QPushButton::clicked, this, &Users::openCreatRecotd);
     connect(ui->editUser, &QPushButton::clicked, this, &Users::openEditRecotd);
+    connect(ui->deleteUser, &QPushButton::clicked, this, &Users::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &Users::prepReloadModels);
     connect(ui->addBun, &QPushButton::clicked, this, &Users::openCreateBan);
 
@@ -171,4 +172,13 @@ void Users::openCreateBan()
 
     addBan = QSharedPointer<W_Ban>::create(QueryTypes::CreateEntry, ban);
     addBan->show();
+}
+
+void Users::deleting()
+{
+    QString table = "Users";
+    QString idColumn = "ID_User";
+    int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
+
+    deleteRecord(table, idColumn, id);
 }

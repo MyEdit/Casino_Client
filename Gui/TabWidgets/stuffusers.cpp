@@ -52,6 +52,7 @@ void StuffUsers::connects()
     connect(ui->pushButton_search, &QPushButton::clicked, this, &StuffUsers::search);
     connect(ui->addStuffUser, &QPushButton::clicked, this, &StuffUsers::openCreatRecotd);
     connect(ui->editStuffUser, &QPushButton::clicked, this, &StuffUsers::openEditRecotd);
+    connect(ui->deleteStuffUser, &QPushButton::clicked, this, &StuffUsers::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &StuffUsers::prepReloadModels);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &StuffUsers::goToPage);
@@ -158,4 +159,13 @@ void StuffUsers::openEditRecotd()
 
     updateStuffUser = QSharedPointer<W_StuffUser>::create(QueryTypes::UpdateEntry, stuffUser);
     updateStuffUser->show();
+}
+
+void StuffUsers::deleting()
+{
+    QString table = "StuffUsers";
+    QString idColumn = "ID_StuffUser";
+    int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
+
+    deleteRecord(table, idColumn, id);
 }

@@ -51,6 +51,7 @@ void BanList::connects()
     connect(ui->nextButton, &QPushButton::clicked, pagination.get(), &Pagination::next);
     connect(ui->pushButton_search, &QPushButton::clicked, this, &BanList::search);
     connect(ui->editBan, &QPushButton::clicked, this, &BanList::openEditRecotd);
+    connect(ui->deleteBan, &QPushButton::clicked, this, &BanList::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &BanList::prepReloadModels);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &BanList::goToPage);
@@ -149,4 +150,13 @@ void BanList::openEditRecotd()
 
     updateBan = QSharedPointer<W_Ban>::create(QueryTypes::UpdateEntry, ban);
     updateBan->show();
+}
+
+void BanList::deleting()
+{   
+    QString table = "Banlist";
+    QString idColumn = "ID_User";
+    int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
+
+    deleteRecord(table, idColumn, id);
 }

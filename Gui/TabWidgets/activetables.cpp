@@ -52,6 +52,7 @@ void ActiveTables::connects()
     connect(ui->pushButton_search, &QPushButton::clicked, this, &ActiveTables::search);
     connect(ui->addTable, &QPushButton::clicked, this, &ActiveTables::openCreatRecotd);
     connect(ui->editTable, &QPushButton::clicked, this, &ActiveTables::openEditRecotd);
+    connect(ui->deleteTable, &QPushButton::clicked, this, &ActiveTables::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &ActiveTables::prepReloadModels);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &ActiveTables::goToPage);
@@ -160,4 +161,13 @@ void ActiveTables::openEditRecotd()
 
     updateTable = QSharedPointer<W_Table>::create(QueryTypes::UpdateEntry, activeTable);
     updateTable->show();
+}
+
+void ActiveTables::deleting()
+{
+    QString table = "ActiveTables";
+    QString idColumn = "ID_Table";
+    int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
+
+    deleteRecord(table, idColumn, id);
 }

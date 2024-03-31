@@ -124,5 +124,5 @@ void W_StuffUser::clearInput()
 
 void W_StuffUser::customizationLiteEdit()
 {
-    ui->InputName->setValidator(new QRegExpValidator(QRegExp("[^\\d\\W_]+"))); // Для установки что можно вводить только текст
+    ui->InputName->setValidator(new QRegExpValidator(QRegExp("[^\\d\\W_]+(\\s+[^\\d\\W_]+)*"))); // Для установки что можно вводить только текст
 }

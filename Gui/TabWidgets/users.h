@@ -44,6 +44,7 @@ private:
     void openCreatRecotd() override;
     void openEditRecotd() override;
     void openCreateBan();
+    void deleting() override;
 };
 
 #endif // ALLUSERS_H

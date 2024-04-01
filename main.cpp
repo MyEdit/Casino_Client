@@ -13,14 +13,10 @@ int main(int argc, char *argv[])
     w.show();
 
     if (!network.init())
-    {
         NotificationUtil::viewNotification({TypeMessage::Error, "Произошла ошибка при инициилизации сетевого кода"});
-    }
 
     if (!network.start())
-    {
         NotificationUtil::viewNotification({TypeMessage::Error, "Произошла ошибка при подключении к серверу"});
-    }
 
     return a.exec();
 }

@@ -96,6 +96,7 @@ public:
         Window_Auth->setWindowTitle(QApplication::translate("Window_Auth", "\320\220\320\262\321\202\320\276\321\200\320\270\320\267\320\260\321\206\320\270\321\217", nullptr));
         label->setText(QString());
         textBox_Login->setPlaceholderText(QApplication::translate("Window_Auth", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \320\273\320\276\320\263\320\270\320\275", nullptr));
+        textBox_Password->setInputMask(QString());
         textBox_Password->setPlaceholderText(QApplication::translate("Window_Auth", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \320\277\320\260\321\200\320\276\320\273\321\214", nullptr));
         Button_Auth->setText(QApplication::translate("Window_Auth", "\320\222\320\276\320\271\321\202\320\270", nullptr));
     } // retranslateUi

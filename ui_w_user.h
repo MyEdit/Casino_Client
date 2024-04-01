@@ -218,6 +218,7 @@ public:
         labelPassport->setText(QApplication::translate("W_User", "\320\237\320\260\321\201\320\277\320\276\321\200\321\202\320\275\321\213\320\265 \n"
 "\320\264\320\260\320\275\320\275\321\213\320\265", nullptr));
         labelLogin->setText(QApplication::translate("W_User", "\320\233\320\276\320\263\320\270\320\275:", nullptr));
+        InputPassport->setInputMask(QApplication::translate("W_User", "0000 000000", nullptr));
     } // retranslateUi
 
 };

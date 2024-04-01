@@ -266,6 +266,9 @@ QPushButton:pressed {
          <pointsize>14</pointsize>
         </font>
        </property>
+       <property name="inputMask">
+        <string>0000 000000</string>
+       </property>
       </widget>
      </item>
      <item row="2" column="1">

@@ -104,7 +104,7 @@ void W_User::onLoadForm()
 void W_User::customizationLiteEdit()
 {
     ui->InputName->setValidator(new QRegExpValidator(QRegExp("[^\\d\\W_]+(\\s+[^\\d\\W_]+)*")));
-    ui->InputPassport->setValidator(new QIntValidator(this));
+    ui->InputPassport->setInputMask("9999 999999");
     ui->InputBalance->setValidator(new QIntValidator(this));
 }
 

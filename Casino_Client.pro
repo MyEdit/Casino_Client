@@ -36,6 +36,7 @@ SOURCES += \
     GUI/WorkingWithRecords/w_ban.cpp \
     GUI/WorkingWithRecords/w_stuffuser.cpp \
     GUI/WorkingWithRecords/w_table.cpp \
+    GUI/window_player.cpp \
     Games/BlackDjack/blackjackwindow.cpp \
     Games/BlackDjack/card.cpp \
     Games/BlackDjack/deck.cpp \
@@ -75,6 +76,7 @@ HEADERS += \
     GUI/WorkingWithRecords/w_ban.h \
     GUI/WorkingWithRecords/w_stuffuser.h \
     GUI/WorkingWithRecords/w_table.h \
+    GUI/window_player.h \
     Games/BlackDjack/blackjackwindow.h \
     Games/BlackDjack/card.h \
     Games/BlackDjack/cardRank.h \
@@ -112,6 +114,7 @@ FORMS += \
     GUI/WorkingWithRecords/w_ban.ui \
     GUI/WorkingWithRecords/w_stuffuser.ui \
     GUI/WorkingWithRecords/w_table.ui \
+    GUI/window_player.ui \
     Games/BlackDjack/blackjackwindow.ui
 
 LIBS += -lws2_32

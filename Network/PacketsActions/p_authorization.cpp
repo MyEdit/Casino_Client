@@ -1,8 +1,8 @@
 ﻿#include "p_authorization.h"
-#include "Games/BlackDjack/blackjackwindow.h"
 
 const PacketTypes P_Authorization::packettype = PacketTypes::P_Authorization;
 Window_Admin* P_Authorization::adminW;
+Window_Player* P_Authorization::playerW;
 QString P_Authorization::nickname;
 
 void P_Authorization::openMainWindow(UserData user)
@@ -11,8 +11,8 @@ void P_Authorization::openMainWindow(UserData user)
 
     if(user.role == Roles::User)
     {
-        BlackjackWindows* game = new BlackjackWindows();
-        game->show();
+        playerW = new Window_Player();
+        playerW->show();
         return;
     }
 

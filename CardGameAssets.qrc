@@ -1,0 +1,70 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Games/BlackDjack/assets/Standart/shirt.png</file>
+        <file>Games/BlackDjack/assets/Колода.png</file>
+    </qresource>
+    <qresource prefix="/Standart/Clubs">
+        <file>Games/BlackDjack/assets/Standart/Clubs/2.png</file>
+        <file>Games/BlackDjack/assets/Standart/Clubs/3.png</file>
+        <file>Games/BlackDjack/assets/Standart/Clubs/4.png</file>
+        <file>Games/BlackDjack/assets/Standart/Clubs/5.png</file>
+        <file>Games/BlackDjack/assets/Standart/Clubs/6.png</file>
+        <file>Games/BlackDjack/assets/Standart/Clubs/7.png</file>
+        <file>Games/BlackDjack/assets/Standart/Clubs/8.png</file>
+        <file>Games/BlackDjack/assets/Standart/Clubs/9.png</file>
+        <file>Games/BlackDjack/assets/Standart/Clubs/10.png</file>
+        <file>Games/BlackDjack/assets/Standart/Clubs/A.png</file>
+        <file>Games/BlackDjack/assets/Standart/Clubs/J.png</file>
+        <file>Games/BlackDjack/assets/Standart/Clubs/K.png</file>
+        <file>Games/BlackDjack/assets/Standart/Clubs/Q.png</file>
+        <file>Games/BlackDjack/assets/Standart/Clubs/Крестия.png</file>
+    </qresource>
+    <qresource prefix="/Standart/Diamonds">
+        <file>Games/BlackDjack/assets/Standart/Diamonds/2.png</file>
+        <file>Games/BlackDjack/assets/Standart/Diamonds/3.png</file>
+        <file>Games/BlackDjack/assets/Standart/Diamonds/4.png</file>
+        <file>Games/BlackDjack/assets/Standart/Diamonds/5.png</file>
+        <file>Games/BlackDjack/assets/Standart/Diamonds/6.png</file>
+        <file>Games/BlackDjack/assets/Standart/Diamonds/7.png</file>
+        <file>Games/BlackDjack/assets/Standart/Diamonds/8.png</file>
+        <file>Games/BlackDjack/assets/Standart/Diamonds/9.png</file>
+        <file>Games/BlackDjack/assets/Standart/Diamonds/10.png</file>
+        <file>Games/BlackDjack/assets/Standart/Diamonds/A.png</file>
+        <file>Games/BlackDjack/assets/Standart/Diamonds/J.png</file>
+        <file>Games/BlackDjack/assets/Standart/Diamonds/K.png</file>
+        <file>Games/BlackDjack/assets/Standart/Diamonds/Q.png</file>
+        <file>Games/BlackDjack/assets/Standart/Diamonds/Бубна.png</file>
+    </qresource>
+    <qresource prefix="/Standart/Hearts">
+        <file>Games/BlackDjack/assets/Standart/Hearts/2.png</file>
+        <file>Games/BlackDjack/assets/Standart/Hearts/3.png</file>
+        <file>Games/BlackDjack/assets/Standart/Hearts/4.png</file>
+        <file>Games/BlackDjack/assets/Standart/Hearts/5.png</file>
+        <file>Games/BlackDjack/assets/Standart/Hearts/6.png</file>
+        <file>Games/BlackDjack/assets/Standart/Hearts/7.png</file>
+        <file>Games/BlackDjack/assets/Standart/Hearts/8.png</file>
+        <file>Games/BlackDjack/assets/Standart/Hearts/9.png</file>
+        <file>Games/BlackDjack/assets/Standart/Hearts/10.png</file>
+        <file>Games/BlackDjack/assets/Standart/Hearts/A.png</file>
+        <file>Games/BlackDjack/assets/Standart/Hearts/J.png</file>
+        <file>Games/BlackDjack/assets/Standart/Hearts/K.png</file>
+        <file>Games/BlackDjack/assets/Standart/Hearts/Q.png</file>
+        <file>Games/BlackDjack/assets/Standart/Hearts/Черва.png</file>
+    </qresource>
+    <qresource prefix="/Standart/Spades">
+        <file>Games/BlackDjack/assets/Standart/Spades/2.png</file>
+        <file>Games/BlackDjack/assets/Standart/Spades/3.png</file>
+        <file>Games/BlackDjack/assets/Standart/Spades/4.png</file>
+        <file>Games/BlackDjack/assets/Standart/Spades/5.png</file>
+        <file>Games/BlackDjack/assets/Standart/Spades/6.png</file>
+        <file>Games/BlackDjack/assets/Standart/Spades/7.png</file>
+        <file>Games/BlackDjack/assets/Standart/Spades/8.png</file>
+        <file>Games/BlackDjack/assets/Standart/Spades/9.png</file>
+        <file>Games/BlackDjack/assets/Standart/Spades/10.png</file>
+        <file>Games/BlackDjack/assets/Standart/Spades/A.png</file>
+        <file>Games/BlackDjack/assets/Standart/Spades/J.png</file>
+        <file>Games/BlackDjack/assets/Standart/Spades/K.png</file>
+        <file>Games/BlackDjack/assets/Standart/Spades/Q.png</file>
+        <file>Games/BlackDjack/assets/Standart/Spades/Пика.png</file>
+    </qresource>
+</RCC>

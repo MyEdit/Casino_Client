@@ -36,6 +36,11 @@ SOURCES += \
     GUI/WorkingWithRecords/w_ban.cpp \
     GUI/WorkingWithRecords/w_stuffuser.cpp \
     GUI/WorkingWithRecords/w_table.cpp \
+    Games/BlackDjack/blackjackwindow.cpp \
+    Games/BlackDjack/card.cpp \
+    Games/BlackDjack/deck.cpp \
+    Games/BlackDjack/player.cpp \
+    Games/BlackDjack/urlcard.cpp \
     Network/PacketsActions/p_authorization.cpp \
     Network/PacketsActions/p_notification.cpp \
     Network/PacketsActions/p_query.cpp \
@@ -70,6 +75,13 @@ HEADERS += \
     GUI/WorkingWithRecords/w_ban.h \
     GUI/WorkingWithRecords/w_stuffuser.h \
     GUI/WorkingWithRecords/w_table.h \
+    Games/BlackDjack/blackjackwindow.h \
+    Games/BlackDjack/card.h \
+    Games/BlackDjack/cardRank.h \
+    Games/BlackDjack/constant.h \
+    Games/BlackDjack/deck.h \
+    Games/BlackDjack/player.h \
+    Games/BlackDjack/urlcard.h \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
     Network/PacketsActions/p_notification.h \
@@ -99,7 +111,8 @@ FORMS += \
     GUI/TabWidgets/payments.ui \
     GUI/WorkingWithRecords/w_ban.ui \
     GUI/WorkingWithRecords/w_stuffuser.ui \
-    GUI/WorkingWithRecords/w_table.ui
+    GUI/WorkingWithRecords/w_table.ui \
+    Games/BlackDjack/blackjackwindow.ui
 
 LIBS += -lws2_32
 QT += core
@@ -110,4 +123,5 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    CardGameAssets.qrc \
     Resources.qrc

@@ -6,7 +6,7 @@
 #include "Network/PacketTypes.h"
 #include "Utils/notificationutil.h"
 #include "Utils/Message.h"
-#include "Gui/Objects/ban.h"
+#include "Gui/Objects/Admin/ban.h"
 
 namespace Ui {
 class W_Ban;

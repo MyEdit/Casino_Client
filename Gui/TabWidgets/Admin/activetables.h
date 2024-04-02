@@ -7,7 +7,7 @@
 #include <QMessageBox>
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
-#include "Gui/WorkingWithRecords/w_table.h"
+#include "Gui/WorkingWithRecords/Admin/w_table.h"
 
 class W_Table;
 

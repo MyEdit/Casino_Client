@@ -10,8 +10,8 @@
 #include <QMessageBox>
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
-#include "Gui/WorkingWithRecords/w_user.h"
-#include "Gui/WorkingWithRecords/w_ban.h"
+#include "Gui/WorkingWithRecords/Admin/w_user.h"
+#include "Gui/WorkingWithRecords/Admin/w_ban.h"
 
 class W_User;
 class W_Ban;

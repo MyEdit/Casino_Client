@@ -18,25 +18,25 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     BaseClass/baseclassmainmenu.cpp \
     BaseClass/baseclasssearchwindow.cpp \
-    GUI/Objects/activetable.cpp \
-    GUI/Objects/ban.cpp \
-    GUI/Objects/user.cpp \
-    GUI/TabWidgets/activetables.cpp \
-    GUI/TabWidgets/banlist.cpp \
-    GUI/TabWidgets/stuffusers.cpp \
-    GUI/TabWidgets/users.cpp \
+    GUI/Objects/Admin/activetable.cpp \
+    GUI/Objects/Admin/ban.cpp \
+    GUI/Objects/Admin/user.cpp \
+    GUI/TabWidgets/Admin/activetables.cpp \
+    GUI/TabWidgets/Admin/banlist.cpp \
+    GUI/TabWidgets/Admin/stuffusers.cpp \
+    GUI/TabWidgets/Admin/users.cpp \
     GUI/TabWidgets/welcome.cpp \
-    GUI/WorkingWithRecords/w_user.cpp \
+    GUI/WorkingWithRecords/Admin/w_user.cpp \
     GUI/window_admin.cpp \
     GUI/window_auth.cpp \
     GUI/Notification/notification.cpp \
     GUI/Notification/reconnecting.cpp \
-    GUI/Objects/stuffuser.cpp \
-    GUI/TabWidgets/credits.cpp \
-    GUI/TabWidgets/payments.cpp \
-    GUI/WorkingWithRecords/w_ban.cpp \
-    GUI/WorkingWithRecords/w_stuffuser.cpp \
-    GUI/WorkingWithRecords/w_table.cpp \
+    GUI/Objects/Admin/stuffuser.cpp \
+    GUI/TabWidgets/Admin/credits.cpp \
+    GUI/TabWidgets/Admin/payments.cpp \
+    GUI/WorkingWithRecords/Admin/w_ban.cpp \
+    GUI/WorkingWithRecords/Admin/w_stuffuser.cpp \
+    GUI/WorkingWithRecords/Admin/w_table.cpp \
     GUI/window_player.cpp \
     Games/BlackDjack/blackjackwindow.cpp \
     Games/BlackDjack/card.cpp \
@@ -59,25 +59,25 @@ SOURCES += \
 HEADERS += \
     BaseClass/baseclassmainmenu.h \
     BaseClass/baseclasssearchwindow.h \
-    GUI/Objects/activetable.h \
-    GUI/Objects/ban.h \
-    GUI/Objects/user.h \
-    GUI/TabWidgets/activetables.h \
-    GUI/TabWidgets/banlist.h \
-    GUI/TabWidgets/stuffusers.h \
-    GUI/TabWidgets/users.h \
+    GUI/Objects/Admin/activetable.h \
+    GUI/Objects/Admin/ban.h \
+    GUI/Objects/Admin/user.h \
+    GUI/TabWidgets/Admin/activetables.h \
+    GUI/TabWidgets/Admin/banlist.h \
+    GUI/TabWidgets/Admin/stuffusers.h \
+    GUI/TabWidgets/Admin/users.h \
     GUI/TabWidgets/welcome.h \
-    GUI/WorkingWithRecords/w_user.h \
+    GUI/WorkingWithRecords/Admin/w_user.h \
     GUI/window_admin.h \
     GUI/window_auth.h \
     GUI/Notification/notification.h \
     GUI/Notification/reconnecting.h \
-    GUI/Objects/stuffuser.h \
-    GUI/TabWidgets/credits.h \
-    GUI/TabWidgets/payments.h \
-    GUI/WorkingWithRecords/w_ban.h \
-    GUI/WorkingWithRecords/w_stuffuser.h \
-    GUI/WorkingWithRecords/w_table.h \
+    GUI/Objects/Admin/stuffuser.h \
+    GUI/TabWidgets/Admin/credits.h \
+    GUI/TabWidgets/Admin/payments.h \
+    GUI/WorkingWithRecords/Admin/w_ban.h \
+    GUI/WorkingWithRecords/Admin/w_stuffuser.h \
+    GUI/WorkingWithRecords/Admin/w_table.h \
     GUI/window_player.h \
     Games/BlackDjack/blackjackwindow.h \
     Games/BlackDjack/card.h \
@@ -103,19 +103,19 @@ HEADERS += \
     Utils/workingistableview.h
 
 FORMS += \
-    GUI/TabWidgets/activetables.ui \
-    GUI/TabWidgets/banlist.ui \
-    GUI/TabWidgets/stuffusers.ui \
-    GUI/TabWidgets/users.ui \
+    GUI/TabWidgets/Admin/activetables.ui \
+    GUI/TabWidgets/Admin/banlist.ui \
+    GUI/TabWidgets/Admin/stuffusers.ui \
+    GUI/TabWidgets/Admin/users.ui \
     GUI/TabWidgets/welcome.ui \
-    GUI/WorkingWithRecords/w_user.ui \
+    GUI/WorkingWithRecords/Admin/w_user.ui \
     GUI/window_admin.ui \
     GUI/window_auth.ui \
-    GUI/TabWidgets/credits.ui \
-    GUI/TabWidgets/payments.ui \
-    GUI/WorkingWithRecords/w_ban.ui \
-    GUI/WorkingWithRecords/w_stuffuser.ui \
-    GUI/WorkingWithRecords/w_table.ui \
+    GUI/TabWidgets/Admin/credits.ui \
+    GUI/TabWidgets/Admin/payments.ui \
+    GUI/WorkingWithRecords/Admin/w_ban.ui \
+    GUI/WorkingWithRecords/Admin/w_stuffuser.ui \
+    GUI/WorkingWithRecords/Admin/w_table.ui \
     GUI/window_player.ui \
     Games/BlackDjack/blackjackwindow.ui
 

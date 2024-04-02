@@ -6,7 +6,7 @@
 #include "Network/PacketTypes.h"
 #include "Utils/notificationutil.h"
 #include "Utils/Message.h"
-#include "Gui/Objects/stuffuser.h"
+#include "Gui/Objects/Admin/stuffuser.h"
 
 namespace Ui
 {

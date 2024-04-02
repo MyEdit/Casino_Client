@@ -1,13 +1,13 @@
 ﻿#ifndef WINDOW_ADMIN_H
 #define WINDOW_ADMIN_H
 
-#include "Gui/TabWidgets/activetables.h"
-#include "Gui/TabWidgets/users.h"
-#include "Gui/TabWidgets/banlist.h"
-#include "Gui/TabWidgets/stuffusers.h"
+#include "Gui/TabWidgets/Admin/activetables.h"
+#include "Gui/TabWidgets/Admin/users.h"
+#include "Gui/TabWidgets/Admin/banlist.h"
+#include "Gui/TabWidgets/Admin/stuffusers.h"
 #include "Gui/TabWidgets/welcome.h"
-#include "Gui/TabWidgets/credits.h"
-#include "Gui/TabWidgets/payments.h"
+#include "Gui/TabWidgets/Admin/credits.h"
+#include "Gui/TabWidgets/Admin/payments.h"
 #include "Network/networkclient.h"
 #include "Utils/windowtracker.h"
 #include "BaseClass/baseclassmainmenu.h"

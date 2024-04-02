@@ -16,6 +16,7 @@
 #include "Gui/TabWidgets/payments.h"
 #include "Network/networkclient.h"
 #include "Utils/windowtracker.h"
+#include "BaseClass/baseclassmainmenu.h"
 
 class P_Authorization;
 class ActiveTables;
@@ -29,17 +30,10 @@ namespace Ui {
 class Window_Admin;
 }
 
-class Window_Admin : public QMainWindow
+class Window_Admin : public BaseClassMainMenu
 {
-    Q_OBJECT
-
     Ui::Window_Admin *ui;
     Roles role;
-    QString fullName;
-    QString inactiveButtonStyleSheet;
-    QString activeButtonStyleSheet;
-    QVector<QPushButton*> buttonSwitchingTab;
-    QMap<QPushButton*, QLabel*> selectedButton;
 
     QSharedPointer<ActiveTables> activeTables;
     QSharedPointer<Users> users;
@@ -61,9 +55,8 @@ public:
     void setModel_PaymentsTab(ModelData model);
 
 private:
-    void onNavigationsButton_clicked();
-    void assigningValues();
-    void completionTabWidget();
+    void assigningValues() override;
+    void completionTabWidget() override;
     void rendering_ActiveTablesTab();
     void rendering_UsersTab();
     void rendering_BanListTab();
@@ -71,15 +64,13 @@ private:
     void rendering_CreditsTab();
     void rendering_PaymentsTab();
     void rendering_WelcomeTab();
-    void prepareStyleSheets();
     void uploadingPhotoEmployee();
-    void settingWindowPosition();
-    void changeEvent(QEvent *event);
-    void settingEmployeeInformation();
+    void settingEmployeeInformation() override;
     QString definingrRole();
     void rendoringForTableManager();
     void rendoringForAdmin();
     void rendoringForUser();
+    void connects() override;
 
 private slots:
     void on_buttonExit_clicked();

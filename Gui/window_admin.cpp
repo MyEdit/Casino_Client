@@ -3,15 +3,17 @@
 
 QWidget* WindowTracker::activeWindow = nullptr;
 
-Window_Admin::Window_Admin(Roles role, QString fullName, QWidget *parent) : QMainWindow(parent), ui(new Ui::Window_Admin), role(role), fullName(fullName)
+Window_Admin::Window_Admin(Roles role, QString fullName, QWidget *parent) : BaseClassMainMenu(parent), ui(new Ui::Window_Admin), role(role)
 {
     ui->setupUi(this);
+    this->fullName = fullName;
 
     prepareStyleSheets();
     assigningValues();
     completionTabWidget();
     settingEmployeeInformation();
     settingWindowPosition();
+    connects();
 
     QMap<QPushButton*, QLabel*>::iterator i;
     for (i = selectedButton.begin(); i != selectedButton.end(); i++)
@@ -23,6 +25,17 @@ Window_Admin::Window_Admin(Roles role, QString fullName, QWidget *parent) : QMai
 Window_Admin::~Window_Admin()
 {
     delete ui;
+}
+
+void Window_Admin::connects()
+{
+    connect(ui->activeTables, &QPushButton::clicked, this, &Window_Admin::on_activeTables_clicked);
+    connect(ui->users, &QPushButton::clicked, this, &Window_Admin::on_users_clicked);
+    connect(ui->buttonExit, &QPushButton::clicked, this, &Window_Admin::on_buttonExit_clicked);
+    connect(ui->stuffUsers, &QPushButton::clicked, this, &Window_Admin::on_stuffUsers_clicked);
+    connect(ui->banList, &QPushButton::clicked, this, &Window_Admin::on_banList_clicked);
+    connect(ui->credits, &QPushButton::clicked, this, &Window_Admin::on_credits_clicked);
+    connect(ui->payments, &QPushButton::clicked, this, &Window_Admin::on_payments_clicked);
 }
 
 void Window_Admin::settingEmployeeInformation()
@@ -65,20 +78,7 @@ QString Window_Admin::definingrRole()
 
 void Window_Admin::uploadingPhotoEmployee()
 {
-    QPixmap photo(":/photos/resources/TestStuffPhoto.jpg");
-
-    QPixmap roundedPhoto(photo.size());
-    roundedPhoto.fill(Qt::transparent);
-    QPainterPath path;
-    path.addRoundedRect(0, 0, photo.width(), photo.height(), photo.width() / 2, photo.height() / 2);
-
-    QPainter painter(&roundedPhoto);
-    painter.setRenderHint(QPainter::Antialiasing, true);
-    painter.setClipPath(path);
-    painter.drawPixmap(0, 0, photo);
-
-    ui->photo->setScaledContents(true);
-    ui->photo->setPixmap(roundedPhoto);
+    uploadingUserPhoto(ui->photo, ":/photos/resources/TestStuffPhoto.jpg");
 }
 
 void Window_Admin::assigningValues()
@@ -131,38 +131,8 @@ void Window_Admin::setModel_PaymentsTab(ModelData model)
     payments->setModel(model);
 }
 
-void Window_Admin::settingWindowPosition()
-{
-    QScreen *primaryScreen = QGuiApplication::primaryScreen();
-
-    //Вычисление размера окна относительно размера экрана
-    QRect screenGeometry = primaryScreen->geometry();
-    int screenWidth = screenGeometry.width() / 1.5;
-    int screenHeight = screenGeometry.height() / 1.4;
-    resize(screenWidth, screenHeight);
-
-    //Вычисление положения окна относительно рабочей области
-    QRect availableGeometry = primaryScreen->availableGeometry();
-    int x = (availableGeometry.width() - width()) / 2;
-    int y = (availableGeometry.height() - height()) / 2;
-    move(x, y);
-}
 
 /////////////////СОБЫТИЯ/////////////////
-
-void Window_Admin::onNavigationsButton_clicked()
-{
-    QPushButton* selectButton = (QPushButton*)sender();
-
-    for(QPushButton* button : buttonSwitchingTab)
-    {
-        button->setStyleSheet(inactiveButtonStyleSheet);
-        selectedButton[button]->setVisible(false);
-    }
-
-    selectButton->setStyleSheet(activeButtonStyleSheet);
-    selectedButton[selectButton]->setVisible(true);
-}
 
 void Window_Admin::on_activeTables_clicked()
 {
@@ -207,23 +177,6 @@ void Window_Admin::on_payments_clicked()
 
 /////////////////РЕНДЕР/////////////////
 
-void Window_Admin::prepareStyleSheets()
-{
-    inactiveButtonStyleSheet = "QPushButton {"
-                               "background: transparent; "
-                               "border: none; "
-                               "color: rgb(255, 255, 255); "
-                               "padding: 5px; "
-                               "text-align: left;}";
-
-    activeButtonStyleSheet = "QPushButton {"
-                             "background-color: rgb(255, 255, 255);"
-                             "border-top-left-radius: 10px;"
-                             "border-bottom-left-radius: 10px;"
-                             "color: rgb(51, 41, 123);"
-                             "padding: 5px;"
-                             "text-align: left;}";
-}
 
 void Window_Admin::completionTabWidget()
 {
@@ -321,11 +274,4 @@ void Window_Admin::rendering_PaymentsTab()
 {
     payments = QSharedPointer<Payments>::create();
     ui->tabWidget->addTab(payments.data(), "");
-}
-
-/////////////////ИВЕНТЫ/////////////////
-void Window_Admin::changeEvent(QEvent *event)
-{
-    QMainWindow::changeEvent(event);
-    WindowTracker::activeWindow = this;
 }

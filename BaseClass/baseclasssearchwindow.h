@@ -1,7 +1,6 @@
 ﻿#ifndef BASECLASSSEARCHWINDOW_H
 #define BASECLASSSEARCHWINDOW_H
 
-//#include "Utils/pagination.h"
 #include "Utils/workingistableview.h"
 
 #include <QWidget>

@@ -43,7 +43,7 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <layout class="QVBoxLayout" name="verticalLayout_5">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <property name="leftMargin">
        <number>5</number>
       </property>
@@ -51,7 +51,7 @@
        <number>5</number>
       </property>
       <item>
-       <widget class="QLabel" name="FIO_employee_5">
+       <widget class="QLabel" name="FIO_employee">
         <property name="font">
          <font>
           <family>Segoe UI</family>
@@ -74,7 +74,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="post_5">
+       <widget class="QLabel" name="balance">
         <property name="font">
          <font>
           <family>Segoe UI</family>
@@ -112,197 +112,12 @@
      </spacer>
     </item>
     <item row="2" column="0" colspan="2">
-     <layout class="QGridLayout" name="gridLayout_7">
+     <layout class="QGridLayout" name="gridLayout_2">
       <property name="horizontalSpacing">
        <number>0</number>
       </property>
-      <item row="0" column="0">
-       <spacer name="horizontalSpacer_5">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="4" column="2">
-       <widget class="QLabel" name="label_25">
-        <property name="pixmap">
-         <pixmap resource="../Resources.qrc">:/photos/resources/recess.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QPushButton" name="banList_5">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Segoe UI</family>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-	background: transparent;
-    border: none;
-	color: rgb(255, 255, 255);
-	padding: 5px;
-	text-align: left;
-}</string>
-        </property>
-        <property name="text">
-         <string>Чёрный список</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QLabel" name="label_26">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap resource="../Resources.qrc">:/photos/resources/recess.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QPushButton" name="stuffUsers_5">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Segoe UI</family>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-	background: transparent;
-    border: none;
-	color: rgb(255, 255, 255);
-	padding: 5px;
-	text-align: left;
-}</string>
-        </property>
-        <property name="text">
-         <string>Сотрудники</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QPushButton" name="credits_5">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Segoe UI</family>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-	background: transparent;
-    border: none;
-	color: rgb(255, 255, 255);
-	padding: 5px;
-	text-align: left;
-}</string>
-        </property>
-        <property name="text">
-         <string>Заявки на кредиты</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QLabel" name="label_27">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap resource="../Resources.qrc">:/photos/resources/recess.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QLabel" name="label_28">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="pixmap">
-         <pixmap resource="../Resources.qrc">:/photos/resources/recess.png</pixmap>
-        </property>
-        <property name="scaledContents">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QPushButton" name="users_5">
-        <property name="minimumSize">
-         <size>
-          <width>0</width>
-          <height>40</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Segoe UI</family>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-	background: transparent;
-    border: none;
-	color: rgb(255, 255, 255);
-	padding: 5px;
-	text-align: left;
-}</string>
-        </property>
-        <property name="text">
-         <string>Пользователи</string>
-        </property>
-       </widget>
-      </item>
       <item row="0" column="2">
-       <widget class="QLabel" name="label_29">
+       <widget class="QLabel" name="label">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -317,8 +132,81 @@
         </property>
        </widget>
       </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="replenish">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background: transparent;
+    border: none;
+	color: rgb(255, 255, 255);
+	padding: 5px;
+	text-align: left;
+}</string>
+        </property>
+        <property name="text">
+         <string>Пополнить счёт</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="2">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap resource="../Resources.qrc">:/photos/resources/recess.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="1">
+       <widget class="QPushButton" name="credits">
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>40</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Segoe UI</family>
+          <pointsize>12</pointsize>
+          <weight>75</weight>
+          <bold>true</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+	background: transparent;
+    border: none;
+	color: rgb(255, 255, 255);
+	padding: 5px;
+	text-align: left;
+}</string>
+        </property>
+        <property name="text">
+         <string>Кредиты</string>
+        </property>
+       </widget>
+      </item>
       <item row="0" column="1">
-       <widget class="QPushButton" name="activeTables_5">
+       <widget class="QPushButton" name="activeTables">
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -347,38 +235,24 @@
         </property>
        </widget>
       </item>
-      <item row="5" column="1">
-       <widget class="QPushButton" name="payments_5">
-        <property name="minimumSize">
+      <item row="0" column="0">
+       <spacer name="horizontalSpacer_5">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
          <size>
-          <width>0</width>
-          <height>40</height>
+          <width>40</width>
+          <height>20</height>
          </size>
         </property>
-        <property name="font">
-         <font>
-          <family>Segoe UI</family>
-          <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-	background: transparent;
-    border: none;
-	color: rgb(255, 255, 255);
-	padding: 5px;
-	text-align: left;
-}</string>
-        </property>
-        <property name="text">
-         <string>История транзакций</string>
-        </property>
-       </widget>
+       </spacer>
       </item>
-      <item row="5" column="2">
-       <widget class="QLabel" name="label_30">
+      <item row="1" column="2">
+       <widget class="QLabel" name="label_2">
         <property name="text">
          <string/>
         </property>

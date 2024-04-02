@@ -29,24 +29,18 @@ public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
     QLabel *photo;
-    QVBoxLayout *verticalLayout_5;
-    QLabel *FIO_employee_5;
-    QLabel *post_5;
+    QVBoxLayout *verticalLayout;
+    QLabel *FIO_employee;
+    QLabel *balance;
     QSpacerItem *verticalSpacer;
-    QGridLayout *gridLayout_7;
+    QGridLayout *gridLayout_2;
+    QLabel *label;
+    QPushButton *replenish;
+    QLabel *label_3;
+    QPushButton *credits;
+    QPushButton *activeTables;
     QSpacerItem *horizontalSpacer_5;
-    QLabel *label_25;
-    QPushButton *banList_5;
-    QLabel *label_26;
-    QPushButton *stuffUsers_5;
-    QPushButton *credits_5;
-    QLabel *label_27;
-    QLabel *label_28;
-    QPushButton *users_5;
-    QLabel *label_29;
-    QPushButton *activeTables_5;
-    QPushButton *payments_5;
-    QLabel *label_30;
+    QLabel *label_2;
     QPushButton *buttonExit;
     QSpacerItem *verticalSpacer_2;
     QTabWidget *tabWidget;
@@ -71,64 +65,61 @@ public:
 
         gridLayout->addWidget(photo, 0, 0, 1, 1);
 
-        verticalLayout_5 = new QVBoxLayout();
-        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        verticalLayout_5->setContentsMargins(5, -1, 5, -1);
-        FIO_employee_5 = new QLabel(centralwidget);
-        FIO_employee_5->setObjectName(QString::fromUtf8("FIO_employee_5"));
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(5, -1, 5, -1);
+        FIO_employee = new QLabel(centralwidget);
+        FIO_employee->setObjectName(QString::fromUtf8("FIO_employee"));
         QFont font;
         font.setFamily(QString::fromUtf8("Segoe UI"));
         font.setPointSize(14);
         font.setBold(true);
         font.setWeight(75);
-        FIO_employee_5->setFont(font);
-        FIO_employee_5->setStyleSheet(QString::fromUtf8("QLabel {\n"
+        FIO_employee->setFont(font);
+        FIO_employee->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	color: rgb(255, 255, 255);\n"
 "}"));
-        FIO_employee_5->setWordWrap(true);
+        FIO_employee->setWordWrap(true);
 
-        verticalLayout_5->addWidget(FIO_employee_5);
+        verticalLayout->addWidget(FIO_employee);
 
-        post_5 = new QLabel(centralwidget);
-        post_5->setObjectName(QString::fromUtf8("post_5"));
-        post_5->setFont(font);
-        post_5->setStyleSheet(QString::fromUtf8("QLabel {\n"
+        balance = new QLabel(centralwidget);
+        balance->setObjectName(QString::fromUtf8("balance"));
+        balance->setFont(font);
+        balance->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	color: rgb(255, 255, 255);\n"
 "}"));
 
-        verticalLayout_5->addWidget(post_5);
+        verticalLayout->addWidget(balance);
 
 
-        gridLayout->addLayout(verticalLayout_5, 0, 1, 1, 1);
+        gridLayout->addLayout(verticalLayout, 0, 1, 1, 1);
 
         verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
         gridLayout->addItem(verticalSpacer, 1, 1, 1, 1);
 
-        gridLayout_7 = new QGridLayout();
-        gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
-        gridLayout_7->setHorizontalSpacing(0);
-        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        gridLayout_2->setHorizontalSpacing(0);
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setEnabled(true);
+        label->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
+        label->setScaledContents(true);
 
-        gridLayout_7->addItem(horizontalSpacer_5, 0, 0, 1, 1);
+        gridLayout_2->addWidget(label, 0, 2, 1, 1);
 
-        label_25 = new QLabel(centralwidget);
-        label_25->setObjectName(QString::fromUtf8("label_25"));
-        label_25->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
-        label_25->setScaledContents(true);
-
-        gridLayout_7->addWidget(label_25, 4, 2, 1, 1);
-
-        banList_5 = new QPushButton(centralwidget);
-        banList_5->setObjectName(QString::fromUtf8("banList_5"));
-        banList_5->setMinimumSize(QSize(0, 40));
+        replenish = new QPushButton(centralwidget);
+        replenish->setObjectName(QString::fromUtf8("replenish"));
+        replenish->setMinimumSize(QSize(0, 40));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Segoe UI"));
         font1.setPointSize(12);
         font1.setBold(true);
         font1.setWeight(75);
-        banList_5->setFont(font1);
-        banList_5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        replenish->setFont(font1);
+        replenish->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
 "	color: rgb(255, 255, 255);\n"
@@ -136,20 +127,20 @@ public:
 "	text-align: left;\n"
 "}"));
 
-        gridLayout_7->addWidget(banList_5, 3, 1, 1, 1);
+        gridLayout_2->addWidget(replenish, 1, 1, 1, 1);
 
-        label_26 = new QLabel(centralwidget);
-        label_26->setObjectName(QString::fromUtf8("label_26"));
-        label_26->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
-        label_26->setScaledContents(true);
+        label_3 = new QLabel(centralwidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
+        label_3->setScaledContents(true);
 
-        gridLayout_7->addWidget(label_26, 2, 2, 1, 1);
+        gridLayout_2->addWidget(label_3, 2, 2, 1, 1);
 
-        stuffUsers_5 = new QPushButton(centralwidget);
-        stuffUsers_5->setObjectName(QString::fromUtf8("stuffUsers_5"));
-        stuffUsers_5->setMinimumSize(QSize(0, 40));
-        stuffUsers_5->setFont(font1);
-        stuffUsers_5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        credits = new QPushButton(centralwidget);
+        credits->setObjectName(QString::fromUtf8("credits"));
+        credits->setMinimumSize(QSize(0, 40));
+        credits->setFont(font1);
+        credits->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
 "	color: rgb(255, 255, 255);\n"
@@ -157,13 +148,13 @@ public:
 "	text-align: left;\n"
 "}"));
 
-        gridLayout_7->addWidget(stuffUsers_5, 2, 1, 1, 1);
+        gridLayout_2->addWidget(credits, 2, 1, 1, 1);
 
-        credits_5 = new QPushButton(centralwidget);
-        credits_5->setObjectName(QString::fromUtf8("credits_5"));
-        credits_5->setMinimumSize(QSize(0, 40));
-        credits_5->setFont(font1);
-        credits_5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        activeTables = new QPushButton(centralwidget);
+        activeTables->setObjectName(QString::fromUtf8("activeTables"));
+        activeTables->setMinimumSize(QSize(0, 40));
+        activeTables->setFont(font1);
+        activeTables->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
 "	color: rgb(255, 255, 255);\n"
@@ -171,81 +162,21 @@ public:
 "	text-align: left;\n"
 "}"));
 
-        gridLayout_7->addWidget(credits_5, 4, 1, 1, 1);
+        gridLayout_2->addWidget(activeTables, 0, 1, 1, 1);
 
-        label_27 = new QLabel(centralwidget);
-        label_27->setObjectName(QString::fromUtf8("label_27"));
-        label_27->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
-        label_27->setScaledContents(true);
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
-        gridLayout_7->addWidget(label_27, 3, 2, 1, 1);
+        gridLayout_2->addItem(horizontalSpacer_5, 0, 0, 1, 1);
 
-        label_28 = new QLabel(centralwidget);
-        label_28->setObjectName(QString::fromUtf8("label_28"));
-        label_28->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
-        label_28->setScaledContents(true);
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
+        label_2->setScaledContents(true);
 
-        gridLayout_7->addWidget(label_28, 1, 2, 1, 1);
-
-        users_5 = new QPushButton(centralwidget);
-        users_5->setObjectName(QString::fromUtf8("users_5"));
-        users_5->setMinimumSize(QSize(0, 40));
-        users_5->setFont(font1);
-        users_5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background: transparent;\n"
-"    border: none;\n"
-"	color: rgb(255, 255, 255);\n"
-"	padding: 5px;\n"
-"	text-align: left;\n"
-"}"));
-
-        gridLayout_7->addWidget(users_5, 1, 1, 1, 1);
-
-        label_29 = new QLabel(centralwidget);
-        label_29->setObjectName(QString::fromUtf8("label_29"));
-        label_29->setEnabled(true);
-        label_29->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
-        label_29->setScaledContents(true);
-
-        gridLayout_7->addWidget(label_29, 0, 2, 1, 1);
-
-        activeTables_5 = new QPushButton(centralwidget);
-        activeTables_5->setObjectName(QString::fromUtf8("activeTables_5"));
-        activeTables_5->setMinimumSize(QSize(0, 40));
-        activeTables_5->setFont(font1);
-        activeTables_5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background: transparent;\n"
-"    border: none;\n"
-"	color: rgb(255, 255, 255);\n"
-"	padding: 5px;\n"
-"	text-align: left;\n"
-"}"));
-
-        gridLayout_7->addWidget(activeTables_5, 0, 1, 1, 1);
-
-        payments_5 = new QPushButton(centralwidget);
-        payments_5->setObjectName(QString::fromUtf8("payments_5"));
-        payments_5->setMinimumSize(QSize(0, 40));
-        payments_5->setFont(font1);
-        payments_5->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background: transparent;\n"
-"    border: none;\n"
-"	color: rgb(255, 255, 255);\n"
-"	padding: 5px;\n"
-"	text-align: left;\n"
-"}"));
-
-        gridLayout_7->addWidget(payments_5, 5, 1, 1, 1);
-
-        label_30 = new QLabel(centralwidget);
-        label_30->setObjectName(QString::fromUtf8("label_30"));
-        label_30->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
-        label_30->setScaledContents(true);
-
-        gridLayout_7->addWidget(label_30, 5, 2, 1, 1);
+        gridLayout_2->addWidget(label_2, 1, 2, 1, 1);
 
 
-        gridLayout->addLayout(gridLayout_7, 2, 0, 1, 2);
+        gridLayout->addLayout(gridLayout_2, 2, 0, 1, 2);
 
         buttonExit = new QPushButton(centralwidget);
         buttonExit->setObjectName(QString::fromUtf8("buttonExit"));
@@ -297,19 +228,14 @@ public:
     {
         Window_Player->setWindowTitle(QApplication::translate("Window_Player", "MainWindow", nullptr));
         photo->setText(QApplication::translate("Window_Player", "\320\244\320\276\321\202\320\276", nullptr));
-        FIO_employee_5->setText(QApplication::translate("Window_Player", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
-        post_5->setText(QApplication::translate("Window_Player", "\320\221\320\260\320\273\320\260\320\275\321\201", nullptr));
-        banList_5->setText(QApplication::translate("Window_Player", "\320\247\321\221\321\200\320\275\321\213\320\271 \321\201\320\277\320\270\321\201\320\276\320\272", nullptr));
-        label_26->setText(QString());
-        stuffUsers_5->setText(QApplication::translate("Window_Player", "\320\241\320\276\321\202\321\200\321\203\320\264\320\275\320\270\320\272\320\270", nullptr));
-        credits_5->setText(QApplication::translate("Window_Player", "\320\227\320\260\321\217\320\262\320\272\320\270 \320\275\320\260 \320\272\321\200\320\265\320\264\320\270\321\202\321\213", nullptr));
-        label_27->setText(QString());
-        label_28->setText(QString());
-        users_5->setText(QApplication::translate("Window_Player", "\320\237\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\320\270", nullptr));
-        label_29->setText(QString());
-        activeTables_5->setText(QApplication::translate("Window_Player", "\320\230\320\263\321\200\320\276\320\262\321\213\320\265 \321\201\321\202\320\276\320\273\321\213", nullptr));
-        payments_5->setText(QApplication::translate("Window_Player", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217 \321\202\321\200\320\260\320\275\320\267\320\260\320\272\321\206\320\270\320\271", nullptr));
-        label_30->setText(QString());
+        FIO_employee->setText(QApplication::translate("Window_Player", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
+        balance->setText(QApplication::translate("Window_Player", "\320\221\320\260\320\273\320\260\320\275\321\201", nullptr));
+        label->setText(QString());
+        replenish->setText(QApplication::translate("Window_Player", "\320\237\320\276\320\277\320\276\320\273\320\275\320\270\321\202\321\214 \321\201\321\207\321\221\321\202", nullptr));
+        label_3->setText(QString());
+        credits->setText(QApplication::translate("Window_Player", "\320\232\321\200\320\265\320\264\320\270\321\202\321\213", nullptr));
+        activeTables->setText(QApplication::translate("Window_Player", "\320\230\320\263\321\200\320\276\320\262\321\213\320\265 \321\201\321\202\320\276\320\273\321\213", nullptr));
+        label_2->setText(QString());
         buttonExit->setText(QApplication::translate("Window_Player", "\320\222\321\213\321\205\320\276\320\264", nullptr));
     } // retranslateUi
 

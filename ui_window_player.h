@@ -30,7 +30,7 @@ public:
     QGridLayout *gridLayout;
     QLabel *photo;
     QVBoxLayout *verticalLayout;
-    QLabel *FIO_employee;
+    QLabel *fullNamePlayer;
     QLabel *balance;
     QSpacerItem *verticalSpacer;
     QGridLayout *gridLayout_2;
@@ -68,20 +68,20 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(5, -1, 5, -1);
-        FIO_employee = new QLabel(centralwidget);
-        FIO_employee->setObjectName(QString::fromUtf8("FIO_employee"));
+        fullNamePlayer = new QLabel(centralwidget);
+        fullNamePlayer->setObjectName(QString::fromUtf8("fullNamePlayer"));
         QFont font;
         font.setFamily(QString::fromUtf8("Segoe UI"));
         font.setPointSize(14);
         font.setBold(true);
         font.setWeight(75);
-        FIO_employee->setFont(font);
-        FIO_employee->setStyleSheet(QString::fromUtf8("QLabel {\n"
+        fullNamePlayer->setFont(font);
+        fullNamePlayer->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	color: rgb(255, 255, 255);\n"
 "}"));
-        FIO_employee->setWordWrap(true);
+        fullNamePlayer->setWordWrap(true);
 
-        verticalLayout->addWidget(FIO_employee);
+        verticalLayout->addWidget(fullNamePlayer);
 
         balance = new QLabel(centralwidget);
         balance->setObjectName(QString::fromUtf8("balance"));
@@ -228,7 +228,7 @@ public:
     {
         Window_Player->setWindowTitle(QApplication::translate("Window_Player", "MainWindow", nullptr));
         photo->setText(QApplication::translate("Window_Player", "\320\244\320\276\321\202\320\276", nullptr));
-        FIO_employee->setText(QApplication::translate("Window_Player", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
+        fullNamePlayer->setText(QApplication::translate("Window_Player", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
         balance->setText(QApplication::translate("Window_Player", "\320\221\320\260\320\273\320\260\320\275\321\201", nullptr));
         label->setText(QString());
         replenish->setText(QApplication::translate("Window_Player", "\320\237\320\276\320\277\320\276\320\273\320\275\320\270\321\202\321\214 \321\201\321\207\321\221\321\202", nullptr));

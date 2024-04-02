@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Меню сотрудника</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -66,7 +66,7 @@
        <number>5</number>
       </property>
       <item>
-       <widget class="QLabel" name="FIO_employee">
+       <widget class="QLabel" name="fullNameEmployee">
         <property name="font">
          <font>
           <family>Segoe UI</family>

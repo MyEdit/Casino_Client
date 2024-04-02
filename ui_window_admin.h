@@ -30,7 +30,7 @@ public:
     QGridLayout *gridLayout;
     QTabWidget *tabWidget;
     QVBoxLayout *verticalLayout;
-    QLabel *FIO_employee;
+    QLabel *fullNameEmployee;
     QLabel *post;
     QPushButton *buttonExit;
     QGridLayout *gridLayout_3;
@@ -83,20 +83,20 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(5, -1, 5, -1);
-        FIO_employee = new QLabel(centralwidget);
-        FIO_employee->setObjectName(QString::fromUtf8("FIO_employee"));
+        fullNameEmployee = new QLabel(centralwidget);
+        fullNameEmployee->setObjectName(QString::fromUtf8("fullNameEmployee"));
         QFont font;
         font.setFamily(QString::fromUtf8("Segoe UI"));
         font.setPointSize(14);
         font.setBold(true);
         font.setWeight(75);
-        FIO_employee->setFont(font);
-        FIO_employee->setStyleSheet(QString::fromUtf8("QLabel {\n"
+        fullNameEmployee->setFont(font);
+        fullNameEmployee->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	color: rgb(255, 255, 255);\n"
 "}"));
-        FIO_employee->setWordWrap(true);
+        fullNameEmployee->setWordWrap(true);
 
-        verticalLayout->addWidget(FIO_employee);
+        verticalLayout->addWidget(fullNameEmployee);
 
         post = new QLabel(centralwidget);
         post->setObjectName(QString::fromUtf8("post"));
@@ -296,8 +296,8 @@ public:
 
     void retranslateUi(QMainWindow *Window_Admin)
     {
-        Window_Admin->setWindowTitle(QApplication::translate("Window_Admin", "MainWindow", nullptr));
-        FIO_employee->setText(QApplication::translate("Window_Admin", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
+        Window_Admin->setWindowTitle(QApplication::translate("Window_Admin", "\320\234\320\265\320\275\321\216 \321\201\320\276\321\202\321\200\321\203\320\264\320\275\320\270\320\272\320\260", nullptr));
+        fullNameEmployee->setText(QApplication::translate("Window_Admin", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
         post->setText(QApplication::translate("Window_Admin", "\320\220\320\264\320\274\320\270\320\275\320\270\321\201\321\202\321\200\320\260\321\202\320\276\321\200", nullptr));
         buttonExit->setText(QApplication::translate("Window_Admin", "\320\222\321\213\321\205\320\276\320\264", nullptr));
         banList->setText(QApplication::translate("Window_Admin", "\320\247\321\221\321\200\320\275\321\213\320\271 \321\201\320\277\320\270\321\201\320\276\320\272", nullptr));

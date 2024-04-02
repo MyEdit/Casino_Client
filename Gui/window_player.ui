@@ -51,7 +51,7 @@
        <number>5</number>
       </property>
       <item>
-       <widget class="QLabel" name="FIO_employee">
+       <widget class="QLabel" name="fullNamePlayer">
         <property name="font">
          <font>
           <family>Segoe UI</family>

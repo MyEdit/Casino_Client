@@ -11,13 +11,10 @@ Window_Admin::Window_Admin(Roles role, QString fullName, QWidget *parent) : Base
     prepareStyleSheets();
     assigningValues();
     completionTabWidget();
-    settingEmployeeInformation();
+    settingUserInformation();
     settingWindowPosition();
     connects();
-
-    QMap<QPushButton*, QLabel*>::iterator i;
-    for (i = selectedButton.begin(); i != selectedButton.end(); i++)
-        i.value()->setVisible(false);
+    settingVisual();
 
     ui->tabWidget->setCurrentWidget(welcomeTab.get());
 }
@@ -38,9 +35,9 @@ void Window_Admin::connects()
     connect(ui->payments, &QPushButton::clicked, this, &Window_Admin::on_payments_clicked);
 }
 
-void Window_Admin::settingEmployeeInformation()
+void Window_Admin::settingUserInformation()
 {
-    ui->FIO_employee->setText(fullName);
+    ui->fullNameEmployee->setText(fullName);
     ui->post->setText(definingrRole());
     uploadingPhotoEmployee();
 }
@@ -78,7 +75,10 @@ QString Window_Admin::definingrRole()
 
 void Window_Admin::uploadingPhotoEmployee()
 {
-    uploadingUserPhoto(ui->photo, ":/photos/resources/TestStuffPhoto.jpg");
+    QPixmap photo = uploadingUserPhoto(":/photos/resources/TestStuffPhoto.jpg");
+
+    ui->photo->setScaledContents(true);
+    ui->photo->setPixmap(photo);
 }
 
 void Window_Admin::assigningValues()
@@ -146,11 +146,6 @@ void Window_Admin::on_users_clicked()
     onNavigationsButton_clicked();
 }
 
-void Window_Admin::on_buttonExit_clicked()
-{
-    close();
-}
-
 void Window_Admin::on_stuffUsers_clicked()
 {
     ui->tabWidget->setCurrentWidget(stuffUsers.get());
@@ -176,7 +171,6 @@ void Window_Admin::on_payments_clicked()
 }
 
 /////////////////РЕНДЕР/////////////////
-
 
 void Window_Admin::completionTabWidget()
 {

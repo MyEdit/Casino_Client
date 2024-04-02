@@ -4,6 +4,13 @@ BaseClassMainMenu::BaseClassMainMenu(QWidget *parent) : QMainWindow(parent)
 
 }
 
+void BaseClassMainMenu::settingVisual()
+{
+    QMap<QPushButton*, QLabel*>::iterator i;
+    for (i = selectedButton.begin(); i != selectedButton.end(); i++)
+        i.value()->setVisible(false);
+}
+
 /////////////////СОБЫТИЯ/////////////////
 
 void BaseClassMainMenu::onNavigationsButton_clicked()
@@ -18,6 +25,11 @@ void BaseClassMainMenu::onNavigationsButton_clicked()
 
     selectButton->setStyleSheet(activeButtonStyleSheet);
     selectedButton[selectButton]->setVisible(true);
+}
+
+void BaseClassMainMenu::on_buttonExit_clicked()
+{
+    close();
 }
 
 /////////////////РЕНДЕР/////////////////
@@ -40,7 +52,7 @@ void BaseClassMainMenu::prepareStyleSheets()
                              "text-align: left;}";
 }
 
-void BaseClassMainMenu::uploadingUserPhoto(QLabel* profilePicture, QString url)
+QPixmap BaseClassMainMenu::uploadingUserPhoto(QString url)
 {
     QPixmap photo(url);
 
@@ -52,9 +64,9 @@ void BaseClassMainMenu::uploadingUserPhoto(QLabel* profilePicture, QString url)
     QPainter painter(&roundedPhoto);
     painter.setRenderHint(QPainter::Antialiasing, true);
     painter.setClipPath(path);
+    painter.drawPixmap(0, 0, photo);
 
-    profilePicture->setScaledContents(true);
-    profilePicture->setPixmap(roundedPhoto);
+    return roundedPhoto;
 }
 
 void BaseClassMainMenu::settingWindowPosition()

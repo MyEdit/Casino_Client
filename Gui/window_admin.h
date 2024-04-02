@@ -1,12 +1,6 @@
 ﻿#ifndef WINDOW_ADMIN_H
 #define WINDOW_ADMIN_H
 
-#include <QMainWindow>
-#include <QSharedPointer>
-#include <QMap>
-#include <QScreen>
-#include <QPainter>
-#include <QBitmap>
 #include "Gui/TabWidgets/activetables.h"
 #include "Gui/TabWidgets/users.h"
 #include "Gui/TabWidgets/banlist.h"
@@ -63,9 +57,9 @@ private:
     void rendering_StuffUsersTab();
     void rendering_CreditsTab();
     void rendering_PaymentsTab();
-    void rendering_WelcomeTab();
+    void rendering_WelcomeTab() override;
     void uploadingPhotoEmployee();
-    void settingEmployeeInformation() override;
+    void settingUserInformation() override;
     QString definingrRole();
     void rendoringForTableManager();
     void rendoringForAdmin();
@@ -73,7 +67,6 @@ private:
     void connects() override;
 
 private slots:
-    void on_buttonExit_clicked();
     void on_activeTables_clicked();
     void on_users_clicked();
     void on_stuffUsers_clicked();

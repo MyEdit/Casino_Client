@@ -11,7 +11,7 @@ void P_Authorization::openMainWindow(UserData user)
 
     if(user.role == Roles::User)
     {
-        playerW = new Window_Player();
+        playerW = new Window_Player(user.fullName);
         playerW->show();
         return;
     }

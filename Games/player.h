@@ -3,8 +3,8 @@
 
 #include <vector>
 #include <algorithm>
-#include "Games/BlackDjack/card.h"
-#include "Games/BlackDjack/deck.h"
+#include "Games/card.h"
+#include "Games/deck.h"
 #include <QString>
 
 class Player

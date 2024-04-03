@@ -3,15 +3,12 @@
 #include <QPropertyAnimation>
 #include <QTimer>
 #include <QMessageBox>
-#include "Games/BlackDjack/urlcard.h"
 
 BlackjackWindows::BlackjackWindows(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::BlackjackWindows)
 {
     ui->setupUi(this);
-
-    UrlCard::initializeUrlCard();
 
     ui->label_6->setText("");
     _nameGame = "Блэкджек";

@@ -1,7 +1,5 @@
 ﻿#include "player.h"
 #include "card.h"
-#include "constant.h"
-#include "urlcard.h"
 
 Player::Player(Deck& deck, int numPlayers)
 {
@@ -10,17 +8,17 @@ Player::Player(Deck& deck, int numPlayers)
         _playerHand.push_back(deck.dealCard());
 }
 
-
 void Player::m_sortHandBySuit()
 {
-    std::sort(_playerHand.begin(), _playerHand.end(), [](const Card &a, const Card &b) {
-        if (static_cast<int>(a.getSuit()) < static_cast<int>(b.getSuit()))
+    std::sort(_playerHand.begin(), _playerHand.end(), [](const Card &firstCard, const Card &nextCard) {
+        if (static_cast<int>(firstCard.getSuit()) < static_cast<int>(nextCard.getSuit()))
             return true;
-        else if (static_cast<int>(a.getSuit()) > static_cast<int>(b.getSuit()))
+
+        if (static_cast<int>(firstCard.getSuit()) > static_cast<int>(nextCard.getSuit()))
             return false;
-        else
-            return static_cast<int>(a.getRank()) < static_cast<int>(b.getRank());
-    });;
+
+        return static_cast<int>(firstCard.getRank()) < static_cast<int>(nextCard.getRank());
+    });
 }
 
 void Player::removeCardFromHand(const Card& card)
@@ -52,7 +50,7 @@ QString Player::urlCard(Deck& deck)
     }
     else
         _score += card.value();
-    return  UrlCard::getUrlCard(card);
+    return  Card::getCardTexture(card);
 }
 
 int Player::score() const

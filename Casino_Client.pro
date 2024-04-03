@@ -38,11 +38,10 @@ SOURCES += \
     GUI/WorkingWithRecords/Admin/w_stuffuser.cpp \
     GUI/WorkingWithRecords/Admin/w_table.cpp \
     GUI/window_player.cpp \
-    Games/BlackDjack/blackjackwindow.cpp \
-    Games/BlackDjack/card.cpp \
-    Games/BlackDjack/deck.cpp \
-    Games/BlackDjack/player.cpp \
-    Games/BlackDjack/urlcard.cpp \
+    Games/BlackDjack/GUI/blackjackwindow.cpp \
+    Games/card.cpp \
+    Games/deck.cpp \
+    Games/player.cpp \
     Network/PacketsActions/p_authorization.cpp \
     Network/PacketsActions/p_notification.cpp \
     Network/PacketsActions/p_query.cpp \
@@ -79,13 +78,13 @@ HEADERS += \
     GUI/WorkingWithRecords/Admin/w_stuffuser.h \
     GUI/WorkingWithRecords/Admin/w_table.h \
     GUI/window_player.h \
-    Games/BlackDjack/blackjackwindow.h \
-    Games/BlackDjack/card.h \
-    Games/BlackDjack/cardRank.h \
+    Games/BlackDjack/GUI/blackjackwindow.h \
     Games/BlackDjack/constant.h \
-    Games/BlackDjack/deck.h \
-    Games/BlackDjack/player.h \
-    Games/BlackDjack/urlcard.h \
+    Games/card.h \
+    Games/cardRank.h \
+    Games/cardSuit.h \
+    Games/deck.h \
+    Games/player.h \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
     Network/PacketsActions/p_notification.h \
@@ -117,7 +116,7 @@ FORMS += \
     GUI/WorkingWithRecords/Admin/w_stuffuser.ui \
     GUI/WorkingWithRecords/Admin/w_table.ui \
     GUI/window_player.ui \
-    Games/BlackDjack/blackjackwindow.ui
+    Games/BlackDjack/GUI/blackjackwindow.ui
 
 LIBS += -lws2_32
 QT += core
@@ -130,3 +129,63 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     CardGameAssets.qrc \
     Resources.qrc
+
+DISTFILES += \
+    Games/BlackDjack/assets/Standart/Clubs/10.png \
+    Games/BlackDjack/assets/Standart/Clubs/2.png \
+    Games/BlackDjack/assets/Standart/Clubs/3.png \
+    Games/BlackDjack/assets/Standart/Clubs/4.png \
+    Games/BlackDjack/assets/Standart/Clubs/5.png \
+    Games/BlackDjack/assets/Standart/Clubs/6.png \
+    Games/BlackDjack/assets/Standart/Clubs/7.png \
+    Games/BlackDjack/assets/Standart/Clubs/8.png \
+    Games/BlackDjack/assets/Standart/Clubs/9.png \
+    Games/BlackDjack/assets/Standart/Clubs/A.png \
+    Games/BlackDjack/assets/Standart/Clubs/J.png \
+    Games/BlackDjack/assets/Standart/Clubs/K.png \
+    Games/BlackDjack/assets/Standart/Clubs/Q.png \
+    Games/BlackDjack/assets/Standart/Clubs/Крестия.png \
+    Games/BlackDjack/assets/Standart/Diamonds/10.png \
+    Games/BlackDjack/assets/Standart/Diamonds/2.png \
+    Games/BlackDjack/assets/Standart/Diamonds/3.png \
+    Games/BlackDjack/assets/Standart/Diamonds/4.png \
+    Games/BlackDjack/assets/Standart/Diamonds/5.png \
+    Games/BlackDjack/assets/Standart/Diamonds/6.png \
+    Games/BlackDjack/assets/Standart/Diamonds/7.png \
+    Games/BlackDjack/assets/Standart/Diamonds/8.png \
+    Games/BlackDjack/assets/Standart/Diamonds/9.png \
+    Games/BlackDjack/assets/Standart/Diamonds/A.png \
+    Games/BlackDjack/assets/Standart/Diamonds/J.png \
+    Games/BlackDjack/assets/Standart/Diamonds/K.png \
+    Games/BlackDjack/assets/Standart/Diamonds/Q.png \
+    Games/BlackDjack/assets/Standart/Diamonds/Бубна.png \
+    Games/BlackDjack/assets/Standart/Hearts/10.png \
+    Games/BlackDjack/assets/Standart/Hearts/2.png \
+    Games/BlackDjack/assets/Standart/Hearts/3.png \
+    Games/BlackDjack/assets/Standart/Hearts/4.png \
+    Games/BlackDjack/assets/Standart/Hearts/5.png \
+    Games/BlackDjack/assets/Standart/Hearts/6.png \
+    Games/BlackDjack/assets/Standart/Hearts/7.png \
+    Games/BlackDjack/assets/Standart/Hearts/8.png \
+    Games/BlackDjack/assets/Standart/Hearts/9.png \
+    Games/BlackDjack/assets/Standart/Hearts/A.png \
+    Games/BlackDjack/assets/Standart/Hearts/J.png \
+    Games/BlackDjack/assets/Standart/Hearts/K.png \
+    Games/BlackDjack/assets/Standart/Hearts/Q.png \
+    Games/BlackDjack/assets/Standart/Hearts/Черва.png \
+    Games/BlackDjack/assets/Standart/Spades/10.png \
+    Games/BlackDjack/assets/Standart/Spades/2.png \
+    Games/BlackDjack/assets/Standart/Spades/3.png \
+    Games/BlackDjack/assets/Standart/Spades/4.png \
+    Games/BlackDjack/assets/Standart/Spades/5.png \
+    Games/BlackDjack/assets/Standart/Spades/6.png \
+    Games/BlackDjack/assets/Standart/Spades/7.png \
+    Games/BlackDjack/assets/Standart/Spades/8.png \
+    Games/BlackDjack/assets/Standart/Spades/9.png \
+    Games/BlackDjack/assets/Standart/Spades/A.png \
+    Games/BlackDjack/assets/Standart/Spades/J.png \
+    Games/BlackDjack/assets/Standart/Spades/K.png \
+    Games/BlackDjack/assets/Standart/Spades/Q.png \
+    Games/BlackDjack/assets/Standart/Spades/Пика.png \
+    Games/BlackDjack/assets/Standart/shirt.png \
+    Games/BlackDjack/assets/Колода.png

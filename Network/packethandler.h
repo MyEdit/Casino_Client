@@ -8,6 +8,7 @@
 #include "Network/PacketsActions/p_sendmodel.h"
 #include "Network/PacketsActions/p_query.h"
 #include "Network/PacketsActions/p_notification.h"
+#include "Users/objectuser.h"
 
 class NetworkClient;
 
@@ -22,7 +23,7 @@ private:
     void tryReconnectToServer();
 
 signals:
-    void signalOpenForm(UserData user);
+    void signalOpenForm(QSharedPointer<ObjectUser> user);
     void signalSetModel(ModelData);
     void signalSetQueryModel(QueryData*);
     void signalViewNotification(QPair<TypeMessage, QString>);

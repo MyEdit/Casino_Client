@@ -49,6 +49,8 @@ SOURCES += \
     Network/PacketsActions/p_sendmodel.cpp \
     Network/networkclient.cpp \
     Network/packethandler.cpp \
+    Users/objectplayer.cpp \
+    Users/objectstuffuser.cpp \
     Utils/pagination.cpp \
     Utils/searchmodule.cpp \
     Utils/serializer.cpp \
@@ -93,6 +95,9 @@ HEADERS += \
     Network/PacketsActions/p_sendmodel.h \
     Network/networkclient.h \
     Network/packethandler.h \
+    Users/objectplayer.h \
+    Users/objectstuffuser.h \
+    Users/objectuser.h \
     Utils/Message.h \
     Utils/pagination.h \
     Utils/searchmodule.h \

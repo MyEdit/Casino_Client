@@ -18,8 +18,8 @@ class BlackjackWindows : public QMainWindow
     Ui::BlackjackWindows *ui;
     QString _nameGame;
     Deck* _deck;
-    Player* _bot;
-    Player* _player;
+    Gamer* _bot;
+    Gamer* _player;
     int _numMovePlayer;
     int _numMoveBot;
     bool _fullScreen;

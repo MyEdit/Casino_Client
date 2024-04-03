@@ -4,6 +4,7 @@
 #include "Network/networkclient.h"
 #include "GUI/Notification/reconnecting.h"
 #include "Utils/windowtracker.h"
+#include "Users/objectuser.h"
 
 class P_Reconnection
 {
@@ -13,7 +14,7 @@ class P_Reconnection
 public:
     static void viewReconnecting();
     static void stopReconnecting();
-    static void sendUserData(QString nickname);
+    static void sendUserData(QSharedPointer<ObjectUser> actualUser);
 };
 
 #endif // P_RECONNECTING_H

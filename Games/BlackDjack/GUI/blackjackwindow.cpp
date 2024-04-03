@@ -18,8 +18,8 @@ BlackjackWindows::BlackjackWindows(QWidget *parent) :
     _numMoveBot = 0;
 
     _deck = new Deck;
-    _bot = new Player;
-    _player = new Player;
+    _bot = new Gamer;
+    _player = new Gamer;
 
     _cardOnTablePlayer[0] = ui ->label;
     _cardOnTablePlayer[1] = ui ->label_10;
@@ -155,8 +155,8 @@ void BlackjackWindows::on_action_2_triggered()
     delete _player;
 
     _deck = new Deck;
-    _bot = new Player;
-    _player = new Player;
+    _bot = new Gamer;
+    _player = new Gamer;
 
     ui->label_5->setText("0");
     ui->label_4->setText("0");

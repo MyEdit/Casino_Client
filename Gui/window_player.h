@@ -1,7 +1,8 @@
-#ifndef WINDOW_PLAYER_H
+﻿#ifndef WINDOW_PLAYER_H
 #define WINDOW_PLAYER_H
 
 #include "BaseClass/baseclassmainmenu.h"
+#include "Network/PacketsActions/p_authorization.h"
 
 namespace Ui {
 class Window_Player;
@@ -13,7 +14,7 @@ class Window_Player : public BaseClassMainMenu
     Ui::Window_Player *ui;
 
 public:
-    explicit Window_Player(QString name, QWidget *parent = nullptr);
+    explicit Window_Player(QWidget *parent = nullptr);
     ~Window_Player();
 
 private:

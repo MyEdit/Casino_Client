@@ -11,6 +11,7 @@
 #include "Network/networkclient.h"
 #include "Utils/windowtracker.h"
 #include "BaseClass/baseclassmainmenu.h"
+#include "Network/PacketsActions/p_authorization.h"
 
 class P_Authorization;
 class ActiveTables;
@@ -38,7 +39,7 @@ class Window_Admin : public BaseClassMainMenu
     QSharedPointer<Welcome> welcomeTab;
 
 public:
-    explicit Window_Admin(Roles role, QString fullName, QWidget *parent = nullptr);
+    explicit Window_Admin(QWidget *parent = nullptr);
     ~Window_Admin();
 
     void setModel_UsersTab(ModelData model);

@@ -1,6 +1,6 @@
 ﻿#include "window_auth.h"
 #include "ui_window_auth.h"
-#include "Games/BlackDjack/blackjackwindow.h"
+#include "Games/BlackDjack/GUI/blackjackwindow.h"
 
 Window_Auth::Window_Auth(QWidget *parent) : QMainWindow(parent), ui(new Ui::Window_Auth)
 {

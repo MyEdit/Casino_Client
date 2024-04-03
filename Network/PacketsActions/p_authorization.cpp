@@ -3,49 +3,61 @@
 const PacketTypes P_Authorization::packettype = PacketTypes::P_Authorization;
 Window_Admin* P_Authorization::adminW;
 Window_Player* P_Authorization::playerW;
-QString P_Authorization::nickname;
+QSharedPointer<ObjectUser> P_Authorization::actualUser;
 
-void P_Authorization::openMainWindow(UserData user)
+void P_Authorization::openMainWindow(QSharedPointer<ObjectUser> user)
 {
     WindowTracker::activeWindow->close();
 
-    if(user.role == Roles::User)
+    setActualUser(user);
+
+    if(user->getRole() == Roles::User)
     {
-        playerW = new Window_Player(user.fullName);
+        playerW = new Window_Player();
         playerW->show();
         return;
     }
 
-    if (user.role != Roles::None)
+    if (user->getRole()  != Roles::None)
     {
-        adminW = new Window_Admin(user.role, user.fullName);
+        adminW = new Window_Admin();
         adminW->show();
     }
 }
 
-UserData P_Authorization::getUser()
+QSharedPointer<ObjectUser> P_Authorization::getUser()
 {
     Roles role;
-    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&role), sizeof(role), 0);
-    QString fullName = NetworkClient::getMessageFromServer();
+    int sizeByteUser;
+    QByteArray byteUser;
 
-    return {role, fullName};
+    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&role), sizeof(role), 0);
+    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&sizeByteUser), sizeof(int), 0);
+    byteUser.resize(sizeByteUser);
+    recv(NetworkClient::serverSocket, byteUser.data(), sizeByteUser, 0);
+
+    QSharedPointer<ObjectUser> user;
+    if(role == Roles::User)
+        user = ObjectPlayer::deserializeUser(byteUser);
+    else
+        user = ObjectStuffUser::deserializeUser(byteUser);
+
+    return user;
 }
 
 void P_Authorization::sendData(QString login, QString password)
 {
-    setActualNickname(login);
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(login);
     NetworkClient::sendToServer(password);
 }
 
-void P_Authorization::setActualNickname(QString actualNickname)
+void P_Authorization::setActualUser(QSharedPointer<ObjectUser> user)
 {
-    nickname = actualNickname;
+    actualUser = user;
 }
 
-QString& P_Authorization::getActualNickname()
+QSharedPointer<ObjectUser> P_Authorization::getActualUser()
 {
-    return nickname;
+    return actualUser;
 }

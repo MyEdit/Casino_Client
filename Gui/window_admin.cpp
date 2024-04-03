@@ -3,10 +3,11 @@
 
 QWidget* WindowTracker::activeWindow = nullptr;
 
-Window_Admin::Window_Admin(Roles role, QString fullName, QWidget *parent) : BaseClassMainMenu(parent), ui(new Ui::Window_Admin), role(role)
+Window_Admin::Window_Admin(QWidget *parent) : BaseClassMainMenu(parent), ui(new Ui::Window_Admin)
 {
     ui->setupUi(this);
-    this->fullName = fullName;
+    fullName = P_Authorization::getActualUser()->getName();
+    role = P_Authorization::getActualUser()->getRole();
 
     prepareStyleSheets();
     assigningValues();

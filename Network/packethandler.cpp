@@ -31,7 +31,7 @@ void PacketHandler::tryReconnectToServer()
 
     emit signalFinishReconnecting();
 
-    P_Reconnection::sendUserData(P_Authorization::getActualNickname());
+    P_Reconnection::sendUserData(P_Authorization::getActualUser());
     Message::logInfo("Reconnect to server successful");
 }
 

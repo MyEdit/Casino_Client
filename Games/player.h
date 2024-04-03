@@ -1,5 +1,5 @@
-﻿#ifndef PLAYER_H
-#define PLAYER_H
+﻿#ifndef GAMER_H
+#define GAMER_H
 
 #include <vector>
 #include <algorithm>
@@ -7,14 +7,14 @@
 #include "Games/deck.h"
 #include <QString>
 
-class Player
+class Gamer
 {
     std::vector<Card> _playerHand;
     int _score{};
 
 public:
-    Player() {};
-    Player(Deck& deck, int numPlayers);
+    Gamer() {};
+    Gamer(Deck& deck, int numPlayers);
 
     int getNumCardsInHand() const;
     int score() const;
@@ -27,4 +27,4 @@ public:
     std::vector<Card> getCardsInHand();
 };
 
-#endif // PLAYER_H
+#endif // GAMER_H

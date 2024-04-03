@@ -16,15 +16,15 @@ public:
     Player() {};
     Player(Deck& deck, int numPlayers);
 
-    void removeCardFromHand(const Card& card);
     int getNumCardsInHand() const;
-    QString urlCard(Deck& deck);
     int score() const;
-    bool isBust() const;
-    const Card& getCardInHand(int index) const;
-    std::vector<Card> getCardInHand();
     int getScore();
-    void m_sortHandBySuit();
+    bool isBust() const;
+    void sortHandBySuit();
+    void removeCardFromHand(const Card& card);
+    QString urlCard(Deck& deck);
+    const Card& getCardInHand(int index) const;
+    std::vector<Card> getCardsInHand();
 };
 
 #endif // PLAYER_H

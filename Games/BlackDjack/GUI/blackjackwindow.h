@@ -4,8 +4,8 @@
 #include <QMainWindow>
 #include <QLabel>
 #include <QMap>
-#include "Games/BlackDjack/deck.h"
-#include "Games/BlackDjack/player.h"
+#include "Games/deck.h"
+#include "Games/player.h"
 #include "Utils/windowtracker.h"
 
 namespace Ui {

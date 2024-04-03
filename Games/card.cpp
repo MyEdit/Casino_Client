@@ -85,6 +85,7 @@ QMap<QString, CardSuit> Card::CardSuits = {
 Card::Card(CardRank rank, CardSuit suit)
     : cardRank{ rank }, cardSuit{ suit } {}
 
+//TODO: Вероятно плохо создавать объект карты по ее ассету, избавиться от этого
 Card::Card(QString card)
 {
     cardRank = convertToRank(card);

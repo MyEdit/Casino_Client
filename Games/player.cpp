@@ -8,7 +8,7 @@ Player::Player(Deck& deck, int numPlayers)
         _playerHand.push_back(deck.dealCard());
 }
 
-void Player::m_sortHandBySuit()
+void Player::sortHandBySuit()
 {
     std::sort(_playerHand.begin(), _playerHand.end(), [](const Card &firstCard, const Card &nextCard) {
         if (static_cast<int>(firstCard.getSuit()) < static_cast<int>(nextCard.getSuit()))
@@ -68,7 +68,7 @@ int Player::getScore()
     return _score;
 }
 
-std::vector<Card> Player::getCardInHand()
+std::vector<Card> Player::getCardsInHand()
 {
     return _playerHand;
 }

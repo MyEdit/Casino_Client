@@ -15,6 +15,9 @@ Window_Player::Window_Player(QWidget *parent) : BaseClassMainMenu(parent), ui(ne
     settingVisual();
 
     ui->tabWidget->setCurrentWidget(welcomeTab.get());
+
+    PacketTypes packettype = PacketTypes::P_SendTables;
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
 }
 
 Window_Player::~Window_Player()
@@ -83,4 +86,15 @@ void Window_Player::on_credits_clicked()
 void Window_Player::on_replenish_clicked()
 {
     onNavigationsButton_clicked();
+}
+
+void Window_Player::setTabels()
+{
+    //тут послать сигнал на виджет со столами
+
+    //для проверки что столы пришли
+    for(QSharedPointer<Table> table : Table::getTables())
+    {
+        qDebug() << "Стол с игрой: " + table->getGame().getNameGame();
+    }
 }

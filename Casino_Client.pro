@@ -39,6 +39,8 @@ SOURCES += \
     GUI/WorkingWithRecords/Admin/w_table.cpp \
     GUI/window_player.cpp \
     Games/BlackDjack/GUI/blackjackwindow.cpp \
+    Games/Tabel/game.cpp \
+    Games/Tabel/table.cpp \
     Games/card.cpp \
     Games/deck.cpp \
     Games/player.cpp \
@@ -47,6 +49,7 @@ SOURCES += \
     Network/PacketsActions/p_query.cpp \
     Network/PacketsActions/p_reconnection.cpp \
     Network/PacketsActions/p_sendmodel.cpp \
+    Network/PacketsActions/p_sendtables.cpp \
     Network/networkclient.cpp \
     Network/packethandler.cpp \
     Users/objectplayer.cpp \
@@ -82,6 +85,8 @@ HEADERS += \
     GUI/window_player.h \
     Games/BlackDjack/GUI/blackjackwindow.h \
     Games/BlackDjack/constant.h \
+    Games/Tabel/game.h \
+    Games/Tabel/table.h \
     Games/card.h \
     Games/cardRank.h \
     Games/cardSuit.h \
@@ -93,6 +98,7 @@ HEADERS += \
     Network/PacketsActions/p_query.h \
     Network/PacketsActions/p_reconnection.h \
     Network/PacketsActions/p_sendmodel.h \
+    Network/PacketsActions/p_sendtables.h \
     Network/networkclient.h \
     Network/packethandler.h \
     Users/objectplayer.h \

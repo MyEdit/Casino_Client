@@ -69,6 +69,7 @@ bool NetworkClient::start()
     QObject::connect(packetHandler, &PacketHandler::signalViewNotification, this, &NotificationUtil::viewNotification);
     QObject::connect(packetHandler, &PacketHandler::signalReconnecting, this, &P_Reconnection::viewReconnecting);
     QObject::connect(packetHandler, &PacketHandler::signalFinishReconnecting, this, &P_Reconnection::stopReconnecting);
+    QObject::connect(packetHandler, &PacketHandler::signalSetTables, this, &P_SendTables::setTables);
 
     packetHandler->start();
     return true;

@@ -3,6 +3,7 @@
 
 #include "BaseClass/baseclassmainmenu.h"
 #include "Network/PacketsActions/p_authorization.h"
+#include "Games/Tabel/table.h"
 
 namespace Ui {
 class Window_Player;
@@ -16,6 +17,8 @@ class Window_Player : public BaseClassMainMenu
 public:
     explicit Window_Player(QWidget *parent = nullptr);
     ~Window_Player();
+
+    void setTabels();
 
 private:
     void assigningValues() override;

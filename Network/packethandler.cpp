@@ -61,6 +61,8 @@ void PacketHandler::packetHandler(PacketTypes packettype)
         }
         case(PacketTypes::P_SendTables):
         {
+            P_SendTables::getTablesFromServer();
+            emit signalSetTables();
             break;
         }
         case(PacketTypes::P_QueryWithoutResponce):

@@ -8,6 +8,7 @@
 #include "Network/PacketsActions/p_sendmodel.h"
 #include "Network/PacketsActions/p_query.h"
 #include "Network/PacketsActions/p_notification.h"
+#include "Network/PacketsActions/p_sendtables.h"
 #include "Users/objectuser.h"
 
 class NetworkClient;
@@ -29,6 +30,7 @@ signals:
     void signalViewNotification(QPair<TypeMessage, QString>);
     void signalReconnecting();
     void signalFinishReconnecting();
+    void signalSetTables();
 };
 
 #endif // CLIENTHANDLER_H

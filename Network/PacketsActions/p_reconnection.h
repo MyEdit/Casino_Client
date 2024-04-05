@@ -2,7 +2,7 @@
 #define P_RECONNECTING_H
 
 #include "Network/networkclient.h"
-#include "GUI/Notification/reconnecting.h"
+#include "Gui/Notification/reconnecting.h"
 #include "Utils/windowtracker.h"
 #include "Users/user.h"
 
@@ -14,7 +14,7 @@ class P_Reconnection
 public:
     static void viewReconnecting();
     static void stopReconnecting();
-    static void sendUserData(QSharedPointer<User> actualUser);
+    static void sendUserData(QSharedPointer<User> user);
 };
 
 #endif // P_RECONNECTING_H

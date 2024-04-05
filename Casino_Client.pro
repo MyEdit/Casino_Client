@@ -52,7 +52,7 @@ SOURCES += \
     Network/PacketsActions/p_sendtables.cpp \
     Network/networkclient.cpp \
     Network/packethandler.cpp \
-    Users/objectplayer.cpp \
+    Users/player.cpp \
     Users/stuffuser.cpp \
     Utils/pagination.cpp \
     Utils/searchmodule.cpp \
@@ -101,7 +101,7 @@ HEADERS += \
     Network/PacketsActions/p_sendtables.h \
     Network/networkclient.h \
     Network/packethandler.h \
-    Users/objectplayer.h \
+    Users/player.h \
     Users/stuffuser.h \
     Users/user.h \
     Utils/Message.h \

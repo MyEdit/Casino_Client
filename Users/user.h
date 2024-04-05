@@ -17,4 +17,4 @@ public:
     virtual QByteArray serializeUser() = 0;
 };
 
-#endif // OBJECTUSER_H
+#endif // USER_H

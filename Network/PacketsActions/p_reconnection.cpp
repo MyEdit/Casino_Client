@@ -15,11 +15,11 @@ void P_Reconnection::stopReconnecting()
     delete reconnecting;
 }
 
-void P_Reconnection::sendUserData(QSharedPointer<User> actualUser)
+void P_Reconnection::sendUserData(QSharedPointer<User> user)
 {
-    QByteArray byteUser = actualUser->serializeUser();
+    QByteArray byteUser = user->serializeUser();
     int sizeByteUser = byteUser.size();
-    Roles role = actualUser->getRole();
+    Roles role = user->getRole();
 
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&role, sizeof(Roles));

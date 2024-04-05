@@ -1,55 +1,63 @@
-﻿#include "stuffuser.h"
+﻿#include "player.h"
 
-StuffUser::StuffUser(int ID, QString name, QString login, Roles role)
+Player::Player(int ID, QString name, double balance, QString login, Roles role)
 {
     this->ID = ID;
     this->name = name;
+    this->balance = balance;
     this->login = login;
     this->role = role;
 }
 
-StuffUser::StuffUser(const QByteArray& data)
+Player::Player(const QByteArray& data)
 {
     QDataStream stream(data);
     int ID;
     QString name, login;
+    double balance;
     int roleInt;
-    stream >> ID >> name >> login >> roleInt;
+    stream >> ID >> name >> balance >> login >> roleInt;
     Roles role = static_cast<Roles>(roleInt);
 
     this->ID = ID;
     this->name = name;
+    this->balance = balance;
     this->login = login;
     this->role = role;
 }
 
-int StuffUser::getID()
+int Player::getID()
 {
     return this->ID;
 }
 
-QString StuffUser::getName()
+QString Player::getName()
 {
     return this->name;
 }
-QString StuffUser::getLogin()
+QString Player::getLogin()
 {
     return this->login;
 }
 
-Roles StuffUser::getRole()
+Roles Player::getRole()
 {
     return this->role;
 }
 
-QByteArray StuffUser::serializeUser()
+double Player::getBalance()
+{
+    return this->balance;
+}
+
+QByteArray Player::serializeUser()
 {
     QByteArray byteArray;
     QDataStream stream(&byteArray, QIODevice::WriteOnly);
     stream << ID;
     stream << name;
+    stream << balance;
     stream << login;
     stream << static_cast<int>(role);
     return byteArray;
 }
-

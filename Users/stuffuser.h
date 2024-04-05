@@ -14,14 +14,16 @@ class StuffUser : public User
 
 public:
     StuffUser(int ID, QString name, QString login, Roles role);
+    StuffUser(const QByteArray& data);
 
     //GETTERS
     int getID() override;
     QString getName() override;
     QString getLogin() override;
     Roles getRole() override;
-    static QSharedPointer<StuffUser> deserializeUser(const QByteArray& data);
+
+    //METHODS
     QByteArray serializeUser() override;
 };
 
-#endif // OBJECTSTUFFUSER_H
+#endif // STUFFUSER_H

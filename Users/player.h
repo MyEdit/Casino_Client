@@ -3,9 +3,9 @@
 
 #include "Users/user.h"
 
-class ObjectPlayer : public User
+class Player : public User
 {
-    static QList<ObjectPlayer> players;
+    static QList<Player> players;
 
     int ID{};
     QString name{};
@@ -14,7 +14,8 @@ class ObjectPlayer : public User
     double balance{};
 
 public:
-    ObjectPlayer(int ID, QString name, double balance, QString login, Roles role);
+    Player(int ID, QString name, double balance, QString login, Roles role);
+    Player(const QByteArray& data);
 
     //GETTERS
     int getID() override;
@@ -22,8 +23,9 @@ public:
     QString getLogin() override;
     Roles getRole() override;
     double getBalance();
-    static QSharedPointer<ObjectPlayer> deserializeUser(const QByteArray& data);
+
+    //METHODS
     QByteArray serializeUser() override;
 };
 
-#endif // OBJECTPLAYER_H
+#endif // PLAYER_H

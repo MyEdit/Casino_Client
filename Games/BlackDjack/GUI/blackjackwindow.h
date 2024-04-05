@@ -5,7 +5,7 @@
 #include <QLabel>
 #include <QMap>
 #include "Games/deck.h"
-#include "Games/player.h"
+#include "Games/gamer.h"
 #include "Utils/windowtracker.h"
 
 namespace Ui {

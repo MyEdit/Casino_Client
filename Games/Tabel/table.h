@@ -3,7 +3,7 @@
 
 #include <QSharedPointer>
 #include <QList>
-#include "Games/player.h"
+#include "Games/gamer.h"
 #include "Games/Tabel/game.h"
 
 //Перенеси бы в отдельный файл

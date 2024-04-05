@@ -15,7 +15,7 @@ void P_Reconnection::stopReconnecting()
     delete reconnecting;
 }
 
-void P_Reconnection::sendUserData(QSharedPointer<ObjectUser> actualUser)
+void P_Reconnection::sendUserData(QSharedPointer<User> actualUser)
 {
     QByteArray byteUser = actualUser->serializeUser();
     int sizeByteUser = byteUser.size();

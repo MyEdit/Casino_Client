@@ -1,7 +1,7 @@
 ﻿#include "w_user.h"
 #include "ui_w_user.h"
 
-W_User::W_User(QueryTypes actionType, QSharedPointer<User> defaultUser, QWidget *parent) :
+W_User::W_User(QueryTypes actionType, QSharedPointer<ObjectUser> defaultUser, QWidget *parent) :
     QWidget(parent), ui(new Ui::W_User), actionType(actionType), defaultUser(defaultUser)
 {
     ui->setupUi(this);
@@ -16,7 +16,7 @@ W_User::~W_User()
 
 void W_User::on_buttonSave_clicked()
 {
-    QSharedPointer<User> user = QSharedPointer<User>::create(defaultUser->getID(), getName(), getPassport(), getBalance(), getLogin(), getPassword());
+    QSharedPointer<ObjectUser> user = QSharedPointer<ObjectUser>::create(defaultUser->getID(), getName(), getPassport(), getBalance(), getLogin(), getPassword());
     QString query;
 
     if (!user->inputDataIsValid())
@@ -108,7 +108,7 @@ void W_User::customizationLiteEdit()
     ui->InputBalance->setValidator(new QIntValidator(this));
 }
 
-QString W_User::getInsertQuery(QSharedPointer<User> user)
+QString W_User::getInsertQuery(QSharedPointer<ObjectUser> user)
 {
     return QString("INSERT INTO Users (Name, Passport, Balance, Login, Password, ID_Role) VALUES ('%1', '%2', '%3', '%4', '%5', '%6')")
             .arg(user->getFullName())
@@ -119,7 +119,7 @@ QString W_User::getInsertQuery(QSharedPointer<User> user)
             .arg(static_cast<int>(user->getRole()));
 }
 
-QString W_User::getUpdateQuery(QSharedPointer<User> user)
+QString W_User::getUpdateQuery(QSharedPointer<ObjectUser> user)
 {
     return QString("UPDATE Users SET Name = '%1', Passport = '%2', Balance = '%3', Login = '%4', Password = '%5', ID_Role = '%6' WHERE ID_User = '%7'")
             .arg(user->getFullName())

@@ -1,9 +1,9 @@
 ﻿#ifndef OBJECTPLAYER_H
 #define OBJECTPLAYER_H
 
-#include "Users/objectuser.h"
+#include "Users/user.h"
 
-class ObjectPlayer : public ObjectUser
+class ObjectPlayer : public User
 {
     static QList<ObjectPlayer> players;
 
@@ -14,7 +14,6 @@ class ObjectPlayer : public ObjectUser
     double balance{};
 
 public:
-    ObjectPlayer() {}
     ObjectPlayer(int ID, QString name, double balance, QString login, Roles role);
 
     //GETTERS

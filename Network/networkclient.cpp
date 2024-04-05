@@ -58,7 +58,7 @@ bool NetworkClient::start()
     qRegisterMetaType<ModelData>("ModelData");
     qRegisterMetaType<ModelData>("QueryData");
     qRegisterMetaType<Roles>("Roles");
-    qRegisterMetaType<QSharedPointer<ObjectUser>>("QSharedPointer<ObjectUser>");
+    qRegisterMetaType<QSharedPointer<User>>("QSharedPointer<ObjectUser>");
     qRegisterMetaType<QPair<TypeMessage, QString>>("QPair<TypeMessage, QString>");
 
     packetHandler = new PacketHandler();

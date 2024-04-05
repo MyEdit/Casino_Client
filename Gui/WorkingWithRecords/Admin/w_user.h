@@ -6,7 +6,7 @@
 #include "Network/PacketTypes.h"
 #include "Utils/notificationutil.h"
 #include "Utils/Message.h"
-#include "Gui/Objects/Admin/user.h"
+#include "GUI/Objects/Admin/objectuser.h"
 
 namespace Ui {
 class W_User;
@@ -18,11 +18,11 @@ class W_User : public QWidget
 
     Ui::W_User *ui;
     QueryTypes actionType;
-    QSharedPointer<User> defaultUser;
+    QSharedPointer<ObjectUser> defaultUser;
     const PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
 
 public:
-    explicit W_User(QueryTypes actionType, QSharedPointer<User> defaultUser = QSharedPointer<User>(new User()), QWidget *parent = nullptr);
+    explicit W_User(QueryTypes actionType, QSharedPointer<ObjectUser> defaultUser = QSharedPointer<ObjectUser>(new ObjectUser()), QWidget *parent = nullptr);
     ~W_User();
 
 
@@ -41,8 +41,8 @@ private:
     void onLoadForm();
     void customizationLiteEdit();
 
-    QString getInsertQuery(QSharedPointer<User> user);
-    QString getUpdateQuery(QSharedPointer<User> user);
+    QString getInsertQuery(QSharedPointer<ObjectUser> user);
+    QString getUpdateQuery(QSharedPointer<ObjectUser> user);
 };
 
 #endif // W_USER_H

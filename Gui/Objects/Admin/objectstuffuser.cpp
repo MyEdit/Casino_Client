@@ -1,6 +1,6 @@
-﻿#include "stuffuser.h"
+﻿#include "objectstuffuser.h"
 
-StuffUser::StuffUser(QString fullName, QString login, QString password, Roles role)
+ObjectStuffUser::ObjectStuffUser(QString fullName, QString login, QString password, Roles role)
 {
     this->fullName = fullName;
     this->login = login;
@@ -8,7 +8,7 @@ StuffUser::StuffUser(QString fullName, QString login, QString password, Roles ro
     this->role = role;
 }
 
-StuffUser::StuffUser(int id, QString fullName, QString login, QString password, Roles role)
+ObjectStuffUser::ObjectStuffUser(int id, QString fullName, QString login, QString password, Roles role)
 {
     this->id = id;
     this->fullName = fullName;
@@ -17,52 +17,52 @@ StuffUser::StuffUser(int id, QString fullName, QString login, QString password, 
     this->role = role;
 }
 
-int StuffUser::getID()
+int ObjectStuffUser::getID()
 {
     return id;
 }
 
-QString StuffUser::getFullName()
+QString ObjectStuffUser::getFullName()
 {
     return fullName;
 }
 
-QString StuffUser::getLogin()
+QString ObjectStuffUser::getLogin()
 {
     return login;
 }
 
-QString StuffUser::getPassword()
+QString ObjectStuffUser::getPassword()
 {
     return password;
 }
 
-Roles StuffUser::getRole()
+Roles ObjectStuffUser::getRole()
 {
     return role;
 }
 
-void StuffUser::setFullName(QString fullName)
+void ObjectStuffUser::setFullName(QString fullName)
 {
     this->fullName = fullName;
 }
 
-void StuffUser::setLogin(QString login)
+void ObjectStuffUser::setLogin(QString login)
 {
     this->login = login;
 }
 
-void StuffUser::setPassword(QString password)
+void ObjectStuffUser::setPassword(QString password)
 {
     this->password = password;
 }
 
-void StuffUser::setRole(Roles role)
+void ObjectStuffUser::setRole(Roles role)
 {
     this->role = role;
 }
 
-bool StuffUser::inputDataIsValid()
+bool ObjectStuffUser::inputDataIsValid()
 {
     if (role == Roles::None)
         return false;

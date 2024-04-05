@@ -4,7 +4,7 @@
 #include <QString>
 #include "Network/PacketTypes.h"
 
-class StuffUser
+class ObjectStuffUser
 {
     int id {0};
     QString fullName;
@@ -13,9 +13,9 @@ class StuffUser
     Roles role;
 
 public:
-    StuffUser() {};
-    StuffUser(QString fullName, QString login, QString password, Roles role);
-    StuffUser(int id, QString fullName, QString login, QString password, Roles role);
+    ObjectStuffUser() {};
+    ObjectStuffUser(QString fullName, QString login, QString password, Roles role);
+    ObjectStuffUser(int id, QString fullName, QString login, QString password, Roles role);
 
     int getID();
     QString getFullName();

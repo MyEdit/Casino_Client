@@ -20,7 +20,8 @@ SOURCES += \
     BaseClass/baseclasssearchwindow.cpp \
     GUI/Objects/Admin/activetable.cpp \
     GUI/Objects/Admin/ban.cpp \
-    GUI/Objects/Admin/user.cpp \
+    GUI/Objects/Admin/objectstuffuser.cpp \
+    GUI/Objects/Admin/objectuser.cpp \
     GUI/TabWidgets/Admin/activetables.cpp \
     GUI/TabWidgets/Admin/banlist.cpp \
     GUI/TabWidgets/Admin/stuffusers.cpp \
@@ -31,7 +32,6 @@ SOURCES += \
     GUI/window_auth.cpp \
     GUI/Notification/notification.cpp \
     GUI/Notification/reconnecting.cpp \
-    GUI/Objects/Admin/stuffuser.cpp \
     GUI/TabWidgets/Admin/credits.cpp \
     GUI/TabWidgets/Admin/payments.cpp \
     GUI/WorkingWithRecords/Admin/w_ban.cpp \
@@ -43,7 +43,7 @@ SOURCES += \
     Games/Tabel/table.cpp \
     Games/card.cpp \
     Games/deck.cpp \
-    Games/player.cpp \
+    Games/gamer.cpp \
     Network/PacketsActions/p_authorization.cpp \
     Network/PacketsActions/p_notification.cpp \
     Network/PacketsActions/p_query.cpp \
@@ -53,7 +53,7 @@ SOURCES += \
     Network/networkclient.cpp \
     Network/packethandler.cpp \
     Users/objectplayer.cpp \
-    Users/objectstuffuser.cpp \
+    Users/stuffuser.cpp \
     Utils/pagination.cpp \
     Utils/searchmodule.cpp \
     Utils/serializer.cpp \
@@ -65,7 +65,8 @@ HEADERS += \
     BaseClass/baseclasssearchwindow.h \
     GUI/Objects/Admin/activetable.h \
     GUI/Objects/Admin/ban.h \
-    GUI/Objects/Admin/user.h \
+    GUI/Objects/Admin/objectstuffuser.h \
+    GUI/Objects/Admin/objectuser.h \
     GUI/TabWidgets/Admin/activetables.h \
     GUI/TabWidgets/Admin/banlist.h \
     GUI/TabWidgets/Admin/stuffusers.h \
@@ -76,7 +77,6 @@ HEADERS += \
     GUI/window_auth.h \
     GUI/Notification/notification.h \
     GUI/Notification/reconnecting.h \
-    GUI/Objects/Admin/stuffuser.h \
     GUI/TabWidgets/Admin/credits.h \
     GUI/TabWidgets/Admin/payments.h \
     GUI/WorkingWithRecords/Admin/w_ban.h \
@@ -91,7 +91,7 @@ HEADERS += \
     Games/cardRank.h \
     Games/cardSuit.h \
     Games/deck.h \
-    Games/player.h \
+    Games/gamer.h \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
     Network/PacketsActions/p_notification.h \
@@ -102,8 +102,8 @@ HEADERS += \
     Network/networkclient.h \
     Network/packethandler.h \
     Users/objectplayer.h \
-    Users/objectstuffuser.h \
-    Users/objectuser.h \
+    Users/stuffuser.h \
+    Users/user.h \
     Utils/Message.h \
     Utils/pagination.h \
     Utils/searchmodule.h \

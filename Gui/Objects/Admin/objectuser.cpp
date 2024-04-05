@@ -1,6 +1,6 @@
-﻿#include "user.h"
+﻿#include "objectuser.h"
 
-User::User(QString fullName, QString passport, QString balance, QString login, QString password)
+ObjectUser::ObjectUser(QString fullName, QString passport, QString balance, QString login, QString password)
 {
     this->fullName = fullName;
     this->passport = passport;
@@ -9,7 +9,7 @@ User::User(QString fullName, QString passport, QString balance, QString login, Q
     this->password = password;
 }
 
-User::User(int id, QString fullName, QString passport, QString balance, QString login, QString password)
+ObjectUser::ObjectUser(int id, QString fullName, QString passport, QString balance, QString login, QString password)
 {
     this->id = id;
     this->fullName = fullName;
@@ -19,67 +19,67 @@ User::User(int id, QString fullName, QString passport, QString balance, QString 
     this->password = password;
 }
 
-int User::getID()
+int ObjectUser::getID()
 {
     return id;
 }
 
-QString User::getFullName()
+QString ObjectUser::getFullName()
 {
     return fullName;
 }
 
-QString User::getPassport()
+QString ObjectUser::getPassport()
 {
     return passport;
 }
 
-QString User::getBalance()
+QString ObjectUser::getBalance()
 {
     return balance;
 }
 
-QString User::getLogin()
+QString ObjectUser::getLogin()
 {
     return login;
 }
 
-QString User::getPassword()
+QString ObjectUser::getPassword()
 {
     return password;
 }
 
-Roles User::getRole()
+Roles ObjectUser::getRole()
 {
     return role;
 }
 
-void User::setFullName(QString fullName)
+void ObjectUser::setFullName(QString fullName)
 {
     this->fullName = fullName;
 }
 
-void User::setPassport(QString passport)
+void ObjectUser::setPassport(QString passport)
 {
     this->passport = passport;
 }
 
-void User::setBalance(QString balance)
+void ObjectUser::setBalance(QString balance)
 {
     this->balance = balance;
 }
 
-void User::setLogin(QString login)
+void ObjectUser::setLogin(QString login)
 {
     this->login = login;
 }
 
-void User::setPassword(QString password)
+void ObjectUser::setPassword(QString password)
 {
     this->password = password;
 }
 
-bool User::inputDataIsValid()
+bool ObjectUser::inputDataIsValid()
 {
     for (QString value : {fullName, passport, balance, login, password})
     {

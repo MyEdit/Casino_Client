@@ -5,7 +5,7 @@
 #include "Gui/window_admin.h"
 #include "Gui/window_player.h"
 #include "Users/objectplayer.h"
-#include "Users/objectstuffuser.h"
+#include "Users/stuffuser.h"
 #include <Network/PacketTypes.h>
 
 class Window_Admin;
@@ -16,17 +16,17 @@ class P_Authorization : public QObject
     Q_OBJECT
 
     static const PacketTypes packettype;
-    static QSharedPointer<ObjectUser> actualUser;
+    static QSharedPointer<User> actualUser;
 
 public:
     static Window_Admin* adminW;
     static Window_Player* playerW;
 
     static void sendData(QString login, QString password);
-    static void openMainWindow(QSharedPointer<ObjectUser> user);
-    static void setActualUser(QSharedPointer<ObjectUser> user);
-    static QSharedPointer<ObjectUser> getActualUser();
-    static QSharedPointer<ObjectUser>getUser();
+    static void openMainWindow(QSharedPointer<User> user);
+    static void setActualUser(QSharedPointer<User> user);
+    static QSharedPointer<User> getActualUser();
+    static QSharedPointer<User>getUser();
 };
 
 #endif // P_AUTHORIZATION_H

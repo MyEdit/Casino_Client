@@ -1,11 +1,11 @@
 ﻿#ifndef OBJECTSTUFFUSER_H
 #define OBJECTSTUFFUSER_H
 
-#include "Users/objectuser.h"
+#include "Users/user.h"
 
-class ObjectStuffUser : public ObjectUser
+class StuffUser : public User
 {
-    static QList<ObjectStuffUser> stuffUsers;
+    static QList<StuffUser> stuffUsers;
 
     int ID{};
     QString name{};
@@ -13,15 +13,14 @@ class ObjectStuffUser : public ObjectUser
     Roles role{};
 
 public:
-    ObjectStuffUser() {}
-    ObjectStuffUser(int ID, QString name, QString login, Roles role);
+    StuffUser(int ID, QString name, QString login, Roles role);
 
     //GETTERS
     int getID() override;
     QString getName() override;
     QString getLogin() override;
     Roles getRole() override;
-    static QSharedPointer<ObjectStuffUser> deserializeUser(const QByteArray& data);
+    static QSharedPointer<StuffUser> deserializeUser(const QByteArray& data);
     QByteArray serializeUser() override;
 };
 

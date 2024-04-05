@@ -4,7 +4,7 @@
 #include <QString>
 #include "Network/PacketTypes.h"
 
-class User
+class ObjectUser
 {
     int id {0};
     QString fullName;
@@ -15,9 +15,9 @@ class User
     const Roles role = Roles::User;
 
 public:
-    User() {};
-    User(QString fullName, QString passport, QString balance, QString login, QString password);
-    User(int id, QString fullName, QString passport, QString balance, QString login, QString password);
+    ObjectUser() {};
+    ObjectUser(QString fullName, QString passport, QString balance, QString login, QString password);
+    ObjectUser(int id, QString fullName, QString passport, QString balance, QString login, QString password);
 
     int getID();
     QString getFullName();

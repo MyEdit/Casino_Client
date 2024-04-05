@@ -155,7 +155,7 @@ void Users::openEditRecotd()
     QString logim = getValueFromSelectedRow(ui->tableView, 5).toString();
     QString password = getValueFromSelectedRow(ui->tableView, 6).toString();
 
-    QSharedPointer<User> user = QSharedPointer<User>::create(id, name, passport, balance, logim, password);
+    QSharedPointer<ObjectUser> user = QSharedPointer<ObjectUser>::create(id, name, passport, balance, logim, password);
     if (!user->inputDataIsValid())
         return;
 

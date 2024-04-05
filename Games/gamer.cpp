@@ -1,4 +1,4 @@
-﻿#include "player.h"
+﻿#include "gamer.h"
 #include "card.h"
 
 Gamer::Gamer(Deck& deck, int numPlayers)

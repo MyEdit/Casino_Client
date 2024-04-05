@@ -153,7 +153,7 @@ void StuffUsers::openEditRecotd()
     QString password = getValueFromSelectedRow(ui->tableView, 4).toString();
     Roles role = static_cast<Roles>(getValueFromSelectedRow(ui->tableView, 5).toInt());
 
-    QSharedPointer<StuffUser> stuffUser = QSharedPointer<StuffUser>::create(id, fullName, login, password, role);
+    QSharedPointer<ObjectStuffUser> stuffUser = QSharedPointer<ObjectStuffUser>::create(id, fullName, login, password, role);
     if (!stuffUser->inputDataIsValid())
         return;
 

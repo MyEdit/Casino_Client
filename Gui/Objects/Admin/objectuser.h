@@ -1,5 +1,5 @@
-﻿#ifndef USER_H
-#define USER_H
+﻿#ifndef OBJECTUSER_H
+#define OBJECTUSER_H
 
 #include <QString>
 #include "Network/PacketTypes.h"
@@ -36,4 +36,4 @@ public:
     bool inputDataIsValid();
 };
 
-#endif // USER_H
+#endif // OBJECTUSER_H

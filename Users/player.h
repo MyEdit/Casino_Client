@@ -1,5 +1,5 @@
-﻿#ifndef OBJECTPLAYER_H
-#define OBJECTPLAYER_H
+﻿#ifndef PLAYER_H
+#define PLAYER_H
 
 #include "Users/user.h"
 

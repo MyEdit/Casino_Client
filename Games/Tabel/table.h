@@ -5,6 +5,7 @@
 #include <QList>
 #include "Games/gamer.h"
 #include "Games/Tabel/game.h"
+#include "Users/player.h"
 
 //Перенеси бы в отдельный файл
 struct TableSettings
@@ -37,7 +38,7 @@ class Table
 
     Game game{};
     TableSettings tableSettings{};
-//    QList<QSharedPointer<Player>> playes{};
+    QList<QSharedPointer<Player>> playes{};
 
 public:
     Table(Game game, TableSettings tableSettings);
@@ -49,11 +50,11 @@ public:
     static void addTables(QSharedPointer<Table> table);
 
     //METHODS
-//    bool canPlayerJoin(QSharedPointer<Player>);
+    bool canPlayerJoin(QSharedPointer<Player>);
     bool canStartGame();
     void startGame();
-//    void joinPlayer(Player player);
-//    void leavePlayer(Player player);
+    void joinPlayer(Player player);
+    void leavePlayer(Player player);
     QByteArray serializeTable();
     static QSharedPointer<Table> deserializeTable(const QByteArray& data);
 };

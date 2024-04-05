@@ -1,5 +1,5 @@
-﻿#ifndef STUFFUSER_H
-#define STUFFUSER_H
+﻿#ifndef OBJECTSTUFFUSER_H
+#define OBJECTSTUFFUSER_H
 
 #include <QString>
 #include "Network/PacketTypes.h"
@@ -31,4 +31,4 @@ public:
     bool inputDataIsValid();
 };
 
-#endif // STUFFUSER_H
+#endif // OBJECTSTUFFUSER_H

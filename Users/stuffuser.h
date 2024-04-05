@@ -1,5 +1,5 @@
-﻿#ifndef OBJECTSTUFFUSER_H
-#define OBJECTSTUFFUSER_H
+﻿#ifndef STUFFUSER_H
+#define STUFFUSER_H
 
 #include "Users/user.h"
 

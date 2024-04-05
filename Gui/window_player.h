@@ -4,6 +4,7 @@
 #include "BaseClass/baseclassmainmenu.h"
 #include "Network/PacketsActions/p_authorization.h"
 #include "Games/Tabel/table.h"
+#include "Gui/TabWidgets/Player/gametable.h"
 
 namespace Ui {
 class Window_Player;
@@ -13,6 +14,7 @@ class Window_Player : public BaseClassMainMenu
 {
     Q_OBJECT
     Ui::Window_Player *ui;
+    QSharedPointer<GameTable> gameTabels;
 
 public:
     explicit Window_Player(QWidget *parent = nullptr);
@@ -27,9 +29,10 @@ private:
     void uploadingPhotoPlaer();
     void settingUserInformation() override;
     void connects() override;
+    void rendering_GameTablesTab();
 
 private slots:
-    void on_activeTables_clicked();
+    void on_gameTables_clicked();
     void on_credits_clicked();
     void on_replenish_clicked();
 };

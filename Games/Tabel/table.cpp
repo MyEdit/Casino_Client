@@ -43,3 +43,8 @@ Game Table::getGame()
 {
     return game;
 }
+
+TableSettings Table::getSettings()
+{
+    return tableSettings;
+}

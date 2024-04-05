@@ -2,8 +2,9 @@
 
 void P_SendTables::getTablesFromServer()
 {
-    int countTables;
+    Table::getTables().clear();
 
+    int countTables;    
     recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&countTables), sizeof(int), 0);
 
     for(int i = 0; i < countTables; i++)

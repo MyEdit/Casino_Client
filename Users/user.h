@@ -1,5 +1,5 @@
-﻿#ifndef OBJECTUSER_H
-#define OBJECTUSER_H
+﻿#ifndef USER_H
+#define USER_H
 
 #include <QString>
 #include <Network/PacketTypes.h>

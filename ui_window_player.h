@@ -38,7 +38,7 @@ public:
     QPushButton *replenish;
     QLabel *label_3;
     QPushButton *credits;
-    QPushButton *activeTables;
+    QPushButton *gameTables;
     QSpacerItem *horizontalSpacer_5;
     QLabel *label_2;
     QPushButton *buttonExit;
@@ -150,11 +150,11 @@ public:
 
         gridLayout_2->addWidget(credits, 2, 1, 1, 1);
 
-        activeTables = new QPushButton(centralwidget);
-        activeTables->setObjectName(QString::fromUtf8("activeTables"));
-        activeTables->setMinimumSize(QSize(0, 40));
-        activeTables->setFont(font1);
-        activeTables->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        gameTables = new QPushButton(centralwidget);
+        gameTables->setObjectName(QString::fromUtf8("gameTables"));
+        gameTables->setMinimumSize(QSize(0, 40));
+        gameTables->setFont(font1);
+        gameTables->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
 "	color: rgb(255, 255, 255);\n"
@@ -162,7 +162,7 @@ public:
 "	text-align: left;\n"
 "}"));
 
-        gridLayout_2->addWidget(activeTables, 0, 1, 1, 1);
+        gridLayout_2->addWidget(gameTables, 0, 1, 1, 1);
 
         horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 
@@ -234,7 +234,7 @@ public:
         replenish->setText(QApplication::translate("Window_Player", "\320\237\320\276\320\277\320\276\320\273\320\275\320\270\321\202\321\214 \321\201\321\207\321\221\321\202", nullptr));
         label_3->setText(QString());
         credits->setText(QApplication::translate("Window_Player", "\320\232\321\200\320\265\320\264\320\270\321\202\321\213", nullptr));
-        activeTables->setText(QApplication::translate("Window_Player", "\320\230\320\263\321\200\320\276\320\262\321\213\320\265 \321\201\321\202\320\276\320\273\321\213", nullptr));
+        gameTables->setText(QApplication::translate("Window_Player", "\320\230\320\263\321\200\320\276\320\262\321\213\320\265 \321\201\321\202\320\276\320\273\321\213", nullptr));
         label_2->setText(QString());
         buttonExit->setText(QApplication::translate("Window_Player", "\320\222\321\213\321\205\320\276\320\264", nullptr));
     } // retranslateUi

@@ -5,8 +5,6 @@
 
 class Player : public User
 {
-    static QList<Player> players;
-
     int ID{};
     QString name{};
     QString login{};

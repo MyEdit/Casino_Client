@@ -1,6 +1,8 @@
 ﻿#include "window_player.h"
 #include "ui_window_player.h"
 
+#include "Gui/form.h"
+
 Window_Player::Window_Player(QWidget *parent) : BaseClassMainMenu(parent), ui(new Ui::Window_Player)
 {
     ui->setupUi(this);
@@ -95,6 +97,8 @@ void Window_Player::setTabels()
     //для проверки что столы пришли
     for(QSharedPointer<Table> table : Table::getTables())
     {
+        Form* test = new Form(ui->tabWidget);
+        test->show();
         qDebug() << "Стол с игрой: " + table->getGame().getNameGame();
     }
 }

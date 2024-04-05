@@ -44,6 +44,7 @@ SOURCES += \
     Games/card.cpp \
     Games/deck.cpp \
     Games/gamer.cpp \
+    Gui/form.cpp \
     Network/PacketsActions/p_authorization.cpp \
     Network/PacketsActions/p_notification.cpp \
     Network/PacketsActions/p_query.cpp \
@@ -92,6 +93,7 @@ HEADERS += \
     Games/cardSuit.h \
     Games/deck.h \
     Games/gamer.h \
+    Gui/form.h \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
     Network/PacketsActions/p_notification.h \
@@ -127,7 +129,8 @@ FORMS += \
     GUI/WorkingWithRecords/Admin/w_stuffuser.ui \
     GUI/WorkingWithRecords/Admin/w_table.ui \
     GUI/window_player.ui \
-    Games/BlackDjack/GUI/blackjackwindow.ui
+    Games/BlackDjack/GUI/blackjackwindow.ui \
+    Gui/form.ui
 
 LIBS += -lws2_32
 QT += core

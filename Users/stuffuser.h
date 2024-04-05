@@ -5,8 +5,6 @@
 
 class StuffUser : public User
 {
-    static QList<StuffUser> stuffUsers;
-
     int ID{};
     QString name{};
     QString login{};

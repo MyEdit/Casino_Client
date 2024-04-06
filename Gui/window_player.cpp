@@ -62,6 +62,7 @@ void Window_Player::uploadingPhotoPlaer()
 void Window_Player::settingUserInformation()
 {
     ui->fullNamePlayer->setText(fullName);
+    ui->balance->setText(QString::number(P_Authorization::getPlayer()->getBalance()));
     uploadingPhotoPlaer();
 }
 

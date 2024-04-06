@@ -55,7 +55,8 @@ public:
     {
         if (Window_Admin->objectName().isEmpty())
             Window_Admin->setObjectName(QString::fromUtf8("Window_Admin"));
-        Window_Admin->resize(948, 665);
+        Window_Admin->resize(1072, 678);
+        Window_Admin->setMinimumSize(QSize(1000, 0));
         Window_Admin->setStyleSheet(QString::fromUtf8(""));
         centralwidget = new QWidget(Window_Admin);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));

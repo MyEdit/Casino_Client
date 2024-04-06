@@ -14,12 +14,13 @@ struct TableSettings
     double minBet;
     double stepBet;
     double minBalance;
+    int maxNumPlayer;
 
     QByteArray serializeTableSettings() const
     {
         QByteArray data;
         QDataStream stream(&data, QIODevice::WriteOnly);
-        stream << ID << minBet << stepBet << minBalance;
+        stream << ID << minBet << stepBet << minBalance << maxNumPlayer;
         return data;
     }
 
@@ -27,7 +28,7 @@ struct TableSettings
     {
         QDataStream stream(data);
         TableSettings settings;
-        stream >> settings.ID >> settings.minBet >> settings.stepBet >> settings.minBalance;
+        stream >> settings.ID >> settings.minBet >> settings.stepBet >> settings.minBalance >> settings.maxNumPlayer;
         return settings;
     }
 };
@@ -38,14 +39,16 @@ class Table
 
     Game game{};
     TableSettings tableSettings{};
-    QList<QSharedPointer<Player>> playes{};
+    int currentNumPlayer;
 
 public:
     Table(Game game, TableSettings tableSettings);
+    Table(Game game, TableSettings tableSettings, int currentNumPlayer);
 
     //GETTERS
     TableSettings getSettings();
     Game getGame();
+    int getCurrentNumPlayer();
     static QList<QSharedPointer<Table>> getTables();
     static void addTables(QSharedPointer<Table> table);
 

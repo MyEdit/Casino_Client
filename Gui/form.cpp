@@ -32,6 +32,8 @@ void Form::settingInformation()
     ui->minBet->setText(QString::number(table->getSettings().minBet));
     ui->betStep->setText(QString::number(table->getSettings().stepBet));
     ui->minBalance->setText(QString::number(table->getSettings().minBalance));
+    ui->currentNumPlayer->setText(QString::number(table->getCurrentNumPlayer()));
+    ui->maxNumPlayer->setText(QString::number(table->getSettings().maxNumPlayer));
 }
 
 void Form::mousePressEvent(QMouseEvent* event)
@@ -51,9 +53,9 @@ void Form::mouseReleaseEvent(QMouseEvent* event)
 
 void Form::assigningValues()
 {
-    constantStyleSheet = "background-color: rgb(170, 170, 255);";
-    hoverStyleSheet = "background-color: rgb(100, 100, 255);";
-    pressStyleSheet = "background-color: rgb(50, 50, 255);";
+    constantStyleSheet = "#Form{background-color: rgb(170, 170, 255);}";
+    hoverStyleSheet = "#Form{background-color: rgb(100, 100, 255);}";
+    pressStyleSheet = "#Form{background-color: rgb(50, 50, 255);}";
 }
 
 void Form::enterEvent(QEvent* event)

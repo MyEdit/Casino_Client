@@ -34,10 +34,25 @@ public:
         verticalLayoutMain->setObjectName(QString::fromUtf8("verticalLayoutMain"));
         scrollArea = new QScrollArea(GameTable);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
+        scrollArea->setStyleSheet(QString::fromUtf8("#scrollArea\n"
+"{\n"
+"	background-color: transparent;\n"
+"}"));
+        scrollArea->setFrameShape(QFrame::NoFrame);
+        scrollArea->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 515, 382));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 517, 18));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Maximum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(scrollAreaWidgetContents->sizePolicy().hasHeightForWidth());
+        scrollAreaWidgetContents->setSizePolicy(sizePolicy);
+        scrollAreaWidgetContents->setStyleSheet(QString::fromUtf8("#scrollAreaWidgetContents\n"
+"{\n"
+"	background-color: rgb(255, 255, 255);\n"
+"}"));
         verticalLayoutContent = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayoutContent->setObjectName(QString::fromUtf8("verticalLayoutContent"));
         scrollArea->setWidget(scrollAreaWidgetContents);

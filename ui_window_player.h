@@ -50,6 +50,7 @@ public:
         if (Window_Player->objectName().isEmpty())
             Window_Player->setObjectName(QString::fromUtf8("Window_Player"));
         Window_Player->resize(1064, 712);
+        Window_Player->setMinimumSize(QSize(1000, 0));
         centralwidget = new QWidget(Window_Player);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         centralwidget->setStyleSheet(QString::fromUtf8("#centralwidget {\n"

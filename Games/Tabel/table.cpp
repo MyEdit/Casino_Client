@@ -8,6 +8,14 @@ Table::Table(Game game, TableSettings tableSettings)
     this->tableSettings = tableSettings;
 }
 
+Table::Table(Game game, TableSettings tableSettings, int currentNumPlayer)
+{
+    this->game = game;
+    this->tableSettings = tableSettings;
+    this->currentNumPlayer = currentNumPlayer;
+}
+
+
 QList<QSharedPointer<Table>> Table::getTables()
 {
     return  tables;
@@ -33,10 +41,11 @@ QSharedPointer<Table> Table::deserializeTable(const QByteArray& data)
 {
     QDataStream stream(data);
     QByteArray gameData, settingsData;
-    stream >> gameData >> settingsData;
+    int currentNumPlayer;
+    stream >> gameData >> settingsData >> currentNumPlayer;
     QSharedPointer<Game> game = Game::deserializeGame(gameData);
     TableSettings settings = TableSettings::deserializeTableSettings(settingsData);
-    return QSharedPointer<Table>(new Table(*game.get(), settings));
+    return QSharedPointer<Table>(new Table(*game.get(), settings, currentNumPlayer));
 }
 
 Game Table::getGame()
@@ -47,4 +56,9 @@ Game Table::getGame()
 TableSettings Table::getSettings()
 {
     return tableSettings;
+}
+
+int Table::getCurrentNumPlayer()
+{
+    return  currentNumPlayer;
 }

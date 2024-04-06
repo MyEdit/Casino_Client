@@ -13,6 +13,7 @@ class StuffUser : public User
 public:
     StuffUser(int ID, QString name, QString login, Roles role);
     StuffUser(const QByteArray& data);
+    StuffUser();
 
     //GETTERS
     int getID() override;

@@ -4,6 +4,8 @@ const PacketTypes P_Authorization::packettype = PacketTypes::P_Authorization;
 Window_Admin* P_Authorization::adminW;
 Window_Player* P_Authorization::playerW;
 QSharedPointer<User> P_Authorization::user;
+QSharedPointer<Player> P_Authorization::player;
+QSharedPointer<StuffUser> P_Authorization::stuffUser;
 
 void P_Authorization::openMainWindow(QSharedPointer<User> user)
 {
@@ -37,9 +39,15 @@ QSharedPointer<User> P_Authorization::getUser()
     recv(NetworkClient::serverSocket, byteUser.data(), sizeByteUser, 0);
     QSharedPointer<User> user;
     if(role == Roles::User)
-        user = QSharedPointer<Player>::create(byteUser);
+    {
+        player = QSharedPointer<Player>::create(byteUser);
+        user = player;
+    }
     else
-        user = QSharedPointer<StuffUser>::create(byteUser);
+    {
+        stuffUser = QSharedPointer<StuffUser>::create(byteUser);
+        user = stuffUser;
+    }
 
     return user;
 }
@@ -59,4 +67,14 @@ void P_Authorization::setActualUser(QSharedPointer<User> newUser)
 QSharedPointer<User> P_Authorization::getActualUser()
 {
     return user;
+}
+
+QSharedPointer<Player> P_Authorization::getPlayer()
+{
+    return player;
+}
+
+QSharedPointer<StuffUser> P_Authorization::getStuffuser()
+{
+    return stuffUser;
 }

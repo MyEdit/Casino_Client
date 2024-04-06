@@ -44,8 +44,7 @@ QSharedPointer<Table> Table::deserializeTable(const QByteArray& data)
 
 bool Table::canJoin()
 {
-    QSharedPointer<Player> player = static_cast<QSharedPointer<Player>>(P_Authorization::getActualUser());
-    if (player->getBalance() < this->tableSettings.minBalance)
+    if (P_Authorization::getPlayer()->getBalance() < this->tableSettings.minBalance)
         return false;
 
     //TODO: Проверять кол-во игроков которые уже за столом

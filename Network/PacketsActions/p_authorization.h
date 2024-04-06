@@ -7,6 +7,7 @@
 #include "Users/player.h"
 #include "Users/stuffuser.h"
 #include <Network/PacketTypes.h>
+#include <Constants.h>
 
 class Window_Admin;
 class Window_Player;
@@ -17,6 +18,8 @@ class P_Authorization : public QObject
 
     static const PacketTypes packettype;
     static QSharedPointer<User> user;
+    static QSharedPointer<Player> player;
+    static QSharedPointer<StuffUser> stuffUser;
 
 public:
     static Window_Admin* adminW;
@@ -27,6 +30,8 @@ public:
     static void setActualUser(QSharedPointer<User> newUser);
     static QSharedPointer<User> getActualUser();
     static QSharedPointer<User>getUser();
+    static QSharedPointer<Player> getPlayer();
+    static QSharedPointer<StuffUser> getStuffuser();
 };
 
 #endif // P_AUTHORIZATION_H

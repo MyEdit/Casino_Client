@@ -17,9 +17,6 @@ Window_Player::Window_Player(QWidget *parent) : BaseClassMainMenu(parent), ui(ne
     settingVisual();
 
     ui->tabWidget->setCurrentWidget(welcomeTab.get());
-
-    PacketTypes packettype = PacketTypes::P_SendTables;
-    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
 }
 
 Window_Player::~Window_Player()

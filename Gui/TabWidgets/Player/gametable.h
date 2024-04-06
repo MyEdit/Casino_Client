@@ -5,6 +5,7 @@
 #include <QScrollArea>
 #include "Games/Tabel/table.h"
 #include "Gui/form.h"
+#include "Network/networkclient.h"
 
 namespace Ui {
 class GameTable;
@@ -13,6 +14,7 @@ class GameTable;
 class GameTable : public QWidget
 {
     Q_OBJECT
+    Ui::GameTable *ui;
 
 public:
     explicit GameTable(QWidget *parent = nullptr);
@@ -21,7 +23,7 @@ public:
     void updateTables();
 
 private:
-    Ui::GameTable *ui;
+    void requestTables();
 };
 
 #endif // GAMETABLE_H

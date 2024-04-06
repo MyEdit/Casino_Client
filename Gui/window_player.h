@@ -5,6 +5,9 @@
 #include "Network/PacketsActions/p_authorization.h"
 #include "Games/Tabel/table.h"
 #include "Gui/TabWidgets/Player/gametable.h"
+#include <QSharedPointer>
+
+class GameTable;
 
 namespace Ui {
 class Window_Player;

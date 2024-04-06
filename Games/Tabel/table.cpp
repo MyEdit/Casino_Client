@@ -15,12 +15,6 @@ Table::Table(Game game, TableSettings tableSettings, int currentNumPlayer)
     this->currentNumPlayer = currentNumPlayer;
 }
 
-
-QList<QSharedPointer<Table>> Table::getTables()
-{
-    return  tables;
-}
-
 void Table::addTables(QSharedPointer<Table> table)
 {
     if(!tables.contains(table))

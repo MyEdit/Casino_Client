@@ -11,6 +11,8 @@ namespace Ui {
 class Form;
 }
 
+class Table;
+
 class Form : public QWidget
 {
     Q_OBJECT

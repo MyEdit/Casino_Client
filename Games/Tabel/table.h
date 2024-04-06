@@ -6,6 +6,7 @@
 #include "Games/gamer.h"
 #include "Games/Tabel/game.h"
 #include "Users/player.h"
+#include "Network/PacketsActions/p_authorization.h"
 
 //Перенеси бы в отдельный файл
 struct TableSettings
@@ -49,14 +50,14 @@ public:
     TableSettings getSettings();
     Game getGame();
     int getCurrentNumPlayer();
-    static void addTables(QSharedPointer<Table> table);
+    static void addTable(QSharedPointer<Table> table);
 
     //METHODS
-    bool canPlayerJoin(QSharedPointer<Player>);
+    bool canJoin();
     bool canStartGame();
     void startGame();
-    void joinPlayer(Player player);
-    void leavePlayer(Player player);
+    void tryJoin();
+    void leave();
     QByteArray serializeTable();
     static QSharedPointer<Table> deserializeTable(const QByteArray& data);
 };

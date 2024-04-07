@@ -67,4 +67,8 @@
         <file>Games/BlackDjack/assets/Standart/Spades/Q.png</file>
         <file>Games/BlackDjack/assets/Standart/Spades/Пика.png</file>
     </qresource>
+    <qresource prefix="/InterfaceEements">
+        <file>resources/Player.png</file>
+        <file>resources/Table.png</file>
+    </qresource>
 </RCC>

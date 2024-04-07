@@ -38,7 +38,10 @@ SOURCES += \
     GUI/WorkingWithRecords/Admin/w_stuffuser.cpp \
     GUI/WorkingWithRecords/Admin/w_table.cpp \
     GUI/window_player.cpp \
+    Games/BlackDjack/GUI/InterfaceEements/blackjecktablewidget.cpp \
+    Games/BlackDjack/GUI/InterfaceEements/playersiconswidget.cpp \
     Games/BlackDjack/GUI/blackjackwindow.cpp \
+    Games/BlackDjack/GUI/blacljackwidget.cpp \
     Games/Tabel/game.cpp \
     Games/Tabel/table.cpp \
     Games/card.cpp \
@@ -85,7 +88,10 @@ HEADERS += \
     GUI/WorkingWithRecords/Admin/w_stuffuser.h \
     GUI/WorkingWithRecords/Admin/w_table.h \
     GUI/window_player.h \
+    Games/BlackDjack/GUI/InterfaceEements/blackjecktablewidget.h \
+    Games/BlackDjack/GUI/InterfaceEements/playersiconswidget.h \
     Games/BlackDjack/GUI/blackjackwindow.h \
+    Games/BlackDjack/GUI/blacljackwidget.h \
     Games/BlackDjack/constant.h \
     Games/Tabel/game.h \
     Games/Tabel/table.h \
@@ -131,7 +137,10 @@ FORMS += \
     GUI/WorkingWithRecords/Admin/w_stuffuser.ui \
     GUI/WorkingWithRecords/Admin/w_table.ui \
     GUI/window_player.ui \
+    Games/BlackDjack/GUI/InterfaceEements/blackjecktablewidget.ui \
+    Games/BlackDjack/GUI/InterfaceEements/playersiconswidget.ui \
     Games/BlackDjack/GUI/blackjackwindow.ui \
+    Games/BlackDjack/GUI/blacljackwidget.ui \
     Gui/TabWidgets/Player/gametable.ui \
     Gui/form.ui
 
@@ -205,4 +214,19 @@ DISTFILES += \
     Games/BlackDjack/assets/Standart/Spades/Q.png \
     Games/BlackDjack/assets/Standart/Spades/Пика.png \
     Games/BlackDjack/assets/Standart/shirt.png \
-    Games/BlackDjack/assets/Колода.png
+    Games/BlackDjack/assets/Колода.png \
+    resources/Player.png \
+    resources/Table.png \
+    resources/TestStuffPhoto.jpg \
+    resources/Window_Auth_Background.png \
+    resources/add.png \
+    resources/ban.png \
+    resources/clearSearch.png \
+    resources/delete.png \
+    resources/edited.png \
+    resources/exit.png \
+    resources/next.png \
+    resources/prev.png \
+    resources/recess.png \
+    resources/search.png \
+    resources/update.png

@@ -15,7 +15,7 @@ void P_SendTables::getTablesFromServer()
         receivedData.resize(dataSize);
         recv(NetworkClient::serverSocket, receivedData.data(), dataSize, 0);
 
-        QSharedPointer<Table> table(Table::deserializeTable(receivedData));
+        QSharedPointer<Table> table(new Table(receivedData));
         Table::addTable(table);
     }
 }

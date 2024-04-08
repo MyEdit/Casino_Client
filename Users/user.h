@@ -7,6 +7,12 @@
 class User
 {
 public:
+    int ID{};
+    QString name{};
+    QString login{};
+    Roles role{};
+    QByteArray photo{};
+
     virtual ~User() {}
 
     //GETTERS
@@ -14,6 +20,7 @@ public:
     virtual QString getName() = 0;
     virtual QString getLogin() = 0;
     virtual Roles getRole() = 0;
+    virtual QByteArray getPhoto() = 0;
     virtual QByteArray serializeUser() = 0;
 };
 

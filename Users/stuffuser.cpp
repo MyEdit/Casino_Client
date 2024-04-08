@@ -14,13 +14,15 @@ StuffUser::StuffUser(const QByteArray& data)
     int ID;
     QString name, login;
     int roleInt;
-    stream >> ID >> name >> login >> roleInt;
+    QByteArray photo;
+    stream >> ID >> name >> login >> roleInt >> photo;
     Roles role = static_cast<Roles>(roleInt);
 
     this->ID = ID;
     this->name = name;
     this->login = login;
     this->role = role;
+    this->photo = photo;
 }
 
 int StuffUser::getID()
@@ -42,6 +44,11 @@ Roles StuffUser::getRole()
     return this->role;
 }
 
+QByteArray StuffUser::getPhoto()
+{
+    return this->photo;
+}
+
 QByteArray StuffUser::serializeUser()
 {
     QByteArray byteArray;
@@ -50,6 +57,7 @@ QByteArray StuffUser::serializeUser()
     stream << name;
     stream << login;
     stream << static_cast<int>(role);
+    stream << photo;
     return byteArray;
 }
 

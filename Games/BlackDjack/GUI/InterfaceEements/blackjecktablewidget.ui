@@ -94,12 +94,6 @@
      </item>
      <item>
       <widget class="QLabel" name="labelCard_1">
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>170</height>
-        </size>
-       </property>
        <property name="styleSheet">
         <string notr="true">QLabel {
     border: 2px solid  rgb(255, 255, 255);
@@ -113,12 +107,6 @@
      </item>
      <item>
       <widget class="QLabel" name="labelCard_2">
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>170</height>
-        </size>
-       </property>
        <property name="styleSheet">
         <string notr="true">QLabel {
     border: 2px solid  rgb(255, 255, 255);
@@ -129,12 +117,6 @@
      </item>
      <item>
       <widget class="QLabel" name="labelCard_3">
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>170</height>
-        </size>
-       </property>
        <property name="styleSheet">
         <string notr="true">QLabel {
     border: 2px solid  rgb(255, 255, 255);
@@ -145,12 +127,6 @@
      </item>
      <item>
       <widget class="QLabel" name="labelCard_4">
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>170</height>
-        </size>
-       </property>
        <property name="styleSheet">
         <string notr="true">QLabel {
     border: 2px solid  rgb(255, 255, 255);
@@ -161,12 +137,6 @@
      </item>
      <item>
       <widget class="QLabel" name="labelCard_5">
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>170</height>
-        </size>
-       </property>
        <property name="styleSheet">
         <string notr="true">QLabel {
     border: 2px solid  rgb(255, 255, 255);
@@ -177,12 +147,6 @@
      </item>
      <item>
       <widget class="QLabel" name="labelCard_6">
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>170</height>
-        </size>
-       </property>
        <property name="styleSheet">
         <string notr="true">QLabel {
     border: 2px solid  rgb(255, 255, 255);

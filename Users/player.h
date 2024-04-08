@@ -5,10 +5,6 @@
 
 class Player : public User
 {
-    int ID{};
-    QString name{};
-    QString login{};
-    Roles role{};
     double balance{};
 
 public:
@@ -22,6 +18,7 @@ public:
     QString getLogin() override;
     Roles getRole() override;
     double getBalance();
+    QByteArray getPhoto() override;
 
     //METHODS
     QByteArray serializeUser() override;

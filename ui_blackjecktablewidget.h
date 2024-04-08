@@ -80,7 +80,6 @@ public:
 
         labelCard_1 = new QLabel(BlackJeckTableWidget);
         labelCard_1->setObjectName(QString::fromUtf8("labelCard_1"));
-        labelCard_1->setMinimumSize(QSize(100, 170));
         labelCard_1->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    border: 2px solid  rgb(255, 255, 255);\n"
 "	border-radius: 10px;\n"
@@ -90,7 +89,6 @@ public:
 
         labelCard_2 = new QLabel(BlackJeckTableWidget);
         labelCard_2->setObjectName(QString::fromUtf8("labelCard_2"));
-        labelCard_2->setMinimumSize(QSize(100, 170));
         labelCard_2->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    border: 2px solid  rgb(255, 255, 255);\n"
 "	border-radius: 10px;\n"
@@ -100,7 +98,6 @@ public:
 
         labelCard_3 = new QLabel(BlackJeckTableWidget);
         labelCard_3->setObjectName(QString::fromUtf8("labelCard_3"));
-        labelCard_3->setMinimumSize(QSize(100, 170));
         labelCard_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    border: 2px solid  rgb(255, 255, 255);\n"
 "	border-radius: 10px;\n"
@@ -110,7 +107,6 @@ public:
 
         labelCard_4 = new QLabel(BlackJeckTableWidget);
         labelCard_4->setObjectName(QString::fromUtf8("labelCard_4"));
-        labelCard_4->setMinimumSize(QSize(100, 170));
         labelCard_4->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    border: 2px solid  rgb(255, 255, 255);\n"
 "	border-radius: 10px;\n"
@@ -120,7 +116,6 @@ public:
 
         labelCard_5 = new QLabel(BlackJeckTableWidget);
         labelCard_5->setObjectName(QString::fromUtf8("labelCard_5"));
-        labelCard_5->setMinimumSize(QSize(100, 170));
         labelCard_5->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    border: 2px solid  rgb(255, 255, 255);\n"
 "	border-radius: 10px;\n"
@@ -130,7 +125,6 @@ public:
 
         labelCard_6 = new QLabel(BlackJeckTableWidget);
         labelCard_6->setObjectName(QString::fromUtf8("labelCard_6"));
-        labelCard_6->setMinimumSize(QSize(100, 170));
         labelCard_6->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    border: 2px solid  rgb(255, 255, 255);\n"
 "	border-radius: 10px;\n"

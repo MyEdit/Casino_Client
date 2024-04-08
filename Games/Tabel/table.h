@@ -38,11 +38,11 @@ class Table
 {
     Game game{};
     TableSettings tableSettings{};
-    int currentNumPlayer;
+    QList<QSharedPointer<Player>> playes{};
 
 public:
     Table(Game game, TableSettings tableSettings);
-    Table(Game game, TableSettings tableSettings, int currentNumPlayer);
+    Table(const QByteArray& data);
 
     static QList<QSharedPointer<Table>> tables;
 
@@ -59,7 +59,6 @@ public:
     void tryJoin();
     void leave();
     QByteArray serializeTable();
-    static QSharedPointer<Table> deserializeTable(const QByteArray& data);
 };
 
 #endif // TABLE_H

@@ -5,11 +5,6 @@
 
 class StuffUser : public User
 {
-    int ID{};
-    QString name{};
-    QString login{};
-    Roles role{};
-
 public:
     StuffUser(int ID, QString name, QString login, Roles role);
     StuffUser(const QByteArray& data);
@@ -20,6 +15,7 @@ public:
     QString getName() override;
     QString getLogin() override;
     Roles getRole() override;
+    QByteArray getPhoto() override;
 
     //METHODS
     QByteArray serializeUser() override;

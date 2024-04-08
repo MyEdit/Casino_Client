@@ -8,11 +8,25 @@ Table::Table(Game game, TableSettings tableSettings)
     this->tableSettings = tableSettings;
 }
 
-Table::Table(Game game, TableSettings tableSettings, int currentNumPlayer)
+Table::Table(const QByteArray& data)
 {
-    this->game = game;
-    this->tableSettings = tableSettings;
-    this->currentNumPlayer = currentNumPlayer;
+    QDataStream stream(data);
+    QByteArray gameData, settingsData;
+    int currentNumPlayer;
+    stream >> gameData >> settingsData >> currentNumPlayer;
+    QSharedPointer<Game> game = Game::deserializeGame(gameData);
+    TableSettings settings = TableSettings::deserializeTableSettings(settingsData);
+
+    for (int i = 0; i < currentNumPlayer; ++i)
+    {
+        QByteArray playerData;
+        stream >> playerData;
+        QSharedPointer<Player> player(new Player(playerData));
+        playes.append(player);
+    }
+
+    this->game = *game.get();
+    this->tableSettings = settings;
 }
 
 void Table::addTable(QSharedPointer<Table> table)
@@ -27,19 +41,17 @@ QByteArray Table::serializeTable()
     QDataStream stream(&data, QIODevice::WriteOnly);
     QByteArray gameData = game.serializeGame();
     QByteArray settingsData = tableSettings.serializeTableSettings();
-    stream << gameData << settingsData;
-    return data;
-}
+    int currentNumPlayer = playes.size();
 
-QSharedPointer<Table> Table::deserializeTable(const QByteArray& data)
-{
-    QDataStream stream(data);
-    QByteArray gameData, settingsData;
-    int currentNumPlayer;
-    stream >> gameData >> settingsData >> currentNumPlayer;
-    QSharedPointer<Game> game = Game::deserializeGame(gameData);
-    TableSettings settings = TableSettings::deserializeTableSettings(settingsData);
-    return QSharedPointer<Table>(new Table(*game.get(), settings, currentNumPlayer));
+    stream << gameData << settingsData << currentNumPlayer;
+
+    for (QSharedPointer<Player> player : playes)
+    {
+        QByteArray playerData = player->serializeUser();
+        stream << playerData;
+    }
+
+    return data;
 }
 
 bool Table::canJoin()
@@ -71,5 +83,5 @@ TableSettings Table::getSettings()
 
 int Table::getCurrentNumPlayer()
 {
-    return  currentNumPlayer;
+    return  playes.size();
 }

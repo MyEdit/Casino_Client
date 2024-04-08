@@ -31,7 +31,7 @@ public:
 
 protected:
     void onNavigationsButton_clicked();
-    QPixmap uploadingUserPhoto(QString url);
+    QPixmap uploadingUserPhoto(QByteArray data);
     void settingWindowPosition();
     void changeEvent(QEvent *event);
     void prepareStyleSheets();

@@ -13,7 +13,6 @@ void P_Authorization::openMainWindow(QSharedPointer<User> user)
 
     setActualUser(user);
 
-
     if(user->getRole() == Roles::User)
     {
         playerW = new Window_Player();

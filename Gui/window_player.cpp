@@ -53,7 +53,7 @@ void Window_Player::rendering_WelcomeTab()
 
 void Window_Player::uploadingPhotoPlaer()
 {
-    QPixmap photo = uploadingUserPhoto(":/photos/resources/TestStuffPhoto.jpg");
+    QPixmap photo = uploadingUserPhoto(P_Authorization::getPlayer()->getPhoto());
 
     ui->photo->setScaledContents(true);
     ui->photo->setPixmap(photo);

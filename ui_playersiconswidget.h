@@ -12,6 +12,8 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -35,6 +37,11 @@ public:
     QVBoxLayout *layoutIcon_5;
     QVBoxLayout *layoutIcon_6;
     QVBoxLayout *layoutIcon_7;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer_3;
+    QPushButton *buttonTakeCard;
+    QPushButton *buttonDoNotTakeCard;
+    QSpacerItem *horizontalSpacer_4;
 
     void setupUi(QWidget *PlayersIconsWidget)
     {
@@ -105,6 +112,29 @@ public:
 
         gridLayout->addLayout(layoutIcon_7, 7, 5, 1, 1);
 
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_3);
+
+        buttonTakeCard = new QPushButton(PlayersIconsWidget);
+        buttonTakeCard->setObjectName(QString::fromUtf8("buttonTakeCard"));
+
+        horizontalLayout->addWidget(buttonTakeCard);
+
+        buttonDoNotTakeCard = new QPushButton(PlayersIconsWidget);
+        buttonDoNotTakeCard->setObjectName(QString::fromUtf8("buttonDoNotTakeCard"));
+
+        horizontalLayout->addWidget(buttonDoNotTakeCard);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_4);
+
+
+        gridLayout->addLayout(horizontalLayout, 7, 2, 1, 3);
+
 
         retranslateUi(PlayersIconsWidget);
 
@@ -114,6 +144,8 @@ public:
     void retranslateUi(QWidget *PlayersIconsWidget)
     {
         PlayersIconsWidget->setWindowTitle(QApplication::translate("PlayersIconsWidget", "Form", nullptr));
+        buttonTakeCard->setText(QApplication::translate("PlayersIconsWidget", "\320\222\320\267\321\217\321\202\321\214 \320\265\321\211\321\221", nullptr));
+        buttonDoNotTakeCard->setText(QApplication::translate("PlayersIconsWidget", "\320\235\320\265 \320\261\321\200\320\260\321\202\321\214", nullptr));
     } // retranslateUi
 
 };

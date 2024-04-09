@@ -20,6 +20,7 @@ public:
     ~PlayerIcon();
 
     void setPlayer(QSharedPointer<Player> player);
+    const QSharedPointer<Player> getPlayer();
 
 private:
     void settingInformation();

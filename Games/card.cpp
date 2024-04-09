@@ -1,4 +1,4 @@
-#include "card.h"
+﻿#include "card.h"
 #include <QStringList>
 
 QMap<Card, QString> Card::CardTextures = {

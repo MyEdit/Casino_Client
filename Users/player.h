@@ -10,7 +10,7 @@ class Player : public User
 public:
     Player(int ID, QString name, double balance, QString login, Roles role);
     Player(const QByteArray& data);
-    Player();
+    Player() {};
 
     //GETTERS
     int getID() override;

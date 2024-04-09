@@ -31,10 +31,14 @@
        <height>100</height>
       </size>
      </property>
+     <property name="maximumSize">
+      <size>
+       <width>100</width>
+       <height>100</height>
+      </size>
+     </property>
      <property name="styleSheet">
-      <string notr="true">QLabel{
-	border-image: url(:/InterfaceEements/resources/Player.png);
-}</string>
+      <string notr="true"/>
      </property>
      <property name="text">
       <string/>

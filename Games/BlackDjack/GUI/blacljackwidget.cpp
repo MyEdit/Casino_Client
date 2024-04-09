@@ -41,3 +41,16 @@ void BlaclJackWidget::resizeEvent(QResizeEvent* event)
     tabel->setFixedSize(w, h);
 }
 
+void BlaclJackWidget::renderTakeCard(Card card)
+{
+    tabel->movingCard(card);
+}
+
+void BlaclJackWidget::renderFakeTakeCard(QString nicname)
+{
+    for(QSharedPointer<PlayerIcon> playersIcon : playersIcons->getPlayerIcons())
+    {
+        if(playersIcon->getPlayer()->getName() == nicname)
+            tabel->movingFaceCard(playersIcons->getRectPlayerIcon(playersIcon));
+    }
+}

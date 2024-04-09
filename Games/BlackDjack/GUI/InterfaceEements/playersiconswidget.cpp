@@ -8,6 +8,7 @@ PlayersIconsWidget::PlayersIconsWidget(QWidget *parent) :
     ui->setupUi(this);
     assigningValues();
     rendering();
+    connects();
 }
 
 PlayersIconsWidget::~PlayersIconsWidget()
@@ -22,15 +23,66 @@ void PlayersIconsWidget::assigningValues()
         QSharedPointer<PlayerIcon> plaerIcon = QSharedPointer<PlayerIcon>(new PlayerIcon());
         playerIcons.append(plaerIcon);
     }
+
+    widgetLayer =
+    {
+        {playerIcons[0], ui->layoutIcon_1},
+        {playerIcons[1], ui->layoutIcon_2},
+        {playerIcons[2], ui->layoutIcon_3},
+        {playerIcons[3], ui->layoutIcon_4},
+        {playerIcons[4], ui->layoutIcon_5},
+        {playerIcons[5], ui->layoutIcon_6},
+        {playerIcons[6], ui->layoutIcon_7}
+    };
 }
 
 void PlayersIconsWidget::rendering()
 {
-    ui->layoutIcon_1->addWidget(playerIcons[0].get());
-    ui->layoutIcon_2->addWidget(playerIcons[1].get());
-    ui->layoutIcon_3->addWidget(playerIcons[2].get());
-    ui->layoutIcon_4->addWidget(playerIcons[3].get());
-    ui->layoutIcon_5->addWidget(playerIcons[4].get());
-    ui->layoutIcon_6->addWidget(playerIcons[5].get());
-    ui->layoutIcon_7->addWidget(playerIcons[6].get());
+    QMap<QSharedPointer<PlayerIcon>, QVBoxLayout*>::iterator it;
+    for (it = widgetLayer.begin(); it != widgetLayer.end(); it++)
+        it.value()->addWidget(it.key().get());
+}
+
+QList<QSharedPointer<PlayerIcon>> PlayersIconsWidget::getPlayerIcons()
+{
+    QList<QSharedPointer<PlayerIcon>> icon;
+
+    for(QSharedPointer<PlayerIcon> playersIcon : playerIcons)
+    {
+        if(playersIcon->getPlayer() != nullptr)
+            icon.append(playersIcon);
+    }
+
+    return icon;
+}
+
+void PlayersIconsWidget::connects()
+{
+    connect(ui->buttonTakeCard, &QPushButton::clicked, this, &PlayersIconsWidget::takeCard);
+    connect(ui->buttonDoNotTakeCard, &QPushButton::clicked, this, &PlayersIconsWidget::doNotTakeCard);
+}
+
+void PlayersIconsWidget::takeCard()
+{
+    //TODO: послать запрос на взятие карты
+
+    blocingInterface(false);
+}
+
+void PlayersIconsWidget::doNotTakeCard()
+{
+    //TODO: послать запрос на скип хода
+
+    blocingInterface(false);
+}
+
+void PlayersIconsWidget::blocingInterface(bool flag)
+{
+    ui->buttonTakeCard->setEnabled(flag);
+    ui->buttonDoNotTakeCard->setEnabled(flag);
+}
+
+QRect PlayersIconsWidget::getRectPlayerIcon(QSharedPointer<PlayerIcon> playerIcon)
+{
+    return widgetLayer[playerIcon]->geometry();
 }

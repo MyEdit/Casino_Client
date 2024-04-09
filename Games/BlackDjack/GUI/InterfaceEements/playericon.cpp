@@ -6,6 +6,7 @@ PlayerIcon::PlayerIcon(QWidget *parent) :
     ui(new Ui::PlayerIcon)
 {
     ui->setupUi(this);
+    setVisible(false);
 }
 
 PlayerIcon::~PlayerIcon()
@@ -16,7 +17,13 @@ PlayerIcon::~PlayerIcon()
 void PlayerIcon::setPlayer(QSharedPointer<Player> player)
 {
     this->player = player;
+    setVisible(true);
     settingInformation();
+}
+
+const QSharedPointer<Player> PlayerIcon::getPlayer()
+{
+    return player;
 }
 
 void PlayerIcon::settingInformation()
@@ -40,5 +47,6 @@ void PlayerIcon::setImage()
     painter.setClipPath(path);
     painter.drawPixmap(0, 0, photo);
 
+    ui->playerIcon->setScaledContents(true);
     ui->playerIcon->setPixmap(roundedPhoto);
 }

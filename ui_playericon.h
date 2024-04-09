@@ -47,9 +47,8 @@ public:
         sizePolicy.setHeightForWidth(playerIcon->sizePolicy().hasHeightForWidth());
         playerIcon->setSizePolicy(sizePolicy);
         playerIcon->setMinimumSize(QSize(100, 100));
-        playerIcon->setStyleSheet(QString::fromUtf8("QLabel{\n"
-"	border-image: url(:/InterfaceEements/resources/Player.png);\n"
-"}"));
+        playerIcon->setMaximumSize(QSize(100, 100));
+        playerIcon->setStyleSheet(QString::fromUtf8(""));
         playerIcon->setScaledContents(false);
         playerIcon->setAlignment(Qt::AlignCenter);
 

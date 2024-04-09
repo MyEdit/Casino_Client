@@ -5,6 +5,7 @@
 #include <QTimer>
 #include "Games/BlackDjack/GUI/InterfaceEements/blackjecktablewidget.h"
 #include "Games/BlackDjack/GUI/InterfaceEements/playersiconswidget.h"
+#include "Network/PacketsActions/p_authorization.h"
 
 namespace Ui {
 class BlaclJackWidget;
@@ -20,6 +21,9 @@ class BlaclJackWidget : public QWidget
 public:
     explicit BlaclJackWidget(QWidget *parent = nullptr);
     ~BlaclJackWidget();
+
+    void renderTakeCard(Card card);
+    void renderFakeTakeCard(QString nicname);
 
 private:
     void rendering();

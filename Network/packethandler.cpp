@@ -57,10 +57,13 @@ void PacketHandler::packetHandler(PacketTypes packettype)
         }
         case(PacketTypes::P_ConnectPlayerToTable):
         {
+            //TODO:
+            //emit signalOpenGame(P_ConnectPlayerToTable::getTable());
             break;
         }
         case(PacketTypes::P_SendTables):
         {
+            //А лучше передавать в сигнале лист новых столов, эстетичнее) emit signalSetTables(P_SendTables::getTablesFromServer());
             P_SendTables::getTablesFromServer();
             emit signalSetTables();
             break;

@@ -68,7 +68,7 @@ void Table::tryJoin()
 {
     PacketTypes packettype = PacketTypes::P_ConnectPlayerToTable;
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
-    NetworkClient::sendToServer(this->tableSettings.ID, sizeof(int));
+    NetworkClient::sendToServer(&this->tableSettings.ID, sizeof(int));
 }
 
 Game Table::getGame()

@@ -51,6 +51,7 @@ SOURCES += \
     Gui/TabWidgets/Player/gametable.cpp \
     Gui/form.cpp \
     Network/PacketsActions/p_authorization.cpp \
+    Network/PacketsActions/p_connectplayertotable.cpp \
     Network/PacketsActions/p_notification.cpp \
     Network/PacketsActions/p_query.cpp \
     Network/PacketsActions/p_reconnection.cpp \
@@ -106,6 +107,7 @@ HEADERS += \
     Gui/form.h \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
+    Network/PacketsActions/p_connectplayertotable.h \
     Network/PacketsActions/p_notification.h \
     Network/PacketsActions/p_query.h \
     Network/PacketsActions/p_reconnection.h \

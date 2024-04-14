@@ -21,6 +21,7 @@ public:
     explicit PlayersIconsWidget(QWidget *parent = nullptr);
     ~PlayersIconsWidget();
 
+    void addPlayer(QSharedPointer<Player> player);
     QList<QSharedPointer<PlayerIcon>> getPlayerIcons();
     QRect getRectPlayerIcon(QSharedPointer<PlayerIcon> playerIcon);
 

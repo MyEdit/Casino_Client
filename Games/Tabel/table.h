@@ -3,10 +3,10 @@
 
 #include <QSharedPointer>
 #include <QList>
-#include "Games/gamer.h"
 #include "Games/Tabel/game.h"
 #include "Users/player.h"
 #include "Network/PacketsActions/p_authorization.h"
+#include "Games/BlackDjack/GUI/blacljackwidget.h"
 
 //Перенеси бы в отдельный файл
 struct TableSettings
@@ -50,6 +50,8 @@ public:
     TableSettings getSettings();
     Game getGame();
     int getCurrentNumPlayer();
+    static QSharedPointer<Table> getTable(int idTable);
+
     static void addTable(QSharedPointer<Table> table);
 
     //METHODS
@@ -59,6 +61,7 @@ public:
     void tryJoin();
     void leave();
     QByteArray serializeTable();
+    void openGameGUI();
 };
 
 #endif // TABLE_H

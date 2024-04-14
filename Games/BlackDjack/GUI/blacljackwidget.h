@@ -7,6 +7,8 @@
 #include "Games/BlackDjack/GUI/InterfaceEements/playersiconswidget.h"
 #include "Network/PacketsActions/p_authorization.h"
 
+class PlayersIconsWidget;
+
 namespace Ui {
 class BlaclJackWidget;
 }
@@ -22,6 +24,9 @@ public:
     explicit BlaclJackWidget(QWidget *parent = nullptr);
     ~BlaclJackWidget();
 
+    void openGame(QSharedPointer<Player> player);
+
+    void addPlayer(QSharedPointer<Player> player);
     void renderTakeCard(Card card);
     void renderFakeTakeCard(QString nicname);
 

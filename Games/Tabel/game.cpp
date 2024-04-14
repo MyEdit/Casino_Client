@@ -1,9 +1,5 @@
 ﻿#include "game.h"
 
-Game::Game()
-{
-
-}
 
 Game::Game(QString nameGame)
 {
@@ -13,6 +9,11 @@ Game::Game(QString nameGame)
 QString Game::getNameGame()
 {
     return nameGame;
+}
+
+void Game::getGUI()
+{
+    //TODO: нужно будет на основании названия игры определять какую GUI запускать
 }
 
 

@@ -35,6 +35,20 @@ void Table::addTable(QSharedPointer<Table> table)
         tables.append(table);
 }
 
+QSharedPointer<Table> Table::getTable(int ID)
+{
+    for (QSharedPointer<Table> table : tables)
+    {
+        if (table->getSettings().ID == ID)
+        {
+            return table;
+        }
+    }
+
+    return nullptr;
+}
+
+
 QByteArray Table::serializeTable()
 {
     QByteArray data;
@@ -84,4 +98,13 @@ TableSettings Table::getSettings()
 int Table::getCurrentNumPlayer()
 {
     return  playes.size();
+}
+
+void Table::openGameGUI()
+{
+    game.getGUI(); //TODO: должен вернуть гуи игры
+
+    //Для теста
+    BlaclJackWidget* gameTest = new BlaclJackWidget();
+    gameTest->openGame(P_Authorization::getPlayer());
 }

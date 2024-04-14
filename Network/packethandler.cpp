@@ -58,7 +58,7 @@ void PacketHandler::packetHandler(PacketTypes packettype)
         case(PacketTypes::P_ConnectPlayerToTable):
         {
             //TODO:
-            //emit signalOpenGame(P_ConnectPlayerToTable::getTable());
+            emit signalOpenGame(P_ConnectPlayerToTable::getTable());
             break;
         }
         case(PacketTypes::P_SendTables):

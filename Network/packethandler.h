@@ -2,16 +2,18 @@
 #define CLIENTHANDLER_H
 
 #include <QThread>
-#include "GUI/Notification/notification.h"
+#include "Gui/Notification/notification.h"
 #include "Network/PacketTypes.h"
 #include "Network/PacketsActions/p_authorization.h"
 #include "Network/PacketsActions/p_sendmodel.h"
 #include "Network/PacketsActions/p_query.h"
 #include "Network/PacketsActions/p_notification.h"
 #include "Network/PacketsActions/p_sendtables.h"
+#include "Network/PacketsActions/p_connectplayertotable.h"
 #include "Users/user.h"
 
 class NetworkClient;
+class Table;
 
 class PacketHandler : public QThread
 {
@@ -24,13 +26,14 @@ private:
     void tryReconnectToServer();
 
 signals:
-    void signalOpenForm(QSharedPointer<User> user);
+    void signalOpenForm(QSharedPointer<User>);
     void signalSetModel(ModelData);
     void signalSetQueryModel(QueryData*);
     void signalViewNotification(QPair<TypeMessage, QString>);
     void signalReconnecting();
     void signalFinishReconnecting();
     void signalSetTables();
+    void signalOpenGame(QSharedPointer<Table>);
 };
 
 #endif // CLIENTHANDLER_H

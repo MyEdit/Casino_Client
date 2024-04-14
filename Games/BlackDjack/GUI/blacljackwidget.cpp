@@ -54,3 +54,14 @@ void BlaclJackWidget::renderFakeTakeCard(QString nicname)
             tabel->movingFaceCard(playersIcons->getRectPlayerIcon(playersIcon));
     }
 }
+
+void BlaclJackWidget::addPlayer(QSharedPointer<Player> player)
+{
+    playersIcons->addPlayer(player);
+}
+
+void BlaclJackWidget::openGame(QSharedPointer<Player> player)
+{
+    addPlayer(player);
+    show();
+}

@@ -86,3 +86,15 @@ QRect PlayersIconsWidget::getRectPlayerIcon(QSharedPointer<PlayerIcon> playerIco
 {
     return widgetLayer[playerIcon]->geometry();
 }
+
+void PlayersIconsWidget::addPlayer(QSharedPointer<Player> player)
+{
+    for(QSharedPointer<PlayerIcon> playersIcon : playerIcons)
+    {
+        if(playersIcon->getPlayer() == nullptr)
+        {
+            playersIcon->setPlayer(player);
+            break;
+        }
+    }
+}

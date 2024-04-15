@@ -36,7 +36,7 @@ void PacketHandler::tryReconnectToServer()
 }
 
 void PacketHandler::packetHandler(PacketTypes packettype)
-{
+{   
     //TODO: Свернуть весь свитч в мапу указателей на функции
     switch(packettype)
     {

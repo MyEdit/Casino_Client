@@ -28,10 +28,6 @@ public:
 private:
     void rendering();
     void assigningValues();
-    void connects();
-    void takeCard();
-    void doNotTakeCard();
-    void blocingInterface(bool flag);
 };
 
 #endif // PLAYERSICONSWIDGET_H

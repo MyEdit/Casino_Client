@@ -35,6 +35,10 @@ private:
     void renderingTable();
     void renderingPlayersIcons();
     void resizeEvent(QResizeEvent *event) override;
+    void connects();
+    void takeCard();
+    void doNotTakeCard();
+    void blocingInterface(bool flag);
 };
 
 #endif // BLACLJACKWIDGET_H

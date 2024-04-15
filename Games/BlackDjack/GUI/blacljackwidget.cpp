@@ -7,6 +7,7 @@ BlaclJackWidget::BlaclJackWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     rendering();
+    connects();
 }
 
 BlaclJackWidget::~BlaclJackWidget()
@@ -68,4 +69,30 @@ void BlaclJackWidget::openGame(QList<QSharedPointer<Player>> playes)
         addPlayer(player);
 
     show();
+}
+
+void BlaclJackWidget::connects()
+{
+    connect(ui->buttonTakeCard, &QPushButton::clicked, this, &BlaclJackWidget::takeCard);
+    connect(ui->buttonDoNotTakeCard, &QPushButton::clicked, this, &BlaclJackWidget::doNotTakeCard);
+}
+
+void BlaclJackWidget::takeCard()
+{
+    //TODO: послать запрос на взятие карты
+
+    blocingInterface(false);
+}
+
+void BlaclJackWidget::doNotTakeCard()
+{
+    //TODO: послать запрос на скип хода
+
+    blocingInterface(false);
+}
+
+void BlaclJackWidget::blocingInterface(bool flag)
+{
+    ui->buttonTakeCard->setEnabled(flag);
+    ui->buttonDoNotTakeCard->setEnabled(flag);
 }

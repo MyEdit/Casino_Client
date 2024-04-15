@@ -8,7 +8,6 @@ PlayersIconsWidget::PlayersIconsWidget(QWidget *parent) :
     ui->setupUi(this);
     assigningValues();
     rendering();
-    connects();
 }
 
 PlayersIconsWidget::~PlayersIconsWidget()
@@ -54,32 +53,6 @@ QList<QSharedPointer<PlayerIcon>> PlayersIconsWidget::getPlayerIcons()
     }
 
     return icon;
-}
-
-void PlayersIconsWidget::connects()
-{
-    connect(ui->buttonTakeCard, &QPushButton::clicked, this, &PlayersIconsWidget::takeCard);
-    connect(ui->buttonDoNotTakeCard, &QPushButton::clicked, this, &PlayersIconsWidget::doNotTakeCard);
-}
-
-void PlayersIconsWidget::takeCard()
-{
-    //TODO: послать запрос на взятие карты
-
-    blocingInterface(false);
-}
-
-void PlayersIconsWidget::doNotTakeCard()
-{
-    //TODO: послать запрос на скип хода
-
-    blocingInterface(false);
-}
-
-void PlayersIconsWidget::blocingInterface(bool flag)
-{
-    ui->buttonTakeCard->setEnabled(flag);
-    ui->buttonDoNotTakeCard->setEnabled(flag);
 }
 
 QRect PlayersIconsWidget::getRectPlayerIcon(QSharedPointer<PlayerIcon> playerIcon)

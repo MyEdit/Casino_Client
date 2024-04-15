@@ -106,5 +106,5 @@ void Table::openGameGUI()
 
     //Для теста
     BlaclJackWidget* gameTest = new BlaclJackWidget();
-    gameTest->openGame(P_Authorization::getPlayer());
+    gameTest->openGame(playes);
 }

@@ -24,7 +24,7 @@ public:
     explicit BlaclJackWidget(QWidget *parent = nullptr);
     ~BlaclJackWidget();
 
-    void openGame(QSharedPointer<Player> player);
+    void openGame(QList<QSharedPointer<Player>> playes);
 
     void addPlayer(QSharedPointer<Player> player);
     void renderTakeCard(Card card);

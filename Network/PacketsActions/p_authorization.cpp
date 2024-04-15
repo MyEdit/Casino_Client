@@ -20,7 +20,7 @@ void P_Authorization::openMainWindow(QSharedPointer<User> user)
         return;
     }
 
-    if (user->getRole()  != Roles::None)
+    if (user->getRole()  == Roles::Admin || user->getRole()  == Roles::TableManager)
     {
         adminW = new Window_Admin();
         adminW->show();

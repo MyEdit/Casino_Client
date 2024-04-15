@@ -41,11 +41,9 @@ void Form::mousePressEvent(QMouseEvent* event)
     QWidget::mousePressEvent(event);
     setStyleSheet(pressStyleSheet);
 
-    Notification* message = new Notification();
-    message->setAlertProperties(TypeMessage::Warning, "Запустить игру пока не возможно", WindowTracker::activeWindow); //Временно
-
     if (!this->table->canJoin())
     {
+        Notification* message = new Notification();
         message->setAlertProperties(TypeMessage::Warning, "Вы не можете присоединиться к этой игре", WindowTracker::activeWindow);
         return;
     }

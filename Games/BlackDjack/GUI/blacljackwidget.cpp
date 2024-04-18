@@ -56,19 +56,18 @@ void BlaclJackWidget::renderFakeTakeCard(QString nicname)
     }
 }
 
-void BlaclJackWidget::addPlayer(QSharedPointer<Player> player)
-{
-    playersIcons->addPlayer(player);
-}
-
 void BlaclJackWidget::updatePlayersIcons(QList<QSharedPointer<Player>> playes)
 {
+    qDebug() << playes.size();
     playersIcons->fullClearInfo();
 
-    addPlayer(P_Authorization::getPlayer());
+    playersIcons->addPlayer(P_Authorization::getPlayer());
 
     for(QSharedPointer<Player> player : playes)
-        addPlayer(player);
+    {
+        if(player->getLogin() != P_Authorization::getPlayer()->getLogin())
+            playersIcons->addPlayer(player);
+    }
 }
 
 void BlaclJackWidget::connects()

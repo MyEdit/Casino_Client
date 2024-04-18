@@ -7,7 +7,8 @@
 #include "Users/player.h"
 #include "Users/stuffuser.h"
 #include <Network/PacketTypes.h>
-#include <Constants.h>
+#include "Constants.h"
+#include <QMutex>
 
 class Window_Admin;
 class Window_Player;
@@ -20,6 +21,7 @@ class P_Authorization : public QObject
     static QSharedPointer<User> user;
     static QSharedPointer<Player> player;
     static QSharedPointer<StuffUser> stuffUser;
+    static QMutex accessMutex;
 
 public:
     static Window_Admin* adminW;

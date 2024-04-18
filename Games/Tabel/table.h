@@ -3,6 +3,7 @@
 
 #include <QSharedPointer>
 #include <QList>
+#include <QMutex>
 #include "Games/Tabel/game.h"
 #include "Users/player.h"
 #include "Network/PacketsActions/p_authorization.h"
@@ -41,20 +42,21 @@ class Table
     Game game{};
     TableSettings tableSettings{};
     QList<QSharedPointer<Player>> players{};
+    static QList<QSharedPointer<Table>> tables;
+    static QMutex accessTablesMutex;
+
     BlaclJackWidget* gameTest; //для теста
 
 public:
     Table(Game game, TableSettings tableSettings);
     Table(const QByteArray& data);
 
-    static QList<QSharedPointer<Table>> tables;
-
     //GETTERS
     TableSettings getSettings();
     Game getGame();
     int getCurrentNumPlayer();
     static QSharedPointer<Table> getTable(int idTable);
-
+    static QList<QSharedPointer<Table>>& getTabels();
     static void addTable(QSharedPointer<Table> table);
 
     //METHODS

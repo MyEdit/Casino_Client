@@ -6,6 +6,7 @@ Window_Player* P_Authorization::playerW;
 QSharedPointer<User> P_Authorization::user;
 QSharedPointer<Player> P_Authorization::player;
 QSharedPointer<StuffUser> P_Authorization::stuffUser;
+QMutex P_Authorization::accessMutex;
 
 void P_Authorization::openMainWindow(QSharedPointer<User> user)
 {
@@ -61,6 +62,7 @@ void P_Authorization::sendData(QString login, QString password)
 
 void P_Authorization::setActualUser(QSharedPointer<User> newUser)
 {
+    QMutexLocker locker(&accessMutex);
     user = newUser;
 }
 
@@ -71,10 +73,12 @@ QSharedPointer<User> P_Authorization::getActualUser()
 
 QSharedPointer<Player> P_Authorization::getPlayer()
 {
+    QMutexLocker locker(&accessMutex);
     return player;
 }
 
 QSharedPointer<StuffUser> P_Authorization::getStuffuser()
 {
+    QMutexLocker locker(&accessMutex);
     return stuffUser;
 }

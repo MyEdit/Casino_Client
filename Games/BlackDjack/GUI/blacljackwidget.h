@@ -37,7 +37,6 @@ private:
     void takeCard();
     void doNotTakeCard();
     void blocingInterface(bool flag);
-    void addPlayer(QSharedPointer<Player> player);
 };
 
 #endif // BLACLJACKWIDGET_H

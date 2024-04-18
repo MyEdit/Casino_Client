@@ -21,6 +21,7 @@ public:
 
     void setPlayer(QSharedPointer<Player> player);
     const QSharedPointer<Player> getPlayer();
+    void clearInfo();
 
 private:
     void settingInformation();

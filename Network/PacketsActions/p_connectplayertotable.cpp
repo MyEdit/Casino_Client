@@ -13,3 +13,8 @@ void P_ConnectPlayerToTable::openGameGUI(QSharedPointer<Table> table)
 {
     table->openGameGUI();
 }
+
+void P_ConnectPlayerToTable::updatePlayers(QSharedPointer<Table> table)
+{
+    table->updatePlayers();
+}

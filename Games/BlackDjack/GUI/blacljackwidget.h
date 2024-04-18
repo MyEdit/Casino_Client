@@ -24,9 +24,7 @@ public:
     explicit BlaclJackWidget(QWidget *parent = nullptr);
     ~BlaclJackWidget();
 
-    void openGame(QList<QSharedPointer<Player>> playes);
-
-    void addPlayer(QSharedPointer<Player> player);
+    void updatePlayersIcons(QList<QSharedPointer<Player>> playes);
     void renderTakeCard(Card card);
     void renderFakeTakeCard(QString nicname);
 
@@ -39,6 +37,7 @@ private:
     void takeCard();
     void doNotTakeCard();
     void blocingInterface(bool flag);
+    void addPlayer(QSharedPointer<Player> player);
 };
 
 #endif // BLACLJACKWIDGET_H

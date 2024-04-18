@@ -61,14 +61,14 @@ void BlaclJackWidget::addPlayer(QSharedPointer<Player> player)
     playersIcons->addPlayer(player);
 }
 
-void BlaclJackWidget::openGame(QList<QSharedPointer<Player>> playes)
+void BlaclJackWidget::updatePlayersIcons(QList<QSharedPointer<Player>> playes)
 {
+    playersIcons->fullClearInfo();
+
     addPlayer(P_Authorization::getPlayer());
 
     for(QSharedPointer<Player> player : playes)
         addPlayer(player);
-
-    show();
 }
 
 void BlaclJackWidget::connects()

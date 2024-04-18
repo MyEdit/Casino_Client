@@ -71,3 +71,9 @@ void PlayersIconsWidget::addPlayer(QSharedPointer<Player> player)
         }
     }
 }
+
+void PlayersIconsWidget::fullClearInfo()
+{
+    for(QSharedPointer<PlayerIcon> playersIcon : playerIcons)
+        playersIcon->clearInfo();
+}

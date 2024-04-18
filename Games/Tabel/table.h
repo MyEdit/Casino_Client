@@ -8,6 +8,8 @@
 #include "Network/PacketsActions/p_authorization.h"
 #include "Games/BlackDjack/GUI/blacljackwidget.h"
 
+class BlaclJackWidget;
+
 //Перенеси бы в отдельный файл
 struct TableSettings
 {
@@ -38,7 +40,8 @@ class Table
 {
     Game game{};
     TableSettings tableSettings{};
-    QList<QSharedPointer<Player>> playes{};
+    QList<QSharedPointer<Player>> players{};
+    BlaclJackWidget* gameTest; //для теста
 
 public:
     Table(Game game, TableSettings tableSettings);
@@ -62,6 +65,7 @@ public:
     void leave();
     QByteArray serializeTable();
     void openGameGUI();
+    void updatePlayers();
 };
 
 #endif // TABLE_H

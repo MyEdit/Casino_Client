@@ -24,6 +24,7 @@ public:
     void addPlayer(QSharedPointer<Player> player);
     QList<QSharedPointer<PlayerIcon>> getPlayerIcons();
     QRect getRectPlayerIcon(QSharedPointer<PlayerIcon> playerIcon);
+    void fullClearInfo();
 
 private:
     void rendering();

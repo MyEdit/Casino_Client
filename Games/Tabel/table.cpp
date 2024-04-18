@@ -22,7 +22,7 @@ Table::Table(const QByteArray& data)
         QByteArray playerData;
         stream >> playerData;
         QSharedPointer<Player> player(new Player(playerData));
-        playes.append(player);
+        players.append(player);
     }
 
     this->game = *game.get();
@@ -55,11 +55,11 @@ QByteArray Table::serializeTable()
     QDataStream stream(&data, QIODevice::WriteOnly);
     QByteArray gameData = game.serializeGame();
     QByteArray settingsData = tableSettings.serializeTableSettings();
-    int currentNumPlayer = playes.size();
+    int currentNumPlayer = players.size();
 
     stream << gameData << settingsData << currentNumPlayer;
 
-    for (QSharedPointer<Player> player : playes)
+    for (QSharedPointer<Player> player : players)
     {
         QByteArray playerData = player->serializeUser();
         stream << playerData;
@@ -97,7 +97,7 @@ TableSettings Table::getSettings()
 
 int Table::getCurrentNumPlayer()
 {
-    return  playes.size();
+    return  players.size();
 }
 
 void Table::openGameGUI()
@@ -105,6 +105,12 @@ void Table::openGameGUI()
     game.getGUI(); //TODO: должен вернуть гуи игры
 
     //Для теста
-    BlaclJackWidget* gameTest = new BlaclJackWidget();
-    gameTest->openGame(playes);
+    gameTest = new BlaclJackWidget();
+    gameTest->updatePlayersIcons(players);
+    gameTest->show();
+}
+
+void Table::updatePlayers()
+{
+    gameTest->updatePlayersIcons(players);
 }

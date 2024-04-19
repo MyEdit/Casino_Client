@@ -3,10 +3,11 @@
 
 #include <QWidget>
 #include <QTimer>
-#include "Games/BlackDjack/GUI/InterfaceEements/blackjecktablewidget.h"
+#include "Games/BlackDjack/GUI/InterfaceEements/blackjeckbackground.h"
 #include "Games/BlackDjack/GUI/InterfaceEements/playersiconswidget.h"
 #include "Network/PacketsActions/p_authorization.h"
 #include "Games/card.h"
+#include "Games/Tabel/table.h"
 
 class PlayersIconsWidget;
 
@@ -18,11 +19,12 @@ class BlaclJackWidget : public QWidget
 {
     Q_OBJECT
     Ui::BlaclJackWidget *ui;
-    QSharedPointer<BlackJeckTableWidget> tabel;
+    QSharedPointer<BlackJeckBackground> background;
     QSharedPointer<PlayersIconsWidget> playersIcons;
+    QSharedPointer<Table> table;
 
 public:
-    explicit BlaclJackWidget(QWidget *parent = nullptr);
+    explicit BlaclJackWidget(QSharedPointer<Table> table, QWidget *parent = nullptr);
     ~BlaclJackWidget();
 
     void updatePlayersIcons(QList<QSharedPointer<Player>> playes);
@@ -38,6 +40,7 @@ private:
     void takeCard();
     void doNotTakeCard();
     void blocingInterface(bool flag);
+    void closeEvent(QCloseEvent* event) override;
 };
 
 #endif // BLACLJACKWIDGET_H

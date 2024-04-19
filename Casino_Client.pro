@@ -38,7 +38,7 @@ SOURCES += \
     GUI/WorkingWithRecords/Admin/w_stuffuser.cpp \
     GUI/WorkingWithRecords/Admin/w_table.cpp \
     GUI/window_player.cpp \
-    Games/BlackDjack/GUI/InterfaceEements/blackjecktablewidget.cpp \
+    Games/BlackDjack/GUI/InterfaceEements/blackjeckbackground.cpp \
     Games/BlackDjack/GUI/InterfaceEements/playericon.cpp \
     Games/BlackDjack/GUI/InterfaceEements/playersiconswidget.cpp \
     Games/BlackDjack/GUI/blackjackwindow.cpp \
@@ -90,7 +90,7 @@ HEADERS += \
     GUI/WorkingWithRecords/Admin/w_stuffuser.h \
     GUI/WorkingWithRecords/Admin/w_table.h \
     GUI/window_player.h \
-    Games/BlackDjack/GUI/InterfaceEements/blackjecktablewidget.h \
+    Games/BlackDjack/GUI/InterfaceEements/blackjeckbackground.h \
     Games/BlackDjack/GUI/InterfaceEements/playericon.h \
     Games/BlackDjack/GUI/InterfaceEements/playersiconswidget.h \
     Games/BlackDjack/GUI/blackjackwindow.h \
@@ -141,7 +141,7 @@ FORMS += \
     GUI/WorkingWithRecords/Admin/w_stuffuser.ui \
     GUI/WorkingWithRecords/Admin/w_table.ui \
     GUI/window_player.ui \
-    Games/BlackDjack/GUI/InterfaceEements/blackjecktablewidget.ui \
+    Games/BlackDjack/GUI/InterfaceEements/blackjeckbackground.ui \
     Games/BlackDjack/GUI/InterfaceEements/playericon.ui \
     Games/BlackDjack/GUI/InterfaceEements/playersiconswidget.ui \
     Games/BlackDjack/GUI/blackjackwindow.ui \

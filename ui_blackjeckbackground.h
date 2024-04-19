@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'blackjecktablewidget.ui'
+** Form generated from reading UI file 'blackjeckbackground.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.12.7
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_BLACKJECKTABLEWIDGET_H
-#define UI_BLACKJECKTABLEWIDGET_H
+#ifndef UI_BLACKJECKBACKGROUND_H
+#define UI_BLACKJECKBACKGROUND_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -160,9 +160,9 @@ public:
 };
 
 namespace Ui {
-    class BlackJeckBackground: public Ui_BlackJeckTableWidget {};
+    class BlackJeckTableWidget: public Ui_BlackJeckTableWidget {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_BLACKJECKTABLEWIDGET_H
+#endif // UI_BLACKJECKBACKGROUND_H

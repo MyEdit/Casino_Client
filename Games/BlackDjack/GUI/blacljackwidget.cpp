@@ -1,9 +1,10 @@
 ﻿#include "blacljackwidget.h"
 #include "ui_blacljackwidget.h"
 
-BlaclJackWidget::BlaclJackWidget(QWidget *parent) :
+BlaclJackWidget::BlaclJackWidget(QSharedPointer<Table> table, QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::BlaclJackWidget)
+    ui(new Ui::BlaclJackWidget),
+    table(table)
 {
     ui->setupUi(this);
     rendering();
@@ -23,8 +24,8 @@ void BlaclJackWidget::rendering()
 
 void BlaclJackWidget::renderingTable()
 {
-    tabel = QSharedPointer<BlackJeckTableWidget>(new BlackJeckTableWidget());
-    ui->gridLayout->addWidget(tabel.get(), 0, 0, Qt::AlignCenter);
+    background = QSharedPointer<BlackJeckBackground>(new BlackJeckBackground());
+    ui->gridLayout->addWidget(background.get(), 0, 0, Qt::AlignCenter);
 }
 
 void BlaclJackWidget::renderingPlayersIcons()
@@ -39,12 +40,12 @@ void BlaclJackWidget::resizeEvent(QResizeEvent* event)
 
     int w = width() / 1.3;
     int h = height() / 1.3;
-    tabel->setFixedSize(w, h);
+    background->setFixedSize(w, h);
 }
 
 void BlaclJackWidget::renderTakeCard(Card card)
 {
-    tabel->movingCard(card);
+    background->movingCard(card);
 }
 
 void BlaclJackWidget::renderFakeTakeCard(QString nicname)
@@ -52,7 +53,7 @@ void BlaclJackWidget::renderFakeTakeCard(QString nicname)
     for(QSharedPointer<PlayerIcon> playersIcon : playersIcons->getPlayerIcons())
     {
         if(playersIcon->getPlayer()->getName() == nicname)
-            tabel->movingFaceCard(playersIcons->getRectPlayerIcon(playersIcon));
+            background->movingFaceCard(playersIcons->getRectPlayerIcon(playersIcon));
     }
 }
 
@@ -93,4 +94,14 @@ void BlaclJackWidget::blocingInterface(bool flag)
 {
     ui->buttonTakeCard->setEnabled(flag);
     ui->buttonDoNotTakeCard->setEnabled(flag);
+}
+
+void BlaclJackWidget::closeEvent(QCloseEvent* event)
+{
+    QWidget::closeEvent(event);
+
+    int idTable = table->getSettings().ID;
+    PacketTypes packettype = PacketTypes::P_PlayerLeaveTable;
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&idTable, sizeof(int));
 }

@@ -14,7 +14,8 @@ enum class PacketTypes
     P_QueryWithoutResponce,
     P_Query,
     P_Reconnection,
-    P_ConnectOtherPlayerToTable
+    P_ConnectOtherPlayerToTable,
+    P_PlayerLeaveTable
 };
 
 enum class ModelTypes

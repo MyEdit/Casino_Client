@@ -1,20 +1,20 @@
-﻿#include "blackjecktablewidget.h"
+﻿#include "blackjeckbackground.h"
 #include "ui_blackjecktablewidget.h"
 
-BlackJeckTableWidget::BlackJeckTableWidget(QWidget *parent) :
+BlackJeckBackground::BlackJeckBackground(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::BlackJeckTableWidget)
+    ui(new Ui::BlackJeckBackground)
 {
     ui->setupUi(this);
     assigningValues();
 }
 
-BlackJeckTableWidget::~BlackJeckTableWidget()
+BlackJeckBackground::~BlackJeckBackground()
 {
     delete ui;
 }
 
-void BlackJeckTableWidget::resizeEvent(QResizeEvent *event)
+void BlackJeckBackground::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);
 
@@ -26,7 +26,7 @@ void BlackJeckTableWidget::resizeEvent(QResizeEvent *event)
         label->setFixedSize(labelWidth, labelHeight);
 }
 
-void BlackJeckTableWidget::paintEvent(QPaintEvent* event)
+void BlackJeckBackground::paintEvent(QPaintEvent* event)
 {
     QPainter painter( this );
     painter.drawPixmap( 0, 0, QPixmap(":/InterfaceEements/resources/Table.png").scaled(size()));
@@ -34,7 +34,7 @@ void BlackJeckTableWidget::paintEvent(QPaintEvent* event)
     QWidget::paintEvent(event);
 }
 
-void BlackJeckTableWidget::movingCard(Card card)
+void BlackJeckBackground::movingCard(Card card)
 {
     QString filePatch = Card::getCardTexture(card);
 
@@ -70,7 +70,7 @@ void BlackJeckTableWidget::movingCard(Card card)
     });
 }
 
-void BlackJeckTableWidget::movingFaceCard(QRect playerPosition)
+void BlackJeckBackground::movingFaceCard(QRect playerPosition)
 {
     QString filePatch = "://Games/BlackDjack/assets/Standart/shirt.png";
 
@@ -96,7 +96,7 @@ void BlackJeckTableWidget::movingFaceCard(QRect playerPosition)
     });
 }
 
-void BlackJeckTableWidget::assigningValues()
+void BlackJeckBackground::assigningValues()
 {
     numMovePlayer = 0;
 

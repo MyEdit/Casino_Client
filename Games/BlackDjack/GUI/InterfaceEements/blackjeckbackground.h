@@ -1,5 +1,5 @@
-﻿#ifndef BLACKJECKTABLEWIDGET_H
-#define BLACKJECKTABLEWIDGET_H
+﻿#ifndef BLACKJECKBACKGTOUND_H
+#define BLACKJECKBACKGTOUND_H
 
 #include <QWidget>
 #include <QPainter>
@@ -11,19 +11,19 @@
 #include "Utils/notificationutil.h"
 
 namespace Ui {
-class BlackJeckTableWidget;
+class BlackJeckBackground;
 }
 
-class BlackJeckTableWidget : public QWidget
+class BlackJeckBackground : public QWidget
 {
     Q_OBJECT
-    Ui::BlackJeckTableWidget *ui;
+    Ui::BlackJeckBackground *ui;
     QMap<int, QLabel*> placeCardOnTable;
     int numMovePlayer;
 
 public:
-    explicit BlackJeckTableWidget(QWidget *parent = nullptr);
-    ~BlackJeckTableWidget();
+    explicit BlackJeckBackground(QWidget *parent = nullptr);
+    ~BlackJeckBackground();
 
     void movingCard(Card card);
     void movingFaceCard(QRect playerPosition);
@@ -34,4 +34,4 @@ private:
     void paintEvent(QPaintEvent* event) override;
 };
 
-#endif // BLACKJECKTABLEWIDGET_H
+#endif // BLACKJECKBACKGTOUND_H

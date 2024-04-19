@@ -108,7 +108,8 @@ void Table::openGameGUI()
     game.getGUI(); //TODO: должен вернуть гуи игры
 
     //Для теста
-    BlaclJackWidget* gameTest = new BlaclJackWidget();
+    qDebug() << tableSettings.ID;
+    BlaclJackWidget* gameTest = new BlaclJackWidget(QSharedPointer<Table>(this));
     gameTest->updatePlayersIcons(players);
     gameTest->show();
     P_Authorization::getPlayer()->setTableGUI(gameTest);
@@ -123,4 +124,16 @@ QList<QSharedPointer<Table>>& Table::getTabels()
 {
     QMutexLocker locker(&accessTablesMutex);
     return tables;
+}
+
+void Table::setNewData(TableSettings tableSettings, Game game, QList<QSharedPointer<Player>> players)
+{
+    this->tableSettings = tableSettings;
+    this->game = game;
+    this->players = players;
+}
+
+QList<QSharedPointer<Player>> Table::getPlayers()
+{
+    return players;
 }

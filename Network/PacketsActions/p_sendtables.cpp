@@ -2,8 +2,6 @@
 
 void P_SendTables::getTablesFromServer()
 {
-    Table::getTabels().clear();
-
     int countTables;    
     recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&countTables), sizeof(int), 0);
 
@@ -15,8 +13,17 @@ void P_SendTables::getTablesFromServer()
         receivedData.resize(dataSize);
         recv(NetworkClient::serverSocket, receivedData.data(), dataSize, 0);
 
-        QSharedPointer<Table> table(new Table(receivedData));
-        Table::addTable(table);
+        QSharedPointer<Table> newTable(new Table(receivedData));
+
+        if(!Table::getTable(newTable->getSettings().ID))
+        {
+            Table::addTable(newTable);
+        }
+        else
+        {
+            QSharedPointer<Table> table = Table::getTable(newTable->getSettings().ID);
+            table->setNewData(newTable->getSettings(), newTable->getGame(), newTable->getPlayers());
+        }
     }
 }
 

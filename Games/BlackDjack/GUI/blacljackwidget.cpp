@@ -58,7 +58,6 @@ void BlaclJackWidget::renderFakeTakeCard(QString nicname)
 
 void BlaclJackWidget::updatePlayersIcons(QList<QSharedPointer<Player>> playes)
 {
-    qDebug() << playes.size();
     playersIcons->fullClearInfo();
 
     playersIcons->addPlayer(P_Authorization::getPlayer());

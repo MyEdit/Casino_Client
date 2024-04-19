@@ -5,6 +5,8 @@
 #include <QPainter>
 #include "Users/player.h"
 
+class Player;
+
 namespace Ui {
 class PlayerIcon;
 }

@@ -6,7 +6,7 @@
 #include <QPropertyAnimation>
 #include <QTimer>
 #include <QLabel>
-#include "Users/player.h"
+//#include "Users/player.h"
 #include "Games/card.h"
 #include "Utils/notificationutil.h"
 

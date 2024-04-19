@@ -10,6 +10,7 @@
 #include "Games/BlackDjack/GUI/blacljackwidget.h"
 
 class BlaclJackWidget;
+class Player;
 
 //Перенеси бы в отдельный файл
 struct TableSettings
@@ -44,8 +45,6 @@ class Table
     QList<QSharedPointer<Player>> players{};
     static QList<QSharedPointer<Table>> tables;
     static QMutex accessTablesMutex;
-
-    BlaclJackWidget* gameTest; //для теста
 
 public:
     Table(Game game, TableSettings tableSettings);

@@ -69,3 +69,13 @@ QByteArray Player::serializeUser()
     stream << photo;
     return byteArray;
 }
+
+void Player::setTableGUI(BlaclJackWidget* tableGUI)
+{
+    this->tableGUI = tableGUI;
+}
+
+BlaclJackWidget* Player::getTableGUI()
+{
+    return tableGUI;
+}

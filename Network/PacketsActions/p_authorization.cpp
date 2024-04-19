@@ -30,6 +30,7 @@ void P_Authorization::openMainWindow(QSharedPointer<User> user)
 
 QSharedPointer<User> P_Authorization::getUser()
 {
+    QMutexLocker locker(&accessMutex);
     Roles role;
     int sizeByteUser;
     QByteArray byteUser;
@@ -68,6 +69,7 @@ void P_Authorization::setActualUser(QSharedPointer<User> newUser)
 
 QSharedPointer<User> P_Authorization::getActualUser()
 {
+    QMutexLocker locker(&accessMutex);
     return user;
 }
 

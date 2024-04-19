@@ -108,14 +108,15 @@ void Table::openGameGUI()
     game.getGUI(); //TODO: должен вернуть гуи игры
 
     //Для теста
-    gameTest = new BlaclJackWidget();
+    BlaclJackWidget* gameTest = new BlaclJackWidget();
     gameTest->updatePlayersIcons(players);
     gameTest->show();
+    P_Authorization::getPlayer()->setTableGUI(gameTest);
 }
 
 void Table::updatePlayers()
 {
-    gameTest->updatePlayersIcons(players);
+    P_Authorization::getPlayer()->getTableGUI()->updatePlayersIcons(players);
 }
 
 QList<QSharedPointer<Table>>& Table::getTabels()

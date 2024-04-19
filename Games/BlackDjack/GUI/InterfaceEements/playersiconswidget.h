@@ -6,6 +6,8 @@
 #include "Games/BlackDjack/GUI/InterfaceEements/playericon.h"
 #include "Network/PacketsActions/p_authorization.h"
 
+class PlayerIcon;
+
 namespace Ui {
 class PlayersIconsWidget;
 }

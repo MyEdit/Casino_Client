@@ -27,7 +27,10 @@ void PlayerIcon::clearInfo()
 
     QList<QLabel*> labels = this->findChildren<QLabel*>();
     for(QLabel* label : labels)
+    {
+        if(label != ui->labelScore)
         label->clear();
+    }
 }
 
 const QSharedPointer<Player> PlayerIcon::getPlayer()

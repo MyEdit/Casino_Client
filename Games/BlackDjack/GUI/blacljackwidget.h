@@ -6,6 +6,7 @@
 #include "Games/BlackDjack/GUI/InterfaceEements/blackjecktablewidget.h"
 #include "Games/BlackDjack/GUI/InterfaceEements/playersiconswidget.h"
 #include "Network/PacketsActions/p_authorization.h"
+#include "Games/card.h"
 
 class PlayersIconsWidget;
 

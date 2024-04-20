@@ -28,12 +28,12 @@ void Form::paintEvent(QPaintEvent* event)
 
 void Form::settingInformation()
 {
-    ui->name->setText(table->getGame().getNameGame());
+    ui->name->setText(table->getGame().getName());
     ui->minBet->setText(QString::number(table->getSettings().minBet));
     ui->betStep->setText(QString::number(table->getSettings().stepBet));
     ui->minBalance->setText(QString::number(table->getSettings().minBalance));
     ui->currentNumPlayer->setText(QString::number(table->getCurrentNumPlayer()));
-    ui->maxNumPlayer->setText(QString::number(table->getSettings().maxNumPlayer));
+    ui->maxNumPlayer->setText(QString::number(table->getSettings().maxCountPlayers));
 }
 
 void Form::mousePressEvent(QMouseEvent* event)

@@ -6,7 +6,7 @@ Game::Game(QString nameGame)
     this->nameGame = nameGame;
 }
 
-QString Game::getNameGame()
+QString Game::getName()
 {
     return nameGame;
 }

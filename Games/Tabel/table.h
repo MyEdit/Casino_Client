@@ -19,13 +19,13 @@ struct TableSettings
     double minBet;
     double stepBet;
     double minBalance;
-    int maxNumPlayer;
+    int maxCountPlayers;
 
     QByteArray serializeTableSettings() const
     {
         QByteArray data;
         QDataStream stream(&data, QIODevice::WriteOnly);
-        stream << ID << minBet << stepBet << minBalance << maxNumPlayer;
+        stream << ID << minBet << stepBet << minBalance << maxCountPlayers;
         return data;
     }
 
@@ -33,7 +33,7 @@ struct TableSettings
     {
         QDataStream stream(data);
         TableSettings settings;
-        stream >> settings.ID >> settings.minBet >> settings.stepBet >> settings.minBalance >> settings.maxNumPlayer;
+        stream >> settings.ID >> settings.minBet >> settings.stepBet >> settings.minBalance >> settings.maxCountPlayers;
         return settings;
     }
 };

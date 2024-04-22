@@ -30,6 +30,7 @@ public:
     void updatePlayersIcons(QList<QSharedPointer<Player>> playes);
     void renderTakeCard(Card card);
     void renderFakeTakeCard(QString nicname);
+    void updateTimer(int timerData);
 
 private:
     void rendering();
@@ -40,6 +41,7 @@ private:
     void takeCard();
     void doNotTakeCard();
     void blocingInterface(bool flag);
+    void showEvent(QShowEvent* event) override;
     void closeEvent(QCloseEvent* event) override;
 };
 

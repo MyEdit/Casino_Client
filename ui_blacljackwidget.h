@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QWidget>
@@ -23,12 +24,13 @@ class Ui_BlaclJackWidget
 {
 public:
     QGridLayout *gridLayout;
+    QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
     QPushButton *buttonTakeCard;
     QPushButton *buttonDoNotTakeCard;
     QSpacerItem *horizontalSpacer_2;
-    QSpacerItem *verticalSpacer;
+    QLabel *labelGameProcess;
 
     void setupUi(QWidget *BlaclJackWidget)
     {
@@ -39,6 +41,10 @@ public:
         BlaclJackWidget->setMinimumSize(QSize(800, 0));
         gridLayout = new QGridLayout(BlaclJackWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer, 0, 0, 1, 1);
+
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -60,11 +66,19 @@ public:
         horizontalLayout_2->addItem(horizontalSpacer_2);
 
 
-        gridLayout->addLayout(horizontalLayout_2, 1, 0, 1, 1);
+        gridLayout->addLayout(horizontalLayout_2, 2, 0, 1, 1);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        labelGameProcess = new QLabel(BlaclJackWidget);
+        labelGameProcess->setObjectName(QString::fromUtf8("labelGameProcess"));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Segoe UI"));
+        font.setPointSize(14);
+        font.setBold(true);
+        font.setWeight(75);
+        labelGameProcess->setFont(font);
+        labelGameProcess->setAlignment(Qt::AlignCenter);
 
-        gridLayout->addItem(verticalSpacer, 0, 0, 1, 1);
+        gridLayout->addWidget(labelGameProcess, 1, 0, 1, 1);
 
 
         retranslateUi(BlaclJackWidget);
@@ -77,6 +91,7 @@ public:
         BlaclJackWidget->setWindowTitle(QApplication::translate("BlaclJackWidget", "Form", nullptr));
         buttonTakeCard->setText(QApplication::translate("BlaclJackWidget", "\320\222\320\267\321\217\321\202\321\214 \320\272\320\260\321\200\321\202\321\203", nullptr));
         buttonDoNotTakeCard->setText(QApplication::translate("BlaclJackWidget", "\320\245\320\262\320\260\321\202\320\270\321\202", nullptr));
+        labelGameProcess->setText(QApplication::translate("BlaclJackWidget", "\320\242\320\260\320\271\320\274\320\265\321\200", nullptr));
     } // retranslateUi
 
 };

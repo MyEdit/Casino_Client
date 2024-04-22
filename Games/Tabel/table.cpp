@@ -108,7 +108,6 @@ void Table::openGameGUI()
     game.getGUI(); //TODO: должен вернуть гуи игры
 
     //Для теста
-    qDebug() << tableSettings.ID;
     BlaclJackWidget* gameTest = new BlaclJackWidget(QSharedPointer<Table>(this));
     gameTest->updatePlayersIcons(players);
     gameTest->show();

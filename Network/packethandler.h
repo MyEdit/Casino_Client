@@ -36,6 +36,7 @@ signals:
     void signalSetTables();
     void signalOpenGame(QSharedPointer<Table>);
     void signalUpdatePlayers(QSharedPointer<Table>);
+    void signalUpdateTimer(int);
 };
 
 #endif // CLIENTHANDLER_H

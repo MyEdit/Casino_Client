@@ -20,6 +20,13 @@ void BlaclJackWidget::rendering()
 {
     renderingTable();
     renderingPlayersIcons();
+
+    for (int i = 0; i < ui->horizontalLayout_2->count(); i++)
+    {
+        QWidget* widget = ui->horizontalLayout_2->itemAt(i)->widget();
+        if (widget)
+            widget->hide();
+    }
 }
 
 void BlaclJackWidget::renderingTable()
@@ -96,6 +103,13 @@ void BlaclJackWidget::blocingInterface(bool flag)
     ui->buttonDoNotTakeCard->setEnabled(flag);
 }
 
+void BlaclJackWidget::showEvent(QShowEvent* event)
+{
+    QWidget::showEvent(event);
+
+    WindowTracker::activeWindow->setEnabled(false);
+}
+
 void BlaclJackWidget::closeEvent(QCloseEvent* event)
 {
     QWidget::closeEvent(event);
@@ -104,4 +118,28 @@ void BlaclJackWidget::closeEvent(QCloseEvent* event)
     PacketTypes packettype = PacketTypes::P_PlayerLeaveTable;
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&idTable, sizeof(int));
+
+    WindowTracker::activeWindow->setEnabled(true);
+}
+
+void BlaclJackWidget::updateTimer(int timerData)
+{
+    QString time{};
+    if(timerData == -1)
+        time = "Ожидание минималького кол-ва игроков...";
+    else
+        time = QString::number(timerData);
+
+    if(timerData == 0)
+    {
+        for (int i = 0; i < ui->horizontalLayout_2->count(); i++)
+        {
+            QWidget* widget = ui->horizontalLayout_2->itemAt(i)->widget();
+            if (widget)
+                widget->show();
+        }
+        time = "Игра началась";
+    }
+
+    ui->labelGameProcess->setText(time);
 }

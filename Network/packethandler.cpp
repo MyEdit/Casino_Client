@@ -1,4 +1,4 @@
-#include "packethandler.h"
+﻿#include "packethandler.h"
 
 void PacketHandler::run()
 {
@@ -83,7 +83,7 @@ void PacketHandler::packetHandler(PacketTypes packettype)
         }
         case(PacketTypes::P_UpdateGameTimer):
         {
-            P_UpdateGameTimer::getTimerData(); //TODO: Добавить сигнал и передавать в гуишку
+            emit signalUpdateTimer(P_UpdateGameTimer::getTimerData()); //TODO: Добавить сигнал и передавать в гуишку
             break;
         }
         default:

@@ -10,6 +10,7 @@
 #include "Network/PacketsActions/p_notification.h"
 #include "Network/PacketsActions/p_sendtables.h"
 #include "Network/PacketsActions/p_connectplayertotable.h"
+#include "Network/PacketsActions/p_updategametimer.h"
 #include "Users/user.h"
 
 class NetworkClient;

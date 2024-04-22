@@ -57,6 +57,7 @@ SOURCES += \
     Network/PacketsActions/p_reconnection.cpp \
     Network/PacketsActions/p_sendmodel.cpp \
     Network/PacketsActions/p_sendtables.cpp \
+    Network/PacketsActions/p_updategametimer.cpp \
     Network/networkclient.cpp \
     Network/packethandler.cpp \
     Users/player.cpp \
@@ -113,6 +114,7 @@ HEADERS += \
     Network/PacketsActions/p_reconnection.h \
     Network/PacketsActions/p_sendmodel.h \
     Network/PacketsActions/p_sendtables.h \
+    Network/PacketsActions/p_updategametimer.h \
     Network/networkclient.h \
     Network/packethandler.h \
     Users/player.h \

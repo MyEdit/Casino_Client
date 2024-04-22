@@ -15,7 +15,8 @@ enum class PacketTypes
     P_Query,
     P_Reconnection,
     P_ConnectOtherPlayerToTable,
-    P_PlayerLeaveTable
+    P_PlayerLeaveTable,
+    P_UpdateGameTimer
 };
 
 enum class ModelTypes

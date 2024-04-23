@@ -83,7 +83,22 @@ void PacketHandler::packetHandler(PacketTypes packettype)
         }
         case(PacketTypes::P_UpdateGameTimer):
         {
-            emit signalUpdateTimer(P_UpdateGameTimer::getTimerData()); //TODO: Добавить сигнал и передавать в гуишку
+            emit signalUpdateTimer(P_UpdateGameTimer::getTimerData());
+            break;
+        }
+        case(PacketTypes::P_TakeCard):
+        {
+            emit signalTakeCard(P_TakeCard::takeCard());
+            break;
+        }
+        case(PacketTypes::P_StartMove):
+        {
+            emit signalStartMove();
+            break;
+        }
+        case(PacketTypes::P_TakeCardAnotherPlayer):
+        {
+            emit signalTakeCardAnotherPlayer(P_TakeCard::takeCardAnotherPlayer());
             break;
         }
         default:

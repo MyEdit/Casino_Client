@@ -61,6 +61,7 @@ bool NetworkClient::start()
     qRegisterMetaType<QSharedPointer<User>>("QSharedPointer<User>");
     qRegisterMetaType<QPair<TypeMessage, QString>>("QPair<TypeMessage, QString>");
     qRegisterMetaType<QSharedPointer<Table>>("QSharedPointer<Table>");
+    qRegisterMetaType<QSharedPointer<Card>>("QSharedPointer<Card>");
 
     packetHandler = new PacketHandler();
 
@@ -74,6 +75,9 @@ bool NetworkClient::start()
     QObject::connect(packetHandler, &PacketHandler::signalOpenGame, this, &P_ConnectPlayerToTable::openGameGUI);
     QObject::connect(packetHandler, &PacketHandler::signalUpdatePlayers, this, &P_ConnectPlayerToTable::updatePlayers);
     QObject::connect(packetHandler, &PacketHandler::signalUpdateTimer, this, &P_UpdateGameTimer::updateTimer);
+    QObject::connect(packetHandler, &PacketHandler::signalTakeCard, this, &P_TakeCard::renderTakeCard);
+    QObject::connect(packetHandler, &PacketHandler::signalTakeCardAnotherPlayer, this, &P_TakeCard::renderTakeCardAnotherPlayer);
+    QObject::connect(packetHandler, &PacketHandler::signalStartMove, this, &P_StartMove::startMove);
 
     packetHandler->start();
     return true;

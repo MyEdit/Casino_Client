@@ -5,6 +5,7 @@
 #include "Games/cardSuit.h"
 #include <QString>
 #include <QMap>
+#include <QSharedPointer>
 
 class Card
 {

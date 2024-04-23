@@ -28,9 +28,10 @@ public:
     ~BlaclJackWidget();
 
     void updatePlayersIcons(QList<QSharedPointer<Player>> playes);
-    void renderTakeCard(Card card);
+    void renderTakeCard(QSharedPointer<Card> card);
     void renderFakeTakeCard(QString nicname);
     void updateTimer(int timerData);
+    void blocingInterface(bool flag);
 
 private:
     void rendering();
@@ -40,7 +41,6 @@ private:
     void connects();
     void takeCard();
     void doNotTakeCard();
-    void blocingInterface(bool flag);
     void showEvent(QShowEvent* event) override;
     void closeEvent(QCloseEvent* event) override;
 };

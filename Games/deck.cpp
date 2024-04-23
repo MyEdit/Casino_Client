@@ -1,4 +1,4 @@
-#include "deck.h"
+﻿#include "deck.h"
 #include <random>
 #include <ctime>
 #include <algorithm>

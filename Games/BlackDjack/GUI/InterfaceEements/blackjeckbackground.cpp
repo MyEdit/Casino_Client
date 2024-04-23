@@ -34,9 +34,9 @@ void BlackJeckBackground::paintEvent(QPaintEvent* event)
     QWidget::paintEvent(event);
 }
 
-void BlackJeckBackground::movingCard(Card card)
+void BlackJeckBackground::movingCard(QSharedPointer<Card> card)
 {
-    QString filePatch = Card::getCardTexture(card);
+    QString filePatch = Card::getCardTexture(*card);
 
     if(placeCardOnTable.size() == numMovePlayer)
     {

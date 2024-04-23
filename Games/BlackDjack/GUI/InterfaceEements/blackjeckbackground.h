@@ -6,7 +6,6 @@
 #include <QPropertyAnimation>
 #include <QTimer>
 #include <QLabel>
-//#include "Users/player.h"
 #include "Games/card.h"
 #include "Utils/notificationutil.h"
 
@@ -25,7 +24,7 @@ public:
     explicit BlackJeckBackground(QWidget *parent = nullptr);
     ~BlackJeckBackground();
 
-    void movingCard(Card card);
+    void movingCard(QSharedPointer<Card> card);
     void movingFaceCard(QRect playerPosition);
 
 private:

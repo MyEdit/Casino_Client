@@ -50,7 +50,7 @@ void BlaclJackWidget::resizeEvent(QResizeEvent* event)
     background->setFixedSize(w, h);
 }
 
-void BlaclJackWidget::renderTakeCard(Card card)
+void BlaclJackWidget::renderTakeCard(QSharedPointer<Card> card)
 {
     background->movingCard(card);
 }
@@ -59,7 +59,7 @@ void BlaclJackWidget::renderFakeTakeCard(QString nicname)
 {
     for(QSharedPointer<PlayerIcon> playersIcon : playersIcons->getPlayerIcons())
     {
-        if(playersIcon->getPlayer()->getName() == nicname)
+        if(playersIcon->getPlayer()->getLogin() == nicname)
             background->movingFaceCard(playersIcons->getRectPlayerIcon(playersIcon));
     }
 }
@@ -87,12 +87,24 @@ void BlaclJackWidget::takeCard()
 {
     //TODO: послать запрос на взятие карты
 
+    PacketTypes packettype = PacketTypes::P_TakeCard;
+    int idTable = table->getSettings().ID;
+
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&idTable, sizeof(int));
+
     blocingInterface(false);
 }
 
 void BlaclJackWidget::doNotTakeCard()
 {
     //TODO: послать запрос на скип хода
+
+    PacketTypes packettype = PacketTypes::P_PassMove;
+    int idTable = table->getSettings().ID;
+
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&idTable, sizeof(int));
 
     blocingInterface(false);
 }
@@ -139,6 +151,7 @@ void BlaclJackWidget::updateTimer(int timerData)
                 widget->show();
         }
         time = "Игра началась";
+        blocingInterface(false);
     }
 
     ui->labelGameProcess->setText(time);

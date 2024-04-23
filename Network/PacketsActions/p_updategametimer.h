@@ -6,8 +6,8 @@
 class P_UpdateGameTimer
 {
 public:
-    static int getTimerData();
-    static void updateTimer(int timerData);
+    static QString getData();
+    static void updateProcessing(QString data);
 };
 
 #endif // P_UPDATEGAMETIMER_H

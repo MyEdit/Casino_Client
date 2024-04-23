@@ -134,15 +134,32 @@ void BlaclJackWidget::closeEvent(QCloseEvent* event)
     WindowTracker::activeWindow->setEnabled(true);
 }
 
-void BlaclJackWidget::updateTimer(int timerData)
+void BlaclJackWidget::updateProcessing(QString data)
 {
-    QString time{};
-    if(timerData == -1)
-        time = "Ожидание минималького кол-ва игроков...";
-    else
-        time = QString::number(timerData);
+    bool ok;
+    data.toInt(&ok);
+    if(ok)
+    {
+        updateTimer(data);
+        return;
+    }
 
-    if(timerData == 0)
+    QString processing = "Ход - " + data;
+    blocingInterface(false);
+
+    ui->labelGameProcess->setText(processing);
+}
+
+void BlaclJackWidget::updateTimer(QString time)
+{
+    QString processing{};
+
+    if(time == "-1")
+        processing = "Ожидание минималького кол-ва игроков...";
+    else
+        processing = time;
+
+    if(time == "0")
     {
         for (int i = 0; i < ui->horizontalLayout_2->count(); i++)
         {
@@ -150,9 +167,9 @@ void BlaclJackWidget::updateTimer(int timerData)
             if (widget)
                 widget->show();
         }
-        time = "Игра началась";
+        processing = "Игра началась";
         blocingInterface(false);
     }
 
-    ui->labelGameProcess->setText(time);
+    ui->labelGameProcess->setText(processing);
 }

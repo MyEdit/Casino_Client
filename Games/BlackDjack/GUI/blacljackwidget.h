@@ -30,7 +30,7 @@ public:
     void updatePlayersIcons(QList<QSharedPointer<Player>> playes);
     void renderTakeCard(QSharedPointer<Card> card);
     void renderFakeTakeCard(QString nicname);
-    void updateTimer(int timerData);
+    void updateProcessing(QString data);
     void blocingInterface(bool flag);
 
 private:
@@ -43,6 +43,7 @@ private:
     void doNotTakeCard();
     void showEvent(QShowEvent* event) override;
     void closeEvent(QCloseEvent* event) override;
+    void updateTimer(QString time);
 };
 
 #endif // BLACLJACKWIDGET_H

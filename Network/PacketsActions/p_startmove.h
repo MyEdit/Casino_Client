@@ -6,7 +6,8 @@
 class P_StartMove
 {
 public:
-    static void startMove();
+    static QString getMove();
+    static void startMove(QString nickname);
 };
 
 #endif // P_STARTMOVE_H

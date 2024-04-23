@@ -36,10 +36,10 @@ signals:
     void signalSetTables();
     void signalOpenGame(QSharedPointer<Table>);
     void signalUpdatePlayers(QSharedPointer<Table>);
-    void signalUpdateTimer(int);
+    void signalUpdateTimer(QString);
     void signalTakeCard(QSharedPointer<Card>);
     void signalTakeCardAnotherPlayer(QString);
-    void signalStartMove();
+    void signalStartMove(QString);
 };
 
 #endif // CLIENTHANDLER_H

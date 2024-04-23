@@ -83,7 +83,7 @@ void PacketHandler::packetHandler(PacketTypes packettype)
         }
         case(PacketTypes::P_UpdateGameTimer):
         {
-            emit signalUpdateTimer(P_UpdateGameTimer::getTimerData());
+            emit signalUpdateTimer(P_UpdateGameTimer::getData());
             break;
         }
         case(PacketTypes::P_TakeCard):
@@ -93,7 +93,7 @@ void PacketHandler::packetHandler(PacketTypes packettype)
         }
         case(PacketTypes::P_StartMove):
         {
-            emit signalStartMove();
+            emit signalStartMove(P_StartMove::getMove());
             break;
         }
         case(PacketTypes::P_TakeCardAnotherPlayer):

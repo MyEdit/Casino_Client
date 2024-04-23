@@ -74,7 +74,7 @@ bool NetworkClient::start()
     QObject::connect(packetHandler, &PacketHandler::signalSetTables, this, &P_SendTables::setTables);
     QObject::connect(packetHandler, &PacketHandler::signalOpenGame, this, &P_ConnectPlayerToTable::openGameGUI);
     QObject::connect(packetHandler, &PacketHandler::signalUpdatePlayers, this, &P_ConnectPlayerToTable::updatePlayers);
-    QObject::connect(packetHandler, &PacketHandler::signalUpdateTimer, this, &P_UpdateGameTimer::updateTimer);
+    QObject::connect(packetHandler, &PacketHandler::signalUpdateTimer, this, &P_UpdateGameTimer::updateProcessing);
     QObject::connect(packetHandler, &PacketHandler::signalTakeCard, this, &P_TakeCard::renderTakeCard);
     QObject::connect(packetHandler, &PacketHandler::signalTakeCardAnotherPlayer, this, &P_TakeCard::renderTakeCardAnotherPlayer);
     QObject::connect(packetHandler, &PacketHandler::signalStartMove, this, &P_StartMove::startMove);

@@ -1,13 +1,12 @@
 ﻿#include "p_updategametimer.h"
 
-int P_UpdateGameTimer::getTimerData()
+QString P_UpdateGameTimer::getData()
 {
-    int timerData;
-    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&timerData), sizeof(int), 0);
-    return timerData;
+    QString data = NetworkClient::getMessageFromServer();
+    return data;
 }
 
-void P_UpdateGameTimer::updateTimer(int timerData)
+void P_UpdateGameTimer::updateProcessing(QString data)
 {
-    P_Authorization::getPlayer()->getTableGUI()->updateTimer(timerData);
+    P_Authorization::getPlayer()->getTableGUI()->updateProcessing(data);
 }

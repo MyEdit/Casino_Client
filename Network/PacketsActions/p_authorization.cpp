@@ -54,7 +54,7 @@ QSharedPointer<User> P_Authorization::getUser()
     return user;
 }
 
-void P_Authorization::sendData(QString login, QString password)
+void P_Authorization::sendData(const QString& login, const QString& password)
 {
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(login);

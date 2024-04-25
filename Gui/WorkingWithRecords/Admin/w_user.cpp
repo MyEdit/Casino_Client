@@ -37,27 +37,27 @@ void W_User::on_buttonSave_clicked()
     this->close();
 }
 
-QString W_User::getName()
+const QString W_User::getName()
 {
     return ui->InputName->text();
 }
 
-QString W_User::getPassport()
+const QString W_User::getPassport()
 {
     return ui->InputPassport->text();
 }
 
-QString W_User::getBalance()
+const QString W_User::getBalance()
 {
     return ui->InputBalance->text();
 }
 
-QString W_User::getLogin()
+const QString W_User::getLogin()
 {
     return ui->InputLogin->text();
 }
 
-QString W_User::getPassword()
+const QString W_User::getPassword()
 {
     return ui->InputPassword->text();
 }
@@ -108,7 +108,7 @@ void W_User::customizationLiteEdit()
     ui->InputBalance->setValidator(new QIntValidator(this));
 }
 
-QString W_User::getInsertQuery(QSharedPointer<ObjectUser> user)
+const QString W_User::getInsertQuery(QSharedPointer<ObjectUser> user)
 {
     return QString("INSERT INTO Users (Name, Passport, Balance, Login, Password, ID_Role) VALUES ('%1', '%2', '%3', '%4', '%5', '%6')")
             .arg(user->getFullName())
@@ -119,7 +119,7 @@ QString W_User::getInsertQuery(QSharedPointer<ObjectUser> user)
             .arg(static_cast<int>(user->getRole()));
 }
 
-QString W_User::getUpdateQuery(QSharedPointer<ObjectUser> user)
+const QString W_User::getUpdateQuery(QSharedPointer<ObjectUser> user)
 {
     return QString("UPDATE Users SET Name = '%1', Passport = '%2', Balance = '%3', Login = '%4', Password = '%5', ID_Role = '%6' WHERE ID_User = '%7'")
             .arg(user->getFullName())

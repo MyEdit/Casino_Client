@@ -15,23 +15,23 @@ class ActiveTable
 
 public:
     ActiveTable() {}
-    ActiveTable(QString maxPlayers, QString numPlayers, QString minBet, QString betStep, QString minBalance, QString nameGame);
-    ActiveTable(int id, QString maxPlayers, QString numPlayers, QString minBet, QString betStep, QString minBalance, QString nameGame);
+    ActiveTable(const QString& maxPlayers, const QString& numPlayers, const QString& minBet, const QString& betStep, const QString& minBalance, const QString& nameGame);
+    ActiveTable(int id, const QString& maxPlayers, const QString& numPlayers, const QString& minBet, const QString& betStep, const QString& minBalance, const QString& nameGame);
 
     int getID();
-    QString getMaxPlayers();
-    QString getNumPlayers();
-    QString getMinBet();
-    QString getBetStep();
-    QString getMinBalance();
-    QString getNameGame();
+    const QString& getMaxPlayers();
+    const QString& getNumPlayers();
+    const QString& getMinBet();
+    const QString& getBetStep();
+    const QString& getMinBalance();
+    const QString& getNameGame();
 
-    void setMaxPlayers(QString maxPlayers);
-    void setNumPlayers(QString numPlayers);
-    void setMinBet(QString minBet);
-    void setBetStep(QString betStep);
-    void setMinBalance(QString minBalance);
-    void setNameGame(QString nameGame);
+    void setMaxPlayers(const QString& maxPlayers);
+    void setNumPlayers(const QString& numPlayers);
+    void setMinBet(const QString& minBet);
+    void setBetStep(const QString& betStep);
+    void setMinBalance(const QString& minBalance);
+    void setNameGame(const QString& nameGame);
 
     bool inputDataIsValid();
 };

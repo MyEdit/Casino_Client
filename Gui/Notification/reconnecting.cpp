@@ -25,7 +25,7 @@ void Reconnecting::paintEvent(QPaintEvent *event)
 
 void Reconnecting::setAlertProperties(QWidget* parentForm)
 {
-    _parentForm = parentForm;
+    this->parentForm = parentForm;
 
     QString title = "Пропало соединение с сервером";
     QString message = "Идет переподключение";
@@ -105,9 +105,9 @@ void Reconnecting::setupConnections()
 
 void Reconnecting::positionAlertBox()
 {
-    if (_parentForm)
+    if (parentForm)
     {
-        QPoint parentCenter = _parentForm->mapToGlobal(_parentForm->rect().center());
+        QPoint parentCenter = parentForm->mapToGlobal(parentForm->rect().center());
         int x = parentCenter.x() - width() / 2;
         int y = parentCenter.y() - height() / 2;
         move(x, y);

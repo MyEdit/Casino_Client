@@ -29,11 +29,11 @@ private slots:
     void on_bottonSave_clicked();
 
 private:
-    QString getMaxPlayers();
-    QString getMinBet();
-    QString getBetStep();
-    QString getMinBalance();
-    QString getNameGame();
+    const QString getMaxPlayers();
+    const QString getMinBet();
+    const QString getBetStep();
+    const QString getMinBalance();
+    const QString getNameGame();
 
     void loadComboBoxNameGame();
     void clearInput();
@@ -41,8 +41,8 @@ private:
     void onLoadForm();
     void customizationLiteEdit();
 
-    QString getInsertQuery(QSharedPointer<ActiveTable> activeTable);
-    QString getUpdateQuery(QSharedPointer<ActiveTable> activeTable);
+    const QString getInsertQuery(QSharedPointer<ActiveTable> activeTable);
+    const QString getUpdateQuery(QSharedPointer<ActiveTable> activeTable);
 };
 
 #endif // ADD_TABLE_H

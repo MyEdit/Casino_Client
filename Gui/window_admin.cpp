@@ -43,7 +43,7 @@ void Window_Admin::settingUserInformation()
     uploadingPhotoEmployee();
 }
 
-QString Window_Admin::definingrRole()
+const QString Window_Admin::definingrRole()
 {
     QString nameRole;
 
@@ -59,12 +59,7 @@ QString Window_Admin::definingrRole()
         nameRole = "Роспорядитель столов";
         break;
     }
-    case Roles::User:
-    {
-        nameRole = "Игрок";
-        break;
-    }
-    case Roles::None:
+    default:
     {
         nameRole = "Не известная роль";
         break;
@@ -102,32 +97,32 @@ void Window_Admin::assigningValues()
     };
 }
 
-void Window_Admin::setModel_UsersTab(ModelData model)
+void Window_Admin::setModel_UsersTab(QSharedPointer<ModelData> model)
 {
     users->setModel(model);
 }
 
-void Window_Admin::setModel_ActiveTablesTab(ModelData model)
+void Window_Admin::setModel_ActiveTablesTab(QSharedPointer<ModelData> model)
 {
     activeTables->setModel(model);
 }
 
-void Window_Admin::setModel_BanListTab(ModelData model)
+void Window_Admin::setModel_BanListTab(QSharedPointer<ModelData> model)
 {
     banList->setModel(model);
 }
 
-void Window_Admin::setModel_StuffUsersTab(ModelData model)
+void Window_Admin::setModel_StuffUsersTab(QSharedPointer<ModelData> model)
 {
     stuffUsers->setModel(model);
 }
 
-void Window_Admin::setModel_CreditsTab(ModelData model)
+void Window_Admin::setModel_CreditsTab(QSharedPointer<ModelData> model)
 {
     credits->setModel(model);
 }
 
-void Window_Admin::setModel_PaymentsTab(ModelData model)
+void Window_Admin::setModel_PaymentsTab(QSharedPointer<ModelData> model)
 {
     payments->setModel(model);
 }
@@ -243,7 +238,7 @@ void Window_Admin::rendering_UsersTab()
 
 void Window_Admin::rendering_WelcomeTab()
 {
-    welcomeTab = QSharedPointer<Welcome>::create(definingrRole());
+    welcomeTab = QSharedPointer<Welcome>::create(definingrRole() + " - " + P_Authorization::getStuffuser()->getName());
     ui->tabWidget->addTab(welcomeTab.data(), "");
 }
 

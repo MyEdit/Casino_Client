@@ -22,7 +22,7 @@ class Reconnecting : public QDialog
     QLabel *iconLabel;
     QProgressBar *progressBar;
     QTimer timer;
-    QWidget* _parentForm;
+    QWidget* parentForm;
 
 public:
     Reconnecting();

@@ -31,18 +31,18 @@ protected:
 public:
     BaseClassSearchWindow(QWidget *parent);
 
-    void setModel(ModelData model);
+    void setModel(QSharedPointer<ModelData> model);
 
 protected:
     void workingWithTableView();
     void blockAndOperate(QObject* widget, const std::function<void()>& operation);
     void blockingInterface(bool flag);
-    void settingValueInComboBox(QComboBox* comboBox, QString& headerText);
+    void settingValueInComboBox(QComboBox* comboBox, const QString& headerText);
     void sorting(int arg);
     void selectTypeSearch(int arg);
     void baseSetting();
     void sort();
-    void deleteRecord(QString table, QString idColumn, int id);
+    void deleteRecord(const QString& table, const QString& idColumn, int id);
     QVariant getValueFromSelectedRow(QTableView* tableView, int collumn);
     virtual void search() = 0;
     virtual void setValueToMaxPage(int maxPage) = 0;

@@ -26,7 +26,7 @@ void Notification::paintEvent(QPaintEvent *event)
 
 void Notification::setAlertProperties(TypeMessage typeMessage, QString text, QWidget* parentForm)
 {
-    _parentForm = parentForm;
+    this->parentForm = parentForm;
 
     QString title;
     QString backgroundColor;
@@ -124,11 +124,11 @@ void Notification::setupConnections()
 
 void Notification::positionAlertBox()
 {
-    if (_parentForm)
+    if (parentForm)
     {
-        QPoint parentPos = _parentForm->mapToGlobal(QPoint(0, 0));
-        int x = parentPos.x() + _parentForm->width() - width() - 15;
-        int y = parentPos.y() + _parentForm->height() - height() - 15;
+        QPoint parentPos = parentForm->mapToGlobal(QPoint(0, 0));
+        int x = parentPos.x() + parentForm->width() - width() - 15;
+        int y = parentPos.y() + parentForm->height() - height() - 15;
         move(x, y);
     }
     else

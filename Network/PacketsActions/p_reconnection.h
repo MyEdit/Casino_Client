@@ -8,7 +8,7 @@
 
 class P_Reconnection
 {
-    static Reconnecting* reconnecting;
+    static QSharedPointer<Reconnecting> reconnecting;
     static const PacketTypes packettype;
 
 public:

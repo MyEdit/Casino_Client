@@ -1,8 +1,8 @@
 ﻿#include "serializer.h"
 
-QStandardItemModel* Serializer::deserializationDataModel(QByteArray receivedData)
+QSharedPointer<QStandardItemModel> Serializer::deserializationDataModel(QByteArray receivedData)
 {
-    QStandardItemModel* model = new QStandardItemModel();
+    QSharedPointer<QStandardItemModel> model(new QStandardItemModel());
 
     QJsonDocument jsonDoc = QJsonDocument::fromJson(receivedData);
     if (!jsonDoc.isNull() && jsonDoc.isArray())

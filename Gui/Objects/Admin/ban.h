@@ -11,14 +11,14 @@ class Ban
 
 public:
     Ban() {};
-    Ban(int id, QString fullName);
-    Ban(int id, QString fullName, QString reason);
+    Ban(int id, const QString& fullName);
+    Ban(int id, const QString& fullName, const QString& reason);
 
     int getID();
-    QString getFullName();
-    QString getReason();
+    const QString& getFullName();
+    const QString& getReason();
 
-    void setReason(QString reason);
+    void setReason(const QString& reason);
 
     bool inputDataIsValid();
 };

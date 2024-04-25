@@ -27,7 +27,7 @@ public:
     static Window_Admin* adminW;
     static Window_Player* playerW;
 
-    static void sendData(QString login, QString password);
+    static void sendData(const QString& login, const QString& password);
     static void openMainWindow(QSharedPointer<User> user);
     static void setActualUser(QSharedPointer<User> newUser);
     static QSharedPointer<User> getActualUser();

@@ -31,9 +31,9 @@ public:
 
 protected:
     void onNavigationsButton_clicked();
-    QPixmap uploadingUserPhoto(QByteArray data);
+    QPixmap uploadingUserPhoto(QSharedPointer<QByteArray> data);
     void settingWindowPosition();
-    void changeEvent(QEvent *event);
+    void changeEvent(QEvent* event);
     void prepareStyleSheets();
     void settingVisual();
     virtual void assigningValues() = 0;

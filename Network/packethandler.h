@@ -28,9 +28,9 @@ private:
 
 signals:
     void signalOpenForm(QSharedPointer<User>);
-    void signalSetModel(ModelData);
-    void signalSetQueryModel(QueryData*);
-    void signalViewNotification(QPair<TypeMessage, QString>);
+    void signalSetModel(QSharedPointer<ModelData>);
+    void signalSetQueryModel(QSharedPointer<QueryData>);
+    void signalViewNotification(QPair<TypeMessage, const QString>);
     void signalReconnecting();
     void signalFinishReconnecting();
     void signalSetTables();

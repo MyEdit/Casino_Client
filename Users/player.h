@@ -25,13 +25,13 @@ public:
     QString getLogin() override;
     Roles getRole() override;
     double getBalance();
-    QByteArray getPhoto() override;
+    QSharedPointer<QByteArray> getPhoto() override;
     BlaclJackWidget* getTableGUI();
     QVector<QSharedPointer<Card>> getHand();
     QSharedPointer<Card> getCardInHand(int index);
 
     //METHODS
-    QByteArray serializeUser() override;
+    const QByteArray serializeUser() override;
     void addCardInHand(QSharedPointer<Card> card);
 };
 

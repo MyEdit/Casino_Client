@@ -108,22 +108,22 @@ void Pagination::next()
         QMessageBox::warning(this, "Внимание", "Данных больше нет!", QMessageBox::Ok);
 }
 
-void Pagination::acceptModel(ModelData structModel)
+void Pagination::acceptModel(QSharedPointer<ModelData> structModel)
 {
-    switch (structModel.modelLoadingType)
+    switch (structModel->modelLoadingType)
     {
     case ModelLoadingType::Next:
-        models[1] = QSharedPointer<QStandardItemModel>(structModel.model);
+        models[1] = QSharedPointer<QStandardItemModel>(structModel->model);
         break;
 
     case ModelLoadingType::Central:
-        models[0] = QSharedPointer<QStandardItemModel>(structModel.model);
+        models[0] = QSharedPointer<QStandardItemModel>(structModel->model);
         workingIsTableView->setModel(models[0]);
         updateTablePage();
         break;
 
     case ModelLoadingType::Prev:
-        models[2] = QSharedPointer<QStandardItemModel>(structModel.model);
+        models[2] = QSharedPointer<QStandardItemModel>(structModel->model);
         break;
     }
 
@@ -262,7 +262,7 @@ void Pagination::searchInDB()
     searchModule->searchInDB(modelTypes, P_SendModel::tableNames[modelTypes], column->currentText(), searchText + typeSearch, querySort);
 }
 
-void Pagination::distributor(QueryData* data)
+void Pagination::distributor(QSharedPointer<QueryData> data)
 {
     if(data->modelTypes != modelTypes)
         return;

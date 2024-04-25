@@ -55,11 +55,11 @@ bool NetworkClient::start()
     if (!connectToServer())
         return false;
 
-    qRegisterMetaType<ModelData>("ModelData");
-    qRegisterMetaType<ModelData>("QueryData");
+    qRegisterMetaType<QSharedPointer<ModelData>>("QSharedPointer<ModelData>");
+    qRegisterMetaType<QSharedPointer<QueryData>>("QSharedPointer<QueryData>");
     qRegisterMetaType<Roles>("Roles");
     qRegisterMetaType<QSharedPointer<User>>("QSharedPointer<User>");
-    qRegisterMetaType<QPair<TypeMessage, QString>>("QPair<TypeMessage, QString>");
+    qRegisterMetaType<QPair<TypeMessage, const QString>>("QPair<TypeMessage, const QString>");
     qRegisterMetaType<QSharedPointer<Table>>("QSharedPointer<Table>");
     qRegisterMetaType<QSharedPointer<Card>>("QSharedPointer<Card>");
 

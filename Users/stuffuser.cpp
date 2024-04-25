@@ -14,15 +14,16 @@ StuffUser::StuffUser(const QByteArray& data)
     int ID;
     QString name, login;
     int roleInt;
-    QByteArray photo;
-    stream >> ID >> name >> login >> roleInt >> photo;
+    QByteArray photoData;
+    stream >> ID >> name >> login >> roleInt >> photoData;
+
     Roles role = static_cast<Roles>(roleInt);
 
     this->ID = ID;
     this->name = name;
     this->login = login;
     this->role = role;
-    this->photo = photo;
+    this->photo = QSharedPointer<QByteArray>::create(photoData);
 }
 
 int StuffUser::getID()
@@ -44,12 +45,12 @@ Roles StuffUser::getRole()
     return this->role;
 }
 
-QByteArray StuffUser::getPhoto()
+QSharedPointer<QByteArray> StuffUser::getPhoto()
 {
     return this->photo;
 }
 
-QByteArray StuffUser::serializeUser()
+const QByteArray StuffUser::serializeUser()
 {
     QByteArray byteArray;
     QDataStream stream(&byteArray, QIODevice::WriteOnly);

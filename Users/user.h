@@ -11,7 +11,7 @@ public:
     QString name{};
     QString login{};
     Roles role{};
-    QByteArray photo{};
+    QSharedPointer<QByteArray> photo{};
 
     virtual ~User() {}
 
@@ -20,8 +20,8 @@ public:
     virtual QString getName() = 0;
     virtual QString getLogin() = 0;
     virtual Roles getRole() = 0;
-    virtual QByteArray getPhoto() = 0;
-    virtual QByteArray serializeUser() = 0;
+    virtual QSharedPointer<QByteArray> getPhoto() = 0;
+    virtual const QByteArray serializeUser() = 0;
 };
 
 #endif // USER_H

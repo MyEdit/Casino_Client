@@ -16,8 +16,8 @@ Player::Player(const QByteArray& data)
     QString name, login;
     double balance;
     int roleInt;
-    QByteArray photo;
-    stream >> ID >> name >> balance >> login >> roleInt >> photo;
+    QByteArray photoData;
+    stream >> ID >> name >> balance >> login >> roleInt >> photoData;
     Roles role = static_cast<Roles>(roleInt);
 
     this->ID = ID;
@@ -25,7 +25,7 @@ Player::Player(const QByteArray& data)
     this->balance = balance;
     this->login = login;
     this->role = role;
-    this->photo = photo;
+    this->photo = QSharedPointer<QByteArray>::create(photoData);
 }
 
 int Player::getID()
@@ -52,12 +52,12 @@ double Player::getBalance()
     return this->balance;
 }
 
-QByteArray Player::getPhoto()
+QSharedPointer<QByteArray> Player::getPhoto()
 {
     return this->photo;
 }
 
-QByteArray Player::serializeUser()
+const QByteArray Player::serializeUser()
 {
     QByteArray byteArray;
     QDataStream stream(&byteArray, QIODevice::WriteOnly);

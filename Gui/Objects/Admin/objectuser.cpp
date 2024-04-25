@@ -1,6 +1,6 @@
 ﻿#include "objectuser.h"
 
-ObjectUser::ObjectUser(QString fullName, QString passport, QString balance, QString login, QString password)
+ObjectUser::ObjectUser(const QString& fullName, const QString& passport, const QString& balance, const QString& login, const QString& password)
 {
     this->fullName = fullName;
     this->passport = passport;
@@ -9,7 +9,7 @@ ObjectUser::ObjectUser(QString fullName, QString passport, QString balance, QStr
     this->password = password;
 }
 
-ObjectUser::ObjectUser(int id, QString fullName, QString passport, QString balance, QString login, QString password)
+ObjectUser::ObjectUser(int id, const QString& fullName, const QString& passport, const QString& balance, const QString& login, const QString& password)
 {
     this->id = id;
     this->fullName = fullName;
@@ -24,27 +24,27 @@ int ObjectUser::getID()
     return id;
 }
 
-QString ObjectUser::getFullName()
+const QString& ObjectUser::getFullName()
 {
     return fullName;
 }
 
-QString ObjectUser::getPassport()
+const QString& ObjectUser::getPassport()
 {
     return passport;
 }
 
-QString ObjectUser::getBalance()
+const QString& ObjectUser::getBalance()
 {
     return balance;
 }
 
-QString ObjectUser::getLogin()
+const QString& ObjectUser::getLogin()
 {
     return login;
 }
 
-QString ObjectUser::getPassword()
+const QString& ObjectUser::getPassword()
 {
     return password;
 }
@@ -54,27 +54,27 @@ Roles ObjectUser::getRole()
     return role;
 }
 
-void ObjectUser::setFullName(QString fullName)
+void ObjectUser::setFullName(const QString& fullName)
 {
     this->fullName = fullName;
 }
 
-void ObjectUser::setPassport(QString passport)
+void ObjectUser::setPassport(const QString& passport)
 {
     this->passport = passport;
 }
 
-void ObjectUser::setBalance(QString balance)
+void ObjectUser::setBalance(const QString& balance)
 {
     this->balance = balance;
 }
 
-void ObjectUser::setLogin(QString login)
+void ObjectUser::setLogin(const QString& login)
 {
     this->login = login;
 }
 
-void ObjectUser::setPassword(QString password)
+void ObjectUser::setPassword(const QString& password)
 {
     this->password = password;
 }

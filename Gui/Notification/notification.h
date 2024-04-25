@@ -20,15 +20,16 @@ enum class TypeMessage
     Error
 };
 
-class Notification : public QWidget {
+class Notification : public QWidget
+{
     Q_OBJECT
 
-    QLabel *titleLabel;
-    QLabel *textLabel;
-    QLabel *iconLabel;
-    QProgressBar *progressBar;
+    QLabel* titleLabel;
+    QLabel* textLabel;
+    QLabel* iconLabel;
+    QProgressBar* progressBar;
     QTimer timer;
-    QWidget* _parentForm;
+    QWidget* parentForm;
 
 public:
     Notification();

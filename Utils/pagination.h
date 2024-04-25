@@ -42,7 +42,7 @@ public:
     int getMaxPage();
     void prev();
     void next();
-    void acceptModel(ModelData structModel);
+    void acceptModel(QSharedPointer<ModelData> structModel);
     void goToPage(QString page);
     void search(QString searchText, QString typeSearch, QComboBox* column);
     void reloadModels();
@@ -57,7 +57,7 @@ private:
     void assigningValues();
     void connects();
     void creatingObjects();
-    void distributor(QueryData* data);
+    void distributor(QSharedPointer<QueryData> data);
     void loadingMaxPage();
     void updateTablePage();
     int currentPageInModel();

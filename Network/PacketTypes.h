@@ -62,7 +62,7 @@ struct ModelData
 {
     ModelTypes modelTypes;
     ModelLoadingType modelLoadingType;
-    QStandardItemModel* model;
+    QSharedPointer<QStandardItemModel> model;
 };
 
 struct QueryData

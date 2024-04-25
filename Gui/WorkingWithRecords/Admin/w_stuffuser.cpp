@@ -60,7 +60,7 @@ void W_StuffUser::on_buttonSave_clicked()
     this->close();
 }
 
-QString W_StuffUser::getInsertQuery(QSharedPointer<ObjectStuffUser> stuffUser)
+const QString W_StuffUser::getInsertQuery(QSharedPointer<ObjectStuffUser> stuffUser)
 {
     return QString("INSERT INTO StuffUsers (Name, Login, Password, ID_Role) VALUES ('%1', '%2', '%3', '%4')")
             .arg(stuffUser->getFullName())
@@ -69,7 +69,7 @@ QString W_StuffUser::getInsertQuery(QSharedPointer<ObjectStuffUser> stuffUser)
             .arg(static_cast<int>(stuffUser->getRole()));
 }
 
-QString W_StuffUser::getUpdateQuery(QSharedPointer<ObjectStuffUser> stuffUser)
+const QString W_StuffUser::getUpdateQuery(QSharedPointer<ObjectStuffUser> stuffUser)
 {
     return QString("UPDATE StuffUsers SET Name = '%1', Login = '%2', Password = '%3', ID_Role = '%4' WHERE ID_StuffUser = '%5'")
             .arg(stuffUser->getFullName())
@@ -85,17 +85,17 @@ void W_StuffUser::loadComboBoxRole()
     ui->ComboBoxRoles->addItem("Распорядитель столов");
 }
 
-QString W_StuffUser::getName()
+const QString W_StuffUser::getName()
 {
     return ui->InputName->text();
 }
 
-QString W_StuffUser::getLogin()
+const QString W_StuffUser::getLogin()
 {
     return ui->InputLogin->text();
 }
 
-QString W_StuffUser::getPassword()
+const QString W_StuffUser::getPassword()
 {
     return ui->InputPassword->text();
 }

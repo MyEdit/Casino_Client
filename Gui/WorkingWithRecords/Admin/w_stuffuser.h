@@ -6,7 +6,7 @@
 #include "Network/PacketTypes.h"
 #include "Utils/notificationutil.h"
 #include "Utils/Message.h"
-#include "GUI/Objects/Admin/objectstuffuser.h"
+#include "Gui/Objects/Admin/objectstuffuser.h"
 
 namespace Ui
 {
@@ -30,9 +30,9 @@ private slots:
     void on_buttonSave_clicked();
 
 private:
-    QString getName();
-    QString getLogin();
-    QString getPassword();
+    const QString getName();
+    const QString getLogin();
+    const QString getPassword();
     Roles getRole();
 
     void loadComboBoxRole();
@@ -41,8 +41,8 @@ private:
     void onLoadForm();
     void customizationLiteEdit();
 
-    QString getInsertQuery(QSharedPointer<ObjectStuffUser> stuffUser);
-    QString getUpdateQuery(QSharedPointer<ObjectStuffUser> stuffUser);
+    const QString getInsertQuery(QSharedPointer<ObjectStuffUser> stuffUser);
+    const QString getUpdateQuery(QSharedPointer<ObjectStuffUser> stuffUser);
 };
 
 #endif // ADD_STUFFUSER_H

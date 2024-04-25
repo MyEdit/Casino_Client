@@ -1,4 +1,4 @@
-#ifndef SERIALIZER_H
+﻿#ifndef SERIALIZER_H
 #define SERIALIZER_H
 
 #include <QStandardItemModel>
@@ -10,7 +10,7 @@ class Serializer
 {
 
 public:
-    static QStandardItemModel* deserializationDataModel(QByteArray receivedData);
+    static QSharedPointer<QStandardItemModel> deserializationDataModel(QByteArray receivedData);
 };
 
 #endif // SERIALIZER_H

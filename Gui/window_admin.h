@@ -42,12 +42,12 @@ public:
     explicit Window_Admin(QWidget *parent = nullptr);
     ~Window_Admin();
 
-    void setModel_UsersTab(ModelData model);
-    void setModel_ActiveTablesTab(ModelData model);
-    void setModel_BanListTab(ModelData model);
-    void setModel_StuffUsersTab(ModelData model);
-    void setModel_CreditsTab(ModelData model);
-    void setModel_PaymentsTab(ModelData model);
+    void setModel_UsersTab(QSharedPointer<ModelData> model);
+    void setModel_ActiveTablesTab(QSharedPointer<ModelData> model);
+    void setModel_BanListTab(QSharedPointer<ModelData> model);
+    void setModel_StuffUsersTab(QSharedPointer<ModelData> model);
+    void setModel_CreditsTab(QSharedPointer<ModelData> model);
+    void setModel_PaymentsTab(QSharedPointer<ModelData> model);
 
 private:
     void assigningValues() override;
@@ -61,7 +61,7 @@ private:
     void rendering_WelcomeTab() override;
     void uploadingPhotoEmployee();
     void settingUserInformation() override;
-    QString definingrRole();
+    const QString definingrRole();
     void rendoringForTableManager();
     void rendoringForAdmin();
     void rendoringForUser();

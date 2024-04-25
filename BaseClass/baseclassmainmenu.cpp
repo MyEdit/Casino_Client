@@ -52,10 +52,10 @@ void BaseClassMainMenu::prepareStyleSheets()
                              "text-align: left;}";
 }
 
-QPixmap BaseClassMainMenu::uploadingUserPhoto(QByteArray data)
+QPixmap BaseClassMainMenu::uploadingUserPhoto(QSharedPointer<QByteArray> data)
 {
     QPixmap photo;
-    photo.loadFromData(data);
+    photo.loadFromData(*data);
 
     QPixmap roundedPhoto(photo.size());
     roundedPhoto.fill(Qt::transparent);

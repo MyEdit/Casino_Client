@@ -10,7 +10,7 @@
 class P_Query
 {
 public:
-    static QueryData *getResultFromServer();
+    static QSharedPointer<QueryData> getResultFromServer();
 
 private:
     friend class NetworkClient;

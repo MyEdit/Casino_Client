@@ -36,7 +36,7 @@ void W_Ban::on_buttonSave_clicked()
     this->close();
 }
 
-QString W_Ban::getReason()
+const QString W_Ban::getReason()
 {
     return ui->InputReason->toPlainText();
 }
@@ -75,7 +75,7 @@ void W_Ban::onLoadForm()
     };
 }
 
-QString W_Ban::getInsertQuery(QSharedPointer<Ban> ban)
+const QString W_Ban::getInsertQuery(QSharedPointer<Ban> ban)
 {
     return QString("INSERT INTO Banlist (ID_User, Name, Reason) VALUES ('%1', '%2', '%3')")
             .arg(ban->getID())
@@ -83,7 +83,7 @@ QString W_Ban::getInsertQuery(QSharedPointer<Ban> ban)
             .arg(ban->getReason());
 }
 
-QString W_Ban::getUpdateQuery(QSharedPointer<Ban> ban)
+const QString W_Ban::getUpdateQuery(QSharedPointer<Ban> ban)
 {
     return QString("UPDATE Banlist SET Name = '%1', Reason = '%2' WHERE ID_User = '%3'")
             .arg(ban->getFullName())

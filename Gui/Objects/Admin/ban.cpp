@@ -1,14 +1,14 @@
 ﻿#include "ban.h"
 
 
-Ban::Ban(int id, QString fullName)
+Ban::Ban(int id, const QString& fullName)
 {
     this->id = id;
     this->fullName = fullName;
 }
 
 
-Ban::Ban(int id, QString fullName, QString reason)
+Ban::Ban(int id, const QString& fullName, const QString& reason)
 {
     this->id = id;
     this->fullName = fullName;
@@ -20,17 +20,17 @@ int Ban::getID()
     return this->id;
 }
 
-QString Ban::getFullName()
+const QString& Ban::getFullName()
 {
     return this->fullName;
 }
 
-QString Ban::getReason()
+const QString& Ban::getReason()
 {
     return this->reason;
 }
 
-void Ban::setReason(QString reason)
+void Ban::setReason(const QString& reason)
 {
     this->reason = reason;
 }

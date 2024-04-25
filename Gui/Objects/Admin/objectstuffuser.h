@@ -14,18 +14,18 @@ class ObjectStuffUser
 
 public:
     ObjectStuffUser() {};
-    ObjectStuffUser(QString fullName, QString login, QString password, Roles role);
-    ObjectStuffUser(int id, QString fullName, QString login, QString password, Roles role);
+    ObjectStuffUser(const QString& fullName, const QString& login, const QString& password, Roles role);
+    ObjectStuffUser(int id, const QString& fullName, const QString& login, const QString& password, Roles role);
 
     int getID();
-    QString getFullName();
-    QString getLogin();
-    QString getPassword();
+    const QString& getFullName();
+    const QString& getLogin();
+    const QString& getPassword();
     Roles getRole();
 
-    void setFullName(QString fullName);
-    void setLogin(QString login);
-    void setPassword(QString password);
+    void setFullName(const QString& fullName);
+    void setLogin(const QString& login);
+    void setPassword(const QString& password);
     void setRole(Roles role);
 
     bool inputDataIsValid();

@@ -1,18 +1,18 @@
 ﻿#include "p_reconnection.h"
 
 const PacketTypes P_Reconnection::packettype = PacketTypes::P_Reconnection;
-Reconnecting* P_Reconnection::reconnecting;
+QSharedPointer<Reconnecting> P_Reconnection::reconnecting;
 
 void P_Reconnection::viewReconnecting()
 {
-    reconnecting = new Reconnecting();
+    reconnecting = QSharedPointer<Reconnecting>(new Reconnecting());
     reconnecting->setAlertProperties(WindowTracker::activeWindow);
 }
 
 void P_Reconnection::stopReconnecting()
 {
     reconnecting->close();
-    delete reconnecting;
+    reconnecting.clear();
 }
 
 void P_Reconnection::sendUserData(QSharedPointer<User> user)

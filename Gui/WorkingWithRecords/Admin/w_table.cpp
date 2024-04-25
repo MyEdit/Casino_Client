@@ -38,28 +38,28 @@ void W_Table::on_bottonSave_clicked()
     this->close();
 }
 
-QString W_Table::getMaxPlayers()
+const QString W_Table::getMaxPlayers()
 {
     return ui->InputMaxPlayer->text();
 }
 
 
-QString W_Table::getMinBet()
+const QString W_Table::getMinBet()
 {
     return ui->InputMinBet->text();
 }
 
-QString W_Table::getBetStep()
+const QString W_Table::getBetStep()
 {
     return ui->InputBetStep->text();
 }
 
-QString W_Table::getMinBalance()
+const QString W_Table::getMinBalance()
 {
     return ui->InputMinBalance->text();
 }
 
-QString W_Table::getNameGame()
+const QString W_Table::getNameGame()
 {
     return ui->nameGame->currentText();
 }
@@ -111,7 +111,7 @@ void W_Table::onLoadForm()
     };
 }
 
-QString W_Table::getInsertQuery(QSharedPointer<ActiveTable> activeTable)
+const QString W_Table::getInsertQuery(QSharedPointer<ActiveTable> activeTable)
 {
     return QString("INSERT INTO ActiveTables (MaxPlayers, NumPlayers, MinBet, BetStep, MinBalance, NameGame) VALUES ('%1', '%2', '%3', '%4', '%5', '%6')")
             .arg(activeTable->getMaxPlayers())
@@ -122,7 +122,7 @@ QString W_Table::getInsertQuery(QSharedPointer<ActiveTable> activeTable)
             .arg(activeTable->getNameGame());
 }
 
-QString W_Table::getUpdateQuery(QSharedPointer<ActiveTable> activeTable)
+const QString W_Table::getUpdateQuery(QSharedPointer<ActiveTable> activeTable)
 {
     return QString("UPDATE ActiveTables SET MaxPlayers = '%1', NumPlayers = '%2', MinBet = '%3', BetStep = '%4', MinBalance = '%5', NameGame = '%6' WHERE ID_Table = '%7'")
             .arg(activeTable->getMaxPlayers())
@@ -136,7 +136,6 @@ QString W_Table::getUpdateQuery(QSharedPointer<ActiveTable> activeTable)
 
 void W_Table::customizationLiteEdit()
 {
-    //setValidator(new QRegExpValidator(QRegExp("[^\\d\\W_]+"))) Для установки что можно вводить только текст
     ui->InputMaxPlayer->setValidator(new QIntValidator(this)); //ввот только цифр
     ui->InputMinBet->setValidator(new QIntValidator(this));
     ui->InputBetStep->setValidator(new QIntValidator(this));

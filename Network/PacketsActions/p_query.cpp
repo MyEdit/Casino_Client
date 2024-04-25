@@ -1,6 +1,6 @@
 ﻿#include "p_query.h"
 
-QueryData* P_Query::getResultFromServer()
+QSharedPointer<QueryData> P_Query::getResultFromServer()
 {
     ModelTypes type;
     QueryTypes queryTypes;
@@ -9,7 +9,7 @@ QueryData* P_Query::getResultFromServer()
     recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&queryTypes), sizeof(QueryTypes), 0);
 
     QString result = NetworkClient::getMessageFromServer();
-    QueryData* answer = new QueryData{type, queryTypes, result};
+    QSharedPointer<QueryData> answer (new QueryData{type, queryTypes, result});
 
     return answer;
 }

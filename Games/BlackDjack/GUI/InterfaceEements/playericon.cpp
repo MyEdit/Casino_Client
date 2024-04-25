@@ -42,7 +42,7 @@ void PlayerIcon::settingInformation()
 void PlayerIcon::setImage()
 {
     QPixmap photo;
-    photo.loadFromData(player->getPhoto());
+    photo.loadFromData(*player->getPhoto());
 
     QPixmap roundedPhoto(photo.size());
     roundedPhoto.fill(Qt::transparent);

@@ -6,7 +6,7 @@
 #include "Network/PacketTypes.h"
 #include "Utils/notificationutil.h"
 #include "Utils/Message.h"
-#include "GUI/Objects/Admin/objectuser.h"
+#include "Gui/Objects/Admin/objectuser.h"
 
 namespace Ui {
 class W_User;
@@ -30,19 +30,19 @@ private slots:
     void on_buttonSave_clicked();
 
 private:
-    QString getName();
-    QString getPassport();
-    QString getBalance();
-    QString getLogin();
-    QString getPassword();
+    const QString getName();
+    const QString getPassport();
+    const QString getBalance();
+    const QString getLogin();
+    const QString getPassword();
 
     void clearInput();
     void setDefaultValues();
     void onLoadForm();
     void customizationLiteEdit();
 
-    QString getInsertQuery(QSharedPointer<ObjectUser> user);
-    QString getUpdateQuery(QSharedPointer<ObjectUser> user);
+    const QString getInsertQuery(QSharedPointer<ObjectUser> user);
+    const QString getUpdateQuery(QSharedPointer<ObjectUser> user);
 };
 
 #endif // W_USER_H

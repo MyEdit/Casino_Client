@@ -2,12 +2,12 @@
 #define P_NOTIFICATION_H
 
 #include "Network/networkclient.h"
-#include "GUI/Notification/notification.h"
+#include "Gui/Notification/notification.h"
 
 class P_Notification
 {
 public:
-    static QPair<TypeMessage, QString> getTextNotification();
+    static QPair<TypeMessage, const QString> getTextNotification();
 };
 
 #endif // P_NOTIFICATION_H

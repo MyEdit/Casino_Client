@@ -1,7 +1,7 @@
 ﻿#include "p_notification.h"
 #include "Utils/windowtracker.h"
 
-QPair<TypeMessage, QString> P_Notification::getTextNotification()
+QPair<TypeMessage, const QString> P_Notification::getTextNotification()
 {
     TypeMessage typeMessage;
     recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&typeMessage), sizeof(typeMessage), 0);

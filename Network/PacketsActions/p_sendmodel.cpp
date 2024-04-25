@@ -1,9 +1,9 @@
 ﻿#include "p_sendmodel.h"
 
-QMap<ModelTypes, std::function<void(ModelData)>> P_SendModel::setModelFunctions;
+QMap<ModelTypes, std::function<void(QSharedPointer<ModelData>)>> P_SendModel::setModelFunctions;
 QMap<ModelTypes, QString> P_SendModel::tableNames;
 
-ModelData P_SendModel::getModelFromServer()
+QSharedPointer<ModelData> P_SendModel::getModelFromServer()
 {
     ModelTypes modeltype;
     ModelLoadingType modelLoadingType;
@@ -16,13 +16,14 @@ ModelData P_SendModel::getModelFromServer()
     receivedData.resize(dataSize);
     recv(NetworkClient::serverSocket, receivedData.data(), dataSize, 0);
 
-    QStandardItemModel* model = Serializer::deserializationDataModel(receivedData);
-    return {modeltype, modelLoadingType, model};
+    QSharedPointer<QStandardItemModel> model = Serializer::deserializationDataModel(receivedData);
+
+    return QSharedPointer<ModelData>(new ModelData{modeltype, modelLoadingType, model});
 }
 
-void P_SendModel::setModel(ModelData set)
+void P_SendModel::setModel(QSharedPointer<ModelData> set)
 {
-    ModelTypes modeltype = set.modelTypes;
+    ModelTypes modeltype = set->modelTypes;
 
     if (setModelFunctions.size() == 0)
         initMapFunctions();
@@ -42,32 +43,32 @@ void P_SendModel::setModel(ModelData set)
 //Инициилизирует мапу ModelTypes -> Функция добавления модели
 void P_SendModel::initMapFunctions()
 {
-    setModelFunctions.insert(ModelTypes::Users, [&](ModelData model)
+    setModelFunctions.insert(ModelTypes::Users, [&](QSharedPointer<ModelData> model)
     {
         P_Authorization::adminW->setModel_UsersTab(model);
     });
 
-    setModelFunctions.insert(ModelTypes::ActiveTables, [&](ModelData model)
+    setModelFunctions.insert(ModelTypes::ActiveTables, [&](QSharedPointer<ModelData> model)
     {
         P_Authorization::adminW->setModel_ActiveTablesTab(model);
     });
 
-    setModelFunctions.insert(ModelTypes::Banlist, [&](ModelData model)
+    setModelFunctions.insert(ModelTypes::Banlist, [&](QSharedPointer<ModelData> model)
     {
         P_Authorization::adminW->setModel_BanListTab(model);
     });
 
-    setModelFunctions.insert(ModelTypes::StuffUsers, [&](ModelData model)
+    setModelFunctions.insert(ModelTypes::StuffUsers, [&](QSharedPointer<ModelData> model)
     {
         P_Authorization::adminW->setModel_StuffUsersTab(model);
     });
 
-    setModelFunctions.insert(ModelTypes::Payments, [&](ModelData model)
+    setModelFunctions.insert(ModelTypes::Payments, [&](QSharedPointer<ModelData> model)
     {
         P_Authorization::adminW->setModel_PaymentsTab(model);
     });
 
-    setModelFunctions.insert(ModelTypes::Credits, [&](ModelData model)
+    setModelFunctions.insert(ModelTypes::Credits, [&](QSharedPointer<ModelData> model)
     {
         P_Authorization::adminW->setModel_CreditsTab(model);
     });

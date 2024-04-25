@@ -1,7 +1,7 @@
 ﻿#include "welcome.h"
 #include "ui_welcome.h"
 
-Welcome::Welcome(QString user, QWidget *parent) :
+Welcome::Welcome(const QString& user, QWidget *parent) :
     QWidget(parent),
     ui(new Ui::welcome),
     _user(user)

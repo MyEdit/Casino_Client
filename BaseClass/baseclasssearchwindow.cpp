@@ -39,14 +39,14 @@ void BaseClassSearchWindow::blockingInterface(bool flag)
 }
 
 
-void BaseClassSearchWindow::settingValueInComboBox(QComboBox* comboBox, QString& headerText)
+void BaseClassSearchWindow::settingValueInComboBox(QComboBox* comboBox, const QString& headerText)
 {
     int comboBoxIndex = comboBox->findText(headerText);
     if (comboBoxIndex != -1)
         comboBox->setCurrentIndex(comboBoxIndex);
 }
 
-void BaseClassSearchWindow::setModel(ModelData model)
+void BaseClassSearchWindow::setModel(QSharedPointer<ModelData> model)
 {
     pagination->acceptModel(model);
 }
@@ -89,7 +89,7 @@ QVariant BaseClassSearchWindow::getValueFromSelectedRow(QTableView* tableView, i
     return tableView->model()->data(tableView->model()->index(currentDiscount.row(), collumn), 0);
 }
 
-void BaseClassSearchWindow::deleteRecord(QString table, QString idColumn, int id)
+void BaseClassSearchWindow::deleteRecord(const QString& table, const QString& idColumn, int id)
 {
     if(id == 0)
     {

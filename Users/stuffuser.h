@@ -15,10 +15,10 @@ public:
     QString getName() override;
     QString getLogin() override;
     Roles getRole() override;
-    QByteArray getPhoto() override;
+    QSharedPointer<QByteArray> getPhoto() override;
 
     //METHODS
-    QByteArray serializeUser() override;
+    const QByteArray serializeUser() override;
 };
 
 #endif // STUFFUSER_H

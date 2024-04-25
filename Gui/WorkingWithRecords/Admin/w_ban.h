@@ -29,14 +29,14 @@ private slots:
     void on_buttonSave_clicked();
 
 private:
-    QString getReason();
+    const QString getReason();
 
     void clearInput();
     void setDefaultValues();
     void onLoadForm();
 
-    QString getInsertQuery(QSharedPointer<Ban> ban);
-    QString getUpdateQuery(QSharedPointer<Ban> ban);
+    const QString getInsertQuery(QSharedPointer<Ban> ban);
+    const QString getUpdateQuery(QSharedPointer<Ban> ban);
 };
 
 #endif // ADD_BAN_H

@@ -15,7 +15,7 @@ class Welcome : public QWidget
     QString _user;
 
 public:
-    explicit Welcome(QString user, QWidget *parent = nullptr);
+    explicit Welcome(const QString& user, QWidget *parent = nullptr);
     ~Welcome();
 
 private:

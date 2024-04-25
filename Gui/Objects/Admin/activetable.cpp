@@ -1,6 +1,6 @@
 ﻿#include "activetable.h"
 
-ActiveTable::ActiveTable(QString maxPlayers, QString numPlayers, QString minBet, QString betStep, QString minBalance, QString nameGame)
+ActiveTable::ActiveTable(const QString& maxPlayers, const QString& numPlayers, const QString& minBet, const QString& betStep, const QString& minBalance, const QString& nameGame)
 {
     this->maxPlayers = maxPlayers;
     this->numPlayers = numPlayers;
@@ -10,7 +10,7 @@ ActiveTable::ActiveTable(QString maxPlayers, QString numPlayers, QString minBet,
     this->nameGame = nameGame;
 }
 
-ActiveTable::ActiveTable(int id, QString maxPlayers, QString numPlayers, QString minBet, QString betStep, QString minBalance, QString nameGame)
+ActiveTable::ActiveTable(int id, const QString& maxPlayers, const QString& numPlayers, const QString& minBet, const QString& betStep, const QString& minBalance, const QString& nameGame)
 {
     this->id = id;
     this->maxPlayers = maxPlayers;
@@ -26,62 +26,62 @@ int ActiveTable::getID()
     return id;
 }
 
-QString ActiveTable::getMaxPlayers()
+const QString& ActiveTable::getMaxPlayers()
 {
     return maxPlayers;
 }
 
-QString ActiveTable::getNumPlayers()
+const QString& ActiveTable::getNumPlayers()
 {
     return numPlayers;
 }
 
-QString ActiveTable::getMinBet()
+const QString& ActiveTable::getMinBet()
 {
     return minBet;
 }
 
-QString ActiveTable::getBetStep()
+const QString& ActiveTable::getBetStep()
 {
     return betStep;
 }
 
-QString ActiveTable::getMinBalance()
+const QString& ActiveTable::getMinBalance()
 {
     return minBet;
 }
 
-QString ActiveTable::getNameGame()
+const QString& ActiveTable::getNameGame()
 {
     return nameGame;
 }
 
-void ActiveTable::setMaxPlayers(QString maxPlayers)
+void ActiveTable::setMaxPlayers(const QString& maxPlayers)
 {
     this->maxPlayers = maxPlayers;
 }
 
-void ActiveTable::setNumPlayers(QString numPlayers)
+void ActiveTable::setNumPlayers(const QString& numPlayers)
 {
     this->numPlayers = numPlayers;
 }
 
-void ActiveTable::setMinBet(QString minBet)
+void ActiveTable::setMinBet(const QString& minBet)
 {
     this->minBet = minBet;
 }
 
-void ActiveTable::setBetStep(QString betStep)
+void ActiveTable::setBetStep(const QString& betStep)
 {
     this->betStep = betStep;
 }
 
-void ActiveTable::setMinBalance(QString minBalance)
+void ActiveTable::setMinBalance(const QString& minBalance)
 {
     this->minBalance = minBalance;
 }
 
-void ActiveTable::setNameGame(QString nameGame)
+void ActiveTable::setNameGame(const QString& nameGame)
 {
     this->nameGame = nameGame;
 }

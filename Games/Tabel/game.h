@@ -8,6 +8,7 @@
 
 class Game
 {
+protected:
     QString nameGame{};
     int minPlayers{2}; //У каждой игры свой минимальный лимит игроков для старта, пока вписываю тут. TODO: Нужен отдельный класс для игры BlackJack
 

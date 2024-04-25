@@ -45,6 +45,7 @@ SOURCES += \
     Games/BlackDjack/GUI/blacljackwidget.cpp \
     Games/Tabel/game.cpp \
     Games/Tabel/table.cpp \
+    Games/blackjack.cpp \
     Games/card.cpp \
     Games/deck.cpp \
     Games/gamer.cpp \
@@ -101,6 +102,7 @@ HEADERS += \
     Games/BlackDjack/constant.h \
     Games/Tabel/game.h \
     Games/Tabel/table.h \
+    Games/blackjack.h \
     Games/card.h \
     Games/cardRank.h \
     Games/cardSuit.h \

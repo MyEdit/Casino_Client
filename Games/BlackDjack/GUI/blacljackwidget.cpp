@@ -155,7 +155,7 @@ void BlaclJackWidget::updateTimer(QString time)
     QString processing{};
 
     if(time == "-1")
-        processing = "Ожидание минималького кол-ва игроков...";
+        processing = "Ожидание минимального кол-ва игроков...";
     else
         processing = time;
 

@@ -10,6 +10,7 @@ class Player : public User
 {
     double balance{};
     BlaclJackWidget* tableGUI;
+    QVector<QSharedPointer<Card>> cardsInHand;
 
 public:
     Player(int ID, QString name, double balance, QString login, Roles role);
@@ -26,9 +27,12 @@ public:
     double getBalance();
     QByteArray getPhoto() override;
     BlaclJackWidget* getTableGUI();
+    QVector<QSharedPointer<Card>> getHand();
+    QSharedPointer<Card> getCardInHand(int index);
 
     //METHODS
     QByteArray serializeUser() override;
+    void addCardInHand(QSharedPointer<Card> card);
 };
 
 #endif // PLAYER_H

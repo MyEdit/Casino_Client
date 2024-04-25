@@ -42,7 +42,7 @@ void ActiveTables::assigningValues()
 void ActiveTables::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>::create(ui->tableView, &boxsNameColumn);
-    pagination = QSharedPointer<Pagination>::create(this, ui->tableView, ui->prevButton, ui->nextButton, workingIsTableView, modelTypes);
+    pagination = QSharedPointer<Pagination>::create(this, ui->tableView, ui->prevButton, ui->nextButton, ui->searchColumn, workingIsTableView, modelTypes);
 }
 
 void ActiveTables::connects()
@@ -96,7 +96,7 @@ void ActiveTables::goToPage()
 
 void ActiveTables::search()
 {
-    pagination->search(ui->searchText->text(), typeSearch, ui->searchColumn);
+    pagination->search(ui->searchText->text(), typeSearch);
 }
 
 void ActiveTables::onHeaderClicked(int logicalIndex)

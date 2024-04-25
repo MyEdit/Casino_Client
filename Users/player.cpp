@@ -33,11 +33,11 @@ int Player::getID()
     return this->ID;
 }
 
-QString Player::getName()
+const QString& Player::getName()
 {
     return this->name;
 }
-QString Player::getLogin()
+const QString& Player::getLogin()
 {
     return this->login;
 }
@@ -57,16 +57,17 @@ QSharedPointer<QByteArray> Player::getPhoto()
     return this->photo;
 }
 
-const QByteArray Player::serializeUser()
+QSharedPointer<QByteArray> Player::serializeUser()
 {
-    QByteArray byteArray;
-    QDataStream stream(&byteArray, QIODevice::WriteOnly);
+    QSharedPointer<QByteArray> byteArray(new QByteArray());
+    QDataStream stream(&*byteArray, QIODevice::WriteOnly);
     stream << ID;
     stream << name;
     stream << balance;
     stream << login;
     stream << static_cast<int>(role);
     stream << photo;
+
     return byteArray;
 }
 

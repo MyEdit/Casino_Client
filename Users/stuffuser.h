@@ -12,13 +12,13 @@ public:
 
     //GETTERS
     int getID() override;
-    QString getName() override;
-    QString getLogin() override;
+    const QString& getName() override;
+    const QString& getLogin() override;
     Roles getRole() override;
     QSharedPointer<QByteArray> getPhoto() override;
 
     //METHODS
-    const QByteArray serializeUser() override;
+    QSharedPointer<QByteArray> serializeUser() override;
 };
 
 #endif // STUFFUSER_H

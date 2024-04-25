@@ -42,7 +42,7 @@ void Payments::assigningValues()
 void Payments::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>::create(ui->tableView, &boxsNameColumn);
-    pagination = QSharedPointer<Pagination>::create(this, ui->tableView, ui->prevButton, ui->nextButton, workingIsTableView, modelTypes);
+    pagination = QSharedPointer<Pagination>::create(this, ui->tableView, ui->prevButton, ui->nextButton, ui->searchColumn, workingIsTableView, modelTypes);
 }
 
 void Payments::connects()
@@ -96,7 +96,7 @@ void Payments::goToPage()
 
 void Payments::search()
 {
-    pagination->search(ui->searchText->text(), typeSearch, ui->searchColumn);
+    pagination->search(ui->searchText->text(), typeSearch);
 }
 
 void Payments::onHeaderClicked(int logicalIndex)

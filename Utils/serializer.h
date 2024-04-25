@@ -10,7 +10,7 @@ class Serializer
 {
 
 public:
-    static QSharedPointer<QStandardItemModel> deserializationDataModel(QByteArray receivedData);
+    static QSharedPointer<QStandardItemModel> deserializationDataModel(const QByteArray& receivedData);
 };
 
 #endif // SERIALIZER_H

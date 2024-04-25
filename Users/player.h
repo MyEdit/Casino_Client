@@ -21,8 +21,8 @@ public:
 
     //GETTERS
     int getID() override;
-    QString getName() override;
-    QString getLogin() override;
+    const QString& getName() override;
+    const QString& getLogin() override;
     Roles getRole() override;
     double getBalance();
     QSharedPointer<QByteArray> getPhoto() override;
@@ -31,7 +31,7 @@ public:
     QSharedPointer<Card> getCardInHand(int index);
 
     //METHODS
-    const QByteArray serializeUser() override;
+    QSharedPointer<QByteArray> serializeUser() override;
     void addCardInHand(QSharedPointer<Card> card);
 };
 

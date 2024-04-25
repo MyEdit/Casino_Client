@@ -74,7 +74,7 @@ bool NetworkClient::start()
     QObject::connect(packetHandler, &PacketHandler::signalSetTables, this, &P_SendTables::setTables);
     QObject::connect(packetHandler, &PacketHandler::signalOpenGame, this, &P_ConnectPlayerToTable::openGameGUI);
     QObject::connect(packetHandler, &PacketHandler::signalUpdatePlayers, this, &P_ConnectPlayerToTable::updatePlayers);
-    QObject::connect(packetHandler, &PacketHandler::signalUpdateTimer, this, &P_UpdateGameTimer::updateProcessing);
+    QObject::connect(packetHandler, &PacketHandler::signalUpdateGameProcessing, this, &P_UpdateGameProcessing::updateGameProcessing);
     QObject::connect(packetHandler, &PacketHandler::signalTakeCard, this, &P_TakeCard::renderTakeCard);
     QObject::connect(packetHandler, &PacketHandler::signalTakeCardAnotherPlayer, this, &P_TakeCard::renderTakeCardAnotherPlayer);
     QObject::connect(packetHandler, &PacketHandler::signalStartMove, this, &P_StartMove::startMove);
@@ -92,7 +92,7 @@ void NetworkClient::sendToServer(QString message)
 }
 
 //Парс и получение пакета от сервера с неизвестной длинной
-QString NetworkClient::getMessageFromServer()
+const QString NetworkClient::getMessageFromServer()
 {
     int size;
     recv(serverSocket, reinterpret_cast<char*>(&size), sizeof(int), 0);

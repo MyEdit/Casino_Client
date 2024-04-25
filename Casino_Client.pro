@@ -60,7 +60,7 @@ SOURCES += \
     Network/PacketsActions/p_sendtables.cpp \
     Network/PacketsActions/p_startmove.cpp \
     Network/PacketsActions/p_takecard.cpp \
-    Network/PacketsActions/p_updategametimer.cpp \
+    Network/PacketsActions/p_updategameprocessing.cpp \
     Network/networkclient.cpp \
     Network/packethandler.cpp \
     Users/player.cpp \
@@ -120,7 +120,7 @@ HEADERS += \
     Network/PacketsActions/p_sendtables.h \
     Network/PacketsActions/p_startmove.h \
     Network/PacketsActions/p_takecard.h \
-    Network/PacketsActions/p_updategametimer.h \
+    Network/PacketsActions/p_updategameprocessing.h \
     Network/networkclient.h \
     Network/packethandler.h \
     Users/player.h \

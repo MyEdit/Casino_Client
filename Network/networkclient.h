@@ -34,7 +34,7 @@ public:
     bool init();
     bool start();
     static void sendToServer(QString message);
-    static QString getMessageFromServer();
+    static const QString getMessageFromServer();
     static void onServerDisconnected();
 
     template<typename T>

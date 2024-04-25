@@ -11,7 +11,7 @@ QSharedPointer<Card> P_TakeCard::takeCard()
     return QSharedPointer<Card>(new Card(cardRank, cardSuit));
 }
 
-QString P_TakeCard::takeCardAnotherPlayer()
+const QString P_TakeCard::takeCardAnotherPlayer()
 {
     return NetworkClient::getMessageFromServer();
 }
@@ -22,7 +22,7 @@ void P_TakeCard::renderTakeCard(QSharedPointer<Card> card)
     P_Authorization::getPlayer()->getTableGUI()->blocingInterface(true);
 }
 
-void P_TakeCard::renderTakeCardAnotherPlayer(QString nicname)
+void P_TakeCard::renderTakeCardAnotherPlayer(const QString& nicname)
 {
     P_Authorization::getPlayer()->getTableGUI()->renderFakeTakeCard(nicname);
 }

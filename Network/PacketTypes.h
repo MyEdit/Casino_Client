@@ -16,7 +16,7 @@ enum class PacketTypes
     P_Reconnection,
     P_ConnectOtherPlayerToTable,
     P_PlayerLeaveTable,
-    P_UpdateGameTimer,
+    P_UpdateGameProcessing,
     P_TakeCard,
     P_PassMove,
     P_TakeCardAnotherPlayer,

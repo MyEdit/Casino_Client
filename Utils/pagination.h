@@ -37,17 +37,17 @@ class Pagination : public QWidget
     QTimer searchTimer;
 
 public:
-    Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes);
+    Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, QComboBox* column, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes);
 
     int getMaxPage();
     void prev();
     void next();
     void acceptModel(QSharedPointer<ModelData> structModel);
-    void goToPage(QString page);
-    void search(QString searchText, QString typeSearch, QComboBox* column);
+    void goToPage(const QString& page);
+    void search(const QString& searchText, const QString& typeSearch);
     void reloadModels();
     void start();
-    void setSort(QString sort);
+    void setSort(const QString& sort);
 
 private:
     void goToNextModel();
@@ -61,7 +61,7 @@ private:
     void loadingMaxPage();
     void updateTablePage();
     int currentPageInModel();
-    void setMaxPage(QString rowCount);
+    void setMaxPage(const QString& rowCount);
     void searchInModel();
     void searchInDB();
 

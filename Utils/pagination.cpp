@@ -1,13 +1,14 @@
 ﻿#include "pagination.h"
 #include <QDebug>
 
-Pagination::Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes) :
+Pagination::Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, QComboBox* column, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes) :
     QWidget(parent),
     tableView(table),
     prevButton(prevButton),
     nextButton(nextButton),
     workingIsTableView(workingIsTableView),
-    modelTypes(modelTypes)
+    modelTypes(modelTypes),
+    column(column)
 {
     creatingObjects();
     assigningValues();
@@ -59,7 +60,7 @@ int Pagination::currentPageInModel()
     return pageModel;
 }
 
-void Pagination::setMaxPage(QString rowCount)
+void Pagination::setMaxPage(const QString& rowCount)
 {
     maxPage = std::ceil(rowCount.toDouble() / rowsPerPage);
     emit setMaxPageInLabel(maxPage);
@@ -213,7 +214,7 @@ void Pagination::connects()
     connect(&searchTimer, &QTimer::timeout, this, &Pagination::searchInDB);
 }
 
-void Pagination::goToPage(QString page)
+void Pagination::goToPage(const QString& page)
 {
     if(page.isEmpty())
         return;
@@ -229,14 +230,13 @@ void Pagination::goToPage(QString page)
         initializationModels();
 }
 
-void Pagination::search(QString searchText, QString typeSearch, QComboBox* column)
+void Pagination::search(const QString& searchText, const QString& typeSearch)
 {
     if(searchText.isEmpty())
         return;
 
     this->searchText = searchText;
     this->typeSearch = typeSearch;
-    this->column = column;
 
     searchInModel();
 }
@@ -293,7 +293,7 @@ void Pagination::reloadModels()
     initializationModels();
 }
 
-void Pagination::setSort(QString sort)
+void Pagination::setSort(const QString& sort)
 {
     querySort = sort;
 }

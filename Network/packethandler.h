@@ -10,7 +10,7 @@
 #include "Network/PacketsActions/p_notification.h"
 #include "Network/PacketsActions/p_sendtables.h"
 #include "Network/PacketsActions/p_connectplayertotable.h"
-#include "Network/PacketsActions/p_updategametimer.h"
+#include "Network/PacketsActions/p_updategameprocessing.h"
 #include "Users/user.h"
 
 class NetworkClient;
@@ -36,10 +36,10 @@ signals:
     void signalSetTables();
     void signalOpenGame(QSharedPointer<Table>);
     void signalUpdatePlayers(QSharedPointer<Table>);
-    void signalUpdateTimer(QString);
-    void signalTakeCard(QSharedPointer<Card>);
-    void signalTakeCardAnotherPlayer(QString);
-    void signalStartMove(QString);
+    void signalUpdateGameProcessing(const QString);
+    void signalTakeCard(const QSharedPointer<Card>);
+    void signalTakeCardAnotherPlayer(const QString);
+    void signalStartMove(const QString);
 };
 
 #endif // CLIENTHANDLER_H

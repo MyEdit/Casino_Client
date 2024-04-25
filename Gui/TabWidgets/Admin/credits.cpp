@@ -42,7 +42,7 @@ void Credits::assigningValues()
 void Credits::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>::create(ui->tableView, &boxsNameColumn);
-    pagination = QSharedPointer<Pagination>::create(this, ui->tableView, ui->prevButton, ui->nextButton, workingIsTableView, modelTypes);
+    pagination = QSharedPointer<Pagination>::create(this, ui->tableView, ui->prevButton, ui->nextButton, ui->searchColumn, workingIsTableView, modelTypes);
 }
 
 void Credits::connects()
@@ -96,7 +96,7 @@ void Credits::goToPage()
 
 void Credits::search()
 {
-    pagination->search(ui->searchText->text(), typeSearch, ui->searchColumn);
+    pagination->search(ui->searchText->text(), typeSearch);
 }
 
 void Credits::onHeaderClicked(int logicalIndex)

@@ -31,11 +31,11 @@ int StuffUser::getID()
     return this->ID;
 }
 
-QString StuffUser::getName()
+const QString& StuffUser::getName()
 {
     return this->name;
 }
-QString StuffUser::getLogin()
+const QString& StuffUser::getLogin()
 {
     return this->login;
 }
@@ -50,10 +50,10 @@ QSharedPointer<QByteArray> StuffUser::getPhoto()
     return this->photo;
 }
 
-const QByteArray StuffUser::serializeUser()
+QSharedPointer<QByteArray> StuffUser::serializeUser()
 {
-    QByteArray byteArray;
-    QDataStream stream(&byteArray, QIODevice::WriteOnly);
+    QSharedPointer<QByteArray> byteArray(new QByteArray());
+    QDataStream stream(&*byteArray, QIODevice::WriteOnly);
     stream << ID;
     stream << name;
     stream << login;

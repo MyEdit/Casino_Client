@@ -81,9 +81,9 @@ void PacketHandler::packetHandler(PacketTypes packettype)
         {
             break;
         }
-        case(PacketTypes::P_UpdateGameTimer):
+        case(PacketTypes::P_UpdateGameProcessing):
         {
-            emit signalUpdateTimer(P_UpdateGameTimer::getData());
+            emit signalUpdateGameProcessing(P_UpdateGameProcessing::getData());
             break;
         }
         case(PacketTypes::P_TakeCard):

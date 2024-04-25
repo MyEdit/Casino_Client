@@ -1,6 +1,6 @@
 ﻿#include "serializer.h"
 
-QSharedPointer<QStandardItemModel> Serializer::deserializationDataModel(QByteArray receivedData)
+QSharedPointer<QStandardItemModel> Serializer::deserializationDataModel(const QByteArray &receivedData)
 {
     QSharedPointer<QStandardItemModel> model(new QStandardItemModel());
 

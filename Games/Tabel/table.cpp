@@ -64,7 +64,7 @@ QByteArray Table::serializeTable()
 
     for (QSharedPointer<Player> player : players)
     {
-        QByteArray playerData = player->serializeUser();
+        QSharedPointer<QByteArray> playerData = player->serializeUser();
         stream << playerData;
     }
 

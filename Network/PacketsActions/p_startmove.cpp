@@ -1,12 +1,11 @@
 ﻿#include "p_startmove.h"
 
-QString P_StartMove::getMove()
+const QString P_StartMove::getMove()
 {
-    QString data = NetworkClient::getMessageFromServer();
-    return data;
+    return NetworkClient::getMessageFromServer();
 }
 
-void P_StartMove::startMove(QString nickname)
+void P_StartMove::startMove(const QString& nickname)
 {
     P_Authorization::getPlayer()->getTableGUI()->updateProcessing(nickname);
     P_Authorization::getPlayer()->getTableGUI()->blocingInterface(true);

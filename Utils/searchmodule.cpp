@@ -6,7 +6,7 @@ SearchModule::SearchModule(QSharedPointer<WorkingIsTableView> workingIsTableView
 
 }
 
-bool SearchModule::searchInModels(QSharedPointer<QStandardItemModel> model, QString searchText, QString typeSearch, int columnCurrentIndex, int& currentPage, int rowsPerPage)
+bool SearchModule::searchInModels(QSharedPointer<QStandardItemModel> model, const QString& searchText, const QString& typeSearch, int columnCurrentIndex, int& currentPage, int rowsPerPage)
 {
     bool resultSearchInModel = false;
     for (int row = 0; row < model->rowCount(); row++)
@@ -32,7 +32,7 @@ bool SearchModule::searchInModels(QSharedPointer<QStandardItemModel> model, QStr
     return resultSearchInModel;
 }
 
-void SearchModule::searchInDB(ModelTypes modelType, QString table, QString column, QString searchText, QString sort)
+void SearchModule::searchInDB(ModelTypes modelType, const QString& table, const QString& column, const QString& searchText, const QString& sort)
 {
     PacketTypes packettype = PacketTypes::P_Query;
     QueryTypes queryTypes = QueryTypes::Search;

@@ -15,7 +15,7 @@ BanList::~BanList()
     delete ui;
 }
 
-void BanList::setValueToMaxPage(int maxPage)
+void BanList::setValueToMaxPage(const int maxPage)
 {
     ui->labelMaxPage->setText(QString::number(maxPage));
 }
@@ -77,7 +77,7 @@ void BanList::connects()
     });
 }
 
-void BanList::updateCurrentPageInLabel(int currentPage)
+void BanList::updateCurrentPageInLabel(const int currentPage)
 {
     ui->labelCurrentPage->setText(QString::number(currentPage));
 }
@@ -98,7 +98,7 @@ void BanList::search()
     pagination->search(ui->searchText->text(), typeSearch);
 }
 
-void BanList::onHeaderClicked(int logicalIndex)
+void BanList::onHeaderClicked(const int logicalIndex)
 {
     if(!sortingOn)
         return;

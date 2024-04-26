@@ -31,9 +31,9 @@ public:
     static SOCKET serverSocket;
     static PacketHandler* packetHandler;
 
-    bool init();
-    bool start();
-    static void sendToServer(QString message);
+    bool init() const;
+    bool start() const;
+    static void sendToServer(const QString& message);
     static const QString getMessageFromServer();
     static void onServerDisconnected();
 

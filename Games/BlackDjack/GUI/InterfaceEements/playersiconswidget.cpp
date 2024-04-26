@@ -55,7 +55,7 @@ QList<QSharedPointer<PlayerIcon>> PlayersIconsWidget::getPlayerIcons()
     return icon;
 }
 
-QRect PlayersIconsWidget::getRectPlayerIcon(QSharedPointer<PlayerIcon> playerIcon)
+const QRect PlayersIconsWidget::getRectPlayerIcon(QSharedPointer<PlayerIcon> playerIcon)
 {
     return widgetLayer[playerIcon]->geometry();
 }

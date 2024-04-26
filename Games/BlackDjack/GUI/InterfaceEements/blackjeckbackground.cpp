@@ -70,7 +70,7 @@ void BlackJeckBackground::movingCard(QSharedPointer<Card> card)
     });
 }
 
-void BlackJeckBackground::movingFaceCard(QRect playerPosition)
+void BlackJeckBackground::movingFaceCard(const QRect &playerPosition)
 {
     QString filePatch = "://Games/BlackDjack/assets/Standart/shirt.png";
 
@@ -84,13 +84,14 @@ void BlackJeckBackground::movingFaceCard(QRect playerPosition)
     tempLabel->raise();
 
     QPropertyAnimation* animation = new QPropertyAnimation(tempLabel, "geometry");
-    animation->setDuration(1000);
+    int timeAnimaton = 1000;
+    animation->setDuration(timeAnimaton);
     animation->setStartValue(startPosition);
     animation->setEndValue(playerPosition);
 
     animation->start();
 
-    QTimer::singleShot(1000, [tempLabel]()
+    connect(animation, &QPropertyAnimation::finished, this, [tempLabel]()
     {
         tempLabel->deleteLater();
     });

@@ -23,7 +23,7 @@ class PacketHandler : public QThread
 private:
     void run() override;
     void clientHandler();
-    void packetHandler(PacketTypes packettype);
+    void packetHandler(const PacketTypes packettype);
     void tryReconnectToServer();
 
 signals:

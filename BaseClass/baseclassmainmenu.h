@@ -28,10 +28,10 @@ protected:
 
 public:
     explicit BaseClassMainMenu(QWidget *parent = nullptr);
+    static QSharedPointer<QPixmap> uploadingUserPhoto(QSharedPointer<QByteArray> data);
 
 protected:
     void onNavigationsButton_clicked();
-    QPixmap uploadingUserPhoto(QSharedPointer<QByteArray> data);
     void settingWindowPosition();
     void changeEvent(QEvent* event);
     void prepareStyleSheets();

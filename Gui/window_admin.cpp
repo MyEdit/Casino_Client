@@ -71,10 +71,10 @@ const QString Window_Admin::definingrRole()
 
 void Window_Admin::uploadingPhotoEmployee()
 {
-    QPixmap photo = uploadingUserPhoto(P_Authorization::getStuffuser()->getPhoto());
+    QSharedPointer<QPixmap> photo = uploadingUserPhoto(P_Authorization::getStuffuser()->getPhoto());
 
     ui->photo->setScaledContents(true);
-    ui->photo->setPixmap(photo);
+    ui->photo->setPixmap(*photo);
 }
 
 void Window_Admin::assigningValues()

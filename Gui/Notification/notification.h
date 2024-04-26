@@ -33,7 +33,7 @@ class Notification : public QWidget
 
 public:
     Notification();
-    void setAlertProperties(TypeMessage typeMessage, QString text, QWidget* parentForm);
+    void setAlertProperties(const TypeMessage typeMessage, const QString& text, QWidget* parentForm);
 
 private:
     void setupUI();

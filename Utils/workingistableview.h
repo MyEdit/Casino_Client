@@ -29,7 +29,7 @@ private:
     QVector<QString> getColumnHeaders();
 
 signals:
-    void unlockInterface(bool);
+    void unlockInterface(const bool);
 };
 
 #endif // WORKINGISTABLEVIEW_H

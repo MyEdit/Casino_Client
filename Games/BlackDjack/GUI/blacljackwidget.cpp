@@ -55,7 +55,7 @@ void BlaclJackWidget::renderTakeCard(QSharedPointer<Card> card)
     background->movingCard(card);
 }
 
-void BlaclJackWidget::renderFakeTakeCard(QString nicname)
+void BlaclJackWidget::renderFakeTakeCard(const QString& nicname)
 {
     for(QSharedPointer<PlayerIcon> playersIcon : playersIcons->getPlayerIcons())
     {
@@ -109,7 +109,7 @@ void BlaclJackWidget::doNotTakeCard()
     blocingInterface(false);
 }
 
-void BlaclJackWidget::blocingInterface(bool flag)
+void BlaclJackWidget::blocingInterface(const bool flag)
 {
     ui->buttonTakeCard->setEnabled(flag);
     ui->buttonDoNotTakeCard->setEnabled(flag);
@@ -134,7 +134,7 @@ void BlaclJackWidget::closeEvent(QCloseEvent* event)
     WindowTracker::activeWindow->setEnabled(true);
 }
 
-void BlaclJackWidget::updateProcessing(QString data)
+void BlaclJackWidget::updateProcessing(const QString& data)
 {
     bool ok;
     data.toInt(&ok);
@@ -150,7 +150,7 @@ void BlaclJackWidget::updateProcessing(QString data)
     ui->labelGameProcess->setText(processing);
 }
 
-void BlaclJackWidget::updateTimer(QString time)
+void BlaclJackWidget::updateTimer(const QString& time)
 {
     QString processing{};
 

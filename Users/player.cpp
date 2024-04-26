@@ -1,6 +1,6 @@
 ﻿#include "player.h"
 
-Player::Player(int ID, QString name, double balance, QString login, Roles role)
+Player::Player(int ID, const QString& name, double balance, const QString& login, Roles role)
 {
     this->ID = ID;
     this->name = name;

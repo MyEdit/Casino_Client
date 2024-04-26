@@ -20,7 +20,7 @@ public:
 
     void setReason(const QString& reason);
 
-    bool inputDataIsValid();
+    bool inputDataIsValid() const;
 };
 
 #endif // BAN_H

@@ -68,7 +68,7 @@ private:
 signals:
     void updateCurrentPageInLabel(int);
     void setMaxPageInLabel(int);
-    void blockInterface(bool);
+    void blockInterface(const bool);
 };
 
 #endif // PAGINATION_H

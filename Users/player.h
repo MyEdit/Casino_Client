@@ -13,7 +13,7 @@ class Player : public User
     QVector<QSharedPointer<Card>> cardsInHand;
 
 public:
-    Player(int ID, QString name, double balance, QString login, Roles role);
+    Player(int ID, const QString& name, double balance, const QString& login, Roles role);
     Player(const QByteArray& data);
     Player() {};
 

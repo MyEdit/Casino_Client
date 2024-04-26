@@ -1,7 +1,7 @@
 ﻿#include "w_table.h"
 #include "ui_w_table.h"
 
-W_Table::W_Table(QueryTypes actionType, QSharedPointer<ActiveTable> defaultActiveTable, QWidget *parent) :
+W_Table::W_Table(const QueryTypes actionType, QSharedPointer<ActiveTable> defaultActiveTable, QWidget *parent) :
     QWidget(parent), ui(new Ui::W_Table), actionType(actionType), defaultActiveTable(defaultActiveTable)
 {
     ui->setupUi(this);

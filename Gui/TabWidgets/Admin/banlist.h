@@ -26,14 +26,14 @@ public:
 
 private:
     void prepReloadModels() override;
-    void setValueToMaxPage(int maxPage) override;
+    void setValueToMaxPage(const int maxPage) override;
     void assigningValues() override;
-    void updateCurrentPageInLabel(int currentPage) override;
+    void updateCurrentPageInLabel(const int currentPage) override;
     void creatingObjects() override;
     void goToPage() override;
     void connects() override;
     void search() override;
-    void onHeaderClicked(int logicalIndex) override;
+    void onHeaderClicked(const int logicalIndex) override;
     void openEditRecotd() override;
     void deleting() override;
 };

@@ -57,12 +57,12 @@ void ObjectStuffUser::setPassword(const QString& password)
     this->password = password;
 }
 
-void ObjectStuffUser::setRole(Roles role)
+void ObjectStuffUser::setRole(const Roles role)
 {
     this->role = role;
 }
 
-bool ObjectStuffUser::inputDataIsValid()
+bool ObjectStuffUser::inputDataIsValid() const
 {
     if (role == Roles::None)
         return false;

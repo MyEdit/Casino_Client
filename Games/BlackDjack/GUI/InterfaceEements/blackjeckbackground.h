@@ -25,7 +25,7 @@ public:
     ~BlackJeckBackground();
 
     void movingCard(QSharedPointer<Card> card);
-    void movingFaceCard(QRect playerPosition);
+    void movingFaceCard(const QRect& playerPosition);
 
 private:
     void assigningValues();

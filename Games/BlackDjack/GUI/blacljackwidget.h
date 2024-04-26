@@ -29,9 +29,9 @@ public:
 
     void updatePlayersIcons(QList<QSharedPointer<Player>> playes);
     void renderTakeCard(QSharedPointer<Card> card);
-    void renderFakeTakeCard(QString nicname);
-    void updateProcessing(QString data);
-    void blocingInterface(bool flag);
+    void renderFakeTakeCard(const QString& nicname);
+    void updateProcessing(const QString& data);
+    void blocingInterface(const bool flag);
 
 private:
     void rendering();
@@ -43,7 +43,7 @@ private:
     void doNotTakeCard();
     void showEvent(QShowEvent* event) override;
     void closeEvent(QCloseEvent* event) override;
-    void updateTimer(QString time);
+    void updateTimer(const QString& time);
 };
 
 #endif // BLACLJACKWIDGET_H

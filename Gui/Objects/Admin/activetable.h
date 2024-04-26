@@ -33,7 +33,7 @@ public:
     void setMinBalance(const QString& minBalance);
     void setNameGame(const QString& nameGame);
 
-    bool inputDataIsValid();
+    bool inputDataIsValid() const;
 };
 
 #endif // ACTIVETABLE_H

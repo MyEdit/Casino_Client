@@ -22,7 +22,7 @@ class W_Table : public QWidget
     const PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
 
 public:
-    explicit W_Table(QueryTypes actionType, QSharedPointer<ActiveTable> defaultActiveTable = QSharedPointer<ActiveTable>(new ActiveTable()), QWidget *parent = nullptr);
+    explicit W_Table(const QueryTypes actionType, QSharedPointer<ActiveTable> defaultActiveTable = QSharedPointer<ActiveTable>(new ActiveTable()), QWidget *parent = nullptr);
     ~W_Table();
 
 private slots:

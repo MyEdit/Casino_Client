@@ -23,7 +23,7 @@ class W_StuffUser : public QWidget
     const PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
 
 public:
-    explicit W_StuffUser(QueryTypes actionType, QSharedPointer<ObjectStuffUser> defaultStuffUser = QSharedPointer<ObjectStuffUser>(new ObjectStuffUser()), QWidget *parent = nullptr);
+    explicit W_StuffUser(const QueryTypes actionType, QSharedPointer<ObjectStuffUser> defaultStuffUser = QSharedPointer<ObjectStuffUser>(new ObjectStuffUser()), QWidget *parent = nullptr);
     ~W_StuffUser();
 
 private slots:

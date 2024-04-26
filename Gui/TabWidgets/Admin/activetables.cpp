@@ -15,7 +15,7 @@ ActiveTables::~ActiveTables()
     delete ui;
 }
 
-void ActiveTables::setValueToMaxPage(int maxPage)
+void ActiveTables::setValueToMaxPage(const int maxPage)
 {
     ui->labelMaxPage->setText(QString::number(maxPage));
 }
@@ -78,7 +78,7 @@ void ActiveTables::connects()
     });
 }
 
-void ActiveTables::updateCurrentPageInLabel(int currentPage)
+void ActiveTables::updateCurrentPageInLabel(const int currentPage)
 {
     ui->labelCurrentPage->setText(QString::number(currentPage));
 }
@@ -99,7 +99,7 @@ void ActiveTables::search()
     pagination->search(ui->searchText->text(), typeSearch);
 }
 
-void ActiveTables::onHeaderClicked(int logicalIndex)
+void ActiveTables::onHeaderClicked(const int logicalIndex)
 {
     if(!sortingOn)
         return;

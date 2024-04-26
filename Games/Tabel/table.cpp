@@ -12,9 +12,10 @@ Table::Table(Game game, TableSettings tableSettings)
 Table::Table(const QByteArray& data)
 {
     QDataStream stream(data);
-    QByteArray gameData, settingsData;
+    QSharedPointer<QByteArray> gameData(new QByteArray());
+    QSharedPointer<QByteArray> settingsData(new QByteArray());
     int currentNumPlayer;
-    stream >> gameData >> settingsData >> currentNumPlayer;
+    stream >> *gameData >> *settingsData >> currentNumPlayer;
     QSharedPointer<Game> game = Game::deserializeGame(gameData);
     TableSettings settings = TableSettings::deserializeTableSettings(settingsData);
 
@@ -52,15 +53,15 @@ QSharedPointer<Table> Table::getTable(int ID)
 }
 
 
-QByteArray Table::serializeTable()
+QSharedPointer<QByteArray> Table::serializeTable()
 {
-    QByteArray data;
-    QDataStream stream(&data, QIODevice::WriteOnly);
-    QByteArray gameData = game.serializeGame();
-    QByteArray settingsData = tableSettings.serializeTableSettings();
+    QSharedPointer<QByteArray> data(new QByteArray());
+    QDataStream stream(&*data, QIODevice::WriteOnly);
+    QSharedPointer<QByteArray> gameData = game.serializeGame();
+    QSharedPointer<QByteArray> settingsData = tableSettings.serializeTableSettings();
     int currentNumPlayer = players.size();
 
-    stream << gameData << settingsData << currentNumPlayer;
+    stream << *gameData << *settingsData << currentNumPlayer;
 
     for (QSharedPointer<Player> player : players)
     {

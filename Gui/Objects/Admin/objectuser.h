@@ -33,7 +33,7 @@ public:
     void setLogin(const QString& login);
     void setPassword(const QString& password);
 
-    bool inputDataIsValid();
+    bool inputDataIsValid() const;
 };
 
 #endif // OBJECTUSER_H

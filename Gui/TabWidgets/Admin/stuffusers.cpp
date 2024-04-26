@@ -15,7 +15,7 @@ StuffUsers::~StuffUsers()
     delete ui;
 }
 
-void StuffUsers::setValueToMaxPage(int maxPage)
+void StuffUsers::setValueToMaxPage(const int maxPage)
 {
     ui->labelMaxPage->setText(QString::number(maxPage));
 }
@@ -78,7 +78,7 @@ void StuffUsers::connects()
     });
 }
 
-void StuffUsers::updateCurrentPageInLabel(int currentPage)
+void StuffUsers::updateCurrentPageInLabel(const int currentPage)
 {
     ui->labelCurrentPage->setText(QString::number(currentPage));
 }
@@ -99,7 +99,7 @@ void StuffUsers::search()
     pagination->search(ui->searchText->text(), typeSearch);
 }
 
-void StuffUsers::onHeaderClicked(int logicalIndex)
+void StuffUsers::onHeaderClicked(const int logicalIndex)
 {
     if(!sortingOn)
         return;

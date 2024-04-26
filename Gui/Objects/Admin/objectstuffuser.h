@@ -26,9 +26,9 @@ public:
     void setFullName(const QString& fullName);
     void setLogin(const QString& login);
     void setPassword(const QString& password);
-    void setRole(Roles role);
+    void setRole(const Roles role);
 
-    bool inputDataIsValid();
+    bool inputDataIsValid() const;
 };
 
 #endif // OBJECTSTUFFUSER_H

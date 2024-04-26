@@ -1,7 +1,7 @@
 ﻿#include "w_user.h"
 #include "ui_w_user.h"
 
-W_User::W_User(QueryTypes actionType, QSharedPointer<ObjectUser> defaultUser, QWidget *parent) :
+W_User::W_User(const QueryTypes actionType, QSharedPointer<ObjectUser> defaultUser, QWidget *parent) :
     QWidget(parent), ui(new Ui::W_User), actionType(actionType), defaultUser(defaultUser)
 {
     ui->setupUi(this);

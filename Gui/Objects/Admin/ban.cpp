@@ -35,7 +35,7 @@ void Ban::setReason(const QString& reason)
     this->reason = reason;
 }
 
-bool Ban::inputDataIsValid()
+bool Ban::inputDataIsValid() const
 {
     if (id == 0)
         return false;

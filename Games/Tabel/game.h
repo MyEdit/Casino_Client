@@ -14,13 +14,13 @@ protected:
 
 public:
     Game() {};
-    Game(QString nameGame);
+    Game(const QString nameGame);
 
-    QString getName();
+    const QString& getName();
     void getGUI(); //TODO: нужен будет базовый класс для гуи каждой игры
 
-    QByteArray serializeGame();
-    static QSharedPointer<Game> deserializeGame(const QByteArray& data);
+    QSharedPointer<QByteArray> serializeGame();
+    static QSharedPointer<Game> deserializeGame(QSharedPointer<QByteArray> data);
 };
 
 #endif // GAME_H

@@ -36,22 +36,22 @@ public:
 protected:
     void workingWithTableView();
     void blockAndOperate(QObject* widget, const std::function<void()>& operation);
-    void blockingInterface(bool flag);
+    void blockingInterface(const bool flag);
     void settingValueInComboBox(QComboBox* comboBox, const QString& headerText);
     void sorting(int arg);
     void selectTypeSearch(int arg);
     void baseSetting();
     void sort();
     void deleteRecord(const QString& table, const QString& idColumn, int id);
-    QVariant getValueFromSelectedRow(QTableView* tableView, int collumn);
+    const QVariant getValueFromSelectedRow(QTableView* tableView, int collumn);
     virtual void search() = 0;
-    virtual void setValueToMaxPage(int maxPage) = 0;
+    virtual void setValueToMaxPage(const int maxPage) = 0;
     virtual void assigningValues() = 0;
     virtual void creatingObjects() = 0;
     virtual void connects() = 0;
-    virtual void updateCurrentPageInLabel(int currentPage) = 0;
+    virtual void updateCurrentPageInLabel(const int currentPage) = 0;
     virtual void goToPage() = 0;
-    virtual void onHeaderClicked(int logicalIndex) = 0;
+    virtual void onHeaderClicked(const int logicalIndex) = 0;
     virtual void prepReloadModels() = 0;
     virtual void openCreatRecotd() {};
     virtual void openEditRecotd() {};

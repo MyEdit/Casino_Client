@@ -19,7 +19,7 @@ void BaseClassSearchWindow::blockAndOperate(QObject* widget, const std::function
     widget->blockSignals(false);
 }
 
-void BaseClassSearchWindow::blockingInterface(bool flag)
+void BaseClassSearchWindow::blockingInterface(const bool flag)
 {
     QList<QPushButton*> pushbuttons = this->findChildren<QPushButton*>();
     for(QPushButton* pushbutton : pushbuttons)
@@ -83,7 +83,7 @@ void BaseClassSearchWindow::sort()
         prepReloadModels();
 }
 
-QVariant BaseClassSearchWindow::getValueFromSelectedRow(QTableView* tableView, int collumn)
+const QVariant BaseClassSearchWindow::getValueFromSelectedRow(QTableView* tableView, int collumn)
 {
     QModelIndex currentDiscount = tableView->currentIndex();
     return tableView->model()->data(tableView->model()->index(currentDiscount.row(), collumn), 0);

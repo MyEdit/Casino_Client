@@ -79,7 +79,7 @@ void ObjectUser::setPassword(const QString& password)
     this->password = password;
 }
 
-bool ObjectUser::inputDataIsValid()
+bool ObjectUser::inputDataIsValid() const
 {
     for (QString value : {fullName, passport, balance, login, password})
     {

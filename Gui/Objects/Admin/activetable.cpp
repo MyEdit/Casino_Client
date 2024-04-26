@@ -86,7 +86,7 @@ void ActiveTable::setNameGame(const QString& nameGame)
     this->nameGame = nameGame;
 }
 
-bool ActiveTable::inputDataIsValid()
+bool ActiveTable::inputDataIsValid() const
 {
     for (QString value : {maxPlayers, minBet, betStep, minBalance, nameGame})
     {

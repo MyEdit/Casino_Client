@@ -15,7 +15,7 @@ Payments::~Payments()
     delete ui;
 }
 
-void Payments::setValueToMaxPage(int maxPage)
+void Payments::setValueToMaxPage(const int maxPage)
 {
     ui->labelMaxPage->setText(QString::number(maxPage));
 }
@@ -78,7 +78,7 @@ void Payments::connects()
     });
 }
 
-void Payments::updateCurrentPageInLabel(int currentPage)
+void Payments::updateCurrentPageInLabel(const int currentPage)
 {
     ui->labelCurrentPage->setText(QString::number(currentPage));
 }
@@ -99,7 +99,7 @@ void Payments::search()
     pagination->search(ui->searchText->text(), typeSearch);
 }
 
-void Payments::onHeaderClicked(int logicalIndex)
+void Payments::onHeaderClicked(const int logicalIndex)
 {
     if(!sortingOn)
         return;

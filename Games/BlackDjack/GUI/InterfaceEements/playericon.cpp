@@ -41,19 +41,8 @@ void PlayerIcon::settingInformation()
 
 void PlayerIcon::setImage()
 {
-    QPixmap photo;
-    photo.loadFromData(*player->getPhoto());
-
-    QPixmap roundedPhoto(photo.size());
-    roundedPhoto.fill(Qt::transparent);
-    QPainterPath path;
-    path.addRoundedRect(0, 0, photo.width(), photo.height(), photo.width() / 2, photo.height() / 2);
-
-    QPainter painter(&roundedPhoto);
-    painter.setRenderHint(QPainter::Antialiasing, true);
-    painter.setClipPath(path);
-    painter.drawPixmap(0, 0, photo);
+    QSharedPointer<QPixmap> photo = BaseClassMainMenu::uploadingUserPhoto(player->getPhoto());
 
     ui->playerIcon->setScaledContents(true);
-    ui->playerIcon->setPixmap(roundedPhoto);
+    ui->playerIcon->setPixmap(*photo);
 }

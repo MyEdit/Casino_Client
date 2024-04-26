@@ -22,7 +22,7 @@ class W_Ban : public QWidget
     const PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
 
 public:
-    explicit W_Ban(QueryTypes actionType, QSharedPointer<Ban> defaultBan, QWidget *parent = nullptr);
+    explicit W_Ban(const QueryTypes actionType, QSharedPointer<Ban> defaultBan, QWidget *parent = nullptr);
     ~W_Ban();
 
 private slots:

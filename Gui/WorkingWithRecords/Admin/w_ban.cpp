@@ -1,7 +1,7 @@
 ﻿#include "w_ban.h"
 #include "ui_w_ban.h"
 
-W_Ban::W_Ban(QueryTypes actionType, QSharedPointer<Ban> defaultBan, QWidget* parent) :
+W_Ban::W_Ban(const QueryTypes actionType, QSharedPointer<Ban> defaultBan, QWidget* parent) :
     QWidget(parent), ui(new Ui::W_Ban), actionType(actionType), defaultBan(defaultBan)
 {
     ui->setupUi(this);

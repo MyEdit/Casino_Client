@@ -15,7 +15,7 @@ Credits::~Credits()
     delete ui;
 }
 
-void Credits::setValueToMaxPage(int maxPage)
+void Credits::setValueToMaxPage(const int maxPage)
 {
     ui->labelMaxPage->setText(QString::number(maxPage));
 }
@@ -78,7 +78,7 @@ void Credits::connects()
     });
 }
 
-void Credits::updateCurrentPageInLabel(int currentPage)
+void Credits::updateCurrentPageInLabel(const int currentPage)
 {
     ui->labelCurrentPage->setText(QString::number(currentPage));
 }
@@ -99,7 +99,7 @@ void Credits::search()
     pagination->search(ui->searchText->text(), typeSearch);
 }
 
-void Credits::onHeaderClicked(int logicalIndex)
+void Credits::onHeaderClicked(const int logicalIndex)
 {
     if(!sortingOn)
         return;

@@ -5,7 +5,7 @@ SOCKADDR_IN NetworkClient::serverAddress;
 PacketHandler* NetworkClient::packetHandler;
 
 //Инициилизация
-bool NetworkClient::init()
+bool NetworkClient::init() const
 {
     WSAData wsaData;
     WORD DLLVersion = MAKEWORD(2, 1); //Запрашиваемая версия либы winsock
@@ -50,7 +50,7 @@ bool NetworkClient::connectToServer()
     return true;
 }
 
-bool NetworkClient::start()
+bool NetworkClient::start() const
 {
     if (!connectToServer())
         return false;
@@ -84,7 +84,7 @@ bool NetworkClient::start()
 }
 
 //Отправка пакета серверу
-void NetworkClient::sendToServer(QString message)
+void NetworkClient::sendToServer(const QString &message)
 {
     int message_size = message.toUtf8().size();
     send(serverSocket, reinterpret_cast<const char*>(&message_size), sizeof(int), 0);

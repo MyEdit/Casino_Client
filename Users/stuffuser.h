@@ -6,7 +6,7 @@
 class StuffUser : public User
 {
 public:
-    StuffUser(int ID, QString name, QString login, Roles role);
+    StuffUser(int ID, const QString& name, const QString& login, Roles role);
     StuffUser(const QByteArray& data);
     StuffUser();
 

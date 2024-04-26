@@ -24,7 +24,7 @@ void Notification::paintEvent(QPaintEvent *event)
     painter.drawRoundedRect(contentsRect(), 10, 10); //радиус скругления
 }
 
-void Notification::setAlertProperties(TypeMessage typeMessage, QString text, QWidget* parentForm)
+void Notification::setAlertProperties(const TypeMessage typeMessage, const QString& text, QWidget* parentForm)
 {
     this->parentForm = parentForm;
 

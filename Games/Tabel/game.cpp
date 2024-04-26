@@ -1,12 +1,12 @@
 ﻿#include "game.h"
 
 
-Game::Game(QString nameGame)
+Game::Game(const QString nameGame)
 {
     this->nameGame = nameGame;
 }
 
-QString Game::getName()
+const QString& Game::getName()
 {
     return nameGame;
 }
@@ -17,17 +17,17 @@ void Game::getGUI()
 }
 
 
-QByteArray Game::serializeGame()
+QSharedPointer<QByteArray> Game::serializeGame()
 {
-    QByteArray data;
-    QDataStream stream(&data, QIODevice::WriteOnly);
+    QSharedPointer<QByteArray> data(new QByteArray());
+    QDataStream stream(&*data, QIODevice::WriteOnly);
     stream << nameGame;
     return data;
 }
 
-QSharedPointer<Game> Game::deserializeGame(const QByteArray& data)
+QSharedPointer<Game> Game::deserializeGame(QSharedPointer<QByteArray> data)
 {
-    QDataStream stream(data);
+    QDataStream stream(*data);
     QString nameGame;
     stream >> nameGame;
     return QSharedPointer<Game>(new Game(nameGame));

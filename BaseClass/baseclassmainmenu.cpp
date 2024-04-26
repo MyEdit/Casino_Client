@@ -52,17 +52,17 @@ void BaseClassMainMenu::prepareStyleSheets()
                              "text-align: left;}";
 }
 
-QPixmap BaseClassMainMenu::uploadingUserPhoto(QSharedPointer<QByteArray> data)
+QSharedPointer<QPixmap> BaseClassMainMenu::uploadingUserPhoto(QSharedPointer<QByteArray> data)
 {
     QPixmap photo;
     photo.loadFromData(*data);
 
-    QPixmap roundedPhoto(photo.size());
-    roundedPhoto.fill(Qt::transparent);
+    QSharedPointer<QPixmap> roundedPhoto(new QPixmap(photo.size()));
+    roundedPhoto->fill(Qt::transparent);
     QPainterPath path;
     path.addRoundedRect(0, 0, photo.width(), photo.height(), photo.width() / 2, photo.height() / 2);
 
-    QPainter painter(&roundedPhoto);
+    QPainter painter(roundedPhoto.get());
     painter.setRenderHint(QPainter::Antialiasing, true);
     painter.setClipPath(path);
     painter.drawPixmap(0, 0, photo);

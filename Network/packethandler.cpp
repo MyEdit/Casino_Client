@@ -35,7 +35,7 @@ void PacketHandler::tryReconnectToServer()
     Message::logInfo("Reconnect to server successful");
 }
 
-void PacketHandler::packetHandler(PacketTypes packettype)
+void PacketHandler::packetHandler(const PacketTypes packettype)
 {   
     //TODO: Свернуть весь свитч в мапу указателей на функции
     switch(packettype)

@@ -10,19 +10,19 @@
 #include "Utils/notificationutil.h"
 
 namespace Ui {
-class BlackJeckBackground;
+class BlackJackBackground;
 }
 
-class BlackJeckBackground : public QWidget
+class BlackJackBackground : public QWidget
 {
     Q_OBJECT
-    Ui::BlackJeckBackground *ui;
+    Ui::BlackJackBackground *ui;
     QMap<int, QLabel*> placeCardOnTable;
     int numMovePlayer;
 
 public:
-    explicit BlackJeckBackground(QWidget *parent = nullptr);
-    ~BlackJeckBackground();
+    explicit BlackJackBackground(QWidget *parent = nullptr);
+    ~BlackJackBackground();
 
     void movingCard(QSharedPointer<Card> card);
     void movingFaceCard(const QRect& playerPosition);

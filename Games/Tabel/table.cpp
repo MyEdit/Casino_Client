@@ -3,7 +3,7 @@
 QList<QSharedPointer<Table>> Table::tables;
 QMutex Table::accessTablesMutex;
 
-Table::Table(Game game, TableSettings tableSettings)
+Table::Table(QSharedPointer<Game> game, TableSettings tableSettings)
 {
     this->game = game;
     this->tableSettings = tableSettings;
@@ -27,7 +27,7 @@ Table::Table(const QByteArray& data)
         players.append(player);
     }
 
-    this->game = *game.get();
+    this->game = game;
     this->tableSettings = settings;
 }
 
@@ -57,7 +57,7 @@ QSharedPointer<QByteArray> Table::serializeTable()
 {
     QSharedPointer<QByteArray> data(new QByteArray());
     QDataStream stream(&*data, QIODevice::WriteOnly);
-    QSharedPointer<QByteArray> gameData = game.serializeGame();
+    QSharedPointer<QByteArray> gameData = game->serializeGame();
     QSharedPointer<QByteArray> settingsData = tableSettings.serializeTableSettings();
     int currentNumPlayer = players.size();
 
@@ -89,7 +89,7 @@ void Table::tryJoin()
     NetworkClient::sendToServer(&this->tableSettings.ID, sizeof(int));
 }
 
-Game Table::getGame()
+QSharedPointer<Game> Table::getGame()
 {
     return game;
 }
@@ -106,7 +106,7 @@ int Table::getCurrentNumPlayer()
 
 void Table::openGameGUI()
 {
-    game.getGUI(); //TODO: должен вернуть гуи игры
+    game->getGUI(); //TODO: должен вернуть гуи игры
 
     //Для теста
     BlaclJackWidget* gameTest = new BlaclJackWidget(QSharedPointer<Table>(this));
@@ -126,7 +126,7 @@ QList<QSharedPointer<Table>>& Table::getTabels()
     return tables;
 }
 
-void Table::setNewData(TableSettings tableSettings, Game game, QList<QSharedPointer<Player>> players)
+void Table::setNewData(TableSettings tableSettings, QSharedPointer<Game> game, QList<QSharedPointer<Player>> players)
 {
     this->tableSettings = tableSettings;
     this->game = game;

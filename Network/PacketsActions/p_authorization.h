@@ -12,6 +12,7 @@
 
 class Window_Admin;
 class Window_Player;
+class Player;
 
 class P_Authorization : public QObject
 {

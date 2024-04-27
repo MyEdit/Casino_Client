@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>BlackJeckTableWidget</class>
- <widget class="QWidget" name="BlackJeckTableWidget">
+ <class>BlackJackBackground</class>
+ <widget class="QWidget" name="BlackJackBackground">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -23,7 +23,7 @@
    <bool>false</bool>
   </property>
   <property name="styleSheet">
-   <string notr="true">#BlackJeckTableWidget{
+   <string notr="true">#BlackJackBackground{
 	background-color: transparent;
 }</string>
   </property>

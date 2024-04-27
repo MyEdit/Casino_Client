@@ -28,7 +28,7 @@ void Form::paintEvent(QPaintEvent* event)
 
 void Form::settingInformation()
 {
-    ui->name->setText(table->getGame().getName());
+    ui->name->setText(table->getGame()->getName());
     ui->minBet->setText(QString::number(table->getSettings().minBet));
     ui->betStep->setText(QString::number(table->getSettings().stepBet));
     ui->minBalance->setText(QString::number(table->getSettings().minBalance));

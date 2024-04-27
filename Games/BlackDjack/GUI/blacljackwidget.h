@@ -3,13 +3,15 @@
 
 #include <QWidget>
 #include <QTimer>
-#include "Games/BlackDjack/GUI/InterfaceEements/blackjeckbackground.h"
-#include "Games/BlackDjack/GUI/InterfaceEements/playersiconswidget.h"
-#include "Network/PacketsActions/p_authorization.h"
+#include "Games/BlackDjack/GUI/InterfaceElements/blackjackbackground.h"
+#include "Games/InterfaceElements/playersiconswidget.h"
 #include "Games/card.h"
 #include "Games/Tabel/table.h"
+#include "Users/player.h"
 
 class PlayersIconsWidget;
+class Table;
+class Player;
 
 namespace Ui {
 class BlaclJackWidget;
@@ -19,7 +21,7 @@ class BlaclJackWidget : public QWidget
 {
     Q_OBJECT
     Ui::BlaclJackWidget *ui;
-    QSharedPointer<BlackJeckBackground> background;
+    QSharedPointer<BlackJackBackground> background;
     QSharedPointer<PlayersIconsWidget> playersIcons;
     QSharedPointer<Table> table;
 

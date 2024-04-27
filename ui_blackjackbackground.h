@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'blackjecktablewidget.ui'
+** Form generated from reading UI file 'blackjackbackground.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.12.7
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_BLACKJECKTABLEWIDGET_H
-#define UI_BLACKJECKTABLEWIDGET_H
+#ifndef UI_BLACKJACKBACKGROUND_H
+#define UI_BLACKJACKBACKGROUND_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -19,7 +19,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_BlackJeckTableWidget
+class Ui_BlackJackBackground
 {
 public:
     QVBoxLayout *verticalLayout;
@@ -37,17 +37,17 @@ public:
     QSpacerItem *horizontalSpacer_2;
     QSpacerItem *verticalSpacer_2;
 
-    void setupUi(QWidget *BlackJeckTableWidget)
+    void setupUi(QWidget *BlackJackBackground)
     {
-        if (BlackJeckTableWidget->objectName().isEmpty())
-            BlackJeckTableWidget->setObjectName(QString::fromUtf8("BlackJeckTableWidget"));
-        BlackJeckTableWidget->resize(920, 400);
-        BlackJeckTableWidget->setMinimumSize(QSize(650, 400));
-        BlackJeckTableWidget->setAutoFillBackground(false);
-        BlackJeckTableWidget->setStyleSheet(QString::fromUtf8("#BlackJeckTableWidget{\n"
+        if (BlackJackBackground->objectName().isEmpty())
+            BlackJackBackground->setObjectName(QString::fromUtf8("BlackJackBackground"));
+        BlackJackBackground->resize(920, 400);
+        BlackJackBackground->setMinimumSize(QSize(650, 400));
+        BlackJackBackground->setAutoFillBackground(false);
+        BlackJackBackground->setStyleSheet(QString::fromUtf8("#BlackJackBackground{\n"
 "	background-color: transparent;\n"
 "}"));
-        verticalLayout = new QVBoxLayout(BlackJeckTableWidget);
+        verticalLayout = new QVBoxLayout(BlackJackBackground);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -59,7 +59,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer);
 
-        labelDeck = new QLabel(BlackJeckTableWidget);
+        labelDeck = new QLabel(BlackJackBackground);
         labelDeck->setObjectName(QString::fromUtf8("labelDeck"));
         QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
         sizePolicy.setHorizontalStretch(0);
@@ -78,7 +78,7 @@ public:
 
         horizontalLayout_2->addItem(horizontalSpacer_3);
 
-        labelCard_1 = new QLabel(BlackJeckTableWidget);
+        labelCard_1 = new QLabel(BlackJackBackground);
         labelCard_1->setObjectName(QString::fromUtf8("labelCard_1"));
         labelCard_1->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    border: 2px solid  rgb(255, 255, 255);\n"
@@ -87,7 +87,7 @@ public:
 
         horizontalLayout_2->addWidget(labelCard_1);
 
-        labelCard_2 = new QLabel(BlackJeckTableWidget);
+        labelCard_2 = new QLabel(BlackJackBackground);
         labelCard_2->setObjectName(QString::fromUtf8("labelCard_2"));
         labelCard_2->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    border: 2px solid  rgb(255, 255, 255);\n"
@@ -96,7 +96,7 @@ public:
 
         horizontalLayout_2->addWidget(labelCard_2);
 
-        labelCard_3 = new QLabel(BlackJeckTableWidget);
+        labelCard_3 = new QLabel(BlackJackBackground);
         labelCard_3->setObjectName(QString::fromUtf8("labelCard_3"));
         labelCard_3->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    border: 2px solid  rgb(255, 255, 255);\n"
@@ -105,7 +105,7 @@ public:
 
         horizontalLayout_2->addWidget(labelCard_3);
 
-        labelCard_4 = new QLabel(BlackJeckTableWidget);
+        labelCard_4 = new QLabel(BlackJackBackground);
         labelCard_4->setObjectName(QString::fromUtf8("labelCard_4"));
         labelCard_4->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    border: 2px solid  rgb(255, 255, 255);\n"
@@ -114,7 +114,7 @@ public:
 
         horizontalLayout_2->addWidget(labelCard_4);
 
-        labelCard_5 = new QLabel(BlackJeckTableWidget);
+        labelCard_5 = new QLabel(BlackJackBackground);
         labelCard_5->setObjectName(QString::fromUtf8("labelCard_5"));
         labelCard_5->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    border: 2px solid  rgb(255, 255, 255);\n"
@@ -123,7 +123,7 @@ public:
 
         horizontalLayout_2->addWidget(labelCard_5);
 
-        labelCard_6 = new QLabel(BlackJeckTableWidget);
+        labelCard_6 = new QLabel(BlackJackBackground);
         labelCard_6->setObjectName(QString::fromUtf8("labelCard_6"));
         labelCard_6->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "    border: 2px solid  rgb(255, 255, 255);\n"
@@ -144,14 +144,14 @@ public:
         verticalLayout->addItem(verticalSpacer_2);
 
 
-        retranslateUi(BlackJeckTableWidget);
+        retranslateUi(BlackJackBackground);
 
-        QMetaObject::connectSlotsByName(BlackJeckTableWidget);
+        QMetaObject::connectSlotsByName(BlackJackBackground);
     } // setupUi
 
-    void retranslateUi(QWidget *BlackJeckTableWidget)
+    void retranslateUi(QWidget *BlackJackBackground)
     {
-        BlackJeckTableWidget->setWindowTitle(QApplication::translate("BlackJeckTableWidget", "Form", nullptr));
+        BlackJackBackground->setWindowTitle(QApplication::translate("BlackJackBackground", "Form", nullptr));
         labelDeck->setText(QString());
         labelCard_1->setText(QString());
         labelCard_6->setText(QString());
@@ -160,9 +160,9 @@ public:
 };
 
 namespace Ui {
-    class BlackJeckBackground: public Ui_BlackJeckTableWidget {};
+    class BlackJackBackground: public Ui_BlackJackBackground {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_BLACKJECKTABLEWIDGET_H
+#endif // UI_BLACKJACKBACKGROUND_H

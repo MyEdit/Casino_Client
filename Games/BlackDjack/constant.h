@@ -4,7 +4,6 @@
 constexpr int maximumScore = 21;
 constexpr int minimumDealerScore = 17;
 constexpr int deckSize = 52;
-constexpr int numSuit = 4;
-constexpr int maxCardsOfSuit = 13;
+constexpr int maxPlayers = 7;
 
 #endif // CONSTANT_H

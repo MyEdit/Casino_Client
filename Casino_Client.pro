@@ -38,11 +38,11 @@ SOURCES += \
     GUI/WorkingWithRecords/Admin/w_stuffuser.cpp \
     GUI/WorkingWithRecords/Admin/w_table.cpp \
     GUI/window_player.cpp \
-    Games/BlackDjack/GUI/InterfaceEements/blackjeckbackground.cpp \
-    Games/BlackDjack/GUI/InterfaceEements/playericon.cpp \
-    Games/BlackDjack/GUI/InterfaceEements/playersiconswidget.cpp \
+    Games/BlackDjack/GUI/InterfaceElements/blackjackbackground.cpp \
     Games/BlackDjack/GUI/blackjackwindow.cpp \
     Games/BlackDjack/GUI/blacljackwidget.cpp \
+    Games/InterfaceElements/playericon.cpp \
+    Games/InterfaceElements/playersiconswidget.cpp \
     Games/Tabel/game.cpp \
     Games/Tabel/table.cpp \
     Games/blackjack.cpp \
@@ -94,12 +94,12 @@ HEADERS += \
     GUI/WorkingWithRecords/Admin/w_stuffuser.h \
     GUI/WorkingWithRecords/Admin/w_table.h \
     GUI/window_player.h \
-    Games/BlackDjack/GUI/InterfaceEements/blackjeckbackground.h \
-    Games/BlackDjack/GUI/InterfaceEements/playericon.h \
-    Games/BlackDjack/GUI/InterfaceEements/playersiconswidget.h \
+    Games/BlackDjack/GUI/InterfaceElements/blackjackbackground.h \
     Games/BlackDjack/GUI/blackjackwindow.h \
     Games/BlackDjack/GUI/blacljackwidget.h \
     Games/BlackDjack/constant.h \
+    Games/InterfaceElements/playericon.h \
+    Games/InterfaceElements/playersiconswidget.h \
     Games/Tabel/game.h \
     Games/Tabel/table.h \
     Games/blackjack.h \
@@ -149,11 +149,11 @@ FORMS += \
     GUI/WorkingWithRecords/Admin/w_stuffuser.ui \
     GUI/WorkingWithRecords/Admin/w_table.ui \
     GUI/window_player.ui \
-    Games/BlackDjack/GUI/InterfaceEements/blackjeckbackground.ui \
-    Games/BlackDjack/GUI/InterfaceEements/playericon.ui \
-    Games/BlackDjack/GUI/InterfaceEements/playersiconswidget.ui \
+    Games/BlackDjack/GUI/InterfaceElements/blackjackbackground.ui \
     Games/BlackDjack/GUI/blackjackwindow.ui \
     Games/BlackDjack/GUI/blacljackwidget.ui \
+    Games/InterfaceElements/playericon.ui \
+    Games/InterfaceElements/playersiconswidget.ui \
     Gui/TabWidgets/Player/gametable.ui \
     Gui/form.ui
 

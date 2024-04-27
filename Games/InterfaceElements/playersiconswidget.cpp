@@ -1,7 +1,7 @@
 ﻿#include "playersiconswidget.h"
 #include "ui_playersiconswidget.h"
 
-PlayersIconsWidget::PlayersIconsWidget(QWidget *parent) :
+PlayersIconsWidget::PlayersIconsWidget(QWidget* parent) :
     QWidget(parent),
     ui(new Ui::PlayersIconsWidget)
 {
@@ -10,14 +10,9 @@ PlayersIconsWidget::PlayersIconsWidget(QWidget *parent) :
     rendering();
 }
 
-PlayersIconsWidget::~PlayersIconsWidget()
-{
-    delete ui;
-}
-
 void PlayersIconsWidget::assigningValues()
 {
-    for(int i = 0; i < 7; i++)
+    for(int i = 0; i < maxPlayers; i++)
     {
         QSharedPointer<PlayerIcon> plaerIcon = QSharedPointer<PlayerIcon>(new PlayerIcon());
         playerIcons.append(plaerIcon);
@@ -34,6 +29,7 @@ void PlayersIconsWidget::assigningValues()
         {playerIcons[6], ui->layoutIcon_7}
     };
 }
+
 
 void PlayersIconsWidget::rendering()
 {

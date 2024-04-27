@@ -4,15 +4,14 @@
 #include <QSharedPointer>
 #include <QList>
 #include <QMutex>
-#include "Games/Tabel/game.h"
 #include "Users/player.h"
 #include "Network/PacketsActions/p_authorization.h"
-#include "Games/BlackDjack/GUI/blacljackwidget.h"
+#include "Games/Tabel/game.h"
 
-class BlaclJackWidget;
+class Game;
 class Player;
 
-//Перенеси бы в отдельный файл
+//TODO: Перенеси бы в отдельный файл
 struct TableSettings
 {
     int ID;
@@ -40,19 +39,19 @@ struct TableSettings
 
 class Table
 {
-    Game game{};
+    QSharedPointer<Game> game;
     TableSettings tableSettings{};
     QList<QSharedPointer<Player>> players{};
     static QList<QSharedPointer<Table>> tables;
     static QMutex accessTablesMutex;
 
 public:
-    Table(Game game, TableSettings tableSettings);
+    Table(QSharedPointer<Game> game, TableSettings tableSettings);
     Table(const QByteArray& data);
 
     //GETTERS
     TableSettings getSettings();
-    Game getGame();
+    QSharedPointer<Game> getGame();
     int getCurrentNumPlayer();
     QList<QSharedPointer<Player>> getPlayers();
     static QSharedPointer<Table> getTable(int idTable);
@@ -68,7 +67,7 @@ public:
     QSharedPointer<QByteArray> serializeTable();
     void openGameGUI();
     void updatePlayers();
-    void setNewData(TableSettings tableSettings, Game game, QList<QSharedPointer<Player>> players);
+    void setNewData(TableSettings tableSettings, QSharedPointer<Game> game, QList<QSharedPointer<Player>> players);
 };
 
 #endif // TABLE_H

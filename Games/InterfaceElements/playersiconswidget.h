@@ -3,10 +3,12 @@
 
 #include <QWidget>
 #include <QVBoxLayout>
-#include "Games/BlackDjack/GUI/InterfaceEements/playericon.h"
-#include "Network/PacketsActions/p_authorization.h"
+#include "Games/InterfaceElements/playericon.h"
+#include "Users/player.h"
+#include "Games/BlackDjack/constant.h"
 
 class PlayerIcon;
+class Player;
 
 namespace Ui {
 class PlayersIconsWidget;
@@ -20,8 +22,8 @@ class PlayersIconsWidget : public QWidget
     QMap<QSharedPointer<PlayerIcon>, QVBoxLayout*> widgetLayer;
 
 public:
-    explicit PlayersIconsWidget(QWidget *parent = nullptr);
-    ~PlayersIconsWidget();
+    explicit PlayersIconsWidget(QWidget* parent = nullptr);
+    virtual ~PlayersIconsWidget() {}
 
     void addPlayer(QSharedPointer<Player> player);
     QList<QSharedPointer<PlayerIcon>> getPlayerIcons();

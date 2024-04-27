@@ -31,7 +31,7 @@ void BlaclJackWidget::rendering()
 
 void BlaclJackWidget::renderingTable()
 {
-    background = QSharedPointer<BlackJeckBackground>(new BlackJeckBackground());
+    background = QSharedPointer<BlackJackBackground>(new BlackJackBackground());
     ui->gridLayout->addWidget(background.get(), 0, 0, Qt::AlignCenter);
 }
 

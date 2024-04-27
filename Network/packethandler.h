@@ -15,6 +15,7 @@
 
 class NetworkClient;
 class Table;
+class Card;
 
 class PacketHandler : public QThread
 {

@@ -6,38 +6,48 @@
 #include <QDataStream>
 #include <QIODevice>
 #include "Network/networkclient.h"
-#include "Games/Tabel/table.h"
+#include "BaseClass/baseclassgamewidget.h"
 
 class Player;
-class Table;
+class BaseClassGameWidget;
 
-class Game
+class Game : public QObject
 {
 protected:
-    QSharedPointer<Table> table;
+    int idTable;
     QString nameGame{};
     int minPlayers{2}; //У каждой игры свой минимальный лимит игроков для старта, пока вписываю тут. TODO: Нужен отдельный класс для игры BlackJack
 
 public:
-    Game() {};
+    Game() {}
     Game(const QString nameGame);
-    virtual ~Game() {}
 
     const QString& getName();
-    void getGUI(); //TODO: нужен будет базовый класс для гуи каждой игры
+    virtual QSharedPointer<BaseClassGameWidget> getGUI() = 0;
 
-    QSharedPointer<QByteArray> serializeGame();
-    static QSharedPointer<Game> deserializeGame(QSharedPointer<QByteArray> data);
+    virtual QSharedPointer<QByteArray> serializeGame();
+    virtual void updatePlayersIcons(QList<QSharedPointer<Player>> players) = 0;
+    virtual void createGUI() = 0;
 
-protected:
+public:
+    //Methods
     bool canJoin();
     bool canStartGame();
     void startGame();
     void leave();
-    void updatePlayersIcons(QList<QSharedPointer<Player>> playes);
-    virtual void takeCard() {}; //Запрос карты у сервера (GUI -> BlackJack::takeCard();)
-    virtual void pass() {};
-    void turn(PacketTypes packetType);
+    virtual void takeCard() = 0; //Запрос карты у сервера (GUI -> BlackJack::takeCard();)
+    virtual void pass() = 0;
+    void turn(const PacketTypes packetType);
+
+public:
+    //Events
+    virtual void onUpdateGameTimer(const QString& data) = 0; //Когда обновляется таймер
+    virtual void onTakeCard(QSharedPointer<Card> card) = 0; //Когда текущий игрок взял карту
+    virtual void onTakeCardAnotherPlayer(const QString& nicname) = 0; //Когда другой игрок взял карту
+    virtual void onStartMove() = 0; //Когда игрок может совершить ход
+    virtual void onUpdateGameProcessing(const QString& data) = 0;
+    virtual void onPlayerDefeat(QSharedPointer<Player> player) = 0; //Когда игрок проиграл
+    virtual void onGameFinished() = 0;
 };
 
 #endif // GAME_H

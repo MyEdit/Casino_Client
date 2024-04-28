@@ -7,6 +7,6 @@ const QString P_StartMove::getMove()
 
 void P_StartMove::startMove(const QString& nickname)
 {
-    P_Authorization::getPlayer()->getTableGUI()->updateProcessing(nickname);
-    P_Authorization::getPlayer()->getTableGUI()->blocingInterface(true);
+    P_Authorization::getPlayer()->getGame()->onUpdateGameProcessing(nickname);
+    P_Authorization::getPlayer()->getGame()->onStartMove();
 }

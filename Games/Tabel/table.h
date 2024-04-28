@@ -10,6 +10,7 @@
 
 class Game;
 class Player;
+class BlackJack;
 
 //TODO: Перенеси бы в отдельный файл
 struct TableSettings

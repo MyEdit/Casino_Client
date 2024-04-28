@@ -6,46 +6,49 @@
 #include "Games/BlackDjack/GUI/InterfaceElements/blackjackbackground.h"
 #include "Games/InterfaceElements/playersiconswidget.h"
 #include "Games/card.h"
-#include "Games/Tabel/table.h"
 #include "Users/player.h"
+#include "Games/blackjack.h"
+#include "BaseClass/baseclassgamewidget.h"
 
 class PlayersIconsWidget;
-class Table;
 class Player;
 
 namespace Ui {
 class BlaclJackWidget;
 }
 
-class BlaclJackWidget : public QWidget
+class BlaclJackWidget : public BaseClassGameWidget
 {
     Q_OBJECT
     Ui::BlaclJackWidget *ui;
     QSharedPointer<BlackJackBackground> background;
     QSharedPointer<PlayersIconsWidget> playersIcons;
-    QSharedPointer<Table> table;
+    QSharedPointer<BlackJack> game;
 
 public:
-    explicit BlaclJackWidget(QSharedPointer<Table> table, QWidget *parent = nullptr);
+    explicit BlaclJackWidget(QSharedPointer<BlackJack> game, QWidget *parent = nullptr);
     ~BlaclJackWidget();
 
-    void updatePlayersIcons(QList<QSharedPointer<Player>> playes);
-    void renderTakeCard(QSharedPointer<Card> card);
-    void renderFakeTakeCard(const QString& nicname);
-    void updateProcessing(const QString& data);
-    void blocingInterface(const bool flag);
-
 private:
+    void updatePlayersIcons(QList<QSharedPointer<Player>> playes) override;
+    void renderTakeCard(QSharedPointer<Card> card) override;
+    void renderFakeTakeCard(const QString& nicname) override;
+    void updateProcessing(const QString& data) override;
+    void blocingInterface(const bool flag) override;
+
     void rendering();
     void renderingTable();
     void renderingPlayersIcons();
     void resizeEvent(QResizeEvent *event) override;
     void connects();
-    void takeCard();
-    void doNotTakeCard();
     void showEvent(QShowEvent* event) override;
     void closeEvent(QCloseEvent* event) override;
     void updateTimer(const QString& time);
+    void takeCard();
+    void pass();
+
+private:
+    friend class BlackJack;
 };
 
 #endif // BLACLJACKWIDGET_H

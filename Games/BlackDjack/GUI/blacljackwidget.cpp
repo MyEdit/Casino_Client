@@ -1,10 +1,10 @@
 ﻿#include "blacljackwidget.h"
 #include "ui_blacljackwidget.h"
 
-BlaclJackWidget::BlaclJackWidget(QSharedPointer<Table> table, QWidget *parent) :
-    QWidget(parent),
+BlaclJackWidget::BlaclJackWidget(QSharedPointer<BlackJack> game, QWidget *parent) :
+    BaseClassGameWidget(parent),
     ui(new Ui::BlaclJackWidget),
-    table(table)
+    game(game)
 {
     ui->setupUi(this);
     rendering();
@@ -80,32 +80,18 @@ void BlaclJackWidget::updatePlayersIcons(QList<QSharedPointer<Player>> playes)
 void BlaclJackWidget::connects()
 {
     connect(ui->buttonTakeCard, &QPushButton::clicked, this, &BlaclJackWidget::takeCard);
-    connect(ui->buttonDoNotTakeCard, &QPushButton::clicked, this, &BlaclJackWidget::doNotTakeCard);
+    connect(ui->buttonDoNotTakeCard, &QPushButton::clicked, this, &BlaclJackWidget::pass);
 }
 
 void BlaclJackWidget::takeCard()
 {
-    //TODO: послать запрос на взятие карты
-
-    PacketTypes packettype = PacketTypes::P_TakeCard;
-    int idTable = table->getSettings().ID;
-
-    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
-    NetworkClient::sendToServer(&idTable, sizeof(int));
-
+    game->takeCard();
     blocingInterface(false);
 }
 
-void BlaclJackWidget::doNotTakeCard()
+void BlaclJackWidget::pass()
 {
-    //TODO: послать запрос на скип хода
-
-    PacketTypes packettype = PacketTypes::P_PassMove;
-    int idTable = table->getSettings().ID;
-
-    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
-    NetworkClient::sendToServer(&idTable, sizeof(int));
-
+    game->pass();
     blocingInterface(false);
 }
 
@@ -118,36 +104,20 @@ void BlaclJackWidget::blocingInterface(const bool flag)
 void BlaclJackWidget::showEvent(QShowEvent* event)
 {
     QWidget::showEvent(event);
-
     WindowTracker::activeWindow->setEnabled(false);
 }
 
 void BlaclJackWidget::closeEvent(QCloseEvent* event)
 {
     QWidget::closeEvent(event);
-
-    int idTable = table->getSettings().ID;
-    PacketTypes packettype = PacketTypes::P_PlayerLeaveTable;
-    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
-    NetworkClient::sendToServer(&idTable, sizeof(int));
-
-    WindowTracker::activeWindow->setEnabled(true);
+    game->leave();
 }
 
 void BlaclJackWidget::updateProcessing(const QString& data)
 {
-    bool ok;
-    data.toInt(&ok);
-    if(ok)
-    {
-        updateTimer(data);
-        return;
-    }
-
     QString processing = "Ход - " + data;
-    blocingInterface(false);
-
     ui->labelGameProcess->setText(processing);
+    blocingInterface(false);
 }
 
 void BlaclJackWidget::updateTimer(const QString& time)

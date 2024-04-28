@@ -71,12 +71,12 @@ QSharedPointer<QByteArray> Player::serializeUser()
     return byteArray;
 }
 
-void Player::setTableGUI(BlaclJackWidget* tableGUI)
+void Player::setGame(QSharedPointer<Game> game)
 {
-    this->tableGUI = tableGUI;
+    this->game = game;
 }
 
-BlaclJackWidget* Player::getTableGUI()
+QSharedPointer<Game> Player::getGame()
 {
-    return tableGUI;
+    return game;
 }

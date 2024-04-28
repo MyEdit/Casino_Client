@@ -91,7 +91,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Таймер</string>
+      <string>Ожидание минимального кол-ва игроков...</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

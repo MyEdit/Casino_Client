@@ -91,7 +91,7 @@ public:
         BlaclJackWidget->setWindowTitle(QApplication::translate("BlaclJackWidget", "Form", nullptr));
         buttonTakeCard->setText(QApplication::translate("BlaclJackWidget", "\320\222\320\267\321\217\321\202\321\214 \320\272\320\260\321\200\321\202\321\203", nullptr));
         buttonDoNotTakeCard->setText(QApplication::translate("BlaclJackWidget", "\320\245\320\262\320\260\321\202\320\270\321\202", nullptr));
-        labelGameProcess->setText(QApplication::translate("BlaclJackWidget", "\320\242\320\260\320\271\320\274\320\265\321\200", nullptr));
+        labelGameProcess->setText(QApplication::translate("BlaclJackWidget", "\320\236\320\266\320\270\320\264\320\260\320\275\320\270\320\265 \320\274\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\276\320\263\320\276 \320\272\320\276\320\273-\320\262\320\260 \320\270\320\263\321\200\320\276\320\272\320\276\320\262...", nullptr));
     } // retranslateUi
 
 };

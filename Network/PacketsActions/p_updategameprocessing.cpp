@@ -7,5 +7,5 @@ const QString P_UpdateGameProcessing::getData()
 
 void P_UpdateGameProcessing::updateGameProcessing(const QString& data)
 {
-    P_Authorization::getPlayer()->getTableGUI()->updateProcessing(data);
+    P_Authorization::getPlayer()->getGame()->onUpdateGameProcessing(data);
 }

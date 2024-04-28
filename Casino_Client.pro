@@ -72,6 +72,7 @@ SOURCES += \
     main.cpp
 
 HEADERS += \
+    BaseClass/baseclassgamewidget.h \
     BaseClass/baseclassmainmenu.h \
     BaseClass/baseclasssearchwindow.h \
     GUI/Objects/Admin/activetable.h \

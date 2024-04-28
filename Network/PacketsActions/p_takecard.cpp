@@ -18,11 +18,11 @@ const QString P_TakeCard::takeCardAnotherPlayer()
 
 void P_TakeCard::renderTakeCard(QSharedPointer<Card> card)
 {
-    P_Authorization::getPlayer()->getTableGUI()->renderTakeCard(card);
-    P_Authorization::getPlayer()->getTableGUI()->blocingInterface(true);
+    P_Authorization::getPlayer()->getGame()->onTakeCard(card);
+    P_Authorization::getPlayer()->getGame()->onStartMove();
 }
 
 void P_TakeCard::renderTakeCardAnotherPlayer(const QString& nicname)
 {
-    P_Authorization::getPlayer()->getTableGUI()->renderFakeTakeCard(nicname);
+    P_Authorization::getPlayer()->getGame()->onTakeCardAnotherPlayer(nicname);
 }

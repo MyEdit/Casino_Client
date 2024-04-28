@@ -2,14 +2,15 @@
 #define PLAYER_H
 
 #include "Users/user.h"
-#include "Games/BlackDjack/GUI/blacljackwidget.h"
+#include "Games/card.h"
+#include "Games/Tabel/game.h"
 
-class BlaclJackWidget;
+class Game;
 
 class Player : public User
 {
     double balance{};
-    BlaclJackWidget* tableGUI;
+    QSharedPointer<Game> game;
     QVector<QSharedPointer<Card>> cardsInHand;
 
 public:
@@ -17,7 +18,7 @@ public:
     Player(const QByteArray& data);
     Player() {};
 
-    void setTableGUI(BlaclJackWidget* tableGUI);
+    void setGame(QSharedPointer<Game> game);
 
     //GETTERS
     int getID() override;
@@ -26,7 +27,7 @@ public:
     Roles getRole() override;
     double getBalance();
     QSharedPointer<QByteArray> getPhoto() override;
-    BlaclJackWidget* getTableGUI();
+    QSharedPointer<Game> getGame();
     QVector<QSharedPointer<Card>> getHand();
     QSharedPointer<Card> getCardInHand(int index);
 

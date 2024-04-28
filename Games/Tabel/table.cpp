@@ -1,4 +1,5 @@
 ﻿#include "table.h"
+#include "Games/blackjack.h"
 
 QList<QSharedPointer<Table>> Table::tables;
 QMutex Table::accessTablesMutex;
@@ -16,10 +17,11 @@ Table::Table(const QByteArray& data)
     QSharedPointer<QByteArray> settingsData(new QByteArray());
     int currentNumPlayer;
     stream >> *gameData >> *settingsData >> currentNumPlayer;
-    QSharedPointer<Game> game = Game::deserializeGame(gameData);
-    TableSettings settings = TableSettings::deserializeTableSettings(settingsData);
 
-    for (int i = 0; i < currentNumPlayer; ++i)
+    TableSettings settings = TableSettings::deserializeTableSettings(settingsData);
+    QSharedPointer<BlackJack> blackJackGame(new BlackJack(settings.ID, gameData));
+
+    for (int i = 0; i < currentNumPlayer; i++)
     {
         QByteArray playerData;
         stream >> playerData;
@@ -27,7 +29,7 @@ Table::Table(const QByteArray& data)
         players.append(player);
     }
 
-    this->game = game;
+    this->game = blackJackGame;
     this->tableSettings = settings;
 }
 
@@ -105,19 +107,17 @@ int Table::getCurrentNumPlayer()
 }
 
 void Table::openGameGUI()
-{
-    game->getGUI(); //TODO: должен вернуть гуи игры
+{   
+    game->createGUI();
+    game->getGUI()->updatePlayersIcons(players);
+    game->getGUI()->show();
 
-    //Для теста
-    BlaclJackWidget* gameTest = new BlaclJackWidget(QSharedPointer<Table>(this));
-    gameTest->updatePlayersIcons(players);
-    gameTest->show();
-    P_Authorization::getPlayer()->setTableGUI(gameTest);
+    P_Authorization::getPlayer()->setGame(game);
 }
 
 void Table::updatePlayers()
 {
-    P_Authorization::getPlayer()->getTableGUI()->updatePlayersIcons(players);
+    P_Authorization::getPlayer()->getGame()->updatePlayersIcons(players);
 }
 
 QList<QSharedPointer<Table>>& Table::getTabels()

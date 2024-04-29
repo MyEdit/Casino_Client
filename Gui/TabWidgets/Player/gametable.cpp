@@ -24,10 +24,6 @@ void GameTable::updateTables()
 
     for(QSharedPointer<Table> table : Table::getTabels())
     {
-        //TODO:: проверка чтобы показывались только столы с Блэкджек (если будут плагины то пробать имена игр из плагинов и также проверять)
-        if(table->getGame()->getName() != "Блэкджек")
-            continue;
-
         Form* formTable = new Form(table);
         ui->verticalLayoutContent->addWidget(formTable);
     }

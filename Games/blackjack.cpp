@@ -9,12 +9,8 @@ BlackJack::BlackJack(int idTable, const QString& name)
 
 BlackJack::BlackJack(int idTable, QSharedPointer<QByteArray> data)
 {
-    QDataStream stream(*data);
-    QString nameGame;
-    stream >> nameGame;
-
     this->idTable = idTable;
-    this->nameGame = nameGame;
+    this->nameGame = QString::fromUtf8(*data);
 }
 
 BlackJack::~BlackJack()

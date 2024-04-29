@@ -23,21 +23,25 @@ public:
     Game(const QString nameGame);
 
     const QString& getName();
-    virtual QSharedPointer<BaseClassGameWidget> getGUI() = 0;
+    virtual BaseClassGameWidget* getGUI() = 0;
 
     virtual QSharedPointer<QByteArray> serializeGame();
     virtual void updatePlayersIcons(QList<QSharedPointer<Player>> players) = 0;
     virtual void createGUI() = 0;
 
-public:
+    void setGameName(const QString& nameGame);
+
+protected:
     //Methods
     bool canJoin();
     bool canStartGame();
     void startGame();
-    void leave();
     virtual void takeCard() = 0; //Запрос карты у сервера (GUI -> BlackJack::takeCard();)
     virtual void pass() = 0;
     void turn(const PacketTypes packetType);
+
+public:
+    void leave();
 
 public:
     //Events

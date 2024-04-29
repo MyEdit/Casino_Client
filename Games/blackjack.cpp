@@ -4,7 +4,7 @@ BlackJack::BlackJack(int idTable, const QString& name)
 {
     this->nameGame = name;
     this->idTable = idTable;
-    GUI = QSharedPointer<BlaclJackWidget>(new BlaclJackWidget(QSharedPointer<BlackJack>(this)));
+    GUI = new BlaclJackWidget(QSharedPointer<BlackJack>(this));
 }
 
 BlackJack::BlackJack(int idTable, QSharedPointer<QByteArray> data)
@@ -19,10 +19,11 @@ BlackJack::BlackJack(int idTable, QSharedPointer<QByteArray> data)
 
 BlackJack::~BlackJack()
 {
-
+    if(GUI != nullptr)
+        delete GUI;
 }
 
-QSharedPointer<BaseClassGameWidget> BlackJack::getGUI()
+BaseClassGameWidget *BlackJack::getGUI()
 {
     return GUI;
 }
@@ -35,6 +36,7 @@ void BlackJack::onUpdateGameTimer(const QString& data)
 void BlackJack::onTakeCard(QSharedPointer<Card> card)
 {
     GUI->renderTakeCard(card);
+    P_Authorization::getPlayer()->addCardInHand(card);
 }
 
 void BlackJack::onTakeCardAnotherPlayer(const QString& nicname)
@@ -86,15 +88,18 @@ void BlackJack::pass()
 
 bool BlackJack::isBust()
 {
-
+    return getPlayerScore() > maximumScore;
 }
 
-int BlackJack::getPlayerScore(QVector<QSharedPointer<Card>> card)
+int BlackJack::getPlayerScore()
 {
-    Q_UNUSED(card)
+    int score{};
+    for(QSharedPointer<Card> card : P_Authorization::getPlayer()->getHand())
+        score += card->value();
+    return score;
 }
 
 void BlackJack::createGUI()
 {
-    GUI = QSharedPointer<BlaclJackWidget>(new BlaclJackWidget(QSharedPointer<BlackJack>(this)));
+    GUI = new BlaclJackWidget(QSharedPointer<BlackJack>(this));
 }

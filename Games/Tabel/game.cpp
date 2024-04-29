@@ -19,6 +19,11 @@ QSharedPointer<QByteArray> Game::serializeGame()
     return data;
 }
 
+void Game::setGameName(const QString& nameGame)
+{
+    this->nameGame = nameGame;
+}
+
 bool Game::canJoin()
 {
 

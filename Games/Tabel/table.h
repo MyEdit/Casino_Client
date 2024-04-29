@@ -45,6 +45,7 @@ class Table
     QList<QSharedPointer<Player>> players{};
     static QList<QSharedPointer<Table>> tables;
     static QMutex accessTablesMutex;
+    bool isGameRunning = false;
 
 public:
     Table(QSharedPointer<Game> game, TableSettings tableSettings);
@@ -68,7 +69,7 @@ public:
     QSharedPointer<QByteArray> serializeTable();
     void openGameGUI();
     void updatePlayers();
-    void setNewData(TableSettings tableSettings, QSharedPointer<Game> game, QList<QSharedPointer<Player>> players);
+    void setNewData(TableSettings tableSettings, const QString& nameGame, QList<QSharedPointer<Player>> players);
 };
 
 #endif // TABLE_H

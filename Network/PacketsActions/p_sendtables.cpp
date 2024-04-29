@@ -22,7 +22,7 @@ void P_SendTables::getTablesFromServer()
         else
         {
             QSharedPointer<Table> table = Table::getTable(newTable->getSettings().ID);
-            table->setNewData(newTable->getSettings(), newTable->getGame(), newTable->getPlayers());
+            table->setNewData(newTable->getSettings(), newTable->getGame()->getName(), newTable->getPlayers());
         }
     }
 }

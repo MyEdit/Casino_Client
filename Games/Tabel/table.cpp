@@ -76,10 +76,14 @@ QSharedPointer<QByteArray> Table::serializeTable()
 
 bool Table::canJoin()
 {
+    if (isGameRunning)
+        return false;
+
     if (P_Authorization::getPlayer()->getBalance() < this->tableSettings.minBalance)
         return false;
 
-    //TODO: Проверять кол-во игроков которые уже за столом
+    if (this->players.size() >= this->tableSettings.maxCountPlayers)
+        return false;
 
     return true;
 }
@@ -126,10 +130,10 @@ QList<QSharedPointer<Table>>& Table::getTabels()
     return tables;
 }
 
-void Table::setNewData(TableSettings tableSettings, QSharedPointer<Game> game, QList<QSharedPointer<Player>> players)
+void Table::setNewData(TableSettings tableSettings, const QString& nameGame, QList<QSharedPointer<Player>> players)
 {
     this->tableSettings = tableSettings;
-    this->game = game;
+    this->game->setGameName(nameGame);
     this->players = players;
 }
 

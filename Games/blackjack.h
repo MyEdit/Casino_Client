@@ -12,7 +12,7 @@ class BaseClassGameWidget;
 class BlackJack : public Game
 {
     //Наверное, игра должна знать в каком столе она находится и иметь связь Table <=> Game
-    QSharedPointer<BlaclJackWidget> GUI;
+    BlaclJackWidget* GUI {};
     QList<QSharedPointer<Player>> players{};
 
 public:
@@ -23,7 +23,7 @@ public:
     ~BlackJack();
 
     //Getters
-    QSharedPointer<BaseClassGameWidget> getGUI() override;
+    BaseClassGameWidget* getGUI() override;
 
     void createGUI() override;
 
@@ -32,7 +32,7 @@ public:
     void takeCard() override; //Запрос карты у сервера (GUI -> BlackJack::takeCard();)
     void pass() override;
     bool isBust(); //Проверка перебора
-    int getPlayerScore(QVector<QSharedPointer<Card>> card);
+    int getPlayerScore();
 
 //    //Events
     void onUpdateGameTimer(const QString& data) override; //Когда обновляется таймер

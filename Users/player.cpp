@@ -80,3 +80,21 @@ QSharedPointer<Game> Player::getGame()
 {
     return game;
 }
+
+void Player::addCardInHand(QSharedPointer<Card> card)
+{
+    cardsInHand.append(card);
+}
+
+QVector<QSharedPointer<Card>> Player::getHand()
+{
+    return cardsInHand;
+}
+
+QSharedPointer<Card> Player::getCardInHand(int index)
+{
+    if(index < cardsInHand.size())
+        return cardsInHand[index];
+
+    return nullptr;
+}

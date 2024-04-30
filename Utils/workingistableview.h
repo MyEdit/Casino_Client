@@ -23,6 +23,7 @@ public:
     void settingVisualTableView();
     void setModel(QSharedPointer<QStandardItemModel> model);
     void setCurrentIndex(QModelIndex index);
+    bool checkDataInTable();
 
 private:
     void setValueNameColumn();

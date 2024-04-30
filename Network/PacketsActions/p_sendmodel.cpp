@@ -84,3 +84,10 @@ void P_SendModel::initMapTableNames()
     tableNames.insert(ModelTypes::Payments, "Payments");
 }
 
+const QString& P_SendModel::getTableName(ModelTypes modelType)
+{
+    if (tableNames.size() == 0)
+        initMapTableNames();
+
+    return tableNames[modelType];
+}

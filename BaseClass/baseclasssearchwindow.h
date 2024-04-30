@@ -43,7 +43,9 @@ protected:
     void baseSetting();
     void sort();
     void deleteRecord(const QString& table, const QString& idColumn, int id);
+    void startPagination();
     const QVariant getValueFromSelectedRow(QTableView* tableView, int collumn);
+    void showEvent(QShowEvent *event) override;
     virtual void search() = 0;
     virtual void setValueToMaxPage(const int maxPage) = 0;
     virtual void assigningValues() = 0;

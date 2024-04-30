@@ -68,7 +68,7 @@ void W_Table::loadComboBoxNameGame()
 {
     //TODO: Нужно будет переделать на заполнение на основании загруженных плагинов
     ui->nameGame->addItem("Девятка");
-    ui->nameGame->addItem("Блэкджек");
+    ui->nameGame->addItem("BlackJack");
 }
 
 void W_Table::clearInput()

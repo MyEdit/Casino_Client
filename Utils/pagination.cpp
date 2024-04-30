@@ -78,8 +78,16 @@ void Pagination::prev()
         nextButton->setEnabled(true);
         if(currentPageInModel() == minPageModel)
         {
-            if(models[2]->rowCount() != 0)
-                goToPrevModel();
+            if(goToPrev)
+            {
+                if(models[2]->rowCount() != 0)
+                {
+                    goToPrevModel();
+                    return;
+                }
+            }
+            int prevOffset = (currentPage - maxPageModel) * rowsPerPage;
+            loadingModel(ModelLoadingType::Prev, prevOffset);
         }
         else
         {
@@ -91,13 +99,24 @@ void Pagination::prev()
 
 void Pagination::next()
 {
-    if(currentPage < maxPage)
+    if (currentPage < maxPage)
     {
         prevButton->setEnabled(true);
-        if(currentPageInModel() == maxPageModel)
+        if (currentPageInModel() == maxPageModel)
         {
-            if(models[1]->rowCount() != 0)
-                goToNextModel();
+            if (goToNext)
+            {
+                if (models[1]->rowCount() != 0)
+                {
+                    goToNextModel();
+                    return;
+                }
+            }
+            else
+            {
+                int nextOffset = currentPage * rowsPerPage;
+                loadingModel(ModelLoadingType::Next, nextOffset);
+            }
         }
         else
         {
@@ -106,42 +125,24 @@ void Pagination::next()
         }
     }
     else
-        QMessageBox::warning(this, "Внимание", "Данных больше нет!", QMessageBox::Ok);
-}
-
-void Pagination::acceptModel(QSharedPointer<ModelData> structModel)
-{
-    switch (structModel->modelLoadingType)
     {
-    case ModelLoadingType::Next:
-        models[1] = QSharedPointer<QStandardItemModel>(structModel->model);
-        break;
-
-    case ModelLoadingType::Central:
-        models[0] = QSharedPointer<QStandardItemModel>(structModel->model);
-        workingIsTableView->setModel(models[0]);
-        updateTablePage();
-        break;
-
-    case ModelLoadingType::Prev:
-        models[2] = QSharedPointer<QStandardItemModel>(structModel->model);
-        break;
+        QMessageBox::warning(this, "Внимание", "Данных больше нет!", QMessageBox::Ok);
     }
-
-    if(!searchText.isEmpty())
-        searchInModel();
 }
+
 
 void Pagination::goToNextModel()
 {
     currentPage++;
 
     workingIsTableView->setModel(models[1]);
+    updateTablePage();
+
     std::rotate(models.begin(), models.begin() + 1, models.end());
 
     int nextOffset = (currentPage + maxPageModel - 1) * rowsPerPage;
     loadingModel(ModelLoadingType::Next, nextOffset);
-    updateTablePage();
+    goToNext = false;
 }
 
 void Pagination::goToPrevModel()
@@ -149,47 +150,79 @@ void Pagination::goToPrevModel()
     currentPage--;
 
     workingIsTableView->setModel(models[2]);
+    updateTablePage();
+
     std::rotate(models.begin(), models.begin() + (models.size() - 1), models.end());
 
     int prevOffset = (currentPage - maxPageModel * 2) * rowsPerPage;
     loadingModel(ModelLoadingType::Prev, prevOffset);
-
-    updateTablePage();
+    goToPrev = false;
 }
 
-void Pagination::loadingModel(ModelLoadingType type, int offset)
+void Pagination::acceptModel(QSharedPointer<ModelData> structModel)
+{
+    switch (structModel->modelLoadingType)
+    {
+    case ModelLoadingType::Next:
+    {
+        models[1] = QSharedPointer<QStandardItemModel>(structModel->model);
+        goToNext = true;
+        break;
+    }
+
+    case ModelLoadingType::Central:
+    {
+        models[0] = QSharedPointer<QStandardItemModel>(structModel->model);
+        workingIsTableView->setModel(models[0]);
+        updateTablePage();
+        break;
+    }
+
+    case ModelLoadingType::Prev:
+    {
+        models[2] = QSharedPointer<QStandardItemModel>(structModel->model);
+        goToPrev = true;
+        break;
+    }
+    }
+
+    if(!searchText.isEmpty())
+        searchInModel();
+}
+
+void Pagination::loadingModel(const ModelLoadingType type, const int offset)
 {
     PacketTypes packettype = PacketTypes::P_SendModel;
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&type, sizeof(ModelLoadingType));
     NetworkClient::sendToServer(&modelTypes, sizeof(ModelTypes));
     NetworkClient::sendToServer(&offset, sizeof(int));
-    NetworkClient::sendToServer(P_SendModel::tableNames[modelTypes]);
+    NetworkClient::sendToServer(P_SendModel::getTableName(modelTypes));
     NetworkClient::sendToServer(querySort);
 }
 
 void Pagination::initializationModels()
 {
-    int setPages = currentPage - currentPageInModel();
+    std::thread([&]()
+    {
+        int setPages = currentPage - currentPageInModel();
 
-    int startOffset = setPages * rowsPerPage;
-    int nextOffset = (setPages + maxPageModel) * rowsPerPage;
-    int prevOffset = (setPages - maxPageModel) * rowsPerPage;
+        int centralOffset = setPages * rowsPerPage;
+        int nextOffset = (setPages + maxPageModel) * rowsPerPage;
+        int prevOffset = (setPages - maxPageModel) * rowsPerPage;
 
-    emit blockInterface(false);
+        emit blockInterface(false);
 
-    loadingModel(ModelLoadingType::Central, startOffset);
-    loadingModel(ModelLoadingType::Next, nextOffset);
-    loadingModel(ModelLoadingType::Prev, prevOffset);
+        loadingModel(ModelLoadingType::Central, centralOffset);
+        loadingModel(ModelLoadingType::Next, nextOffset);
+        loadingModel(ModelLoadingType::Prev, prevOffset);
+    }).detach();
 }
 
 void Pagination::loadingMaxPage()
 {
-    if (P_SendModel::tableNames.size() == 0)
-        P_SendModel::initMapTableNames();
-
     PacketTypes packettype = PacketTypes::P_Query;
-    QString query = "SELECT COUNT(*) FROM " + P_SendModel::tableNames[modelTypes];
+    QString query = "SELECT COUNT(*) FROM " + P_SendModel::getTableName(modelTypes);
 
     QueryTypes queryTypes = QueryTypes::CountEntrites;
 
@@ -205,13 +238,11 @@ void Pagination::assigningValues()
     rowsPerPage = 10;
     maxPageModel = 5;
     minPageModel = 1;
-    searchTimer.setSingleShot(true);
 }
 
 void Pagination::connects()
 {
     connect(NetworkClient::packetHandler, &PacketHandler::signalSetQueryModel, this, &Pagination::distributor);
-    connect(&searchTimer, &QTimer::timeout, this, &Pagination::searchInDB);
 }
 
 void Pagination::goToPage(const QString& page)
@@ -254,12 +285,12 @@ void Pagination::searchInModel()
         }
     }
 
-    searchTimer.start(1000);
+    searchInDB();
 }
 
 void Pagination::searchInDB()
 {
-    searchModule->searchInDB(modelTypes, P_SendModel::tableNames[modelTypes], column->currentText(), searchText + typeSearch, querySort);
+    searchModule->searchInDB(modelTypes, P_SendModel::getTableName(modelTypes), column->currentText(), searchText + typeSearch, querySort);
 }
 
 void Pagination::distributor(QSharedPointer<QueryData> data)

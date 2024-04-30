@@ -73,8 +73,13 @@ void BaseClassSearchWindow::baseSetting()
     creatingObjects();
     connects();
     workingWithTableView();
+    blockingInterface(false);
+}
 
-    pagination->start();
+void BaseClassSearchWindow::startPagination()
+{
+    if(!workingIsTableView->checkDataInTable())
+        pagination->start();
 }
 
 void BaseClassSearchWindow::sort()
@@ -98,7 +103,6 @@ void BaseClassSearchWindow::deleteRecord(const QString& table, const QString& id
         return;
     }
 
-    //PRAGMA foreign_keys = ON; - для включения каскадного удаления (приколы SQLite, что оно по умолчанию всегда выключено)
     QString query = "DELETE FROM %1 WHERE %2 = %3";
     query = query.arg(table).arg(idColumn).arg(id);
 
@@ -108,4 +112,11 @@ void BaseClassSearchWindow::deleteRecord(const QString& table, const QString& id
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&actionType, sizeof(QueryTypes));
     NetworkClient::sendToServer(query);
+}
+
+void BaseClassSearchWindow::showEvent(QShowEvent* event)
+{
+    QWidget::showEvent(event);
+
+    startPagination();
 }

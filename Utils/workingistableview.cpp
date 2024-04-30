@@ -100,3 +100,8 @@ void WorkingIsTableView::setCurrentIndex(QModelIndex index)
 {
     tableView->setCurrentIndex(index);
 }
+
+bool WorkingIsTableView::checkDataInTable()
+{
+    return tableView->isModal();
+}

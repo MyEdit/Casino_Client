@@ -43,6 +43,23 @@ public:
         send(serverSocket, reinterpret_cast<const char*>(data), size, 0);
     }
 
+    template<typename T>
+    static T getMessageFromServer()
+    {
+        T returnData{};
+        recv(serverSocket, reinterpret_cast<char*>(&returnData), sizeof(T), 0);
+        return returnData;
+    }
+
+    template<typename T>
+    static typename std::enable_if<std::is_same<T, QByteArray>::value, T>::type
+    getMessageFromServer(int size)
+    {
+        QByteArray returnData(size, 0);
+        recv(serverSocket, returnData.data(), size, 0);
+        return returnData;
+    }
+
     friend class PacketHandler;
 };
 

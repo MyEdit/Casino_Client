@@ -5,17 +5,10 @@ QMap<ModelTypes, QString> P_SendModel::tableNames;
 
 QSharedPointer<ModelData> P_SendModel::getModelFromServer()
 {
-    ModelTypes modeltype;
-    ModelLoadingType modelLoadingType;
-    QByteArray receivedData;
-    int dataSize;
-
-    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&modeltype), sizeof(ModelTypes), 0);
-    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&modelLoadingType), sizeof(ModelLoadingType), 0);
-    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&dataSize), sizeof(int), 0);
-    receivedData.resize(dataSize);
-    recv(NetworkClient::serverSocket, receivedData.data(), dataSize, 0);
-
+    ModelTypes modeltype = NetworkClient::getMessageFromServer<ModelTypes>();
+    ModelLoadingType modelLoadingType = NetworkClient::getMessageFromServer<ModelLoadingType>();
+    int dataSize = NetworkClient::getMessageFromServer<int>();
+    QByteArray receivedData = NetworkClient::getMessageFromServer<QByteArray>(dataSize);
     QSharedPointer<QStandardItemModel> model = Serializer::deserializationDataModel(receivedData);
 
     return QSharedPointer<ModelData>(new ModelData{modeltype, modelLoadingType, model});

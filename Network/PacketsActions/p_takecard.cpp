@@ -2,12 +2,8 @@
 
 QSharedPointer<Card> P_TakeCard::takeCard()
 {
-    CardRank cardRank;
-    CardSuit cardSuit;
-
-    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&cardRank), sizeof(PacketTypes), 0);
-    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&cardSuit), sizeof(PacketTypes), 0);
-
+    CardRank cardRank = NetworkClient::getMessageFromServer<CardRank>();
+    CardSuit cardSuit = NetworkClient::getMessageFromServer<CardSuit>();
     return QSharedPointer<Card>(new Card(cardRank, cardSuit));
 }
 

@@ -2,16 +2,12 @@
 
 void P_SendTables::getTablesFromServer()
 {
-    int countTables;    
-    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&countTables), sizeof(int), 0);
+    int countTables = NetworkClient::getMessageFromServer<int>();
 
     for(int i = 0; i < countTables; i++)
     {
-        QByteArray receivedData;
-        int dataSize;
-        recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&dataSize), sizeof(int), 0);
-        receivedData.resize(dataSize);
-        recv(NetworkClient::serverSocket, receivedData.data(), dataSize, 0);
+        int dataSize = NetworkClient::getMessageFromServer<int>();
+        QByteArray receivedData = NetworkClient::getMessageFromServer<QByteArray>(dataSize);
 
         QSharedPointer<Table> newTable(new Table(receivedData));
 

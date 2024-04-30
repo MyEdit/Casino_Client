@@ -31,14 +31,10 @@ void P_Authorization::openMainWindow(QSharedPointer<User> user)
 QSharedPointer<User> P_Authorization::getUser()
 {
     QMutexLocker locker(&accessMutex);
-    Roles role;
-    int sizeByteUser;
-    QByteArray byteUser;
+    Roles role = NetworkClient::getMessageFromServer<Roles>();
+    int sizeByteUser = NetworkClient::getMessageFromServer<int>();
+    QByteArray byteUser = NetworkClient::getMessageFromServer<QByteArray>(sizeByteUser);
 
-    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&role), sizeof(role), 0);
-    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&sizeByteUser), sizeof(int), 0);
-    byteUser.resize(sizeByteUser);
-    recv(NetworkClient::serverSocket, byteUser.data(), sizeByteUser, 0);
     QSharedPointer<User> user;
     if(role == Roles::User)
     {

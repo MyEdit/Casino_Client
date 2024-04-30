@@ -2,10 +2,8 @@
 
 QSharedPointer<Table> P_ConnectPlayerToTable::getTable()
 {
-    int idTable;
-    recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&idTable), sizeof(int), 0);
-
-    QSharedPointer<Table> table = Table::getTable(idTable);
+    int tableID = NetworkClient::getMessageFromServer<int>();
+    QSharedPointer<Table> table = Table::getTable(tableID);
     return table;
 }
 

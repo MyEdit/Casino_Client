@@ -63,6 +63,7 @@ private:
     void setMaxPage(const QString& rowCount);
     void searchInModel();
     void searchInDB();
+    void dataFoundInModel(QSharedPointer<ResultSearchInModel> resultSearch);
 
 signals:
     void updateCurrentPageInLabel(int);

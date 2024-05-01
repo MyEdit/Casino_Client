@@ -83,7 +83,7 @@ void WorkingIsTableView::setValueNameColumn()
 QVector<QString> WorkingIsTableView::getColumnHeaders()
 {
     QVector<QString> headers;
-    QAbstractItemModel* model =tableView->model();
+    QAbstractItemModel* model = tableView->model();
     int columnCount = model->columnCount();
 
     for (int column = 1; column < columnCount; ++column)
@@ -103,5 +103,5 @@ void WorkingIsTableView::setCurrentIndex(QModelIndex index)
 
 bool WorkingIsTableView::checkDataInTable()
 {
-    return tableView->isModal();
+    return tableView->model();
 }

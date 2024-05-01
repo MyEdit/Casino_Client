@@ -1,4 +1,4 @@
-#ifndef NOTIFICATIONUTIL_H
+﻿#ifndef NOTIFICATIONUTIL_H
 #define NOTIFICATIONUTIL_H
 
 #include <QPair>
@@ -10,8 +10,7 @@ class NotificationUtil
 public:
     static void viewNotification(QPair<TypeMessage, QString> message)
     {
-        Notification* notification = new Notification();
-        notification->setAlertProperties(message.first, message.second, WindowTracker::activeWindow);
+        Notification::showNotification(message.first, message.second, WindowTracker::activeWindow);
     }
 };
 

@@ -78,4 +78,11 @@ struct UserData
     QString fullName;
 };
 
+struct ResultSearchInModel
+{
+    QSharedPointer<QStandardItemModel> model;
+    QModelIndex index;
+    int currentPage;
+};
+
 #endif // PACKET_H

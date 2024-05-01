@@ -12,6 +12,12 @@ Notification::Notification()
     setupConnections();
 }
 
+void Notification::showNotification(const TypeMessage typeMessage, const QString& text, QWidget* parentForm)
+{
+    Notification* notification = new Notification();
+    notification->setAlertProperties(typeMessage, text, parentForm);
+}
+
 void Notification::paintEvent(QPaintEvent *event)
 {
     QWidget::paintEvent(event);

@@ -36,6 +36,10 @@ void BaseClassSearchWindow::blockingInterface(const bool flag)
     QList<QLineEdit*> lineEdits = this->findChildren<QLineEdit*>();
     for(QLineEdit* lineEdit : lineEdits)
         lineEdit->setEnabled(flag);
+
+    QList<QTableView*> tableViews = this->findChildren<QTableView*>();
+    for(QTableView* tableView : tableViews)
+        tableView->setEnabled(flag);
 }
 
 
@@ -98,8 +102,7 @@ void BaseClassSearchWindow::deleteRecord(const QString& table, const QString& id
 {
     if(id == 0)
     {
-        Notification* notification = new Notification();
-        notification->setAlertProperties(TypeMessage::Error, "Не выбрана запись для удаления", WindowTracker::activeWindow);
+        Notification::showNotification(TypeMessage::Error, "Не выбрана запись для удаления", WindowTracker::activeWindow);
         return;
     }
 

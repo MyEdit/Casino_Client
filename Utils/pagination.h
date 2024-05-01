@@ -19,8 +19,6 @@ class Pagination : public QWidget
     Q_OBJECT
 
     QTableView* tableView;
-    QPushButton* prevButton;
-    QPushButton* nextButton;
     int currentPage;
     int rowsPerPage;
     int maxPageModel;
@@ -38,7 +36,7 @@ class Pagination : public QWidget
     QString querySort {};
 
 public:
-    Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, QComboBox* column, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes);
+    Pagination(QWidget* parent, QTableView* table, QComboBox* column, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes);
 
     int getMaxPage();
     void prev();

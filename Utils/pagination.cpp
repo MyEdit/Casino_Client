@@ -1,11 +1,9 @@
 ﻿#include "pagination.h"
 #include <QDebug>
 
-Pagination::Pagination(QWidget* parent, QTableView* table, QPushButton* prevButton, QPushButton* nextButton, QComboBox* column, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes) :
+Pagination::Pagination(QWidget* parent, QTableView* table, QComboBox* column, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes) :
     QWidget(parent),
     tableView(table),
-    prevButton(prevButton),
-    nextButton(nextButton),
     workingIsTableView(workingIsTableView),
     modelTypes(modelTypes),
     column(column)
@@ -75,7 +73,6 @@ void Pagination::prev()
 {
     if(currentPage > 1)
     {
-        nextButton->setEnabled(true);
         if(currentPageInModel() == minPageModel)
         {
             if(goToPrev)
@@ -86,8 +83,6 @@ void Pagination::prev()
                     return;
                 }
             }
-            int prevOffset = (currentPage - maxPageModel) * rowsPerPage;
-            loadingModel(ModelLoadingType::Prev, prevOffset);
         }
         else
         {
@@ -101,7 +96,6 @@ void Pagination::next()
 {
     if (currentPage < maxPage)
     {
-        prevButton->setEnabled(true);
         if (currentPageInModel() == maxPageModel)
         {
             if (goToNext)
@@ -111,11 +105,6 @@ void Pagination::next()
                     goToNextModel();
                     return;
                 }
-            }
-            else
-            {
-                int nextOffset = currentPage * rowsPerPage;
-                loadingModel(ModelLoadingType::Next, nextOffset);
             }
         }
         else
@@ -217,6 +206,9 @@ void Pagination::initializationModels()
         loadingModel(ModelLoadingType::Next, nextOffset);
         loadingModel(ModelLoadingType::Prev, prevOffset);
     }).detach();
+
+    goToNext = false;
+    goToPrev = false;
 }
 
 void Pagination::loadingMaxPage()

@@ -42,7 +42,7 @@ void StuffUsers::assigningValues()
 void StuffUsers::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>(new WorkingIsTableView(ui->tableView, &boxsNameColumn));
-    pagination = QSharedPointer<Pagination>(new Pagination(this, ui->tableView, ui->prevButton, ui->nextButton, ui->searchColumn, workingIsTableView, modelTypes));
+    pagination = QSharedPointer<Pagination>(new Pagination(this, ui->tableView, ui->searchColumn, workingIsTableView, modelTypes));
 }
 
 void StuffUsers::connects()

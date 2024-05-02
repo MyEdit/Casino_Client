@@ -9,6 +9,7 @@
 #include "Users/player.h"
 #include "Games/blackjack.h"
 #include "BaseClass/baseclassgamewidget.h"
+#include "Games/BlackDjack/BlackJackGamePackets.h"
 
 class PlayersIconsWidget;
 class Player;
@@ -46,6 +47,7 @@ private:
     void updateTimer(const QString& time);
     void takeCard();
     void pass();
+    void turn(GamePackets gamePacket);
 
 private:
     friend class BlackJack;

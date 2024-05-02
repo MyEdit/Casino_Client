@@ -11,6 +11,7 @@
 #include "Network/PacketsActions/p_sendtables.h"
 #include "Network/PacketsActions/p_connectplayertotable.h"
 #include "Network/PacketsActions/p_updategameprocessing.h"
+#include "Network/PacketsActions/p_gamepacket.h"
 #include "Users/user.h"
 
 class NetworkClient;
@@ -38,9 +39,6 @@ signals:
     void signalOpenGame(QSharedPointer<Table>);
     void signalUpdatePlayers(QSharedPointer<Table>);
     void signalUpdateGameProcessing(const QString);
-    void signalTakeCard(const QSharedPointer<Card>);
-    void signalTakeCardAnotherPlayer(const QString);
-    void signalStartMove(const QString);
 };
 
 #endif // CLIENTHANDLER_H

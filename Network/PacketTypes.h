@@ -17,10 +17,7 @@ enum class PacketTypes
     P_ConnectOtherPlayerToTable,
     P_PlayerLeaveTable,
     P_UpdateGameProcessing,
-    P_TakeCard,
-    P_PassMove,
-    P_TakeCardAnotherPlayer,
-    P_StartMove
+    P_GamePacket
 };
 
 enum class ModelTypes

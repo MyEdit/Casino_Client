@@ -12,8 +12,6 @@
 #include "Network/PacketsActions/p_sendmodel.h"
 #include "Network/packethandler.h"
 #include "Network/PacketsActions/p_reconnection.h"
-#include "Network/PacketsActions/p_takecard.h"
-#include "Network/PacketsActions/p_startmove.h"
 
 class PacketHandler;
 

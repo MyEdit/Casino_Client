@@ -13,6 +13,8 @@ class BaseClassGameWidget;
 
 class Game : public QObject
 {
+    Q_OBJECT
+
 protected:
     int idTable;
     QString nameGame{};
@@ -38,7 +40,6 @@ protected:
     void startGame();
     virtual void takeCard() = 0; //Запрос карты у сервера (GUI -> BlackJack::takeCard();)
     virtual void pass() = 0;
-    void turn(const PacketTypes packetType);
 
 public:
     void leave();
@@ -46,12 +47,14 @@ public:
 public:
     //Events
     virtual void onUpdateGameTimer(const QString& data) = 0; //Когда обновляется таймер
-    virtual void onTakeCard(QSharedPointer<Card> card) = 0; //Когда текущий игрок взял карту
-    virtual void onTakeCardAnotherPlayer(const QString& nicname) = 0; //Когда другой игрок взял карту
+    virtual void onTakeCard() = 0; //Когда текущий игрок взял карту
+    virtual void onTakeCardAnotherPlayer() = 0; //Когда другой игрок взял карту
     virtual void onStartMove() = 0; //Когда игрок может совершить ход
     virtual void onUpdateGameProcessing(const QString& data) = 0;
     virtual void onPlayerDefeat(QSharedPointer<Player> player) = 0; //Когда игрок проиграл
     virtual void onGameFinished() = 0;
+    virtual void onGamePacketReceived() = 0;
+    virtual int getTableID() = 0;
 };
 
 #endif // GAME_H

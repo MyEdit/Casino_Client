@@ -8,6 +8,7 @@ void PacketHandler::run()
 void PacketHandler::clientHandler()
 {
     PacketTypes packettype;
+    Message::logInfo("clientHandler");
     while(true)
     {
         if (recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&packettype), sizeof(PacketTypes), 0) <= 0)
@@ -86,19 +87,9 @@ void PacketHandler::packetHandler(const PacketTypes packettype)
             emit signalUpdateGameProcessing(P_UpdateGameProcessing::getData());
             break;
         }
-        case(PacketTypes::P_TakeCard):
+        case(PacketTypes::P_GamePacket):
         {
-            emit signalTakeCard(P_TakeCard::takeCard());
-            break;
-        }
-        case(PacketTypes::P_StartMove):
-        {
-            emit signalStartMove(P_StartMove::getMove());
-            break;
-        }
-        case(PacketTypes::P_TakeCardAnotherPlayer):
-        {
-            emit signalTakeCardAnotherPlayer(P_TakeCard::takeCardAnotherPlayer());
+            P_GamePacket::onGamePacketReceived();
             break;
         }
         default:

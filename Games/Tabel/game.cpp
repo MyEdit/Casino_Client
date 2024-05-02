@@ -41,12 +41,9 @@ void Game::startGame()
 
 void Game::leave()
 {
-    turn(PacketTypes::P_PlayerLeaveTable);
-    WindowTracker::activeWindow->setEnabled(true);
-}
-
-void Game::turn(const PacketTypes packetType)
-{
-    NetworkClient::sendToServer(&packetType, sizeof(PacketTypes));
+    PacketTypes packettype = PacketTypes::P_PlayerLeaveTable;
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&idTable, sizeof(int));
+
+    WindowTracker::activeWindow->setEnabled(true);
 }

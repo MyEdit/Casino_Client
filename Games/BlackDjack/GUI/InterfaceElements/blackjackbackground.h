@@ -8,6 +8,7 @@
 #include <QLabel>
 #include "Games/card.h"
 #include "Utils/notificationutil.h"
+#include "Utils/Message.h"
 
 namespace Ui {
 class BlackJackBackground;
@@ -31,6 +32,10 @@ private:
     void assigningValues();
     void resizeEvent(QResizeEvent* event) override;
     void paintEvent(QPaintEvent* event) override;
+
+private slots:
+    void movingCardInGuiThread(QSharedPointer<Card> card);
+    void movingFaceInGuiThread(const QRect &playerPosition);
 };
 
 #endif // BLACKJECKBACKGTOUND_H

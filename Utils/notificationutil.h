@@ -1,4 +1,4 @@
-﻿#ifndef NOTIFICATIONUTIL_H
+#ifndef NOTIFICATIONUTIL_H
 #define NOTIFICATIONUTIL_H
 
 #include <QPair>

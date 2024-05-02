@@ -36,6 +36,12 @@ void BlackJackBackground::paintEvent(QPaintEvent* event)
 
 void BlackJackBackground::movingCard(QSharedPointer<Card> card)
 {
+    // Вызываем метод в потоке GUI с помощью invokeMethod
+    QMetaObject::invokeMethod(this, "movingCardInGuiThread", Qt::QueuedConnection, Q_ARG(QSharedPointer<Card>, card));
+}
+
+void BlackJackBackground::movingCardInGuiThread(QSharedPointer<Card> card)
+{
     QString filePatch = Card::getCardTexture(*card);
 
     if(placeCardOnTable.size() == numMovePlayer)
@@ -54,7 +60,6 @@ void BlackJackBackground::movingCard(QSharedPointer<Card> card)
     tempLabel->setGeometry(startPosition);
     tempLabel->show();
     tempLabel->raise();
-
     QPropertyAnimation* animation = new QPropertyAnimation(tempLabel, "geometry");
     animation->setDuration(1000);
     animation->setStartValue(startPosition);
@@ -70,6 +75,12 @@ void BlackJackBackground::movingCard(QSharedPointer<Card> card)
 }
 
 void BlackJackBackground::movingFaceCard(const QRect &playerPosition)
+{
+    // Вызываем метод в потоке GUI с помощью invokeMethod
+    QMetaObject::invokeMethod(this, "movingFaceInGuiThread", Qt::QueuedConnection, Q_ARG(const QRect, playerPosition));
+}
+
+void BlackJackBackground::movingFaceInGuiThread(const QRect &playerPosition)
 {
     QString filePatch = "://Games/BlackDjack/assets/Standart/shirt.png";
 

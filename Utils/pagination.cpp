@@ -267,6 +267,7 @@ void Pagination::search(const QString& searchText, const QString& typeSearch)
 
 void Pagination::searchInModel()
 {
+    emit blockInterface(false);
     searchModule->searchInModels(models, searchText, typeSearch, column->currentIndex(), rowsPerPage);
 }
 
@@ -283,6 +284,7 @@ void Pagination::dataFoundInModel(QSharedPointer<ResultSearchInModel> resultSear
 
 void Pagination::searchInDB()
 {
+    emit blockInterface(true);
     SearchModule::searchInDB(modelTypes, P_SendModel::getTableName(modelTypes), column->currentText(), searchText + typeSearch, querySort);
 }
 

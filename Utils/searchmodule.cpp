@@ -1,9 +1,10 @@
 ﻿#include "searchmodule.h"
 
-void SearchModule::searchInModels(QVector<QSharedPointer<QStandardItemModel>> models, const QString& searchText, const QString& typeSearch, int columnCurrentIndex, int rowsPerPage)
+void SearchModule::searchInModels(QVector<QSharedPointer<QStandardItemModel>>& models, const QString& searchText, const QString& typeSearch, int columnCurrentIndex, int rowsPerPage)
 {
-    std::thread([=]()
+    std::thread([&models, searchText, typeSearch, columnCurrentIndex, rowsPerPage, this]()
     {
+//        QThread::sleep(5);
         for (QSharedPointer<QStandardItemModel> model : models)
         {
             bool resultSearchInModel = false;
@@ -30,6 +31,7 @@ void SearchModule::searchInModels(QVector<QSharedPointer<QStandardItemModel>> mo
         emit signalNothingWasFoundInModel();
     }).detach();
 }
+
 
 void SearchModule::searchInDB(ModelTypes modelType, const QString& table, const QString& column, const QString& searchText, const QString& sort)
 {

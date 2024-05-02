@@ -8,7 +8,6 @@ void PacketHandler::run()
 void PacketHandler::clientHandler()
 {
     PacketTypes packettype;
-    Message::logInfo("clientHandler");
     while(true)
     {
         if (recv(NetworkClient::serverSocket, reinterpret_cast<char*>(&packettype), sizeof(PacketTypes), 0) <= 0)

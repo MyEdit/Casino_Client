@@ -17,7 +17,8 @@ enum class PacketTypes
     P_ConnectOtherPlayerToTable,
     P_PlayerLeaveTable,
     P_UpdateGameProcessing,
-    P_GamePacket
+    P_GamePacket,
+    P_Search
 };
 
 enum class ModelTypes
@@ -37,7 +38,6 @@ enum class QueryTypes
     CreateEntry,    //Добавить запись
     UpdateEntry,    //Изменить запись
     DeleteEntry,    //Удалить запись
-    Search          //Поиск
 };
 
 enum class ModelLoadingType

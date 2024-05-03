@@ -64,6 +64,7 @@ private:
     void searchInModel();
     void searchInDB();
     void dataFoundInModel(QSharedPointer<ResultSearchInModel> resultSearch);
+    void resultSearchInDB(QPair<ModelTypes, QString> result);
 
 signals:
     void updateCurrentPageInLabel(int);

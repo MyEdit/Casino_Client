@@ -91,6 +91,11 @@ void PacketHandler::packetHandler(const PacketTypes packettype)
             P_GamePacket::onGamePacketReceived();
             break;
         }
+        case(PacketTypes::P_Search):
+        {
+            emit signalResultSearch(P_Search::getResultSearchFromServer());
+            break;
+        }
         default:
         {
             Message::logWarn("Server send unknown packettype");

@@ -4,7 +4,6 @@ void SearchModule::searchInModels(QVector<QSharedPointer<QStandardItemModel>>& m
 {
     std::thread([&models, searchText, typeSearch, columnCurrentIndex, rowsPerPage, this]()
     {
-//        QThread::sleep(5);
         for (QSharedPointer<QStandardItemModel> model : models)
         {
             bool resultSearchInModel = false;
@@ -35,12 +34,14 @@ void SearchModule::searchInModels(QVector<QSharedPointer<QStandardItemModel>>& m
 
 void SearchModule::searchInDB(ModelTypes modelType, const QString& table, const QString& column, const QString& searchText, const QString& sort)
 {
-    PacketTypes packettype = PacketTypes::P_Query;
-    QueryTypes queryTypes = QueryTypes::Search;
-    QString query = "SELECT numbered_rows.№ FROM (SELECT ROW_NUMBER() OVER (" + sort + ") AS №, * FROM " + table + ") AS numbered_rows WHERE numbered_rows." + column + " LIKE '" + searchText + "'";
+    PacketTypes packettype = PacketTypes::P_Search;
 
+    QString where = "";
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
-    NetworkClient::sendToServer(&queryTypes, sizeof(QueryTypes));
+    NetworkClient::sendToServer(sort);
+    NetworkClient::sendToServer(table);
+    NetworkClient::sendToServer(where);
+    NetworkClient::sendToServer(column);
+    NetworkClient::sendToServer(searchText);
     NetworkClient::sendToServer(&modelType, sizeof(ModelTypes));
-    NetworkClient::sendToServer(query);
 }

@@ -63,6 +63,7 @@ bool NetworkClient::start() const
     qRegisterMetaType<QSharedPointer<Table>>("QSharedPointer<Table>");
     qRegisterMetaType<QSharedPointer<Card>>("QSharedPointer<Card>");
     qRegisterMetaType<QSharedPointer<ResultSearchInModel>>("QSharedPointer<ResultSearchInModel>");
+    qRegisterMetaType<QPair<ModelTypes,QString>>("QPair<ModelTypes,QString>");
 
     packetHandler = new PacketHandler();
 

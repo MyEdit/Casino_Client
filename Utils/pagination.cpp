@@ -231,6 +231,7 @@ void Pagination::assigningValues()
 void Pagination::connects()
 {
     connect(NetworkClient::packetHandler, &PacketHandler::signalSetQueryModel, this, &Pagination::distributor);
+    connect(NetworkClient::packetHandler, &PacketHandler::signalResultSearch, this, &Pagination::resultSearchInDB);
     connect(searchModule.get(), &SearchModule::signalNothingWasFoundInModel, this, &Pagination::searchInDB);
     connect(searchModule.get(), &SearchModule::signalResulSearchInModel, this, &Pagination::dataFoundInModel);
 }
@@ -282,6 +283,15 @@ void Pagination::dataFoundInModel(QSharedPointer<ResultSearchInModel> resultSear
     updateTablePage();
 }
 
+void Pagination::resultSearchInDB(QPair<ModelTypes, QString> result)
+{
+    if(result.first != modelTypes)
+        return;
+
+    QString page = QString::number(std::ceil(result.second.toDouble() / rowsPerPage));
+    goToPage(page);
+}
+
 void Pagination::searchInDB()
 {
     emit blockInterface(true);
@@ -298,13 +308,6 @@ void Pagination::distributor(QSharedPointer<QueryData> data)
     case QueryTypes::CountEntrites:
         setMaxPage(data->result);
         break;
-
-    case QueryTypes::Search:
-    {
-        QString page = QString::number(std::ceil(data->result.toDouble() / rowsPerPage));
-        goToPage(page);
-        break;
-    }
 
     default:
         Message::logWarn("Тип запроса не известен");

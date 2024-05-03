@@ -21,7 +21,7 @@ void W_User::on_buttonSave_clicked()
 
     if (!user->inputDataIsValid())
     {
-        NotificationUtil::viewNotification({TypeMessage::Error, "Заполнены не все поля"});
+        Notification::showNotification(TypeMessage::Error, "Заполнены не все поля");
         return;
     }
 

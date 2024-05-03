@@ -8,6 +8,7 @@ class P_Notification
 {
 public:
     static QPair<TypeMessage, const QString> getTextNotification();
+    static void showNotification(QPair<TypeMessage, const QString&> notification);
 };
 
 #endif // P_NOTIFICATION_H

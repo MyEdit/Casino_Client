@@ -4,7 +4,6 @@
 #include <QWidget>
 #include "Network/networkclient.h"
 #include "Network/PacketTypes.h"
-#include "Utils/notificationutil.h"
 #include "Utils/Message.h"
 #include "Gui/Objects/Admin/objectuser.h"
 

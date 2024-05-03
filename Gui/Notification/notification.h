@@ -12,6 +12,7 @@
 #include <QScreen>
 #include <QPainter>
 #include <QStyle>
+#include "Utils/windowtracker.h"
 
 enum class TypeMessage
 {
@@ -33,8 +34,8 @@ class Notification : public QWidget
 
 public:
     Notification();
-    void setAlertProperties(const TypeMessage typeMessage, const QString& text, QWidget* parentForm);
-    static void showNotification(const TypeMessage typeMessage, const QString& text, QWidget* parentForm);
+    void setAlertProperties(const TypeMessage typeMessage, const QString& text, QWidget* parentForm = WindowTracker::activeWindow);
+    static void showNotification(const TypeMessage typeMessage, const QString& text, QWidget* parentForm = WindowTracker::activeWindow);
 
 private:
     void setupUI();

@@ -46,7 +46,7 @@ void BlackJackBackground::movingCardInGuiThread(QSharedPointer<Card> card)
 
     if(placeCardOnTable.size() == numMovePlayer)
     {
-        Notification::showNotification(TypeMessage::Warning, "Места под карты больше нет", WindowTracker::activeWindow);
+        Notification::showNotification(TypeMessage::Warning, "Места под карты больше нет");
         return;
     }
 

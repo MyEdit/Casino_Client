@@ -7,7 +7,8 @@
 #include <QTimer>
 #include <QLabel>
 #include "Games/card.h"
-#include "Utils/notificationutil.h"
+#include "Gui/Notification/notification.h"
+
 #include "Utils/Message.h"
 
 namespace Ui {

@@ -22,7 +22,7 @@ void W_Table::on_bottonSave_clicked()
 
     if (!activeTable->inputDataIsValid())
     {
-        NotificationUtil::viewNotification({TypeMessage::Error, "Заполнены не все поля"});
+                Notification::showNotification(TypeMessage::Error, "Заполнены не все поля");
         return;
     }
 

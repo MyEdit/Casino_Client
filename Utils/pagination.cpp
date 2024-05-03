@@ -115,7 +115,7 @@ void Pagination::next()
     }
     else
     {
-        Notification::showNotification(TypeMessage::Warning, "Данных больше нет!", WindowTracker::activeWindow);
+        Notification::showNotification(TypeMessage::Warning, "Данных больше нет!");
     }
 }
 

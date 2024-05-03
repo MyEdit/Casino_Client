@@ -20,7 +20,7 @@ void W_Ban::on_buttonSave_clicked()
 
     if (!ban->inputDataIsValid())
     {
-        NotificationUtil::viewNotification({TypeMessage::Error, "Заполнены не все поля"});
+                Notification::showNotification(TypeMessage::Error, "Заполнены не все поля");
         return;
     }
 

@@ -43,7 +43,7 @@ void Form::mousePressEvent(QMouseEvent* event)
 
     if (!this->table->canJoin())
     {
-        Notification::showNotification(TypeMessage::Warning, "Вы не можете присоединиться к этой игре", WindowTracker::activeWindow);
+        Notification::showNotification(TypeMessage::Warning, "Вы не можете присоединиться к этой игре");
         return;
     }
     this->table->tryJoin();

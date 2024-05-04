@@ -13,6 +13,7 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
@@ -28,11 +29,9 @@ class Ui_Window_Admin
 public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
-    QTabWidget *tabWidget;
-    QVBoxLayout *verticalLayout;
-    QLabel *fullNameEmployee;
-    QLabel *post;
     QPushButton *buttonExit;
+    QSpacerItem *verticalSpacer_2;
+    QSpacerItem *verticalSpacer;
     QGridLayout *gridLayout_3;
     QSpacerItem *horizontalSpacer;
     QLabel *label;
@@ -47,9 +46,14 @@ public:
     QPushButton *activeTables;
     QPushButton *payments;
     QLabel *label_6;
+    QTabWidget *tabWidget;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer_2;
     QLabel *photo;
-    QSpacerItem *verticalSpacer;
-    QSpacerItem *verticalSpacer_2;
+    QVBoxLayout *verticalLayout;
+    QLabel *fullNameEmployee;
+    QLabel *post;
+    QSpacerItem *horizontalSpacer_3;
 
     void setupUi(QMainWindow *Window_Admin)
     {
@@ -66,53 +70,13 @@ public:
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setHorizontalSpacing(0);
-        tabWidget = new QTabWidget(centralwidget);
-        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setStyleSheet(QString::fromUtf8("QTabWidget::pane {\n"
-"	border-radius: 10px;\n"
-"	background-color: rgb(255, 255, 255);\n"
-"}"));
-        tabWidget->setTabPosition(QTabWidget::South);
-        tabWidget->setTabShape(QTabWidget::Rounded);
-        tabWidget->setDocumentMode(false);
-        tabWidget->setTabsClosable(false);
-        tabWidget->setMovable(false);
-        tabWidget->setTabBarAutoHide(false);
-
-        gridLayout->addWidget(tabWidget, 0, 2, 15, 1);
-
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(5, -1, 5, -1);
-        fullNameEmployee = new QLabel(centralwidget);
-        fullNameEmployee->setObjectName(QString::fromUtf8("fullNameEmployee"));
+        buttonExit = new QPushButton(centralwidget);
+        buttonExit->setObjectName(QString::fromUtf8("buttonExit"));
         QFont font;
         font.setFamily(QString::fromUtf8("Segoe UI"));
         font.setPointSize(14);
         font.setBold(true);
         font.setWeight(75);
-        fullNameEmployee->setFont(font);
-        fullNameEmployee->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"	color: rgb(255, 255, 255);\n"
-"}"));
-        fullNameEmployee->setWordWrap(true);
-
-        verticalLayout->addWidget(fullNameEmployee);
-
-        post = new QLabel(centralwidget);
-        post->setObjectName(QString::fromUtf8("post"));
-        post->setFont(font);
-        post->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"	color: rgb(255, 255, 255);\n"
-"}"));
-
-        verticalLayout->addWidget(post);
-
-
-        gridLayout->addLayout(verticalLayout, 2, 1, 1, 1);
-
-        buttonExit = new QPushButton(centralwidget);
-        buttonExit->setObjectName(QString::fromUtf8("buttonExit"));
         buttonExit->setFont(font);
         buttonExit->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
@@ -126,7 +90,15 @@ public:
         buttonExit->setIcon(icon);
         buttonExit->setIconSize(QSize(32, 32));
 
-        gridLayout->addWidget(buttonExit, 13, 0, 1, 2);
+        gridLayout->addWidget(buttonExit, 14, 0, 1, 2);
+
+        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer_2, 13, 0, 1, 2);
+
+        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        gridLayout->addItem(verticalSpacer, 7, 0, 1, 2);
 
         gridLayout_3 = new QGridLayout();
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
@@ -268,22 +240,71 @@ public:
         gridLayout_3->addWidget(label_6, 5, 2, 1, 1);
 
 
-        gridLayout->addLayout(gridLayout_3, 7, 0, 2, 2);
+        gridLayout->addLayout(gridLayout_3, 8, 0, 2, 2);
+
+        tabWidget = new QTabWidget(centralwidget);
+        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setStyleSheet(QString::fromUtf8("QTabWidget::pane {\n"
+"	border-radius: 10px;\n"
+"	background-color: rgb(255, 255, 255);\n"
+"}"));
+        tabWidget->setTabPosition(QTabWidget::South);
+        tabWidget->setTabShape(QTabWidget::Rounded);
+        tabWidget->setDocumentMode(false);
+        tabWidget->setTabsClosable(false);
+        tabWidget->setMovable(false);
+        tabWidget->setTabBarAutoHide(false);
+
+        gridLayout->addWidget(tabWidget, 0, 2, 16, 1);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalSpacer_2 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
 
         photo = new QLabel(centralwidget);
         photo->setObjectName(QString::fromUtf8("photo"));
         photo->setMinimumSize(QSize(65, 65));
         photo->setMaximumSize(QSize(65, 65));
 
-        gridLayout->addWidget(photo, 2, 0, 1, 1);
+        horizontalLayout->addWidget(photo);
 
-        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(5, -1, 5, -1);
+        fullNameEmployee = new QLabel(centralwidget);
+        fullNameEmployee->setObjectName(QString::fromUtf8("fullNameEmployee"));
+        fullNameEmployee->setMinimumSize(QSize(20, 0));
+        fullNameEmployee->setFont(font);
+        fullNameEmployee->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"	color: rgb(255, 255, 255);\n"
+"}"));
+        fullNameEmployee->setAlignment(Qt::AlignCenter);
+        fullNameEmployee->setWordWrap(true);
 
-        gridLayout->addItem(verticalSpacer, 6, 0, 1, 2);
+        verticalLayout->addWidget(fullNameEmployee);
 
-        verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        post = new QLabel(centralwidget);
+        post->setObjectName(QString::fromUtf8("post"));
+        post->setFont(font);
+        post->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"	color: rgb(255, 255, 255);\n"
+"}"));
+        post->setAlignment(Qt::AlignCenter);
+        post->setWordWrap(true);
 
-        gridLayout->addItem(verticalSpacer_2, 12, 0, 1, 2);
+        verticalLayout->addWidget(post);
+
+
+        horizontalLayout->addLayout(verticalLayout);
+
+        horizontalSpacer_3 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_3);
+
+
+        gridLayout->addLayout(horizontalLayout, 6, 0, 1, 2);
 
         Window_Admin->setCentralWidget(centralwidget);
 
@@ -298,8 +319,6 @@ public:
     void retranslateUi(QMainWindow *Window_Admin)
     {
         Window_Admin->setWindowTitle(QApplication::translate("Window_Admin", "\320\234\320\265\320\275\321\216 \321\201\320\276\321\202\321\200\321\203\320\264\320\275\320\270\320\272\320\260", nullptr));
-        fullNameEmployee->setText(QApplication::translate("Window_Admin", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
-        post->setText(QApplication::translate("Window_Admin", "\320\220\320\264\320\274\320\270\320\275\320\270\321\201\321\202\321\200\320\260\321\202\320\276\321\200", nullptr));
         buttonExit->setText(QApplication::translate("Window_Admin", "\320\222\321\213\321\205\320\276\320\264", nullptr));
         banList->setText(QApplication::translate("Window_Admin", "\320\247\321\221\321\200\320\275\321\213\320\271 \321\201\320\277\320\270\321\201\320\276\320\272", nullptr));
         label_4->setText(QString());
@@ -313,6 +332,8 @@ public:
         payments->setText(QApplication::translate("Window_Admin", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217 \321\202\321\200\320\260\320\275\320\267\320\260\320\272\321\206\320\270\320\271", nullptr));
         label_6->setText(QString());
         photo->setText(QString());
+        fullNameEmployee->setText(QApplication::translate("Window_Admin", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
+        post->setText(QApplication::translate("Window_Admin", "\320\220\320\264\320\274\320\270\320\275\320\270\321\201\321\202\321\200\320\260\321\202\320\276\321\200", nullptr));
     } // retranslateUi
 
 };

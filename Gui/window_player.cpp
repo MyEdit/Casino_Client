@@ -56,7 +56,11 @@ void Window_Player::uploadingPhotoPlaer()
     QSharedPointer<QPixmap> photo = uploadingUserPhoto(P_Authorization::getPlayer()->getPhoto());
 
     ui->photo->setScaledContents(true);
-    ui->photo->setPixmap(*photo);
+
+    if(photo)
+        ui->photo->setPixmap(*photo);
+    else
+        ui->photo->hide();
 }
 
 void Window_Player::settingUserInformation()

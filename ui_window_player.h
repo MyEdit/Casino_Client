@@ -13,6 +13,7 @@
 #include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
@@ -28,11 +29,8 @@ class Ui_Window_Player
 public:
     QWidget *centralwidget;
     QGridLayout *gridLayout;
-    QLabel *photo;
-    QVBoxLayout *verticalLayout;
-    QLabel *fullNamePlayer;
-    QLabel *balance;
-    QSpacerItem *verticalSpacer;
+    QPushButton *buttonExit;
+    QSpacerItem *verticalSpacer_2;
     QGridLayout *gridLayout_2;
     QLabel *label;
     QPushButton *replenish;
@@ -41,9 +39,15 @@ public:
     QPushButton *gameTables;
     QSpacerItem *horizontalSpacer_5;
     QLabel *label_2;
-    QPushButton *buttonExit;
-    QSpacerItem *verticalSpacer_2;
     QTabWidget *tabWidget;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer;
+    QLabel *photo;
+    QVBoxLayout *verticalLayout;
+    QLabel *fullNamePlayer;
+    QLabel *balance;
+    QSpacerItem *horizontalSpacer_2;
+    QSpacerItem *verticalSpacer;
 
     void setupUi(QMainWindow *Window_Player)
     {
@@ -59,46 +63,31 @@ public:
         gridLayout = new QGridLayout(centralwidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         gridLayout->setHorizontalSpacing(0);
-        photo = new QLabel(centralwidget);
-        photo->setObjectName(QString::fromUtf8("photo"));
-        photo->setMinimumSize(QSize(65, 65));
-        photo->setMaximumSize(QSize(65, 65));
-
-        gridLayout->addWidget(photo, 0, 0, 1, 1);
-
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setContentsMargins(5, -1, 5, -1);
-        fullNamePlayer = new QLabel(centralwidget);
-        fullNamePlayer->setObjectName(QString::fromUtf8("fullNamePlayer"));
+        buttonExit = new QPushButton(centralwidget);
+        buttonExit->setObjectName(QString::fromUtf8("buttonExit"));
         QFont font;
         font.setFamily(QString::fromUtf8("Segoe UI"));
         font.setPointSize(14);
         font.setBold(true);
         font.setWeight(75);
-        fullNamePlayer->setFont(font);
-        fullNamePlayer->setStyleSheet(QString::fromUtf8("QLabel {\n"
+        buttonExit->setFont(font);
+        buttonExit->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
 "	color: rgb(255, 255, 255);\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
 "}"));
-        fullNamePlayer->setWordWrap(true);
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icons/resources/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buttonExit->setIcon(icon);
+        buttonExit->setIconSize(QSize(32, 32));
 
-        verticalLayout->addWidget(fullNamePlayer);
+        gridLayout->addWidget(buttonExit, 5, 0, 1, 2);
 
-        balance = new QLabel(centralwidget);
-        balance->setObjectName(QString::fromUtf8("balance"));
-        balance->setFont(font);
-        balance->setStyleSheet(QString::fromUtf8("QLabel {\n"
-"	color: rgb(255, 255, 255);\n"
-"}"));
+        verticalSpacer_2 = new QSpacerItem(250, 97, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        verticalLayout->addWidget(balance);
-
-
-        gridLayout->addLayout(verticalLayout, 0, 1, 1, 1);
-
-        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
-
-        gridLayout->addItem(verticalSpacer, 1, 1, 1, 1);
+        gridLayout->addItem(verticalSpacer_2, 4, 0, 1, 2);
 
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
@@ -177,28 +166,7 @@ public:
         gridLayout_2->addWidget(label_2, 1, 2, 1, 1);
 
 
-        gridLayout->addLayout(gridLayout_2, 2, 0, 1, 2);
-
-        buttonExit = new QPushButton(centralwidget);
-        buttonExit->setObjectName(QString::fromUtf8("buttonExit"));
-        buttonExit->setFont(font);
-        buttonExit->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background: transparent;\n"
-"    border: none;\n"
-"	color: rgb(255, 255, 255);\n"
-"	padding: 5px;\n"
-"	text-align: left;\n"
-"}"));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/icons/resources/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
-        buttonExit->setIcon(icon);
-        buttonExit->setIconSize(QSize(32, 32));
-
-        gridLayout->addWidget(buttonExit, 4, 0, 1, 2);
-
-        verticalSpacer_2 = new QSpacerItem(250, 97, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-        gridLayout->addItem(verticalSpacer_2, 3, 0, 1, 2);
+        gridLayout->addLayout(gridLayout_2, 3, 0, 1, 2);
 
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
@@ -213,7 +181,58 @@ public:
         tabWidget->setMovable(false);
         tabWidget->setTabBarAutoHide(false);
 
-        gridLayout->addWidget(tabWidget, 0, 2, 5, 1);
+        gridLayout->addWidget(tabWidget, 0, 2, 6, 1);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        photo = new QLabel(centralwidget);
+        photo->setObjectName(QString::fromUtf8("photo"));
+        photo->setMinimumSize(QSize(65, 65));
+        photo->setMaximumSize(QSize(65, 65));
+
+        horizontalLayout->addWidget(photo);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setContentsMargins(5, -1, 5, -1);
+        fullNamePlayer = new QLabel(centralwidget);
+        fullNamePlayer->setObjectName(QString::fromUtf8("fullNamePlayer"));
+        fullNamePlayer->setFont(font);
+        fullNamePlayer->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"	color: rgb(255, 255, 255);\n"
+"}"));
+        fullNamePlayer->setAlignment(Qt::AlignCenter);
+        fullNamePlayer->setWordWrap(true);
+
+        verticalLayout->addWidget(fullNamePlayer);
+
+        balance = new QLabel(centralwidget);
+        balance->setObjectName(QString::fromUtf8("balance"));
+        balance->setFont(font);
+        balance->setStyleSheet(QString::fromUtf8("QLabel {\n"
+"	color: rgb(255, 255, 255);\n"
+"}"));
+        balance->setAlignment(Qt::AlignCenter);
+
+        verticalLayout->addWidget(balance);
+
+
+        horizontalLayout->addLayout(verticalLayout);
+
+        horizontalSpacer_2 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+
+        gridLayout->addLayout(horizontalLayout, 1, 0, 1, 2);
+
+        verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+        gridLayout->addItem(verticalSpacer, 2, 0, 1, 2);
 
         Window_Player->setCentralWidget(centralwidget);
 
@@ -228,16 +247,16 @@ public:
     void retranslateUi(QMainWindow *Window_Player)
     {
         Window_Player->setWindowTitle(QApplication::translate("Window_Player", "MainWindow", nullptr));
-        photo->setText(QApplication::translate("Window_Player", "\320\244\320\276\321\202\320\276", nullptr));
-        fullNamePlayer->setText(QApplication::translate("Window_Player", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
-        balance->setText(QApplication::translate("Window_Player", "\320\221\320\260\320\273\320\260\320\275\321\201", nullptr));
+        buttonExit->setText(QApplication::translate("Window_Player", "\320\222\321\213\321\205\320\276\320\264", nullptr));
         label->setText(QString());
         replenish->setText(QApplication::translate("Window_Player", "\320\237\320\276\320\277\320\276\320\273\320\275\320\270\321\202\321\214 \321\201\321\207\321\221\321\202", nullptr));
         label_3->setText(QString());
         credits->setText(QApplication::translate("Window_Player", "\320\232\321\200\320\265\320\264\320\270\321\202\321\213", nullptr));
         gameTables->setText(QApplication::translate("Window_Player", "\320\230\320\263\321\200\320\276\320\262\321\213\320\265 \321\201\321\202\320\276\320\273\321\213", nullptr));
         label_2->setText(QString());
-        buttonExit->setText(QApplication::translate("Window_Player", "\320\222\321\213\321\205\320\276\320\264", nullptr));
+        photo->setText(QString());
+        fullNamePlayer->setText(QApplication::translate("Window_Player", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
+        balance->setText(QApplication::translate("Window_Player", "\320\221\320\260\320\273\320\260\320\275\321\201", nullptr));
     } // retranslateUi
 
 };

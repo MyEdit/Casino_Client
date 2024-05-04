@@ -74,7 +74,11 @@ void Window_Admin::uploadingPhotoEmployee()
     QSharedPointer<QPixmap> photo = uploadingUserPhoto(P_Authorization::getStuffuser()->getPhoto());
 
     ui->photo->setScaledContents(true);
-    ui->photo->setPixmap(*photo);
+
+    if(photo)
+        ui->photo->setPixmap(*photo);
+    else
+        ui->photo->hide();
 }
 
 void Window_Admin::assigningValues()

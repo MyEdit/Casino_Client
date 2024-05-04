@@ -57,6 +57,9 @@ QSharedPointer<QPixmap> BaseClassMainMenu::uploadingUserPhoto(QSharedPointer<QBy
     QPixmap photo;
     photo.loadFromData(*data);
 
+    if(photo.isNull())
+        return nullptr;
+
     QSharedPointer<QPixmap> roundedPhoto(new QPixmap(photo.size()));
     roundedPhoto->fill(Qt::transparent);
     QPainterPath path;

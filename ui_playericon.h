@@ -35,7 +35,7 @@ public:
     {
         if (PlayerIcon->objectName().isEmpty())
             PlayerIcon->setObjectName(QString::fromUtf8("PlayerIcon"));
-        PlayerIcon->resize(180, 196);
+        PlayerIcon->resize(140, 196);
         PlayerIcon->setStyleSheet(QString::fromUtf8(""));
         verticalLayout_4 = new QVBoxLayout(PlayerIcon);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
@@ -70,6 +70,7 @@ public:
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         playerName = new QLabel(widget);
         playerName->setObjectName(QString::fromUtf8("playerName"));
+        playerName->setMinimumSize(QSize(100, 0));
         QFont font;
         font.setFamily(QString::fromUtf8("Segoe UI"));
         font.setPointSize(12);

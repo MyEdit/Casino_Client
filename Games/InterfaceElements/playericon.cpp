@@ -44,5 +44,9 @@ void PlayerIcon::setImage()
     QSharedPointer<QPixmap> photo = BaseClassMainMenu::uploadingUserPhoto(player->getPhoto());
 
     ui->playerIcon->setScaledContents(true);
-    ui->playerIcon->setPixmap(*photo);
+
+    if(photo)
+        ui->playerIcon->setPixmap(*photo);
+    else
+        ui->playerIcon->hide();
 }

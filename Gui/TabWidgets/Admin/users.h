@@ -45,6 +45,7 @@ private:
     void openEditRecotd() override;
     void openCreateBan();
     void deleting() override;
+    void clearSearchText() override;
 };
 
 #endif // ALLUSERS_H

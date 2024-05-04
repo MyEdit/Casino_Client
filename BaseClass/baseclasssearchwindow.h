@@ -24,9 +24,11 @@ protected:
     QSharedPointer<WorkingIsTableView> workingIsTableView;
     ModelTypes modelTypes;
     QTimer goToPageTimer;
+    QTimer searchTimer;
     QString typeSearch;
     bool sortingOn;
     QMap<int, QString> typesSorting;
+    QWidget* focusedWidget;
 
 public:
     BaseClassSearchWindow(QWidget *parent);
@@ -58,6 +60,7 @@ protected:
     virtual void openCreatRecotd() {};
     virtual void openEditRecotd() {};
     virtual void deleting() {};
+    virtual void clearSearchText() = 0;
 };
 
 #endif // BASECLASSSEARCHWINDOW_H

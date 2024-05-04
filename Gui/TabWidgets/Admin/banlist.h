@@ -36,6 +36,7 @@ private:
     void onHeaderClicked(const int logicalIndex) override;
     void openEditRecotd() override;
     void deleting() override;
+    void clearSearchText() override;
 };
 
 #endif // BANLIST_H

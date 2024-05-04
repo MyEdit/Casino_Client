@@ -38,6 +38,7 @@ private:
     void openCreatRecotd() override;
     void openEditRecotd() override;
     void deleting() override;
+    void clearSearchText() override;
 };
 
 #endif // EXISTINGTABLES_H

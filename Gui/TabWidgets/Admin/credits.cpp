@@ -54,6 +54,7 @@ void Credits::connects()
     connect(ui->editCredit, &QPushButton::clicked, this, &Credits::openEditRecotd);
     connect(ui->deleteCredit, &QPushButton::clicked, this, &Credits::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &Credits::prepReloadModels);
+    connect(ui->clearSearch, &QPushButton::clicked, this, &Credits::clearSearchText);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &Credits::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &Credits::search);
@@ -156,4 +157,9 @@ void Credits::deleting()
     int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
 
     deleteRecord(table, idColumn, id);
+}
+
+void Credits::clearSearchText()
+{
+    ui->searchText->clear();
 }

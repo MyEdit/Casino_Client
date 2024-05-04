@@ -53,6 +53,7 @@ void BanList::connects()
     connect(ui->editBan, &QPushButton::clicked, this, &BanList::openEditRecotd);
     connect(ui->deleteBan, &QPushButton::clicked, this, &BanList::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &BanList::prepReloadModels);
+    connect(ui->clearSearch, &QPushButton::clicked, this, &BanList::clearSearchText);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &BanList::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &BanList::search);
@@ -159,4 +160,9 @@ void BanList::deleting()
     int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
 
     deleteRecord(table, idColumn, id);
+}
+
+void BanList::clearSearchText()
+{
+    ui->searchText->clear();
 }

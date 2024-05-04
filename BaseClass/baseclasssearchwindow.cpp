@@ -21,6 +21,9 @@ void BaseClassSearchWindow::blockAndOperate(QObject* widget, const std::function
 
 void BaseClassSearchWindow::blockingInterface(const bool flag)
 {
+    if(!flag)
+        focusedWidget = qApp->focusWidget();
+
     QList<QPushButton*> pushbuttons = this->findChildren<QPushButton*>();
     for(QPushButton* pushbutton : pushbuttons)
         pushbutton->setEnabled(flag);
@@ -40,6 +43,9 @@ void BaseClassSearchWindow::blockingInterface(const bool flag)
     QList<QTableView*> tableViews = this->findChildren<QTableView*>();
     for(QTableView* tableView : tableViews)
         tableView->setEnabled(flag);
+
+    if (flag && focusedWidget)
+        focusedWidget->setFocus();
 }
 
 

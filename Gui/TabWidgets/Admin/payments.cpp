@@ -54,6 +54,7 @@ void Payments::connects()
     connect(ui->editPayments, &QPushButton::clicked, this, &Payments::openEditRecotd);
     connect(ui->deletePayments, &QPushButton::clicked, this, &Payments::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &Payments::prepReloadModels);
+    connect(ui->clearSearch, &QPushButton::clicked, this, &Payments::clearSearchText);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &Payments::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &Payments::search);
@@ -156,4 +157,9 @@ void Payments::deleting()
     int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
 
     deleteRecord(table, idColumn, id);
+}
+
+void Payments::clearSearchText()
+{
+    ui->searchText->clear();
 }

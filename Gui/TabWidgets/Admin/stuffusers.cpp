@@ -54,6 +54,7 @@ void StuffUsers::connects()
     connect(ui->editStuffUser, &QPushButton::clicked, this, &StuffUsers::openEditRecotd);
     connect(ui->deleteStuffUser, &QPushButton::clicked, this, &StuffUsers::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &StuffUsers::prepReloadModels);
+    connect(ui->clearSearch, &QPushButton::clicked, this, &StuffUsers::clearSearchText);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &StuffUsers::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &StuffUsers::search);
@@ -168,4 +169,9 @@ void StuffUsers::deleting()
     int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
 
     deleteRecord(table, idColumn, id);
+}
+
+void StuffUsers::clearSearchText()
+{
+    ui->searchText->clear();
 }

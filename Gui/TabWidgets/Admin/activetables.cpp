@@ -31,6 +31,7 @@ void ActiveTables::assigningValues()
     sortingOn = false;
 
     goToPageTimer.setSingleShot(true);
+    searchTimer.setSingleShot(true);
 
     typesSorting =
     {
@@ -54,6 +55,7 @@ void ActiveTables::connects()
     connect(ui->editTable, &QPushButton::clicked, this, &ActiveTables::openEditRecotd);
     connect(ui->deleteTable, &QPushButton::clicked, this, &ActiveTables::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &ActiveTables::prepReloadModels);
+    connect(ui->clearSearch, &QPushButton::clicked, this, &ActiveTables::clearSearchText);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &ActiveTables::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &ActiveTables::search);
@@ -76,6 +78,11 @@ void ActiveTables::connects()
     {
         pagination->goToPage(ui->pageNumberToNavigate->text());
     });
+
+    connect(&searchTimer, &QTimer::timeout, this, [=]()
+    {
+        pagination->search(ui->searchText->text(), typeSearch);
+    });
 }
 
 void ActiveTables::updateCurrentPageInLabel(const int currentPage)
@@ -96,7 +103,7 @@ void ActiveTables::goToPage()
 
 void ActiveTables::search()
 {
-    pagination->search(ui->searchText->text(), typeSearch);
+    searchTimer.start(500);
 }
 
 void ActiveTables::onHeaderClicked(const int logicalIndex)
@@ -170,4 +177,9 @@ void ActiveTables::deleting()
     int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
 
     deleteRecord(table, idColumn, id);
+}
+
+void ActiveTables::clearSearchText()
+{
+    ui->searchText->clear();
 }

@@ -1,26 +1,26 @@
-﻿#include "credits.h"
-#include "ui_credits.h"
+﻿#include "playercredits.h"
+#include "ui_playercredits.h"
 
-Credits::Credits(QWidget *parent) :
+PlayerCredits::PlayerCredits(QWidget *parent) :
     BaseClassSearchWindow(parent),
-    ui(new Ui::Credits)
+    ui(new Ui::PlayerCredits)
 {
     ui->setupUi(this);
 
     baseSetting();
 }
 
-Credits::~Credits()
+PlayerCredits::~PlayerCredits()
 {
     delete ui;
 }
 
-void Credits::setValueToMaxPage(const int maxPage)
+void PlayerCredits::setValueToMaxPage(const int maxPage)
 {
     ui->labelMaxPage->setText(QString::number(maxPage));
 }
 
-void Credits::assigningValues()
+void PlayerCredits::assigningValues()
 {
     boxsNameColumn.push_back(ui->searchColumn);
     boxsNameColumn.push_back(ui->sortingColumn);
@@ -39,39 +39,37 @@ void Credits::assigningValues()
     };
 }
 
-void Credits::creatingObjects()
+void PlayerCredits::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>(new WorkingIsTableView(ui->tableView, &boxsNameColumn));
     pagination = QSharedPointer<Pagination>(new Pagination(this, ui->tableView, ui->searchColumn, workingIsTableView, modelTypes));
 }
 
-void Credits::connects()
+void PlayerCredits::connects()
 {
     connect(ui->prevButton, &QPushButton::clicked, pagination.get(), &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination.get(), &Pagination::next);
-    connect(ui->pushButton_search, &QPushButton::clicked, this, &Credits::search);
-    connect(ui->addCredit, &QPushButton::clicked, this, &Credits::openCreatRecotd);
-    connect(ui->editCredit, &QPushButton::clicked, this, &Credits::openEditRecotd);
-    connect(ui->deleteCredit, &QPushButton::clicked, this, &Credits::deleting);
-    connect(ui->refreshData, &QPushButton::clicked, this, &Credits::prepReloadModels);
-    connect(ui->clearSearch, &QPushButton::clicked, this, &Credits::clearSearchText);
+    connect(ui->pushButton_search, &QPushButton::clicked, this, &PlayerCredits::search);
+    connect(ui->addCredit, &QPushButton::clicked, this, &PlayerCredits::openCreatRecotd);
+    connect(ui->refreshData, &QPushButton::clicked, this, &PlayerCredits::prepReloadModels);
+    connect(ui->clearSearch, &QPushButton::clicked, this, &PlayerCredits::clearSearchText);
 
-    connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &Credits::goToPage);
-    connect(ui->searchText, &QLineEdit::textChanged, this, &Credits::search);
+    connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &PlayerCredits::goToPage);
+    connect(ui->searchText, &QLineEdit::textChanged, this, &PlayerCredits::search);
 
-    connect(ui->checkBox, &QCheckBox::stateChanged, this, &Credits::selectTypeSearch);
-    connect(ui->sorting, &QCheckBox::stateChanged, this, &Credits::sorting);
+    connect(ui->checkBox, &QCheckBox::stateChanged, this, &PlayerCredits::selectTypeSearch);
+    connect(ui->sorting, &QCheckBox::stateChanged, this, &PlayerCredits::sorting);
 
-    connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Credits::sort);
-    connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Credits::sort);
+    connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &PlayerCredits::sort);
+    connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &PlayerCredits::sort);
 
-    connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &Credits::onHeaderClicked);
+    connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &PlayerCredits::onHeaderClicked);
 
-    connect(pagination.get(), &Pagination::updateCurrentPageInLabel, this, &Credits::updateCurrentPageInLabel);
-    connect(pagination.get(), &Pagination::setMaxPageInLabel, this, &Credits::setValueToMaxPage);
-    connect(pagination.get(), &Pagination::blockInterface, this, &Credits::blockingInterface);
+    connect(pagination.get(), &Pagination::updateCurrentPageInLabel, this, &PlayerCredits::updateCurrentPageInLabel);
+    connect(pagination.get(), &Pagination::setMaxPageInLabel, this, &PlayerCredits::setValueToMaxPage);
+    connect(pagination.get(), &Pagination::blockInterface, this, &PlayerCredits::blockingInterface);
 
-    connect(workingIsTableView.get(), &WorkingIsTableView::unlockInterface, this, &Credits::blockingInterface);
+    connect(workingIsTableView.get(), &WorkingIsTableView::unlockInterface, this, &PlayerCredits::blockingInterface);
 
     connect(&goToPageTimer, &QTimer::timeout, this, [=]()
     {
@@ -79,12 +77,12 @@ void Credits::connects()
     });
 }
 
-void Credits::updateCurrentPageInLabel(const int currentPage)
+void PlayerCredits::updateCurrentPageInLabel(const int currentPage)
 {
     ui->labelCurrentPage->setText(QString::number(currentPage));
 }
 
-void Credits::goToPage()
+void PlayerCredits::goToPage()
 {
     if(ui->pageNumberToNavigate->text() == "0")
     {
@@ -95,12 +93,12 @@ void Credits::goToPage()
     goToPageTimer.start(1000);
 }
 
-void Credits::search()
+void PlayerCredits::search()
 {
     pagination->search(ui->searchText->text(), typeSearch);
 }
 
-void Credits::onHeaderClicked(const int logicalIndex)
+void PlayerCredits::onHeaderClicked(const int logicalIndex)
 {
     if(!sortingOn)
         return;
@@ -121,7 +119,7 @@ void Credits::onHeaderClicked(const int logicalIndex)
         settingValueInComboBox(ui->searchColumn, headerText);
 }
 
-void Credits::prepReloadModels()
+void PlayerCredits::prepReloadModels()
 {
     if(sortingOn)
     {
@@ -140,22 +138,26 @@ void Credits::prepReloadModels()
     pagination->reloadModels();
 }
 
-void Credits::openCreatRecotd()
+void PlayerCredits::openCreatRecotd()
 {
 
 }
 
-void Credits::openEditRecotd()
+void PlayerCredits::openEditRecotd()
 {
 
 }
 
-void Credits::deleting()
+void PlayerCredits::deleting()
 {
+    QString table = "Credits";
+    QString idColumn = "ID_Credit";
+    int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
 
+    deleteRecord(table, idColumn, id);
 }
 
-void Credits::clearSearchText()
+void PlayerCredits::clearSearchText()
 {
     ui->searchText->clear();
 }

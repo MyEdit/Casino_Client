@@ -50,6 +50,7 @@ SOURCES += \
     Games/deck.cpp \
     Games/gamer.cpp \
     Gui/TabWidgets/Player/gametable.cpp \
+    Gui/TabWidgets/Player/playercredits.cpp \
     Gui/form.cpp \
     Network/PacketsActions/p_authorization.cpp \
     Network/PacketsActions/p_connectplayertotable.cpp \
@@ -110,6 +111,7 @@ HEADERS += \
     Games/deck.h \
     Games/gamer.h \
     Gui/TabWidgets/Player/gametable.h \
+    Gui/TabWidgets/Player/playercredits.h \
     Gui/form.h \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
@@ -155,6 +157,7 @@ FORMS += \
     Games/InterfaceElements/playericon.ui \
     Games/InterfaceElements/playersiconswidget.ui \
     Gui/TabWidgets/Player/gametable.ui \
+    Gui/TabWidgets/Player/playercredits.ui \
     Gui/form.ui
 
 LIBS += -lws2_32
@@ -167,7 +170,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     CardGameAssets.qrc \
-    Resources.qrc
+    resources.qrc
 
 DISTFILES += \
     Games/BlackDjack/assets/Standart/Clubs/10.png \

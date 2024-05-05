@@ -43,6 +43,7 @@ void Window_Player::completionTabWidget()
     ui->tabWidget->tabBar()->hide();
     rendering_WelcomeTab();
     rendering_GameTablesTab();
+    rendering_PlayerCreditsTab();
 }
 
 void Window_Player::rendering_WelcomeTab()
@@ -86,6 +87,7 @@ void Window_Player::on_gameTables_clicked()
 
 void Window_Player::on_credits_clicked()
 {
+    ui->tabWidget->setCurrentWidget(playerCredits.get());
     onNavigationsButton_clicked();
 }
 
@@ -103,4 +105,10 @@ void Window_Player::rendering_GameTablesTab()
 {
     gameTabels = QSharedPointer<GameTable>::create();
     ui->tabWidget->addTab(gameTabels.data(), "");
+}
+
+void Window_Player::rendering_PlayerCreditsTab()
+{
+    playerCredits = QSharedPointer<PlayerCredits>::create();
+    ui->tabWidget->addTab(playerCredits.data(), "");
 }

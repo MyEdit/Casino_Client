@@ -36,6 +36,9 @@ private:
 
     const QString getInsertQuery(QSharedPointer<Ban> ban);
     const QString getUpdateQuery(QSharedPointer<Ban> ban);
+
+signals:
+    void update();
 };
 
 #endif // ADD_BAN_H

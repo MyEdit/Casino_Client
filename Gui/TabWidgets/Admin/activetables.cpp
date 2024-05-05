@@ -148,8 +148,9 @@ void ActiveTables::prepReloadModels()
 
 void ActiveTables::openCreatRecotd()
 {
-    addTable = QSharedPointer<W_Table>::create(QueryTypes::CreateEntry);
-    addTable->show();
+    workingWithTables = QSharedPointer<W_Table>::create(QueryTypes::CreateEntry);
+    connect(workingWithTables.get(), &W_Table::update, pagination.get(), &Pagination::initializationModels);
+    workingWithTables->show();
 }
 
 void ActiveTables::openEditRecotd()
@@ -166,8 +167,9 @@ void ActiveTables::openEditRecotd()
     if (!activeTable->inputDataIsValid())
         return;
 
-    updateTable = QSharedPointer<W_Table>::create(QueryTypes::UpdateEntry, activeTable);
-    updateTable->show();
+    workingWithTables = QSharedPointer<W_Table>::create(QueryTypes::UpdateEntry, activeTable);
+    connect(workingWithTables.get(), &W_Table::update, pagination.get(), &Pagination::initializationModels);
+    workingWithTables->show();
 }
 
 void ActiveTables::deleting()

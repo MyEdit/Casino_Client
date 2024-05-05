@@ -18,8 +18,7 @@ class ActiveTables;
 class ActiveTables : public BaseClassSearchWindow
 {
     Ui::ActiveTables *ui;
-    QSharedPointer<W_Table> addTable;
-    QSharedPointer<W_Table> updateTable;
+    QSharedPointer<W_Table> workingWithTables;
 
 public:
     explicit ActiveTables(QWidget *parent = nullptr);

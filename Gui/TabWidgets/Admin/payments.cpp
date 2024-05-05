@@ -163,3 +163,4 @@ void Payments::clearSearchText()
 {
     ui->searchText->clear();
 }
+

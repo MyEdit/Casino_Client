@@ -83,7 +83,6 @@ void BaseClassSearchWindow::baseSetting()
     creatingObjects();
     connects();
     workingWithTableView();
-    blockingInterface(false);
 }
 
 void BaseClassSearchWindow::startPagination()
@@ -121,6 +120,8 @@ void BaseClassSearchWindow::deleteRecord(const QString& table, const QString& id
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&actionType, sizeof(QueryTypes));
     NetworkClient::sendToServer(query);
+
+    pagination->initializationModels();
 }
 
 void BaseClassSearchWindow::showEvent(QShowEvent* event)

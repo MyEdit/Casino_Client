@@ -7,6 +7,7 @@ W_User::W_User(const QueryTypes actionType, QSharedPointer<ObjectUser> defaultUs
     ui->setupUi(this);
     onLoadForm();
     customizationLiteEdit();
+    setAttribute(Qt::WA_ShowModal, true);
 }
 
 W_User::~W_User()
@@ -34,6 +35,7 @@ void W_User::on_buttonSave_clicked()
     NetworkClient::sendToServer(&actionType, sizeof(QueryTypes));
     NetworkClient::sendToServer(query);
 
+    emit update();
     this->close();
 }
 

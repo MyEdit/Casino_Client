@@ -42,6 +42,9 @@ private:
 
     const QString getInsertQuery(QSharedPointer<ObjectStuffUser> stuffUser);
     const QString getUpdateQuery(QSharedPointer<ObjectStuffUser> stuffUser);
+
+signals:
+    void update();
 };
 
 #endif // ADD_STUFFUSER_H

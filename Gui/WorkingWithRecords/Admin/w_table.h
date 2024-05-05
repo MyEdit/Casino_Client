@@ -42,6 +42,9 @@ private:
 
     const QString getInsertQuery(QSharedPointer<ActiveTable> activeTable);
     const QString getUpdateQuery(QSharedPointer<ActiveTable> activeTable);
+
+signals:
+    void update();
 };
 
 #endif // ADD_TABLE_H

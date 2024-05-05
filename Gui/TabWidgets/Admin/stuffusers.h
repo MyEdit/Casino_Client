@@ -18,8 +18,7 @@ class StuffUsers;
 class StuffUsers : public BaseClassSearchWindow
 {
     Ui::StuffUsers *ui;
-    QSharedPointer<W_StuffUser> addStuffUser;
-    QSharedPointer<W_StuffUser> updateStuffUser;
+    QSharedPointer<W_StuffUser> workingWithStuffUsers;
 
 public:
     explicit StuffUsers(QWidget *parent = nullptr);

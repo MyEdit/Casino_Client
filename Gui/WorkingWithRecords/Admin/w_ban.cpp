@@ -6,6 +6,7 @@ W_Ban::W_Ban(const QueryTypes actionType, QSharedPointer<Ban> defaultBan, QWidge
 {
     ui->setupUi(this);
     onLoadForm();
+    setAttribute(Qt::WA_ShowModal, true);
 }
 
 W_Ban::~W_Ban()
@@ -33,6 +34,7 @@ void W_Ban::on_buttonSave_clicked()
     NetworkClient::sendToServer(&actionType, sizeof(QueryTypes));
     NetworkClient::sendToServer(query);
 
+    emit update();
     this->close();
 }
 

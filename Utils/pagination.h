@@ -47,12 +47,12 @@ public:
     void reloadModels();
     void start();
     void setSort(const QString& sort);
+    void initializationModels();
 
 private:
     void goToNextModel();
     void goToPrevModel();
     void loadingModel(const ModelLoadingType type, const int offset);
-    void initializationModels();
     void assigningValues();
     void connects();
     void creatingObjects();

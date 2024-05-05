@@ -8,6 +8,7 @@ W_StuffUser::W_StuffUser(const QueryTypes actionType, QSharedPointer<ObjectStuff
     loadComboBoxRole();
     onLoadForm();
     customizationLiteEdit();
+    setAttribute(Qt::WA_ShowModal, true);
 }
 
 W_StuffUser::~W_StuffUser()
@@ -57,6 +58,7 @@ void W_StuffUser::on_buttonSave_clicked()
     NetworkClient::sendToServer(&actionType, sizeof(QueryTypes));
     NetworkClient::sendToServer(query);
 
+    emit update();
     this->close();
 }
 

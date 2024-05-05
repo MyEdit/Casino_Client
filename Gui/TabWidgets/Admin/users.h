@@ -24,8 +24,7 @@ class Users : public BaseClassSearchWindow
 {
     Ui::Users *ui;
     QSharedPointer<W_Ban> addBan;
-    QSharedPointer<W_User> addUser;
-    QSharedPointer<W_User> updateUser;
+    QSharedPointer<W_User> workingWithUser;
 
 public:
     explicit Users(QWidget *parent = nullptr);

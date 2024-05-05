@@ -142,8 +142,9 @@ void StuffUsers::prepReloadModels()
 
 void StuffUsers::openCreatRecotd()
 {
-    addStuffUser = QSharedPointer<W_StuffUser>::create(QueryTypes::CreateEntry);
-    addStuffUser->show();
+    workingWithStuffUsers = QSharedPointer<W_StuffUser>::create(QueryTypes::CreateEntry);
+    connect(workingWithStuffUsers.get(), &W_StuffUser::update, pagination.get(), &Pagination::initializationModels);
+    workingWithStuffUsers->show();
 }
 
 void StuffUsers::openEditRecotd()
@@ -158,8 +159,9 @@ void StuffUsers::openEditRecotd()
     if (!stuffUser->inputDataIsValid())
         return;
 
-    updateStuffUser = QSharedPointer<W_StuffUser>::create(QueryTypes::UpdateEntry, stuffUser);
-    updateStuffUser->show();
+    workingWithStuffUsers = QSharedPointer<W_StuffUser>::create(QueryTypes::UpdateEntry, stuffUser);
+    connect(workingWithStuffUsers.get(), &W_StuffUser::update, pagination.get(), &Pagination::initializationModels);
+    workingWithStuffUsers->show();
 }
 
 void StuffUsers::deleting()

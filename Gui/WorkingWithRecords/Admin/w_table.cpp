@@ -8,6 +8,7 @@ W_Table::W_Table(const QueryTypes actionType, QSharedPointer<ActiveTable> defaul
     loadComboBoxNameGame();
     onLoadForm();
     customizationLiteEdit();
+    setAttribute(Qt::WA_ShowModal, true);
 }
 
 W_Table::~W_Table()
@@ -35,6 +36,7 @@ void W_Table::on_bottonSave_clicked()
     NetworkClient::sendToServer(&actionType, sizeof(QueryTypes));
     NetworkClient::sendToServer(query);
 
+    emit update();
     this->close();
 }
 

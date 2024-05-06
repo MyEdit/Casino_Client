@@ -188,6 +188,7 @@ void Pagination::loadingModel(const ModelLoadingType type, const int offset)
     NetworkClient::sendToServer(&offset, sizeof(int));
     NetworkClient::sendToServer(P_SendModel::getTableName(modelTypes));
     NetworkClient::sendToServer(querySort);
+    NetworkClient::sendToServer(where);
 }
 
 void Pagination::initializationModels()
@@ -207,10 +208,15 @@ void Pagination::initializationModels()
     loadingModel(ModelLoadingType::Prev, prevOffset);
 }
 
+void Pagination::setWhere(const QString& where)
+{
+    this->where = where;
+}
+
 void Pagination::loadingMaxPage()
 {
     PacketTypes packettype = PacketTypes::P_Query;
-    QString query = "SELECT COUNT(*) FROM " + P_SendModel::getTableName(modelTypes);
+    QString query = "SELECT COUNT(*) FROM " + P_SendModel::getTableName(modelTypes) + " WHERE 1=1 " + where;
 
     QueryTypes queryTypes = QueryTypes::CountEntrites;
 

@@ -34,6 +34,7 @@ class Pagination : public QWidget
     bool goToNext = false;
     bool goToPrev = false;
     QString querySort {};
+    QString where;
 
 public:
     Pagination(QWidget* parent, QTableView* table, QComboBox* column, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes);
@@ -48,6 +49,7 @@ public:
     void start();
     void setSort(const QString& sort);
     void initializationModels();
+    void setWhere(const QString& where);
 
 private:
     void goToNextModel();

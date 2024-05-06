@@ -29,6 +29,7 @@ protected:
     bool sortingOn;
     QMap<int, QString> typesSorting;
     QWidget* focusedWidget;
+    QString where;
 
 public:
     BaseClassSearchWindow(QWidget *parent);

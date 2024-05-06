@@ -8,6 +8,9 @@ PlayerCredits::PlayerCredits(QWidget *parent) :
     ui->setupUi(this);
 
     baseSetting();
+
+    where = "and ID_User = '" + QString::number(P_Authorization::getPlayer()->getID()) + "'";
+    pagination->setWhere(where);
 }
 
 PlayerCredits::~PlayerCredits()

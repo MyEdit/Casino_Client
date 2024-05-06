@@ -48,6 +48,11 @@ private:
     void takeCard();
     void pass();
     void turn(GamePackets gamePacket);
+    void clearCardOnTable();
+    void changeEvent(QEvent *event) override;
+
+private slots:
+    void finished(bool isWin);
 
 private:
     friend class BlackJack;

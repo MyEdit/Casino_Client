@@ -19,6 +19,7 @@ protected:
     int idTable;
     QString nameGame{};
     int minPlayers{2}; //У каждой игры свой минимальный лимит игроков для старта, пока вписываю тут. TODO: Нужен отдельный класс для игры BlackJack
+    QWidget* menu;
 
 public:
     Game() {}
@@ -32,6 +33,7 @@ public:
     virtual void createGUI() = 0;
 
     void setGameName(const QString& nameGame);
+    void setMenu(QWidget* menu);
 
 protected:
     //Methods
@@ -52,9 +54,9 @@ public:
     virtual void onStartMove() = 0; //Когда игрок может совершить ход
     virtual void onUpdateGameProcessing(const QString& data) = 0;
     virtual void onPlayerDefeat(QSharedPointer<Player> player) = 0; //Когда игрок проиграл
-    virtual void onGameFinished(bool isWin) = 0;
     virtual void onGamePacketReceived() = 0;
     virtual int getTableID() = 0;
+    virtual void onGameFinished(bool isWin) = 0;
 };
 
 #endif // GAME_H

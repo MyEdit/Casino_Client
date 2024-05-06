@@ -28,6 +28,7 @@ public:
 
     void movingCard(QSharedPointer<Card> card);
     void movingFaceCard(const QRect& playerPosition);
+    void clearTable();
 
 private:
     void assigningValues();

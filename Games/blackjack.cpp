@@ -56,12 +56,12 @@ void BlackJack::onGamePacketReceived()
         }
         case(GamePackets::P_Win):
         {
-            this->onGameFinished(true);
+            onGameFinished(true);
             break;
         }
         case(GamePackets::P_Lose):
         {
-            this->onGameFinished(false);
+            onGameFinished(false);
             break;
         }
         default:
@@ -88,7 +88,11 @@ void BlackJack::renderTakeCard(QSharedPointer<Card> card)
 {
     GUI->renderTakeCard(card);
     P_Authorization::getPlayer()->addCardInHand(card);
-    GUI->blocingInterface(true);
+
+    if(isBust())
+        pass();
+    else
+        GUI->blocingInterface(true);
 }
 
 void BlackJack::onTakeCardAnotherPlayer()
@@ -130,8 +134,8 @@ void BlackJack::onPlayerDefeat(QSharedPointer<Player> player)
 
 void BlackJack::onGameFinished(bool isWin)
 {
-    QString msg = isWin ? "Победа" : "Проигрыш";
-    qDebug() << msg;
+    QMetaObject::invokeMethod(GUI, "finished", Qt::QueuedConnection, Q_ARG(bool, isWin));
+    GUI->clearCardOnTable();
     P_Authorization::getPlayer()->clearCardsInHand();
 }
 

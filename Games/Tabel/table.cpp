@@ -112,6 +112,9 @@ int Table::getCurrentNumPlayer()
 
 void Table::openGameGUI()
 {   
+    game->setMenu(WindowTracker::activeWindow);
+    WindowTracker::activeWindow->setEnabled(false);
+
     game->createGUI();
     game->getGUI()->updatePlayersIcons(players);
     game->getGUI()->show();

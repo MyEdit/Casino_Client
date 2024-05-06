@@ -80,6 +80,14 @@ void BlackJackBackground::movingFaceCard(const QRect &playerPosition)
     QMetaObject::invokeMethod(this, "movingFaceInGuiThread", Qt::QueuedConnection, Q_ARG(const QRect, playerPosition));
 }
 
+void BlackJackBackground::clearTable()
+{
+    for(int i = 0; i < placeCardOnTable.size(); i++)
+        placeCardOnTable[i]->setStyleSheet("QLabel {border: 2px solid  rgb(255, 255, 255); border-radius: 10px;}");
+
+    numMovePlayer = 0;
+}
+
 void BlackJackBackground::movingFaceInGuiThread(const QRect &playerPosition)
 {
     QString filePatch = "://Games/BlackDjack/assets/Standart/shirt.png";

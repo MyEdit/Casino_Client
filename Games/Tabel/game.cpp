@@ -24,6 +24,11 @@ void Game::setGameName(const QString& nameGame)
     this->nameGame = nameGame;
 }
 
+void Game::setMenu(QWidget *menu)
+{
+    this->menu = menu;
+}
+
 bool Game::canJoin()
 {
 
@@ -45,5 +50,6 @@ void Game::leave()
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&idTable, sizeof(int));
 
-    WindowTracker::activeWindow->setEnabled(true);
+    if(menu)
+        menu->setEnabled(true);
 }

@@ -106,6 +106,11 @@ void BlaclJackWidget::turn(GamePackets gamePacket)
     NetworkClient::sendToServer(&gamePacket, sizeof(GamePackets));
 }
 
+void BlaclJackWidget::clearCardOnTable()
+{
+    background->clearTable();
+}
+
 void BlaclJackWidget::blocingInterface(const bool flag)
 {
     ui->buttonTakeCard->setEnabled(flag);
@@ -115,7 +120,21 @@ void BlaclJackWidget::blocingInterface(const bool flag)
 void BlaclJackWidget::showEvent(QShowEvent* event)
 {
     QWidget::showEvent(event);
-    WindowTracker::activeWindow->setEnabled(false);
+
+}
+
+void BlaclJackWidget::changeEvent(QEvent *event)
+{
+    QWidget::changeEvent(event);
+    WindowTracker::activeWindow = this;
+}
+
+void BlaclJackWidget::finished(bool isWin)
+{
+    if(isWin)
+        Notification::showNotification(TypeMessage::Information, "Победа");
+    else
+        Notification::showNotification(TypeMessage::Error, "Проигрыш");
 }
 
 void BlaclJackWidget::closeEvent(QCloseEvent* event)

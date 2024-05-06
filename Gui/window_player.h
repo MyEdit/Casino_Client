@@ -27,6 +27,7 @@ public:
     ~Window_Player();
 
     void setTabels();
+    void setModel_CreditsTab(QSharedPointer<ModelData> model);
 
 private:
     void assigningValues() override;

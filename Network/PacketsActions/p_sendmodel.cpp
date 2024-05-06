@@ -27,7 +27,7 @@ void P_SendModel::setModel(QSharedPointer<ModelData> set)
         return;
     }
 
-    if(!P_Authorization::adminW)
+    if(!P_Authorization::adminW && !P_Authorization::playerW)
         return;
 
     setModelFunctions[modeltype](set);
@@ -63,7 +63,10 @@ void P_SendModel::initMapFunctions()
 
     setModelFunctions.insert(ModelTypes::Credits, [&](QSharedPointer<ModelData> model)
     {
-        P_Authorization::adminW->setModel_CreditsTab(model);
+        if(P_Authorization::adminW)
+            P_Authorization::adminW->setModel_CreditsTab(model);
+        else
+            P_Authorization::playerW->setModel_CreditsTab(model);
     });
 }
 

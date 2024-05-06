@@ -101,6 +101,11 @@ void Window_Player::setTabels()
     gameTabels->updateTables();
 }
 
+void Window_Player::setModel_CreditsTab(QSharedPointer<ModelData> model)
+{
+    playerCredits->setModel(model);
+}
+
 void Window_Player::rendering_GameTablesTab()
 {
     gameTabels = QSharedPointer<GameTable>::create();

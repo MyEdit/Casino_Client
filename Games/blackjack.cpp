@@ -54,9 +54,19 @@ void BlackJack::onGamePacketReceived()
             this->onStartMove();
             break;
         }
+        case(GamePackets::P_Win):
+        {
+            this->onGameFinished(true);
+            break;
+        }
+        case(GamePackets::P_Lose):
+        {
+            this->onGameFinished(false);
+            break;
+        }
         default:
         {
-            //Message::logWarn(new QString("[" + getName() + "] Client send unknown game packet"));
+            Message::logWarn("[" + getName() + "] Server send unknown game packet");
             break;
         }
     }
@@ -112,14 +122,17 @@ void BlackJack::onUpdateGameProcessing(const QString& data)
         GUI->updateProcessing(data);
 }
 
+//delete
 void BlackJack::onPlayerDefeat(QSharedPointer<Player> player)
 {
     Q_UNUSED(player)
 }
 
-void BlackJack::onGameFinished()
+void BlackJack::onGameFinished(bool isWin)
 {
-
+    QString msg = isWin ? "Победа" : "Проигрыш";
+    qDebug() << msg;
+    P_Authorization::getPlayer()->clearCardsInHand();
 }
 
 void BlackJack::updatePlayersIcons(QList<QSharedPointer<Player>> players)
@@ -149,11 +162,13 @@ void BlackJack::turn(GamePackets gamePacket)
     NetworkClient::sendToServer(&gamePacket, sizeof(GamePackets));
 }
 
+//delete
 bool BlackJack::isBust()
 {
     return getPlayerScore() > maximumScore;
 }
 
+//delete
 int BlackJack::getPlayerScore()
 {
     int score{};

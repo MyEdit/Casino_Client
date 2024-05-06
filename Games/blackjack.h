@@ -44,7 +44,7 @@ public:
     void onStartMove() override; //Когда игрок может совершить ход
     void onUpdateGameProcessing(const QString& data) override;
     void onPlayerDefeat(QSharedPointer<Player> player) override; //Когда игрок проиграл
-    void onGameFinished() override;
+    void onGameFinished(bool isWin) override;
     void onGamePacketReceived() override;
 
 private:

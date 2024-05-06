@@ -86,6 +86,11 @@ void Player::addCardInHand(QSharedPointer<Card> card)
     cardsInHand.append(card);
 }
 
+void Player::clearCardsInHand()
+{
+    cardsInHand.clear();
+}
+
 QVector<QSharedPointer<Card>> Player::getHand()
 {
     return cardsInHand;

@@ -34,6 +34,7 @@ public:
     //METHODS
     QSharedPointer<QByteArray> serializeUser() override;
     void addCardInHand(QSharedPointer<Card> card);
+    void clearCardsInHand();
 };
 
 #endif // PLAYER_H

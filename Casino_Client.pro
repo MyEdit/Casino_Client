@@ -96,6 +96,7 @@ HEADERS += \
     GUI/WorkingWithRecords/Admin/w_stuffuser.h \
     GUI/WorkingWithRecords/Admin/w_table.h \
     GUI/window_player.h \
+    Games/BlackDjack/BlackJackGamePackets.h \
     Games/BlackDjack/GUI/InterfaceElements/blackjackbackground.h \
     Games/BlackDjack/GUI/blackjackwindow.h \
     Games/BlackDjack/GUI/blacljackwidget.h \

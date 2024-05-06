@@ -52,7 +52,7 @@ public:
     virtual void onStartMove() = 0; //Когда игрок может совершить ход
     virtual void onUpdateGameProcessing(const QString& data) = 0;
     virtual void onPlayerDefeat(QSharedPointer<Player> player) = 0; //Когда игрок проиграл
-    virtual void onGameFinished() = 0;
+    virtual void onGameFinished(bool isWin) = 0;
     virtual void onGamePacketReceived() = 0;
     virtual int getTableID() = 0;
 };

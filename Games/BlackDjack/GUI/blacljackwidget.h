@@ -42,7 +42,6 @@ private:
     void renderingPlayersIcons();
     void resizeEvent(QResizeEvent *event) override;
     void connects();
-    void showEvent(QShowEvent* event) override;
     void closeEvent(QCloseEvent* event) override;
     void updateTimer(const QString& time);
     void takeCard();
@@ -50,9 +49,10 @@ private:
     void turn(GamePackets gamePacket);
     void clearCardOnTable();
     void changeEvent(QEvent *event) override;
+    void setMyScore(int score);
 
 private slots:
-    void finished(bool isWin);
+    void finished(bool isWin) override;
 
 private:
     friend class BlackJack;

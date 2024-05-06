@@ -24,6 +24,7 @@ public:
     void setPlayer(QSharedPointer<Player> player);
     const QSharedPointer<Player> getPlayer();
     void clearInfo();
+    void setScrore(int score);
 
 private:
     void settingInformation();

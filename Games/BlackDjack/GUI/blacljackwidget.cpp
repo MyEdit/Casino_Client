@@ -86,14 +86,12 @@ void BlaclJackWidget::connects()
 void BlaclJackWidget::takeCard()
 {
     this->turn(GamePackets::P_TakeCard);
-    //game->takeCard();
     blocingInterface(false);
 }
 
 void BlaclJackWidget::pass()
 {
     this->turn(GamePackets::P_PassMove);
-    //game->pass();
     blocingInterface(false);
 }
 
@@ -117,16 +115,15 @@ void BlaclJackWidget::blocingInterface(const bool flag)
     ui->buttonDoNotTakeCard->setEnabled(flag);
 }
 
-void BlaclJackWidget::showEvent(QShowEvent* event)
-{
-    QWidget::showEvent(event);
-
-}
-
 void BlaclJackWidget::changeEvent(QEvent *event)
 {
     QWidget::changeEvent(event);
     WindowTracker::activeWindow = this;
+}
+
+void BlaclJackWidget::setMyScore(int score)
+{
+    playersIcons->setMyScore(score);
 }
 
 void BlaclJackWidget::finished(bool isWin)
@@ -155,7 +152,10 @@ void BlaclJackWidget::updateTimer(const QString& time)
     QString processing{};
 
     if(time == "-1")
+    {
         processing = "Ожидание минимального кол-ва игроков...";
+        blocingInterface(false);
+    }
     else
         processing = time;
 
@@ -168,6 +168,8 @@ void BlaclJackWidget::updateTimer(const QString& time)
                 widget->show();
         }
         processing = "Игра началась";
+        background->clearTable();
+        setMyScore(0);
         blocingInterface(false);
     }
 

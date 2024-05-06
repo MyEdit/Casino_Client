@@ -28,6 +28,11 @@ void PlayerIcon::clearInfo()
     setVisible(false);
 }
 
+void PlayerIcon::setScrore(int score)
+{
+    ui->score->setText(QString::number(score));
+}
+
 const QSharedPointer<Player> PlayerIcon::getPlayer()
 {
     return player;

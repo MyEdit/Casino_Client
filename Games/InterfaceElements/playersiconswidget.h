@@ -29,6 +29,7 @@ public:
     QList<QSharedPointer<PlayerIcon>> getPlayerIcons();
     const QRect getRectPlayerIcon(QSharedPointer<PlayerIcon> playerIcon);
     void fullClearInfo();
+    void setMyScore(int score);
 
 private:
     void rendering();

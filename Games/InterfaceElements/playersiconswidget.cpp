@@ -73,3 +73,15 @@ void PlayersIconsWidget::fullClearInfo()
     for(QSharedPointer<PlayerIcon> playersIcon : playerIcons)
         playersIcon->clearInfo();
 }
+
+void PlayersIconsWidget::setMyScore(int score)
+{
+    for(QSharedPointer<PlayerIcon> playersIcon : playerIcons)
+    {
+        if(playersIcon->getPlayer() == P_Authorization::getPlayer())
+        {
+            playersIcon->setScrore(score);
+            break;
+        }
+    }
+}

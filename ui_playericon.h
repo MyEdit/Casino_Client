@@ -122,7 +122,7 @@ public:
         playerIcon->setText(QString());
         playerName->setText(QApplication::translate("PlayerIcon", "\320\230\320\274\321\217", nullptr));
         labelScore->setText(QApplication::translate("PlayerIcon", "\320\241\321\207\321\221\321\202:", nullptr));
-        score->setText(QApplication::translate("PlayerIcon", "?", nullptr));
+        score->setText(QApplication::translate("PlayerIcon", "????", nullptr));
     } // retranslateUi
 
 };

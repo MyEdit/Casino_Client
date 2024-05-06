@@ -93,6 +93,8 @@ void BlackJack::renderTakeCard(QSharedPointer<Card> card)
         pass();
     else
         GUI->blocingInterface(true);
+
+    GUI->setMyScore(getPlayerScore());
 }
 
 void BlackJack::onTakeCardAnotherPlayer()

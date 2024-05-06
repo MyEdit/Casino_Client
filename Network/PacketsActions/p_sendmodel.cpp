@@ -58,7 +58,10 @@ void P_SendModel::initMapFunctions()
 
     setModelFunctions.insert(ModelTypes::Payments, [&](QSharedPointer<ModelData> model)
     {
-        P_Authorization::adminW->setModel_PaymentsTab(model);
+        if(P_Authorization::adminW)
+            P_Authorization::adminW->setModel_PaymentsTab(model);
+        else
+            P_Authorization::playerW->setModel_PaymentsTab(model);
     });
 
     setModelFunctions.insert(ModelTypes::Credits, [&](QSharedPointer<ModelData> model)

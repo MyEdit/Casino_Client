@@ -22,22 +22,12 @@ void ActiveTables::setValueToMaxPage(const int maxPage)
 
 void ActiveTables::assigningValues()
 {
+    BaseClassSearchWindow::assigningValues();
+
     boxsNameColumn.push_back(ui->searchColumn);
     boxsNameColumn.push_back(ui->sortingColumn);
 
     modelTypes = ModelTypes::ActiveTables;
-
-    typeSearch = '%';
-    sortingOn = false;
-
-    goToPageTimer.setSingleShot(true);
-    searchTimer.setSingleShot(true);
-
-    typesSorting =
-    {
-        {0, " ASC"},
-        {1, " DESC"}
-    };
 }
 
 void ActiveTables::creatingObjects()

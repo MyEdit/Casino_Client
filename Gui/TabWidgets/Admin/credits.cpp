@@ -22,21 +22,12 @@ void Credits::setValueToMaxPage(const int maxPage)
 
 void Credits::assigningValues()
 {
+    BaseClassSearchWindow::assigningValues();
+
     boxsNameColumn.push_back(ui->searchColumn);
     boxsNameColumn.push_back(ui->sortingColumn);
 
     modelTypes = ModelTypes::Credits;
-
-    typeSearch = '%';
-    sortingOn = false;
-
-    goToPageTimer.setSingleShot(true);
-
-    typesSorting =
-    {
-        {0, "ASC"},
-        {1, "DESC"}
-    };
 }
 
 void Credits::creatingObjects()
@@ -77,6 +68,11 @@ void Credits::connects()
     {
         pagination->goToPage(ui->pageNumberToNavigate->text());
     });
+
+    connect(&searchTimer, &QTimer::timeout, this, [=]()
+    {
+        pagination->search(ui->searchText->text(), typeSearch);
+    });
 }
 
 void Credits::updateCurrentPageInLabel(const int currentPage)
@@ -97,7 +93,7 @@ void Credits::goToPage()
 
 void Credits::search()
 {
-    pagination->search(ui->searchText->text(), typeSearch);
+    searchTimer.start(500);
 }
 
 void Credits::onHeaderClicked(const int logicalIndex)

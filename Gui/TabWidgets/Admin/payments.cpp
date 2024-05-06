@@ -22,21 +22,12 @@ void Payments::setValueToMaxPage(const int maxPage)
 
 void Payments::assigningValues()
 {
+    BaseClassSearchWindow::assigningValues();
+
     boxsNameColumn.push_back(ui->searchColumn);
     boxsNameColumn.push_back(ui->sortingColumn);
 
     modelTypes = ModelTypes::Payments;
-
-    typeSearch = '%';
-    sortingOn = false;
-
-    goToPageTimer.setSingleShot(true);
-
-    typesSorting =
-    {
-        {0, "ASC"},
-        {1, "DESC"}
-    };
 }
 
 void Payments::creatingObjects()
@@ -77,6 +68,11 @@ void Payments::connects()
     {
         pagination->goToPage(ui->pageNumberToNavigate->text());
     });
+
+    connect(&searchTimer, &QTimer::timeout, this, [=]()
+    {
+        pagination->search(ui->searchText->text(), typeSearch);
+    });
 }
 
 void Payments::updateCurrentPageInLabel(const int currentPage)
@@ -97,7 +93,7 @@ void Payments::goToPage()
 
 void Payments::search()
 {
-    pagination->search(ui->searchText->text(), typeSearch);
+    searchTimer.start(500);
 }
 
 void Payments::onHeaderClicked(const int logicalIndex)

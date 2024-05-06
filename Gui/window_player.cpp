@@ -44,6 +44,7 @@ void Window_Player::completionTabWidget()
     rendering_WelcomeTab();
     rendering_GameTablesTab();
     rendering_PlayerCreditsTab();
+    rendering_PaymentsTab();
 }
 
 void Window_Player::rendering_WelcomeTab()
@@ -93,6 +94,7 @@ void Window_Player::on_credits_clicked()
 
 void Window_Player::on_replenish_clicked()
 {
+    ui->tabWidget->setCurrentWidget(payments.get());
     onNavigationsButton_clicked();
 }
 
@@ -106,6 +108,11 @@ void Window_Player::setModel_CreditsTab(QSharedPointer<ModelData> model)
     playerCredits->setModel(model);
 }
 
+void Window_Player::setModel_PaymentsTab(QSharedPointer<ModelData> model)
+{
+    payments->setModel(model);
+}
+
 void Window_Player::rendering_GameTablesTab()
 {
     gameTabels = QSharedPointer<GameTable>::create();
@@ -116,4 +123,10 @@ void Window_Player::rendering_PlayerCreditsTab()
 {
     playerCredits = QSharedPointer<PlayerCredits>::create();
     ui->tabWidget->addTab(playerCredits.data(), "");
+}
+
+void Window_Player::rendering_PaymentsTab()
+{
+    payments = QSharedPointer<PlayerPayments>::create();
+    ui->tabWidget->addTab(payments.data(), "");
 }

@@ -130,3 +130,18 @@ void BaseClassSearchWindow::showEvent(QShowEvent* event)
 
     startPagination();
 }
+
+void BaseClassSearchWindow::assigningValues()
+{
+    typeSearch = '%';
+    sortingOn = false;
+
+    goToPageTimer.setSingleShot(true);
+    searchTimer.setSingleShot(true);
+
+    typesSorting =
+    {
+        {0, " ASC"},
+        {1, " DESC"}
+    };
+}

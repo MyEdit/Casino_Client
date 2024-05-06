@@ -50,7 +50,7 @@ protected:
     void showEvent(QShowEvent *event) override;
     virtual void search() = 0;
     virtual void setValueToMaxPage(const int maxPage) = 0;
-    virtual void assigningValues() = 0;
+    virtual void assigningValues();
     virtual void creatingObjects() = 0;
     virtual void connects() = 0;
     virtual void updateCurrentPageInLabel(const int currentPage) = 0;

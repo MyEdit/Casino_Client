@@ -22,21 +22,12 @@ void StuffUsers::setValueToMaxPage(const int maxPage)
 
 void StuffUsers::assigningValues()
 {
+    BaseClassSearchWindow::assigningValues();
+
     boxsNameColumn.push_back(ui->searchColumn);
     boxsNameColumn.push_back(ui->sortingColumn);
 
     modelTypes = ModelTypes::StuffUsers;
-
-    typeSearch = '%';
-    sortingOn = false;
-
-    goToPageTimer.setSingleShot(true);
-
-    typesSorting =
-    {
-        {0, " ASC"},
-        {1, " DESC"}
-    };
 }
 
 void StuffUsers::creatingObjects()
@@ -77,6 +68,11 @@ void StuffUsers::connects()
     {
         pagination->goToPage(ui->pageNumberToNavigate->text());
     });
+
+    connect(&searchTimer, &QTimer::timeout, this, [=]()
+    {
+        pagination->search(ui->searchText->text(), typeSearch);
+    });
 }
 
 void StuffUsers::updateCurrentPageInLabel(const int currentPage)
@@ -97,7 +93,7 @@ void StuffUsers::goToPage()
 
 void StuffUsers::search()
 {
-    pagination->search(ui->searchText->text(), typeSearch);
+    searchTimer.start(500);
 }
 
 void StuffUsers::onHeaderClicked(const int logicalIndex)

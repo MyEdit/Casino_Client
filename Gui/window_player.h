@@ -6,10 +6,12 @@
 #include "Games/Tabel/table.h"
 #include "Gui/TabWidgets/Player/gametable.h"
 #include "Gui/TabWidgets/Player/playercredits.h"
+#include "Gui/TabWidgets/Player/playerpayments.h"
 #include <QSharedPointer>
 
 class GameTable;
 class PlayerCredits;
+class PlayerPayments;
 
 namespace Ui {
 class Window_Player;
@@ -21,6 +23,7 @@ class Window_Player : public BaseClassMainMenu
     Ui::Window_Player *ui;
     QSharedPointer<GameTable> gameTabels;
     QSharedPointer<PlayerCredits> playerCredits;
+    QSharedPointer<PlayerPayments> payments;
 
 public:
     explicit Window_Player(QWidget *parent = nullptr);
@@ -28,6 +31,7 @@ public:
 
     void setTabels();
     void setModel_CreditsTab(QSharedPointer<ModelData> model);
+    void setModel_PaymentsTab(QSharedPointer<ModelData> model);
 
 private:
     void assigningValues() override;
@@ -38,6 +42,7 @@ private:
     void connects() override;
     void rendering_GameTablesTab();
     void rendering_PlayerCreditsTab();
+    void rendering_PaymentsTab();
 
 private slots:
     void on_gameTables_clicked();

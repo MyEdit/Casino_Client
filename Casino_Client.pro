@@ -51,6 +51,7 @@ SOURCES += \
     Games/gamer.cpp \
     Gui/TabWidgets/Player/gametable.cpp \
     Gui/TabWidgets/Player/playercredits.cpp \
+    Gui/TabWidgets/Player/playerpayments.cpp \
     Gui/form.cpp \
     Network/PacketsActions/p_authorization.cpp \
     Network/PacketsActions/p_connectplayertotable.cpp \
@@ -113,6 +114,7 @@ HEADERS += \
     Games/gamer.h \
     Gui/TabWidgets/Player/gametable.h \
     Gui/TabWidgets/Player/playercredits.h \
+    Gui/TabWidgets/Player/playerpayments.h \
     Gui/form.h \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
@@ -159,6 +161,7 @@ FORMS += \
     Games/InterfaceElements/playersiconswidget.ui \
     Gui/TabWidgets/Player/gametable.ui \
     Gui/TabWidgets/Player/playercredits.ui \
+    Gui/TabWidgets/Player/playerpayments.ui \
     Gui/form.ui
 
 LIBS += -lws2_32

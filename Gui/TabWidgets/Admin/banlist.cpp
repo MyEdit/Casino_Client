@@ -22,21 +22,12 @@ void BanList::setValueToMaxPage(const int maxPage)
 
 void BanList::assigningValues()
 {
+    BaseClassSearchWindow::assigningValues();
+
     boxsNameColumn.push_back(ui->searchColumn);
     boxsNameColumn.push_back(ui->sortingColumn);
 
     modelTypes = ModelTypes::Banlist;
-
-    typeSearch = '%';
-    sortingOn = false;
-
-    goToPageTimer.setSingleShot(true);
-
-    typesSorting =
-    {
-        {0, " ASC"},
-        {1, " DESC"}
-    };
 }
 
 void BanList::creatingObjects()
@@ -76,6 +67,11 @@ void BanList::connects()
     {
         pagination->goToPage(ui->pageNumberToNavigate->text());
     });
+
+    connect(&searchTimer, &QTimer::timeout, this, [=]()
+    {
+        pagination->search(ui->searchText->text(), typeSearch);
+    });
 }
 
 void BanList::updateCurrentPageInLabel(const int currentPage)
@@ -96,7 +92,7 @@ void BanList::goToPage()
 
 void BanList::search()
 {
-    pagination->search(ui->searchText->text(), typeSearch);
+    searchTimer.start(500);
 }
 
 void BanList::onHeaderClicked(const int logicalIndex)

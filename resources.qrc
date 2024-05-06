@@ -2,7 +2,6 @@
     <qresource prefix="/photos">
         <file>resources/Window_Auth_Background.png</file>
         <file>resources/recess.png</file>
-        <file>resources/TestStuffPhoto.jpg</file>
     </qresource>
     <qresource prefix="/icons">
         <file>resources/exit.png</file>
@@ -15,5 +14,16 @@
         <file>resources/next.png</file>
         <file>resources/prev.png</file>
         <file>resources/ban.png</file>
+    </qresource>
+    <qresource prefix="/bank">
+        <file>resources/banks/mtsbank.png</file>
+        <file>resources/banks/sberbank.png</file>
+        <file>resources/banks/sbp.png</file>
+        <file>resources/banks/vkpay.png</file>
+        <file>resources/banks/webmoney.png</file>
+        <file>resources/banks/yoomoney.png</file>
+        <file>resources/banks/ChipCard.png</file>
+        <file>resources/banks/mastercard.png</file>
+        <file>resources/banks/visa.png</file>
     </qresource>
 </RCC>

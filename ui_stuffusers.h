@@ -64,7 +64,6 @@ public:
     QLineEdit *pageNumberToNavigate;
     QSpacerItem *horizontalSpacer_16;
     QPushButton *nextButton;
-    QLabel *status;
 
     void setupUi(QWidget *StuffUsers)
     {
@@ -433,11 +432,6 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_10);
 
-        status = new QLabel(StuffUsers);
-        status->setObjectName(QString::fromUtf8("status"));
-
-        verticalLayout->addWidget(status);
-
 
         retranslateUi(StuffUsers);
 
@@ -485,7 +479,6 @@ public:
         prevButton->setText(QString());
         label_6->setText(QApplication::translate("StuffUsers", "\320\237\320\265\321\200\320\265\320\271\321\202\320\270 \320\272 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\265 \342\204\226:", nullptr));
         nextButton->setText(QString());
-        status->setText(QString());
     } // retranslateUi
 
 };

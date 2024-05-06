@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -29,7 +30,10 @@ QT_BEGIN_NAMESPACE
 class Ui_PlayerPayments
 {
 public:
+    QGridLayout *gridLayout;
+    QWidget *searchWidget;
     QVBoxLayout *verticalLayout;
+    QLabel *labelHistoriPayments;
     QHBoxLayout *horizontalLayout_9;
     QLabel *label;
     QComboBox *searchColumn;
@@ -54,50 +58,113 @@ public:
     QLineEdit *pageNumberToNavigate;
     QSpacerItem *horizontalSpacer_16;
     QPushButton *nextButton;
-    QLabel *status;
+    QSpacerItem *horizontalSpacer_2;
+    QWidget *cardHolderWidget;
+    QGridLayout *gridLayout_4;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer_5;
+    QLineEdit *lineEdit_6;
+    QLabel *label_8;
+    QLineEdit *lineEdit_7;
+    QLabel *label_9;
+    QLineEdit *lineEdit_8;
+    QLabel *label_10;
+    QLineEdit *lineEdit_9;
+    QSpacerItem *horizontalSpacer_6;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *label_16;
+    QSpacerItem *horizontalSpacer_7;
+    QLabel *label_17;
+    QGridLayout *gridLayout_5;
+    QLabel *label_13;
+    QLineEdit *lineEdit_3;
+    QLineEdit *lineEdit_5;
+    QLabel *label_11;
+    QSpacerItem *horizontalSpacer;
+    QLineEdit *lineEdit_2;
+    QLineEdit *lineEdit_4;
+    QLabel *label_14;
+    QSpacerItem *verticalSpacer;
+    QWidget *replenishmentWidget;
+    QGridLayout *gridLayout_2;
+    QLabel *label_7;
+    QSpacerItem *horizontalSpacer_3;
+    QLineEdit *lineEdit;
+    QSpacerItem *horizontalSpacer_4;
+    QLabel *label_3;
+    QPushButton *buttonPay;
+    QLabel *labelInformation;
+    QWidget *otherPaymentMethodsWidget;
+    QGridLayout *gridLayout_3;
+    QPushButton *buttonSBP;
+    QPushButton *buttonYOOMoney;
+    QPushButton *buttonVKPay;
+    QPushButton *buttonMTS;
+    QPushButton *buttonSber;
+    QPushButton *buttonWebMoney;
+    QLabel *label_2;
 
     void setupUi(QWidget *PlayerPayments)
     {
         if (PlayerPayments->objectName().isEmpty())
             PlayerPayments->setObjectName(QString::fromUtf8("PlayerPayments"));
-        PlayerPayments->resize(954, 634);
-        verticalLayout = new QVBoxLayout(PlayerPayments);
+        PlayerPayments->resize(971, 641);
+        PlayerPayments->setStyleSheet(QString::fromUtf8(".searchLayout\n"
+"{\n"
+"	background-color: rgb(170, 255, 0);\n"
+"}"));
+        gridLayout = new QGridLayout(PlayerPayments);
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        searchWidget = new QWidget(PlayerPayments);
+        searchWidget->setObjectName(QString::fromUtf8("searchWidget"));
+        searchWidget->setStyleSheet(QString::fromUtf8("#searchWidget\n"
+"{\n"
+"    border: 2px solid black; \n"
+"    border-radius: 10px;\n"
+"}"));
+        verticalLayout = new QVBoxLayout(searchWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        horizontalLayout_9 = new QHBoxLayout();
-        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
-        label = new QLabel(PlayerPayments);
-        label->setObjectName(QString::fromUtf8("label"));
+        labelHistoriPayments = new QLabel(searchWidget);
+        labelHistoriPayments->setObjectName(QString::fromUtf8("labelHistoriPayments"));
         QFont font;
         font.setFamily(QString::fromUtf8("Segoe UI"));
         font.setPointSize(12);
-        label->setFont(font);
+        font.setBold(true);
+        font.setWeight(75);
+        labelHistoriPayments->setFont(font);
 
-        horizontalLayout_9->addWidget(label);
+        verticalLayout->addWidget(labelHistoriPayments);
 
-        searchColumn = new QComboBox(PlayerPayments);
-        searchColumn->setObjectName(QString::fromUtf8("searchColumn"));
+        horizontalLayout_9 = new QHBoxLayout();
+        horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
+        label = new QLabel(searchWidget);
+        label->setObjectName(QString::fromUtf8("label"));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Segoe UI"));
         font1.setPointSize(12);
-        font1.setBold(true);
-        font1.setWeight(75);
-        searchColumn->setFont(font1);
+        label->setFont(font1);
+
+        horizontalLayout_9->addWidget(label);
+
+        searchColumn = new QComboBox(searchWidget);
+        searchColumn->setObjectName(QString::fromUtf8("searchColumn"));
+        searchColumn->setFont(font);
 
         horizontalLayout_9->addWidget(searchColumn);
 
-        searchText = new QLineEdit(PlayerPayments);
+        searchText = new QLineEdit(searchWidget);
         searchText->setObjectName(QString::fromUtf8("searchText"));
-        searchText->setFont(font);
+        searchText->setFont(font1);
 
         horizontalLayout_9->addWidget(searchText);
 
-        checkBox = new QCheckBox(PlayerPayments);
+        checkBox = new QCheckBox(searchWidget);
         checkBox->setObjectName(QString::fromUtf8("checkBox"));
-        checkBox->setFont(font);
+        checkBox->setFont(font1);
 
         horizontalLayout_9->addWidget(checkBox);
 
-        pushButton_search = new QPushButton(PlayerPayments);
+        pushButton_search = new QPushButton(searchWidget);
         pushButton_search->setObjectName(QString::fromUtf8("pushButton_search"));
         pushButton_search->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: white;\n"
@@ -122,7 +189,7 @@ public:
 
         horizontalLayout_9->addWidget(pushButton_search);
 
-        clearSearch = new QPushButton(PlayerPayments);
+        clearSearch = new QPushButton(searchWidget);
         clearSearch->setObjectName(QString::fromUtf8("clearSearch"));
         clearSearch->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: white;\n"
@@ -151,7 +218,7 @@ public:
 
         horizontalLayout_9->addItem(horizontalSpacer_14);
 
-        refreshData = new QPushButton(PlayerPayments);
+        refreshData = new QPushButton(searchWidget);
         refreshData->setObjectName(QString::fromUtf8("refreshData"));
         refreshData->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: white;\n"
@@ -179,7 +246,7 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_9);
 
-        tableView = new QTableView(PlayerPayments);
+        tableView = new QTableView(searchWidget);
         tableView->setObjectName(QString::fromUtf8("tableView"));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Segoe UI"));
@@ -194,27 +261,27 @@ public:
 
         horizontalLayout_6->addItem(horizontalSpacer_9);
 
-        label_4 = new QLabel(PlayerPayments);
+        label_4 = new QLabel(searchWidget);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setFont(font);
+        label_4->setFont(font1);
 
         horizontalLayout_6->addWidget(label_4);
 
-        labelCurrentPage = new QLabel(PlayerPayments);
+        labelCurrentPage = new QLabel(searchWidget);
         labelCurrentPage->setObjectName(QString::fromUtf8("labelCurrentPage"));
-        labelCurrentPage->setFont(font1);
+        labelCurrentPage->setFont(font);
 
         horizontalLayout_6->addWidget(labelCurrentPage);
 
-        label_5 = new QLabel(PlayerPayments);
+        label_5 = new QLabel(searchWidget);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setFont(font);
+        label_5->setFont(font1);
 
         horizontalLayout_6->addWidget(label_5);
 
-        labelMaxPage = new QLabel(PlayerPayments);
+        labelMaxPage = new QLabel(searchWidget);
         labelMaxPage->setObjectName(QString::fromUtf8("labelMaxPage"));
-        labelMaxPage->setFont(font1);
+        labelMaxPage->setFont(font);
 
         horizontalLayout_6->addWidget(labelMaxPage);
 
@@ -227,7 +294,7 @@ public:
 
         horizontalLayout_10 = new QHBoxLayout();
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
-        prevButton = new QPushButton(PlayerPayments);
+        prevButton = new QPushButton(searchWidget);
         prevButton->setObjectName(QString::fromUtf8("prevButton"));
         QFont font3;
         font3.setFamily(QString::fromUtf8("Segoe UI"));
@@ -260,16 +327,16 @@ public:
 
         horizontalLayout_10->addItem(horizontalSpacer_15);
 
-        label_6 = new QLabel(PlayerPayments);
+        label_6 = new QLabel(searchWidget);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setFont(font);
+        label_6->setFont(font1);
 
         horizontalLayout_10->addWidget(label_6);
 
-        pageNumberToNavigate = new QLineEdit(PlayerPayments);
+        pageNumberToNavigate = new QLineEdit(searchWidget);
         pageNumberToNavigate->setObjectName(QString::fromUtf8("pageNumberToNavigate"));
         pageNumberToNavigate->setMaximumSize(QSize(50, 16777215));
-        pageNumberToNavigate->setFont(font);
+        pageNumberToNavigate->setFont(font1);
 
         horizontalLayout_10->addWidget(pageNumberToNavigate);
 
@@ -277,7 +344,7 @@ public:
 
         horizontalLayout_10->addItem(horizontalSpacer_16);
 
-        nextButton = new QPushButton(PlayerPayments);
+        nextButton = new QPushButton(searchWidget);
         nextButton->setObjectName(QString::fromUtf8("nextButton"));
         nextButton->setFont(font3);
         nextButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -306,10 +373,515 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_10);
 
-        status = new QLabel(PlayerPayments);
-        status->setObjectName(QString::fromUtf8("status"));
 
-        verticalLayout->addWidget(status);
+        gridLayout->addWidget(searchWidget, 2, 0, 2, 2);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer_2, 0, 1, 1, 1);
+
+        cardHolderWidget = new QWidget(PlayerPayments);
+        cardHolderWidget->setObjectName(QString::fromUtf8("cardHolderWidget"));
+        cardHolderWidget->setStyleSheet(QString::fromUtf8("#cardHolderWidget\n"
+"{\n"
+"    border: 2px solid black; \n"
+"    border-radius: 10px;\n"
+"	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(170, 85, 255, 255), stop:1 rgba(255, 85, 127, 255));\n"
+"}"));
+        gridLayout_4 = new QGridLayout(cardHolderWidget);
+        gridLayout_4->setObjectName(QString::fromUtf8("gridLayout_4"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(0);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_5);
+
+        lineEdit_6 = new QLineEdit(cardHolderWidget);
+        lineEdit_6->setObjectName(QString::fromUtf8("lineEdit_6"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(lineEdit_6->sizePolicy().hasHeightForWidth());
+        lineEdit_6->setSizePolicy(sizePolicy);
+        lineEdit_6->setMaximumSize(QSize(70, 16777215));
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Segoe UI"));
+        font4.setPointSize(20);
+        font4.setBold(true);
+        font4.setWeight(75);
+        lineEdit_6->setFont(font4);
+        lineEdit_6->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"	background-color: white;\n"
+"	color: black\n"
+"}"));
+        lineEdit_6->setMaxLength(4);
+        lineEdit_6->setFrame(false);
+
+        horizontalLayout->addWidget(lineEdit_6);
+
+        label_8 = new QLabel(cardHolderWidget);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+        QFont font5;
+        font5.setFamily(QString::fromUtf8("Segoe UI"));
+        font5.setPointSize(24);
+        font5.setBold(true);
+        font5.setWeight(75);
+        label_8->setFont(font5);
+
+        horizontalLayout->addWidget(label_8);
+
+        lineEdit_7 = new QLineEdit(cardHolderWidget);
+        lineEdit_7->setObjectName(QString::fromUtf8("lineEdit_7"));
+        sizePolicy.setHeightForWidth(lineEdit_7->sizePolicy().hasHeightForWidth());
+        lineEdit_7->setSizePolicy(sizePolicy);
+        lineEdit_7->setMaximumSize(QSize(70, 16777215));
+        lineEdit_7->setFont(font4);
+        lineEdit_7->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"	background-color: white;\n"
+"	color: black\n"
+"}"));
+        lineEdit_7->setMaxLength(4);
+        lineEdit_7->setFrame(false);
+
+        horizontalLayout->addWidget(lineEdit_7);
+
+        label_9 = new QLabel(cardHolderWidget);
+        label_9->setObjectName(QString::fromUtf8("label_9"));
+        label_9->setFont(font5);
+
+        horizontalLayout->addWidget(label_9);
+
+        lineEdit_8 = new QLineEdit(cardHolderWidget);
+        lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
+        sizePolicy.setHeightForWidth(lineEdit_8->sizePolicy().hasHeightForWidth());
+        lineEdit_8->setSizePolicy(sizePolicy);
+        lineEdit_8->setMaximumSize(QSize(70, 16777215));
+        lineEdit_8->setFont(font4);
+        lineEdit_8->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"	background-color: white;\n"
+"	color: black\n"
+"}"));
+        lineEdit_8->setMaxLength(4);
+        lineEdit_8->setFrame(false);
+
+        horizontalLayout->addWidget(lineEdit_8);
+
+        label_10 = new QLabel(cardHolderWidget);
+        label_10->setObjectName(QString::fromUtf8("label_10"));
+        label_10->setFont(font5);
+
+        horizontalLayout->addWidget(label_10);
+
+        lineEdit_9 = new QLineEdit(cardHolderWidget);
+        lineEdit_9->setObjectName(QString::fromUtf8("lineEdit_9"));
+        sizePolicy.setHeightForWidth(lineEdit_9->sizePolicy().hasHeightForWidth());
+        lineEdit_9->setSizePolicy(sizePolicy);
+        lineEdit_9->setMaximumSize(QSize(70, 16777215));
+        lineEdit_9->setFont(font4);
+        lineEdit_9->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"	background-color: white;\n"
+"	color: black\n"
+"}"));
+        lineEdit_9->setMaxLength(4);
+        lineEdit_9->setFrame(false);
+
+        horizontalLayout->addWidget(lineEdit_9);
+
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_6);
+
+
+        gridLayout_4->addLayout(horizontalLayout, 3, 0, 1, 2);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(0);
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        label_16 = new QLabel(cardHolderWidget);
+        label_16->setObjectName(QString::fromUtf8("label_16"));
+        label_16->setMinimumSize(QSize(60, 50));
+        label_16->setStyleSheet(QString::fromUtf8("image: url(:/bank/resources/banks/ChipCard.png);"));
+        label_16->setScaledContents(true);
+
+        horizontalLayout_3->addWidget(label_16);
+
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_7);
+
+        label_17 = new QLabel(cardHolderWidget);
+        label_17->setObjectName(QString::fromUtf8("label_17"));
+        label_17->setMinimumSize(QSize(60, 50));
+        label_17->setStyleSheet(QString::fromUtf8("image: url(:/bank/resources/banks/mastercard.png);"));
+        label_17->setScaledContents(true);
+
+        horizontalLayout_3->addWidget(label_17);
+
+
+        gridLayout_4->addLayout(horizontalLayout_3, 0, 0, 1, 2);
+
+        gridLayout_5 = new QGridLayout();
+        gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
+        label_13 = new QLabel(cardHolderWidget);
+        label_13->setObjectName(QString::fromUtf8("label_13"));
+        label_13->setFont(font);
+        label_13->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+
+        gridLayout_5->addWidget(label_13, 0, 0, 1, 1);
+
+        lineEdit_3 = new QLineEdit(cardHolderWidget);
+        lineEdit_3->setObjectName(QString::fromUtf8("lineEdit_3"));
+        sizePolicy.setHeightForWidth(lineEdit_3->sizePolicy().hasHeightForWidth());
+        lineEdit_3->setSizePolicy(sizePolicy);
+        lineEdit_3->setMaximumSize(QSize(140, 16777215));
+        QFont font6;
+        font6.setFamily(QString::fromUtf8("Segoe UI"));
+        font6.setPointSize(14);
+        font6.setBold(true);
+        font6.setWeight(75);
+        lineEdit_3->setFont(font6);
+        lineEdit_3->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"	background-color: white;\n"
+"	color: black\n"
+"}"));
+        lineEdit_3->setFrame(false);
+
+        gridLayout_5->addWidget(lineEdit_3, 1, 1, 1, 1);
+
+        lineEdit_5 = new QLineEdit(cardHolderWidget);
+        lineEdit_5->setObjectName(QString::fromUtf8("lineEdit_5"));
+        sizePolicy.setHeightForWidth(lineEdit_5->sizePolicy().hasHeightForWidth());
+        lineEdit_5->setSizePolicy(sizePolicy);
+        lineEdit_5->setMaximumSize(QSize(50, 16777215));
+        lineEdit_5->setFont(font6);
+        lineEdit_5->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"	background-color: white;\n"
+"	color: black\n"
+"}"));
+        lineEdit_5->setMaxLength(2);
+        lineEdit_5->setFrame(false);
+        lineEdit_5->setAlignment(Qt::AlignCenter);
+
+        gridLayout_5->addWidget(lineEdit_5, 1, 3, 1, 1);
+
+        label_11 = new QLabel(cardHolderWidget);
+        label_11->setObjectName(QString::fromUtf8("label_11"));
+        label_11->setMinimumSize(QSize(10, 0));
+        label_11->setFont(font6);
+        label_11->setAlignment(Qt::AlignCenter);
+
+        gridLayout_5->addWidget(label_11, 1, 4, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(20, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+
+        gridLayout_5->addItem(horizontalSpacer, 1, 2, 1, 1);
+
+        lineEdit_2 = new QLineEdit(cardHolderWidget);
+        lineEdit_2->setObjectName(QString::fromUtf8("lineEdit_2"));
+        sizePolicy.setHeightForWidth(lineEdit_2->sizePolicy().hasHeightForWidth());
+        lineEdit_2->setSizePolicy(sizePolicy);
+        lineEdit_2->setMaximumSize(QSize(140, 16777215));
+        lineEdit_2->setFont(font6);
+        lineEdit_2->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"	background-color: white;\n"
+"	color: black\n"
+"}"));
+        lineEdit_2->setFrame(false);
+
+        gridLayout_5->addWidget(lineEdit_2, 1, 0, 1, 1);
+
+        lineEdit_4 = new QLineEdit(cardHolderWidget);
+        lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
+        sizePolicy.setHeightForWidth(lineEdit_4->sizePolicy().hasHeightForWidth());
+        lineEdit_4->setSizePolicy(sizePolicy);
+        lineEdit_4->setMaximumSize(QSize(50, 16777215));
+        lineEdit_4->setFont(font6);
+        lineEdit_4->setStyleSheet(QString::fromUtf8("QLineEdit {\n"
+"	background-color: white;\n"
+"	color: black\n"
+"}"));
+        lineEdit_4->setMaxLength(2);
+        lineEdit_4->setFrame(false);
+        lineEdit_4->setAlignment(Qt::AlignCenter);
+
+        gridLayout_5->addWidget(lineEdit_4, 1, 5, 1, 1);
+
+        label_14 = new QLabel(cardHolderWidget);
+        label_14->setObjectName(QString::fromUtf8("label_14"));
+        label_14->setFont(font);
+        label_14->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        label_14->setWordWrap(false);
+
+        gridLayout_5->addWidget(label_14, 0, 3, 1, 3);
+
+
+        gridLayout_4->addLayout(gridLayout_5, 5, 0, 1, 2);
+
+
+        gridLayout->addWidget(cardHolderWidget, 0, 0, 2, 1);
+
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+
+        gridLayout->addItem(verticalSpacer, 2, 2, 1, 1);
+
+        replenishmentWidget = new QWidget(PlayerPayments);
+        replenishmentWidget->setObjectName(QString::fromUtf8("replenishmentWidget"));
+        replenishmentWidget->setStyleSheet(QString::fromUtf8("#replenishmentWidget\n"
+"{\n"
+"    border: 2px solid black; \n"
+"    border-radius: 10px;\n"
+"}"));
+        gridLayout_2 = new QGridLayout(replenishmentWidget);
+        gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
+        label_7 = new QLabel(replenishmentWidget);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+        label_7->setFont(font);
+        label_7->setAlignment(Qt::AlignCenter);
+
+        gridLayout_2->addWidget(label_7, 0, 1, 1, 1);
+
+        horizontalSpacer_3 = new QSpacerItem(123, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer_3, 1, 0, 1, 1);
+
+        lineEdit = new QLineEdit(replenishmentWidget);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        lineEdit->setFont(font1);
+
+        gridLayout_2->addWidget(lineEdit, 1, 1, 1, 1);
+
+        horizontalSpacer_4 = new QSpacerItem(123, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout_2->addItem(horizontalSpacer_4, 1, 2, 1, 1);
+
+        label_3 = new QLabel(replenishmentWidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        QFont font7;
+        font7.setFamily(QString::fromUtf8("Segoe UI"));
+        label_3->setFont(font7);
+        label_3->setStyleSheet(QString::fromUtf8("color: rgb(0, 170, 0);"));
+
+        gridLayout_2->addWidget(label_3, 2, 1, 1, 1);
+
+        buttonPay = new QPushButton(replenishmentWidget);
+        buttonPay->setObjectName(QString::fromUtf8("buttonPay"));
+        buttonPay->setFont(font);
+        buttonPay->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background-color: white;\n"
+"    border: 2px solid black; \n"
+"    border-radius: 10px;\n"
+"    border-radius: 10px;\n"
+"    padding: 3px;\n"
+"	color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+
+        gridLayout_2->addWidget(buttonPay, 3, 1, 1, 1);
+
+        labelInformation = new QLabel(replenishmentWidget);
+        labelInformation->setObjectName(QString::fromUtf8("labelInformation"));
+        labelInformation->setFont(font2);
+        labelInformation->setAlignment(Qt::AlignCenter);
+        labelInformation->setWordWrap(true);
+
+        gridLayout_2->addWidget(labelInformation, 4, 0, 1, 3);
+
+
+        gridLayout->addWidget(replenishmentWidget, 0, 2, 2, 1);
+
+        otherPaymentMethodsWidget = new QWidget(PlayerPayments);
+        otherPaymentMethodsWidget->setObjectName(QString::fromUtf8("otherPaymentMethodsWidget"));
+        otherPaymentMethodsWidget->setStyleSheet(QString::fromUtf8("#otherPaymentMethodsWidget\n"
+"{\n"
+"    border: 2px solid black; \n"
+"    border-radius: 10px;\n"
+"}"));
+        gridLayout_3 = new QGridLayout(otherPaymentMethodsWidget);
+        gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
+        buttonSBP = new QPushButton(otherPaymentMethodsWidget);
+        buttonSBP->setObjectName(QString::fromUtf8("buttonSBP"));
+        QFont font8;
+        font8.setFamily(QString::fromUtf8("Segoe UI"));
+        font8.setPointSize(10);
+        font8.setBold(true);
+        font8.setWeight(75);
+        buttonSBP->setFont(font8);
+        buttonSBP->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	color: rgb(0, 0, 0);\n"
+"	text-align: left;\n"
+"    border: 2px solid black; \n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"	background-color: white;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/bank/resources/banks/sbp.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buttonSBP->setIcon(icon5);
+        buttonSBP->setIconSize(QSize(32, 32));
+
+        gridLayout_3->addWidget(buttonSBP, 1, 0, 1, 1);
+
+        buttonYOOMoney = new QPushButton(otherPaymentMethodsWidget);
+        buttonYOOMoney->setObjectName(QString::fromUtf8("buttonYOOMoney"));
+        buttonYOOMoney->setFont(font8);
+        buttonYOOMoney->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	color: rgb(0, 0, 0);\n"
+"	text-align: left;\n"
+"    border: 2px solid black; \n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"	background-color: white;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/bank/resources/banks/yoomoney.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buttonYOOMoney->setIcon(icon6);
+        buttonYOOMoney->setIconSize(QSize(32, 32));
+
+        gridLayout_3->addWidget(buttonYOOMoney, 2, 1, 1, 1);
+
+        buttonVKPay = new QPushButton(otherPaymentMethodsWidget);
+        buttonVKPay->setObjectName(QString::fromUtf8("buttonVKPay"));
+        buttonVKPay->setFont(font8);
+        buttonVKPay->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	color: rgb(0, 0, 0);\n"
+"	text-align: left;\n"
+"    border: 2px solid black; \n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"	background-color: white;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/bank/resources/banks/vkpay.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buttonVKPay->setIcon(icon7);
+        buttonVKPay->setIconSize(QSize(32, 32));
+
+        gridLayout_3->addWidget(buttonVKPay, 2, 0, 1, 1);
+
+        buttonMTS = new QPushButton(otherPaymentMethodsWidget);
+        buttonMTS->setObjectName(QString::fromUtf8("buttonMTS"));
+        buttonMTS->setFont(font8);
+        buttonMTS->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	color: rgb(0, 0, 0);\n"
+"	text-align: left;\n"
+"    border: 2px solid black; \n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"	background-color: white;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/bank/resources/banks/mtsbank.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buttonMTS->setIcon(icon8);
+        buttonMTS->setIconSize(QSize(32, 32));
+
+        gridLayout_3->addWidget(buttonMTS, 3, 0, 1, 1);
+
+        buttonSber = new QPushButton(otherPaymentMethodsWidget);
+        buttonSber->setObjectName(QString::fromUtf8("buttonSber"));
+        buttonSber->setFont(font8);
+        buttonSber->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	color: rgb(0, 0, 0);\n"
+"	text-align: left;\n"
+"    border: 2px solid black; \n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"	background-color: white;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8(":/bank/resources/banks/sberbank.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buttonSber->setIcon(icon9);
+        buttonSber->setIconSize(QSize(32, 32));
+
+        gridLayout_3->addWidget(buttonSber, 1, 1, 1, 1);
+
+        buttonWebMoney = new QPushButton(otherPaymentMethodsWidget);
+        buttonWebMoney->setObjectName(QString::fromUtf8("buttonWebMoney"));
+        buttonWebMoney->setFont(font8);
+        buttonWebMoney->setStyleSheet(QString::fromUtf8("QPushButton\n"
+"{\n"
+"	color: rgb(0, 0, 0);\n"
+"	text-align: left;\n"
+"    border: 2px solid black; \n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"	background-color: white;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+        QIcon icon10;
+        icon10.addFile(QString::fromUtf8(":/bank/resources/banks/webmoney.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buttonWebMoney->setIcon(icon10);
+        buttonWebMoney->setIconSize(QSize(32, 32));
+
+        gridLayout_3->addWidget(buttonWebMoney, 3, 1, 1, 1);
+
+        label_2 = new QLabel(otherPaymentMethodsWidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setFont(font);
+        label_2->setAlignment(Qt::AlignCenter);
+
+        gridLayout_3->addWidget(label_2, 0, 0, 1, 2);
+
+
+        gridLayout->addWidget(otherPaymentMethodsWidget, 3, 2, 1, 1);
 
 
         retranslateUi(PlayerPayments);
@@ -320,6 +892,7 @@ public:
     void retranslateUi(QWidget *PlayerPayments)
     {
         PlayerPayments->setWindowTitle(QApplication::translate("PlayerPayments", "Form", nullptr));
+        labelHistoriPayments->setText(QApplication::translate("PlayerPayments", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217 \320\277\320\273\320\260\321\202\320\265\320\266\320\265\320\271", nullptr));
         label->setText(QApplication::translate("PlayerPayments", "\320\237\320\276\320\270\321\201\320\272:", nullptr));
         checkBox->setText(QApplication::translate("PlayerPayments", "\320\242\320\276\321\207\320\275\320\276\320\265 \n"
 "\321\201\320\276\320\262\320\277\320\260\320\264\320\265\320\275\320\270\320\265", nullptr));
@@ -333,7 +906,34 @@ public:
         prevButton->setText(QString());
         label_6->setText(QApplication::translate("PlayerPayments", "\320\237\320\265\321\200\320\265\320\271\321\202\320\270 \320\272 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\265 \342\204\226:", nullptr));
         nextButton->setText(QString());
-        status->setText(QString());
+        lineEdit_6->setPlaceholderText(QApplication::translate("PlayerPayments", "0000", nullptr));
+        label_8->setText(QApplication::translate("PlayerPayments", "-", nullptr));
+        lineEdit_7->setPlaceholderText(QApplication::translate("PlayerPayments", "0000", nullptr));
+        label_9->setText(QApplication::translate("PlayerPayments", "-", nullptr));
+        lineEdit_8->setPlaceholderText(QApplication::translate("PlayerPayments", "0000", nullptr));
+        label_10->setText(QApplication::translate("PlayerPayments", "-", nullptr));
+        lineEdit_9->setPlaceholderText(QApplication::translate("PlayerPayments", "0000", nullptr));
+        label_17->setText(QString());
+        label_13->setText(QApplication::translate("PlayerPayments", "Card Holder", nullptr));
+        lineEdit_3->setPlaceholderText(QApplication::translate("PlayerPayments", "LASTNAME", nullptr));
+        lineEdit_5->setPlaceholderText(QApplication::translate("PlayerPayments", "MM", nullptr));
+        label_11->setText(QApplication::translate("PlayerPayments", "/", nullptr));
+        lineEdit_2->setPlaceholderText(QApplication::translate("PlayerPayments", "FIRSTNAME", nullptr));
+        lineEdit_4->setInputMask(QString());
+        lineEdit_4->setPlaceholderText(QApplication::translate("PlayerPayments", "YY", nullptr));
+        label_14->setText(QApplication::translate("PlayerPayments", "Exprired", nullptr));
+        label_7->setText(QApplication::translate("PlayerPayments", "\320\237\320\276\320\277\320\276\320\273\320\275\320\270\321\202\321\214 \321\201\321\207\321\221\321\202", nullptr));
+        label_3->setText(QApplication::translate("PlayerPayments", "\320\232\320\276\320\274\320\270\321\201\320\270\321\217 \320\261\320\260\320\275\320\272\320\260 0%", nullptr));
+        buttonPay->setText(QApplication::translate("PlayerPayments", "\320\236\320\277\320\273\320\260\321\202\320\270\321\202\321\214", nullptr));
+        labelInformation->setText(QApplication::translate("PlayerPayments", "\320\237\320\276\320\277\320\276\320\273\320\275\321\217\321\217 \321\201\320\262\320\276\320\271 \320\261\320\260\320\273\320\260\320\275\321\201, \320\222\321\213 \320\264\320\260\321\221\321\202\320\265 \321\201\320\276\320\263\320\273\320\260\321\201\320\270\320\265 \321\201 \320\237\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\214\321\201\320\272\320\270\320\274 \321\201\320\276\320\263\320\273\320\260\321\210\320\265\320\275\320\270\320\265\320\274 \320\262 \320\276\321\202\320\275\320\260\321\210\320\265\320\275\320\270\320\270 \320\276\320\261\321\200\320\260\320\261\320\276\321\202\320\272\320\270 \320\222\320\260\321\210\320\270\321\205 \320\277\320\265\321\200\321\201\320\276\320\275\320\260\320\273\321\214\320\275\321\213\321\205 \320\264\320\260\320\275\320\275\321\213\321\205 \320\262 \320\241\320\276\320\276\321\202\320\262\320\265\321\202\321\201\320\262\320\270\320\270 \321\201 \320\244\320\227 \342\204\226152 \"\320\236 \320\267\320\260\321\211\320\270\321"
+                        "\202\320\265 \320\277\320\265\321\200\321\201\320\276\320\275\320\260\320\273\321\214\320\275\321\213\321\205 \320\264\320\260\320\275\320\275\321\213\321\205\", \320\260 \321\202\320\260\320\272\320\266\320\265 \321\201\320\276\320\263\320\273\320\260\321\210\320\260\320\265\321\202\320\265\321\201\321\214 \321\201 \321\203\321\201\320\273\320\276\320\262\320\270\320\265\320\274 \320\277\321\203\320\261\320\273\320\270\321\207\320\275\320\276\320\271 \320\276\321\204\320\265\321\200\321\202\321\213", nullptr));
+        buttonSBP->setText(QApplication::translate("PlayerPayments", "\320\241\320\221\320\237", nullptr));
+        buttonYOOMoney->setText(QApplication::translate("PlayerPayments", "\320\256 Money", nullptr));
+        buttonVKPay->setText(QApplication::translate("PlayerPayments", "VK Pay", nullptr));
+        buttonMTS->setText(QApplication::translate("PlayerPayments", "\320\234\320\242\320\241 \320\221\320\260\320\275\320\272", nullptr));
+        buttonSber->setText(QApplication::translate("PlayerPayments", "\320\241\320\261\320\265\321\200", nullptr));
+        buttonWebMoney->setText(QApplication::translate("PlayerPayments", "WebMoney", nullptr));
+        label_2->setText(QApplication::translate("PlayerPayments", "\320\224\321\200\321\203\320\263\320\270\320\265 \321\201\320\277\320\276\321\201\320\276\320\261\321\213 \320\276\320\277\320\273\320\260\321\202\321\213", nullptr));
     } // retranslateUi
 
 };

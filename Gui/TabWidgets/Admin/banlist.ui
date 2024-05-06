@@ -89,7 +89,7 @@ QPushButton:pressed {
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="../../Resources.qrc">
+        <iconset resource="../../../resources.qrc">
          <normaloff>:/icons/resources/search.png</normaloff>:/icons/resources/search.png</iconset>
        </property>
        <property name="iconSize">
@@ -124,7 +124,7 @@ QPushButton:pressed {
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="../../Resources.qrc">
+        <iconset resource="../../../resources.qrc">
          <normaloff>:/icons/resources/clearSearch.png</normaloff>:/icons/resources/clearSearch.png</iconset>
        </property>
        <property name="iconSize">
@@ -169,7 +169,7 @@ QPushButton:pressed {
 }</string>
        </property>
        <property name="icon">
-        <iconset resource="../../Resources.qrc">
+        <iconset resource="../../../resources.qrc">
          <normaloff>:/icons/resources/update.png</normaloff>:/icons/resources/update.png</iconset>
        </property>
        <property name="iconSize">
@@ -314,7 +314,7 @@ QPushButton:pressed {
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="../../Resources.qrc">
+        <iconset resource="../../../resources.qrc">
          <normaloff>:/icons/resources/edited.png</normaloff>:/icons/resources/edited.png</iconset>
        </property>
        <property name="iconSize">
@@ -349,7 +349,7 @@ QPushButton:pressed {
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="../../Resources.qrc">
+        <iconset resource="../../../resources.qrc">
          <normaloff>:/icons/resources/delete.png</normaloff>:/icons/resources/delete.png</iconset>
        </property>
        <property name="iconSize">
@@ -490,7 +490,7 @@ QPushButton:pressed {
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="../../Resources.qrc">
+        <iconset resource="../../../resources.qrc">
          <normaloff>:/icons/resources/prev.png</normaloff>:/icons/resources/prev.png</iconset>
        </property>
        <property name="iconSize">
@@ -586,7 +586,7 @@ QPushButton:pressed {
         <string/>
        </property>
        <property name="icon">
-        <iconset resource="../../Resources.qrc">
+        <iconset resource="../../../resources.qrc">
          <normaloff>:/icons/resources/next.png</normaloff>:/icons/resources/next.png</iconset>
        </property>
        <property name="iconSize">
@@ -599,17 +599,10 @@ QPushButton:pressed {
      </item>
     </layout>
    </item>
-   <item>
-    <widget class="QLabel" name="status">
-     <property name="text">
-      <string/>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <resources>
-  <include location="../../Resources.qrc"/>
+  <include location="../../../resources.qrc"/>
  </resources>
  <connections/>
 </ui>

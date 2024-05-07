@@ -62,6 +62,7 @@ SOURCES += \
     Network/PacketsActions/p_search.cpp \
     Network/PacketsActions/p_sendmodel.cpp \
     Network/PacketsActions/p_sendtables.cpp \
+    Network/PacketsActions/p_updatebalance.cpp \
     Network/PacketsActions/p_updategameprocessing.cpp \
     Network/networkclient.cpp \
     Network/packethandler.cpp \
@@ -125,6 +126,7 @@ HEADERS += \
     Network/PacketsActions/p_search.h \
     Network/PacketsActions/p_sendmodel.h \
     Network/PacketsActions/p_sendtables.h \
+    Network/PacketsActions/p_updatebalance.h \
     Network/PacketsActions/p_updategameprocessing.h \
     Network/networkclient.h \
     Network/packethandler.h \

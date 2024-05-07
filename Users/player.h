@@ -4,6 +4,7 @@
 #include "Users/user.h"
 #include "Games/card.h"
 #include "Games/Tabel/game.h"
+#include "QMutex"
 
 class Game;
 
@@ -12,6 +13,7 @@ class Player : public User
     double balance{};
     QSharedPointer<Game> game;
     QVector<QSharedPointer<Card>> cardsInHand;
+    QMutex accessMutex;
 
 public:
     Player(int ID, const QString& name, double balance, const QString& login, Roles role);

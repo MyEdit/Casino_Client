@@ -77,6 +77,7 @@ bool NetworkClient::start() const
     QObject::connect(packetHandler, &PacketHandler::signalOpenGame, this, &P_ConnectPlayerToTable::openGameGUI);
     QObject::connect(packetHandler, &PacketHandler::signalUpdatePlayers, this, &P_ConnectPlayerToTable::updatePlayers);
     QObject::connect(packetHandler, &PacketHandler::signalUpdateGameProcessing, this, &P_UpdateGameProcessing::updateGameProcessing);
+    QObject::connect(packetHandler, &PacketHandler::signalUpdateBalance, this, &P_UpdateBalance::updatePlayerBalance);
 
     packetHandler->start();
     return true;

@@ -49,6 +49,7 @@ Roles Player::getRole()
 
 double Player::getBalance()
 {
+    QMutexLocker locker(&accessMutex);
     return this->balance;
 }
 
@@ -93,6 +94,7 @@ void Player::clearCardsInHand()
 
 void Player::setBalance(double newBalance)
 {
+    QMutexLocker locker(&accessMutex);
     this->balance = newBalance;
 }
 

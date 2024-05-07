@@ -18,7 +18,8 @@ enum class PacketTypes
     P_PlayerLeaveTable,
     P_UpdateGameProcessing,
     P_GamePacket,
-    P_Search
+    P_Search,
+    P_UpdateBalance
 };
 
 enum class ModelTypes

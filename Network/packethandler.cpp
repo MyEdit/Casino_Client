@@ -96,6 +96,11 @@ void PacketHandler::packetHandler(const PacketTypes packettype)
             emit signalResultSearch(P_Search::getResultSearchFromServer());
             break;
         }
+        case(PacketTypes::P_UpdateBalance):
+        {
+            emit signalUpdateBalance(P_UpdateBalance::getNewBalance());
+            break;
+        }
         default:
         {
             Message::logWarn("Server send unknown packettype");

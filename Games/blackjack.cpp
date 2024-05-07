@@ -136,18 +136,14 @@ void BlackJack::onPlayerDefeat(QSharedPointer<Player> player)
 
 void BlackJack::onGameFinished(bool isWin)
 {
-    QString newBalance = NetworkClient::getMessageFromServer();
-
+    QSharedPointer<Player> player = P_Authorization::getPlayer();
     QMetaObject::invokeMethod(GUI, "finished", Qt::QueuedConnection, Q_ARG(bool, isWin));
 
     GUI->clearCardOnTable();
-    P_Authorization::getPlayer()->clearCardsInHand();
-    P_Authorization::getPlayer()->setBalance(newBalance.toDouble());
-    P_Authorization::playerW->setNewBalance(newBalance);
+    player->clearCardsInHand();
 
-    if(!Table::getTable(idTable)->canJoin())
+    if (player->getBalance() < Table::getTable(idTable)->getSettings().minBalance)
         QMetaObject::invokeMethod(GUI, "insufficientBalance", Qt::QueuedConnection);
-
 }
 
 void BlackJack::updatePlayersIcons(QList<QSharedPointer<Player>> players)

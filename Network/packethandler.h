@@ -13,6 +13,7 @@
 #include "Network/PacketsActions/p_updategameprocessing.h"
 #include "Network/PacketsActions/p_gamepacket.h"
 #include "Network/PacketsActions/p_search.h"
+#include "Network/PacketsActions/p_updatebalance.h"
 #include "Users/user.h"
 
 class NetworkClient;
@@ -41,6 +42,7 @@ signals:
     void signalUpdatePlayers(QSharedPointer<Table>);
     void signalUpdateGameProcessing(const QString);
     void signalResultSearch(QPair<ModelTypes, QString>);
+    void signalUpdateBalance(double newBalance);
 };
 
 #endif // CLIENTHANDLER_H

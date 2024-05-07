@@ -29,6 +29,8 @@ void Pagination::creatingObjects()
 
 void Pagination::updateTablePage()
 {
+    currentPage = (currentPage > maxPage) ? maxPage : currentPage;
+
     int startIndex = (currentPageInModel() - 1) * rowsPerPage;
     int endIndex = startIndex + rowsPerPage;
 
@@ -309,16 +311,7 @@ void Pagination::distributor(QSharedPointer<QueryData> data)
     if(data->modelTypes != modelTypes)
         return;
 
-    switch (data->queryTypes)
-    {
-    case QueryTypes::CountEntrites:
-        setMaxPage(data->result);
-        break;
-
-    default:
-        Message::logWarn("Тип запроса не известен");
-        break;
-    }
+    setMaxPage(data->result);
 }
 
 void Pagination::reloadModels()

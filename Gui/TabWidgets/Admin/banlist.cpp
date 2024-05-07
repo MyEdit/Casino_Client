@@ -146,7 +146,7 @@ void BanList::openEditRecotd()
         return;
 
     updateBan = QSharedPointer<W_Ban>::create(QueryTypes::UpdateEntry, ban);
-    connect(updateBan.get(), &W_Ban::update, pagination.get(), &Pagination::initializationModels);
+    connect(updateBan.get(), &W_Ban::update, pagination.get(), &Pagination::start);
     updateBan->show();
 }
 

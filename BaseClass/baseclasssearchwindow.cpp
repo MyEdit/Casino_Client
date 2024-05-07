@@ -121,7 +121,7 @@ void BaseClassSearchWindow::deleteRecord(const QString& table, const QString& id
     NetworkClient::sendToServer(&actionType, sizeof(QueryTypes));
     NetworkClient::sendToServer(query);
 
-    pagination->initializationModels();
+    pagination->start();
 }
 
 void BaseClassSearchWindow::showEvent(QShowEvent* event)

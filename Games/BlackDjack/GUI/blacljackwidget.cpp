@@ -134,6 +134,12 @@ void BlaclJackWidget::finished(bool isWin)
         Notification::showNotification(TypeMessage::Error, "Проигрыш");
 }
 
+void BlaclJackWidget::insufficientBalance()
+{
+    close();
+    Notification::showNotification(TypeMessage::Error, "У вас недостаточный баланс для продолжения");
+}
+
 void BlaclJackWidget::closeEvent(QCloseEvent* event)
 {
     QWidget::closeEvent(event);

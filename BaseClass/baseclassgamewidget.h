@@ -21,6 +21,7 @@ public:
 
 protected slots:
     virtual void finished(bool isWin) = 0;
+    virtual void insufficientBalance() = 0;
 };
 
 #endif // BASECLASSGAMEWIDGET_H

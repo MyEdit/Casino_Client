@@ -113,6 +113,11 @@ void Window_Player::setModel_PaymentsTab(QSharedPointer<ModelData> model)
     payments->setModel(model);
 }
 
+void Window_Player::setNewBalance(const QString& newBalance)
+{
+    ui->balance->setText(newBalance);
+}
+
 void Window_Player::rendering_GameTablesTab()
 {
     gameTabels = QSharedPointer<GameTable>::create();

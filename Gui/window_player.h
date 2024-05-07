@@ -32,6 +32,7 @@ public:
     void setTabels();
     void setModel_CreditsTab(QSharedPointer<ModelData> model);
     void setModel_PaymentsTab(QSharedPointer<ModelData> model);
+    void setNewBalance(const QString& newBalance);
 
 private:
     void assigningValues() override;

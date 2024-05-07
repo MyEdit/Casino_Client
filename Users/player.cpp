@@ -91,6 +91,11 @@ void Player::clearCardsInHand()
     cardsInHand.clear();
 }
 
+void Player::setBalance(double newBalance)
+{
+    this->balance = newBalance;
+}
+
 QVector<QSharedPointer<Card>> Player::getHand()
 {
     return cardsInHand;

@@ -14,7 +14,6 @@ class BlackJack : public Game
 {
     Q_OBJECT
 
-    //Наверное, игра должна знать в каком столе она находится и иметь связь Table <=> Game
     BlaclJackWidget* GUI {};
     QList<QSharedPointer<Player>> players{};
 

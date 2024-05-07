@@ -53,6 +53,7 @@ private:
 
 private slots:
     void finished(bool isWin) override;
+    void insufficientBalance() override;
 
 private:
     friend class BlackJack;

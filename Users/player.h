@@ -35,6 +35,7 @@ public:
     QSharedPointer<QByteArray> serializeUser() override;
     void addCardInHand(QSharedPointer<Card> card);
     void clearCardsInHand();
+    void setBalance(double newBalance);
 };
 
 #endif // PLAYER_H

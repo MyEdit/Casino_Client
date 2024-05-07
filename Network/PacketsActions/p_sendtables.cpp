@@ -42,9 +42,10 @@ void P_SendTables::deleteTable(const QList<QSharedPointer<Table>>& newTables)
     for (auto it = oldTables.begin(); it != oldTables.end();)
     {
          bool found = false;
+         int tableID = it->get()->getSettings().ID;
          for (const auto& currentTable : newTables)
          {
-             if (currentTable->getSettings().ID == it->get()->getSettings().ID)
+             if (currentTable->getSettings().ID == tableID)
              {
                  found = true;
                  break;
@@ -53,7 +54,7 @@ void P_SendTables::deleteTable(const QList<QSharedPointer<Table>>& newTables)
 
          if (!found)
          {
-             if (playerGame->getTableID() == it->get()->getSettings().ID)
+             if (playerGame != nullptr && playerGame->getTableID() == tableID)
                 playerGame->getGUI()->close();
 
              it = oldTables.erase(it);

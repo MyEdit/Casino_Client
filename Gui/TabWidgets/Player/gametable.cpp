@@ -22,7 +22,7 @@ void GameTable::updateTables()
         delete item;
     }
 
-    for(QSharedPointer<Table> table : Table::getTabels())
+    for(QSharedPointer<Table> table : Table::getCopyListTabels())
     {
         Form* formTable = new Form(table);
         ui->verticalLayoutContent->addWidget(formTable);

@@ -1,5 +1,5 @@
 ﻿#include "activetable.h"
-
+#include <QDebug>
 ActiveTable::ActiveTable(const QString& maxPlayers, const QString& numPlayers, const QString& minBet, const QString& betStep, const QString& minBalance, const QString& nameGame)
 {
     this->maxPlayers = maxPlayers;
@@ -48,7 +48,7 @@ const QString& ActiveTable::getBetStep()
 
 const QString& ActiveTable::getMinBalance()
 {
-    return minBet;
+    return minBalance;
 }
 
 const QString& ActiveTable::getNameGame()
@@ -88,6 +88,7 @@ void ActiveTable::setNameGame(const QString& nameGame)
 
 bool ActiveTable::inputDataIsValid() const
 {
+    qDebug() << minBalance;
     for (QString value : {maxPlayers, minBet, betStep, minBalance, nameGame})
     {
         if (value.isEmpty())

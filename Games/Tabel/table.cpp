@@ -127,6 +127,12 @@ void Table::updatePlayers()
     P_Authorization::getPlayer()->getGame()->updatePlayersIcons(players);
 }
 
+QList<QSharedPointer<Table>>& Table::getCopyListTabels()
+{
+    QMutexLocker locker(&accessTablesMutex);
+    return tables;
+}
+
 QList<QSharedPointer<Table>>& Table::getTabels()
 {
     QMutexLocker locker(&accessTablesMutex);

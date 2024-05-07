@@ -18,12 +18,12 @@ W_Table::~W_Table()
 
 void W_Table::on_bottonSave_clicked()
 {
-    QSharedPointer<ActiveTable> activeTable = QSharedPointer<ActiveTable>::create(defaultActiveTable->getID(), getMaxPlayers(), defaultActiveTable->getNumPlayers(), getMinBet(), getBetStep(), getMinBalance(), getNameGame());
+    QSharedPointer<ActiveTable> activeTable(new ActiveTable(defaultActiveTable->getID(), getMaxPlayers(), defaultActiveTable->getNumPlayers(), getMinBet(), getBetStep(), getMinBalance(), getNameGame()));
     QString query;
 
     if (!activeTable->inputDataIsValid())
     {
-                Notification::showNotification(TypeMessage::Error, "Заполнены не все поля");
+        Notification::showNotification(TypeMessage::Error, "Заполнены не все поля");
         return;
     }
 
@@ -31,6 +31,7 @@ void W_Table::on_bottonSave_clicked()
         query = getInsertQuery(activeTable);
     else
         query = getUpdateQuery(activeTable);
+
 
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(&actionType, sizeof(QueryTypes));

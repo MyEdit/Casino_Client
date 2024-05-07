@@ -57,8 +57,9 @@ public:
     int getCurrentNumPlayer();
     QList<QSharedPointer<Player>> getPlayers();
     static QSharedPointer<Table> getTable(int idTable);
-    static QList<QSharedPointer<Table>>& getTabels();
+    static QList<QSharedPointer<Table>>& getCopyListTabels();
     static void addTable(QSharedPointer<Table> table);
+    static QList<QSharedPointer<Table>>& getTabels();
 
     //METHODS
     bool canJoin();

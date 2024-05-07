@@ -37,6 +37,7 @@ void P_SendTables::setTables()
 void P_SendTables::deleteTable(const QList<QSharedPointer<Table>>& newTables)
 {
     QList<QSharedPointer<Table>>& oldTables = Table::getTabels();
+    QSharedPointer<Game> playerGame = P_Authorization::getPlayer()->getGame();
 
     for (auto it = oldTables.begin(); it != oldTables.end();)
     {
@@ -51,7 +52,12 @@ void P_SendTables::deleteTable(const QList<QSharedPointer<Table>>& newTables)
          }
 
          if (!found)
+         {
+             if (playerGame->getTableID() == it->get()->getSettings().ID)
+                playerGame->getGUI()->close();
+
              it = oldTables.erase(it);
+         }
          else
              ++it;
      }

@@ -13,7 +13,7 @@ public:
     SearchModule() {}
 
     void searchInModels(QVector<QSharedPointer<QStandardItemModel>>& models, const QString& searchText, const QString& typeSearch, int columnCurrentIndex, int rowsPerPage);
-    static void searchInDB(ModelTypes modelType, const QString& table, const QString& column, const QString& searchText, const QString& sort);
+    static void searchInDB(ModelTypes modelType, const QString& table, const QString& column, const QString& searchText, const QString& sort, const QString& where);
 
 signals:
     void signalResulSearchInModel(QSharedPointer<ResultSearchInModel>);

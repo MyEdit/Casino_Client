@@ -303,7 +303,7 @@ void Pagination::resultSearchInDB(QPair<ModelTypes, QString> result)
 void Pagination::searchInDB()
 {
     emit blockInterface(true);
-    SearchModule::searchInDB(modelTypes, P_SendModel::getTableName(modelTypes), column->currentText(), searchText + typeSearch, querySort);
+    SearchModule::searchInDB(modelTypes, P_SendModel::getTableName(modelTypes), column->currentText(), searchText + typeSearch, querySort, where);
 }
 
 void Pagination::distributor(QSharedPointer<QueryData> data)

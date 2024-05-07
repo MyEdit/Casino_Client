@@ -32,11 +32,10 @@ void SearchModule::searchInModels(QVector<QSharedPointer<QStandardItemModel>>& m
 }
 
 
-void SearchModule::searchInDB(ModelTypes modelType, const QString& table, const QString& column, const QString& searchText, const QString& sort)
+void SearchModule::searchInDB(ModelTypes modelType, const QString& table, const QString& column, const QString& searchText, const QString& sort, const QString& where)
 {
     PacketTypes packettype = PacketTypes::P_Search;
 
-    QString where = "";
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     NetworkClient::sendToServer(sort);
     NetworkClient::sendToServer(table);

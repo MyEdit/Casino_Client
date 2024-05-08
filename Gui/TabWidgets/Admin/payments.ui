@@ -15,6 +15,78 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QCheckBox" name="checkBox_Search">
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Поиск</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="checkBox_Sorting">
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Сортировка</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="refreshData">
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    color: black;
+}
+
+QPushButton:hover {
+    background-color: rgb(100, 88, 255);
+	color: white;
+}
+
+QPushButton:pressed {
+	background-color: rgba(220, 60, 190, 255);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="icon">
+        <iconset resource="../../../resources.qrc">
+         <normaloff>:/icons/resources/update.png</normaloff>:/icons/resources/update.png</iconset>
+       </property>
+       <property name="iconSize">
+        <size>
+         <width>32</width>
+         <height>32</height>
+        </size>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_9">
      <item>
       <widget class="QLabel" name="label">
@@ -140,48 +212,7 @@ QPushButton:pressed {
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
       </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="refreshData">
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 5px;
-    color: black;
-}
-
-QPushButton:hover {
-    background-color: rgb(100, 88, 255);
-	color: white;
-}
-
-QPushButton:pressed {
-	background-color: rgba(220, 60, 190, 255);
-}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="../../../resources.qrc">
-         <normaloff>:/icons/resources/update.png</normaloff>:/icons/resources/update.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>32</width>
-         <height>32</height>
-        </size>
-       </property>
-      </widget>
      </item>
     </layout>
    </item>
@@ -277,16 +308,59 @@ QPushButton:pressed {
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_7">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Сортировка:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_8">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>отсутствует</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="addPayments">
+      <widget class="QPushButton" name="addPayment">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -329,7 +403,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="editPayments">
+      <widget class="QPushButton" name="editPayment">
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -369,7 +443,7 @@ QPushButton:pressed {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="deletePayments">
+      <widget class="QPushButton" name="deletePayment">
        <property name="font">
         <font>
          <family>Segoe UI</family>

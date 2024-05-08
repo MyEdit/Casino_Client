@@ -50,6 +50,9 @@ void Credits::connects()
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &Credits::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &Credits::search);
 
+    connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &Credits::setVisibleSort);
+    connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &Credits::setVisibleSearch);
+
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &Credits::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &Credits::sorting);
 
@@ -154,4 +157,23 @@ void Credits::deleting()
 void Credits::clearSearchText()
 {
     ui->searchText->clear();
+}
+
+void Credits::visibleSort(bool flag)
+{
+    ui->label_3->setVisible(flag);
+    ui->label_2->setVisible(flag);
+    ui->sortingColumn->setVisible(flag);
+    ui->typeSorting->setVisible(flag);
+    ui->sorting->setVisible(flag);
+}
+
+void Credits::visibleSearch(bool flag)
+{
+    ui->label->setVisible(flag);
+    ui->searchColumn->setVisible(flag);
+    ui->searchText->setVisible(flag);
+    ui->checkBox->setVisible(flag);
+    ui->pushButton_search->setVisible(flag);
+    ui->clearSearch->setVisible(flag);
 }

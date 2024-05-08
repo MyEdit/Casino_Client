@@ -83,6 +83,8 @@ void BaseClassSearchWindow::baseSetting()
     creatingObjects();
     connects();
     workingWithTableView();
+    visibleSort(false);
+    visibleSearch(false);
 }
 
 void BaseClassSearchWindow::startPagination()
@@ -129,6 +131,18 @@ void BaseClassSearchWindow::showEvent(QShowEvent* event)
     QWidget::showEvent(event);
 
     startPagination();
+}
+
+void BaseClassSearchWindow::setVisibleSort(int arg)
+{
+    bool flag = (arg == 2) ? true : false;
+    visibleSort(flag);
+}
+
+void BaseClassSearchWindow::setVisibleSearch(int arg)
+{
+    bool flag = (arg == 2) ? true : false;
+    visibleSearch(flag);
 }
 
 void BaseClassSearchWindow::assigningValues()

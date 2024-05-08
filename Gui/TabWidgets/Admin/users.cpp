@@ -54,6 +54,9 @@ void Users::connects()
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &Users::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &Users::sorting);
 
+    connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &Users::setVisibleSort);
+    connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &Users::setVisibleSearch);
+
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Users::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Users::sort);
 
@@ -185,4 +188,23 @@ void Users::deleting()
 void Users::clearSearchText()
 {
     ui->searchText->clear();
+}
+
+void Users::visibleSort(bool flag)
+{
+    ui->label_3->setVisible(flag);
+    ui->label_2->setVisible(flag);
+    ui->sortingColumn->setVisible(flag);
+    ui->typeSorting->setVisible(flag);
+    ui->sorting->setVisible(flag);
+}
+
+void Users::visibleSearch(bool flag)
+{
+    ui->label->setVisible(flag);
+    ui->searchColumn->setVisible(flag);
+    ui->searchText->setVisible(flag);
+    ui->checkBox->setVisible(flag);
+    ui->pushButton_search->setVisible(flag);
+    ui->clearSearch->setVisible(flag);
 }

@@ -30,6 +30,11 @@ class Ui_Credits
 {
 public:
     QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout_2;
+    QCheckBox *checkBox_Search;
+    QCheckBox *checkBox_Sorting;
+    QSpacerItem *horizontalSpacer_2;
+    QPushButton *refreshData;
     QHBoxLayout *horizontalLayout_9;
     QLabel *label;
     QComboBox *searchColumn;
@@ -38,7 +43,6 @@ public:
     QPushButton *pushButton_search;
     QPushButton *clearSearch;
     QSpacerItem *horizontalSpacer_14;
-    QPushButton *refreshData;
     QHBoxLayout *horizontalLayout_8;
     QLabel *label_3;
     QComboBox *sortingColumn;
@@ -46,6 +50,10 @@ public:
     QComboBox *typeSorting;
     QCheckBox *sorting;
     QSpacerItem *horizontalSpacer_13;
+    QHBoxLayout *horizontalLayout;
+    QLabel *label_7;
+    QLabel *label_8;
+    QSpacerItem *horizontalSpacer;
     QPushButton *addCredit;
     QPushButton *editCredit;
     QPushButton *deleteCredit;
@@ -72,37 +80,86 @@ public:
         Credits->resize(994, 585);
         verticalLayout = new QVBoxLayout(Credits);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        checkBox_Search = new QCheckBox(Credits);
+        checkBox_Search->setObjectName(QString::fromUtf8("checkBox_Search"));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Segoe UI"));
+        font.setPointSize(14);
+        checkBox_Search->setFont(font);
+
+        horizontalLayout_2->addWidget(checkBox_Search);
+
+        checkBox_Sorting = new QCheckBox(Credits);
+        checkBox_Sorting->setObjectName(QString::fromUtf8("checkBox_Sorting"));
+        checkBox_Sorting->setFont(font);
+
+        horizontalLayout_2->addWidget(checkBox_Sorting);
+
+        horizontalSpacer_2 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_2);
+
+        refreshData = new QPushButton(Credits);
+        refreshData->setObjectName(QString::fromUtf8("refreshData"));
+        refreshData->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+        QIcon icon;
+        icon.addFile(QString::fromUtf8(":/icons/resources/update.png"), QSize(), QIcon::Normal, QIcon::Off);
+        refreshData->setIcon(icon);
+        refreshData->setIconSize(QSize(32, 32));
+
+        horizontalLayout_2->addWidget(refreshData);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
+
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
         label = new QLabel(Credits);
         label->setObjectName(QString::fromUtf8("label"));
-        QFont font;
-        font.setFamily(QString::fromUtf8("Segoe UI"));
-        font.setPointSize(12);
-        label->setFont(font);
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Segoe UI"));
+        font1.setPointSize(12);
+        label->setFont(font1);
 
         horizontalLayout_9->addWidget(label);
 
         searchColumn = new QComboBox(Credits);
         searchColumn->setObjectName(QString::fromUtf8("searchColumn"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Segoe UI"));
-        font1.setPointSize(12);
-        font1.setBold(true);
-        font1.setWeight(75);
-        searchColumn->setFont(font1);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Segoe UI"));
+        font2.setPointSize(12);
+        font2.setBold(true);
+        font2.setWeight(75);
+        searchColumn->setFont(font2);
 
         horizontalLayout_9->addWidget(searchColumn);
 
         searchText = new QLineEdit(Credits);
         searchText->setObjectName(QString::fromUtf8("searchText"));
-        searchText->setFont(font);
+        searchText->setFont(font1);
 
         horizontalLayout_9->addWidget(searchText);
 
         checkBox = new QCheckBox(Credits);
         checkBox->setObjectName(QString::fromUtf8("checkBox"));
-        checkBox->setFont(font);
+        checkBox->setFont(font1);
 
         horizontalLayout_9->addWidget(checkBox);
 
@@ -124,9 +181,9 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon;
-        icon.addFile(QString::fromUtf8(":/icons/resources/search.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_search->setIcon(icon);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/icons/resources/search.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_search->setIcon(icon1);
         pushButton_search->setIconSize(QSize(32, 32));
 
         horizontalLayout_9->addWidget(pushButton_search);
@@ -149,41 +206,16 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/icons/resources/clearSearch.png"), QSize(), QIcon::Normal, QIcon::Off);
-        clearSearch->setIcon(icon1);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/icons/resources/clearSearch.png"), QSize(), QIcon::Normal, QIcon::Off);
+        clearSearch->setIcon(icon2);
         clearSearch->setIconSize(QSize(32, 32));
 
         horizontalLayout_9->addWidget(clearSearch);
 
-        horizontalSpacer_14 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_14 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_9->addItem(horizontalSpacer_14);
-
-        refreshData = new QPushButton(Credits);
-        refreshData->setObjectName(QString::fromUtf8("refreshData"));
-        refreshData->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: white;\n"
-"    border: 1px solid black;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px;\n"
-"    color: black;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(100, 88, 255);\n"
-"	color: white;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: rgba(220, 60, 190, 255);\n"
-"}"));
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/icons/resources/update.png"), QSize(), QIcon::Normal, QIcon::Off);
-        refreshData->setIcon(icon2);
-        refreshData->setIconSize(QSize(32, 32));
-
-        horizontalLayout_9->addWidget(refreshData);
 
 
         verticalLayout->addLayout(horizontalLayout_9);
@@ -192,13 +224,13 @@ public:
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         label_3 = new QLabel(Credits);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setFont(font);
+        label_3->setFont(font1);
 
         horizontalLayout_8->addWidget(label_3);
 
         sortingColumn = new QComboBox(Credits);
         sortingColumn->setObjectName(QString::fromUtf8("sortingColumn"));
-        sortingColumn->setFont(font1);
+        sortingColumn->setFont(font2);
 
         horizontalLayout_8->addWidget(sortingColumn);
 
@@ -209,7 +241,7 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
         label_2->setSizePolicy(sizePolicy);
-        label_2->setFont(font);
+        label_2->setFont(font1);
 
         horizontalLayout_8->addWidget(label_2);
 
@@ -222,28 +254,53 @@ public:
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(typeSorting->sizePolicy().hasHeightForWidth());
         typeSorting->setSizePolicy(sizePolicy1);
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("Segoe UI"));
-        font2.setPointSize(14);
-        font2.setBold(true);
-        font2.setWeight(75);
-        typeSorting->setFont(font2);
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("Segoe UI"));
+        font3.setPointSize(14);
+        font3.setBold(true);
+        font3.setWeight(75);
+        typeSorting->setFont(font3);
 
         horizontalLayout_8->addWidget(typeSorting);
 
         sorting = new QCheckBox(Credits);
         sorting->setObjectName(QString::fromUtf8("sorting"));
-        sorting->setFont(font);
+        sorting->setFont(font1);
 
         horizontalLayout_8->addWidget(sorting);
 
-        horizontalSpacer_13 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_13 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_8->addItem(horizontalSpacer_13);
 
+
+        verticalLayout->addLayout(horizontalLayout_8);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        label_7 = new QLabel(Credits);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+        sizePolicy.setHeightForWidth(label_7->sizePolicy().hasHeightForWidth());
+        label_7->setSizePolicy(sizePolicy);
+        label_7->setFont(font1);
+
+        horizontalLayout->addWidget(label_7);
+
+        label_8 = new QLabel(Credits);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+        sizePolicy.setHeightForWidth(label_8->sizePolicy().hasHeightForWidth());
+        label_8->setSizePolicy(sizePolicy);
+        label_8->setFont(font1);
+
+        horizontalLayout->addWidget(label_8);
+
+        horizontalSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
         addCredit = new QPushButton(Credits);
         addCredit->setObjectName(QString::fromUtf8("addCredit"));
-        addCredit->setFont(font2);
+        addCredit->setFont(font3);
         addCredit->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: white;\n"
 "    border: 1px solid black;\n"
@@ -265,11 +322,11 @@ public:
         addCredit->setIcon(icon3);
         addCredit->setIconSize(QSize(32, 32));
 
-        horizontalLayout_8->addWidget(addCredit);
+        horizontalLayout->addWidget(addCredit);
 
         editCredit = new QPushButton(Credits);
         editCredit->setObjectName(QString::fromUtf8("editCredit"));
-        editCredit->setFont(font2);
+        editCredit->setFont(font3);
         editCredit->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: white;\n"
 "    border: 1px solid black;\n"
@@ -291,11 +348,11 @@ public:
         editCredit->setIcon(icon4);
         editCredit->setIconSize(QSize(32, 32));
 
-        horizontalLayout_8->addWidget(editCredit);
+        horizontalLayout->addWidget(editCredit);
 
         deleteCredit = new QPushButton(Credits);
         deleteCredit->setObjectName(QString::fromUtf8("deleteCredit"));
-        deleteCredit->setFont(font2);
+        deleteCredit->setFont(font3);
         deleteCredit->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: white;\n"
 "    border: 1px solid black;\n"
@@ -317,17 +374,17 @@ public:
         deleteCredit->setIcon(icon5);
         deleteCredit->setIconSize(QSize(32, 32));
 
-        horizontalLayout_8->addWidget(deleteCredit);
+        horizontalLayout->addWidget(deleteCredit);
 
 
-        verticalLayout->addLayout(horizontalLayout_8);
+        verticalLayout->addLayout(horizontalLayout);
 
         tableView = new QTableView(Credits);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-        QFont font3;
-        font3.setFamily(QString::fromUtf8("Segoe UI"));
-        font3.setPointSize(10);
-        tableView->setFont(font3);
+        QFont font4;
+        font4.setFamily(QString::fromUtf8("Segoe UI"));
+        font4.setPointSize(10);
+        tableView->setFont(font4);
 
         verticalLayout->addWidget(tableView);
 
@@ -339,25 +396,25 @@ public:
 
         label_4 = new QLabel(Credits);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setFont(font);
+        label_4->setFont(font1);
 
         horizontalLayout_6->addWidget(label_4);
 
         labelCurrentPage = new QLabel(Credits);
         labelCurrentPage->setObjectName(QString::fromUtf8("labelCurrentPage"));
-        labelCurrentPage->setFont(font1);
+        labelCurrentPage->setFont(font2);
 
         horizontalLayout_6->addWidget(labelCurrentPage);
 
         label_5 = new QLabel(Credits);
         label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setFont(font);
+        label_5->setFont(font1);
 
         horizontalLayout_6->addWidget(label_5);
 
         labelMaxPage = new QLabel(Credits);
         labelMaxPage->setObjectName(QString::fromUtf8("labelMaxPage"));
-        labelMaxPage->setFont(font1);
+        labelMaxPage->setFont(font2);
 
         horizontalLayout_6->addWidget(labelMaxPage);
 
@@ -372,10 +429,10 @@ public:
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
         prevButton = new QPushButton(Credits);
         prevButton->setObjectName(QString::fromUtf8("prevButton"));
-        QFont font4;
-        font4.setFamily(QString::fromUtf8("Segoe UI"));
-        font4.setPointSize(18);
-        prevButton->setFont(font4);
+        QFont font5;
+        font5.setFamily(QString::fromUtf8("Segoe UI"));
+        font5.setPointSize(18);
+        prevButton->setFont(font5);
         prevButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background-color: white;\n"
 "    border: 2px solid black; \n"
@@ -405,14 +462,14 @@ public:
 
         label_6 = new QLabel(Credits);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setFont(font);
+        label_6->setFont(font1);
 
         horizontalLayout_10->addWidget(label_6);
 
         pageNumberToNavigate = new QLineEdit(Credits);
         pageNumberToNavigate->setObjectName(QString::fromUtf8("pageNumberToNavigate"));
         pageNumberToNavigate->setMaximumSize(QSize(50, 16777215));
-        pageNumberToNavigate->setFont(font);
+        pageNumberToNavigate->setFont(font1);
 
         horizontalLayout_10->addWidget(pageNumberToNavigate);
 
@@ -422,7 +479,7 @@ public:
 
         nextButton = new QPushButton(Credits);
         nextButton->setObjectName(QString::fromUtf8("nextButton"));
-        nextButton->setFont(font4);
+        nextButton->setFont(font5);
         nextButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background-color: white;\n"
 "    border: 2px solid black; \n"
@@ -458,18 +515,22 @@ public:
     void retranslateUi(QWidget *Credits)
     {
         Credits->setWindowTitle(QApplication::translate("Credits", "Form", nullptr));
+        checkBox_Search->setText(QApplication::translate("Credits", "\320\237\320\276\320\270\321\201\320\272", nullptr));
+        checkBox_Sorting->setText(QApplication::translate("Credits", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260", nullptr));
+        refreshData->setText(QString());
         label->setText(QApplication::translate("Credits", "\320\237\320\276\320\270\321\201\320\272:", nullptr));
         checkBox->setText(QApplication::translate("Credits", "\320\242\320\276\321\207\320\275\320\276\320\265 \n"
 "\321\201\320\276\320\262\320\277\320\260\320\264\320\265\320\275\320\270\320\265", nullptr));
         pushButton_search->setText(QString());
         clearSearch->setText(QString());
-        refreshData->setText(QString());
         label_3->setText(QApplication::translate("Credits", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \321\201\321\202\320\276\320\273\320\261\320\265\321\206:", nullptr));
         label_2->setText(QApplication::translate("Credits", "\320\277\320\276", nullptr));
         typeSorting->setItemText(0, QApplication::translate("Credits", "\320\237\320\276 \320\262\320\276\320\267\321\200\320\260\321\201\321\202\320\260\320\275\320\270\321\216", nullptr));
         typeSorting->setItemText(1, QApplication::translate("Credits", "\320\237\320\276 \321\203\320\261\321\213\320\262\320\260\320\275\320\270\321\216", nullptr));
 
         sorting->setText(QApplication::translate("Credits", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
+        label_7->setText(QApplication::translate("Credits", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260:", nullptr));
+        label_8->setText(QApplication::translate("Credits", "\320\276\321\202\321\201\321\203\321\202\321\201\321\202\320\262\321\203\320\265\321\202", nullptr));
         addCredit->setText(QString());
         label_4->setText(QApplication::translate("Credits", "\320\242\320\265\320\272\321\203\321\211\320\260\321\217 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\260:", nullptr));
         labelCurrentPage->setText(QApplication::translate("Credits", "0", nullptr));

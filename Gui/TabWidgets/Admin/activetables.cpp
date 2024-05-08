@@ -53,6 +53,9 @@ void ActiveTables::connects()
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &ActiveTables::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &ActiveTables::sorting);
 
+    connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &ActiveTables::setVisibleSort);
+    connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &ActiveTables::setVisibleSearch);
+
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ActiveTables::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ActiveTables::sort);
 
@@ -174,4 +177,23 @@ void ActiveTables::deleting()
 void ActiveTables::clearSearchText()
 {
     ui->searchText->clear();
+}
+
+void ActiveTables::visibleSort(bool flag)
+{
+    ui->label_3->setVisible(flag);
+    ui->label_2->setVisible(flag);
+    ui->sortingColumn->setVisible(flag);
+    ui->typeSorting->setVisible(flag);
+    ui->sorting->setVisible(flag);
+}
+
+void ActiveTables::visibleSearch(bool flag)
+{
+    ui->label->setVisible(flag);
+    ui->searchColumn->setVisible(flag);
+    ui->searchText->setVisible(flag);
+    ui->checkBox->setVisible(flag);
+    ui->pushButton_search->setVisible(flag);
+    ui->clearSearch->setVisible(flag);
 }

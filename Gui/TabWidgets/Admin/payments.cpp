@@ -41,9 +41,9 @@ void Payments::connects()
     connect(ui->prevButton, &QPushButton::clicked, pagination.get(), &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination.get(), &Pagination::next);
     connect(ui->pushButton_search, &QPushButton::clicked, this, &Payments::search);
-    connect(ui->addPayments, &QPushButton::clicked, this, &Payments::openCreatRecotd);
-    connect(ui->editPayments, &QPushButton::clicked, this, &Payments::openEditRecotd);
-    connect(ui->deletePayments, &QPushButton::clicked, this, &Payments::deleting);
+    connect(ui->addPayment, &QPushButton::clicked, this, &Payments::openCreatRecotd);
+    connect(ui->editPayment, &QPushButton::clicked, this, &Payments::openEditRecotd);
+    connect(ui->deletePayment, &QPushButton::clicked, this, &Payments::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &Payments::prepReloadModels);
     connect(ui->clearSearch, &QPushButton::clicked, this, &Payments::clearSearchText);
 
@@ -52,6 +52,9 @@ void Payments::connects()
 
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &Payments::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &Payments::sorting);
+
+    connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &Payments::setVisibleSort);
+    connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &Payments::setVisibleSearch);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Payments::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Payments::sort);
@@ -158,5 +161,24 @@ void Payments::deleting()
 void Payments::clearSearchText()
 {
     ui->searchText->clear();
+}
+
+void Payments::visibleSort(bool flag)
+{
+    ui->label_3->setVisible(flag);
+    ui->label_2->setVisible(flag);
+    ui->sortingColumn->setVisible(flag);
+    ui->typeSorting->setVisible(flag);
+    ui->sorting->setVisible(flag);
+}
+
+void Payments::visibleSearch(bool flag)
+{
+    ui->label->setVisible(flag);
+    ui->searchColumn->setVisible(flag);
+    ui->searchText->setVisible(flag);
+    ui->checkBox->setVisible(flag);
+    ui->pushButton_search->setVisible(flag);
+    ui->clearSearch->setVisible(flag);
 }
 

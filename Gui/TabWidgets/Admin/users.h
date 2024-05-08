@@ -45,6 +45,8 @@ private:
     void openCreateBan();
     void deleting() override;
     void clearSearchText() override;
+    void visibleSort(bool flag) override;
+    void visibleSearch(bool flag) override;
 };
 
 #endif // ALLUSERS_H

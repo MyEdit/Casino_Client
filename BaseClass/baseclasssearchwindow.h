@@ -49,6 +49,8 @@ protected:
     void startPagination();
     const QVariant getValueFromSelectedRow(QTableView* tableView, int collumn);
     void showEvent(QShowEvent *event) override;
+    void setVisibleSort(int arg);
+    void setVisibleSearch(int arg);
     virtual void search() = 0;
     virtual void setValueToMaxPage(const int maxPage) = 0;
     virtual void assigningValues();
@@ -62,6 +64,8 @@ protected:
     virtual void openEditRecotd() {};
     virtual void deleting() {};
     virtual void clearSearchText() = 0;
+    virtual void visibleSort(bool flag) = 0;
+    virtual void visibleSearch(bool flag) = 0;
 };
 
 #endif // BASECLASSSEARCHWINDOW_H

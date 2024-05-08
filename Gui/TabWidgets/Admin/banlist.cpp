@@ -52,6 +52,9 @@ void BanList::connects()
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &BanList::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &BanList::sorting);
 
+    connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &BanList::setVisibleSort);
+    connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &BanList::setVisibleSearch);
+
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &BanList::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &BanList::sort);
 
@@ -162,4 +165,23 @@ void BanList::deleting()
 void BanList::clearSearchText()
 {
     ui->searchText->clear();
+}
+
+void BanList::visibleSort(bool flag)
+{
+    ui->label_3->setVisible(flag);
+    ui->label_2->setVisible(flag);
+    ui->sortingColumn->setVisible(flag);
+    ui->typeSorting->setVisible(flag);
+    ui->sorting->setVisible(flag);
+}
+
+void BanList::visibleSearch(bool flag)
+{
+    ui->label->setVisible(flag);
+    ui->searchColumn->setVisible(flag);
+    ui->searchText->setVisible(flag);
+    ui->checkBox->setVisible(flag);
+    ui->pushButton_search->setVisible(flag);
+    ui->clearSearch->setVisible(flag);
 }

@@ -54,6 +54,9 @@ void PlayerCredits::connects()
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &PlayerCredits::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &PlayerCredits::sorting);
 
+    connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &PlayerCredits::setVisibleSort);
+    connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &PlayerCredits::setVisibleSearch);
+
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &PlayerCredits::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &PlayerCredits::sort);
 
@@ -159,4 +162,23 @@ void PlayerCredits::deleting()
 void PlayerCredits::clearSearchText()
 {
     ui->searchText->clear();
+}
+
+void PlayerCredits::visibleSort(bool flag)
+{
+    ui->label_3->setVisible(flag);
+    ui->label_2->setVisible(flag);
+    ui->sortingColumn->setVisible(flag);
+    ui->typeSorting->setVisible(flag);
+    ui->sorting->setVisible(flag);
+}
+
+void PlayerCredits::visibleSearch(bool flag)
+{
+    ui->label->setVisible(flag);
+    ui->searchColumn->setVisible(flag);
+    ui->searchText->setVisible(flag);
+    ui->checkBox->setVisible(flag);
+    ui->pushButton_search->setVisible(flag);
+    ui->clearSearch->setVisible(flag);
 }

@@ -81,6 +81,11 @@ public:
     QWidget *searchWidget;
     QVBoxLayout *verticalLayout;
     QLabel *labelHistoriPayments;
+    QHBoxLayout *horizontalLayout_4;
+    QCheckBox *checkBox_Search;
+    QCheckBox *checkBox_Sorting;
+    QSpacerItem *horizontalSpacer_11;
+    QPushButton *refreshData;
     QHBoxLayout *horizontalLayout_9;
     QLabel *label;
     QComboBox *searchColumn;
@@ -89,7 +94,17 @@ public:
     QPushButton *pushButton_search;
     QPushButton *clearSearch;
     QSpacerItem *horizontalSpacer_14;
-    QPushButton *refreshData;
+    QHBoxLayout *horizontalLayout_8;
+    QCheckBox *sorting;
+    QLabel *label_19;
+    QComboBox *sortingColumn;
+    QLabel *label_20;
+    QComboBox *typeSorting;
+    QSpacerItem *horizontalSpacer_13;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_15;
+    QLabel *label_18;
+    QSpacerItem *horizontalSpacer_8;
     QTableView *tableView;
     QHBoxLayout *horizontalLayout_6;
     QSpacerItem *horizontalSpacer_9;
@@ -695,6 +710,55 @@ public:
 
         verticalLayout->addWidget(labelHistoriPayments);
 
+        horizontalLayout_4 = new QHBoxLayout();
+        horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
+        checkBox_Search = new QCheckBox(searchWidget);
+        checkBox_Search->setObjectName(QString::fromUtf8("checkBox_Search"));
+        QFont font8;
+        font8.setFamily(QString::fromUtf8("Segoe UI"));
+        font8.setPointSize(14);
+        checkBox_Search->setFont(font8);
+
+        horizontalLayout_4->addWidget(checkBox_Search);
+
+        checkBox_Sorting = new QCheckBox(searchWidget);
+        checkBox_Sorting->setObjectName(QString::fromUtf8("checkBox_Sorting"));
+        checkBox_Sorting->setFont(font8);
+
+        horizontalLayout_4->addWidget(checkBox_Sorting);
+
+        horizontalSpacer_11 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_4->addItem(horizontalSpacer_11);
+
+        refreshData = new QPushButton(searchWidget);
+        refreshData->setObjectName(QString::fromUtf8("refreshData"));
+        refreshData->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/icons/resources/update.png"), QSize(), QIcon::Normal, QIcon::Off);
+        refreshData->setIcon(icon6);
+        refreshData->setIconSize(QSize(24, 24));
+
+        horizontalLayout_4->addWidget(refreshData);
+
+
+        verticalLayout->addLayout(horizontalLayout_4);
+
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
         label = new QLabel(searchWidget);
@@ -739,9 +803,9 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon6;
-        icon6.addFile(QString::fromUtf8(":/icons/resources/search.png"), QSize(), QIcon::Normal, QIcon::Off);
-        pushButton_search->setIcon(icon6);
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/icons/resources/search.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_search->setIcon(icon7);
         pushButton_search->setIconSize(QSize(24, 24));
 
         horizontalLayout_9->addWidget(pushButton_search);
@@ -764,44 +828,89 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon7;
-        icon7.addFile(QString::fromUtf8(":/icons/resources/clearSearch.png"), QSize(), QIcon::Normal, QIcon::Off);
-        clearSearch->setIcon(icon7);
+        QIcon icon8;
+        icon8.addFile(QString::fromUtf8(":/icons/resources/clearSearch.png"), QSize(), QIcon::Normal, QIcon::Off);
+        clearSearch->setIcon(icon8);
         clearSearch->setIconSize(QSize(24, 24));
 
         horizontalLayout_9->addWidget(clearSearch);
 
-        horizontalSpacer_14 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_14 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_9->addItem(horizontalSpacer_14);
 
-        refreshData = new QPushButton(searchWidget);
-        refreshData->setObjectName(QString::fromUtf8("refreshData"));
-        refreshData->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: white;\n"
-"    border: 1px solid black;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px;\n"
-"    color: black;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(100, 88, 255);\n"
-"	color: white;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: rgba(220, 60, 190, 255);\n"
-"}"));
-        QIcon icon8;
-        icon8.addFile(QString::fromUtf8(":/icons/resources/update.png"), QSize(), QIcon::Normal, QIcon::Off);
-        refreshData->setIcon(icon8);
-        refreshData->setIconSize(QSize(24, 24));
-
-        horizontalLayout_9->addWidget(refreshData);
-
 
         verticalLayout->addLayout(horizontalLayout_9);
+
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
+        sorting = new QCheckBox(searchWidget);
+        sorting->setObjectName(QString::fromUtf8("sorting"));
+        sorting->setFont(font);
+
+        horizontalLayout_8->addWidget(sorting);
+
+        label_19 = new QLabel(searchWidget);
+        label_19->setObjectName(QString::fromUtf8("label_19"));
+        label_19->setFont(font);
+
+        horizontalLayout_8->addWidget(label_19);
+
+        sortingColumn = new QComboBox(searchWidget);
+        sortingColumn->setObjectName(QString::fromUtf8("sortingColumn"));
+        sortingColumn->setFont(font2);
+
+        horizontalLayout_8->addWidget(sortingColumn);
+
+        label_20 = new QLabel(searchWidget);
+        label_20->setObjectName(QString::fromUtf8("label_20"));
+        sizePolicy.setHeightForWidth(label_20->sizePolicy().hasHeightForWidth());
+        label_20->setSizePolicy(sizePolicy);
+        label_20->setFont(font);
+
+        horizontalLayout_8->addWidget(label_20);
+
+        typeSorting = new QComboBox(searchWidget);
+        typeSorting->addItem(QString());
+        typeSorting->addItem(QString());
+        typeSorting->setObjectName(QString::fromUtf8("typeSorting"));
+        sizePolicy2.setHeightForWidth(typeSorting->sizePolicy().hasHeightForWidth());
+        typeSorting->setSizePolicy(sizePolicy2);
+        typeSorting->setFont(font4);
+
+        horizontalLayout_8->addWidget(typeSorting);
+
+        horizontalSpacer_13 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_8->addItem(horizontalSpacer_13);
+
+
+        verticalLayout->addLayout(horizontalLayout_8);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        label_15 = new QLabel(searchWidget);
+        label_15->setObjectName(QString::fromUtf8("label_15"));
+        sizePolicy.setHeightForWidth(label_15->sizePolicy().hasHeightForWidth());
+        label_15->setSizePolicy(sizePolicy);
+        label_15->setFont(font);
+
+        horizontalLayout_2->addWidget(label_15);
+
+        label_18 = new QLabel(searchWidget);
+        label_18->setObjectName(QString::fromUtf8("label_18"));
+        sizePolicy.setHeightForWidth(label_18->sizePolicy().hasHeightForWidth());
+        label_18->setSizePolicy(sizePolicy);
+        label_18->setFont(font);
+
+        horizontalLayout_2->addWidget(label_18);
+
+        horizontalSpacer_8 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_8);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
 
         tableView = new QTableView(searchWidget);
         tableView->setObjectName(QString::fromUtf8("tableView"));
@@ -850,10 +959,10 @@ public:
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
         prevButton = new QPushButton(searchWidget);
         prevButton->setObjectName(QString::fromUtf8("prevButton"));
-        QFont font8;
-        font8.setFamily(QString::fromUtf8("Segoe UI"));
-        font8.setPointSize(18);
-        prevButton->setFont(font8);
+        QFont font9;
+        font9.setFamily(QString::fromUtf8("Segoe UI"));
+        font9.setPointSize(18);
+        prevButton->setFont(font9);
         prevButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background-color: white;\n"
 "    border: 2px solid black; \n"
@@ -900,7 +1009,7 @@ public:
 
         nextButton = new QPushButton(searchWidget);
         nextButton->setObjectName(QString::fromUtf8("nextButton"));
-        nextButton->setFont(font8);
+        nextButton->setFont(font9);
         nextButton->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background-color: white;\n"
 "    border: 2px solid black; \n"
@@ -970,12 +1079,22 @@ public:
         buttonWebMoney->setText(QApplication::translate("PlayerPayments", "WebMoney", nullptr));
         label_2->setText(QApplication::translate("PlayerPayments", "\320\224\321\200\321\203\320\263\320\270\320\265 \321\201\320\277\320\276\321\201\320\276\320\261\321\213 \320\276\320\277\320\273\320\260\321\202\321\213", nullptr));
         labelHistoriPayments->setText(QApplication::translate("PlayerPayments", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217 \320\277\320\273\320\260\321\202\320\265\320\266\320\265\320\271", nullptr));
+        checkBox_Search->setText(QApplication::translate("PlayerPayments", "\320\237\320\276\320\270\321\201\320\272", nullptr));
+        checkBox_Sorting->setText(QApplication::translate("PlayerPayments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260", nullptr));
+        refreshData->setText(QString());
         label->setText(QApplication::translate("PlayerPayments", "\320\237\320\276\320\270\321\201\320\272:", nullptr));
         checkBox->setText(QApplication::translate("PlayerPayments", "\320\242\320\276\321\207\320\275\320\276\320\265 \n"
 "\321\201\320\276\320\262\320\277\320\260\320\264\320\265\320\275\320\270\320\265", nullptr));
         pushButton_search->setText(QString());
         clearSearch->setText(QString());
-        refreshData->setText(QString());
+        sorting->setText(QApplication::translate("PlayerPayments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
+        label_19->setText(QApplication::translate("PlayerPayments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \321\201\321\202\320\276\320\273\320\261\320\265\321\206:", nullptr));
+        label_20->setText(QApplication::translate("PlayerPayments", "\320\277\320\276", nullptr));
+        typeSorting->setItemText(0, QApplication::translate("PlayerPayments", "\320\237\320\276 \320\262\320\276\320\267\321\200\320\260\321\201\321\202\320\260\320\275\320\270\321\216", nullptr));
+        typeSorting->setItemText(1, QApplication::translate("PlayerPayments", "\320\237\320\276 \321\203\320\261\321\213\320\262\320\260\320\275\320\270\321\216", nullptr));
+
+        label_15->setText(QApplication::translate("PlayerPayments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260:", nullptr));
+        label_18->setText(QApplication::translate("PlayerPayments", "\320\276\321\202\321\201\321\203\321\202\321\201\321\202\320\262\321\203\320\265\321\202", nullptr));
         label_4->setText(QApplication::translate("PlayerPayments", "\320\242\320\265\320\272\321\203\321\211\320\260\321\217 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\260:", nullptr));
         labelCurrentPage->setText(QApplication::translate("PlayerPayments", "0", nullptr));
         label_5->setText(QApplication::translate("PlayerPayments", "/", nullptr));

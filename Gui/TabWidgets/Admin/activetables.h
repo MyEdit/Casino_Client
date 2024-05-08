@@ -38,6 +38,8 @@ private:
     void openEditRecotd() override;
     void deleting() override;
     void clearSearchText() override;
+    void visibleSort(bool flag) override;
+    void visibleSearch(bool flag) override;
 };
 
 #endif // EXISTINGTABLES_H

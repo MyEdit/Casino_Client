@@ -21,6 +21,7 @@ class Form : public QWidget
     QString constantStyleSheet;
     QString hoverStyleSheet;
     QString pressStyleSheet;
+    bool canJoin;
 
 public:
     explicit Form(QSharedPointer<Table> table, QWidget *parent = nullptr);

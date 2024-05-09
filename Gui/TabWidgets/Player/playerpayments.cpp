@@ -112,7 +112,23 @@ void PlayerPayments::search()
 
 void PlayerPayments::onHeaderClicked(const int logicalIndex)
 {
-    Q_UNUSED(logicalIndex);
+    if(!sortingOn)
+        return;
+
+    QString headerText = ui->tableView->model()->headerData(logicalIndex, Qt::Horizontal).toString();
+    headerText = headerText.replace("\n", " ");
+
+    if (ui->sortingColumn->currentText() == headerText)
+    {
+        int currentSortIndex = ui->typeSorting->currentIndex();
+        currentSortIndex = (currentSortIndex + 1) % ui->typeSorting->count();
+        ui->typeSorting->setCurrentIndex(currentSortIndex);
+    }
+    else
+        settingValueInComboBox(ui->sortingColumn, headerText);
+
+    if(ui->searchColumn->currentText() != headerText)
+        settingValueInComboBox(ui->searchColumn, headerText);
 }
 
 void PlayerPayments::openCreatRecotd()
@@ -137,8 +153,8 @@ void PlayerPayments::clearSearchText()
 
 void PlayerPayments::visibleSort(bool flag)
 {
-    ui->label_3->setVisible(flag);
-    ui->label_2->setVisible(flag);
+    ui->label_19->setVisible(flag);
+    ui->label_20->setVisible(flag);
     ui->sortingColumn->setVisible(flag);
     ui->typeSorting->setVisible(flag);
     ui->sorting->setVisible(flag);
@@ -152,4 +168,9 @@ void PlayerPayments::visibleSearch(bool flag)
     ui->checkBox->setVisible(flag);
     ui->pushButton_search->setVisible(flag);
     ui->clearSearch->setVisible(flag);
+}
+
+void PlayerPayments::visibleEditing(bool flag)
+{
+    Q_UNUSED(flag);
 }

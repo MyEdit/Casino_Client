@@ -39,6 +39,7 @@ private:
     void clearSearchText() override;
     void visibleSort(bool flag) override;
     void visibleSearch(bool flag) override;
+    void visibleEditing(bool flag) override;
 };
 
 #endif // BANLIST_H

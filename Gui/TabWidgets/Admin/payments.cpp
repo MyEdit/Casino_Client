@@ -55,6 +55,7 @@ void Payments::connects()
 
     connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &Payments::setVisibleSort);
     connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &Payments::setVisibleSearch);
+    connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &Payments::setVisibleEditing);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Payments::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Payments::sort);
@@ -180,5 +181,12 @@ void Payments::visibleSearch(bool flag)
     ui->checkBox->setVisible(flag);
     ui->pushButton_search->setVisible(flag);
     ui->clearSearch->setVisible(flag);
+}
+
+void Payments::visibleEditing(bool flag)
+{
+    ui->addPayment->setVisible(flag);
+    ui->editPayment->setVisible(flag);
+    ui->deletePayment->setVisible(flag);
 }
 

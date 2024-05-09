@@ -52,6 +52,7 @@ void Credits::connects()
 
     connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &Credits::setVisibleSort);
     connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &Credits::setVisibleSearch);
+    connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &Credits::setVisibleEditing);
 
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &Credits::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &Credits::sorting);
@@ -176,4 +177,11 @@ void Credits::visibleSearch(bool flag)
     ui->checkBox->setVisible(flag);
     ui->pushButton_search->setVisible(flag);
     ui->clearSearch->setVisible(flag);
+}
+
+void Credits::visibleEditing(bool flag)
+{
+    ui->addCredit->setVisible(flag);
+    ui->editCredit->setVisible(flag);
+    ui->deleteCredit->setVisible(flag);
 }

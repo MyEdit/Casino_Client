@@ -4,6 +4,7 @@
 Form::Form(QSharedPointer<Table> table, QWidget *parent) : QWidget(parent), ui(new Ui::Form), table(table)
 {
     ui->setupUi(this);
+    canJoin = table->canJoin();
     settingInformation();
     assigningValues();
     setStyleSheet(constantStyleSheet);
@@ -41,7 +42,7 @@ void Form::mousePressEvent(QMouseEvent* event)
     QWidget::mousePressEvent(event);
     setStyleSheet(pressStyleSheet);
 
-    if (!this->table->canJoin())
+    if (!canJoin)
     {
         Notification::showNotification(TypeMessage::Warning, "Вы не можете присоединиться к этой игре");
         return;
@@ -57,9 +58,18 @@ void Form::mouseReleaseEvent(QMouseEvent* event)
 
 void Form::assigningValues()
 {
-    constantStyleSheet = "#Form{background-color: rgb(170, 170, 255);}";
-    hoverStyleSheet = "#Form{background-color: rgb(100, 100, 255);}";
-    pressStyleSheet = "#Form{background-color: rgb(50, 50, 255);}";
+    if(canJoin)
+    {
+        constantStyleSheet = "#Form{background-color: rgb(170, 170, 255);}";
+        hoverStyleSheet = "#Form{background-color: rgb(100, 100, 255);}";
+        pressStyleSheet = "#Form{background-color: rgb(50, 50, 255);}";
+    }
+    else
+    {
+        constantStyleSheet = "#Form{background-color: rgb(166, 0, 0);}";
+        hoverStyleSheet = "#Form{background-color: rgb(166, 0, 0);}";
+        pressStyleSheet = "#Form{background-color: rgb(166, 0, 0);}";
+    }
 }
 
 void Form::enterEvent(QEvent* event)

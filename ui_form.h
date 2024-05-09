@@ -49,7 +49,6 @@ public:
             Form->setObjectName(QString::fromUtf8("Form"));
         Form->resize(830, 150);
         Form->setMaximumSize(QSize(16777215, 150));
-        Form->setStyleSheet(QString::fromUtf8(""));
         verticalLayout = new QVBoxLayout(Form);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout = new QHBoxLayout();

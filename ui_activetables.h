@@ -33,6 +33,7 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QCheckBox *checkBox_Search;
     QCheckBox *checkBox_Sorting;
+    QCheckBox *checkBox_Editing;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *refreshData;
     QHBoxLayout *horizontalLayout_9;
@@ -96,6 +97,12 @@ public:
         checkBox_Sorting->setFont(font);
 
         horizontalLayout_2->addWidget(checkBox_Sorting);
+
+        checkBox_Editing = new QCheckBox(ActiveTables);
+        checkBox_Editing->setObjectName(QString::fromUtf8("checkBox_Editing"));
+        checkBox_Editing->setFont(font);
+
+        horizontalLayout_2->addWidget(checkBox_Editing);
 
         horizontalSpacer_2 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -427,6 +434,7 @@ public:
 
         horizontalLayout_10 = new QHBoxLayout();
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
+        horizontalLayout_10->setContentsMargins(-1, -1, 9, -1);
         prevButton = new QPushButton(ActiveTables);
         prevButton->setObjectName(QString::fromUtf8("prevButton"));
         QFont font5;
@@ -456,7 +464,7 @@ public:
 
         horizontalLayout_10->addWidget(prevButton);
 
-        horizontalSpacer_15 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_15 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_10->addItem(horizontalSpacer_15);
 
@@ -517,6 +525,7 @@ public:
         ActiveTables->setWindowTitle(QApplication::translate("ActiveTables", "Form", nullptr));
         checkBox_Search->setText(QApplication::translate("ActiveTables", "\320\237\320\276\320\270\321\201\320\272", nullptr));
         checkBox_Sorting->setText(QApplication::translate("ActiveTables", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260", nullptr));
+        checkBox_Editing->setText(QApplication::translate("ActiveTables", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\320\275\320\270\320\265", nullptr));
         refreshData->setText(QString());
         label->setText(QApplication::translate("ActiveTables", "\320\237\320\276\320\270\321\201\320\272:", nullptr));
         checkBox->setText(QApplication::translate("ActiveTables", "\320\242\320\276\321\207\320\275\320\276\320\265 \n"

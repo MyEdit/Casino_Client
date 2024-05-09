@@ -55,6 +55,7 @@ void StuffUsers::connects()
 
     connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleSort);
     connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleSearch);
+    connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleEditing);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &StuffUsers::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &StuffUsers::sort);
@@ -194,4 +195,11 @@ void StuffUsers::visibleSearch(bool flag)
     ui->checkBox->setVisible(flag);
     ui->pushButton_search->setVisible(flag);
     ui->clearSearch->setVisible(flag);
+}
+
+void StuffUsers::visibleEditing(bool flag)
+{
+    ui->addStuffUser->setVisible(flag);
+    ui->editStuffUser->setVisible(flag);
+    ui->deleteStuffUser->setVisible(flag);
 }

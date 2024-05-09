@@ -85,6 +85,7 @@ void BaseClassSearchWindow::baseSetting()
     workingWithTableView();
     visibleSort(false);
     visibleSearch(false);
+    visibleEditing(false);
 }
 
 void BaseClassSearchWindow::startPagination()
@@ -143,6 +144,12 @@ void BaseClassSearchWindow::setVisibleSearch(int arg)
 {
     bool flag = (arg == 2) ? true : false;
     visibleSearch(flag);
+}
+
+void BaseClassSearchWindow::setVisibleEditing(int arg)
+{
+    bool flag = (arg == 2) ? true : false;
+    visibleEditing(flag);
 }
 
 void BaseClassSearchWindow::assigningValues()

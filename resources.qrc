@@ -14,6 +14,7 @@
         <file>resources/next.png</file>
         <file>resources/prev.png</file>
         <file>resources/ban.png</file>
+        <file>resources/ChangeUser.png</file>
     </qresource>
     <qresource prefix="/bank">
         <file>resources/banks/mtsbank.png</file>

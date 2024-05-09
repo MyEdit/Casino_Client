@@ -1,14 +1,27 @@
 ﻿#include "baseclassmainmenu.h"
-BaseClassMainMenu::BaseClassMainMenu(QWidget *parent) : QMainWindow(parent)
-{
+#include "Gui/window_auth.h"
 
-}
+BaseClassMainMenu::BaseClassMainMenu(QWidget *parent) : QMainWindow(parent) {}
 
 void BaseClassMainMenu::settingVisual()
 {
     QMap<QPushButton*, QLabel*>::iterator i;
     for (i = selectedButton.begin(); i != selectedButton.end(); i++)
         i.value()->setVisible(false);
+
+    QList<QPushButton*> pushbuttons = this->findChildren<QPushButton*>();
+    for(QPushButton* pushbutton : pushbuttons)
+        pushbutton->setStyleSheet(inactiveButtonStyleSheet);
+}
+
+void BaseClassMainMenu::changeUser()
+{
+    P_Authorization::adminW = nullptr;
+    P_Authorization::playerW = nullptr;
+    Window_Auth* w = new Window_Auth();
+    WindowTracker::activeWindow = w;
+    w->show();
+    delete this;
 }
 
 /////////////////СОБЫТИЯ/////////////////
@@ -37,11 +50,12 @@ void BaseClassMainMenu::on_buttonExit_clicked()
 void BaseClassMainMenu::prepareStyleSheets()
 {
     inactiveButtonStyleSheet = "QPushButton {"
-                               "background: transparent; "
-                               "border: none; "
-                               "color: rgb(255, 255, 255); "
-                               "padding: 5px; "
-                               "text-align: left;}";
+                               "background: transparent;"
+                               "border: none;"
+                               "color: rgb(255, 255, 255);"
+                               "padding: 5px;"
+                               "text-align: left;}"
+                               "QPushButton:hover {font-weight: bold;}";
 
     activeButtonStyleSheet = "QPushButton {"
                              "background-color: rgb(255, 255, 255);"

@@ -8,6 +8,9 @@ Form::Form(QSharedPointer<Table> table, QWidget *parent) : QWidget(parent), ui(n
     settingInformation();
     assigningValues();
     setStyleSheet(constantStyleSheet);
+
+//    if(!canJoin)
+//        setEnabled(false);
 }
 
 Form::~Form()
@@ -60,15 +63,15 @@ void Form::assigningValues()
 {
     if(canJoin)
     {
-        constantStyleSheet = "#Form{background-color: rgb(170, 170, 255);}";
-        hoverStyleSheet = "#Form{background-color: rgb(100, 100, 255);}";
-        pressStyleSheet = "#Form{background-color: rgb(50, 50, 255);}";
+        constantStyleSheet = "background-color: rgb(170, 170, 255);";
+        hoverStyleSheet = "background-color: rgb(100, 100, 255);";
+        pressStyleSheet = "background-color: rgb(50, 50, 255);";
     }
     else
     {
-        constantStyleSheet = "#Form{background-color: rgb(166, 0, 0);}";
-        hoverStyleSheet = "#Form{background-color: rgb(166, 0, 0);}";
-        pressStyleSheet = "#Form{background-color: rgb(166, 0, 0);}";
+        constantStyleSheet = "background-color: rgb(166, 0, 0); color: white;";
+        hoverStyleSheet = "background-color: rgb(166, 0, 0); color: white;";
+        pressStyleSheet = "background-color: rgb(166, 0, 0); color: white;";
     }
 }
 

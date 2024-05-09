@@ -36,6 +36,7 @@ protected:
     void changeEvent(QEvent* event);
     void prepareStyleSheets();
     void settingVisual();
+    void changeUser();
     virtual void assigningValues() = 0;
     virtual void completionTabWidget() = 0;
     virtual void settingUserInformation() = 0;

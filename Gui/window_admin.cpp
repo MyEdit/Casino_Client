@@ -1,5 +1,6 @@
 ﻿#include "window_admin.h"
 #include "ui_window_admin.h"
+#include "Gui/window_auth.h"
 
 QWidget* WindowTracker::activeWindow = nullptr;
 
@@ -34,6 +35,7 @@ void Window_Admin::connects()
     connect(ui->banList, &QPushButton::clicked, this, &Window_Admin::on_banList_clicked);
     connect(ui->credits, &QPushButton::clicked, this, &Window_Admin::on_credits_clicked);
     connect(ui->payments, &QPushButton::clicked, this, &Window_Admin::on_payments_clicked);
+    connect(ui->buttonChangeUser, &QPushButton::clicked, this, &Window_Admin::changeUser);
 }
 
 void Window_Admin::settingUserInformation()

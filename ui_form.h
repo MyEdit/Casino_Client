@@ -68,6 +68,7 @@ public:
         name = new QLabel(Form);
         name->setObjectName(QString::fromUtf8("name"));
         name->setFont(font);
+        name->setStyleSheet(QString::fromUtf8(""));
 
         horizontalLayout->addWidget(name);
 

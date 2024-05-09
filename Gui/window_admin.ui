@@ -32,14 +32,14 @@
     <property name="horizontalSpacing">
      <number>0</number>
     </property>
-    <item row="14" column="0" colspan="2">
+    <item row="15" column="0" colspan="2">
      <widget class="QPushButton" name="buttonExit">
       <property name="font">
        <font>
         <family>Segoe UI</family>
         <pointsize>14</pointsize>
-        <weight>75</weight>
-        <bold>true</bold>
+        <weight>50</weight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
@@ -49,13 +49,17 @@
 	color: rgb(255, 255, 255);
 	padding: 5px;
 	text-align: left;
-}</string>
+}
+
+QPushButton:hover {
+font-weight: bold;
+}s</string>
       </property>
       <property name="text">
        <string>Выход</string>
       </property>
       <property name="icon">
-       <iconset resource="../Resources.qrc">
+       <iconset resource="../resources.qrc">
         <normaloff>:/icons/resources/exit.png</normaloff>:/icons/resources/exit.png</iconset>
       </property>
       <property name="iconSize">
@@ -78,6 +82,37 @@
        </size>
       </property>
      </spacer>
+    </item>
+    <item row="0" column="2" rowspan="17">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="styleSheet">
+       <string notr="true">QTabWidget::pane {
+	border-radius: 10px;
+	background-color: rgb(255, 255, 255);
+}</string>
+      </property>
+      <property name="tabPosition">
+       <enum>QTabWidget::South</enum>
+      </property>
+      <property name="tabShape">
+       <enum>QTabWidget::Rounded</enum>
+      </property>
+      <property name="currentIndex">
+       <number>-1</number>
+      </property>
+      <property name="documentMode">
+       <bool>false</bool>
+      </property>
+      <property name="tabsClosable">
+       <bool>false</bool>
+      </property>
+      <property name="movable">
+       <bool>false</bool>
+      </property>
+      <property name="tabBarAutoHide">
+       <bool>false</bool>
+      </property>
+     </widget>
     </item>
     <item row="7" column="0" colspan="2">
      <spacer name="verticalSpacer">
@@ -119,7 +154,7 @@
       <item row="4" column="2">
        <widget class="QLabel" name="label">
         <property name="pixmap">
-         <pixmap resource="../Resources.qrc">:/photos/resources/recess.png</pixmap>
+         <pixmap resource="../resources.qrc">:/photos/resources/recess.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -138,8 +173,8 @@
          <font>
           <family>Segoe UI</family>
           <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -149,7 +184,11 @@
 	color: rgb(255, 255, 255);
 	padding: 5px;
 	text-align: left;
-}</string>
+}
+
+QPushButton:hover {
+font-weight: bold;
+}s</string>
         </property>
         <property name="text">
          <string>Чёрный список</string>
@@ -162,7 +201,7 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="../Resources.qrc">:/photos/resources/recess.png</pixmap>
+         <pixmap resource="../resources.qrc">:/photos/resources/recess.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -181,8 +220,8 @@
          <font>
           <family>Segoe UI</family>
           <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -192,7 +231,11 @@
 	color: rgb(255, 255, 255);
 	padding: 5px;
 	text-align: left;
-}</string>
+}
+
+QPushButton:hover {
+font-weight: bold;
+}s</string>
         </property>
         <property name="text">
          <string>Сотрудники</string>
@@ -211,8 +254,8 @@
          <font>
           <family>Segoe UI</family>
           <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -222,7 +265,11 @@
 	color: rgb(255, 255, 255);
 	padding: 5px;
 	text-align: left;
-}</string>
+}
+
+QPushButton:hover {
+font-weight: bold;
+}s</string>
         </property>
         <property name="text">
          <string>Заявки на кредиты</string>
@@ -235,7 +282,7 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="../Resources.qrc">:/photos/resources/recess.png</pixmap>
+         <pixmap resource="../resources.qrc">:/photos/resources/recess.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -248,7 +295,7 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="../Resources.qrc">:/photos/resources/recess.png</pixmap>
+         <pixmap resource="../resources.qrc">:/photos/resources/recess.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -267,8 +314,8 @@
          <font>
           <family>Segoe UI</family>
           <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -278,7 +325,11 @@
 	color: rgb(255, 255, 255);
 	padding: 5px;
 	text-align: left;
-}</string>
+}
+
+QPushButton:hover {
+font-weight: bold;
+}s</string>
         </property>
         <property name="text">
          <string>Пользователи</string>
@@ -294,7 +345,7 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="../Resources.qrc">:/photos/resources/recess.png</pixmap>
+         <pixmap resource="../resources.qrc">:/photos/resources/recess.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -313,8 +364,8 @@
          <font>
           <family>Segoe UI</family>
           <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -324,6 +375,10 @@
 	color: rgb(255, 255, 255);
 	padding: 5px;
 	text-align: left;
+}
+
+QPushButton:hover {
+font-weight: bold;
 }</string>
         </property>
         <property name="text">
@@ -343,8 +398,8 @@
          <font>
           <family>Segoe UI</family>
           <pointsize>12</pointsize>
-          <weight>75</weight>
-          <bold>true</bold>
+          <weight>50</weight>
+          <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
@@ -354,7 +409,11 @@
 	color: rgb(255, 255, 255);
 	padding: 5px;
 	text-align: left;
-}</string>
+}
+
+QPushButton:hover {
+font-weight: bold;
+}s</string>
         </property>
         <property name="text">
          <string>История транзакций</string>
@@ -367,7 +426,7 @@
          <string/>
         </property>
         <property name="pixmap">
-         <pixmap resource="../Resources.qrc">:/photos/resources/recess.png</pixmap>
+         <pixmap resource="../resources.qrc">:/photos/resources/recess.png</pixmap>
         </property>
         <property name="scaledContents">
          <bool>true</bool>
@@ -375,37 +434,6 @@
        </widget>
       </item>
      </layout>
-    </item>
-    <item row="0" column="2" rowspan="16">
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="styleSheet">
-       <string notr="true">QTabWidget::pane {
-	border-radius: 10px;
-	background-color: rgb(255, 255, 255);
-}</string>
-      </property>
-      <property name="tabPosition">
-       <enum>QTabWidget::South</enum>
-      </property>
-      <property name="tabShape">
-       <enum>QTabWidget::Rounded</enum>
-      </property>
-      <property name="currentIndex">
-       <number>-1</number>
-      </property>
-      <property name="documentMode">
-       <bool>false</bool>
-      </property>
-      <property name="tabsClosable">
-       <bool>false</bool>
-      </property>
-      <property name="movable">
-       <bool>false</bool>
-      </property>
-      <property name="tabBarAutoHide">
-       <bool>false</bool>
-      </property>
-     </widget>
     </item>
     <item row="6" column="0" colspan="2">
      <layout class="QHBoxLayout" name="horizontalLayout">
@@ -514,15 +542,59 @@
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>0</width>
+          <height>0</height>
+         </size>
+        </property>
        </spacer>
       </item>
      </layout>
+    </item>
+    <item row="14" column="0">
+     <widget class="QPushButton" name="buttonChangeUser">
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>12</pointsize>
+        <weight>50</weight>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+	background: transparent;
+    border: none;
+	color: rgb(255, 255, 255);
+	padding: 5px;
+	text-align: left;
+}
+
+QPushButton:hover {
+font-weight: bold;
+}s</string>
+      </property>
+      <property name="text">
+       <string>Сменить пользователя</string>
+      </property>
+      <property name="icon">
+       <iconset resource="../resources.qrc">
+        <normaloff>:/icons/resources/ChangeUser.png</normaloff>:/icons/resources/ChangeUser.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>32</width>
+        <height>32</height>
+       </size>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
  </widget>
  <resources>
-  <include location="../Resources.qrc"/>
+  <include location="../resources.qrc"/>
  </resources>
  <connections/>
 </ui>

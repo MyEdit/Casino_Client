@@ -31,6 +31,7 @@ public:
     QGridLayout *gridLayout;
     QPushButton *buttonExit;
     QSpacerItem *verticalSpacer_2;
+    QTabWidget *tabWidget;
     QSpacerItem *verticalSpacer;
     QGridLayout *gridLayout_3;
     QSpacerItem *horizontalSpacer;
@@ -46,7 +47,6 @@ public:
     QPushButton *activeTables;
     QPushButton *payments;
     QLabel *label_6;
-    QTabWidget *tabWidget;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_2;
     QLabel *photo;
@@ -54,6 +54,7 @@ public:
     QLabel *fullNameEmployee;
     QLabel *post;
     QSpacerItem *horizontalSpacer_3;
+    QPushButton *buttonChangeUser;
 
     void setupUi(QMainWindow *Window_Admin)
     {
@@ -75,8 +76,8 @@ public:
         QFont font;
         font.setFamily(QString::fromUtf8("Segoe UI"));
         font.setPointSize(14);
-        font.setBold(true);
-        font.setWeight(75);
+        font.setBold(false);
+        font.setWeight(50);
         buttonExit->setFont(font);
         buttonExit->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
@@ -84,17 +85,36 @@ public:
 "	color: rgb(255, 255, 255);\n"
 "	padding: 5px;\n"
 "	text-align: left;\n"
-"}"));
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"font-weight: bold;\n"
+"}s"));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/icons/resources/exit.png"), QSize(), QIcon::Normal, QIcon::Off);
         buttonExit->setIcon(icon);
         buttonExit->setIconSize(QSize(32, 32));
 
-        gridLayout->addWidget(buttonExit, 14, 0, 1, 2);
+        gridLayout->addWidget(buttonExit, 15, 0, 1, 2);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
         gridLayout->addItem(verticalSpacer_2, 13, 0, 1, 2);
+
+        tabWidget = new QTabWidget(centralwidget);
+        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
+        tabWidget->setStyleSheet(QString::fromUtf8("QTabWidget::pane {\n"
+"	border-radius: 10px;\n"
+"	background-color: rgb(255, 255, 255);\n"
+"}"));
+        tabWidget->setTabPosition(QTabWidget::South);
+        tabWidget->setTabShape(QTabWidget::Rounded);
+        tabWidget->setDocumentMode(false);
+        tabWidget->setTabsClosable(false);
+        tabWidget->setMovable(false);
+        tabWidget->setTabBarAutoHide(false);
+
+        gridLayout->addWidget(tabWidget, 0, 2, 17, 1);
 
         verticalSpacer = new QSpacerItem(20, 20, QSizePolicy::Minimum, QSizePolicy::Minimum);
 
@@ -120,8 +140,8 @@ public:
         QFont font1;
         font1.setFamily(QString::fromUtf8("Segoe UI"));
         font1.setPointSize(12);
-        font1.setBold(true);
-        font1.setWeight(75);
+        font1.setBold(false);
+        font1.setWeight(50);
         banList->setFont(font1);
         banList->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
@@ -129,7 +149,11 @@ public:
 "	color: rgb(255, 255, 255);\n"
 "	padding: 5px;\n"
 "	text-align: left;\n"
-"}"));
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"font-weight: bold;\n"
+"}s"));
 
         gridLayout_3->addWidget(banList, 3, 1, 1, 1);
 
@@ -150,7 +174,11 @@ public:
 "	color: rgb(255, 255, 255);\n"
 "	padding: 5px;\n"
 "	text-align: left;\n"
-"}"));
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"font-weight: bold;\n"
+"}s"));
 
         gridLayout_3->addWidget(stuffUsers, 2, 1, 1, 1);
 
@@ -164,7 +192,11 @@ public:
 "	color: rgb(255, 255, 255);\n"
 "	padding: 5px;\n"
 "	text-align: left;\n"
-"}"));
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"font-weight: bold;\n"
+"}s"));
 
         gridLayout_3->addWidget(credits, 4, 1, 1, 1);
 
@@ -192,7 +224,11 @@ public:
 "	color: rgb(255, 255, 255);\n"
 "	padding: 5px;\n"
 "	text-align: left;\n"
-"}"));
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"font-weight: bold;\n"
+"}s"));
 
         gridLayout_3->addWidget(users, 1, 1, 1, 1);
 
@@ -214,6 +250,10 @@ public:
 "	color: rgb(255, 255, 255);\n"
 "	padding: 5px;\n"
 "	text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"font-weight: bold;\n"
 "}"));
 
         gridLayout_3->addWidget(activeTables, 0, 1, 1, 1);
@@ -228,7 +268,11 @@ public:
 "	color: rgb(255, 255, 255);\n"
 "	padding: 5px;\n"
 "	text-align: left;\n"
-"}"));
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"font-weight: bold;\n"
+"}s"));
 
         gridLayout_3->addWidget(payments, 5, 1, 1, 1);
 
@@ -241,21 +285,6 @@ public:
 
 
         gridLayout->addLayout(gridLayout_3, 8, 0, 2, 2);
-
-        tabWidget = new QTabWidget(centralwidget);
-        tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
-        tabWidget->setStyleSheet(QString::fromUtf8("QTabWidget::pane {\n"
-"	border-radius: 10px;\n"
-"	background-color: rgb(255, 255, 255);\n"
-"}"));
-        tabWidget->setTabPosition(QTabWidget::South);
-        tabWidget->setTabShape(QTabWidget::Rounded);
-        tabWidget->setDocumentMode(false);
-        tabWidget->setTabsClosable(false);
-        tabWidget->setMovable(false);
-        tabWidget->setTabBarAutoHide(false);
-
-        gridLayout->addWidget(tabWidget, 0, 2, 16, 1);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
@@ -276,7 +305,12 @@ public:
         fullNameEmployee = new QLabel(centralwidget);
         fullNameEmployee->setObjectName(QString::fromUtf8("fullNameEmployee"));
         fullNameEmployee->setMinimumSize(QSize(20, 0));
-        fullNameEmployee->setFont(font);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Segoe UI"));
+        font2.setPointSize(14);
+        font2.setBold(true);
+        font2.setWeight(75);
+        fullNameEmployee->setFont(font2);
         fullNameEmployee->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	color: rgb(255, 255, 255);\n"
 "}"));
@@ -287,7 +321,7 @@ public:
 
         post = new QLabel(centralwidget);
         post->setObjectName(QString::fromUtf8("post"));
-        post->setFont(font);
+        post->setFont(font2);
         post->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	color: rgb(255, 255, 255);\n"
 "}"));
@@ -305,6 +339,27 @@ public:
 
 
         gridLayout->addLayout(horizontalLayout, 6, 0, 1, 2);
+
+        buttonChangeUser = new QPushButton(centralwidget);
+        buttonChangeUser->setObjectName(QString::fromUtf8("buttonChangeUser"));
+        buttonChangeUser->setFont(font1);
+        buttonChangeUser->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
+"	color: rgb(255, 255, 255);\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"font-weight: bold;\n"
+"}s"));
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/icons/resources/ChangeUser.png"), QSize(), QIcon::Normal, QIcon::Off);
+        buttonChangeUser->setIcon(icon1);
+        buttonChangeUser->setIconSize(QSize(32, 32));
+
+        gridLayout->addWidget(buttonChangeUser, 14, 0, 1, 1);
 
         Window_Admin->setCentralWidget(centralwidget);
 
@@ -334,6 +389,7 @@ public:
         photo->setText(QString());
         fullNameEmployee->setText(QApplication::translate("Window_Admin", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
         post->setText(QApplication::translate("Window_Admin", "\320\220\320\264\320\274\320\270\320\275\320\270\321\201\321\202\321\200\320\260\321\202\320\276\321\200", nullptr));
+        buttonChangeUser->setText(QApplication::translate("Window_Admin", "\320\241\320\274\320\265\320\275\320\270\321\202\321\214 \320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\321\217", nullptr));
     } // retranslateUi
 
 };

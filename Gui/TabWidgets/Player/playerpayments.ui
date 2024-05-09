@@ -1206,8 +1206,8 @@ QPushButton:pressed {
           </property>
           <property name="iconSize">
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
          </widget>
@@ -1294,8 +1294,8 @@ QPushButton:pressed {
           </property>
           <property name="iconSize">
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
          </widget>
@@ -1329,8 +1329,8 @@ QPushButton:pressed {
           </property>
           <property name="iconSize">
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
          </widget>
@@ -1352,19 +1352,6 @@ QPushButton:pressed {
       </item>
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_8">
-        <item>
-         <widget class="QCheckBox" name="sorting">
-          <property name="font">
-           <font>
-            <family>Segoe UI</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Сортировать</string>
-          </property>
-         </widget>
-        </item>
         <item>
          <widget class="QLabel" name="label_19">
           <property name="font">
@@ -1427,14 +1414,27 @@ QPushButton:pressed {
           </property>
           <item>
            <property name="text">
-            <string>По возрастанию</string>
+            <string>возрастанию</string>
            </property>
           </item>
           <item>
            <property name="text">
-            <string>По убыванию</string>
+            <string>убыванию</string>
            </property>
           </item>
+         </widget>
+        </item>
+        <item>
+         <widget class="QCheckBox" name="sorting">
+          <property name="font">
+           <font>
+            <family>Segoe UI</family>
+            <pointsize>12</pointsize>
+           </font>
+          </property>
+          <property name="text">
+           <string>Сортировать</string>
+          </property>
          </widget>
         </item>
         <item>
@@ -1474,7 +1474,7 @@ QPushButton:pressed {
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="label_18">
+         <widget class="QLabel" name="labelWhatKindSorting">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -1640,8 +1640,8 @@ QPushButton:pressed {
           </property>
           <property name="iconSize">
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
          </widget>
@@ -1736,8 +1736,8 @@ QPushButton:pressed {
           </property>
           <property name="iconSize">
            <size>
-            <width>24</width>
-            <height>24</height>
+            <width>32</width>
+            <height>32</height>
            </size>
           </property>
          </widget>

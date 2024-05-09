@@ -20,8 +20,18 @@ PlayerPayments::~PlayerPayments()
 
 void PlayerPayments::prepReloadModels()
 {
-    QString typeSort = typesSorting[0];
-    pagination->setSort("ORDER BY [Date] " + typeSort);
+    if(sortingOn)
+    {
+        QString column = ui->sortingColumn->currentText();
+        QString typeSort = typesSorting[ui->typeSorting->currentIndex()];
+        pagination->setSort("ORDER BY [" + column + "] " + typeSort);
+        ui->labelWhatKindSorting->setText(column + " по " + ui->typeSorting->currentText());
+    }
+    else
+    {
+        pagination->setSort("");
+        ui->labelWhatKindSorting->setText("отсутствует");
+    }
 
     ui->labelMaxPage->setText("????");
     ui->labelCurrentPage->setText("0");
@@ -41,6 +51,7 @@ void PlayerPayments::assigningValues()
     BaseClassSearchWindow::assigningValues();
 
     boxsNameColumn.push_back(ui->searchColumn);
+    boxsNameColumn.push_back(ui->sortingColumn);
 
     modelTypes = ModelTypes::Payments;
 }

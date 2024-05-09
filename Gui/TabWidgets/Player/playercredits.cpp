@@ -129,9 +129,13 @@ void PlayerCredits::prepReloadModels()
         QString column = ui->sortingColumn->currentText();
         QString typeSort = typesSorting[ui->typeSorting->currentIndex()];
         pagination->setSort("ORDER BY [" + column + "] " + typeSort);
+        ui->labelWhatKindSorting->setText(column + " по " + ui->typeSorting->currentText());
     }
     else
+    {
         pagination->setSort("");
+        ui->labelWhatKindSorting->setText("отсутствует");
+    }
 
     ui->labelMaxPage->setText("????");
     ui->labelCurrentPage->setText("0");

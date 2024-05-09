@@ -53,7 +53,7 @@ public:
     QSpacerItem *horizontalSpacer_13;
     QHBoxLayout *horizontalLayout;
     QLabel *label_7;
-    QLabel *label_8;
+    QLabel *labelWhatKindSorting;
     QSpacerItem *horizontalSpacer;
     QPushButton *addStuffUser;
     QPushButton *editStuffUser;
@@ -293,13 +293,13 @@ public:
 
         horizontalLayout->addWidget(label_7);
 
-        label_8 = new QLabel(StuffUsers);
-        label_8->setObjectName(QString::fromUtf8("label_8"));
-        sizePolicy.setHeightForWidth(label_8->sizePolicy().hasHeightForWidth());
-        label_8->setSizePolicy(sizePolicy);
-        label_8->setFont(font1);
+        labelWhatKindSorting = new QLabel(StuffUsers);
+        labelWhatKindSorting->setObjectName(QString::fromUtf8("labelWhatKindSorting"));
+        sizePolicy.setHeightForWidth(labelWhatKindSorting->sizePolicy().hasHeightForWidth());
+        labelWhatKindSorting->setSizePolicy(sizePolicy);
+        labelWhatKindSorting->setFont(font1);
 
-        horizontalLayout->addWidget(label_8);
+        horizontalLayout->addWidget(labelWhatKindSorting);
 
         horizontalSpacer = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -533,12 +533,12 @@ public:
         clearSearch->setText(QString());
         label_3->setText(QApplication::translate("StuffUsers", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \321\201\321\202\320\276\320\273\320\261\320\265\321\206:", nullptr));
         label_2->setText(QApplication::translate("StuffUsers", "\320\277\320\276", nullptr));
-        typeSorting->setItemText(0, QApplication::translate("StuffUsers", "\320\237\320\276 \320\262\320\276\320\267\321\200\320\260\321\201\321\202\320\260\320\275\320\270\321\216", nullptr));
-        typeSorting->setItemText(1, QApplication::translate("StuffUsers", "\320\237\320\276 \321\203\320\261\321\213\320\262\320\260\320\275\320\270\321\216", nullptr));
+        typeSorting->setItemText(0, QApplication::translate("StuffUsers", "\320\262\320\276\320\267\321\200\320\260\321\201\321\202\320\260\320\275\320\270\321\216", nullptr));
+        typeSorting->setItemText(1, QApplication::translate("StuffUsers", "\321\203\320\261\321\213\320\262\320\260\320\275\320\270\321\216", nullptr));
 
         sorting->setText(QApplication::translate("StuffUsers", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
         label_7->setText(QApplication::translate("StuffUsers", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260:", nullptr));
-        label_8->setText(QApplication::translate("StuffUsers", "\320\276\321\202\321\201\321\203\321\202\321\201\321\202\320\262\321\203\320\265\321\202", nullptr));
+        labelWhatKindSorting->setText(QApplication::translate("StuffUsers", "\320\276\321\202\321\201\321\203\321\202\321\201\321\202\320\262\321\203\320\265\321\202", nullptr));
         addStuffUser->setText(QString());
         label_4->setText(QApplication::translate("StuffUsers", "\320\242\320\265\320\272\321\203\321\211\320\260\321\217 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\260:", nullptr));
         labelCurrentPage->setText(QApplication::translate("StuffUsers", "0", nullptr));

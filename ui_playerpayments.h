@@ -95,15 +95,15 @@ public:
     QPushButton *clearSearch;
     QSpacerItem *horizontalSpacer_14;
     QHBoxLayout *horizontalLayout_8;
-    QCheckBox *sorting;
     QLabel *label_19;
     QComboBox *sortingColumn;
     QLabel *label_20;
     QComboBox *typeSorting;
+    QCheckBox *sorting;
     QSpacerItem *horizontalSpacer_13;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_15;
-    QLabel *label_18;
+    QLabel *labelWhatKindSorting;
     QSpacerItem *horizontalSpacer_8;
     QTableView *tableView;
     QHBoxLayout *horizontalLayout_6;
@@ -844,12 +844,6 @@ public:
 
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
-        sorting = new QCheckBox(searchWidget);
-        sorting->setObjectName(QString::fromUtf8("sorting"));
-        sorting->setFont(font);
-
-        horizontalLayout_8->addWidget(sorting);
-
         label_19 = new QLabel(searchWidget);
         label_19->setObjectName(QString::fromUtf8("label_19"));
         label_19->setFont(font);
@@ -880,6 +874,12 @@ public:
 
         horizontalLayout_8->addWidget(typeSorting);
 
+        sorting = new QCheckBox(searchWidget);
+        sorting->setObjectName(QString::fromUtf8("sorting"));
+        sorting->setFont(font);
+
+        horizontalLayout_8->addWidget(sorting);
+
         horizontalSpacer_13 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_8->addItem(horizontalSpacer_13);
@@ -897,13 +897,13 @@ public:
 
         horizontalLayout_2->addWidget(label_15);
 
-        label_18 = new QLabel(searchWidget);
-        label_18->setObjectName(QString::fromUtf8("label_18"));
-        sizePolicy.setHeightForWidth(label_18->sizePolicy().hasHeightForWidth());
-        label_18->setSizePolicy(sizePolicy);
-        label_18->setFont(font);
+        labelWhatKindSorting = new QLabel(searchWidget);
+        labelWhatKindSorting->setObjectName(QString::fromUtf8("labelWhatKindSorting"));
+        sizePolicy.setHeightForWidth(labelWhatKindSorting->sizePolicy().hasHeightForWidth());
+        labelWhatKindSorting->setSizePolicy(sizePolicy);
+        labelWhatKindSorting->setFont(font);
 
-        horizontalLayout_2->addWidget(label_18);
+        horizontalLayout_2->addWidget(labelWhatKindSorting);
 
         horizontalSpacer_8 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -1087,14 +1087,14 @@ public:
 "\321\201\320\276\320\262\320\277\320\260\320\264\320\265\320\275\320\270\320\265", nullptr));
         pushButton_search->setText(QString());
         clearSearch->setText(QString());
-        sorting->setText(QApplication::translate("PlayerPayments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
         label_19->setText(QApplication::translate("PlayerPayments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \321\201\321\202\320\276\320\273\320\261\320\265\321\206:", nullptr));
         label_20->setText(QApplication::translate("PlayerPayments", "\320\277\320\276", nullptr));
-        typeSorting->setItemText(0, QApplication::translate("PlayerPayments", "\320\237\320\276 \320\262\320\276\320\267\321\200\320\260\321\201\321\202\320\260\320\275\320\270\321\216", nullptr));
-        typeSorting->setItemText(1, QApplication::translate("PlayerPayments", "\320\237\320\276 \321\203\320\261\321\213\320\262\320\260\320\275\320\270\321\216", nullptr));
+        typeSorting->setItemText(0, QApplication::translate("PlayerPayments", "\320\262\320\276\320\267\321\200\320\260\321\201\321\202\320\260\320\275\320\270\321\216", nullptr));
+        typeSorting->setItemText(1, QApplication::translate("PlayerPayments", "\321\203\320\261\321\213\320\262\320\260\320\275\320\270\321\216", nullptr));
 
+        sorting->setText(QApplication::translate("PlayerPayments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
         label_15->setText(QApplication::translate("PlayerPayments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260:", nullptr));
-        label_18->setText(QApplication::translate("PlayerPayments", "\320\276\321\202\321\201\321\203\321\202\321\201\321\202\320\262\321\203\320\265\321\202", nullptr));
+        labelWhatKindSorting->setText(QApplication::translate("PlayerPayments", "\320\276\321\202\321\201\321\203\321\202\321\201\321\202\320\262\321\203\320\265\321\202", nullptr));
         label_4->setText(QApplication::translate("PlayerPayments", "\320\242\320\265\320\272\321\203\321\211\320\260\321\217 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\260:", nullptr));
         labelCurrentPage->setText(QApplication::translate("PlayerPayments", "0", nullptr));
         label_5->setText(QApplication::translate("PlayerPayments", "/", nullptr));

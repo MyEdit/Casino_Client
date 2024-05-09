@@ -8,10 +8,6 @@ void BaseClassMainMenu::settingVisual()
     QMap<QPushButton*, QLabel*>::iterator i;
     for (i = selectedButton.begin(); i != selectedButton.end(); i++)
         i.value()->setVisible(false);
-
-    QList<QPushButton*> pushbuttons = this->findChildren<QPushButton*>();
-    for(QPushButton* pushbutton : pushbuttons)
-        pushbutton->setStyleSheet(inactiveButtonStyleSheet);
 }
 
 void BaseClassMainMenu::changeUser()

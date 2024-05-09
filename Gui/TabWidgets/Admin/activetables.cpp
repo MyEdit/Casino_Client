@@ -34,6 +34,7 @@ void ActiveTables::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>(new WorkingIsTableView(ui->tableView, &boxsNameColumn));
     pagination = QSharedPointer<Pagination>(new Pagination(this, ui->tableView, ui->searchColumn, workingIsTableView, modelTypes));
+    filter = QSharedPointer<F_Table>(new F_Table());
 }
 
 void ActiveTables::connects()
@@ -46,6 +47,8 @@ void ActiveTables::connects()
     connect(ui->deleteTable, &QPushButton::clicked, this, &ActiveTables::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &ActiveTables::prepReloadModels);
     connect(ui->clearSearch, &QPushButton::clicked, this, &ActiveTables::clearSearchText);
+    connect(ui->addFilter, &QPushButton::clicked, this, &ActiveTables::addFilter);
+    connect(ui->clearFilter, &QPushButton::clicked, this, &ActiveTables::clearFilter);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &ActiveTables::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &ActiveTables::search);
@@ -56,6 +59,7 @@ void ActiveTables::connects()
     connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &ActiveTables::setVisibleSort);
     connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &ActiveTables::setVisibleSearch);
     connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &ActiveTables::setVisibleEditing);
+    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &ActiveTables::setVisibleFiltr);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ActiveTables::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ActiveTables::sort);
@@ -210,4 +214,20 @@ void ActiveTables::visibleEditing(bool flag)
     ui->addTable->setVisible(flag);
     ui->editTable->setVisible(flag);
     ui->deleteTable->setVisible(flag);
+}
+
+void ActiveTables::visibleFiltr(bool flag)
+{
+    ui->addFilter->setVisible(flag);
+    ui->clearFilter->setVisible(flag);
+}
+
+void ActiveTables::addFilter()
+{
+
+}
+
+void ActiveTables::clearFilter()
+{
+
 }

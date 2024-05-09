@@ -52,6 +52,7 @@ protected:
     void setVisibleSort(int arg);
     void setVisibleSearch(int arg);
     void setVisibleEditing(int arg);
+    void setVisibleFiltr(int arg);
     virtual void search() = 0;
     virtual void setValueToMaxPage(const int maxPage) = 0;
     virtual void assigningValues();
@@ -61,13 +62,16 @@ protected:
     virtual void goToPage() = 0;
     virtual void onHeaderClicked(const int logicalIndex) = 0;
     virtual void prepReloadModels() = 0;
-    virtual void openCreatRecotd() {};
-    virtual void openEditRecotd() {};
-    virtual void deleting() {};
+    virtual void openCreatRecotd() = 0;
+    virtual void openEditRecotd() = 0;
+    virtual void deleting() = 0;
     virtual void clearSearchText() = 0;
     virtual void visibleSort(bool flag) = 0;
     virtual void visibleSearch(bool flag) = 0;
     virtual void visibleEditing(bool flag) = 0;
+    virtual void visibleFiltr(bool flag) = 0;
+    virtual void addFilter() = 0;
+    virtual void clearFilter() = 0;
 };
 
 #endif // BASECLASSSEARCHWINDOW_H

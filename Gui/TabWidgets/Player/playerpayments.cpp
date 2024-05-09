@@ -185,3 +185,18 @@ void PlayerPayments::visibleEditing(bool flag)
 {
     Q_UNUSED(flag);
 }
+
+void PlayerPayments::visibleFiltr(bool flag)
+{
+    Q_UNUSED(flag);
+}
+
+void PlayerPayments::addFilter()
+{
+
+}
+
+void PlayerPayments::clearFilter()
+{
+
+}

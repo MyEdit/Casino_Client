@@ -8,6 +8,7 @@
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
 #include "Gui/WorkingWithRecords/Admin/w_ban.h"
+#include "Gui/Filters/f_ban.h"
 
 class W_Ban;
 
@@ -19,6 +20,7 @@ class BanList : public BaseClassSearchWindow
 {
     Ui::BanList *ui;
     QSharedPointer<W_Ban> updateBan;
+    QSharedPointer<F_Ban> filter;
 
 public:
     explicit BanList(QWidget *parent = nullptr);
@@ -36,10 +38,14 @@ private:
     void onHeaderClicked(const int logicalIndex) override;
     void openEditRecotd() override;
     void deleting() override;
+    void openCreatRecotd() override;
     void clearSearchText() override;
     void visibleSort(bool flag) override;
     void visibleSearch(bool flag) override;
     void visibleEditing(bool flag) override;
+    void visibleFiltr(bool flag) override;
+    void addFilter() override;
+    void clearFilter() override;
 };
 
 #endif // BANLIST_H

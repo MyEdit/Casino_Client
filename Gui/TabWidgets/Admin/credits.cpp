@@ -189,3 +189,18 @@ void Credits::visibleEditing(bool flag)
     ui->editCredit->setVisible(flag);
     ui->deleteCredit->setVisible(flag);
 }
+
+void Credits::visibleFiltr(bool flag)
+{
+    Q_UNUSED(flag);
+}
+
+void Credits::addFilter()
+{
+
+}
+
+void Credits::clearFilter()
+{
+
+}

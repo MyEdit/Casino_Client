@@ -8,6 +8,7 @@
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
 #include "Gui/WorkingWithRecords/Admin/w_table.h"
+#include "Gui/Filters/f_table.h"
 
 class W_Table;
 
@@ -19,6 +20,7 @@ class ActiveTables : public BaseClassSearchWindow
 {
     Ui::ActiveTables *ui;
     QSharedPointer<W_Table> workingWithTables;
+    QSharedPointer<F_Table> filter;
 
 public:
     explicit ActiveTables(QWidget *parent = nullptr);
@@ -41,6 +43,9 @@ private:
     void visibleSort(bool flag) override;
     void visibleSearch(bool flag) override;
     void visibleEditing(bool flag) override;
+    void visibleFiltr(bool flag) override;
+    void addFilter() override;
+    void clearFilter() override;
 };
 
 #endif // EXISTINGTABLES_H

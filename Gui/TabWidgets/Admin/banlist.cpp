@@ -34,6 +34,7 @@ void BanList::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>(new WorkingIsTableView(ui->tableView, &boxsNameColumn));
     pagination = QSharedPointer<Pagination>(new Pagination(this, ui->tableView, ui->searchColumn, workingIsTableView, modelTypes));
+    filter = QSharedPointer<F_Ban>(new F_Ban());
 }
 
 void BanList::connects()
@@ -45,6 +46,8 @@ void BanList::connects()
     connect(ui->deleteBan, &QPushButton::clicked, this, &BanList::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &BanList::prepReloadModels);
     connect(ui->clearSearch, &QPushButton::clicked, this, &BanList::clearSearchText);
+    connect(ui->addFilter, &QPushButton::clicked, this, &BanList::addFilter);
+    connect(ui->clearFilter, &QPushButton::clicked, this, &BanList::clearFilter);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &BanList::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &BanList::search);
@@ -55,6 +58,7 @@ void BanList::connects()
     connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &BanList::setVisibleSort);
     connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &BanList::setVisibleSearch);
     connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &BanList::setVisibleEditing);
+    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &BanList::setVisibleFiltr);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &BanList::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &BanList::sort);
@@ -167,6 +171,11 @@ void BanList::deleting()
     deleteRecord(table, idColumn, id);
 }
 
+void BanList::openCreatRecotd()
+{
+
+}
+
 void BanList::clearSearchText()
 {
     ui->searchText->clear();
@@ -195,4 +204,20 @@ void BanList::visibleEditing(bool flag)
 {
     ui->editBan->setVisible(flag);
     ui->deleteBan->setVisible(flag);
+}
+
+void BanList::visibleFiltr(bool flag)
+{
+    ui->addFilter->setVisible(flag);
+    ui->clearFilter->setVisible(flag);
+}
+
+void BanList::addFilter()
+{
+
+}
+
+void BanList::clearFilter()
+{
+
 }

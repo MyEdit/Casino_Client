@@ -37,6 +37,9 @@ private:
     void visibleSort(bool flag) override;
     void visibleSearch(bool flag) override;
     void visibleEditing(bool flag) override;
+    void visibleFiltr(bool flag) override;
+    void addFilter() override;
+    void clearFilter() override;
 };
 
 #endif // PLAYERCREDITS_H

@@ -12,6 +12,7 @@
 #include "BaseClass/baseclasssearchwindow.h"
 #include "Gui/WorkingWithRecords/Admin/w_user.h"
 #include "Gui/WorkingWithRecords/Admin/w_ban.h"
+#include "Gui/Filters/f_user.h"
 
 class W_User;
 class W_Ban;
@@ -25,6 +26,7 @@ class Users : public BaseClassSearchWindow
     Ui::Users *ui;
     QSharedPointer<W_Ban> addBan;
     QSharedPointer<W_User> workingWithUser;
+    QSharedPointer<F_User> filter;
 
 public:
     explicit Users(QWidget *parent = nullptr);
@@ -48,6 +50,9 @@ private:
     void visibleSort(bool flag) override;
     void visibleSearch(bool flag) override;
     void visibleEditing(bool flag) override;
+    void visibleFiltr(bool flag) override;
+    void addFilter() override;
+    void clearFilter() override;
 };
 
 #endif // ALLUSERS_H

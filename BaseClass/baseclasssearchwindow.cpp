@@ -86,6 +86,7 @@ void BaseClassSearchWindow::baseSetting()
     visibleSort(false);
     visibleSearch(false);
     visibleEditing(false);
+    visibleFiltr(false);
 }
 
 void BaseClassSearchWindow::startPagination()
@@ -150,6 +151,12 @@ void BaseClassSearchWindow::setVisibleEditing(int arg)
 {
     bool flag = (arg == 2) ? true : false;
     visibleEditing(flag);
+}
+
+void BaseClassSearchWindow::setVisibleFiltr(int arg)
+{
+    bool flag = (arg == 2) ? true : false;
+    visibleFiltr(flag);
 }
 
 void BaseClassSearchWindow::assigningValues()

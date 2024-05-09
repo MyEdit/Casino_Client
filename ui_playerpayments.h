@@ -752,7 +752,7 @@ public:
         QIcon icon6;
         icon6.addFile(QString::fromUtf8(":/icons/resources/update.png"), QSize(), QIcon::Normal, QIcon::Off);
         refreshData->setIcon(icon6);
-        refreshData->setIconSize(QSize(24, 24));
+        refreshData->setIconSize(QSize(32, 32));
 
         horizontalLayout_4->addWidget(refreshData);
 
@@ -806,7 +806,7 @@ public:
         QIcon icon7;
         icon7.addFile(QString::fromUtf8(":/icons/resources/search.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_search->setIcon(icon7);
-        pushButton_search->setIconSize(QSize(24, 24));
+        pushButton_search->setIconSize(QSize(32, 32));
 
         horizontalLayout_9->addWidget(pushButton_search);
 
@@ -831,7 +831,7 @@ public:
         QIcon icon8;
         icon8.addFile(QString::fromUtf8(":/icons/resources/clearSearch.png"), QSize(), QIcon::Normal, QIcon::Off);
         clearSearch->setIcon(icon8);
-        clearSearch->setIconSize(QSize(24, 24));
+        clearSearch->setIconSize(QSize(32, 32));
 
         horizontalLayout_9->addWidget(clearSearch);
 
@@ -982,7 +982,7 @@ public:
         QIcon icon9;
         icon9.addFile(QString::fromUtf8(":/icons/resources/prev.png"), QSize(), QIcon::Normal, QIcon::Off);
         prevButton->setIcon(icon9);
-        prevButton->setIconSize(QSize(24, 24));
+        prevButton->setIconSize(QSize(32, 32));
 
         horizontalLayout_10->addWidget(prevButton);
 
@@ -1029,7 +1029,7 @@ public:
         QIcon icon10;
         icon10.addFile(QString::fromUtf8(":/icons/resources/next.png"), QSize(), QIcon::Normal, QIcon::Off);
         nextButton->setIcon(icon10);
-        nextButton->setIconSize(QSize(24, 24));
+        nextButton->setIconSize(QSize(32, 32));
 
         horizontalLayout_10->addWidget(nextButton);
 

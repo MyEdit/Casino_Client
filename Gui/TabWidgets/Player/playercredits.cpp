@@ -192,3 +192,18 @@ void PlayerCredits::visibleEditing(bool flag)
 {
     ui->addCredit->setVisible(flag);
 }
+
+void PlayerCredits::visibleFiltr(bool flag)
+{
+    Q_UNUSED(flag);
+}
+
+void PlayerCredits::addFilter()
+{
+
+}
+
+void PlayerCredits::clearFilter()
+{
+
+}

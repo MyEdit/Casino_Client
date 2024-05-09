@@ -194,3 +194,18 @@ void Payments::visibleEditing(bool flag)
     ui->deletePayment->setVisible(flag);
 }
 
+void Payments::visibleFiltr(bool flag)
+{
+    Q_UNUSED(flag);
+}
+
+void Payments::addFilter()
+{
+
+}
+
+void Payments::clearFilter()
+{
+
+}
+

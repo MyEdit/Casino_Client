@@ -260,7 +260,7 @@ public:
 
         payments = new QPushButton(centralwidget);
         payments->setObjectName(QString::fromUtf8("payments"));
-        payments->setMinimumSize(QSize(0, 40));
+        payments->setMinimumSize(QSize(175, 40));
         payments->setFont(font1);
         payments->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
@@ -342,6 +342,7 @@ public:
 
         buttonChangeUser = new QPushButton(centralwidget);
         buttonChangeUser->setObjectName(QString::fromUtf8("buttonChangeUser"));
+        buttonChangeUser->setMinimumSize(QSize(250, 0));
         buttonChangeUser->setFont(font1);
         buttonChangeUser->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
@@ -359,7 +360,7 @@ public:
         buttonChangeUser->setIcon(icon1);
         buttonChangeUser->setIconSize(QSize(32, 32));
 
-        gridLayout->addWidget(buttonChangeUser, 14, 0, 1, 1);
+        gridLayout->addWidget(buttonChangeUser, 14, 0, 1, 2);
 
         Window_Admin->setCentralWidget(centralwidget);
 

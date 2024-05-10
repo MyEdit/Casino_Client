@@ -229,7 +229,7 @@ font-weight: bold;
        <widget class="QPushButton" name="replenish">
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>140</width>
           <height>40</height>
          </size>
         </property>
@@ -310,7 +310,7 @@ font-weight: bold;
        <widget class="QPushButton" name="gameTables">
         <property name="minimumSize">
          <size>
-          <width>0</width>
+          <width>140</width>
           <height>40</height>
          </size>
         </property>
@@ -404,6 +404,12 @@ font-weight: bold;
     </item>
     <item row="5" column="0">
      <widget class="QPushButton" name="buttonChangeUser">
+      <property name="minimumSize">
+       <size>
+        <width>250</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="font">
        <font>
         <family>Segoe UI</family>

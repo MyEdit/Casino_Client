@@ -69,9 +69,9 @@ void Form::assigningValues()
     }
     else
     {
-        constantStyleSheet = "background-color: rgb(166, 0, 0); color: white;";
-        hoverStyleSheet = "background-color: rgb(166, 0, 0); color: white;";
-        pressStyleSheet = "background-color: rgb(166, 0, 0); color: white;";
+        constantStyleSheet = "background-color: rgb(167, 167, 167); color: white;";
+        hoverStyleSheet = "background-color: rgb(167, 167, 167); color: white;";
+        pressStyleSheet = "background-color: rgb(167, 167, 167); color: white;";
     }
 }
 

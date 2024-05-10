@@ -163,7 +163,7 @@ public:
 
         replenish = new QPushButton(centralwidget);
         replenish->setObjectName(QString::fromUtf8("replenish"));
-        replenish->setMinimumSize(QSize(0, 40));
+        replenish->setMinimumSize(QSize(140, 40));
         QFont font2;
         font2.setFamily(QString::fromUtf8("Segoe UI"));
         font2.setPointSize(12);
@@ -211,7 +211,7 @@ public:
 
         gameTables = new QPushButton(centralwidget);
         gameTables->setObjectName(QString::fromUtf8("gameTables"));
-        gameTables->setMinimumSize(QSize(0, 40));
+        gameTables->setMinimumSize(QSize(140, 40));
         gameTables->setFont(font2);
         gameTables->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
@@ -258,6 +258,7 @@ public:
 
         buttonChangeUser = new QPushButton(centralwidget);
         buttonChangeUser->setObjectName(QString::fromUtf8("buttonChangeUser"));
+        buttonChangeUser->setMinimumSize(QSize(250, 0));
         buttonChangeUser->setFont(font2);
         buttonChangeUser->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"

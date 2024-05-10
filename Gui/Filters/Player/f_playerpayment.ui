@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>F_User</class>
- <widget class="QDialog" name="F_User">
+ <class>F_PlayerPayment</class>
+ <widget class="QDialog" name="F_PlayerPayment">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -10,8 +11,9 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Фильтр платежей</string>
   </property>
+  <layout class="QVBoxLayout" name="verticalLayout"/>
  </widget>
  <resources/>
  <connections/>

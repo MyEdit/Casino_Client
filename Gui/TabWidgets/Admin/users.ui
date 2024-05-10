@@ -56,19 +56,6 @@
       </widget>
      </item>
      <item>
-      <widget class="QCheckBox" name="checkBox_Filtr">
-       <property name="font">
-        <font>
-         <family>Segoe UI</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>Фитрация</string>
-       </property>
-      </widget>
-     </item>
-     <item>
       <spacer name="horizontalSpacer_2">
        <property name="orientation">
         <enum>Qt::Horizontal</enum>
@@ -353,76 +340,6 @@ QPushButton:pressed {
         </size>
        </property>
       </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="addFilter">
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 5px;
-    color: black;
-}
-
-QPushButton:hover {
-    background-color: rgb(100, 88, 255);
-	color: white;
-}
-
-QPushButton:pressed {
-	background-color: rgba(220, 60, 190, 255);
-}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="../../../resources.qrc">
-         <normaloff>:/icons/resources/addFilter.png</normaloff>:/icons/resources/addFilter.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>24</width>
-         <height>24</height>
-        </size>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="clearFilter">
-       <property name="styleSheet">
-        <string notr="true">QPushButton {
-    background-color: white;
-    border: 1px solid black;
-    border-radius: 10px;
-    padding: 5px;
-    color: black;
-}
-
-QPushButton:hover {
-    background-color: rgb(100, 88, 255);
-	color: white;
-}
-
-QPushButton:pressed {
-	background-color: rgba(220, 60, 190, 255);
-}</string>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-       <property name="icon">
-        <iconset resource="../../../resources.qrc">
-         <normaloff>:/icons/resources/clearFilter.png</normaloff>:/icons/resources/clearFilter.png</iconset>
-       </property>
-       <property name="iconSize">
-        <size>
-         <width>24</width>
-         <height>24</height>
-        </size>
-       </property>
-      </widget>
      </item>
     </layout>
    </item>

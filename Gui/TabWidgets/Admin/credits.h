@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
+#include "Gui/Filters/Admin/f_credit.h"
 
 namespace Ui {
 class Credits;
@@ -15,6 +16,7 @@ class Credits;
 class Credits : public BaseClassSearchWindow
 {
     Ui::Credits *ui;
+    QSharedPointer<F_Credit> filter;
 
 public:
     explicit Credits(QWidget *parent = nullptr);

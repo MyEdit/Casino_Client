@@ -65,6 +65,7 @@ void PlayerPayments::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>(new WorkingIsTableView(ui->tableView, &boxsNameColumn));
     pagination = QSharedPointer<Pagination>(new Pagination(this, ui->tableView, ui->searchColumn, workingIsTableView, modelTypes));
+    filter = QSharedPointer<F_PlayerPayment>(new F_PlayerPayment());
 }
 
 void PlayerPayments::goToPage()
@@ -85,6 +86,8 @@ void PlayerPayments::connects()
     connect(ui->pushButton_search, &QPushButton::clicked, this, &PlayerPayments::search);
     connect(ui->refreshData, &QPushButton::clicked, this, &PlayerPayments::prepReloadModels);
     connect(ui->clearSearch, &QPushButton::clicked, this, &PlayerPayments::clearSearchText);
+    connect(ui->addFilter, &QPushButton::clicked, this, &PlayerPayments::addFilter);
+    connect(ui->clearFilter, &QPushButton::clicked, this, &PlayerPayments::clearFilter);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &PlayerPayments::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &PlayerPayments::search);
@@ -94,6 +97,7 @@ void PlayerPayments::connects()
 
     connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &PlayerPayments::setVisibleSort);
     connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &PlayerPayments::setVisibleSearch);
+    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &PlayerPayments::setVisibleFiltr);
 
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &PlayerPayments::selectTypeSearch);
 
@@ -188,12 +192,16 @@ void PlayerPayments::visibleEditing(bool flag)
 
 void PlayerPayments::visibleFiltr(bool flag)
 {
-    Q_UNUSED(flag);
+    ui->addFilter->setVisible(flag);
+    ui->clearFilter->setVisible(flag);
 }
 
 void PlayerPayments::addFilter()
 {
+    if (filter->exec() == QDialog::Accepted)
+    {
 
+    }
 }
 
 void PlayerPayments::clearFilter()

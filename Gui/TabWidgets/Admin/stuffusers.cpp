@@ -34,7 +34,6 @@ void StuffUsers::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>(new WorkingIsTableView(ui->tableView, &boxsNameColumn));
     pagination = QSharedPointer<Pagination>(new Pagination(this, ui->tableView, ui->searchColumn, workingIsTableView, modelTypes));
-    filter = QSharedPointer<F_StuffUser>(new F_StuffUser());
 }
 
 void StuffUsers::connects()
@@ -47,8 +46,6 @@ void StuffUsers::connects()
     connect(ui->deleteStuffUser, &QPushButton::clicked, this, &StuffUsers::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &StuffUsers::prepReloadModels);
     connect(ui->clearSearch, &QPushButton::clicked, this, &StuffUsers::clearSearchText);
-    connect(ui->addFilter, &QPushButton::clicked, this, &StuffUsers::addFilter);
-    connect(ui->clearFilter, &QPushButton::clicked, this, &StuffUsers::clearFilter);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &StuffUsers::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &StuffUsers::search);
@@ -59,7 +56,6 @@ void StuffUsers::connects()
     connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleSort);
     connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleSearch);
     connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleEditing);
-    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleFiltr);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &StuffUsers::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &StuffUsers::sort);
@@ -213,8 +209,7 @@ void StuffUsers::visibleEditing(bool flag)
 
 void StuffUsers::visibleFiltr(bool flag)
 {
-    ui->addFilter->setVisible(flag);
-    ui->clearFilter->setVisible(flag);
+    Q_UNUSED(flag);
 }
 
 void StuffUsers::addFilter()

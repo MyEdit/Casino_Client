@@ -161,13 +161,12 @@ void ActiveTables::openEditRecotd()
 {
     int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
     QString maxPlayers = getValueFromSelectedRow(ui->tableView, 2).toString();
-    QString numPlayers = getValueFromSelectedRow(ui->tableView, 3).toString();
-    QString minBet = getValueFromSelectedRow(ui->tableView, 4).toString();
-    QString betStep = getValueFromSelectedRow(ui->tableView, 5).toString();
-    QString minBalance = getValueFromSelectedRow(ui->tableView, 6).toString();
-    QString nameGame = getValueFromSelectedRow(ui->tableView, 7).toString();
+    QString minBet = getValueFromSelectedRow(ui->tableView, 3).toString();
+    QString betStep = getValueFromSelectedRow(ui->tableView, 4).toString();
+    QString minBalance = getValueFromSelectedRow(ui->tableView, 5).toString();
+    QString nameGame = getValueFromSelectedRow(ui->tableView, 6).toString();
 
-    QSharedPointer<ActiveTable> activeTable = QSharedPointer<ActiveTable>::create(id, maxPlayers, numPlayers, minBet, betStep, minBalance, nameGame);
+    QSharedPointer<ActiveTable> activeTable = QSharedPointer<ActiveTable>::create(id, maxPlayers, minBet, betStep, minBalance, nameGame);
     if (!activeTable->inputDataIsValid())
         return;
 
@@ -224,7 +223,10 @@ void ActiveTables::visibleFiltr(bool flag)
 
 void ActiveTables::addFilter()
 {
+    if (filter->exec() == QDialog::Accepted)
+    {
 
+    }
 }
 
 void ActiveTables::clearFilter()

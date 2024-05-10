@@ -34,6 +34,7 @@ void Payments::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>(new WorkingIsTableView(ui->tableView, &boxsNameColumn));
     pagination = QSharedPointer<Pagination>(new Pagination(this, ui->tableView, ui->searchColumn, workingIsTableView, modelTypes));
+    filter = QSharedPointer<F_Payment>(new F_Payment());
 }
 
 void Payments::connects()
@@ -46,6 +47,8 @@ void Payments::connects()
     connect(ui->deletePayment, &QPushButton::clicked, this, &Payments::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &Payments::prepReloadModels);
     connect(ui->clearSearch, &QPushButton::clicked, this, &Payments::clearSearchText);
+    connect(ui->addFilter, &QPushButton::clicked, this, &Payments::addFilter);
+    connect(ui->clearFilter, &QPushButton::clicked, this, &Payments::clearFilter);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &Payments::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &Payments::search);
@@ -56,6 +59,7 @@ void Payments::connects()
     connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &Payments::setVisibleSort);
     connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &Payments::setVisibleSearch);
     connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &Payments::setVisibleEditing);
+    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &Payments::setVisibleFiltr);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Payments::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Payments::sort);
@@ -196,12 +200,16 @@ void Payments::visibleEditing(bool flag)
 
 void Payments::visibleFiltr(bool flag)
 {
-    Q_UNUSED(flag);
+    ui->addFilter->setVisible(flag);
+    ui->clearFilter->setVisible(flag);
 }
 
 void Payments::addFilter()
 {
+    if (filter->exec() == QDialog::Accepted)
+    {
 
+    }
 }
 
 void Payments::clearFilter()

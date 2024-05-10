@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
+#include "Gui/Filters/Admin/f_payment.h"
 
 namespace Ui {
 class Payments;
@@ -15,6 +16,7 @@ class Payments;
 class Payments : public BaseClassSearchWindow
 {
     Ui::Payments *ui;
+    QSharedPointer<F_Payment> filter;
 
 public:
     explicit Payments(QWidget *parent = nullptr);

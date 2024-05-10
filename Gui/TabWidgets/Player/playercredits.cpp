@@ -37,6 +37,7 @@ void PlayerCredits::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>(new WorkingIsTableView(ui->tableView, &boxsNameColumn));
     pagination = QSharedPointer<Pagination>(new Pagination(this, ui->tableView, ui->searchColumn, workingIsTableView, modelTypes));
+    filter = QSharedPointer<F_PlayerCredit>(new F_PlayerCredit());
 }
 
 void PlayerCredits::connects()
@@ -47,6 +48,8 @@ void PlayerCredits::connects()
     connect(ui->addCredit, &QPushButton::clicked, this, &PlayerCredits::openCreatRecotd);
     connect(ui->refreshData, &QPushButton::clicked, this, &PlayerCredits::prepReloadModels);
     connect(ui->clearSearch, &QPushButton::clicked, this, &PlayerCredits::clearSearchText);
+    connect(ui->addFilter, &QPushButton::clicked, this, &PlayerCredits::addFilter);
+    connect(ui->clearFilter, &QPushButton::clicked, this, &PlayerCredits::clearFilter);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &PlayerCredits::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &PlayerCredits::search);
@@ -57,6 +60,7 @@ void PlayerCredits::connects()
     connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &PlayerCredits::setVisibleSort);
     connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &PlayerCredits::setVisibleSearch);
     connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &PlayerCredits::setVisibleEditing);
+    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &PlayerCredits::setVisibleFiltr);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &PlayerCredits::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &PlayerCredits::sort);
@@ -195,12 +199,16 @@ void PlayerCredits::visibleEditing(bool flag)
 
 void PlayerCredits::visibleFiltr(bool flag)
 {
-    Q_UNUSED(flag);
+    ui->addFilter->setVisible(flag);
+    ui->clearFilter->setVisible(flag);
 }
 
 void PlayerCredits::addFilter()
 {
+    if (filter->exec() == QDialog::Accepted)
+    {
 
+    }
 }
 
 void PlayerCredits::clearFilter()

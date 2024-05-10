@@ -34,6 +34,7 @@ void Credits::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>(new WorkingIsTableView(ui->tableView, &boxsNameColumn));
     pagination = QSharedPointer<Pagination>(new Pagination(this, ui->tableView, ui->searchColumn, workingIsTableView, modelTypes));
+    filter = QSharedPointer<F_Credit>(new F_Credit());
 }
 
 void Credits::connects()
@@ -46,6 +47,8 @@ void Credits::connects()
     connect(ui->deleteCredit, &QPushButton::clicked, this, &Credits::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &Credits::prepReloadModels);
     connect(ui->clearSearch, &QPushButton::clicked, this, &Credits::clearSearchText);
+    connect(ui->addFilter, &QPushButton::clicked, this, &Credits::addFilter);
+    connect(ui->clearFilter, &QPushButton::clicked, this, &Credits::clearFilter);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &Credits::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &Credits::search);
@@ -53,6 +56,7 @@ void Credits::connects()
     connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &Credits::setVisibleSort);
     connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &Credits::setVisibleSearch);
     connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &Credits::setVisibleEditing);
+    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &Credits::setVisibleFiltr);
 
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &Credits::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &Credits::sorting);
@@ -192,12 +196,16 @@ void Credits::visibleEditing(bool flag)
 
 void Credits::visibleFiltr(bool flag)
 {
-    Q_UNUSED(flag);
+    ui->addFilter->setVisible(flag);
+    ui->clearFilter->setVisible(flag);
 }
 
 void Credits::addFilter()
 {
+    if (filter->exec() == QDialog::Accepted)
+    {
 
+    }
 }
 
 void Credits::clearFilter()

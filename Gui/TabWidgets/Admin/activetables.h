@@ -8,7 +8,7 @@
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
 #include "Gui/WorkingWithRecords/Admin/w_table.h"
-#include "Gui/Filters/f_table.h"
+#include "Gui/Filters/Admin/f_table.h"
 
 class W_Table;
 

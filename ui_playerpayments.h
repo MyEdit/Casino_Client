@@ -84,6 +84,7 @@ public:
     QHBoxLayout *horizontalLayout_4;
     QCheckBox *checkBox_Search;
     QCheckBox *checkBox_Sorting;
+    QCheckBox *checkBox_Filtr;
     QSpacerItem *horizontalSpacer_11;
     QPushButton *refreshData;
     QHBoxLayout *horizontalLayout_9;
@@ -101,6 +102,8 @@ public:
     QComboBox *typeSorting;
     QCheckBox *sorting;
     QSpacerItem *horizontalSpacer_13;
+    QPushButton *addFilter;
+    QPushButton *clearFilter;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_15;
     QLabel *labelWhatKindSorting;
@@ -727,6 +730,12 @@ public:
 
         horizontalLayout_4->addWidget(checkBox_Sorting);
 
+        checkBox_Filtr = new QCheckBox(searchWidget);
+        checkBox_Filtr->setObjectName(QString::fromUtf8("checkBox_Filtr"));
+        checkBox_Filtr->setFont(font8);
+
+        horizontalLayout_4->addWidget(checkBox_Filtr);
+
         horizontalSpacer_11 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_4->addItem(horizontalSpacer_11);
@@ -884,6 +893,56 @@ public:
 
         horizontalLayout_8->addItem(horizontalSpacer_13);
 
+        addFilter = new QPushButton(searchWidget);
+        addFilter->setObjectName(QString::fromUtf8("addFilter"));
+        addFilter->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+        QIcon icon9;
+        icon9.addFile(QString::fromUtf8(":/icons/resources/addFilter.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addFilter->setIcon(icon9);
+        addFilter->setIconSize(QSize(24, 24));
+
+        horizontalLayout_8->addWidget(addFilter);
+
+        clearFilter = new QPushButton(searchWidget);
+        clearFilter->setObjectName(QString::fromUtf8("clearFilter"));
+        clearFilter->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+        QIcon icon10;
+        icon10.addFile(QString::fromUtf8(":/icons/resources/clearFilter.png"), QSize(), QIcon::Normal, QIcon::Off);
+        clearFilter->setIcon(icon10);
+        clearFilter->setIconSize(QSize(24, 24));
+
+        horizontalLayout_8->addWidget(clearFilter);
+
 
         verticalLayout->addLayout(horizontalLayout_8);
 
@@ -979,9 +1038,9 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon9;
-        icon9.addFile(QString::fromUtf8(":/icons/resources/prev.png"), QSize(), QIcon::Normal, QIcon::Off);
-        prevButton->setIcon(icon9);
+        QIcon icon11;
+        icon11.addFile(QString::fromUtf8(":/icons/resources/prev.png"), QSize(), QIcon::Normal, QIcon::Off);
+        prevButton->setIcon(icon11);
         prevButton->setIconSize(QSize(32, 32));
 
         horizontalLayout_10->addWidget(prevButton);
@@ -1026,9 +1085,9 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon10;
-        icon10.addFile(QString::fromUtf8(":/icons/resources/next.png"), QSize(), QIcon::Normal, QIcon::Off);
-        nextButton->setIcon(icon10);
+        QIcon icon12;
+        icon12.addFile(QString::fromUtf8(":/icons/resources/next.png"), QSize(), QIcon::Normal, QIcon::Off);
+        nextButton->setIcon(icon12);
         nextButton->setIconSize(QSize(32, 32));
 
         horizontalLayout_10->addWidget(nextButton);
@@ -1081,6 +1140,7 @@ public:
         labelHistoriPayments->setText(QApplication::translate("PlayerPayments", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217 \320\277\320\273\320\260\321\202\320\265\320\266\320\265\320\271", nullptr));
         checkBox_Search->setText(QApplication::translate("PlayerPayments", "\320\237\320\276\320\270\321\201\320\272", nullptr));
         checkBox_Sorting->setText(QApplication::translate("PlayerPayments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260", nullptr));
+        checkBox_Filtr->setText(QApplication::translate("PlayerPayments", "\320\244\320\270\321\202\321\200\320\260\321\206\320\270\321\217", nullptr));
         refreshData->setText(QString());
         label->setText(QApplication::translate("PlayerPayments", "\320\237\320\276\320\270\321\201\320\272:", nullptr));
         checkBox->setText(QApplication::translate("PlayerPayments", "\320\242\320\276\321\207\320\275\320\276\320\265 \n"
@@ -1093,6 +1153,8 @@ public:
         typeSorting->setItemText(1, QApplication::translate("PlayerPayments", "\321\203\320\261\321\213\320\262\320\260\320\275\320\270\321\216", nullptr));
 
         sorting->setText(QApplication::translate("PlayerPayments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
+        addFilter->setText(QString());
+        clearFilter->setText(QString());
         label_15->setText(QApplication::translate("PlayerPayments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260:", nullptr));
         labelWhatKindSorting->setText(QApplication::translate("PlayerPayments", "\320\276\321\202\321\201\321\203\321\202\321\201\321\202\320\262\321\203\320\265\321\202", nullptr));
         label_4->setText(QApplication::translate("PlayerPayments", "\320\242\320\265\320\272\321\203\321\211\320\260\321\217 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\260:", nullptr));

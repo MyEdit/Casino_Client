@@ -7,7 +7,6 @@ class ActiveTable
 {
     int id {0};
     QString maxPlayers;
-    QString numPlayers;
     QString minBet;
     QString betStep;
     QString minBalance;
@@ -15,19 +14,17 @@ class ActiveTable
 
 public:
     ActiveTable() {}
-    ActiveTable(const QString& maxPlayers, const QString& numPlayers, const QString& minBet, const QString& betStep, const QString& minBalance, const QString& nameGame);
-    ActiveTable(int id, const QString& maxPlayers, const QString& numPlayers, const QString& minBet, const QString& betStep, const QString& minBalance, const QString& nameGame);
+    ActiveTable(const QString& maxPlayers, const QString& minBet, const QString& betStep, const QString& minBalance, const QString& nameGame);
+    ActiveTable(int id, const QString& maxPlayers, const QString& minBet, const QString& betStep, const QString& minBalance, const QString& nameGame);
 
     int getID();
     const QString& getMaxPlayers();
-    const QString& getNumPlayers();
     const QString& getMinBet();
     const QString& getBetStep();
     const QString& getMinBalance();
     const QString& getNameGame();
 
     void setMaxPlayers(const QString& maxPlayers);
-    void setNumPlayers(const QString& numPlayers);
     void setMinBet(const QString& minBet);
     void setBetStep(const QString& betStep);
     void setMinBalance(const QString& minBalance);

@@ -1,20 +1,18 @@
 ﻿#include "activetable.h"
 #include <QDebug>
-ActiveTable::ActiveTable(const QString& maxPlayers, const QString& numPlayers, const QString& minBet, const QString& betStep, const QString& minBalance, const QString& nameGame)
+ActiveTable::ActiveTable(const QString& maxPlayers, const QString& minBet, const QString& betStep, const QString& minBalance, const QString& nameGame)
 {
     this->maxPlayers = maxPlayers;
-    this->numPlayers = numPlayers;
     this->minBet = minBet;
     this->betStep = betStep;
     this->minBalance = minBalance;
     this->nameGame = nameGame;
 }
 
-ActiveTable::ActiveTable(int id, const QString& maxPlayers, const QString& numPlayers, const QString& minBet, const QString& betStep, const QString& minBalance, const QString& nameGame)
+ActiveTable::ActiveTable(int id, const QString& maxPlayers, const QString& minBet, const QString& betStep, const QString& minBalance, const QString& nameGame)
 {
     this->id = id;
     this->maxPlayers = maxPlayers;
-    this->numPlayers = numPlayers;
     this->minBet = minBet;
     this->betStep = betStep;
     this->minBalance = minBalance;
@@ -29,11 +27,6 @@ int ActiveTable::getID()
 const QString& ActiveTable::getMaxPlayers()
 {
     return maxPlayers;
-}
-
-const QString& ActiveTable::getNumPlayers()
-{
-    return numPlayers;
 }
 
 const QString& ActiveTable::getMinBet()
@@ -61,11 +54,6 @@ void ActiveTable::setMaxPlayers(const QString& maxPlayers)
     this->maxPlayers = maxPlayers;
 }
 
-void ActiveTable::setNumPlayers(const QString& numPlayers)
-{
-    this->numPlayers = numPlayers;
-}
-
 void ActiveTable::setMinBet(const QString& minBet)
 {
     this->minBet = minBet;
@@ -88,7 +76,6 @@ void ActiveTable::setNameGame(const QString& nameGame)
 
 bool ActiveTable::inputDataIsValid() const
 {
-    qDebug() << minBalance;
     for (QString value : {maxPlayers, minBet, betStep, minBalance, nameGame})
     {
         if (value.isEmpty())

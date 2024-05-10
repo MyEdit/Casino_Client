@@ -18,7 +18,7 @@ W_Table::~W_Table()
 
 void W_Table::on_bottonSave_clicked()
 {
-    QSharedPointer<ActiveTable> activeTable(new ActiveTable(defaultActiveTable->getID(), getMaxPlayers(), defaultActiveTable->getNumPlayers(), getMinBet(), getBetStep(), getMinBalance(), getNameGame()));
+    QSharedPointer<ActiveTable> activeTable(new ActiveTable(defaultActiveTable->getID(), getMaxPlayers(), getMinBet(), getBetStep(), getMinBalance(), getNameGame()));
     QString query;
 
     if (!activeTable->inputDataIsValid())
@@ -116,9 +116,8 @@ void W_Table::onLoadForm()
 
 const QString W_Table::getInsertQuery(QSharedPointer<ActiveTable> activeTable)
 {
-    return QString("INSERT INTO ActiveTables (MaxPlayers, NumPlayers, MinBet, BetStep, MinBalance, NameGame) VALUES ('%1', '%2', '%3', '%4', '%5', '%6')")
+    return QString("INSERT INTO ActiveTables (MaxPlayers, MinBet, BetStep, MinBalance, NameGame) VALUES ('%1', '%2', '%3', '%4', '%5')")
             .arg(activeTable->getMaxPlayers())
-            .arg("0")
             .arg(activeTable->getMinBet())
             .arg(activeTable->getBetStep())
             .arg(activeTable->getMinBalance())
@@ -127,9 +126,8 @@ const QString W_Table::getInsertQuery(QSharedPointer<ActiveTable> activeTable)
 
 const QString W_Table::getUpdateQuery(QSharedPointer<ActiveTable> activeTable)
 {
-    return QString("UPDATE ActiveTables SET MaxPlayers = '%1', NumPlayers = '%2', MinBet = '%3', BetStep = '%4', MinBalance = '%5', NameGame = '%6' WHERE ID_Table = '%7'")
+    return QString("UPDATE ActiveTables SET MaxPlayers = '%1', MinBet = '%2', BetStep = '%3', MinBalance = '%4', NameGame = '%5' WHERE ID_Table = '%6'")
             .arg(activeTable->getMaxPlayers())
-            .arg(activeTable->getNumPlayers())
             .arg(activeTable->getMinBet())
             .arg(activeTable->getBetStep())
             .arg(activeTable->getMinBalance())

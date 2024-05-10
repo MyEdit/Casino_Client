@@ -49,10 +49,11 @@ SOURCES += \
     Games/card.cpp \
     Games/deck.cpp \
     Games/gamer.cpp \
-    Gui/Filters/f_ban.cpp \
-    Gui/Filters/f_stuffuser.cpp \
-    Gui/Filters/f_table.cpp \
-    Gui/Filters/f_user.cpp \
+    Gui/Filters/Admin/f_credit.cpp \
+    Gui/Filters/Admin/f_payment.cpp \
+    Gui/Filters/Admin/f_table.cpp \
+    Gui/Filters/Player/f_playercredit.cpp \
+    Gui/Filters/Player/f_playerpayment.cpp \
     Gui/TabWidgets/Player/gametable.cpp \
     Gui/TabWidgets/Player/playercredits.cpp \
     Gui/TabWidgets/Player/playerpayments.cpp \
@@ -117,10 +118,11 @@ HEADERS += \
     Games/cardSuit.h \
     Games/deck.h \
     Games/gamer.h \
-    Gui/Filters/f_ban.h \
-    Gui/Filters/f_stuffuser.h \
-    Gui/Filters/f_table.h \
-    Gui/Filters/f_user.h \
+    Gui/Filters/Admin/f_credit.h \
+    Gui/Filters/Admin/f_payment.h \
+    Gui/Filters/Admin/f_table.h \
+    Gui/Filters/Player/f_playercredit.h \
+    Gui/Filters/Player/f_playerpayment.h \
     Gui/TabWidgets/Player/gametable.h \
     Gui/TabWidgets/Player/playercredits.h \
     Gui/TabWidgets/Player/playerpayments.h \
@@ -169,10 +171,11 @@ FORMS += \
     Games/BlackDjack/GUI/blacljackwidget.ui \
     Games/InterfaceElements/playericon.ui \
     Games/InterfaceElements/playersiconswidget.ui \
-    Gui/Filters/f_ban.ui \
-    Gui/Filters/f_stuffuser.ui \
-    Gui/Filters/f_table.ui \
-    Gui/Filters/f_user.ui \
+    Gui/Filters/Admin/f_credit.ui \
+    Gui/Filters/Admin/f_payment.ui \
+    Gui/Filters/Admin/f_table.ui \
+    Gui/Filters/Player/f_playercredit.ui \
+    Gui/Filters/Player/f_playerpayment.ui \
     Gui/TabWidgets/Player/gametable.ui \
     Gui/TabWidgets/Player/playercredits.ui \
     Gui/TabWidgets/Player/playerpayments.ui \

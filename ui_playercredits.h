@@ -34,6 +34,7 @@ public:
     QCheckBox *checkBox_Search;
     QCheckBox *checkBox_Sorting;
     QCheckBox *checkBox_Editing;
+    QCheckBox *checkBox_Filtr;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *refreshData;
     QHBoxLayout *horizontalLayout_9;
@@ -51,6 +52,8 @@ public:
     QComboBox *typeSorting;
     QCheckBox *sorting;
     QSpacerItem *horizontalSpacer_13;
+    QPushButton *addFilter;
+    QPushButton *clearFilter;
     QHBoxLayout *horizontalLayout;
     QLabel *label_7;
     QLabel *labelWhatKindSorting;
@@ -101,6 +104,12 @@ public:
         checkBox_Editing->setFont(font);
 
         horizontalLayout_2->addWidget(checkBox_Editing);
+
+        checkBox_Filtr = new QCheckBox(PlayerCredits);
+        checkBox_Filtr->setObjectName(QString::fromUtf8("checkBox_Filtr"));
+        checkBox_Filtr->setFont(font);
+
+        horizontalLayout_2->addWidget(checkBox_Filtr);
 
         horizontalSpacer_2 = new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -278,6 +287,56 @@ public:
 
         horizontalLayout_8->addItem(horizontalSpacer_13);
 
+        addFilter = new QPushButton(PlayerCredits);
+        addFilter->setObjectName(QString::fromUtf8("addFilter"));
+        addFilter->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/icons/resources/addFilter.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addFilter->setIcon(icon3);
+        addFilter->setIconSize(QSize(24, 24));
+
+        horizontalLayout_8->addWidget(addFilter);
+
+        clearFilter = new QPushButton(PlayerCredits);
+        clearFilter->setObjectName(QString::fromUtf8("clearFilter"));
+        clearFilter->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/icons/resources/clearFilter.png"), QSize(), QIcon::Normal, QIcon::Off);
+        clearFilter->setIcon(icon4);
+        clearFilter->setIconSize(QSize(24, 24));
+
+        horizontalLayout_8->addWidget(clearFilter);
+
 
         verticalLayout->addLayout(horizontalLayout_8);
 
@@ -322,9 +381,9 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/icons/resources/add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addCredit->setIcon(icon3);
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/icons/resources/add.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addCredit->setIcon(icon5);
         addCredit->setIconSize(QSize(32, 32));
 
         horizontalLayout->addWidget(addCredit);
@@ -402,9 +461,9 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/icons/resources/prev.png"), QSize(), QIcon::Normal, QIcon::Off);
-        prevButton->setIcon(icon4);
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/icons/resources/prev.png"), QSize(), QIcon::Normal, QIcon::Off);
+        prevButton->setIcon(icon6);
         prevButton->setIconSize(QSize(32, 32));
 
         horizontalLayout_10->addWidget(prevButton);
@@ -449,9 +508,9 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon5;
-        icon5.addFile(QString::fromUtf8(":/icons/resources/next.png"), QSize(), QIcon::Normal, QIcon::Off);
-        nextButton->setIcon(icon5);
+        QIcon icon7;
+        icon7.addFile(QString::fromUtf8(":/icons/resources/next.png"), QSize(), QIcon::Normal, QIcon::Off);
+        nextButton->setIcon(icon7);
         nextButton->setIconSize(QSize(32, 32));
 
         horizontalLayout_10->addWidget(nextButton);
@@ -471,6 +530,7 @@ public:
         checkBox_Search->setText(QApplication::translate("PlayerCredits", "\320\237\320\276\320\270\321\201\320\272", nullptr));
         checkBox_Sorting->setText(QApplication::translate("PlayerCredits", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260", nullptr));
         checkBox_Editing->setText(QApplication::translate("PlayerCredits", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\320\275\320\270\320\265", nullptr));
+        checkBox_Filtr->setText(QApplication::translate("PlayerCredits", "\320\244\320\270\321\202\321\200\320\260\321\206\320\270\321\217", nullptr));
         refreshData->setText(QString());
         label->setText(QApplication::translate("PlayerCredits", "\320\237\320\276\320\270\321\201\320\272:", nullptr));
         checkBox->setText(QApplication::translate("PlayerCredits", "\320\242\320\276\321\207\320\275\320\276\320\265 \n"
@@ -483,6 +543,8 @@ public:
         typeSorting->setItemText(1, QApplication::translate("PlayerCredits", "\321\203\320\261\321\213\320\262\320\260\320\275\320\270\321\216", nullptr));
 
         sorting->setText(QApplication::translate("PlayerCredits", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
+        addFilter->setText(QString());
+        clearFilter->setText(QString());
         label_7->setText(QApplication::translate("PlayerCredits", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260:", nullptr));
         labelWhatKindSorting->setText(QApplication::translate("PlayerCredits", "\320\276\321\202\321\201\321\203\321\202\321\201\321\202\320\262\321\203\320\265\321\202", nullptr));
         addCredit->setText(QString());

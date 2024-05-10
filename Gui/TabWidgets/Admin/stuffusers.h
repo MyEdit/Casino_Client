@@ -8,7 +8,6 @@
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
 #include "Gui/WorkingWithRecords/Admin/w_stuffuser.h"
-#include "Gui/Filters/f_stuffuser.h"
 
 class W_StuffUser;
 
@@ -20,7 +19,6 @@ class StuffUsers : public BaseClassSearchWindow
 {
     Ui::StuffUsers *ui;
     QSharedPointer<W_StuffUser> workingWithStuffUsers;
-    QSharedPointer<F_StuffUser> filter;
 
 public:
     explicit StuffUsers(QWidget *parent = nullptr);

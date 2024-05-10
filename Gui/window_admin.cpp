@@ -35,6 +35,7 @@ void Window_Admin::connects()
     connect(ui->banList, &QPushButton::clicked, this, &Window_Admin::on_banList_clicked);
     connect(ui->credits, &QPushButton::clicked, this, &Window_Admin::on_credits_clicked);
     connect(ui->payments, &QPushButton::clicked, this, &Window_Admin::on_payments_clicked);
+    connect(ui->profit, &QPushButton::clicked, this, &Window_Admin::on_profit_clicked);
     connect(ui->buttonChangeUser, &QPushButton::clicked, this, &Window_Admin::changeUser);
 }
 
@@ -91,6 +92,7 @@ void Window_Admin::assigningValues()
     buttonSwitchingTab.push_back(ui->banList);
     buttonSwitchingTab.push_back(ui->credits);
     buttonSwitchingTab.push_back(ui->payments);
+    buttonSwitchingTab.push_back(ui->profit);
 
     selectedButton =
     {
@@ -99,7 +101,8 @@ void Window_Admin::assigningValues()
         {ui->stuffUsers, ui->label_4},
         {ui->banList, ui->label_5},
         {ui->credits, ui->label},
-        {ui->payments, ui->label_6}
+        {ui->payments, ui->label_6},
+        {ui->profit, ui->label_7}
     };
 }
 
@@ -131,6 +134,11 @@ void Window_Admin::setModel_CreditsTab(QSharedPointer<ModelData> model)
 void Window_Admin::setModel_PaymentsTab(QSharedPointer<ModelData> model)
 {
     payments->setModel(model);
+}
+
+void Window_Admin::setModel_ProfitTab(QSharedPointer<ModelData> model)
+{
+
 }
 
 
@@ -172,26 +180,23 @@ void Window_Admin::on_payments_clicked()
     onNavigationsButton_clicked();
 }
 
+void Window_Admin::on_profit_clicked()
+{
+    onNavigationsButton_clicked();
+}
+
 /////////////////РЕНДЕР/////////////////
 
 void Window_Admin::completionTabWidget()
 {
     ui->tabWidget->tabBar()->hide();
 
-    if(role == Roles::User)
-    {
-        rendoringForUser();
-    }
 
     if(role == Roles::TableManager)
-    {
         rendoringForTableManager();
-    }
 
     if(role == Roles::Admin)
-    {
         rendoringForAdmin();
-    }
 }
 
 void Window_Admin::rendoringForTableManager()
@@ -215,19 +220,7 @@ void Window_Admin::rendoringForAdmin()
     rendering_StuffUsersTab();
     rendering_CreditsTab();
     rendering_PaymentsTab();
-}
-
-void Window_Admin::rendoringForUser()
-{
-    rendering_WelcomeTab();
-
-    ui->activeTables->hide();
-    ui->users->hide();
-    ui->stuffUsers->hide();
-    ui->banList->hide();
-    ui->stuffUsers->hide();
-    ui->credits->hide();
-    ui->payments->hide();
+    rendering_ProfitTab();
 }
 
 void Window_Admin::rendering_ActiveTablesTab()
@@ -270,4 +263,9 @@ void Window_Admin::rendering_PaymentsTab()
 {
     payments = QSharedPointer<Payments>::create();
     ui->tabWidget->addTab(payments.data(), "");
+}
+
+void Window_Admin::rendering_ProfitTab()
+{
+
 }

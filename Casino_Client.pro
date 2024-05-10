@@ -39,7 +39,6 @@ SOURCES += \
     GUI/WorkingWithRecords/Admin/w_table.cpp \
     GUI/window_player.cpp \
     Games/BlackDjack/GUI/InterfaceElements/blackjackbackground.cpp \
-    Games/BlackDjack/GUI/blackjackwindow.cpp \
     Games/BlackDjack/GUI/blacljackwidget.cpp \
     Games/InterfaceElements/playericon.cpp \
     Games/InterfaceElements/playersiconswidget.cpp \
@@ -48,7 +47,6 @@ SOURCES += \
     Games/blackjack.cpp \
     Games/card.cpp \
     Games/deck.cpp \
-    Games/gamer.cpp \
     Gui/Filters/Admin/f_credit.cpp \
     Gui/Filters/Admin/f_payment.cpp \
     Gui/Filters/Admin/f_table.cpp \
@@ -105,7 +103,6 @@ HEADERS += \
     GUI/window_player.h \
     Games/BlackDjack/BlackJackGamePackets.h \
     Games/BlackDjack/GUI/InterfaceElements/blackjackbackground.h \
-    Games/BlackDjack/GUI/blackjackwindow.h \
     Games/BlackDjack/GUI/blacljackwidget.h \
     Games/BlackDjack/constant.h \
     Games/InterfaceElements/playericon.h \
@@ -117,7 +114,6 @@ HEADERS += \
     Games/cardRank.h \
     Games/cardSuit.h \
     Games/deck.h \
-    Games/gamer.h \
     Gui/Filters/Admin/f_credit.h \
     Gui/Filters/Admin/f_payment.h \
     Gui/Filters/Admin/f_table.h \
@@ -167,7 +163,6 @@ FORMS += \
     GUI/WorkingWithRecords/Admin/w_table.ui \
     GUI/window_player.ui \
     Games/BlackDjack/GUI/InterfaceElements/blackjackbackground.ui \
-    Games/BlackDjack/GUI/blackjackwindow.ui \
     Games/BlackDjack/GUI/blacljackwidget.ui \
     Games/InterfaceElements/playericon.ui \
     Games/InterfaceElements/playersiconswidget.ui \

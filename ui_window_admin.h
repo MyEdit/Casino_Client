@@ -34,19 +34,21 @@ public:
     QTabWidget *tabWidget;
     QSpacerItem *verticalSpacer;
     QGridLayout *gridLayout_3;
-    QSpacerItem *horizontalSpacer;
+    QLabel *label_6;
+    QPushButton *profit;
     QLabel *label;
-    QPushButton *banList;
-    QLabel *label_4;
-    QPushButton *stuffUsers;
-    QPushButton *credits;
+    QLabel *label_2;
     QLabel *label_5;
+    QPushButton *stuffUsers;
+    QLabel *label_4;
+    QPushButton *activeTables;
+    QPushButton *banList;
+    QPushButton *credits;
+    QLabel *label_7;
     QLabel *label_3;
     QPushButton *users;
-    QLabel *label_2;
-    QPushButton *activeTables;
+    QSpacerItem *horizontalSpacer;
     QPushButton *payments;
-    QLabel *label_6;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer_2;
     QLabel *photo;
@@ -123,27 +125,21 @@ public:
         gridLayout_3 = new QGridLayout();
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         gridLayout_3->setHorizontalSpacing(0);
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        label_6 = new QLabel(centralwidget);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        label_6->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
+        label_6->setScaledContents(true);
 
-        gridLayout_3->addItem(horizontalSpacer, 0, 0, 1, 1);
+        gridLayout_3->addWidget(label_6, 5, 2, 1, 1);
 
-        label = new QLabel(centralwidget);
-        label->setObjectName(QString::fromUtf8("label"));
-        label->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
-        label->setScaledContents(true);
-
-        gridLayout_3->addWidget(label, 4, 2, 1, 1);
-
-        banList = new QPushButton(centralwidget);
-        banList->setObjectName(QString::fromUtf8("banList"));
-        banList->setMinimumSize(QSize(0, 40));
+        profit = new QPushButton(centralwidget);
+        profit->setObjectName(QString::fromUtf8("profit"));
+        profit->setMinimumSize(QSize(0, 40));
         QFont font1;
         font1.setFamily(QString::fromUtf8("Segoe UI"));
         font1.setPointSize(12);
-        font1.setBold(false);
-        font1.setWeight(50);
-        banList->setFont(font1);
-        banList->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        profit->setFont(font1);
+        profit->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
 "	color: rgb(255, 255, 255);\n"
@@ -155,19 +151,39 @@ public:
 "font-weight: bold;\n"
 "}s"));
 
-        gridLayout_3->addWidget(banList, 3, 1, 1, 1);
+        gridLayout_3->addWidget(profit, 6, 1, 1, 1);
 
-        label_4 = new QLabel(centralwidget);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
-        label_4->setScaledContents(true);
+        label = new QLabel(centralwidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
+        label->setScaledContents(true);
 
-        gridLayout_3->addWidget(label_4, 2, 2, 1, 1);
+        gridLayout_3->addWidget(label, 4, 2, 1, 1);
+
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setEnabled(true);
+        label_2->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
+        label_2->setScaledContents(true);
+
+        gridLayout_3->addWidget(label_2, 0, 2, 1, 1);
+
+        label_5 = new QLabel(centralwidget);
+        label_5->setObjectName(QString::fromUtf8("label_5"));
+        label_5->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
+        label_5->setScaledContents(true);
+
+        gridLayout_3->addWidget(label_5, 3, 2, 1, 1);
 
         stuffUsers = new QPushButton(centralwidget);
         stuffUsers->setObjectName(QString::fromUtf8("stuffUsers"));
         stuffUsers->setMinimumSize(QSize(0, 40));
-        stuffUsers->setFont(font1);
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Segoe UI"));
+        font2.setPointSize(12);
+        font2.setBold(false);
+        font2.setWeight(50);
+        stuffUsers->setFont(font2);
         stuffUsers->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
@@ -182,68 +198,17 @@ public:
 
         gridLayout_3->addWidget(stuffUsers, 2, 1, 1, 1);
 
-        credits = new QPushButton(centralwidget);
-        credits->setObjectName(QString::fromUtf8("credits"));
-        credits->setMinimumSize(QSize(0, 40));
-        credits->setFont(font1);
-        credits->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background: transparent;\n"
-"    border: none;\n"
-"	color: rgb(255, 255, 255);\n"
-"	padding: 5px;\n"
-"	text-align: left;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"font-weight: bold;\n"
-"}s"));
+        label_4 = new QLabel(centralwidget);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
+        label_4->setScaledContents(true);
 
-        gridLayout_3->addWidget(credits, 4, 1, 1, 1);
-
-        label_5 = new QLabel(centralwidget);
-        label_5->setObjectName(QString::fromUtf8("label_5"));
-        label_5->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
-        label_5->setScaledContents(true);
-
-        gridLayout_3->addWidget(label_5, 3, 2, 1, 1);
-
-        label_3 = new QLabel(centralwidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
-        label_3->setScaledContents(true);
-
-        gridLayout_3->addWidget(label_3, 1, 2, 1, 1);
-
-        users = new QPushButton(centralwidget);
-        users->setObjectName(QString::fromUtf8("users"));
-        users->setMinimumSize(QSize(0, 40));
-        users->setFont(font1);
-        users->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"	background: transparent;\n"
-"    border: none;\n"
-"	color: rgb(255, 255, 255);\n"
-"	padding: 5px;\n"
-"	text-align: left;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"font-weight: bold;\n"
-"}s"));
-
-        gridLayout_3->addWidget(users, 1, 1, 1, 1);
-
-        label_2 = new QLabel(centralwidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setEnabled(true);
-        label_2->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
-        label_2->setScaledContents(true);
-
-        gridLayout_3->addWidget(label_2, 0, 2, 1, 1);
+        gridLayout_3->addWidget(label_4, 2, 2, 1, 1);
 
         activeTables = new QPushButton(centralwidget);
         activeTables->setObjectName(QString::fromUtf8("activeTables"));
         activeTables->setMinimumSize(QSize(0, 40));
-        activeTables->setFont(font1);
+        activeTables->setFont(font2);
         activeTables->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
@@ -258,10 +223,82 @@ public:
 
         gridLayout_3->addWidget(activeTables, 0, 1, 1, 1);
 
+        banList = new QPushButton(centralwidget);
+        banList->setObjectName(QString::fromUtf8("banList"));
+        banList->setMinimumSize(QSize(0, 40));
+        banList->setFont(font2);
+        banList->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
+"	color: rgb(255, 255, 255);\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"font-weight: bold;\n"
+"}s"));
+
+        gridLayout_3->addWidget(banList, 3, 1, 1, 1);
+
+        credits = new QPushButton(centralwidget);
+        credits->setObjectName(QString::fromUtf8("credits"));
+        credits->setMinimumSize(QSize(0, 40));
+        credits->setFont(font2);
+        credits->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
+"	color: rgb(255, 255, 255);\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"font-weight: bold;\n"
+"}s"));
+
+        gridLayout_3->addWidget(credits, 4, 1, 1, 1);
+
+        label_7 = new QLabel(centralwidget);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+        label_7->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
+        label_7->setScaledContents(true);
+
+        gridLayout_3->addWidget(label_7, 6, 2, 1, 1);
+
+        label_3 = new QLabel(centralwidget);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
+        label_3->setScaledContents(true);
+
+        gridLayout_3->addWidget(label_3, 1, 2, 1, 1);
+
+        users = new QPushButton(centralwidget);
+        users->setObjectName(QString::fromUtf8("users"));
+        users->setMinimumSize(QSize(0, 40));
+        users->setFont(font2);
+        users->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
+"	color: rgb(255, 255, 255);\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"font-weight: bold;\n"
+"}s"));
+
+        gridLayout_3->addWidget(users, 1, 1, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+
+        gridLayout_3->addItem(horizontalSpacer, 0, 0, 1, 1);
+
         payments = new QPushButton(centralwidget);
         payments->setObjectName(QString::fromUtf8("payments"));
         payments->setMinimumSize(QSize(175, 40));
-        payments->setFont(font1);
+        payments->setFont(font2);
         payments->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
@@ -275,13 +312,6 @@ public:
 "}s"));
 
         gridLayout_3->addWidget(payments, 5, 1, 1, 1);
-
-        label_6 = new QLabel(centralwidget);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
-        label_6->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/recess.png")));
-        label_6->setScaledContents(true);
-
-        gridLayout_3->addWidget(label_6, 5, 2, 1, 1);
 
 
         gridLayout->addLayout(gridLayout_3, 8, 0, 2, 2);
@@ -305,12 +335,12 @@ public:
         fullNameEmployee = new QLabel(centralwidget);
         fullNameEmployee->setObjectName(QString::fromUtf8("fullNameEmployee"));
         fullNameEmployee->setMinimumSize(QSize(20, 0));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("Segoe UI"));
-        font2.setPointSize(14);
-        font2.setBold(true);
-        font2.setWeight(75);
-        fullNameEmployee->setFont(font2);
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("Segoe UI"));
+        font3.setPointSize(14);
+        font3.setBold(true);
+        font3.setWeight(75);
+        fullNameEmployee->setFont(font3);
         fullNameEmployee->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	color: rgb(255, 255, 255);\n"
 "}"));
@@ -321,7 +351,7 @@ public:
 
         post = new QLabel(centralwidget);
         post->setObjectName(QString::fromUtf8("post"));
-        post->setFont(font2);
+        post->setFont(font3);
         post->setStyleSheet(QString::fromUtf8("QLabel {\n"
 "	color: rgb(255, 255, 255);\n"
 "}"));
@@ -343,7 +373,7 @@ public:
         buttonChangeUser = new QPushButton(centralwidget);
         buttonChangeUser->setObjectName(QString::fromUtf8("buttonChangeUser"));
         buttonChangeUser->setMinimumSize(QSize(250, 0));
-        buttonChangeUser->setFont(font1);
+        buttonChangeUser->setFont(font2);
         buttonChangeUser->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
 "    border: none;\n"
@@ -376,17 +406,19 @@ public:
     {
         Window_Admin->setWindowTitle(QApplication::translate("Window_Admin", "\320\234\320\265\320\275\321\216 \321\201\320\276\321\202\321\200\321\203\320\264\320\275\320\270\320\272\320\260", nullptr));
         buttonExit->setText(QApplication::translate("Window_Admin", "\320\222\321\213\321\205\320\276\320\264", nullptr));
-        banList->setText(QApplication::translate("Window_Admin", "\320\247\321\221\321\200\320\275\321\213\320\271 \321\201\320\277\320\270\321\201\320\276\320\272", nullptr));
-        label_4->setText(QString());
-        stuffUsers->setText(QApplication::translate("Window_Admin", "\320\241\320\276\321\202\321\200\321\203\320\264\320\275\320\270\320\272\320\270", nullptr));
-        credits->setText(QApplication::translate("Window_Admin", "\320\227\320\260\321\217\320\262\320\272\320\270 \320\275\320\260 \320\272\321\200\320\265\320\264\320\270\321\202\321\213", nullptr));
+        label_6->setText(QString());
+        profit->setText(QApplication::translate("Window_Admin", "\320\237\321\200\320\270\320\261\321\213\320\273\321\214 \320\272\320\260\320\267\320\270\320\275\320\276", nullptr));
+        label_2->setText(QString());
         label_5->setText(QString());
+        stuffUsers->setText(QApplication::translate("Window_Admin", "\320\241\320\276\321\202\321\200\321\203\320\264\320\275\320\270\320\272\320\270", nullptr));
+        label_4->setText(QString());
+        activeTables->setText(QApplication::translate("Window_Admin", "\320\230\320\263\321\200\320\276\320\262\321\213\320\265 \321\201\321\202\320\276\320\273\321\213", nullptr));
+        banList->setText(QApplication::translate("Window_Admin", "\320\247\321\221\321\200\320\275\321\213\320\271 \321\201\320\277\320\270\321\201\320\276\320\272", nullptr));
+        credits->setText(QApplication::translate("Window_Admin", "\320\227\320\260\321\217\320\262\320\272\320\270 \320\275\320\260 \320\272\321\200\320\265\320\264\320\270\321\202\321\213", nullptr));
+        label_7->setText(QString());
         label_3->setText(QString());
         users->setText(QApplication::translate("Window_Admin", "\320\237\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\320\265\320\273\320\270", nullptr));
-        label_2->setText(QString());
-        activeTables->setText(QApplication::translate("Window_Admin", "\320\230\320\263\321\200\320\276\320\262\321\213\320\265 \321\201\321\202\320\276\320\273\321\213", nullptr));
         payments->setText(QApplication::translate("Window_Admin", "\320\230\321\201\321\202\320\276\321\200\320\270\321\217 \321\202\321\200\320\260\320\275\320\267\320\260\320\272\321\206\320\270\320\271", nullptr));
-        label_6->setText(QString());
         photo->setText(QString());
         fullNameEmployee->setText(QApplication::translate("Window_Admin", "\320\230\320\262\320\260\320\275\320\276\320\262 \320\230.\320\230.", nullptr));
         post->setText(QApplication::translate("Window_Admin", "\320\220\320\264\320\274\320\270\320\275\320\270\321\201\321\202\321\200\320\260\321\202\320\276\321\200", nullptr));

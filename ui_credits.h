@@ -52,8 +52,8 @@ public:
     QComboBox *typeSorting;
     QCheckBox *sorting;
     QSpacerItem *horizontalSpacer_13;
-    QPushButton *clearFilter;
     QPushButton *addFilter;
+    QPushButton *clearFilter;
     QHBoxLayout *horizontalLayout;
     QLabel *label_7;
     QLabel *labelWhatKindSorting;
@@ -289,31 +289,6 @@ public:
 
         horizontalLayout_8->addItem(horizontalSpacer_13);
 
-        clearFilter = new QPushButton(Credits);
-        clearFilter->setObjectName(QString::fromUtf8("clearFilter"));
-        clearFilter->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: white;\n"
-"    border: 1px solid black;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px;\n"
-"    color: black;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(100, 88, 255);\n"
-"	color: white;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: rgba(220, 60, 190, 255);\n"
-"}"));
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8(":/icons/resources/clearFilter.png"), QSize(), QIcon::Normal, QIcon::Off);
-        clearFilter->setIcon(icon3);
-        clearFilter->setIconSize(QSize(24, 24));
-
-        horizontalLayout_8->addWidget(clearFilter);
-
         addFilter = new QPushButton(Credits);
         addFilter->setObjectName(QString::fromUtf8("addFilter"));
         addFilter->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -332,12 +307,37 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon4;
-        icon4.addFile(QString::fromUtf8(":/icons/resources/addFilter.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addFilter->setIcon(icon4);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/icons/resources/addFilter.png"), QSize(), QIcon::Normal, QIcon::Off);
+        addFilter->setIcon(icon3);
         addFilter->setIconSize(QSize(24, 24));
 
         horizontalLayout_8->addWidget(addFilter);
+
+        clearFilter = new QPushButton(Credits);
+        clearFilter->setObjectName(QString::fromUtf8("clearFilter"));
+        clearFilter->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/icons/resources/clearFilter.png"), QSize(), QIcon::Normal, QIcon::Off);
+        clearFilter->setIcon(icon4);
+        clearFilter->setIconSize(QSize(24, 24));
+
+        horizontalLayout_8->addWidget(clearFilter);
 
 
         verticalLayout->addLayout(horizontalLayout_8);
@@ -597,8 +597,8 @@ public:
         typeSorting->setItemText(1, QApplication::translate("Credits", "\321\203\320\261\321\213\320\262\320\260\320\275\320\270\321\216", nullptr));
 
         sorting->setText(QApplication::translate("Credits", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
-        clearFilter->setText(QString());
         addFilter->setText(QString());
+        clearFilter->setText(QString());
         label_7->setText(QApplication::translate("Credits", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260:", nullptr));
         labelWhatKindSorting->setText(QApplication::translate("Credits", "\320\276\321\202\321\201\321\203\321\202\321\201\321\202\320\262\321\203\320\265\321\202", nullptr));
         addCredit->setText(QString());

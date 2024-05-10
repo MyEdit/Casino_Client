@@ -48,6 +48,7 @@ public:
     void setModel_StuffUsersTab(QSharedPointer<ModelData> model);
     void setModel_CreditsTab(QSharedPointer<ModelData> model);
     void setModel_PaymentsTab(QSharedPointer<ModelData> model);
+    void setModel_ProfitTab(QSharedPointer<ModelData> model);
 
 private:
     void assigningValues() override;
@@ -58,13 +59,13 @@ private:
     void rendering_StuffUsersTab();
     void rendering_CreditsTab();
     void rendering_PaymentsTab();
+    void rendering_ProfitTab();
     void rendering_WelcomeTab() override;
     void uploadingPhotoEmployee();
     void settingUserInformation() override;
     const QString definingrRole();
     void rendoringForTableManager();
     void rendoringForAdmin();
-    void rendoringForUser();
     void connects() override;
 
 private slots:
@@ -74,6 +75,7 @@ private slots:
     void on_banList_clicked();
     void on_credits_clicked();
     void on_payments_clicked();
+    void on_profit_clicked();
 };
 
 #endif // WINDOW_ADMIN_H

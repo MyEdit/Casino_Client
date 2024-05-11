@@ -1,5 +1,9 @@
 ﻿#include "game.h"
 
+Game::Game()
+{
+    initPacketHandlerFunction();
+}
 
 Game::Game(const QString nameGame)
 {

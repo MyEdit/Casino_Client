@@ -34,7 +34,7 @@ protected:
     QMap<GamePackets, std::function<void()>> gamePacketFunction;
 
 public:
-    Game() {}
+    Game();
     Game(const QString nameGame);
 
     const QString& getName();

@@ -9,7 +9,6 @@
 #include "Users/player.h"
 #include "Games/blackjack.h"
 #include "BaseClass/baseclassgamewidget.h"
-#include "Games/BlackDjack/BlackJackGamePackets.h"
 
 class PlayersIconsWidget;
 class Player;
@@ -43,13 +42,12 @@ private:
     void resizeEvent(QResizeEvent *event) override;
     void connects();
     void closeEvent(QCloseEvent* event) override;
-    void updateTimer(const QString& time);
+    void updateTimer(const QString& time) override;
     void takeCard();
     void pass();
-    void turn(GamePackets gamePacket);
-    void clearCardOnTable();
+    void clearCardOnTable() override;
     void changeEvent(QEvent *event) override;
-    void setMyScore(int score);
+    void setMyScore(int score) override;
 
 private slots:
     void finished(bool isWin) override;

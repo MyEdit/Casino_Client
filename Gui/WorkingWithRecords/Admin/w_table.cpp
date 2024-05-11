@@ -43,7 +43,7 @@ void W_Table::on_bottonSave_clicked()
 
 const QString W_Table::getMaxPlayers()
 {
-    return ui->InputMaxPlayer->text();
+    return ui->InputMaxPlayer->currentText();
 }
 
 
@@ -69,7 +69,7 @@ const QString W_Table::getNameGame()
 
 void W_Table::loadComboBoxNameGame()
 {
-    //TODO: Нужно будет переделать на заполнение на основании загруженных плагинов
+    //TODO: Нужно будет переделать на заполнение на основании зарегистрированных игр
     ui->nameGame->addItem("Девятка");
     ui->nameGame->addItem("BlackJack");
 }
@@ -85,7 +85,7 @@ void W_Table::clearInput()
 
 void W_Table::setDefaultValues()
 {
-    ui->InputMaxPlayer->setText(defaultActiveTable->getMaxPlayers());
+    ui->InputMaxPlayer->setCurrentText(defaultActiveTable->getMaxPlayers());
     ui->InputMinBet->setText(defaultActiveTable->getMinBet());
     ui->InputBetStep->setText(defaultActiveTable->getBetStep());
     ui->InputMinBalance->setText(defaultActiveTable->getMinBalance());

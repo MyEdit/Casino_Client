@@ -20,6 +20,7 @@ class PlayersIconsWidget : public QWidget
     Ui::PlayersIconsWidget *ui;
     QList<QSharedPointer<PlayerIcon>> playerIcons;
     QMap<QSharedPointer<PlayerIcon>, QVBoxLayout*> widgetLayer;
+    const int maxPlayers {7};
 
 public:
     explicit PlayersIconsWidget(QWidget* parent = nullptr);

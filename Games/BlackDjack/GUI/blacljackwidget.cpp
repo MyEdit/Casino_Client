@@ -85,23 +85,12 @@ void BlaclJackWidget::connects()
 
 void BlaclJackWidget::takeCard()
 {
-    this->turn(GamePackets::P_TakeCard);
-    blocingInterface(false);
+    game->takeCard();
 }
 
 void BlaclJackWidget::pass()
 {
-    this->turn(GamePackets::P_PassMove);
-    blocingInterface(false);
-}
-
-void BlaclJackWidget::turn(GamePackets gamePacket)
-{
-    int tableID = this->game->getTableID();
-    PacketTypes packettype = PacketTypes::P_GamePacket;
-    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
-    NetworkClient::sendToServer(&tableID, sizeof(int));
-    NetworkClient::sendToServer(&gamePacket, sizeof(GamePackets));
+    game->pass();
 }
 
 void BlaclJackWidget::clearCardOnTable()

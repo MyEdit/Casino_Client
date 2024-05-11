@@ -30,7 +30,6 @@ public:
     QLabel *labelBetStep;
     QLineEdit *InputMinBalance;
     QLineEdit *InputMinBet;
-    QLineEdit *InputMaxPlayer;
     QLabel *labelNameGame;
     QComboBox *nameGame;
     QLabel *labelMaxPlayer;
@@ -41,6 +40,7 @@ public:
     QPushButton *buttonReset;
     QSpacerItem *horizontalSpacer;
     QPushButton *bottonSave;
+    QComboBox *InputMaxPlayer;
 
     void setupUi(QWidget *W_Table)
     {
@@ -89,14 +89,6 @@ public:
         InputMinBet->setFont(font1);
 
         gridLayout->addWidget(InputMinBet, 1, 1, 1, 1);
-
-        InputMaxPlayer = new QLineEdit(W_Table);
-        InputMaxPlayer->setObjectName(QString::fromUtf8("InputMaxPlayer"));
-        sizePolicy1.setHeightForWidth(InputMaxPlayer->sizePolicy().hasHeightForWidth());
-        InputMaxPlayer->setSizePolicy(sizePolicy1);
-        InputMaxPlayer->setFont(font1);
-
-        gridLayout->addWidget(InputMaxPlayer, 0, 1, 1, 1);
 
         labelNameGame = new QLabel(W_Table);
         labelNameGame->setObjectName(QString::fromUtf8("labelNameGame"));
@@ -204,6 +196,23 @@ public:
 
         gridLayout->addLayout(horizontalLayout_4, 6, 0, 1, 2);
 
+        InputMaxPlayer = new QComboBox(W_Table);
+        InputMaxPlayer->addItem(QString());
+        InputMaxPlayer->addItem(QString());
+        InputMaxPlayer->addItem(QString());
+        InputMaxPlayer->addItem(QString());
+        InputMaxPlayer->addItem(QString());
+        InputMaxPlayer->addItem(QString());
+        InputMaxPlayer->setObjectName(QString::fromUtf8("InputMaxPlayer"));
+        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(InputMaxPlayer->sizePolicy().hasHeightForWidth());
+        InputMaxPlayer->setSizePolicy(sizePolicy2);
+        InputMaxPlayer->setFont(font1);
+
+        gridLayout->addWidget(InputMaxPlayer, 0, 1, 1, 1);
+
 
         gridLayout_2->addLayout(gridLayout, 0, 0, 1, 1);
 
@@ -225,6 +234,13 @@ public:
         labelMinBalance->setText(QApplication::translate("W_Table", "\320\234\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\321\213\320\271 \320\261\321\216\320\264\320\266\320\265\321\202:", nullptr));
         buttonReset->setText(QApplication::translate("W_Table", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
         bottonSave->setText(QApplication::translate("W_Table", "\320\241\320\276\321\205\321\200\320\260\320\275\320\270\321\202\321\214", nullptr));
+        InputMaxPlayer->setItemText(0, QApplication::translate("W_Table", "2", nullptr));
+        InputMaxPlayer->setItemText(1, QApplication::translate("W_Table", "3", nullptr));
+        InputMaxPlayer->setItemText(2, QApplication::translate("W_Table", "4", nullptr));
+        InputMaxPlayer->setItemText(3, QApplication::translate("W_Table", "5", nullptr));
+        InputMaxPlayer->setItemText(4, QApplication::translate("W_Table", "6", nullptr));
+        InputMaxPlayer->setItemText(5, QApplication::translate("W_Table", "7", nullptr));
+
     } // retranslateUi
 
 };

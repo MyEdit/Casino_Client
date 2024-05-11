@@ -4,10 +4,11 @@
 #include <array>
 #include <vector>
 #include "card.h"
-#include "Games/BlackDjack/constant.h"
 
 class Deck
 {
+    static constexpr int deckSize = 52;
+
 public:
     using array_type = std::array<Card, deckSize>;
     using index_type = array_type::size_type;

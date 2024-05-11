@@ -30,7 +30,7 @@ protected:
     QString nameGame{};
     int minPlayers{2};
     QWidget* menu;
-    BaseClassGameWidget* GUI {};
+    QSharedPointer<BaseClassGameWidget> GUI;
     QMap<GamePackets, std::function<void()>> gamePacketFunction;
 
 public:
@@ -38,7 +38,7 @@ public:
     Game(const QString nameGame);
 
     const QString& getName();
-    virtual BaseClassGameWidget* getGUI();
+    virtual QSharedPointer<BaseClassGameWidget> getGUI();
     virtual QSharedPointer<QByteArray> serializeGame();
     virtual void updatePlayersIcons(QList<QSharedPointer<Player>> players);
     virtual void takeCard();

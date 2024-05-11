@@ -13,6 +13,7 @@ BlaclJackWidget::BlaclJackWidget(QSharedPointer<BlackJack> game, QWidget *parent
 
 BlaclJackWidget::~BlaclJackWidget()
 {
+    Message::logWarn("BlaclJackWidget");
     delete ui;
 }
 

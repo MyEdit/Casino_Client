@@ -124,7 +124,7 @@ void Table::openGameGUI()
 
 void Table::updatePlayers()
 {
-    P_Authorization::getPlayer()->getGame()->updatePlayersIcons(players);
+    game->updatePlayersIcons(players);
 }
 
 QList<QSharedPointer<Table>>& Table::getCopyListTabels()

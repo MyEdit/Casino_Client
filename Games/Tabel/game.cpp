@@ -16,7 +16,7 @@ const QString& Game::getName()
     return nameGame;
 }
 
-BaseClassGameWidget *Game::getGUI()
+QSharedPointer<BaseClassGameWidget> Game::getGUI()
 {
     return GUI;
 }
@@ -93,13 +93,13 @@ int Game::getTableID()
 void Game::onGameFinished(bool isWin)
 {
     QSharedPointer<Player> player = P_Authorization::getPlayer();
-    QMetaObject::invokeMethod(GUI, "finished", Qt::QueuedConnection, Q_ARG(bool, isWin));
+    QMetaObject::invokeMethod(GUI.get(), "finished", Qt::QueuedConnection, Q_ARG(bool, isWin));
 
     GUI->clearCardOnTable();
     player->clearCardsInHand();
 
     if (player->getBalance() < Table::getTable(idTable)->getSettings().minBalance)
-        QMetaObject::invokeMethod(GUI, "insufficientBalance", Qt::QueuedConnection);
+        QMetaObject::invokeMethod(GUI.get(), "insufficientBalance", Qt::QueuedConnection);
 }
 
 void Game::renderTakeCard(QSharedPointer<Card> card)
@@ -115,7 +115,7 @@ void Game::renderTakeCardAnotherPlayer(const QString &nicname)
 
 void Game::unlockInterface(const QString &nickname)
 {
-    P_Authorization::getPlayer()->getGame()->onUpdateGameProcessing(nickname);
+    onUpdateGameProcessing(nickname);
     GUI->blocingInterface(true);
 }
 

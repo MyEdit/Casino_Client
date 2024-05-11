@@ -60,6 +60,7 @@ SOURCES += \
     Network/PacketsActions/p_authorization.cpp \
     Network/PacketsActions/p_connectplayertotable.cpp \
     Network/PacketsActions/p_gamepacket.cpp \
+    Network/PacketsActions/p_leave.cpp \
     Network/PacketsActions/p_notification.cpp \
     Network/PacketsActions/p_query.cpp \
     Network/PacketsActions/p_reconnection.cpp \
@@ -127,6 +128,7 @@ HEADERS += \
     Network/PacketTypes.h \
     Network/PacketsActions/p_authorization.h \
     Network/PacketsActions/p_connectplayertotable.h \
+    Network/PacketsActions/p_leave.h \
     Network/PacketsActions/p_notification.h \
     Network/PacketsActions/p_query.h \
     Network/PacketsActions/p_reconnection.h \

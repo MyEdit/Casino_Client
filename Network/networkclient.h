@@ -12,6 +12,7 @@
 #include "Network/PacketsActions/p_sendmodel.h"
 #include "Network/packethandler.h"
 #include "Network/PacketsActions/p_reconnection.h"
+#include "Network/PacketsActions/p_leave.h"
 
 class PacketHandler;
 

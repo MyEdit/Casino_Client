@@ -127,6 +127,7 @@ void BaseClassSearchWindow::deleteRecord(const QString& table, const QString& id
     PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
 
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&modelTypes, sizeof(ModelTypes));
     NetworkClient::sendToServer(&actionType, sizeof(QueryTypes));
     NetworkClient::sendToServer(query);
 

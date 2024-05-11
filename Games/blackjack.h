@@ -18,7 +18,6 @@ public:
     BlackJack() {}
     BlackJack(int idTable, const QString& name);
     BlackJack(int idTable, QSharedPointer<QByteArray> data);
-    ~BlackJack();
 
     //Methods
     bool isBust(); //Проверка перебора

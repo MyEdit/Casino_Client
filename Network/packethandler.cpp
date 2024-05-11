@@ -57,6 +57,7 @@ void PacketHandler::initPacketHandlerFunction()
         {PacketTypes::P_Search,                     [&]() {emit signalResultSearch(P_Search::getResultSearchFromServer());}},
         {PacketTypes::P_UpdateBalance,              [&]() {emit signalUpdateBalance(P_UpdateBalance::getNewBalance());}},
         {PacketTypes::P_Update,                     [&]() {emit signalUpdateTable(P_Update::getModelFromServer());}},
+        {PacketTypes::P_PlayerLeaveTable,           [&]() {emit signalLeave();}}
     };
 }
 

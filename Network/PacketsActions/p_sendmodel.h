@@ -18,8 +18,6 @@ public:
 
 private:
     static QMap<ModelTypes, QString> tableNames;
-    static QMap<ModelTypes, std::function<void(QSharedPointer<ModelData>)>> setModelFunctions;
-    static void initMapFunctions();
 
     friend class NetworkClient;
 };

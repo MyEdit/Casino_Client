@@ -1,6 +1,5 @@
 ﻿#include "p_sendmodel.h"
 
-QMap<ModelTypes, std::function<void(QSharedPointer<ModelData>)>> P_SendModel::setModelFunctions;
 QMap<ModelTypes, QString> P_SendModel::tableNames;
 
 QSharedPointer<ModelData> P_SendModel::getModelFromServer()
@@ -16,62 +15,13 @@ QSharedPointer<ModelData> P_SendModel::getModelFromServer()
 
 void P_SendModel::setModel(QSharedPointer<ModelData> set)
 {
-    ModelTypes modeltype = set->modelTypes;
+    if(P_Authorization::adminW)
+        P_Authorization::adminW->setModel(set);
+    else if(P_Authorization::playerW)
+        P_Authorization::playerW->setModel(set);
 
-    if (setModelFunctions.size() == 0)
-        initMapFunctions();
-
-    if (!setModelFunctions.contains(modeltype))
-    {
-        Message::logWarn("Unknown model type");
-        return;
-    }
-
-    if(!P_Authorization::adminW && !P_Authorization::playerW)
-        return;
-
-    setModelFunctions[modeltype](set);
 }
 
-//Инициилизирует мапу ModelTypes -> Функция добавления модели
-void P_SendModel::initMapFunctions()
-{
-    setModelFunctions.insert(ModelTypes::Users, [&](QSharedPointer<ModelData> model)
-    {
-        P_Authorization::adminW->setModel_UsersTab(model);
-    });
-
-    setModelFunctions.insert(ModelTypes::ActiveTables, [&](QSharedPointer<ModelData> model)
-    {
-        P_Authorization::adminW->setModel_ActiveTablesTab(model);
-    });
-
-    setModelFunctions.insert(ModelTypes::Banlist, [&](QSharedPointer<ModelData> model)
-    {
-        P_Authorization::adminW->setModel_BanListTab(model);
-    });
-
-    setModelFunctions.insert(ModelTypes::StuffUsers, [&](QSharedPointer<ModelData> model)
-    {
-        P_Authorization::adminW->setModel_StuffUsersTab(model);
-    });
-
-    setModelFunctions.insert(ModelTypes::Payments, [&](QSharedPointer<ModelData> model)
-    {
-        if(P_Authorization::adminW)
-            P_Authorization::adminW->setModel_PaymentsTab(model);
-        else
-            P_Authorization::playerW->setModel_PaymentsTab(model);
-    });
-
-    setModelFunctions.insert(ModelTypes::Credits, [&](QSharedPointer<ModelData> model)
-    {
-        if(P_Authorization::adminW)
-            P_Authorization::adminW->setModel_CreditsTab(model);
-        else
-            P_Authorization::playerW->setModel_CreditsTab(model);
-    });
-}
 
 void P_SendModel::initMapTableNames()
 {
@@ -81,6 +31,7 @@ void P_SendModel::initMapTableNames()
     tableNames.insert(ModelTypes::Banlist, "Banlist");
     tableNames.insert(ModelTypes::Credits, "Credits");
     tableNames.insert(ModelTypes::Payments, "Payments");
+    tableNames.insert(ModelTypes::Profit, "Profit");
 }
 
 const QString& P_SendModel::getTableName(ModelTypes modelType)

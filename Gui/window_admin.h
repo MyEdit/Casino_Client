@@ -8,6 +8,7 @@
 #include "Gui/TabWidgets/welcome.h"
 #include "Gui/TabWidgets/Admin/credits.h"
 #include "Gui/TabWidgets/Admin/payments.h"
+#include "Gui/TabWidgets/Admin/profit.h"
 #include "Network/networkclient.h"
 #include "Utils/windowtracker.h"
 #include "BaseClass/baseclassmainmenu.h"
@@ -20,6 +21,7 @@ class StuffUsers;
 class BanList;
 class Credits;
 class Payments;
+class Profit;
 
 namespace Ui {
 class Window_Admin;
@@ -36,19 +38,18 @@ class Window_Admin : public BaseClassMainMenu
     QSharedPointer<BanList> banList;
     QSharedPointer<Credits> credits;
     QSharedPointer<Payments> payments;
+    QSharedPointer<Profit> profit;
     QSharedPointer<Welcome> welcomeTab;
+    QMap<Roles, QString> nameRole;
+    QMap<ModelTypes, std::function<void(QSharedPointer<ModelData>)>> setModelFunction;
+    QMap<ModelTypes, std::function<void()>> updateTableFunction;
 
 public:
     explicit Window_Admin(QWidget *parent = nullptr);
     ~Window_Admin();
 
-    void setModel_UsersTab(QSharedPointer<ModelData> model);
-    void setModel_ActiveTablesTab(QSharedPointer<ModelData> model);
-    void setModel_BanListTab(QSharedPointer<ModelData> model);
-    void setModel_StuffUsersTab(QSharedPointer<ModelData> model);
-    void setModel_CreditsTab(QSharedPointer<ModelData> model);
-    void setModel_PaymentsTab(QSharedPointer<ModelData> model);
-    void setModel_ProfitTab(QSharedPointer<ModelData> model);
+    void setModel(QSharedPointer<ModelData> set);
+    void updateTable(ModelTypes modelType);
 
 private:
     void assigningValues() override;
@@ -67,6 +68,8 @@ private:
     void rendoringForTableManager();
     void rendoringForAdmin();
     void connects() override;
+    void initSetModelFunction();
+    void initUpdateTableFunction();
 
 private slots:
     void on_activeTables_clicked();

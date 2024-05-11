@@ -103,19 +103,43 @@ void Window_Player::setTabels()
     gameTabels->updateTables();
 }
 
-void Window_Player::setModel_CreditsTab(QSharedPointer<ModelData> model)
-{
-    playerCredits->setModel(model);
-}
-
-void Window_Player::setModel_PaymentsTab(QSharedPointer<ModelData> model)
-{
-    payments->setModel(model);
-}
-
 void Window_Player::setNewBalance(const QString& newBalance)
 {
     ui->balance->setText(newBalance);
+}
+
+void Window_Player::setModel(QSharedPointer<ModelData> set)
+{
+    if (setModelFunction.size() == 0)
+        initSetModelFunction();
+
+    setModelFunction[set->modelTypes](set);
+}
+
+void Window_Player::updateTable(ModelTypes modelType)
+{
+    if (updateTableFunction.size() == 0)
+        initUpdateTableFunction();
+
+    updateTableFunction[modelType]();
+}
+
+void Window_Player::initSetModelFunction()
+{
+    setModelFunction =
+    {
+        {ModelTypes::Payments,      [&](QSharedPointer<ModelData> model)  {payments->setModel(model);}},
+        {ModelTypes::Credits,       [&](QSharedPointer<ModelData> model)  {playerCredits->setModel(model);}}
+    };
+}
+
+void Window_Player::initUpdateTableFunction()
+{
+    updateTableFunction =
+    {
+        {ModelTypes::Payments,      [&]()  {payments->update();}},
+        {ModelTypes::Credits,       [&]()  {playerCredits->update();}}
+    };
 }
 
 void Window_Player::rendering_GameTablesTab()

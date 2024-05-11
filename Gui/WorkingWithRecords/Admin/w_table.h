@@ -19,6 +19,7 @@ class W_Table : public QWidget
     QueryTypes actionType;
     QSharedPointer<ActiveTable> defaultActiveTable;
     const PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
+    const ModelTypes modelTypes = ModelTypes::ActiveTables;
 
 public:
     explicit W_Table(const QueryTypes actionType, QSharedPointer<ActiveTable> defaultActiveTable = QSharedPointer<ActiveTable>(new ActiveTable()), QWidget *parent = nullptr);
@@ -42,9 +43,6 @@ private:
 
     const QString getInsertQuery(QSharedPointer<ActiveTable> activeTable);
     const QString getUpdateQuery(QSharedPointer<ActiveTable> activeTable);
-
-signals:
-    void update();
 };
 
 #endif // ADD_TABLE_H

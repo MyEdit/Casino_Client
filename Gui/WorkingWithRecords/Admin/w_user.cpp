@@ -32,10 +32,10 @@ void W_User::on_buttonSave_clicked()
         query = getUpdateQuery(user);
 
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&modelTypes, sizeof(ModelTypes));
     NetworkClient::sendToServer(&actionType, sizeof(QueryTypes));
     NetworkClient::sendToServer(query);
 
-    emit update();
     this->close();
 }
 

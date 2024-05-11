@@ -24,15 +24,18 @@ class Window_Player : public BaseClassMainMenu
     QSharedPointer<GameTable> gameTabels;
     QSharedPointer<PlayerCredits> playerCredits;
     QSharedPointer<PlayerPayments> payments;
+    QMap<ModelTypes, std::function<void(QSharedPointer<ModelData>)>> setModelFunction;
+    QMap<ModelTypes, std::function<void()>> updateTableFunction;
+
 
 public:
     explicit Window_Player(QWidget *parent = nullptr);
     ~Window_Player();
 
     void setTabels();
-    void setModel_CreditsTab(QSharedPointer<ModelData> model);
-    void setModel_PaymentsTab(QSharedPointer<ModelData> model);
     void setNewBalance(const QString& newBalance);
+    void setModel(QSharedPointer<ModelData> set);
+    void updateTable(ModelTypes modelType);
 
 private:
     void assigningValues() override;
@@ -44,6 +47,8 @@ private:
     void rendering_GameTablesTab();
     void rendering_PlayerCreditsTab();
     void rendering_PaymentsTab();
+    void initSetModelFunction();
+    void initUpdateTableFunction();
 
 private slots:
     void on_gameTables_clicked();

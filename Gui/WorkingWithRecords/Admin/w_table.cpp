@@ -34,10 +34,10 @@ void W_Table::on_bottonSave_clicked()
 
 
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&modelTypes, sizeof(ModelTypes));
     NetworkClient::sendToServer(&actionType, sizeof(QueryTypes));
     NetworkClient::sendToServer(query);
 
-    emit update();
     this->close();
 }
 

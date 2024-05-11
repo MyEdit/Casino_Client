@@ -148,7 +148,6 @@ void Users::prepReloadModels()
 void Users::openCreatRecotd()
 {
     workingWithUser = QSharedPointer<W_User>::create(QueryTypes::CreateEntry);
-    connect(workingWithUser.get(), &W_User::update, pagination.get(), &Pagination::start);
     workingWithUser->show();
 }
 
@@ -166,7 +165,6 @@ void Users::openEditRecotd()
         return;
 
     workingWithUser = QSharedPointer<W_User>::create(QueryTypes::UpdateEntry, user);
-    connect(workingWithUser.get(), &W_User::update, pagination.get(), &Pagination::start);
     workingWithUser->show();
 }
 

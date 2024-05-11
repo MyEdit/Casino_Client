@@ -1,8 +1,6 @@
 ﻿#ifndef BASECLASSSEARCHWINDOW_H
 #define BASECLASSSEARCHWINDOW_H
 
-#include "Utils/workingistableview.h"
-
 #include <QWidget>
 #include <QVector>
 #include <QComboBox>
@@ -11,6 +9,7 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QLineEdit>
+#include "Utils/workingistableview.h"
 
 class Pagination;
 
@@ -35,6 +34,7 @@ public:
     BaseClassSearchWindow(QWidget *parent);
 
     void setModel(QSharedPointer<ModelData> model);
+    void update();
 
 protected:
     void workingWithTableView();

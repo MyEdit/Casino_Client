@@ -19,6 +19,7 @@ class W_Ban : public QWidget
     QueryTypes actionType;
     QSharedPointer<Ban> defaultBan;
     const PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
+    const ModelTypes modelTypes = ModelTypes::Banlist;
 
 public:
     explicit W_Ban(const QueryTypes actionType, QSharedPointer<Ban> defaultBan, QWidget *parent = nullptr);
@@ -36,9 +37,6 @@ private:
 
     const QString getInsertQuery(QSharedPointer<Ban> ban);
     const QString getUpdateQuery(QSharedPointer<Ban> ban);
-
-signals:
-    void update();
 };
 
 #endif // ADD_BAN_H

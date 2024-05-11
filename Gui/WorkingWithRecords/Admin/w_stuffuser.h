@@ -20,6 +20,7 @@ class W_StuffUser : public QWidget
     QueryTypes actionType;
     QSharedPointer<ObjectStuffUser> defaultStuffUser;
     const PacketTypes packettype = PacketTypes::P_QueryWithoutResponce;
+    const ModelTypes modelTypes = ModelTypes::StuffUsers;
 
 public:
     explicit W_StuffUser(const QueryTypes actionType, QSharedPointer<ObjectStuffUser> defaultStuffUser = QSharedPointer<ObjectStuffUser>(new ObjectStuffUser()), QWidget *parent = nullptr);
@@ -42,9 +43,6 @@ private:
 
     const QString getInsertQuery(QSharedPointer<ObjectStuffUser> stuffUser);
     const QString getUpdateQuery(QSharedPointer<ObjectStuffUser> stuffUser);
-
-signals:
-    void update();
 };
 
 #endif // ADD_STUFFUSER_H

@@ -52,6 +52,9 @@ void Pagination::updateTablePage()
 
 int Pagination::currentPageInModel()
 {
+    if(currentPage == 0)
+        return 1;
+
     int pageModel = currentPage % maxPageModel;
 
     if(pageModel == 0)

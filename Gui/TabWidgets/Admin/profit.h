@@ -1,30 +1,22 @@
-﻿#ifndef EXISTINGTABLES_H
-#define EXISTINGTABLES_H
+﻿#ifndef PROFIT_H
+#define PROFIT_H
 
-#include <QStandardItemModel>
-#include "Network/PacketTypes.h"
-#include <math.h>
-#include <QMessageBox>
-#include "Utils/pagination.h"
+#include <QWidget>
 #include "BaseClass/baseclasssearchwindow.h"
-#include "Gui/WorkingWithRecords/Admin/w_table.h"
-#include "Gui/Filters/Admin/f_table.h"
-
-class W_Table;
+#include "Utils/pagination.h"
 
 namespace Ui {
-class ActiveTables;
+class Profit;
 }
 
-class ActiveTables : public BaseClassSearchWindow
+class Profit : public BaseClassSearchWindow
 {
-    Ui::ActiveTables *ui;
-    QSharedPointer<W_Table> workingWithTables;
-    QSharedPointer<F_Table> filter;
+    Q_OBJECT
+    Ui::Profit *ui;
 
 public:
-    explicit ActiveTables(QWidget *parent = nullptr);
-    ~ActiveTables();
+    explicit Profit(QWidget *parent = nullptr);
+    ~Profit();
 
 private:
     void prepReloadModels() override;
@@ -48,4 +40,4 @@ private:
     void clearFilter() override;
 };
 
-#endif // EXISTINGTABLES_H
+#endif // PROFIT_H

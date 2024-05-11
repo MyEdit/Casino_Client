@@ -26,6 +26,22 @@ Window_Admin::~Window_Admin()
     delete ui;
 }
 
+void Window_Admin::setModel(QSharedPointer<ModelData> set)
+{
+    if (setModelFunction.size() == 0)
+        initSetModelFunction();
+
+    setModelFunction[set->modelTypes](set);
+}
+
+void Window_Admin::updateTable(ModelTypes modelType)
+{
+    if (updateTableFunction.size() == 0)
+        initUpdateTableFunction();
+
+    updateTableFunction[modelType]();
+}
+
 void Window_Admin::connects()
 {
     connect(ui->activeTables, &QPushButton::clicked, this, &Window_Admin::on_activeTables_clicked);
@@ -39,6 +55,34 @@ void Window_Admin::connects()
     connect(ui->buttonChangeUser, &QPushButton::clicked, this, &Window_Admin::changeUser);
 }
 
+void Window_Admin::initSetModelFunction()
+{
+    setModelFunction =
+    {
+        {ModelTypes::Users,         [&](QSharedPointer<ModelData> model)  {users->setModel(model);}},
+        {ModelTypes::ActiveTables,  [&](QSharedPointer<ModelData> model)  {activeTables->setModel(model);}},
+        {ModelTypes::Banlist,       [&](QSharedPointer<ModelData> model)  {banList->setModel(model);}},
+        {ModelTypes::StuffUsers,    [&](QSharedPointer<ModelData> model)  {stuffUsers->setModel(model);}},
+        {ModelTypes::Payments,      [&](QSharedPointer<ModelData> model)  {payments->setModel(model);}},
+        {ModelTypes::Credits,       [&](QSharedPointer<ModelData> model)  {credits->setModel(model);}},
+        {ModelTypes::Profit,        [&](QSharedPointer<ModelData> model)  {profit->setModel(model);}}
+    };
+}
+
+void Window_Admin::initUpdateTableFunction()
+{
+    updateTableFunction =
+    {
+        {ModelTypes::Users,         [&]()  {users->update();}},
+        {ModelTypes::ActiveTables,  [&]()  {activeTables->update();}},
+        {ModelTypes::Banlist,       [&]()  {banList->update();}},
+        {ModelTypes::StuffUsers,    [&]()  {stuffUsers->update();}},
+        {ModelTypes::Payments,      [&]()  {payments->update();}},
+        {ModelTypes::Credits,       [&]()  {credits->update();}},
+        {ModelTypes::Profit,        [&]()  {profit->update();}}
+    };
+}
+
 void Window_Admin::settingUserInformation()
 {
     ui->fullNameEmployee->setText(fullName);
@@ -48,28 +92,7 @@ void Window_Admin::settingUserInformation()
 
 const QString Window_Admin::definingrRole()
 {
-    QString nameRole;
-
-    switch (role)
-    {
-    case Roles::Admin:
-    {
-        nameRole = "Администратор";
-        break;
-    }
-    case Roles::TableManager:
-    {
-        nameRole = "Роспорядитель столов";
-        break;
-    }
-    default:
-    {
-        nameRole = "Не известная роль";
-        break;
-    }
-    }
-
-    return nameRole;
+    return nameRole[role];
 }
 
 void Window_Admin::uploadingPhotoEmployee()
@@ -104,43 +127,13 @@ void Window_Admin::assigningValues()
         {ui->payments, ui->label_6},
         {ui->profit, ui->label_7}
     };
+
+    nameRole =
+    {
+        {Roles::Admin, "Администратор"},
+        {Roles::TableManager, "Роспорядитель столов"}
+    };
 }
-
-void Window_Admin::setModel_UsersTab(QSharedPointer<ModelData> model)
-{
-    users->setModel(model);
-}
-
-void Window_Admin::setModel_ActiveTablesTab(QSharedPointer<ModelData> model)
-{
-    activeTables->setModel(model);
-}
-
-void Window_Admin::setModel_BanListTab(QSharedPointer<ModelData> model)
-{
-    banList->setModel(model);
-}
-
-void Window_Admin::setModel_StuffUsersTab(QSharedPointer<ModelData> model)
-{
-    stuffUsers->setModel(model);
-}
-
-void Window_Admin::setModel_CreditsTab(QSharedPointer<ModelData> model)
-{
-    credits->setModel(model);
-}
-
-void Window_Admin::setModel_PaymentsTab(QSharedPointer<ModelData> model)
-{
-    payments->setModel(model);
-}
-
-void Window_Admin::setModel_ProfitTab(QSharedPointer<ModelData> model)
-{
-
-}
-
 
 /////////////////СОБЫТИЯ/////////////////
 
@@ -182,6 +175,7 @@ void Window_Admin::on_payments_clicked()
 
 void Window_Admin::on_profit_clicked()
 {
+    ui->tabWidget->setCurrentWidget(profit.get());
     onNavigationsButton_clicked();
 }
 
@@ -191,11 +185,9 @@ void Window_Admin::completionTabWidget()
 {
     ui->tabWidget->tabBar()->hide();
 
-
     if(role == Roles::TableManager)
         rendoringForTableManager();
-
-    if(role == Roles::Admin)
+    else if(role == Roles::Admin)
         rendoringForAdmin();
 }
 
@@ -267,5 +259,6 @@ void Window_Admin::rendering_PaymentsTab()
 
 void Window_Admin::rendering_ProfitTab()
 {
-
+    profit = QSharedPointer<Profit>::create();
+    ui->tabWidget->addTab(profit.data(), "");
 }

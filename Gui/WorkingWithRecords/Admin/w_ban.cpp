@@ -31,10 +31,10 @@ void W_Ban::on_buttonSave_clicked()
         query = getUpdateQuery(ban);
 
     NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&modelTypes, sizeof(ModelTypes));
     NetworkClient::sendToServer(&actionType, sizeof(QueryTypes));
     NetworkClient::sendToServer(query);
 
-    emit update();
     this->close();
 }
 

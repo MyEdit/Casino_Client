@@ -6,7 +6,6 @@ ActiveTables::ActiveTables(QWidget *parent) :
     ui(new Ui::ActiveTables)
 {
     ui->setupUi(this);
-
     baseSetting();
 }
 
@@ -145,15 +144,12 @@ void ActiveTables::prepReloadModels()
 
     ui->pageNumberToNavigate->clear();
 
-
-
     pagination->reloadModels();
 }
 
 void ActiveTables::openCreatRecotd()
 {
     workingWithTables = QSharedPointer<W_Table>::create(QueryTypes::CreateEntry);
-    connect(workingWithTables.get(), &W_Table::update, pagination.get(), &Pagination::start);
     workingWithTables->show();
 }
 
@@ -171,7 +167,6 @@ void ActiveTables::openEditRecotd()
         return;
 
     workingWithTables = QSharedPointer<W_Table>::create(QueryTypes::UpdateEntry, activeTable);
-    connect(workingWithTables.get(), &W_Table::update, pagination.get(), &Pagination::start);
     workingWithTables->show();
 }
 

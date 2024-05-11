@@ -24,6 +24,7 @@ SOURCES += \
     GUI/Objects/Admin/objectuser.cpp \
     GUI/TabWidgets/Admin/activetables.cpp \
     GUI/TabWidgets/Admin/banlist.cpp \
+    GUI/TabWidgets/Admin/profit.cpp \
     GUI/TabWidgets/Admin/stuffusers.cpp \
     GUI/TabWidgets/Admin/users.cpp \
     GUI/TabWidgets/welcome.cpp \
@@ -65,6 +66,7 @@ SOURCES += \
     Network/PacketsActions/p_search.cpp \
     Network/PacketsActions/p_sendmodel.cpp \
     Network/PacketsActions/p_sendtables.cpp \
+    Network/PacketsActions/p_update.cpp \
     Network/PacketsActions/p_updatebalance.cpp \
     Network/PacketsActions/p_updategameprocessing.cpp \
     Network/networkclient.cpp \
@@ -87,6 +89,7 @@ HEADERS += \
     GUI/Objects/Admin/objectuser.h \
     GUI/TabWidgets/Admin/activetables.h \
     GUI/TabWidgets/Admin/banlist.h \
+    GUI/TabWidgets/Admin/profit.h \
     GUI/TabWidgets/Admin/stuffusers.h \
     GUI/TabWidgets/Admin/users.h \
     GUI/TabWidgets/welcome.h \
@@ -132,6 +135,7 @@ HEADERS += \
     Network/PacketsActions/p_search.h \
     Network/PacketsActions/p_sendmodel.h \
     Network/PacketsActions/p_sendtables.h \
+    Network/PacketsActions/p_update.h \
     Network/PacketsActions/p_updatebalance.h \
     Network/PacketsActions/p_updategameprocessing.h \
     Network/networkclient.h \
@@ -150,6 +154,7 @@ HEADERS += \
 FORMS += \
     GUI/TabWidgets/Admin/activetables.ui \
     GUI/TabWidgets/Admin/banlist.ui \
+    GUI/TabWidgets/Admin/profit.ui \
     GUI/TabWidgets/Admin/stuffusers.ui \
     GUI/TabWidgets/Admin/users.ui \
     GUI/TabWidgets/welcome.ui \

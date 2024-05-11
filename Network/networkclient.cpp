@@ -64,6 +64,7 @@ bool NetworkClient::start() const
     qRegisterMetaType<QSharedPointer<Card>>("QSharedPointer<Card>");
     qRegisterMetaType<QSharedPointer<ResultSearchInModel>>("QSharedPointer<ResultSearchInModel>");
     qRegisterMetaType<QPair<ModelTypes,QString>>("QPair<ModelTypes,QString>");
+    qRegisterMetaType<ModelTypes>("ModelTypes");
 
     packetHandler = new PacketHandler();
 
@@ -78,6 +79,7 @@ bool NetworkClient::start() const
     QObject::connect(packetHandler, &PacketHandler::signalUpdatePlayers, this, &P_ConnectPlayerToTable::updatePlayers);
     QObject::connect(packetHandler, &PacketHandler::signalUpdateGameProcessing, this, &P_UpdateGameProcessing::updateGameProcessing);
     QObject::connect(packetHandler, &PacketHandler::signalUpdateBalance, this, &P_UpdateBalance::updatePlayerBalance);
+    QObject::connect(packetHandler, &PacketHandler::signalUpdateTable, this, &P_Update::updateTable);
 
     packetHandler->start();
     return true;

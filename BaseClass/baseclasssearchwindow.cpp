@@ -61,6 +61,11 @@ void BaseClassSearchWindow::setModel(QSharedPointer<ModelData> model)
     pagination->acceptModel(model);
 }
 
+void BaseClassSearchWindow::update()
+{
+    pagination->start();
+}
+
 void BaseClassSearchWindow::sorting(int arg)
 {
     sortingOn = (arg == 2) ? true : false;

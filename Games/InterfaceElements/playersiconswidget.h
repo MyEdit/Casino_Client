@@ -5,7 +5,6 @@
 #include <QVBoxLayout>
 #include "Games/InterfaceElements/playericon.h"
 #include "Users/player.h"
-#include "Games/BlackDjack/constant.h"
 
 class PlayerIcon;
 class Player;

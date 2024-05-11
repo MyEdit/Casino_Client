@@ -11,6 +11,7 @@ class BaseClassGameWidget;
 class BlackJack : public Game
 {
     Q_OBJECT
+    int maximumScore = 21;
 
 public:
     //Constructors

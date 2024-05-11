@@ -26,8 +26,10 @@ class PacketHandler : public QThread
     Q_OBJECT
     QMap<PacketTypes, std::function<void()>> packetHandlerFunction;
 
-private:
+public:
     PacketHandler();
+
+private:
     void run() override;
     void clientHandler();
     void packetHandler(const PacketTypes packettype);

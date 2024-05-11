@@ -24,12 +24,15 @@ class Card;
 class PacketHandler : public QThread
 {
     Q_OBJECT
+    QMap<PacketTypes, std::function<void()>> packetHandlerFunction;
 
 private:
+    PacketHandler();
     void run() override;
     void clientHandler();
     void packetHandler(const PacketTypes packettype);
     void tryReconnectToServer();
+    void initPacketHandlerFunction();
 
 signals:
     void signalOpenForm(QSharedPointer<User>);

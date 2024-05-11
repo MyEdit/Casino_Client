@@ -4,6 +4,7 @@
 Game::Game(const QString nameGame)
 {
     this->nameGame = nameGame;
+    initPacketHandlerFunction();
 }
 
 const QString& Game::getName()
@@ -146,38 +147,20 @@ void Game::onGamePacketReceived()
 {
     GamePackets gamePacket = NetworkClient::getMessageFromServer<GamePackets>();
 
-    switch(gamePacket)
-    {
-        case(GamePackets::P_TakeCard):
-        {
-            this->onTakeCard();
-            break;
-        }
-        case(GamePackets::P_TakeCardAnotherPlayer):
-        {
-            this->onTakeCardAnotherPlayer();
-            break;
-        }
-        case(GamePackets::P_StartMove):
-        {
-            this->onStartMove();
-            break;
-        }
-        case(GamePackets::P_Win):
-        {
-            onGameFinished(true);
-            break;
-        }
-        case(GamePackets::P_Lose):
-        {
-            onGameFinished(false);
-            break;
-        }
-        default:
-        {
-            Message::logWarn("[" + getName() + "] Server send unknown game packet");
-            break;
-        }
-    }
+    if(gamePacketFunction.contains(gamePacket))
+        gamePacketFunction[gamePacket]();
+    else
+        Message::logWarn("[" + getName() + "] Server send unknown game packet");
 }
 
+void Game::initPacketHandlerFunction()
+{
+    gamePacketFunction =
+    {
+        {GamePackets::P_TakeCard,               [&]() {this->onTakeCard();}},
+        {GamePackets::P_TakeCardAnotherPlayer,  [&]() {this->onTakeCardAnotherPlayer();}},
+        {GamePackets::P_StartMove,              [&]() {this->onStartMove();}},
+        {GamePackets::P_Win,                    [&]() {this->onGameFinished(true);}},
+        {GamePackets::P_Lose,                   [&]() {this->onGameFinished(false);}},
+    };
+}

@@ -1,5 +1,10 @@
 ﻿#include "packethandler.h"
 
+PacketHandler::PacketHandler()
+{
+    initPacketHandlerFunction();
+}
+
 void PacketHandler::run()
 {
     clientHandler();
@@ -25,7 +30,7 @@ void PacketHandler::tryReconnectToServer()
     emit signalReconnecting();
 
     while(!NetworkClient::connectToServer())
-    {   
+    {
         sleep(5);
     }
 
@@ -35,81 +40,30 @@ void PacketHandler::tryReconnectToServer()
     Message::logInfo("Reconnect to server successful");
 }
 
+void PacketHandler::initPacketHandlerFunction()
+{
+    packetHandlerFunction =
+    {
+        {PacketTypes::P_Authorization,              [&]() {emit signalOpenForm(P_Authorization::getUser());}},
+        {PacketTypes::P_SendModel,                  [&]() {emit signalSetModel(P_SendModel::getModelFromServer());}},
+        {PacketTypes::P_Notification,               [&]() {emit signalViewNotification(P_Notification::getTextNotification());}},
+        {PacketTypes::P_ConnectPlayerToTable,       [&]() {emit signalOpenGame(P_ConnectPlayerToTable::getTable());}},
+        {PacketTypes::P_ConnectOtherPlayerToTable,  [&]() {emit  signalUpdatePlayers(P_ConnectPlayerToTable::getTable());}},
+        {PacketTypes::P_SendTables,                 [&]() {P_SendTables::getTablesFromServer(); emit signalSetTables();}},
+        {PacketTypes::P_QueryWithoutResponce,       [&]() {emit signalSetQueryModel(P_Query::getResultFromServer());}},
+        {PacketTypes::P_Query,                      [&]() {}},
+        {PacketTypes::P_UpdateGameProcessing,       [&]() {emit signalUpdateGameProcessing(P_UpdateGameProcessing::getData());}},
+        {PacketTypes::P_GamePacket,                 [&]() {P_GamePacket::onGamePacketReceived();}},
+        {PacketTypes::P_Search,                     [&]() {emit signalResultSearch(P_Search::getResultSearchFromServer());}},
+        {PacketTypes::P_UpdateBalance,              [&]() {emit signalUpdateBalance(P_UpdateBalance::getNewBalance());}},
+        {PacketTypes::P_Update,                     [&]() {emit signalUpdateTable(P_Update::getModelFromServer());}},
+    };
+}
+
 void PacketHandler::packetHandler(const PacketTypes packettype)
 {   
-    //TODO: Свернуть весь свитч в мапу указателей на функции
-    switch(packettype)
-    {
-        case(PacketTypes::P_Authorization):
-        {
-            emit signalOpenForm(P_Authorization::getUser());
-            break;
-        }
-        case(PacketTypes::P_SendModel):
-        {
-            emit signalSetModel(P_SendModel::getModelFromServer());
-            break;
-        }
-        case(PacketTypes::P_Notification):
-        {
-            emit signalViewNotification(P_Notification::getTextNotification());
-            break;
-        }
-        case(PacketTypes::P_ConnectPlayerToTable):
-        {
-            emit signalOpenGame(P_ConnectPlayerToTable::getTable());
-            break;
-        }
-        case(PacketTypes::P_ConnectOtherPlayerToTable):
-        {
-            emit signalUpdatePlayers(P_ConnectPlayerToTable::getTable());
-            break;
-        }
-        case(PacketTypes::P_SendTables):
-        {
-            //А лучше передавать в сигнале лист новых столов, эстетичнее) emit signalSetTables(P_SendTables::getTablesFromServer());
-            P_SendTables::getTablesFromServer();
-            emit signalSetTables();
-            break;
-        }
-        case(PacketTypes::P_QueryWithoutResponce):
-        {
-            emit signalSetQueryModel(P_Query::getResultFromServer());
-            break;
-        }
-        case(PacketTypes::P_Query):
-        {
-            break;
-        }
-        case(PacketTypes::P_UpdateGameProcessing):
-        {
-            emit signalUpdateGameProcessing(P_UpdateGameProcessing::getData());
-            break;
-        }
-        case(PacketTypes::P_GamePacket):
-        {
-            P_GamePacket::onGamePacketReceived();
-            break;
-        }
-        case(PacketTypes::P_Search):
-        {
-            emit signalResultSearch(P_Search::getResultSearchFromServer());
-            break;
-        }
-        case(PacketTypes::P_UpdateBalance):
-        {
-            emit signalUpdateBalance(P_UpdateBalance::getNewBalance());
-            break;
-        }
-        case(PacketTypes::P_Update):
-        {
-            emit signalUpdateTable(P_Update::getModelFromServer());
-            break;
-        }
-        default:
-        {
-            Message::logWarn("Server send unknown packettype");
-            break;
-        }
-    }
+    if(packetHandlerFunction.contains(packettype))
+        packetHandlerFunction[packettype]();
+    else
+        Message::logWarn("Server send unknown packettype");
 }

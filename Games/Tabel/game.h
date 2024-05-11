@@ -16,12 +16,6 @@ class Game : public QObject
     Q_OBJECT
 
 protected:
-    int idTable;
-    QString nameGame{};
-    int minPlayers{2};
-    QWidget* menu;
-    BaseClassGameWidget* GUI {};
-
     enum class GamePackets
     {
         P_TakeCard,
@@ -31,6 +25,13 @@ protected:
         P_Win,
         P_Lose
     };
+
+    int idTable;
+    QString nameGame{};
+    int minPlayers{2};
+    QWidget* menu;
+    BaseClassGameWidget* GUI {};
+    QMap<GamePackets, std::function<void()>> gamePacketFunction;
 
 public:
     Game() {}
@@ -64,6 +65,8 @@ protected:
     virtual void renderTakeCardAnotherPlayer(const QString &nicname);
     virtual void unlockInterface(const QString &nickname);
     virtual void turn(GamePackets gamePacket);
+
+    void initPacketHandlerFunction();
 
 signals:
     void signalTakeCard(const QSharedPointer<Card>);

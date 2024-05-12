@@ -42,9 +42,6 @@ void Payments::connects()
     connect(ui->prevButton, &QPushButton::clicked, pagination.get(), &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination.get(), &Pagination::next);
     connect(ui->pushButton_search, &QPushButton::clicked, this, &Payments::search);
-    connect(ui->addPayment, &QPushButton::clicked, this, &Payments::openCreatRecotd);
-    connect(ui->editPayment, &QPushButton::clicked, this, &Payments::openEditRecotd);
-    connect(ui->deletePayment, &QPushButton::clicked, this, &Payments::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &Payments::prepReloadModels);
     connect(ui->clearSearch, &QPushButton::clicked, this, &Payments::clearSearchText);
     connect(ui->addFilter, &QPushButton::clicked, this, &Payments::addFilter);
@@ -58,7 +55,6 @@ void Payments::connects()
 
     connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &Payments::setVisibleSort);
     connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &Payments::setVisibleSearch);
-    connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &Payments::setVisibleEditing);
     connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &Payments::setVisibleFiltr);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Payments::sort);
@@ -193,9 +189,7 @@ void Payments::visibleSearch(bool flag)
 
 void Payments::visibleEditing(bool flag)
 {
-    ui->addPayment->setVisible(flag);
-    ui->editPayment->setVisible(flag);
-    ui->deletePayment->setVisible(flag);
+    Q_UNUSED(flag);
 }
 
 void Payments::visibleFiltr(bool flag)

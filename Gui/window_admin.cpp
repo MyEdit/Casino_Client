@@ -195,12 +195,13 @@ void Window_Admin::rendoringForTableManager()
 {
     rendering_WelcomeTab();
     rendering_ActiveTablesTab();
-    rendering_UsersTab();
-    rendering_BanListTab();
+    rendering_PaymentsTab();
+    rendering_ProfitTab();
 
     ui->stuffUsers->hide();
     ui->credits->hide();
-    ui->payments->hide();
+    ui->users->hide();
+    ui->banList->hide();
 }
 
 void Window_Admin::rendoringForAdmin()

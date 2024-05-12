@@ -33,7 +33,6 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QCheckBox *checkBox_Search;
     QCheckBox *checkBox_Sorting;
-    QCheckBox *checkBox_Editing;
     QCheckBox *checkBox_Filtr;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *refreshData;
@@ -58,9 +57,6 @@ public:
     QLabel *label_7;
     QLabel *labelWhatKindSorting;
     QSpacerItem *horizontalSpacer;
-    QPushButton *addPayment;
-    QPushButton *editPayment;
-    QPushButton *deletePayment;
     QTableView *tableView;
     QHBoxLayout *horizontalLayout_6;
     QSpacerItem *horizontalSpacer_9;
@@ -100,12 +96,6 @@ public:
         checkBox_Sorting->setFont(font);
 
         horizontalLayout_2->addWidget(checkBox_Sorting);
-
-        checkBox_Editing = new QCheckBox(Payments);
-        checkBox_Editing->setObjectName(QString::fromUtf8("checkBox_Editing"));
-        checkBox_Editing->setFont(font);
-
-        horizontalLayout_2->addWidget(checkBox_Editing);
 
         checkBox_Filtr = new QCheckBox(Payments);
         checkBox_Filtr->setObjectName(QString::fromUtf8("checkBox_Filtr"));
@@ -364,84 +354,6 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        addPayment = new QPushButton(Payments);
-        addPayment->setObjectName(QString::fromUtf8("addPayment"));
-        addPayment->setFont(font3);
-        addPayment->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: white;\n"
-"    border: 1px solid black;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px;\n"
-"    color: black;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(100, 88, 255);\n"
-"	color: white;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: rgba(220, 60, 190, 255);\n"
-"}"));
-        QIcon icon5;
-        icon5.addFile(QString::fromUtf8(":/icons/resources/add.png"), QSize(), QIcon::Normal, QIcon::Off);
-        addPayment->setIcon(icon5);
-        addPayment->setIconSize(QSize(32, 32));
-
-        horizontalLayout->addWidget(addPayment);
-
-        editPayment = new QPushButton(Payments);
-        editPayment->setObjectName(QString::fromUtf8("editPayment"));
-        editPayment->setFont(font3);
-        editPayment->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: white;\n"
-"    border: 1px solid black;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px;\n"
-"    color: black;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(100, 88, 255);\n"
-"	color: white;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: rgba(220, 60, 190, 255);\n"
-"}"));
-        QIcon icon6;
-        icon6.addFile(QString::fromUtf8(":/icons/resources/edited.png"), QSize(), QIcon::Normal, QIcon::Off);
-        editPayment->setIcon(icon6);
-        editPayment->setIconSize(QSize(32, 32));
-
-        horizontalLayout->addWidget(editPayment);
-
-        deletePayment = new QPushButton(Payments);
-        deletePayment->setObjectName(QString::fromUtf8("deletePayment"));
-        deletePayment->setFont(font3);
-        deletePayment->setStyleSheet(QString::fromUtf8("QPushButton {\n"
-"    background-color: white;\n"
-"    border: 1px solid black;\n"
-"    border-radius: 10px;\n"
-"    padding: 5px;\n"
-"    color: black;\n"
-"}\n"
-"\n"
-"QPushButton:hover {\n"
-"    background-color: rgb(100, 88, 255);\n"
-"	color: white;\n"
-"}\n"
-"\n"
-"QPushButton:pressed {\n"
-"	background-color: rgba(220, 60, 190, 255);\n"
-"}"));
-        QIcon icon7;
-        icon7.addFile(QString::fromUtf8(":/icons/resources/delete.png"), QSize(), QIcon::Normal, QIcon::Off);
-        deletePayment->setIcon(icon7);
-        deletePayment->setIconSize(QSize(32, 32));
-
-        horizontalLayout->addWidget(deletePayment);
-
 
         verticalLayout->addLayout(horizontalLayout);
 
@@ -515,9 +427,9 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon8;
-        icon8.addFile(QString::fromUtf8(":/icons/resources/prev.png"), QSize(), QIcon::Normal, QIcon::Off);
-        prevButton->setIcon(icon8);
+        QIcon icon5;
+        icon5.addFile(QString::fromUtf8(":/icons/resources/prev.png"), QSize(), QIcon::Normal, QIcon::Off);
+        prevButton->setIcon(icon5);
         prevButton->setIconSize(QSize(32, 32));
 
         horizontalLayout_10->addWidget(prevButton);
@@ -562,9 +474,9 @@ public:
 "QPushButton:pressed {\n"
 "	background-color: rgba(220, 60, 190, 255);\n"
 "}"));
-        QIcon icon9;
-        icon9.addFile(QString::fromUtf8(":/icons/resources/next.png"), QSize(), QIcon::Normal, QIcon::Off);
-        nextButton->setIcon(icon9);
+        QIcon icon6;
+        icon6.addFile(QString::fromUtf8(":/icons/resources/next.png"), QSize(), QIcon::Normal, QIcon::Off);
+        nextButton->setIcon(icon6);
         nextButton->setIconSize(QSize(32, 32));
 
         horizontalLayout_10->addWidget(nextButton);
@@ -583,7 +495,6 @@ public:
         Payments->setWindowTitle(QApplication::translate("Payments", "Form", nullptr));
         checkBox_Search->setText(QApplication::translate("Payments", "\320\237\320\276\320\270\321\201\320\272", nullptr));
         checkBox_Sorting->setText(QApplication::translate("Payments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260", nullptr));
-        checkBox_Editing->setText(QApplication::translate("Payments", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\320\275\320\270\320\265", nullptr));
         checkBox_Filtr->setText(QApplication::translate("Payments", "\320\244\320\270\321\202\321\200\320\260\321\206\320\270\321\217", nullptr));
         refreshData->setText(QString());
         label->setText(QApplication::translate("Payments", "\320\237\320\276\320\270\321\201\320\272:", nullptr));
@@ -601,7 +512,6 @@ public:
         clearFilter->setText(QString());
         label_7->setText(QApplication::translate("Payments", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260:", nullptr));
         labelWhatKindSorting->setText(QApplication::translate("Payments", "\320\276\321\202\321\201\321\203\321\202\321\201\321\202\320\262\321\203\320\265\321\202", nullptr));
-        addPayment->setText(QString());
         label_4->setText(QApplication::translate("Payments", "\320\242\320\265\320\272\321\203\321\211\320\260\321\217 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\260:", nullptr));
         labelCurrentPage->setText(QApplication::translate("Payments", "0", nullptr));
         label_5->setText(QApplication::translate("Payments", "/", nullptr));

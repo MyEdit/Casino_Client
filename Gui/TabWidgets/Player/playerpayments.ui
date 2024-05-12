@@ -1173,7 +1173,7 @@ QPushButton:pressed {
            </font>
           </property>
           <property name="text">
-           <string>Фитрация</string>
+           <string>Фильтрация</string>
           </property>
          </widget>
         </item>

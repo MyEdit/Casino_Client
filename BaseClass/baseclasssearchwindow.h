@@ -72,6 +72,7 @@ protected:
     virtual void visibleFiltr(bool flag) = 0;
     virtual void addFilter() = 0;
     virtual void clearFilter() = 0;
+    virtual void setFilter(const QString& filter) {}
 };
 
 #endif // BASECLASSSEARCHWINDOW_H

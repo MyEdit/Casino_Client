@@ -496,7 +496,7 @@ public:
         Profit->setWindowTitle(QApplication::translate("Profit", "Form", nullptr));
         checkBox_Search->setText(QApplication::translate("Profit", "\320\237\320\276\320\270\321\201\320\272", nullptr));
         checkBox_Sorting->setText(QApplication::translate("Profit", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260", nullptr));
-        checkBox_Filtr->setText(QApplication::translate("Profit", "\320\244\320\270\321\202\321\200\320\260\321\206\320\270\321\217", nullptr));
+        checkBox_Filtr->setText(QApplication::translate("Profit", "\320\244\320\270\320\273\321\214\321\202\321\200\320\260\321\206\320\270\321\217", nullptr));
         refreshData->setText(QString());
         label->setText(QApplication::translate("Profit", "\320\237\320\276\320\270\321\201\320\272:", nullptr));
         checkBox->setText(QApplication::translate("Profit", "\320\242\320\276\321\207\320\275\320\276\320\265 \n"

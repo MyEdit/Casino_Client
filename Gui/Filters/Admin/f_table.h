@@ -15,7 +15,7 @@ class F_Table : public QDialog
 {
     Q_OBJECT
     Ui::F_Table *ui;
-    QMap<QRadioButton*, std::function<void()>> functionsSetFilters;
+    QMap<QRadioButton*, std::function<const QString()>> functionsSetFilters;
     QMap<QPushButton*, std::function<void()>> functionsVisibleFilters;
 
 public:
@@ -31,6 +31,9 @@ private:
     void initFunVisibletFilters();
     void visibleCategory();
     void startSetting();
+
+signals:
+    void setFilter(const QString&);
 };
 
 #endif // F_TABLE_H

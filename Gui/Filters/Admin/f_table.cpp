@@ -34,6 +34,15 @@ void F_Table::connects()
 
 void F_Table::applyFilter()
 {
+    QString filter;
+    QList<QRadioButton*> radioButtons = this->findChildren<QRadioButton*>();
+    for(QRadioButton* radioButton : radioButtons)
+    {
+        if(radioButton->isChecked())
+            filter += functionsSetFilters[radioButton]();
+    }
+
+    emit setFilter(filter);
     accept();
 }
 

@@ -80,6 +80,8 @@ void ActiveTables::connects()
     {
         pagination->search(ui->searchText->text(), typeSearch);
     });
+
+    connect(filter.get(), &F_Table::setFilter, this, &ActiveTables::setFilter);
 }
 
 void ActiveTables::updateCurrentPageInLabel(const int currentPage)
@@ -226,5 +228,14 @@ void ActiveTables::addFilter()
 
 void ActiveTables::clearFilter()
 {
+    this->where.clear();
+    pagination->setWhere(this->where);
+    prepReloadModels();
+}
 
+void ActiveTables::setFilter(const QString &filter)
+{
+    this->where = filter;
+    pagination->setWhere(this->where);
+    prepReloadModels();
 }

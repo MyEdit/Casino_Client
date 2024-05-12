@@ -46,6 +46,7 @@ private:
     void visibleFiltr(bool flag) override;
     void addFilter() override;
     void clearFilter() override;
+    void setFilter(const QString &filter) override;
 };
 
 #endif // EXISTINGTABLES_H

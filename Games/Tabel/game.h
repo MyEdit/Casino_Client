@@ -55,7 +55,6 @@ public:
 
 protected:
     virtual void setConnects();
-    virtual void onUpdateGameTimer(const QString& data); //Когда обновляется таймер
     virtual void onTakeCard(); //Когда текущий игрок взял карту
     virtual void onTakeCardAnotherPlayer(); //Когда другой игрок взял карту
     virtual void onStartMove(); //Когда игрок может совершить ход

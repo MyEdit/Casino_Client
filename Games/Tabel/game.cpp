@@ -47,7 +47,6 @@ void Game::setMenu(QWidget *menu)
 void Game::takeCard()
 {
     this->turn(GamePackets::P_TakeCard);
-    GUI->blocingInterface(false);
 }
 
 void Game::pass()
@@ -78,11 +77,6 @@ void Game::leave()
 
     if(menu)
         menu->setEnabled(true);
-}
-
-void Game::onUpdateGameTimer(const QString &data)
-{
-    GUI->updateTimer(data);
 }
 
 int Game::getTableID()
@@ -142,7 +136,7 @@ void Game::onUpdateGameProcessing(const QString &data)
     bool ok;
     data.toInt(&ok);
     if(ok)
-        onUpdateGameTimer(data);
+        GUI->updateTimer(data);
     else
         GUI->updateProcessing(data);
 }

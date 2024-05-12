@@ -80,7 +80,6 @@ bool NetworkClient::start() const
     QObject::connect(packetHandler, &PacketHandler::signalUpdateGameProcessing, this, &P_UpdateGameProcessing::updateGameProcessing);
     QObject::connect(packetHandler, &PacketHandler::signalUpdateBalance, this, &P_UpdateBalance::updatePlayerBalance);
     QObject::connect(packetHandler, &PacketHandler::signalUpdateTable, this, &P_Update::updateTable);
-    QObject::connect(packetHandler, &PacketHandler::signalLeave, this, &P_Leave::leave);
 
     packetHandler->start();
     return true;

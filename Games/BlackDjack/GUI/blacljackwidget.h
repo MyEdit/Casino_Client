@@ -23,10 +23,9 @@ class BlaclJackWidget : public BaseClassGameWidget
     Ui::BlaclJackWidget *ui;
     QSharedPointer<BlackJackBackground> background;
     QSharedPointer<PlayersIconsWidget> playersIcons;
-    QSharedPointer<BlackJack> game;
 
 public:
-    explicit BlaclJackWidget(QSharedPointer<BlackJack> game, QWidget *parent = nullptr);
+    explicit BlaclJackWidget(QWidget *parent = nullptr);
     ~BlaclJackWidget();
 
 private:

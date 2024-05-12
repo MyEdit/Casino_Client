@@ -1,10 +1,9 @@
 ﻿#include "blacljackwidget.h"
 #include "ui_blacljackwidget.h"
 
-BlaclJackWidget::BlaclJackWidget(QSharedPointer<BlackJack> game, QWidget *parent) :
+BlaclJackWidget::BlaclJackWidget(QWidget *parent) :
     BaseClassGameWidget(parent),
-    ui(new Ui::BlaclJackWidget),
-    game(game)
+    ui(new Ui::BlaclJackWidget)
 {
     ui->setupUi(this);
     rendering();
@@ -13,7 +12,6 @@ BlaclJackWidget::BlaclJackWidget(QSharedPointer<BlackJack> game, QWidget *parent
 
 BlaclJackWidget::~BlaclJackWidget()
 {
-    Message::logWarn("BlaclJackWidget");
     delete ui;
 }
 
@@ -28,6 +26,8 @@ void BlaclJackWidget::rendering()
         if (widget)
             widget->hide();
     }
+
+    blocingInterface(false);
 }
 
 void BlaclJackWidget::renderingTable()
@@ -86,12 +86,12 @@ void BlaclJackWidget::connects()
 
 void BlaclJackWidget::takeCard()
 {
-    game->takeCard();
+    P_Authorization::getPlayer()->getGame()->takeCard();
 }
 
 void BlaclJackWidget::pass()
 {
-    game->pass();
+    P_Authorization::getPlayer()->getGame()->pass();
 }
 
 void BlaclJackWidget::clearCardOnTable()
@@ -133,7 +133,7 @@ void BlaclJackWidget::insufficientBalance()
 void BlaclJackWidget::closeEvent(QCloseEvent* event)
 {
     QWidget::closeEvent(event);
-    game->leave();
+    P_Authorization::getPlayer()->getGame()->leave();
 }
 
 void BlaclJackWidget::updateProcessing(const QString& data)
@@ -166,7 +166,6 @@ void BlaclJackWidget::updateTimer(const QString& time)
         processing = "Игра началась";
         background->clearTable();
         setMyScore(0);
-        blocingInterface(false);
     }
 
     ui->labelGameProcess->setText(processing);

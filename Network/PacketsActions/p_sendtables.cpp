@@ -38,24 +38,31 @@ void P_SendTables::deleteTable(const QList<QSharedPointer<Table>>& newTables)
 {
     QList<QSharedPointer<Table>>& oldTables = Table::getTabels();
 
-    for (auto it = oldTables.begin(); it != oldTables.end();)
+    for (auto it = oldTables.begin(); it != oldTables.end(); it++)
     {
-         bool found = false;
-         int tableID = it->get()->getSettings().ID;
-         for (const auto& currentTable : newTables)
-         {
-             if (currentTable->getSettings().ID == tableID)
-             {
-                 found = true;
-                 break;
-             }
-         }
+        bool found = false;
+        int tableID = it->get()->getSettings().ID;
+        for (const auto& currentTable : newTables)
+        {
+            if (currentTable->getSettings().ID == tableID)
+            {
+                found = true;
+                break;
+            }
+        }
 
-         if (!found)
-         {
-             it = oldTables.erase(it);
-         }
-         else
-             ++it;
-     }
+        if (!found)
+        {
+            QSharedPointer<Game> game = P_Authorization::getPlayer()->getGame();
+            if(game)
+            {
+                if(game->getTableID() == it->get()->getSettings().ID)
+                {
+                    if(game->getGUI())
+                        QMetaObject::invokeMethod(game->getGUI().get(), "close", Qt::QueuedConnection);
+                }
+            }
+            oldTables.erase(it);
+        }
+    }
 }

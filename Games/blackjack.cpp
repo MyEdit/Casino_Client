@@ -4,7 +4,7 @@ BlackJack::BlackJack(int idTable, const QString& name)
 {
     this->nameGame = name;
     this->idTable = idTable;
-    GUI = QSharedPointer<BlaclJackWidget>(new BlaclJackWidget(QSharedPointer<BlackJack>(this)));
+    GUI = QSharedPointer<BlaclJackWidget>(new BlaclJackWidget());
     setConnects();
 }
 
@@ -21,8 +21,6 @@ void BlackJack::renderTakeCard(QSharedPointer<Card> card)
 
     if(isBust())
         pass();
-    else
-        GUI->blocingInterface(true);
 
     GUI->setMyScore(getPlayerScore());
 }
@@ -42,5 +40,5 @@ int BlackJack::getPlayerScore()
 
 void BlackJack::createGUI()
 {
-    GUI = QSharedPointer<BlaclJackWidget>(new BlaclJackWidget(QSharedPointer<BlackJack>(this)));
+    GUI = QSharedPointer<BlaclJackWidget>(new BlaclJackWidget());
 }

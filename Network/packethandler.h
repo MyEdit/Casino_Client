@@ -50,7 +50,6 @@ signals:
     void signalResultSearch(QPair<ModelTypes, QString>);
     void signalUpdateBalance(double newBalance);
     void signalUpdateTable(const ModelTypes modelType);
-    void signalLeave();
 };
 
 #endif // CLIENTHANDLER_H

@@ -24,6 +24,8 @@ private:
     void connects() override;
 
     void textChangeMinBet();
+    void textChangeMaxPlayers();
+    void currentTextMaxPlayrs();
 };
 
 #endif // F_TABLE_H

@@ -39,6 +39,8 @@ void Credits::creatingObjects()
 
 void Credits::connects()
 {
+    BaseClassSearchWindow::connects();
+
     connect(ui->prevButton, &QPushButton::clicked, pagination.get(), &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination.get(), &Pagination::next);
     connect(ui->pushButton_search, &QPushButton::clicked, this, &Credits::search);
@@ -65,22 +67,6 @@ void Credits::connects()
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Credits::sort);
 
     connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &Credits::onHeaderClicked);
-
-    connect(pagination.get(), &Pagination::updateCurrentPageInLabel, this, &Credits::updateCurrentPageInLabel);
-    connect(pagination.get(), &Pagination::setMaxPageInLabel, this, &Credits::setValueToMaxPage);
-    connect(pagination.get(), &Pagination::blockInterface, this, &Credits::blockingInterface);
-
-    connect(workingIsTableView.get(), &WorkingIsTableView::unlockInterface, this, &Credits::blockingInterface);
-
-    connect(&goToPageTimer, &QTimer::timeout, this, [=]()
-    {
-        pagination->goToPage(ui->pageNumberToNavigate->text());
-    });
-
-    connect(&searchTimer, &QTimer::timeout, this, [=]()
-    {
-        pagination->search(ui->searchText->text(), typeSearch);
-    });
 }
 
 void Credits::updateCurrentPageInLabel(const int currentPage)
@@ -208,14 +194,12 @@ void Credits::addFilter()
     }
 }
 
-void Credits::clearFilter()
+void Credits::runSearch()
 {
-    pagination->setWhere("");
-    prepReloadModels();
+    pagination->search(ui->searchText->text(), typeSearch);
 }
 
-void Credits::setFilter(const QString &filter)
+void Credits::runGoToPage()
 {
-    pagination->setWhere(filter);
-    prepReloadModels();
+    pagination->goToPage(ui->pageNumberToNavigate->text());
 }

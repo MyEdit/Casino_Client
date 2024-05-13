@@ -22,7 +22,7 @@ void F_Table::initFunSetFilters()
         {ui->start0end100,   [&]() {return " and MinBet >= '0' and MinBet <= '100'";}},
         {ui->start100end200,   [&]() {return " and MinBet >= '100' and MinBet <= '200'";}},
         {ui->start200end300,   [&]() {return " and MinBet >= '200' and MinBet <= '300'";}},
-        {ui->yourStartAndEnd,   [&]() {return " and MinBet >= '" + ui->startMinBet->text() + "' and MinBet <= '" + ui->endMinBet->text() + "'";}},
+        {ui->yourLimitsMinBet,   [&]() {return " and MinBet >= '" + ui->startMinBet->text() + "' and MinBet <= '" + ui->endMinBet->text() + "'";}},
         {ui->nameBlackJack, [&]() {return " and NameGame = 'BlackJack'";}},
         {ui->nameDevytka,   [&]() {return " and NameGame = 'Девятка'";}},
         {ui->allNameGame,   [&]() {return "";}}
@@ -48,4 +48,20 @@ void F_Table::customizationLiteEdit()
 {
     ui->startMinBet->setValidator(new QIntValidator(this));
     ui->endMinBet->setValidator(new QIntValidator(this));
+}
+
+void F_Table::connects()
+{
+    BaseClasFilter::connects();
+
+    connect(ui->startMinBet, &QLineEdit::textChanged, this, &F_Table::textChangeMinBet);
+    connect(ui->endMinBet, &QLineEdit::textChanged, this, &F_Table::textChangeMinBet);
+}
+
+void F_Table::textChangeMinBet()
+{
+    ui->yourLimitsMinBet->setChecked(true);
+
+    if(ui->startMinBet->text().isEmpty())
+        ui->startMinBet->setText("0");
 }

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>F_PlayerCredit</class>
- <widget class="QDialog" name="F_PlayerCredit">
+ <class>F_Profit</class>
+ <widget class="QDialog" name="F_Profit">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>331</width>
+    <width>313</width>
     <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Фильтр кредитов</string>
+   <string>Фильтр прибыли</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -24,7 +24,7 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>311</width>
+        <width>293</width>
         <height>238</height>
        </rect>
       </property>

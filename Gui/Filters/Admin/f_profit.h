@@ -1,20 +1,20 @@
-﻿#ifndef F_CREDIT_H
-#define F_CREDIT_H
+﻿#ifndef F_PROFIT_H
+#define F_PROFIT_H
 
 #include "BaseClass/baseclasfilter.h"
 
 namespace Ui {
-class F_Credit;
+class F_Profit;
 }
 
-class F_Credit : public BaseClasFilter
+class F_Profit : public BaseClasFilter
 {
     Q_OBJECT
-    Ui::F_Credit *ui;
+    Ui::F_Profit *ui;
 
 public:
-    explicit F_Credit(QWidget *parent = nullptr);
-    ~F_Credit();
+    explicit F_Profit(QWidget *parent = nullptr);
+    ~F_Profit();
 
 private:
     void initFunSetFilters() override;
@@ -23,4 +23,4 @@ private:
     void customizationLiteEdit() override;
 };
 
-#endif // F_CREDIT_H
+#endif // F_PROFIT_H

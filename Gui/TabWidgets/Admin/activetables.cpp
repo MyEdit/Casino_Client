@@ -38,6 +38,8 @@ void ActiveTables::creatingObjects()
 
 void ActiveTables::connects()
 {
+    BaseClassSearchWindow::connects();
+
     connect(ui->prevButton, &QPushButton::clicked, pagination.get(), &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination.get(), &Pagination::next);
     connect(ui->pushButton_search, &QPushButton::clicked, this, &ActiveTables::search);
@@ -64,24 +66,6 @@ void ActiveTables::connects()
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ActiveTables::sort);
 
     connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &ActiveTables::onHeaderClicked);
-
-    connect(pagination.get(), &Pagination::updateCurrentPageInLabel, this, &ActiveTables::updateCurrentPageInLabel);
-    connect(pagination.get(), &Pagination::setMaxPageInLabel, this, &ActiveTables::setValueToMaxPage);
-    connect(pagination.get(), &Pagination::blockInterface, this, &ActiveTables::blockingInterface);
-
-    connect(workingIsTableView.get(), &WorkingIsTableView::unlockInterface, this, &ActiveTables::blockingInterface);
-
-    connect(&goToPageTimer, &QTimer::timeout, this, [=]()
-    {
-        pagination->goToPage(ui->pageNumberToNavigate->text());
-    });
-
-    connect(&searchTimer, &QTimer::timeout, this, [=]()
-    {
-        pagination->search(ui->searchText->text(), typeSearch);
-    });
-
-    connect(filter.get(), &F_Table::setFilter, this, &ActiveTables::setFilter);
 }
 
 void ActiveTables::updateCurrentPageInLabel(const int currentPage)
@@ -226,15 +210,12 @@ void ActiveTables::addFilter()
     }
 }
 
-void ActiveTables::clearFilter()
+void ActiveTables::runSearch()
 {
-    filter->reset();
-    pagination->setWhere("");
-    prepReloadModels();
+    pagination->search(ui->searchText->text(), typeSearch);
 }
 
-void ActiveTables::setFilter(const QString &filter)
+void ActiveTables::runGoToPage()
 {
-    pagination->setWhere(filter);
-    prepReloadModels();
+    pagination->goToPage(ui->pageNumberToNavigate->text());
 }

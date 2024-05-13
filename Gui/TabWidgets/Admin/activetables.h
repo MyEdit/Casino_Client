@@ -20,7 +20,6 @@ class ActiveTables : public BaseClassSearchWindow
 {
     Ui::ActiveTables *ui;
     QSharedPointer<W_Table> workingWithTables;
-    QSharedPointer<F_Table> filter;
 
 public:
     explicit ActiveTables(QWidget *parent = nullptr);
@@ -45,8 +44,8 @@ private:
     void visibleEditing(const bool flag) override;
     void visibleFiltr(const bool flag) override;
     void addFilter() override;
-    void clearFilter() override;
-    void setFilter(const QString &filter) override;
+    void runSearch() override;
+    void runGoToPage() override;
 };
 
 #endif // EXISTINGTABLES_H

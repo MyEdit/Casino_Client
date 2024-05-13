@@ -16,7 +16,6 @@ class Credits;
 class Credits : public BaseClassSearchWindow
 {
     Ui::Credits *ui;
-    QSharedPointer<F_Credit> filter;
 
 public:
     explicit Credits(QWidget *parent = nullptr);
@@ -41,8 +40,8 @@ private:
     void visibleEditing(const bool flag) override;
     void visibleFiltr(const bool flag) override;
     void addFilter() override;
-    void clearFilter() override;
-    void setFilter(const QString &filter) override;
+    void runSearch() override;
+    void runGoToPage() override;
 };
 
 #endif // CREDITS_H

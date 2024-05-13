@@ -12,6 +12,7 @@
 #include "BaseClass/baseclasssearchwindow.h"
 #include "Gui/WorkingWithRecords/Admin/w_user.h"
 #include "Gui/WorkingWithRecords/Admin/w_ban.h"
+#include "Gui/Filters/Admin/f_user.h"
 
 class W_User;
 class W_Ban;
@@ -50,8 +51,8 @@ private:
     void visibleEditing(const bool flag) override;
     void visibleFiltr(const bool flag) override;
     void addFilter() override;
-    void clearFilter() override;
-    void setFilter(const QString &filter) override;
+    void runSearch() override;
+    void runGoToPage() override;
 };
 
 #endif // ALLUSERS_H

@@ -34,10 +34,13 @@ void StuffUsers::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>(new WorkingIsTableView(ui->tableView, &boxsNameColumn));
     pagination = QSharedPointer<Pagination>(new Pagination(this, ui->tableView, ui->searchColumn, workingIsTableView, modelTypes));
+    filter = QSharedPointer<F_StuffUser>(new F_StuffUser());
 }
 
 void StuffUsers::connects()
 {
+    BaseClassSearchWindow::connects();
+
     connect(ui->prevButton, &QPushButton::clicked, pagination.get(), &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination.get(), &Pagination::next);
     connect(ui->pushButton_search, &QPushButton::clicked, this, &StuffUsers::search);
@@ -46,6 +49,8 @@ void StuffUsers::connects()
     connect(ui->deleteStuffUser, &QPushButton::clicked, this, &StuffUsers::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &StuffUsers::prepReloadModels);
     connect(ui->clearSearch, &QPushButton::clicked, this, &StuffUsers::clearSearchText);
+    connect(ui->addFilter, &QPushButton::clicked, this, &StuffUsers::addFilter);
+    connect(ui->clearFilter, &QPushButton::clicked, this, &StuffUsers::clearFilter);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &StuffUsers::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &StuffUsers::search);
@@ -56,27 +61,12 @@ void StuffUsers::connects()
     connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleSort);
     connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleSearch);
     connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleEditing);
+    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleFiltr);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &StuffUsers::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &StuffUsers::sort);
 
     connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &StuffUsers::onHeaderClicked);
-
-    connect(pagination.get(), &Pagination::updateCurrentPageInLabel, this, &StuffUsers::updateCurrentPageInLabel);
-    connect(pagination.get(), &Pagination::setMaxPageInLabel, this, &StuffUsers::setValueToMaxPage);
-    connect(pagination.get(), &Pagination::blockInterface, this, &StuffUsers::blockingInterface);
-
-    connect(workingIsTableView.get(), &WorkingIsTableView::unlockInterface, this, &StuffUsers::blockingInterface);
-
-    connect(&goToPageTimer, &QTimer::timeout, this, [=]()
-    {
-        pagination->goToPage(ui->pageNumberToNavigate->text());
-    });
-
-    connect(&searchTimer, &QTimer::timeout, this, [=]()
-    {
-        pagination->search(ui->searchText->text(), typeSearch);
-    });
 }
 
 void StuffUsers::updateCurrentPageInLabel(const int currentPage)
@@ -207,22 +197,24 @@ void StuffUsers::visibleEditing(const bool flag)
 
 void StuffUsers::visibleFiltr(const bool flag)
 {
-    Q_UNUSED(flag);
+    ui->addFilter->setVisible(flag);
+    ui->clearFilter->setVisible(flag);
 }
 
 void StuffUsers::addFilter()
 {
+    if (filter->exec() == QDialog::Accepted)
+    {
 
+    }
 }
 
-void StuffUsers::clearFilter()
+void StuffUsers::runSearch()
 {
-    pagination->setWhere("");
-    prepReloadModels();
+    pagination->search(ui->searchText->text(), typeSearch);
 }
 
-void StuffUsers::setFilter(const QString &filter)
+void StuffUsers::runGoToPage()
 {
-    pagination->setWhere(filter);
-    prepReloadModels();
+    pagination->goToPage(ui->pageNumberToNavigate->text());
 }

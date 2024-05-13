@@ -6,15 +6,18 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>482</width>
-    <height>426</height>
+    <width>442</width>
+    <height>475</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Фильтр столов</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">color: rgb(0, 0, 0);W</string>
+   <string notr="true">color: rgb(0, 0, 0);</string>
+  </property>
+  <property name="windowFilePath">
+   <string>z</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -27,8 +30,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>448</width>
-        <height>378</height>
+        <width>422</width>
+        <height>413</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -60,7 +63,7 @@ font-weight: bold;
        <item>
         <widget class="QWidget" name="categoryMinBet" native="true">
          <property name="styleSheet">
-          <string notr="true">#categotyMinBet
+          <string notr="true">#categoryMinBet
 {
     border: 2px solid black; 
     border-radius: 10px;
@@ -110,7 +113,7 @@ font-weight: bold;
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
-             <widget class="QRadioButton" name="yourStartAndEnd">
+             <widget class="QRadioButton" name="yourLimitsMinBet">
               <property name="font">
                <font>
                 <family>Segoe UI</family>
@@ -209,7 +212,7 @@ font-weight: bold;
        <item>
         <widget class="QWidget" name="categoryNameGame" native="true">
          <property name="styleSheet">
-          <string notr="true">#categotyNameGame
+          <string notr="true">#categoryNameGame
 {
     border: 2px solid black; 
     border-radius: 10px;
@@ -238,9 +241,6 @@ font-weight: bold;
               <pointsize>12</pointsize>
              </font>
             </property>
-            <property name="styleSheet">
-             <string notr="true">color: black</string>
-            </property>
             <property name="text">
              <string>BlackJack</string>
             </property>
@@ -255,7 +255,7 @@ font-weight: bold;
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true">color: black</string>
+             <string notr="true"/>
             </property>
             <property name="text">
              <string>Девятка</string>

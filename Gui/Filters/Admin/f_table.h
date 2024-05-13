@@ -17,10 +17,13 @@ public:
     ~F_Table();
 
 private:
-    void initFunSetFilters();
-    void initFunVisibletFilters();
-    void hideCategory();
-    void customizationLiteEdit();
+    void initFunSetFilters() override;
+    void initFunVisibletFilters() override;
+    void hideCategory() override;
+    void customizationLiteEdit() override;
+    void connects() override;
+
+    void textChangeMinBet();
 };
 
 #endif // F_TABLE_H

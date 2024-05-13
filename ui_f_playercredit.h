@@ -12,7 +12,12 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
+#include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
+#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
@@ -20,14 +25,101 @@ class Ui_F_PlayerCredit
 {
 public:
     QVBoxLayout *verticalLayout;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents;
+    QVBoxLayout *verticalLayout_2;
+    QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *reset;
+    QSpacerItem *horizontalSpacer_3;
+    QPushButton *applyFilter;
+    QSpacerItem *horizontalSpacer_2;
 
     void setupUi(QDialog *F_PlayerCredit)
     {
         if (F_PlayerCredit->objectName().isEmpty())
             F_PlayerCredit->setObjectName(QString::fromUtf8("F_PlayerCredit"));
-        F_PlayerCredit->resize(400, 300);
+        F_PlayerCredit->resize(331, 300);
         verticalLayout = new QVBoxLayout(F_PlayerCredit);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        scrollArea = new QScrollArea(F_PlayerCredit);
+        scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 311, 238));
+        verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+        scrollArea->setWidget(scrollAreaWidgetContents);
+
+        verticalLayout->addWidget(scrollArea);
+
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer);
+
+        reset = new QPushButton(F_PlayerCredit);
+        reset->setObjectName(QString::fromUtf8("reset"));
+        QFont font;
+        font.setFamily(QString::fromUtf8("Segoe UI"));
+        font.setPointSize(12);
+        font.setBold(true);
+        font.setWeight(75);
+        reset->setFont(font);
+        reset->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+
+        horizontalLayout->addWidget(reset);
+
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_3);
+
+        applyFilter = new QPushButton(F_PlayerCredit);
+        applyFilter->setObjectName(QString::fromUtf8("applyFilter"));
+        applyFilter->setFont(font);
+        applyFilter->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
+
+        horizontalLayout->addWidget(applyFilter);
+
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_2);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
 
         retranslateUi(F_PlayerCredit);
 
@@ -37,6 +129,8 @@ public:
     void retranslateUi(QDialog *F_PlayerCredit)
     {
         F_PlayerCredit->setWindowTitle(QApplication::translate("F_PlayerCredit", "\320\244\320\270\320\273\321\214\321\202\321\200 \320\272\321\200\320\265\320\264\320\270\321\202\320\276\320\262", nullptr));
+        reset->setText(QApplication::translate("F_PlayerCredit", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
+        applyFilter->setText(QApplication::translate("F_PlayerCredit", "\320\237\321\200\320\270\320\274\320\265\320\275\320\270\321\202\321\214", nullptr));
     } // retranslateUi
 
 };

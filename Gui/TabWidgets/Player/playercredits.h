@@ -16,7 +16,6 @@ class PlayerCredits;
 class PlayerCredits : public BaseClassSearchWindow
 {
     Ui::PlayerCredits *ui;
-    QSharedPointer<F_PlayerCredit> filter;
 
 public:
     explicit PlayerCredits(QWidget *parent = nullptr);
@@ -41,8 +40,8 @@ private:
     void visibleEditing(const bool flag) override;
     void visibleFiltr(const bool flag) override;
     void addFilter() override;
-    void clearFilter() override;
-    void setFilter(const QString &filter) override;
+    void runSearch() override;
+    void runGoToPage() override;
 };
 
 #endif // PLAYERCREDITS_H

@@ -1,13 +1,13 @@
 /********************************************************************************
-** Form generated from reading UI file 'f_stuffuser.ui'
+** Form generated from reading UI file 'f_profit.ui'
 **
 ** Created by: Qt User Interface Compiler version 5.12.7
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
 
-#ifndef UI_F_STUFFUSER_H
-#define UI_F_STUFFUSER_H
+#ifndef UI_F_PROFIT_H
+#define UI_F_PROFIT_H
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
@@ -21,7 +21,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_F_StuffUser
+class Ui_F_Profit
 {
 public:
     QVBoxLayout *verticalLayout;
@@ -35,19 +35,19 @@ public:
     QPushButton *applyFilter;
     QSpacerItem *horizontalSpacer_2;
 
-    void setupUi(QDialog *F_StuffUser)
+    void setupUi(QDialog *F_Profit)
     {
-        if (F_StuffUser->objectName().isEmpty())
-            F_StuffUser->setObjectName(QString::fromUtf8("F_StuffUser"));
-        F_StuffUser->resize(281, 300);
-        verticalLayout = new QVBoxLayout(F_StuffUser);
+        if (F_Profit->objectName().isEmpty())
+            F_Profit->setObjectName(QString::fromUtf8("F_Profit"));
+        F_Profit->resize(313, 300);
+        verticalLayout = new QVBoxLayout(F_Profit);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        scrollArea = new QScrollArea(F_StuffUser);
+        scrollArea = new QScrollArea(F_Profit);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 261, 238));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 293, 238));
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         scrollArea->setWidget(scrollAreaWidgetContents);
@@ -60,7 +60,7 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
-        reset = new QPushButton(F_StuffUser);
+        reset = new QPushButton(F_Profit);
         reset->setObjectName(QString::fromUtf8("reset"));
         QFont font;
         font.setFamily(QString::fromUtf8("Segoe UI"));
@@ -91,7 +91,7 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer_3);
 
-        applyFilter = new QPushButton(F_StuffUser);
+        applyFilter = new QPushButton(F_Profit);
         applyFilter->setObjectName(QString::fromUtf8("applyFilter"));
         applyFilter->setFont(font);
         applyFilter->setStyleSheet(QString::fromUtf8("QPushButton {\n"
@@ -121,24 +121,24 @@ public:
         verticalLayout->addLayout(horizontalLayout);
 
 
-        retranslateUi(F_StuffUser);
+        retranslateUi(F_Profit);
 
-        QMetaObject::connectSlotsByName(F_StuffUser);
+        QMetaObject::connectSlotsByName(F_Profit);
     } // setupUi
 
-    void retranslateUi(QDialog *F_StuffUser)
+    void retranslateUi(QDialog *F_Profit)
     {
-        F_StuffUser->setWindowTitle(QApplication::translate("F_StuffUser", "\320\244\320\270\320\273\321\214\321\202\321\200 \321\201\320\276\321\202\321\200\321\203\320\264\320\275\320\270\320\272\320\276\320\262", nullptr));
-        reset->setText(QApplication::translate("F_StuffUser", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
-        applyFilter->setText(QApplication::translate("F_StuffUser", "\320\237\321\200\320\270\320\274\320\265\320\275\320\270\321\202\321\214", nullptr));
+        F_Profit->setWindowTitle(QApplication::translate("F_Profit", "\320\244\320\270\320\273\321\214\321\202\321\200 \320\277\321\200\320\270\320\261\321\213\320\273\320\270", nullptr));
+        reset->setText(QApplication::translate("F_Profit", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
+        applyFilter->setText(QApplication::translate("F_Profit", "\320\237\321\200\320\270\320\274\320\265\320\275\320\270\321\202\321\214", nullptr));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class F_StuffUser: public Ui_F_StuffUser {};
+    class F_Profit: public Ui_F_Profit {};
 } // namespace Ui
 
 QT_END_NAMESPACE
 
-#endif // UI_F_STUFFUSER_H
+#endif // UI_F_PROFIT_H

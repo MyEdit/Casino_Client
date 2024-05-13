@@ -81,6 +81,8 @@ void PlayerPayments::goToPage()
 
 void PlayerPayments::connects()
 {
+    BaseClassSearchWindow::connects();
+
     connect(ui->prevButton, &QPushButton::clicked, pagination.get(), &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination.get(), &Pagination::next);
     connect(ui->pushButton_search, &QPushButton::clicked, this, &PlayerPayments::search);
@@ -102,22 +104,6 @@ void PlayerPayments::connects()
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &PlayerPayments::selectTypeSearch);
 
     connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &PlayerPayments::onHeaderClicked);
-
-    connect(pagination.get(), &Pagination::updateCurrentPageInLabel, this, &PlayerPayments::updateCurrentPageInLabel);
-    connect(pagination.get(), &Pagination::setMaxPageInLabel, this, &PlayerPayments::setValueToMaxPage);
-    connect(pagination.get(), &Pagination::blockInterface, this, &PlayerPayments::blockingInterface);
-
-    connect(workingIsTableView.get(), &WorkingIsTableView::unlockInterface, this, &PlayerPayments::blockingInterface);
-
-    connect(&goToPageTimer, &QTimer::timeout, this, [=]()
-    {
-        pagination->goToPage(ui->pageNumberToNavigate->text());
-    });
-
-    connect(&searchTimer, &QTimer::timeout, this, [=]()
-    {
-        pagination->search(ui->searchText->text(), typeSearch);
-    });
 }
 
 void PlayerPayments::search()
@@ -204,14 +190,12 @@ void PlayerPayments::addFilter()
     }
 }
 
-void PlayerPayments::clearFilter()
+void PlayerPayments::runSearch()
 {
-    pagination->setWhere("");
-    prepReloadModels();
+    pagination->search(ui->searchText->text(), typeSearch);
 }
 
-void PlayerPayments::setFilter(const QString &filter)
+void PlayerPayments::runGoToPage()
 {
-    pagination->setWhere(filter);
-    prepReloadModels();
+    pagination->goToPage(ui->pageNumberToNavigate->text());
 }

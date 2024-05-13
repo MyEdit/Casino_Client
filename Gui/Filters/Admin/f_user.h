@@ -1,20 +1,20 @@
-﻿#ifndef F_CREDIT_H
-#define F_CREDIT_H
+﻿#ifndef F_USER_H
+#define F_USER_H
 
 #include "BaseClass/baseclasfilter.h"
 
 namespace Ui {
-class F_Credit;
+class F_User;
 }
 
-class F_Credit : public BaseClasFilter
+class F_User : public BaseClasFilter
 {
     Q_OBJECT
-    Ui::F_Credit *ui;
+    Ui::F_User *ui;
 
 public:
-    explicit F_Credit(QWidget *parent = nullptr);
-    ~F_Credit();
+    explicit F_User(QWidget *parent = nullptr);
+    ~F_User();
 
 private:
     void initFunSetFilters() override;
@@ -23,4 +23,4 @@ private:
     void customizationLiteEdit() override;
 };
 
-#endif // F_CREDIT_H
+#endif // F_USER_H

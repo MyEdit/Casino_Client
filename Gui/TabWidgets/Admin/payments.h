@@ -16,7 +16,6 @@ class Payments;
 class Payments : public BaseClassSearchWindow
 {
     Ui::Payments *ui;
-    QSharedPointer<F_Payment> filter;
 
 public:
     explicit Payments(QWidget *parent = nullptr);
@@ -41,8 +40,8 @@ private:
     void visibleEditing(const bool flag) override;
     void visibleFiltr(const bool flag) override;
     void addFilter() override;
-    void clearFilter() override;
-    void setFilter(const QString &filter) override;
+    void runSearch() override;
+    void runGoToPage() override;
 };
 
 #endif // PAYMENTS_H

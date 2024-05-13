@@ -10,6 +10,7 @@
 #include <QComboBox>
 #include <QLineEdit>
 #include "Utils/workingistableview.h"
+#include "BaseClass/baseclasfilter.h"
 
 class Pagination;
 
@@ -29,6 +30,7 @@ protected:
     QMap<int, QString> typesSorting;
     QWidget* focusedWidget;
     QString defaultFilter;
+    QSharedPointer<BaseClasFilter> filter;
 
 public:
     BaseClassSearchWindow(QWidget *parent);
@@ -57,7 +59,7 @@ protected:
     virtual void setValueToMaxPage(const int maxPage) = 0;
     virtual void assigningValues();
     virtual void creatingObjects() = 0;
-    virtual void connects() = 0;
+    virtual void connects();
     virtual void updateCurrentPageInLabel(const int currentPage) = 0;
     virtual void goToPage() = 0;
     virtual void onHeaderClicked(const int logicalIndex) = 0;
@@ -71,8 +73,10 @@ protected:
     virtual void visibleEditing(const bool flag) = 0;
     virtual void visibleFiltr(const bool flag) = 0;
     virtual void addFilter() = 0;
-    virtual void clearFilter() = 0;
-    virtual void setFilter(const QString& filter) = 0;
+    virtual void clearFilter();
+    virtual void setFilter(const QString& filter);
+    virtual void runSearch() = 0;
+    virtual void runGoToPage() = 0;
 };
 
 #endif // BASECLASSSEARCHWINDOW_H

@@ -4,6 +4,7 @@
 #include <QWidget>
 #include "BaseClass/baseclasssearchwindow.h"
 #include "Utils/pagination.h"
+#include "Gui/Filters/Admin/f_profit.h"
 
 namespace Ui {
 class Profit;
@@ -37,8 +38,8 @@ private:
     void visibleEditing(const bool flag) override;
     void visibleFiltr(const bool flag) override;
     void addFilter() override;
-    void clearFilter() override;
-    void setFilter(const QString &filter) override;
+    void runSearch() override;
+    void runGoToPage() override;
 };
 
 #endif // PROFIT_H

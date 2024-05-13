@@ -34,10 +34,13 @@ void BanList::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>(new WorkingIsTableView(ui->tableView, &boxsNameColumn));
     pagination = QSharedPointer<Pagination>(new Pagination(this, ui->tableView, ui->searchColumn, workingIsTableView, modelTypes));
+    filter = QSharedPointer<F_Ban>(new F_Ban());
 }
 
 void BanList::connects()
 {
+    BaseClassSearchWindow::connects();
+
     connect(ui->prevButton, &QPushButton::clicked, pagination.get(), &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination.get(), &Pagination::next);
     connect(ui->pushButton_search, &QPushButton::clicked, this, &BanList::search);
@@ -45,6 +48,8 @@ void BanList::connects()
     connect(ui->deleteBan, &QPushButton::clicked, this, &BanList::deleting);
     connect(ui->refreshData, &QPushButton::clicked, this, &BanList::prepReloadModels);
     connect(ui->clearSearch, &QPushButton::clicked, this, &BanList::clearSearchText);
+    connect(ui->addFilter, &QPushButton::clicked, this, &BanList::addFilter);
+    connect(ui->clearFilter, &QPushButton::clicked, this, &BanList::clearFilter);
 
     connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &BanList::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &BanList::search);
@@ -55,27 +60,12 @@ void BanList::connects()
     connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &BanList::setVisibleSort);
     connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &BanList::setVisibleSearch);
     connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &BanList::setVisibleEditing);
+    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &BanList::setVisibleFiltr);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &BanList::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &BanList::sort);
 
     connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &BanList::onHeaderClicked);
-
-    connect(pagination.get(), &Pagination::updateCurrentPageInLabel, this, &BanList::updateCurrentPageInLabel);
-    connect(pagination.get(), &Pagination::setMaxPageInLabel, this, &BanList::setValueToMaxPage);
-    connect(pagination.get(), &Pagination::blockInterface, this, &BanList::blockingInterface);
-
-    connect(workingIsTableView.get(), &WorkingIsTableView::unlockInterface, this, &BanList::blockingInterface);
-
-    connect(&goToPageTimer, &QTimer::timeout, this, [=]()
-    {
-        pagination->goToPage(ui->pageNumberToNavigate->text());
-    });
-
-    connect(&searchTimer, &QTimer::timeout, this, [=]()
-    {
-        pagination->search(ui->searchText->text(), typeSearch);
-    });
 }
 
 void BanList::updateCurrentPageInLabel(const int currentPage)
@@ -203,22 +193,24 @@ void BanList::visibleEditing(const bool flag)
 
 void BanList::visibleFiltr(const bool flag)
 {
-    Q_UNUSED(flag);
+    ui->addFilter->setVisible(flag);
+    ui->clearFilter->setVisible(flag);
 }
 
 void BanList::addFilter()
 {
+    if (filter->exec() == QDialog::Accepted)
+    {
 
+    }
 }
 
-void BanList::clearFilter()
+void BanList::runSearch()
 {
-    pagination->setWhere("");
-    prepReloadModels();
+    pagination->search(ui->searchText->text(), typeSearch);
 }
 
-void BanList::setFilter(const QString &filter)
+void BanList::runGoToPage()
 {
-    pagination->setWhere(filter);
-    prepReloadModels();
+    pagination->goToPage(ui->pageNumberToNavigate->text());
 }

@@ -8,6 +8,7 @@
 #include "Utils/pagination.h"
 #include "BaseClass/baseclasssearchwindow.h"
 #include "Gui/WorkingWithRecords/Admin/w_stuffuser.h"
+#include "Gui/Filters/Admin/f_stuffuser.h"
 
 class W_StuffUser;
 
@@ -43,8 +44,8 @@ private:
     void visibleEditing(const bool flag) override;
     void visibleFiltr(const bool flag) override;
     void addFilter() override;
-    void clearFilter() override;
-    void setFilter(const QString &filter) override;
+    void runSearch() override;
+    void runGoToPage() override;
 };
 
 #endif // STUFFUSERS_H

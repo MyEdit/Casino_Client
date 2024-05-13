@@ -42,6 +42,8 @@ void PlayerCredits::creatingObjects()
 
 void PlayerCredits::connects()
 {
+    BaseClassSearchWindow::connects();
+
     connect(ui->prevButton, &QPushButton::clicked, pagination.get(), &Pagination::prev);
     connect(ui->nextButton, &QPushButton::clicked, pagination.get(), &Pagination::next);
     connect(ui->pushButton_search, &QPushButton::clicked, this, &PlayerCredits::search);
@@ -66,22 +68,6 @@ void PlayerCredits::connects()
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &PlayerCredits::sort);
 
     connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &PlayerCredits::onHeaderClicked);
-
-    connect(pagination.get(), &Pagination::updateCurrentPageInLabel, this, &PlayerCredits::updateCurrentPageInLabel);
-    connect(pagination.get(), &Pagination::setMaxPageInLabel, this, &PlayerCredits::setValueToMaxPage);
-    connect(pagination.get(), &Pagination::blockInterface, this, &PlayerCredits::blockingInterface);
-
-    connect(workingIsTableView.get(), &WorkingIsTableView::unlockInterface, this, &PlayerCredits::blockingInterface);
-
-    connect(&goToPageTimer, &QTimer::timeout, this, [=]()
-    {
-        pagination->goToPage(ui->pageNumberToNavigate->text());
-    });
-
-    connect(&searchTimer, &QTimer::timeout, this, [=]()
-    {
-        pagination->search(ui->searchText->text(), typeSearch);
-    });
 }
 
 void PlayerCredits::updateCurrentPageInLabel(const int currentPage)
@@ -211,14 +197,12 @@ void PlayerCredits::addFilter()
     }
 }
 
-void PlayerCredits::clearFilter()
+void PlayerCredits::runSearch()
 {
-    pagination->setWhere("");
-    prepReloadModels();
+    pagination->search(ui->searchText->text(), typeSearch);
 }
 
-void PlayerCredits::setFilter(const QString &filter)
+void PlayerCredits::runGoToPage()
 {
-    pagination->setWhere(filter);
-    prepReloadModels();
+    pagination->goToPage(ui->pageNumberToNavigate->text());
 }

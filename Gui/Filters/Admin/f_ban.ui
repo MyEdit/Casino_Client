@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>F_PlayerCredit</class>
- <widget class="QDialog" name="F_PlayerCredit">
+ <class>F_Ban</class>
+ <widget class="QDialog" name="F_Ban">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>331</width>
-    <height>300</height>
+    <width>323</width>
+    <height>317</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Фильтр кредитов</string>
+   <string>Фильтр заблокированных пользователей</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -24,8 +24,8 @@
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>311</width>
-        <height>238</height>
+        <width>303</width>
+        <height>255</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2"/>

@@ -179,3 +179,31 @@ void BaseClassSearchWindow::assigningValues()
         {1, " DESC"}
     };
 }
+
+void BaseClassSearchWindow::connects()
+{
+    connect(pagination.get(), &Pagination::updateCurrentPageInLabel, this, &BaseClassSearchWindow::updateCurrentPageInLabel);
+    connect(pagination.get(), &Pagination::setMaxPageInLabel, this, &BaseClassSearchWindow::setValueToMaxPage);
+    connect(pagination.get(), &Pagination::blockInterface, this, &BaseClassSearchWindow::blockingInterface);
+
+    connect(workingIsTableView.get(), &WorkingIsTableView::unlockInterface, this, &BaseClassSearchWindow::blockingInterface);
+
+    connect(&goToPageTimer, &QTimer::timeout, this, &BaseClassSearchWindow::runGoToPage);
+
+    connect(&searchTimer, &QTimer::timeout, this, &BaseClassSearchWindow::runSearch);
+
+    connect(filter.get(), &BaseClasFilter::setFilter, this, &BaseClassSearchWindow::setFilter);
+}
+
+void BaseClassSearchWindow::clearFilter()
+{
+    filter->reset();
+    pagination->setWhere(defaultFilter);
+    prepReloadModels();
+}
+
+void BaseClassSearchWindow::setFilter(const QString &filter)
+{
+    pagination->setWhere(defaultFilter + filter);
+    prepReloadModels();
+}

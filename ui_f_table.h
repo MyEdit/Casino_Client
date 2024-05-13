@@ -38,7 +38,7 @@ public:
     QRadioButton *start100end200;
     QRadioButton *start200end300;
     QHBoxLayout *horizontalLayout_2;
-    QRadioButton *yourStartAndEnd;
+    QRadioButton *yourLimitsMinBet;
     QLineEdit *startMinBet;
     QLabel *label_2;
     QLineEdit *endMinBet;
@@ -61,8 +61,8 @@ public:
     {
         if (F_Table->objectName().isEmpty())
             F_Table->setObjectName(QString::fromUtf8("F_Table"));
-        F_Table->resize(482, 426);
-        F_Table->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);W"));
+        F_Table->resize(442, 475);
+        F_Table->setStyleSheet(QString::fromUtf8("color: rgb(0, 0, 0);"));
         verticalLayout = new QVBoxLayout(F_Table);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         scrollArea = new QScrollArea(F_Table);
@@ -70,7 +70,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 448, 378));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 422, 413));
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         minBet = new QPushButton(scrollAreaWidgetContents);
@@ -94,7 +94,7 @@ public:
 
         categoryMinBet = new QWidget(scrollAreaWidgetContents);
         categoryMinBet->setObjectName(QString::fromUtf8("categoryMinBet"));
-        categoryMinBet->setStyleSheet(QString::fromUtf8("#categotyMinBet\n"
+        categoryMinBet->setStyleSheet(QString::fromUtf8("#categoryMinBet\n"
 "{\n"
 "    border: 2px solid black; \n"
 "    border-radius: 10px;\n"
@@ -125,11 +125,11 @@ public:
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        yourStartAndEnd = new QRadioButton(categoryMinBet);
-        yourStartAndEnd->setObjectName(QString::fromUtf8("yourStartAndEnd"));
-        yourStartAndEnd->setFont(font1);
+        yourLimitsMinBet = new QRadioButton(categoryMinBet);
+        yourLimitsMinBet->setObjectName(QString::fromUtf8("yourLimitsMinBet"));
+        yourLimitsMinBet->setFont(font1);
 
-        horizontalLayout_2->addWidget(yourStartAndEnd);
+        horizontalLayout_2->addWidget(yourLimitsMinBet);
 
         startMinBet = new QLineEdit(categoryMinBet);
         startMinBet->setObjectName(QString::fromUtf8("startMinBet"));
@@ -184,7 +184,7 @@ public:
 
         categoryNameGame = new QWidget(scrollAreaWidgetContents);
         categoryNameGame->setObjectName(QString::fromUtf8("categoryNameGame"));
-        categoryNameGame->setStyleSheet(QString::fromUtf8("#categotyNameGame\n"
+        categoryNameGame->setStyleSheet(QString::fromUtf8("#categoryNameGame\n"
 "{\n"
 "    border: 2px solid black; \n"
 "    border-radius: 10px;\n"
@@ -201,14 +201,13 @@ public:
         nameBlackJack = new QRadioButton(categoryNameGame);
         nameBlackJack->setObjectName(QString::fromUtf8("nameBlackJack"));
         nameBlackJack->setFont(font1);
-        nameBlackJack->setStyleSheet(QString::fromUtf8("color: black"));
 
         verticalLayout_3->addWidget(nameBlackJack);
 
         nameDevytka = new QRadioButton(categoryNameGame);
         nameDevytka->setObjectName(QString::fromUtf8("nameDevytka"));
         nameDevytka->setFont(font1);
-        nameDevytka->setStyleSheet(QString::fromUtf8("color: black"));
+        nameDevytka->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_3->addWidget(nameDevytka);
 
@@ -298,11 +297,12 @@ public:
     void retranslateUi(QDialog *F_Table)
     {
         F_Table->setWindowTitle(QApplication::translate("F_Table", "\320\244\320\270\320\273\321\214\321\202\321\200 \321\201\321\202\320\276\320\273\320\276\320\262", nullptr));
+        F_Table->setWindowFilePath(QApplication::translate("F_Table", "z", nullptr));
         minBet->setText(QApplication::translate("F_Table", "- \320\234\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \321\201\321\202\320\260\320\262\320\272\320\260", nullptr));
         start0end100->setText(QApplication::translate("F_Table", "\320\276\321\202 0 \320\264\320\276 100", nullptr));
         start100end200->setText(QApplication::translate("F_Table", "\320\276\321\202 100 \320\264\320\276 200", nullptr));
         start200end300->setText(QApplication::translate("F_Table", "\320\276\321\202 200 \320\264\320\276 300", nullptr));
-        yourStartAndEnd->setText(QApplication::translate("F_Table", "\320\276\321\202", nullptr));
+        yourLimitsMinBet->setText(QApplication::translate("F_Table", "\320\276\321\202", nullptr));
         label_2->setText(QApplication::translate("F_Table", "\320\264\320\276", nullptr));
         nameGame->setText(QApplication::translate("F_Table", "- \320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265 \320\270\320\263\321\200\321\213", nullptr));
         allNameGame->setText(QApplication::translate("F_Table", "\320\222\321\201\320\265", nullptr));

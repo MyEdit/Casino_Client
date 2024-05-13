@@ -9,8 +9,8 @@ PlayerPayments::PlayerPayments(QWidget *parent) :
 
     baseSetting();
 
-    where = "and ID_User = '" + QString::number(P_Authorization::getPlayer()->getID()) + "'";
-    pagination->setWhere(where);
+    defaultFilter = "and ID_User = '" + QString::number(P_Authorization::getPlayer()->getID()) + "'";
+    pagination->setWhere(defaultFilter);
 }
 
 PlayerPayments::~PlayerPayments()
@@ -166,7 +166,7 @@ void PlayerPayments::clearSearchText()
     ui->searchText->clear();
 }
 
-void PlayerPayments::visibleSort(bool flag)
+void PlayerPayments::visibleSort(const bool flag)
 {
     ui->label_19->setVisible(flag);
     ui->label_20->setVisible(flag);
@@ -175,7 +175,7 @@ void PlayerPayments::visibleSort(bool flag)
     ui->sorting->setVisible(flag);
 }
 
-void PlayerPayments::visibleSearch(bool flag)
+void PlayerPayments::visibleSearch(const bool flag)
 {
     ui->label->setVisible(flag);
     ui->searchColumn->setVisible(flag);
@@ -185,12 +185,12 @@ void PlayerPayments::visibleSearch(bool flag)
     ui->clearSearch->setVisible(flag);
 }
 
-void PlayerPayments::visibleEditing(bool flag)
+void PlayerPayments::visibleEditing(const bool flag)
 {
     Q_UNUSED(flag);
 }
 
-void PlayerPayments::visibleFiltr(bool flag)
+void PlayerPayments::visibleFiltr(const bool flag)
 {
     ui->addFilter->setVisible(flag);
     ui->clearFilter->setVisible(flag);
@@ -206,5 +206,12 @@ void PlayerPayments::addFilter()
 
 void PlayerPayments::clearFilter()
 {
+    pagination->setWhere("");
+    prepReloadModels();
+}
 
+void PlayerPayments::setFilter(const QString &filter)
+{
+    pagination->setWhere(filter);
+    prepReloadModels();
 }

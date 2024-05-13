@@ -186,7 +186,7 @@ void ActiveTables::clearSearchText()
     ui->searchText->clear();
 }
 
-void ActiveTables::visibleSort(bool flag)
+void ActiveTables::visibleSort(const bool flag)
 {
     ui->label_3->setVisible(flag);
     ui->label_2->setVisible(flag);
@@ -195,7 +195,7 @@ void ActiveTables::visibleSort(bool flag)
     ui->sorting->setVisible(flag);
 }
 
-void ActiveTables::visibleSearch(bool flag)
+void ActiveTables::visibleSearch(const bool flag)
 {
     ui->label->setVisible(flag);
     ui->searchColumn->setVisible(flag);
@@ -205,14 +205,14 @@ void ActiveTables::visibleSearch(bool flag)
     ui->clearSearch->setVisible(flag);
 }
 
-void ActiveTables::visibleEditing(bool flag)
+void ActiveTables::visibleEditing(const bool flag)
 {
     ui->addTable->setVisible(flag);
     ui->editTable->setVisible(flag);
     ui->deleteTable->setVisible(flag);
 }
 
-void ActiveTables::visibleFiltr(bool flag)
+void ActiveTables::visibleFiltr(const bool flag)
 {
     ui->addFilter->setVisible(flag);
     ui->clearFilter->setVisible(flag);
@@ -228,14 +228,13 @@ void ActiveTables::addFilter()
 
 void ActiveTables::clearFilter()
 {
-    this->where.clear();
-    pagination->setWhere(this->where);
+    filter->reset();
+    pagination->setWhere("");
     prepReloadModels();
 }
 
 void ActiveTables::setFilter(const QString &filter)
 {
-    this->where = filter;
-    pagination->setWhere(this->where);
+    pagination->setWhere(filter);
     prepReloadModels();
 }

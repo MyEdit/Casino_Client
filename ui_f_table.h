@@ -13,6 +13,8 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QScrollArea>
@@ -29,9 +31,22 @@ public:
     QScrollArea *scrollArea;
     QWidget *scrollAreaWidgetContents;
     QVBoxLayout *verticalLayout_2;
+    QPushButton *minBet;
+    QWidget *categoryMinBet;
+    QVBoxLayout *verticalLayout_5;
+    QRadioButton *start0end100;
+    QRadioButton *start100end200;
+    QRadioButton *start200end300;
+    QHBoxLayout *horizontalLayout_2;
+    QRadioButton *yourStartAndEnd;
+    QLineEdit *startMinBet;
+    QLabel *label_2;
+    QLineEdit *endMinBet;
+    QSpacerItem *horizontalSpacer_5;
     QPushButton *nameGame;
-    QWidget *categotyNameGame;
+    QWidget *categoryNameGame;
     QVBoxLayout *verticalLayout_3;
+    QRadioButton *allNameGame;
     QRadioButton *nameBlackJack;
     QRadioButton *nameDevytka;
     QSpacerItem *verticalSpacer;
@@ -55,14 +70,104 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 462, 364));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 448, 378));
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        nameGame = new QPushButton(scrollAreaWidgetContents);
-        nameGame->setObjectName(QString::fromUtf8("nameGame"));
+        minBet = new QPushButton(scrollAreaWidgetContents);
+        minBet->setObjectName(QString::fromUtf8("minBet"));
         QFont font;
         font.setFamily(QString::fromUtf8("Segoe UI"));
         font.setPointSize(14);
+        minBet->setFont(font);
+        minBet->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"font-weight: bold;\n"
+"}"));
+
+        verticalLayout_2->addWidget(minBet);
+
+        categoryMinBet = new QWidget(scrollAreaWidgetContents);
+        categoryMinBet->setObjectName(QString::fromUtf8("categoryMinBet"));
+        categoryMinBet->setStyleSheet(QString::fromUtf8("#categotyMinBet\n"
+"{\n"
+"    border: 2px solid black; \n"
+"    border-radius: 10px;\n"
+"	background-color: rgb(198, 198, 198);\n"
+"}"));
+        verticalLayout_5 = new QVBoxLayout(categoryMinBet);
+        verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
+        start0end100 = new QRadioButton(categoryMinBet);
+        start0end100->setObjectName(QString::fromUtf8("start0end100"));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Segoe UI"));
+        font1.setPointSize(12);
+        start0end100->setFont(font1);
+
+        verticalLayout_5->addWidget(start0end100);
+
+        start100end200 = new QRadioButton(categoryMinBet);
+        start100end200->setObjectName(QString::fromUtf8("start100end200"));
+        start100end200->setFont(font1);
+
+        verticalLayout_5->addWidget(start100end200);
+
+        start200end300 = new QRadioButton(categoryMinBet);
+        start200end300->setObjectName(QString::fromUtf8("start200end300"));
+        start200end300->setFont(font1);
+
+        verticalLayout_5->addWidget(start200end300);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        yourStartAndEnd = new QRadioButton(categoryMinBet);
+        yourStartAndEnd->setObjectName(QString::fromUtf8("yourStartAndEnd"));
+        yourStartAndEnd->setFont(font1);
+
+        horizontalLayout_2->addWidget(yourStartAndEnd);
+
+        startMinBet = new QLineEdit(categoryMinBet);
+        startMinBet->setObjectName(QString::fromUtf8("startMinBet"));
+        startMinBet->setFont(font1);
+        startMinBet->setFrame(false);
+
+        horizontalLayout_2->addWidget(startMinBet);
+
+        label_2 = new QLabel(categoryMinBet);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        QFont font2;
+        font2.setFamily(QString::fromUtf8("Segoe UI"));
+        font2.setPointSize(12);
+        font2.setBold(false);
+        font2.setWeight(50);
+        label_2->setFont(font2);
+
+        horizontalLayout_2->addWidget(label_2);
+
+        endMinBet = new QLineEdit(categoryMinBet);
+        endMinBet->setObjectName(QString::fromUtf8("endMinBet"));
+        endMinBet->setFont(font1);
+        endMinBet->setFrame(false);
+
+        horizontalLayout_2->addWidget(endMinBet);
+
+        horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer_5);
+
+
+        verticalLayout_5->addLayout(horizontalLayout_2);
+
+
+        verticalLayout_2->addWidget(categoryMinBet);
+
+        nameGame = new QPushButton(scrollAreaWidgetContents);
+        nameGame->setObjectName(QString::fromUtf8("nameGame"));
         nameGame->setFont(font);
         nameGame->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "	background: transparent;\n"
@@ -77,27 +182,30 @@ public:
 
         verticalLayout_2->addWidget(nameGame);
 
-        categotyNameGame = new QWidget(scrollAreaWidgetContents);
-        categotyNameGame->setObjectName(QString::fromUtf8("categotyNameGame"));
-        categotyNameGame->setStyleSheet(QString::fromUtf8("#categotyNameGame\n"
+        categoryNameGame = new QWidget(scrollAreaWidgetContents);
+        categoryNameGame->setObjectName(QString::fromUtf8("categoryNameGame"));
+        categoryNameGame->setStyleSheet(QString::fromUtf8("#categotyNameGame\n"
 "{\n"
 "    border: 2px solid black; \n"
 "    border-radius: 10px;\n"
 "	background-color: rgb(198, 198, 198);\n"
 "}"));
-        verticalLayout_3 = new QVBoxLayout(categotyNameGame);
+        verticalLayout_3 = new QVBoxLayout(categoryNameGame);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        nameBlackJack = new QRadioButton(categotyNameGame);
+        allNameGame = new QRadioButton(categoryNameGame);
+        allNameGame->setObjectName(QString::fromUtf8("allNameGame"));
+        allNameGame->setFont(font1);
+
+        verticalLayout_3->addWidget(allNameGame);
+
+        nameBlackJack = new QRadioButton(categoryNameGame);
         nameBlackJack->setObjectName(QString::fromUtf8("nameBlackJack"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Segoe UI"));
-        font1.setPointSize(12);
         nameBlackJack->setFont(font1);
         nameBlackJack->setStyleSheet(QString::fromUtf8("color: black"));
 
         verticalLayout_3->addWidget(nameBlackJack);
 
-        nameDevytka = new QRadioButton(categotyNameGame);
+        nameDevytka = new QRadioButton(categoryNameGame);
         nameDevytka->setObjectName(QString::fromUtf8("nameDevytka"));
         nameDevytka->setFont(font1);
         nameDevytka->setStyleSheet(QString::fromUtf8("color: black"));
@@ -105,7 +213,7 @@ public:
         verticalLayout_3->addWidget(nameDevytka);
 
 
-        verticalLayout_2->addWidget(categotyNameGame);
+        verticalLayout_2->addWidget(categoryNameGame);
 
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
@@ -123,12 +231,12 @@ public:
 
         reset = new QPushButton(F_Table);
         reset->setObjectName(QString::fromUtf8("reset"));
-        QFont font2;
-        font2.setFamily(QString::fromUtf8("Segoe UI"));
-        font2.setPointSize(12);
-        font2.setBold(true);
-        font2.setWeight(75);
-        reset->setFont(font2);
+        QFont font3;
+        font3.setFamily(QString::fromUtf8("Segoe UI"));
+        font3.setPointSize(12);
+        font3.setBold(true);
+        font3.setWeight(75);
+        reset->setFont(font3);
         reset->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: white;\n"
 "    border: 1px solid black;\n"
@@ -154,7 +262,7 @@ public:
 
         applyFilter = new QPushButton(F_Table);
         applyFilter->setObjectName(QString::fromUtf8("applyFilter"));
-        applyFilter->setFont(font2);
+        applyFilter->setFont(font3);
         applyFilter->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: white;\n"
 "    border: 1px solid black;\n"
@@ -190,7 +298,14 @@ public:
     void retranslateUi(QDialog *F_Table)
     {
         F_Table->setWindowTitle(QApplication::translate("F_Table", "\320\244\320\270\320\273\321\214\321\202\321\200 \321\201\321\202\320\276\320\273\320\276\320\262", nullptr));
+        minBet->setText(QApplication::translate("F_Table", "- \320\234\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \321\201\321\202\320\260\320\262\320\272\320\260", nullptr));
+        start0end100->setText(QApplication::translate("F_Table", "\320\276\321\202 0 \320\264\320\276 100", nullptr));
+        start100end200->setText(QApplication::translate("F_Table", "\320\276\321\202 100 \320\264\320\276 200", nullptr));
+        start200end300->setText(QApplication::translate("F_Table", "\320\276\321\202 200 \320\264\320\276 300", nullptr));
+        yourStartAndEnd->setText(QApplication::translate("F_Table", "\320\276\321\202", nullptr));
+        label_2->setText(QApplication::translate("F_Table", "\320\264\320\276", nullptr));
         nameGame->setText(QApplication::translate("F_Table", "- \320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265 \320\270\320\263\321\200\321\213", nullptr));
+        allNameGame->setText(QApplication::translate("F_Table", "\320\222\321\201\320\265", nullptr));
         nameBlackJack->setText(QApplication::translate("F_Table", "BlackJack", nullptr));
         nameDevytka->setText(QApplication::translate("F_Table", "\320\224\320\265\320\262\321\217\321\202\320\272\320\260", nullptr));
         reset->setText(QApplication::translate("F_Table", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));

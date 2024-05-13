@@ -28,7 +28,7 @@ protected:
     bool sortingOn;
     QMap<int, QString> typesSorting;
     QWidget* focusedWidget;
-    QString where;
+    QString defaultFilter;
 
 public:
     BaseClassSearchWindow(QWidget *parent);
@@ -41,18 +41,18 @@ protected:
     void blockAndOperate(QObject* widget, const std::function<void()>& operation);
     void blockingInterface(const bool flag);
     void settingValueInComboBox(QComboBox* comboBox, const QString& headerText);
-    void sorting(int arg);
-    void selectTypeSearch(int arg);
+    void sorting(const int arg);
+    void selectTypeSearch(const int arg);
     void baseSetting();
     void sort();
-    void deleteRecord(const QString& table, const QString& idColumn, int id);
+    void deleteRecord(const QString& table, const QString& idColumn, const int id);
     void startPagination();
-    const QVariant getValueFromSelectedRow(QTableView* tableView, int collumn);
+    const QVariant getValueFromSelectedRow(QTableView* tableView, const int collumn);
     void showEvent(QShowEvent *event) override;
-    void setVisibleSort(int arg);
-    void setVisibleSearch(int arg);
-    void setVisibleEditing(int arg);
-    void setVisibleFiltr(int arg);
+    void setVisibleSort(const int arg);
+    void setVisibleSearch(const int arg);
+    void setVisibleEditing(const int arg);
+    void setVisibleFiltr(const int arg);
     virtual void search() = 0;
     virtual void setValueToMaxPage(const int maxPage) = 0;
     virtual void assigningValues();
@@ -66,13 +66,13 @@ protected:
     virtual void openEditRecotd() = 0;
     virtual void deleting() = 0;
     virtual void clearSearchText() = 0;
-    virtual void visibleSort(bool flag) = 0;
-    virtual void visibleSearch(bool flag) = 0;
-    virtual void visibleEditing(bool flag) = 0;
-    virtual void visibleFiltr(bool flag) = 0;
+    virtual void visibleSort(const bool flag) = 0;
+    virtual void visibleSearch(const bool flag) = 0;
+    virtual void visibleEditing(const bool flag) = 0;
+    virtual void visibleFiltr(const bool flag) = 0;
     virtual void addFilter() = 0;
     virtual void clearFilter() = 0;
-    virtual void setFilter(const QString& filter) {}
+    virtual void setFilter(const QString& filter) = 0;
 };
 
 #endif // BASECLASSSEARCHWINDOW_H

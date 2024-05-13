@@ -9,8 +9,8 @@ PlayerCredits::PlayerCredits(QWidget *parent) :
 
     baseSetting();
 
-    where = "and ID_User = '" + QString::number(P_Authorization::getPlayer()->getID()) + "'";
-    pagination->setWhere(where);
+    defaultFilter = "and ID_User = '" + QString::number(P_Authorization::getPlayer()->getID()) + "'";
+    pagination->setWhere(defaultFilter);
 }
 
 PlayerCredits::~PlayerCredits()
@@ -173,7 +173,7 @@ void PlayerCredits::clearSearchText()
     ui->searchText->clear();
 }
 
-void PlayerCredits::visibleSort(bool flag)
+void PlayerCredits::visibleSort(const bool flag)
 {
     ui->label_3->setVisible(flag);
     ui->label_2->setVisible(flag);
@@ -182,7 +182,7 @@ void PlayerCredits::visibleSort(bool flag)
     ui->sorting->setVisible(flag);
 }
 
-void PlayerCredits::visibleSearch(bool flag)
+void PlayerCredits::visibleSearch(const bool flag)
 {
     ui->label->setVisible(flag);
     ui->searchColumn->setVisible(flag);
@@ -192,12 +192,12 @@ void PlayerCredits::visibleSearch(bool flag)
     ui->clearSearch->setVisible(flag);
 }
 
-void PlayerCredits::visibleEditing(bool flag)
+void PlayerCredits::visibleEditing(const bool flag)
 {
     ui->addCredit->setVisible(flag);
 }
 
-void PlayerCredits::visibleFiltr(bool flag)
+void PlayerCredits::visibleFiltr(const bool flag)
 {
     ui->addFilter->setVisible(flag);
     ui->clearFilter->setVisible(flag);
@@ -213,5 +213,12 @@ void PlayerCredits::addFilter()
 
 void PlayerCredits::clearFilter()
 {
+    pagination->setWhere("");
+    prepReloadModels();
+}
 
+void PlayerCredits::setFilter(const QString &filter)
+{
+    pagination->setWhere(filter);
+    prepReloadModels();
 }

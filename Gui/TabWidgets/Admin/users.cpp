@@ -193,7 +193,7 @@ void Users::clearSearchText()
     ui->searchText->clear();
 }
 
-void Users::visibleSort(bool flag)
+void Users::visibleSort(const bool flag)
 {
     ui->label_3->setVisible(flag);
     ui->label_2->setVisible(flag);
@@ -202,7 +202,7 @@ void Users::visibleSort(bool flag)
     ui->sorting->setVisible(flag);
 }
 
-void Users::visibleSearch(bool flag)
+void Users::visibleSearch(const bool flag)
 {
     ui->label->setVisible(flag);
     ui->searchColumn->setVisible(flag);
@@ -212,7 +212,7 @@ void Users::visibleSearch(bool flag)
     ui->clearSearch->setVisible(flag);
 }
 
-void Users::visibleEditing(bool flag)
+void Users::visibleEditing(const bool flag)
 {
     ui->addBun->setVisible(flag);
     ui->addUser->setVisible(flag);
@@ -220,7 +220,7 @@ void Users::visibleEditing(bool flag)
     ui->deleteUser->setVisible(flag);
 }
 
-void Users::visibleFiltr(bool flag)
+void Users::visibleFiltr(const bool flag)
 {
     Q_UNUSED(flag);
 }
@@ -232,5 +232,12 @@ void Users::addFilter()
 
 void Users::clearFilter()
 {
+    pagination->setWhere("");
+    prepReloadModels();
+}
 
+void Users::setFilter(const QString &filter)
+{
+    pagination->setWhere(filter);
+    prepReloadModels();
 }

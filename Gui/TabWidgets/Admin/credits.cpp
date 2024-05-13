@@ -168,7 +168,7 @@ void Credits::clearSearchText()
     ui->searchText->clear();
 }
 
-void Credits::visibleSort(bool flag)
+void Credits::visibleSort(const bool flag)
 {
     ui->label_3->setVisible(flag);
     ui->label_2->setVisible(flag);
@@ -177,7 +177,7 @@ void Credits::visibleSort(bool flag)
     ui->sorting->setVisible(flag);
 }
 
-void Credits::visibleSearch(bool flag)
+void Credits::visibleSearch(const bool flag)
 {
     ui->label->setVisible(flag);
     ui->searchColumn->setVisible(flag);
@@ -187,14 +187,14 @@ void Credits::visibleSearch(bool flag)
     ui->clearSearch->setVisible(flag);
 }
 
-void Credits::visibleEditing(bool flag)
+void Credits::visibleEditing(const bool flag)
 {
     ui->addCredit->setVisible(flag);
     ui->editCredit->setVisible(flag);
     ui->deleteCredit->setVisible(flag);
 }
 
-void Credits::visibleFiltr(bool flag)
+void Credits::visibleFiltr(const bool flag)
 {
     ui->addFilter->setVisible(flag);
     ui->clearFilter->setVisible(flag);
@@ -210,5 +210,12 @@ void Credits::addFilter()
 
 void Credits::clearFilter()
 {
+    pagination->setWhere("");
+    prepReloadModels();
+}
 
+void Credits::setFilter(const QString &filter)
+{
+    pagination->setWhere(filter);
+    prepReloadModels();
 }

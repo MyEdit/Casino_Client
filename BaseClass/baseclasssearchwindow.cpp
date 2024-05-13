@@ -66,13 +66,13 @@ void BaseClassSearchWindow::update()
     pagination->start();
 }
 
-void BaseClassSearchWindow::sorting(int arg)
+void BaseClassSearchWindow::sorting(const int arg)
 {
     sortingOn = (arg == 2) ? true : false;
     prepReloadModels();
 }
 
-void BaseClassSearchWindow::selectTypeSearch(int arg)
+void BaseClassSearchWindow::selectTypeSearch(const int arg)
 {
     if(arg == 2)
         typeSearch.clear();
@@ -106,13 +106,13 @@ void BaseClassSearchWindow::sort()
         prepReloadModels();
 }
 
-const QVariant BaseClassSearchWindow::getValueFromSelectedRow(QTableView* tableView, int collumn)
+const QVariant BaseClassSearchWindow::getValueFromSelectedRow(QTableView* tableView, const int collumn)
 {
     QModelIndex currentDiscount = tableView->currentIndex();
     return tableView->model()->data(tableView->model()->index(currentDiscount.row(), collumn), 0);
 }
 
-void BaseClassSearchWindow::deleteRecord(const QString& table, const QString& idColumn, int id)
+void BaseClassSearchWindow::deleteRecord(const QString& table, const QString& idColumn,const int id)
 {
     if(id == 0)
     {
@@ -141,25 +141,25 @@ void BaseClassSearchWindow::showEvent(QShowEvent* event)
     startPagination();
 }
 
-void BaseClassSearchWindow::setVisibleSort(int arg)
+void BaseClassSearchWindow::setVisibleSort(const int arg)
 {
     bool flag = (arg == 2) ? true : false;
     visibleSort(flag);
 }
 
-void BaseClassSearchWindow::setVisibleSearch(int arg)
+void BaseClassSearchWindow::setVisibleSearch(const int arg)
 {
     bool flag = (arg == 2) ? true : false;
     visibleSearch(flag);
 }
 
-void BaseClassSearchWindow::setVisibleEditing(int arg)
+void BaseClassSearchWindow::setVisibleEditing(const int arg)
 {
     bool flag = (arg == 2) ? true : false;
     visibleEditing(flag);
 }
 
-void BaseClassSearchWindow::setVisibleFiltr(int arg)
+void BaseClassSearchWindow::setVisibleFiltr(const int arg)
 {
     bool flag = (arg == 2) ? true : false;
     visibleFiltr(flag);

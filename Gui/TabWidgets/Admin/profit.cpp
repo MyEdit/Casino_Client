@@ -169,7 +169,7 @@ void Profit::clearSearchText()
     ui->searchText->clear();
 }
 
-void Profit::visibleSort(bool flag)
+void Profit::visibleSort(const bool flag)
 {
     ui->label_3->setVisible(flag);
     ui->label_2->setVisible(flag);
@@ -178,7 +178,7 @@ void Profit::visibleSort(bool flag)
     ui->sorting->setVisible(flag);
 }
 
-void Profit::visibleSearch(bool flag)
+void Profit::visibleSearch(const bool flag)
 {
     ui->label->setVisible(flag);
     ui->searchColumn->setVisible(flag);
@@ -188,12 +188,12 @@ void Profit::visibleSearch(bool flag)
     ui->clearSearch->setVisible(flag);
 }
 
-void Profit::visibleEditing(bool flag)
+void Profit::visibleEditing(const bool flag)
 {
     Q_UNUSED(flag);
 }
 
-void Profit::visibleFiltr(bool flag)
+void Profit::visibleFiltr(const bool flag)
 {
     ui->addFilter->setVisible(flag);
     ui->clearFilter->setVisible(flag);
@@ -201,14 +201,18 @@ void Profit::visibleFiltr(bool flag)
 
 void Profit::addFilter()
 {
-//    if (filter->exec() == QDialog::Accepted)
-//    {
 
-//    }
 }
 
 void Profit::clearFilter()
 {
+    pagination->setWhere("");
+    prepReloadModels();
+}
 
+void Profit::setFilter(const QString &filter)
+{
+    pagination->setWhere(filter);
+    prepReloadModels();
 }
 

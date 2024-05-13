@@ -2,14 +2,11 @@
 #include "ui_f_table.h"
 
 F_Table::F_Table(QWidget *parent) :
-    QDialog(parent),
+    BaseClasFilter(parent),
     ui(new Ui::F_Table)
 {
     ui->setupUi(this);
-    connects();
-    initFunSetFilters();
-    initFunVisibletFilters();
-    visibleCategory();
+    setButton(ui->applyFilter, ui->reset);
     startSetting();
 }
 
@@ -18,40 +15,17 @@ F_Table::~F_Table()
     delete ui;
 }
 
-void F_Table::connects()
-{
-    connect(ui->applyFilter, &QPushButton::clicked, this, &F_Table::applyFilter);
-    connect(ui->reset, &QPushButton::clicked, this, &F_Table::reset);
-
-    QList<QPushButton*> pushbuttons = this->findChildren<QPushButton*>();
-    for(QPushButton* pushbutton : pushbuttons)
-    {
-        if(pushbutton != ui->reset || pushbutton != ui->applyFilter)
-            connect(ui->nameGame, &QPushButton::clicked, this, &F_Table::visibleCategory);
-    }
-
-}
-
-void F_Table::applyFilter()
-{
-    QString filter;
-    QList<QRadioButton*> radioButtons = this->findChildren<QRadioButton*>();
-    for(QRadioButton* radioButton : radioButtons)
-    {
-        if(radioButton->isChecked())
-            filter += functionsSetFilters[radioButton]();
-    }
-
-    emit setFilter(filter);
-    accept();
-}
-
 void F_Table::initFunSetFilters()
 {
     functionsSetFilters =
     {
+        {ui->start0end100,   [&]() {return " and MinBet >= '0' and MinBet <= '100'";}},
+        {ui->start100end200,   [&]() {return " and MinBet >= '100' and MinBet <= '200'";}},
+        {ui->start200end300,   [&]() {return " and MinBet >= '200' and MinBet <= '300'";}},
+        {ui->yourStartAndEnd,   [&]() {return " and MinBet >= '" + ui->startMinBet->text() + "' and MinBet <= '" + ui->endMinBet->text() + "'";}},
         {ui->nameBlackJack, [&]() {return " and NameGame = 'BlackJack'";}},
-        {ui->nameDevytka,   [&]() {return " and NameGame = 'Девятка'";}}
+        {ui->nameDevytka,   [&]() {return " and NameGame = 'Девятка'";}},
+        {ui->allNameGame,   [&]() {return "";}}
     };
 }
 
@@ -59,35 +33,19 @@ void F_Table::initFunVisibletFilters()
 {
     functionsVisibleFilters =
     {
-        {ui->nameGame, [&]() {ui->categotyNameGame->setVisible(!ui->categotyNameGame->isVisible());}}
+        {ui->nameGame, [&]() {ui->categoryNameGame->setVisible(!ui->categoryNameGame->isVisible());}},
+        {ui->minBet, [&]() {ui->categoryMinBet->setVisible(!ui->categoryMinBet->isVisible());}}
     };
 }
 
-void F_Table::visibleCategory()
+void F_Table::hideCategory()
 {
-    QPushButton* selectButton = qobject_cast<QPushButton*>(sender());
-    if (selectButton)
-    {
-        auto it = functionsVisibleFilters.find(selectButton);
-        if (it != functionsVisibleFilters.end())
-        {
-            it.value()();
-            QFont font = selectButton->font();
-            if (font.bold())
-                font.setBold(false);
-            else
-                font.setBold(true);
-            selectButton->setFont(font);
-        }
-    }
+    ui->categoryNameGame->hide();
+    ui->categoryMinBet->hide();
 }
 
-void F_Table::startSetting()
+void F_Table::customizationLiteEdit()
 {
-    ui->categotyNameGame->hide();
-}
-
-void F_Table::reset()
-{
-    close();
+    ui->startMinBet->setValidator(new QIntValidator(this));
+    ui->endMinBet->setValidator(new QIntValidator(this));
 }

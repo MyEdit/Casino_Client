@@ -16,6 +16,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    BaseClass/baseclasfilter.cpp \
     BaseClass/baseclassmainmenu.cpp \
     BaseClass/baseclasssearchwindow.cpp \
     GUI/Objects/Admin/activetable.cpp \
@@ -80,6 +81,7 @@ SOURCES += \
     main.cpp
 
 HEADERS += \
+    BaseClass/baseclasfilter.h \
     BaseClass/baseclassgamewidget.h \
     BaseClass/baseclassmainmenu.h \
     BaseClass/baseclasssearchwindow.h \

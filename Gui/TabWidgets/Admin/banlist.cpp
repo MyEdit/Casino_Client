@@ -176,7 +176,7 @@ void BanList::clearSearchText()
     ui->searchText->clear();
 }
 
-void BanList::visibleSort(bool flag)
+void BanList::visibleSort(const bool flag)
 {
     ui->label_3->setVisible(flag);
     ui->label_2->setVisible(flag);
@@ -185,7 +185,7 @@ void BanList::visibleSort(bool flag)
     ui->sorting->setVisible(flag);
 }
 
-void BanList::visibleSearch(bool flag)
+void BanList::visibleSearch(const bool flag)
 {
     ui->label->setVisible(flag);
     ui->searchColumn->setVisible(flag);
@@ -195,13 +195,13 @@ void BanList::visibleSearch(bool flag)
     ui->clearSearch->setVisible(flag);
 }
 
-void BanList::visibleEditing(bool flag)
+void BanList::visibleEditing(const bool flag)
 {
     ui->editBan->setVisible(flag);
     ui->deleteBan->setVisible(flag);
 }
 
-void BanList::visibleFiltr(bool flag)
+void BanList::visibleFiltr(const bool flag)
 {
     Q_UNUSED(flag);
 }
@@ -213,5 +213,12 @@ void BanList::addFilter()
 
 void BanList::clearFilter()
 {
+    pagination->setWhere("");
+    prepReloadModels();
+}
 
+void BanList::setFilter(const QString &filter)
+{
+    pagination->setWhere(filter);
+    prepReloadModels();
 }

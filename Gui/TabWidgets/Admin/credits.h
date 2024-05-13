@@ -36,12 +36,13 @@ private:
     void openEditRecotd() override;
     void deleting() override;
     void clearSearchText() override;
-    void visibleSort(bool flag) override;
-    void visibleSearch(bool flag) override;
-    void visibleEditing(bool flag) override;
-    void visibleFiltr(bool flag) override;
+    void visibleSort(const bool flag) override;
+    void visibleSearch(const bool flag) override;
+    void visibleEditing(const bool flag) override;
+    void visibleFiltr(const bool flag) override;
     void addFilter() override;
     void clearFilter() override;
+    void setFilter(const QString &filter) override;
 };
 
 #endif // CREDITS_H

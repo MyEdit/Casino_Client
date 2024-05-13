@@ -179,7 +179,7 @@ void StuffUsers::clearSearchText()
     ui->searchText->clear();
 }
 
-void StuffUsers::visibleSort(bool flag)
+void StuffUsers::visibleSort(const bool flag)
 {
     ui->label_3->setVisible(flag);
     ui->label_2->setVisible(flag);
@@ -188,7 +188,7 @@ void StuffUsers::visibleSort(bool flag)
     ui->sorting->setVisible(flag);
 }
 
-void StuffUsers::visibleSearch(bool flag)
+void StuffUsers::visibleSearch(const bool flag)
 {
     ui->label->setVisible(flag);
     ui->searchColumn->setVisible(flag);
@@ -198,14 +198,14 @@ void StuffUsers::visibleSearch(bool flag)
     ui->clearSearch->setVisible(flag);
 }
 
-void StuffUsers::visibleEditing(bool flag)
+void StuffUsers::visibleEditing(const bool flag)
 {
     ui->addStuffUser->setVisible(flag);
     ui->editStuffUser->setVisible(flag);
     ui->deleteStuffUser->setVisible(flag);
 }
 
-void StuffUsers::visibleFiltr(bool flag)
+void StuffUsers::visibleFiltr(const bool flag)
 {
     Q_UNUSED(flag);
 }
@@ -217,5 +217,12 @@ void StuffUsers::addFilter()
 
 void StuffUsers::clearFilter()
 {
+    pagination->setWhere("");
+    prepReloadModels();
+}
 
+void StuffUsers::setFilter(const QString &filter)
+{
+    pagination->setWhere(filter);
+    prepReloadModels();
 }

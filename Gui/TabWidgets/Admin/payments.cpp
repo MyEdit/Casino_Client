@@ -168,7 +168,7 @@ void Payments::clearSearchText()
     ui->searchText->clear();
 }
 
-void Payments::visibleSort(bool flag)
+void Payments::visibleSort(const bool flag)
 {
     ui->label_3->setVisible(flag);
     ui->label_2->setVisible(flag);
@@ -177,7 +177,7 @@ void Payments::visibleSort(bool flag)
     ui->sorting->setVisible(flag);
 }
 
-void Payments::visibleSearch(bool flag)
+void Payments::visibleSearch(const bool flag)
 {
     ui->label->setVisible(flag);
     ui->searchColumn->setVisible(flag);
@@ -187,12 +187,12 @@ void Payments::visibleSearch(bool flag)
     ui->clearSearch->setVisible(flag);
 }
 
-void Payments::visibleEditing(bool flag)
+void Payments::visibleEditing(const bool flag)
 {
     Q_UNUSED(flag);
 }
 
-void Payments::visibleFiltr(bool flag)
+void Payments::visibleFiltr(const bool flag)
 {
     ui->addFilter->setVisible(flag);
     ui->clearFilter->setVisible(flag);
@@ -208,6 +208,13 @@ void Payments::addFilter()
 
 void Payments::clearFilter()
 {
+    pagination->setWhere("");
+    prepReloadModels();
+}
 
+void Payments::setFilter(const QString &filter)
+{
+    pagination->setWhere(filter);
+    prepReloadModels();
 }
 

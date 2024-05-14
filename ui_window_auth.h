@@ -11,12 +11,13 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QGridLayout>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,8 +26,9 @@ class Ui_Window_Auth
 {
 public:
     QWidget *centralwidget;
-    QGridLayout *gridLayout;
+    QHBoxLayout *horizontalLayout;
     QLabel *label;
+    QVBoxLayout *verticalLayout;
     QSpacerItem *verticalSpacer;
     QLineEdit *textBox_Login;
     QLineEdit *textBox_Password;
@@ -37,25 +39,31 @@ public:
     {
         if (Window_Auth->objectName().isEmpty())
             Window_Auth->setObjectName(QString::fromUtf8("Window_Auth"));
-        Window_Auth->resize(665, 350);
+        Window_Auth->resize(610, 349);
+        Window_Auth->setMinimumSize(QSize(400, 30));
         Window_Auth->setDocumentMode(false);
         centralwidget = new QWidget(Window_Auth);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        gridLayout = new QGridLayout(centralwidget);
-        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        gridLayout->setContentsMargins(0, 0, -1, 0);
+        horizontalLayout = new QHBoxLayout(centralwidget);
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
-        label->setMaximumSize(QSize(400, 350));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy);
         label->setPixmap(QPixmap(QString::fromUtf8(":/photos/resources/Window_Auth_Background.png")));
         label->setScaledContents(true);
         label->setWordWrap(false);
 
-        gridLayout->addWidget(label, 0, 0, 5, 1);
+        horizontalLayout->addWidget(label);
 
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout->addItem(verticalSpacer, 0, 1, 1, 1);
+        verticalLayout->addItem(verticalSpacer);
 
         textBox_Login = new QLineEdit(centralwidget);
         textBox_Login->setObjectName(QString::fromUtf8("textBox_Login"));
@@ -65,24 +73,47 @@ public:
         font.setPointSize(10);
         textBox_Login->setFont(font);
 
-        gridLayout->addWidget(textBox_Login, 1, 1, 1, 1);
+        verticalLayout->addWidget(textBox_Login);
 
         textBox_Password = new QLineEdit(centralwidget);
         textBox_Password->setObjectName(QString::fromUtf8("textBox_Password"));
         textBox_Password->setMinimumSize(QSize(250, 50));
         textBox_Password->setFont(font);
 
-        gridLayout->addWidget(textBox_Password, 2, 1, 1, 1);
+        verticalLayout->addWidget(textBox_Password);
 
         Button_Auth = new QPushButton(centralwidget);
         Button_Auth->setObjectName(QString::fromUtf8("Button_Auth"));
         Button_Auth->setMinimumSize(QSize(0, 35));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Segoe UI"));
+        font1.setPointSize(14);
+        Button_Auth->setFont(font1);
+        Button_Auth->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"    background-color: white;\n"
+"    border: 1px solid black;\n"
+"    border-radius: 10px;\n"
+"    padding: 5px;\n"
+"    color: black;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"    background-color: rgb(100, 88, 255);\n"
+"	color: white;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"	background-color: rgba(220, 60, 190, 255);\n"
+"}"));
 
-        gridLayout->addWidget(Button_Auth, 3, 1, 1, 1);
+        verticalLayout->addWidget(Button_Auth);
 
         verticalSpacer_2 = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
 
-        gridLayout->addItem(verticalSpacer_2, 4, 1, 1, 1);
+        verticalLayout->addItem(verticalSpacer_2);
+
+
+        horizontalLayout->addLayout(verticalLayout);
 
         Window_Auth->setCentralWidget(centralwidget);
 

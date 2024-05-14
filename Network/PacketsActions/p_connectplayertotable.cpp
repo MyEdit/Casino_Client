@@ -14,5 +14,6 @@ void P_ConnectPlayerToTable::openGameGUI(QSharedPointer<Table> table)
 
 void P_ConnectPlayerToTable::updatePlayers(QSharedPointer<Table> table)
 {
-    table->updatePlayers();
+    if(table)
+        table->updatePlayers();
 }

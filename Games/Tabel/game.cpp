@@ -78,8 +78,6 @@ void Game::leave()
     if(menu)
         menu->setEnabled(true);
 
-    P_Authorization::getPlayer()->setGame(nullptr);
-
     P_Authorization::playerW->getGameTabelsLoading()->start();
 }
 

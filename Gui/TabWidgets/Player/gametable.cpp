@@ -29,14 +29,24 @@ void GameTable::updateTables()
     }
 }
 
+void GameTable::stop()
+{
+    timer->stop();
+}
+
+void GameTable::start()
+{
+    timer->start(1000);
+}
+
 void GameTable::requestTables()
 {
-    QTimer* timer = new QTimer(this);
+    timer = new QTimer(this);
 
     connect(timer, &QTimer::timeout, this, [=]() {
         PacketTypes packettype = PacketTypes::P_SendTables;
         NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     });
 
-    timer->start(1000);
+    start();
 }

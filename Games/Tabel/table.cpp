@@ -119,6 +119,7 @@ void Table::openGameGUI()
     game->getGUI()->updatePlayersIcons(players);
     game->getGUI()->show();
 
+    P_Authorization::playerW->getGameTabelsLoading()->stop();
     P_Authorization::getPlayer()->setGame(game);
 }
 

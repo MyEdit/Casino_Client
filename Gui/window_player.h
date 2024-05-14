@@ -21,7 +21,7 @@ class Window_Player : public BaseClassMainMenu
 {
     Q_OBJECT
     Ui::Window_Player *ui;
-    QSharedPointer<GameTable> gameTabels;
+    QSharedPointer<GameTable> gameTabelsLoading;
     QSharedPointer<PlayerCredits> playerCredits;
     QSharedPointer<PlayerPayments> payments;
     QMap<ModelTypes, std::function<void(QSharedPointer<ModelData>)>> setModelFunction;
@@ -36,6 +36,7 @@ public:
     void setNewBalance(const QString& newBalance);
     void setModel(QSharedPointer<ModelData> set);
     void updateTable(ModelTypes modelType);
+    QSharedPointer<GameTable> getGameTabelsLoading();
 
 private:
     void assigningValues() override;

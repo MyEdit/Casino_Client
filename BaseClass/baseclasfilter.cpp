@@ -7,22 +7,7 @@ BaseClasFilter::BaseClasFilter(QWidget *parent) : QDialog(parent)
 void BaseClasFilter::reset()
 {
     hideCategory();
-
-    QList<QPushButton*> pushbuttons = this->findChildren<QPushButton*>();
-    for(QPushButton* pushbutton : pushbuttons)
-        setBoldButtonCategoty(pushbutton, false);
-
-    QList<QLineEdit*> lineEdits = this->findChildren<QLineEdit*>();
-    for(QLineEdit* lineEdit : lineEdits)
-        lineEdit->clear();
-
-    QList<QRadioButton*> radioButtons = this->findChildren<QRadioButton*>();
-    for(QRadioButton* radioButton : radioButtons)
-    {
-        radioButton->setAutoExclusive(false);
-        radioButton->setChecked(false);
-        radioButton->setAutoExclusive(true);
-    }
+    resetCategory(this);
 }
 
 void BaseClasFilter::setButton(QPushButton* applyFilterButton, QPushButton* resetButton)
@@ -31,14 +16,35 @@ void BaseClasFilter::setButton(QPushButton* applyFilterButton, QPushButton* rese
     this->resetButton = resetButton;
 }
 
+void BaseClasFilter::setFilterWidgets()
+{
+    this->filterwidgets = findChildren<QWidget*>(QRegExp("category(\\w+)"));;
+}
+
 void BaseClasFilter::startSetting()
 {
     connects();
     initFunSetFilters();
-    initFunVisibletFilters();
+    initFunButton();
     visibleCategory();
     hideCategory();
     customizationLiteEdit();
+    setFilterWidgets();
+}
+
+void BaseClasFilter::resetCategory(QWidget *parent)
+{
+    QList<QPushButton*> pushbuttons = parent->findChildren<QPushButton*>();
+    for(QPushButton* pushbutton : pushbuttons)
+        setBoldButtonCategoty(pushbutton, false);
+
+    QList<QLineEdit*> lineEdits = parent->findChildren<QLineEdit*>();
+    for(QLineEdit* lineEdit : lineEdits)
+        lineEdit->clear();
+
+    QList<QCheckBox*> checkBoxs = parent->findChildren<QCheckBox*>();
+    for(QCheckBox* checkBox : checkBoxs)
+        checkBox->setChecked(false);
 }
 
 void BaseClasFilter::connects()
@@ -57,11 +63,20 @@ void BaseClasFilter::connects()
 void BaseClasFilter::applyFilter()
 {
     QString filter;
-    QList<QRadioButton*> radioButtons = this->findChildren<QRadioButton*>();
-    for(QRadioButton* radioButton : radioButtons)
+
+    for(QWidget* widget : filterwidgets)
     {
-        if(radioButton->isChecked())
-            filter += functionsSetFilters[radioButton]();
+        QStringList selectedFilters;
+
+        QList<QCheckBox*> checkBoxs = widget->findChildren<QCheckBox*>();
+        for(QCheckBox* checkBox : checkBoxs)
+        {
+            if(checkBox->isChecked())
+                selectedFilters.append(functionsSetFilters[checkBox]());
+        }
+
+        if (!selectedFilters.isEmpty())
+            filter += " and (" + selectedFilters.join(" OR ") + ")";
     }
 
     emit setFilter(filter);
@@ -73,18 +88,15 @@ void BaseClasFilter::visibleCategory()
     QPushButton* selectButton = qobject_cast<QPushButton*>(sender());
     if (selectButton)
     {
-        auto it = functionsVisibleFilters.find(selectButton);
-        if (it != functionsVisibleFilters.end())
+        auto it = functionButton.find(selectButton);
+        if (it != functionButton.end())
         {
             it.value()();
-            selectCategory(selectButton);
+
+            if(!selectButton->objectName().contains("reset", Qt::CaseInsensitive))
+                setBoldButtonCategoty(selectButton, !selectButton->font().bold());
         }
     }
-}
-
-void BaseClasFilter::selectCategory(QPushButton *button)
-{
-    setBoldButtonCategoty(button, !button->font().bold());
 }
 
 void BaseClasFilter::setBoldButtonCategoty(QPushButton *button, const bool bold)
@@ -92,4 +104,12 @@ void BaseClasFilter::setBoldButtonCategoty(QPushButton *button, const bool bold)
     QFont font = button->font();
     font.setBold(bold);
     button->setFont(font);
+}
+
+void BaseClasFilter::textChange(QCheckBox* checkBox, QLineEdit* lineEdit)
+{
+    checkBox->setChecked(true);
+
+    if(lineEdit->text().isEmpty())
+        lineEdit->setText("0");
 }

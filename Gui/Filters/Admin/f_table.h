@@ -18,14 +18,14 @@ public:
 
 private:
     void initFunSetFilters() override;
-    void initFunVisibletFilters() override;
+    void initFunButton() override;
     void hideCategory() override;
     void customizationLiteEdit() override;
     void connects() override;
 
     void textChangeMinBet();
     void textChangeMaxPlayers();
-    void currentTextMaxPlayrs();
+    void textChangeMinBalance();
 };
 
 #endif // F_TABLE_H

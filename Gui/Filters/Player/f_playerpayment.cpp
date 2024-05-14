@@ -20,7 +20,7 @@ void F_PlayerPayment::initFunSetFilters()
 
 }
 
-void F_PlayerPayment::initFunVisibletFilters()
+void F_PlayerPayment::initFunButton()
 {
 
 }

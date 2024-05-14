@@ -20,7 +20,7 @@ void F_Profit::initFunSetFilters()
 
 }
 
-void F_Profit::initFunVisibletFilters()
+void F_Profit::initFunButton()
 {
 
 }

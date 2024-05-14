@@ -12,6 +12,7 @@ BlaclJackWidget::BlaclJackWidget(QWidget *parent) :
 
 BlaclJackWidget::~BlaclJackWidget()
 {
+    delete timerCheckTable;
     delete ui;
 }
 
@@ -53,15 +54,19 @@ void BlaclJackWidget::resizeEvent(QResizeEvent* event)
 
 void BlaclJackWidget::renderTakeCard(QSharedPointer<Card> card)
 {
+    playersIcons->takenCard(P_Authorization::getPlayer()->getLogin());
     background->movingCard(card);
 }
 
-void BlaclJackWidget::renderFakeTakeCard(const QString& nicname)
+void BlaclJackWidget::renderFakeTakeCard(const QString& nickname)
 {
     for(QSharedPointer<PlayerIcon> playersIcon : playersIcons->getPlayerIcons())
     {
-        if(playersIcon->getPlayer()->getLogin() == nicname)
+        if(playersIcon->getPlayer()->getLogin() == nickname)
+        {
             background->movingFaceCard(playersIcons->getRectPlayerIcon(playersIcon));
+            playersIcon->takenCard();
+        }
     }
 }
 
@@ -96,6 +101,7 @@ void BlaclJackWidget::pass()
 
 void BlaclJackWidget::clearCardOnTable()
 {
+    playersIcons->resetCountCard();
     background->clearTable();
 }
 
@@ -116,12 +122,54 @@ void BlaclJackWidget::setMyScore(int score)
     playersIcons->setMyScore(score);
 }
 
+void BlaclJackWidget::startChekedTable()
+{
+    timerCheckTable = new QTimer(this);
+
+    connect(NetworkClient::packetHandler, &PacketHandler::signalSetQueryModel, this, &BlaclJackWidget::distributor);
+
+    connect(timerCheckTable, &QTimer::timeout, this, &BlaclJackWidget::checkTableExistence);
+
+    timerCheckTable->start(1000);
+}
+
+void BlaclJackWidget::checkTableExistence()
+{
+    PacketTypes packettype = PacketTypes::P_Query;
+    QueryTypes queryTypes = QueryTypes::Other;
+    ModelTypes modelTypes = ModelTypes::ActiveTables;
+
+    QString query = "SELECT COUNT(*) FROM ActiveTables WHERE ID_Table = '" + QString::number(P_Authorization::getPlayer()->getGame()->getTableID()) + "'";
+
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&queryTypes, sizeof(QueryTypes));
+    NetworkClient::sendToServer(&modelTypes, sizeof(ModelTypes));
+    NetworkClient::sendToServer(query);
+}
+
+void BlaclJackWidget::distributor(QSharedPointer<QueryData> data)
+{
+    if(data->modelTypes != ModelTypes::ActiveTables)
+        return;
+
+    if(data->result == "0")
+        close();
+}
+
+void BlaclJackWidget::showEvent(QShowEvent* event)
+{
+    QWidget::showEvent(event);
+    startChekedTable();
+}
+
 void BlaclJackWidget::finished(bool isWin)
 {
     if(isWin)
         Notification::showNotification(TypeMessage::Information, "Победа");
     else
         Notification::showNotification(TypeMessage::Error, "Проигрыш");
+
+    ui->labelGameProcess->setText("Ожидание");
 }
 
 void BlaclJackWidget::insufficientBalance()
@@ -133,6 +181,7 @@ void BlaclJackWidget::insufficientBalance()
 void BlaclJackWidget::closeEvent(QCloseEvent* event)
 {
     QWidget::closeEvent(event);
+    timerCheckTable->stop();
     P_Authorization::getPlayer()->getGame()->leave();
 }
 
@@ -164,7 +213,7 @@ void BlaclJackWidget::updateTimer(const QString& time)
                 widget->show();
         }
         processing = "Игра началась";
-        background->clearTable();
+        clearCardOnTable();
         setMyScore(0);
     }
 

@@ -30,6 +30,8 @@ public:
     const QRect getRectPlayerIcon(QSharedPointer<PlayerIcon> playerIcon);
     void fullClearInfo();
     void setMyScore(int score);
+    void takenCard(const QString& nickname);
+    void resetCountCard();
 
 private:
     void rendering();

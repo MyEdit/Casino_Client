@@ -7,6 +7,10 @@ PlayerIcon::PlayerIcon(QWidget *parent) :
 {
     ui->setupUi(this);
     setVisible(false);
+
+    ui->score->clear();
+    ui->labelScore->setVisible(false);
+    ui->score->setVisible(false);
 }
 
 PlayerIcon::~PlayerIcon()
@@ -24,13 +28,31 @@ void PlayerIcon::setPlayer(QSharedPointer<Player> player)
 void PlayerIcon::clearInfo()
 {
     this->player = nullptr;
+
     ui->score->clear();
+    ui->labelScore->setVisible(false);
+    ui->score->setVisible(false);
+
+    ui->countCard->setText("0");
+
     setVisible(false);
 }
 
 void PlayerIcon::setScrore(int score)
 {
+    ui->labelScore->setVisible(true);
+    ui->score->setVisible(true);
     ui->score->setText(QString::number(score));
+}
+
+void PlayerIcon::takenCard()
+{
+    ui->countCard->setText(QString::number(++countCard));
+}
+
+void PlayerIcon::resetCountCard()
+{
+    countCard = 0;
 }
 
 const QSharedPointer<Player> PlayerIcon::getPlayer()

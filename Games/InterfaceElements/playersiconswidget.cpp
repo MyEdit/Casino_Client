@@ -70,13 +70,13 @@ void PlayersIconsWidget::addPlayer(QSharedPointer<Player> player)
 
 void PlayersIconsWidget::fullClearInfo()
 {
-    for(QSharedPointer<PlayerIcon> playersIcon : playerIcons)
+    for(QSharedPointer<PlayerIcon> playersIcon : getPlayerIcons())
         playersIcon->clearInfo();
 }
 
 void PlayersIconsWidget::setMyScore(int score)
 {
-    for(QSharedPointer<PlayerIcon> playersIcon : playerIcons)
+    for(QSharedPointer<PlayerIcon> playersIcon : getPlayerIcons())
     {
         if(playersIcon->getPlayer() == P_Authorization::getPlayer())
         {
@@ -84,4 +84,19 @@ void PlayersIconsWidget::setMyScore(int score)
             break;
         }
     }
+}
+
+void PlayersIconsWidget::takenCard(const QString &nickname)
+{
+    for(QSharedPointer<PlayerIcon> playersIcon : getPlayerIcons())
+    {
+        if(playersIcon->getPlayer()->getLogin() == nickname)
+            playersIcon->takenCard();
+    }
+}
+
+void PlayersIconsWidget::resetCountCard()
+{
+    for(QSharedPointer<PlayerIcon> playersIcon : getPlayerIcons())
+        playersIcon->resetCountCard();
 }

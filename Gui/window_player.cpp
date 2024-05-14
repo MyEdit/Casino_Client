@@ -82,7 +82,7 @@ void Window_Player::connects()
 
 void Window_Player::on_gameTables_clicked()
 {
-    ui->tabWidget->setCurrentWidget(gameTabels.get());
+    ui->tabWidget->setCurrentWidget(gameTabelsLoading.get());
     onNavigationsButton_clicked();
 }
 
@@ -100,7 +100,7 @@ void Window_Player::on_replenish_clicked()
 
 void Window_Player::setTabels()
 {
-    gameTabels->updateTables();
+    gameTabelsLoading->updateTables();
 }
 
 void Window_Player::setNewBalance(const QString& newBalance)
@@ -124,6 +124,11 @@ void Window_Player::updateTable(ModelTypes modelType)
     updateTableFunction[modelType]();
 }
 
+QSharedPointer<GameTable> Window_Player::getGameTabelsLoading()
+{
+    return gameTabelsLoading;
+}
+
 void Window_Player::initSetModelFunction()
 {
     setModelFunction =
@@ -144,8 +149,8 @@ void Window_Player::initUpdateTableFunction()
 
 void Window_Player::rendering_GameTablesTab()
 {
-    gameTabels = QSharedPointer<GameTable>::create();
-    ui->tabWidget->addTab(gameTabels.data(), "");
+    gameTabelsLoading = QSharedPointer<GameTable>::create();
+    ui->tabWidget->addTab(gameTabelsLoading.data(), "");
 }
 
 void Window_Player::rendering_PlayerCreditsTab()

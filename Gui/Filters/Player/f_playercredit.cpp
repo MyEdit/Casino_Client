@@ -20,7 +20,7 @@ void F_PlayerCredit::initFunSetFilters()
 
 }
 
-void F_PlayerCredit::initFunVisibletFilters()
+void F_PlayerCredit::initFunButton()
 {
 
 }

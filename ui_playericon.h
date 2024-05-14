@@ -27,6 +27,9 @@ public:
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout_2;
     QLabel *playerName;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *labelCard;
+    QLabel *countCard;
     QHBoxLayout *horizontalLayout;
     QLabel *labelScore;
     QLabel *score;
@@ -74,30 +77,49 @@ public:
         QFont font;
         font.setFamily(QString::fromUtf8("Segoe UI"));
         font.setPointSize(12);
+        font.setBold(true);
+        font.setWeight(75);
         playerName->setFont(font);
         playerName->setAlignment(Qt::AlignCenter);
         playerName->setWordWrap(true);
 
         verticalLayout_2->addWidget(playerName);
 
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(7);
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        labelCard = new QLabel(widget);
+        labelCard->setObjectName(QString::fromUtf8("labelCard"));
+        QFont font1;
+        font1.setFamily(QString::fromUtf8("Segoe UI"));
+        font1.setPointSize(12);
+        labelCard->setFont(font1);
+        labelCard->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        horizontalLayout_2->addWidget(labelCard);
+
+        countCard = new QLabel(widget);
+        countCard->setObjectName(QString::fromUtf8("countCard"));
+        countCard->setFont(font1);
+
+        horizontalLayout_2->addWidget(countCard);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(7);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         labelScore = new QLabel(widget);
         labelScore->setObjectName(QString::fromUtf8("labelScore"));
-        labelScore->setFont(font);
+        labelScore->setFont(font1);
         labelScore->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         horizontalLayout->addWidget(labelScore);
 
         score = new QLabel(widget);
         score->setObjectName(QString::fromUtf8("score"));
-        QFont font1;
-        font1.setFamily(QString::fromUtf8("Segoe UI"));
-        font1.setPointSize(12);
-        font1.setBold(true);
-        font1.setWeight(75);
-        score->setFont(font1);
+        score->setFont(font);
 
         horizontalLayout->addWidget(score);
 
@@ -121,6 +143,8 @@ public:
         PlayerIcon->setWindowTitle(QApplication::translate("PlayerIcon", "Form", nullptr));
         playerIcon->setText(QString());
         playerName->setText(QApplication::translate("PlayerIcon", "\320\230\320\274\321\217", nullptr));
+        labelCard->setText(QApplication::translate("PlayerIcon", "\320\232\320\260\321\200\321\202:", nullptr));
+        countCard->setText(QApplication::translate("PlayerIcon", "0", nullptr));
         labelScore->setText(QApplication::translate("PlayerIcon", "\320\241\321\207\321\221\321\202:", nullptr));
         score->setText(QApplication::translate("PlayerIcon", "????", nullptr));
     } // retranslateUi

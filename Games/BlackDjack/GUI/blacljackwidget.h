@@ -31,7 +31,7 @@ public:
 private:
     void updatePlayersIcons(QList<QSharedPointer<Player>> playes) override;
     void renderTakeCard(QSharedPointer<Card> card) override;
-    void renderFakeTakeCard(const QString& nicname) override;
+    void renderFakeTakeCard(const QString& nickname) override;
     void updateProcessing(const QString& data) override;
     void blocingInterface(const bool flag) override;
 
@@ -47,6 +47,10 @@ private:
     void clearCardOnTable() override;
     void changeEvent(QEvent *event) override;
     void setMyScore(int score) override;
+    void startChekedTable() override;
+    void checkTableExistence() override;
+    void distributor(QSharedPointer<QueryData> data) override;
+    void showEvent(QShowEvent* event) override;
 
 private slots:
     void finished(bool isWin) override;

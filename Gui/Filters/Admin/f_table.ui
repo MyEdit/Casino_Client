@@ -29,9 +29,9 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>-268</y>
         <width>408</width>
-        <height>581</height>
+        <height>995</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -72,20 +72,13 @@ font-weight: bold;
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_5">
           <item>
-           <widget class="QRadioButton" name="allMinBet">
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>12</pointsize>
-             </font>
+           <widget class="QCheckBox" name="minBetStart0end100">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
-            <property name="text">
-             <string>Нет лимита</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="start0end100">
             <property name="font">
              <font>
               <family>Segoe UI</family>
@@ -98,7 +91,13 @@ font-weight: bold;
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="start100end200">
+           <widget class="QCheckBox" name="minBetStart100end200">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="font">
              <font>
               <family>Segoe UI</family>
@@ -111,7 +110,13 @@ font-weight: bold;
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="start200end300">
+           <widget class="QCheckBox" name="minBetStart200end300">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="font">
              <font>
               <family>Segoe UI</family>
@@ -126,7 +131,7 @@ font-weight: bold;
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
-             <widget class="QRadioButton" name="yourLimitsMinBet">
+             <widget class="QCheckBox" name="yourLimitsMinBet">
               <property name="font">
                <font>
                 <family>Segoe UI</family>
@@ -139,7 +144,7 @@ font-weight: bold;
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="startMinBet">
+             <widget class="QLineEdit" name="minBetStart">
               <property name="font">
                <font>
                 <family>Segoe UI</family>
@@ -167,7 +172,7 @@ font-weight: bold;
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="endMinBet">
+             <widget class="QLineEdit" name="minBetEnd">
               <property name="font">
                <font>
                 <family>Segoe UI</family>
@@ -193,6 +198,37 @@ font-weight: bold;
              </spacer>
             </item>
            </layout>
+          </item>
+          <item>
+           <widget class="QPushButton" name="resetMinBet">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+	background: transparent;
+    border: none;
+	padding: 5px;
+	text-align: left;
+}
+
+QPushButton:hover {
+text-decoration: underline;
+}</string>
+            </property>
+            <property name="text">
+             <string>Сбросить</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -234,7 +270,13 @@ font-weight: bold;
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_4">
           <item>
-           <widget class="QRadioButton" name="allMaxPlayers">
+           <widget class="QCheckBox" name="quantity2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="font">
              <font>
               <family>Segoe UI</family>
@@ -242,78 +284,109 @@ font-weight: bold;
              </font>
             </property>
             <property name="text">
-             <string>Не важно</string>
+             <string>2</string>
             </property>
            </widget>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <item>
-             <widget class="QRadioButton" name="specQuantityMaxPlayrs">
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QComboBox" name="quantityMaxPlayrs">
-              <property name="font">
-               <font>
-                <family>Segoe UI</family>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <item>
-               <property name="text">
-                <string>2</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>3</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>4</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>5</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>6</string>
-               </property>
-              </item>
-              <item>
-               <property name="text">
-                <string>7</string>
-               </property>
-              </item>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_4">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
+           <widget class="QCheckBox" name="quantity3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>3</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="quantity4">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>4</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="quantity5">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>5</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="quantity6">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>6</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="quantity7">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>7</string>
+            </property>
+           </widget>
           </item>
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
             <item>
-             <widget class="QRadioButton" name="yourLimitsMaxPlayers">
+             <widget class="QCheckBox" name="yourLimitsMaxPlayers">
               <property name="font">
                <font>
                 <family>Segoe UI</family>
@@ -326,7 +399,7 @@ font-weight: bold;
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="startMaxPlayers">
+             <widget class="QLineEdit" name="maxPlayersStart">
               <property name="font">
                <font>
                 <family>Segoe UI</family>
@@ -349,7 +422,7 @@ font-weight: bold;
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="endMaxPlayers">
+             <widget class="QLineEdit" name="maxPlayersEnd">
               <property name="font">
                <font>
                 <family>Segoe UI</family>
@@ -372,6 +445,235 @@ font-weight: bold;
              </spacer>
             </item>
            </layout>
+          </item>
+          <item>
+           <widget class="QPushButton" name="resetMaxPlayers">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+	background: transparent;
+    border: none;
+	padding: 5px;
+	text-align: left;
+}
+
+QPushButton:hover {
+text-decoration: underline;
+}</string>
+            </property>
+            <property name="text">
+             <string>Сбросить</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="minBalance">
+         <property name="font">
+          <font>
+           <family>Segoe UI</family>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	background: transparent;
+    border: none;
+	padding: 5px;
+	text-align: left;
+}
+
+QPushButton:hover {
+font-weight: bold;
+}</string>
+         </property>
+         <property name="text">
+          <string>- Минимальный баланс</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="categoryMinBalance" native="true">
+         <property name="styleSheet">
+          <string notr="true">#categoryMinBalance
+{
+    border: 2px solid black; 
+    border-radius: 10px;
+	background-color: rgb(198, 198, 198);
+}</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_6">
+          <item>
+           <widget class="QCheckBox" name="minBalanceStart0end100">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>от 0 до 100</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="minBalanceStart100end200">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>от 100 до 200</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="minBalanceStart200end300">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>от 200 до 300</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QCheckBox" name="yourLimitsMinBalance">
+              <property name="font">
+               <font>
+                <family>Segoe UI</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>от</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="minBalanceStart">
+              <property name="font">
+               <font>
+                <family>Segoe UI</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="frame">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_3">
+              <property name="font">
+               <font>
+                <family>Segoe UI</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>до</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="minBalanceEnd">
+              <property name="font">
+               <font>
+                <family>Segoe UI</family>
+                <pointsize>12</pointsize>
+               </font>
+              </property>
+              <property name="frame">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_7">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QPushButton" name="resetMinBalance">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton {
+	background: transparent;
+    border: none;
+	padding: 5px;
+	text-align: left;
+}
+
+QPushButton:hover {
+text-decoration: underline;
+}</string>
+            </property>
+            <property name="text">
+             <string>Сбросить</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </widget>
@@ -413,20 +715,13 @@ font-weight: bold;
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QRadioButton" name="allNameGame">
-            <property name="font">
-             <font>
-              <family>Segoe UI</family>
-              <pointsize>12</pointsize>
-             </font>
+           <widget class="QCheckBox" name="nameBlackJack">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
             </property>
-            <property name="text">
-             <string>Все</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="nameBlackJack">
             <property name="font">
              <font>
               <family>Segoe UI</family>
@@ -439,7 +734,32 @@ font-weight: bold;
            </widget>
           </item>
           <item>
-           <widget class="QRadioButton" name="nameDevytka">
+           <widget class="QCheckBox" name="nameDevytka">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Девятка</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="resetNameGame">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="font">
              <font>
               <family>Segoe UI</family>
@@ -447,10 +767,19 @@ font-weight: bold;
              </font>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">QPushButton {
+	background: transparent;
+    border: none;
+	padding: 5px;
+	text-align: left;
+}
+
+QPushButton:hover {
+text-decoration: underline;
+}</string>
             </property>
             <property name="text">
-             <string>Девятка</string>
+             <string>Сбросить</string>
             </property>
            </widget>
           </item>

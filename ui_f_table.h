@@ -11,13 +11,12 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
-#include <QtWidgets/QComboBox>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
@@ -35,36 +34,51 @@ public:
     QPushButton *minBet;
     QWidget *categoryMinBet;
     QVBoxLayout *verticalLayout_5;
-    QRadioButton *allMinBet;
-    QRadioButton *start0end100;
-    QRadioButton *start100end200;
-    QRadioButton *start200end300;
+    QCheckBox *minBetStart0end100;
+    QCheckBox *minBetStart100end200;
+    QCheckBox *minBetStart200end300;
     QHBoxLayout *horizontalLayout_2;
-    QRadioButton *yourLimitsMinBet;
-    QLineEdit *startMinBet;
+    QCheckBox *yourLimitsMinBet;
+    QLineEdit *minBetStart;
     QLabel *label_2;
-    QLineEdit *endMinBet;
+    QLineEdit *minBetEnd;
     QSpacerItem *horizontalSpacer_5;
+    QPushButton *resetMinBet;
     QPushButton *maxPlayers;
     QWidget *categoryMaxPlayers;
     QVBoxLayout *verticalLayout_4;
-    QRadioButton *allMaxPlayers;
-    QHBoxLayout *horizontalLayout_3;
-    QRadioButton *specQuantityMaxPlayrs;
-    QComboBox *quantityMaxPlayrs;
-    QSpacerItem *horizontalSpacer_4;
+    QCheckBox *quantity2;
+    QCheckBox *quantity3;
+    QCheckBox *quantity4;
+    QCheckBox *quantity5;
+    QCheckBox *quantity6;
+    QCheckBox *quantity7;
     QHBoxLayout *horizontalLayout_4;
-    QRadioButton *yourLimitsMaxPlayers;
-    QLineEdit *startMaxPlayers;
+    QCheckBox *yourLimitsMaxPlayers;
+    QLineEdit *maxPlayersStart;
     QLabel *label;
-    QLineEdit *endMaxPlayers;
+    QLineEdit *maxPlayersEnd;
     QSpacerItem *horizontalSpacer_6;
+    QPushButton *resetMaxPlayers;
+    QPushButton *minBalance;
+    QWidget *categoryMinBalance;
+    QVBoxLayout *verticalLayout_6;
+    QCheckBox *minBalanceStart0end100;
+    QCheckBox *minBalanceStart100end200;
+    QCheckBox *minBalanceStart200end300;
+    QHBoxLayout *horizontalLayout_3;
+    QCheckBox *yourLimitsMinBalance;
+    QLineEdit *minBalanceStart;
+    QLabel *label_3;
+    QLineEdit *minBalanceEnd;
+    QSpacerItem *horizontalSpacer_7;
+    QPushButton *resetMinBalance;
     QPushButton *nameGame;
     QWidget *categoryNameGame;
     QVBoxLayout *verticalLayout_3;
-    QRadioButton *allNameGame;
-    QRadioButton *nameBlackJack;
-    QRadioButton *nameDevytka;
+    QCheckBox *nameBlackJack;
+    QCheckBox *nameDevytka;
+    QPushButton *resetNameGame;
     QSpacerItem *verticalSpacer;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
@@ -86,7 +100,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 408, 581));
+        scrollAreaWidgetContents->setGeometry(QRect(0, -268, 408, 995));
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         minBet = new QPushButton(scrollAreaWidgetContents);
@@ -118,47 +132,50 @@ public:
 "}"));
         verticalLayout_5 = new QVBoxLayout(categoryMinBet);
         verticalLayout_5->setObjectName(QString::fromUtf8("verticalLayout_5"));
-        allMinBet = new QRadioButton(categoryMinBet);
-        allMinBet->setObjectName(QString::fromUtf8("allMinBet"));
+        minBetStart0end100 = new QCheckBox(categoryMinBet);
+        minBetStart0end100->setObjectName(QString::fromUtf8("minBetStart0end100"));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(minBetStart0end100->sizePolicy().hasHeightForWidth());
+        minBetStart0end100->setSizePolicy(sizePolicy);
         QFont font1;
         font1.setFamily(QString::fromUtf8("Segoe UI"));
         font1.setPointSize(12);
-        allMinBet->setFont(font1);
+        minBetStart0end100->setFont(font1);
 
-        verticalLayout_5->addWidget(allMinBet);
+        verticalLayout_5->addWidget(minBetStart0end100);
 
-        start0end100 = new QRadioButton(categoryMinBet);
-        start0end100->setObjectName(QString::fromUtf8("start0end100"));
-        start0end100->setFont(font1);
+        minBetStart100end200 = new QCheckBox(categoryMinBet);
+        minBetStart100end200->setObjectName(QString::fromUtf8("minBetStart100end200"));
+        sizePolicy.setHeightForWidth(minBetStart100end200->sizePolicy().hasHeightForWidth());
+        minBetStart100end200->setSizePolicy(sizePolicy);
+        minBetStart100end200->setFont(font1);
 
-        verticalLayout_5->addWidget(start0end100);
+        verticalLayout_5->addWidget(minBetStart100end200);
 
-        start100end200 = new QRadioButton(categoryMinBet);
-        start100end200->setObjectName(QString::fromUtf8("start100end200"));
-        start100end200->setFont(font1);
+        minBetStart200end300 = new QCheckBox(categoryMinBet);
+        minBetStart200end300->setObjectName(QString::fromUtf8("minBetStart200end300"));
+        sizePolicy.setHeightForWidth(minBetStart200end300->sizePolicy().hasHeightForWidth());
+        minBetStart200end300->setSizePolicy(sizePolicy);
+        minBetStart200end300->setFont(font1);
 
-        verticalLayout_5->addWidget(start100end200);
-
-        start200end300 = new QRadioButton(categoryMinBet);
-        start200end300->setObjectName(QString::fromUtf8("start200end300"));
-        start200end300->setFont(font1);
-
-        verticalLayout_5->addWidget(start200end300);
+        verticalLayout_5->addWidget(minBetStart200end300);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        yourLimitsMinBet = new QRadioButton(categoryMinBet);
+        yourLimitsMinBet = new QCheckBox(categoryMinBet);
         yourLimitsMinBet->setObjectName(QString::fromUtf8("yourLimitsMinBet"));
         yourLimitsMinBet->setFont(font1);
 
         horizontalLayout_2->addWidget(yourLimitsMinBet);
 
-        startMinBet = new QLineEdit(categoryMinBet);
-        startMinBet->setObjectName(QString::fromUtf8("startMinBet"));
-        startMinBet->setFont(font1);
-        startMinBet->setFrame(false);
+        minBetStart = new QLineEdit(categoryMinBet);
+        minBetStart->setObjectName(QString::fromUtf8("minBetStart"));
+        minBetStart->setFont(font1);
+        minBetStart->setFrame(false);
 
-        horizontalLayout_2->addWidget(startMinBet);
+        horizontalLayout_2->addWidget(minBetStart);
 
         label_2 = new QLabel(categoryMinBet);
         label_2->setObjectName(QString::fromUtf8("label_2"));
@@ -171,12 +188,12 @@ public:
 
         horizontalLayout_2->addWidget(label_2);
 
-        endMinBet = new QLineEdit(categoryMinBet);
-        endMinBet->setObjectName(QString::fromUtf8("endMinBet"));
-        endMinBet->setFont(font1);
-        endMinBet->setFrame(false);
+        minBetEnd = new QLineEdit(categoryMinBet);
+        minBetEnd->setObjectName(QString::fromUtf8("minBetEnd"));
+        minBetEnd->setFont(font1);
+        minBetEnd->setFrame(false);
 
-        horizontalLayout_2->addWidget(endMinBet);
+        horizontalLayout_2->addWidget(minBetEnd);
 
         horizontalSpacer_5 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -184,6 +201,24 @@ public:
 
 
         verticalLayout_5->addLayout(horizontalLayout_2);
+
+        resetMinBet = new QPushButton(categoryMinBet);
+        resetMinBet->setObjectName(QString::fromUtf8("resetMinBet"));
+        sizePolicy.setHeightForWidth(resetMinBet->sizePolicy().hasHeightForWidth());
+        resetMinBet->setSizePolicy(sizePolicy);
+        resetMinBet->setFont(font1);
+        resetMinBet->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"text-decoration: underline;\n"
+"}"));
+
+        verticalLayout_5->addWidget(resetMinBet);
 
 
         verticalLayout_2->addWidget(categoryMinBet);
@@ -214,51 +249,67 @@ public:
 "}"));
         verticalLayout_4 = new QVBoxLayout(categoryMaxPlayers);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        allMaxPlayers = new QRadioButton(categoryMaxPlayers);
-        allMaxPlayers->setObjectName(QString::fromUtf8("allMaxPlayers"));
-        allMaxPlayers->setFont(font1);
+        quantity2 = new QCheckBox(categoryMaxPlayers);
+        quantity2->setObjectName(QString::fromUtf8("quantity2"));
+        sizePolicy.setHeightForWidth(quantity2->sizePolicy().hasHeightForWidth());
+        quantity2->setSizePolicy(sizePolicy);
+        quantity2->setFont(font1);
 
-        verticalLayout_4->addWidget(allMaxPlayers);
+        verticalLayout_4->addWidget(quantity2);
 
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        specQuantityMaxPlayrs = new QRadioButton(categoryMaxPlayers);
-        specQuantityMaxPlayrs->setObjectName(QString::fromUtf8("specQuantityMaxPlayrs"));
+        quantity3 = new QCheckBox(categoryMaxPlayers);
+        quantity3->setObjectName(QString::fromUtf8("quantity3"));
+        sizePolicy.setHeightForWidth(quantity3->sizePolicy().hasHeightForWidth());
+        quantity3->setSizePolicy(sizePolicy);
+        quantity3->setFont(font1);
 
-        horizontalLayout_3->addWidget(specQuantityMaxPlayrs);
+        verticalLayout_4->addWidget(quantity3);
 
-        quantityMaxPlayrs = new QComboBox(categoryMaxPlayers);
-        quantityMaxPlayrs->addItem(QString());
-        quantityMaxPlayrs->addItem(QString());
-        quantityMaxPlayrs->addItem(QString());
-        quantityMaxPlayrs->addItem(QString());
-        quantityMaxPlayrs->addItem(QString());
-        quantityMaxPlayrs->addItem(QString());
-        quantityMaxPlayrs->setObjectName(QString::fromUtf8("quantityMaxPlayrs"));
-        quantityMaxPlayrs->setFont(font1);
+        quantity4 = new QCheckBox(categoryMaxPlayers);
+        quantity4->setObjectName(QString::fromUtf8("quantity4"));
+        sizePolicy.setHeightForWidth(quantity4->sizePolicy().hasHeightForWidth());
+        quantity4->setSizePolicy(sizePolicy);
+        quantity4->setFont(font1);
 
-        horizontalLayout_3->addWidget(quantityMaxPlayrs);
+        verticalLayout_4->addWidget(quantity4);
 
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        quantity5 = new QCheckBox(categoryMaxPlayers);
+        quantity5->setObjectName(QString::fromUtf8("quantity5"));
+        sizePolicy.setHeightForWidth(quantity5->sizePolicy().hasHeightForWidth());
+        quantity5->setSizePolicy(sizePolicy);
+        quantity5->setFont(font1);
 
-        horizontalLayout_3->addItem(horizontalSpacer_4);
+        verticalLayout_4->addWidget(quantity5);
 
+        quantity6 = new QCheckBox(categoryMaxPlayers);
+        quantity6->setObjectName(QString::fromUtf8("quantity6"));
+        sizePolicy.setHeightForWidth(quantity6->sizePolicy().hasHeightForWidth());
+        quantity6->setSizePolicy(sizePolicy);
+        quantity6->setFont(font1);
 
-        verticalLayout_4->addLayout(horizontalLayout_3);
+        verticalLayout_4->addWidget(quantity6);
+
+        quantity7 = new QCheckBox(categoryMaxPlayers);
+        quantity7->setObjectName(QString::fromUtf8("quantity7"));
+        sizePolicy.setHeightForWidth(quantity7->sizePolicy().hasHeightForWidth());
+        quantity7->setSizePolicy(sizePolicy);
+        quantity7->setFont(font1);
+
+        verticalLayout_4->addWidget(quantity7);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
-        yourLimitsMaxPlayers = new QRadioButton(categoryMaxPlayers);
+        yourLimitsMaxPlayers = new QCheckBox(categoryMaxPlayers);
         yourLimitsMaxPlayers->setObjectName(QString::fromUtf8("yourLimitsMaxPlayers"));
         yourLimitsMaxPlayers->setFont(font1);
 
         horizontalLayout_4->addWidget(yourLimitsMaxPlayers);
 
-        startMaxPlayers = new QLineEdit(categoryMaxPlayers);
-        startMaxPlayers->setObjectName(QString::fromUtf8("startMaxPlayers"));
-        startMaxPlayers->setFont(font1);
+        maxPlayersStart = new QLineEdit(categoryMaxPlayers);
+        maxPlayersStart->setObjectName(QString::fromUtf8("maxPlayersStart"));
+        maxPlayersStart->setFont(font1);
 
-        horizontalLayout_4->addWidget(startMaxPlayers);
+        horizontalLayout_4->addWidget(maxPlayersStart);
 
         label = new QLabel(categoryMaxPlayers);
         label->setObjectName(QString::fromUtf8("label"));
@@ -266,11 +317,11 @@ public:
 
         horizontalLayout_4->addWidget(label);
 
-        endMaxPlayers = new QLineEdit(categoryMaxPlayers);
-        endMaxPlayers->setObjectName(QString::fromUtf8("endMaxPlayers"));
-        endMaxPlayers->setFont(font1);
+        maxPlayersEnd = new QLineEdit(categoryMaxPlayers);
+        maxPlayersEnd->setObjectName(QString::fromUtf8("maxPlayersEnd"));
+        maxPlayersEnd->setFont(font1);
 
-        horizontalLayout_4->addWidget(endMaxPlayers);
+        horizontalLayout_4->addWidget(maxPlayersEnd);
 
         horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -279,8 +330,132 @@ public:
 
         verticalLayout_4->addLayout(horizontalLayout_4);
 
+        resetMaxPlayers = new QPushButton(categoryMaxPlayers);
+        resetMaxPlayers->setObjectName(QString::fromUtf8("resetMaxPlayers"));
+        sizePolicy.setHeightForWidth(resetMaxPlayers->sizePolicy().hasHeightForWidth());
+        resetMaxPlayers->setSizePolicy(sizePolicy);
+        resetMaxPlayers->setFont(font1);
+        resetMaxPlayers->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"text-decoration: underline;\n"
+"}"));
+
+        verticalLayout_4->addWidget(resetMaxPlayers);
+
 
         verticalLayout_2->addWidget(categoryMaxPlayers);
+
+        minBalance = new QPushButton(scrollAreaWidgetContents);
+        minBalance->setObjectName(QString::fromUtf8("minBalance"));
+        minBalance->setFont(font);
+        minBalance->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"font-weight: bold;\n"
+"}"));
+
+        verticalLayout_2->addWidget(minBalance);
+
+        categoryMinBalance = new QWidget(scrollAreaWidgetContents);
+        categoryMinBalance->setObjectName(QString::fromUtf8("categoryMinBalance"));
+        categoryMinBalance->setStyleSheet(QString::fromUtf8("#categoryMinBalance\n"
+"{\n"
+"    border: 2px solid black; \n"
+"    border-radius: 10px;\n"
+"	background-color: rgb(198, 198, 198);\n"
+"}"));
+        verticalLayout_6 = new QVBoxLayout(categoryMinBalance);
+        verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
+        minBalanceStart0end100 = new QCheckBox(categoryMinBalance);
+        minBalanceStart0end100->setObjectName(QString::fromUtf8("minBalanceStart0end100"));
+        sizePolicy.setHeightForWidth(minBalanceStart0end100->sizePolicy().hasHeightForWidth());
+        minBalanceStart0end100->setSizePolicy(sizePolicy);
+        minBalanceStart0end100->setFont(font1);
+
+        verticalLayout_6->addWidget(minBalanceStart0end100);
+
+        minBalanceStart100end200 = new QCheckBox(categoryMinBalance);
+        minBalanceStart100end200->setObjectName(QString::fromUtf8("minBalanceStart100end200"));
+        sizePolicy.setHeightForWidth(minBalanceStart100end200->sizePolicy().hasHeightForWidth());
+        minBalanceStart100end200->setSizePolicy(sizePolicy);
+        minBalanceStart100end200->setFont(font1);
+
+        verticalLayout_6->addWidget(minBalanceStart100end200);
+
+        minBalanceStart200end300 = new QCheckBox(categoryMinBalance);
+        minBalanceStart200end300->setObjectName(QString::fromUtf8("minBalanceStart200end300"));
+        sizePolicy.setHeightForWidth(minBalanceStart200end300->sizePolicy().hasHeightForWidth());
+        minBalanceStart200end300->setSizePolicy(sizePolicy);
+        minBalanceStart200end300->setFont(font1);
+
+        verticalLayout_6->addWidget(minBalanceStart200end300);
+
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
+        yourLimitsMinBalance = new QCheckBox(categoryMinBalance);
+        yourLimitsMinBalance->setObjectName(QString::fromUtf8("yourLimitsMinBalance"));
+        yourLimitsMinBalance->setFont(font1);
+
+        horizontalLayout_3->addWidget(yourLimitsMinBalance);
+
+        minBalanceStart = new QLineEdit(categoryMinBalance);
+        minBalanceStart->setObjectName(QString::fromUtf8("minBalanceStart"));
+        minBalanceStart->setFont(font1);
+        minBalanceStart->setFrame(false);
+
+        horizontalLayout_3->addWidget(minBalanceStart);
+
+        label_3 = new QLabel(categoryMinBalance);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setFont(font2);
+
+        horizontalLayout_3->addWidget(label_3);
+
+        minBalanceEnd = new QLineEdit(categoryMinBalance);
+        minBalanceEnd->setObjectName(QString::fromUtf8("minBalanceEnd"));
+        minBalanceEnd->setFont(font1);
+        minBalanceEnd->setFrame(false);
+
+        horizontalLayout_3->addWidget(minBalanceEnd);
+
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_3->addItem(horizontalSpacer_7);
+
+
+        verticalLayout_6->addLayout(horizontalLayout_3);
+
+        resetMinBalance = new QPushButton(categoryMinBalance);
+        resetMinBalance->setObjectName(QString::fromUtf8("resetMinBalance"));
+        sizePolicy.setHeightForWidth(resetMinBalance->sizePolicy().hasHeightForWidth());
+        resetMinBalance->setSizePolicy(sizePolicy);
+        resetMinBalance->setFont(font1);
+        resetMinBalance->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"text-decoration: underline;\n"
+"}"));
+
+        verticalLayout_6->addWidget(resetMinBalance);
+
+
+        verticalLayout_2->addWidget(categoryMinBalance);
 
         nameGame = new QPushButton(scrollAreaWidgetContents);
         nameGame->setObjectName(QString::fromUtf8("nameGame"));
@@ -308,24 +483,39 @@ public:
 "}"));
         verticalLayout_3 = new QVBoxLayout(categoryNameGame);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        allNameGame = new QRadioButton(categoryNameGame);
-        allNameGame->setObjectName(QString::fromUtf8("allNameGame"));
-        allNameGame->setFont(font1);
-
-        verticalLayout_3->addWidget(allNameGame);
-
-        nameBlackJack = new QRadioButton(categoryNameGame);
+        nameBlackJack = new QCheckBox(categoryNameGame);
         nameBlackJack->setObjectName(QString::fromUtf8("nameBlackJack"));
+        sizePolicy.setHeightForWidth(nameBlackJack->sizePolicy().hasHeightForWidth());
+        nameBlackJack->setSizePolicy(sizePolicy);
         nameBlackJack->setFont(font1);
 
         verticalLayout_3->addWidget(nameBlackJack);
 
-        nameDevytka = new QRadioButton(categoryNameGame);
+        nameDevytka = new QCheckBox(categoryNameGame);
         nameDevytka->setObjectName(QString::fromUtf8("nameDevytka"));
+        sizePolicy.setHeightForWidth(nameDevytka->sizePolicy().hasHeightForWidth());
+        nameDevytka->setSizePolicy(sizePolicy);
         nameDevytka->setFont(font1);
-        nameDevytka->setStyleSheet(QString::fromUtf8(""));
 
         verticalLayout_3->addWidget(nameDevytka);
+
+        resetNameGame = new QPushButton(categoryNameGame);
+        resetNameGame->setObjectName(QString::fromUtf8("resetNameGame"));
+        sizePolicy.setHeightForWidth(resetNameGame->sizePolicy().hasHeightForWidth());
+        resetNameGame->setSizePolicy(sizePolicy);
+        resetNameGame->setFont(font1);
+        resetNameGame->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+"	background: transparent;\n"
+"    border: none;\n"
+"	padding: 5px;\n"
+"	text-align: left;\n"
+"}\n"
+"\n"
+"QPushButton:hover {\n"
+"text-decoration: underline;\n"
+"}"));
+
+        verticalLayout_3->addWidget(resetNameGame);
 
 
         verticalLayout_2->addWidget(categoryNameGame);
@@ -415,28 +605,33 @@ public:
         F_Table->setWindowTitle(QApplication::translate("F_Table", "\320\244\320\270\320\273\321\214\321\202\321\200 \321\201\321\202\320\276\320\273\320\276\320\262", nullptr));
         F_Table->setWindowFilePath(QApplication::translate("F_Table", "z", nullptr));
         minBet->setText(QApplication::translate("F_Table", "- \320\234\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\260\321\217 \321\201\321\202\320\260\320\262\320\272\320\260", nullptr));
-        allMinBet->setText(QApplication::translate("F_Table", "\320\235\320\265\321\202 \320\273\320\270\320\274\320\270\321\202\320\260", nullptr));
-        start0end100->setText(QApplication::translate("F_Table", "\320\276\321\202 0 \320\264\320\276 100", nullptr));
-        start100end200->setText(QApplication::translate("F_Table", "\320\276\321\202 100 \320\264\320\276 200", nullptr));
-        start200end300->setText(QApplication::translate("F_Table", "\320\276\321\202 200 \320\264\320\276 300", nullptr));
+        minBetStart0end100->setText(QApplication::translate("F_Table", "\320\276\321\202 0 \320\264\320\276 100", nullptr));
+        minBetStart100end200->setText(QApplication::translate("F_Table", "\320\276\321\202 100 \320\264\320\276 200", nullptr));
+        minBetStart200end300->setText(QApplication::translate("F_Table", "\320\276\321\202 200 \320\264\320\276 300", nullptr));
         yourLimitsMinBet->setText(QApplication::translate("F_Table", "\320\276\321\202", nullptr));
         label_2->setText(QApplication::translate("F_Table", "\320\264\320\276", nullptr));
+        resetMinBet->setText(QApplication::translate("F_Table", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
         maxPlayers->setText(QApplication::translate("F_Table", "- \320\234\320\260\320\272\321\201\320\270\320\274\321\203\320\274 \320\270\320\263\321\200\320\276\320\272\320\276\320\262", nullptr));
-        allMaxPlayers->setText(QApplication::translate("F_Table", "\320\235\320\265 \320\262\320\260\320\266\320\275\320\276", nullptr));
-        specQuantityMaxPlayrs->setText(QString());
-        quantityMaxPlayrs->setItemText(0, QApplication::translate("F_Table", "2", nullptr));
-        quantityMaxPlayrs->setItemText(1, QApplication::translate("F_Table", "3", nullptr));
-        quantityMaxPlayrs->setItemText(2, QApplication::translate("F_Table", "4", nullptr));
-        quantityMaxPlayrs->setItemText(3, QApplication::translate("F_Table", "5", nullptr));
-        quantityMaxPlayrs->setItemText(4, QApplication::translate("F_Table", "6", nullptr));
-        quantityMaxPlayrs->setItemText(5, QApplication::translate("F_Table", "7", nullptr));
-
+        quantity2->setText(QApplication::translate("F_Table", "2", nullptr));
+        quantity3->setText(QApplication::translate("F_Table", "3", nullptr));
+        quantity4->setText(QApplication::translate("F_Table", "4", nullptr));
+        quantity5->setText(QApplication::translate("F_Table", "5", nullptr));
+        quantity6->setText(QApplication::translate("F_Table", "6", nullptr));
+        quantity7->setText(QApplication::translate("F_Table", "7", nullptr));
         yourLimitsMaxPlayers->setText(QApplication::translate("F_Table", "\320\276\321\202", nullptr));
         label->setText(QApplication::translate("F_Table", "\320\264\320\276", nullptr));
+        resetMaxPlayers->setText(QApplication::translate("F_Table", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
+        minBalance->setText(QApplication::translate("F_Table", "- \320\234\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\321\213\320\271 \320\261\320\260\320\273\320\260\320\275\321\201", nullptr));
+        minBalanceStart0end100->setText(QApplication::translate("F_Table", "\320\276\321\202 0 \320\264\320\276 100", nullptr));
+        minBalanceStart100end200->setText(QApplication::translate("F_Table", "\320\276\321\202 100 \320\264\320\276 200", nullptr));
+        minBalanceStart200end300->setText(QApplication::translate("F_Table", "\320\276\321\202 200 \320\264\320\276 300", nullptr));
+        yourLimitsMinBalance->setText(QApplication::translate("F_Table", "\320\276\321\202", nullptr));
+        label_3->setText(QApplication::translate("F_Table", "\320\264\320\276", nullptr));
+        resetMinBalance->setText(QApplication::translate("F_Table", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
         nameGame->setText(QApplication::translate("F_Table", "- \320\235\320\260\320\267\320\262\320\260\320\275\320\270\320\265 \320\270\320\263\321\200\321\213", nullptr));
-        allNameGame->setText(QApplication::translate("F_Table", "\320\222\321\201\320\265", nullptr));
         nameBlackJack->setText(QApplication::translate("F_Table", "BlackJack", nullptr));
         nameDevytka->setText(QApplication::translate("F_Table", "\320\224\320\265\320\262\321\217\321\202\320\272\320\260", nullptr));
+        resetNameGame->setText(QApplication::translate("F_Table", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
         reset->setText(QApplication::translate("F_Table", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
         applyFilter->setText(QApplication::translate("F_Table", "\320\237\321\200\320\270\320\274\320\265\320\275\320\270\321\202\321\214", nullptr));
     } // retranslateUi

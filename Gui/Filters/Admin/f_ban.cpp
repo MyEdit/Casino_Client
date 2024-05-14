@@ -20,7 +20,7 @@ void F_Ban::initFunSetFilters()
 
 }
 
-void F_Ban::initFunVisibletFilters()
+void F_Ban::initFunButton()
 {
 
 }

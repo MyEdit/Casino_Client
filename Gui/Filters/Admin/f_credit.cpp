@@ -20,7 +20,7 @@ void F_Credit::initFunSetFilters()
 
 }
 
-void F_Credit::initFunVisibletFilters()
+void F_Credit::initFunButton()
 {
 
 }

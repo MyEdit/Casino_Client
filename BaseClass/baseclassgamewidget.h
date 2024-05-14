@@ -10,6 +10,13 @@ class Player;
 class BaseClassGameWidget : public QWidget
 {
     Q_OBJECT
+protected:
+    QTimer* timerCheckTable;
+
+    virtual void startChekedTable() = 0;
+    virtual void checkTableExistence() = 0;
+    virtual void distributor(QSharedPointer<QueryData> data) = 0;
+
 public:
     explicit BaseClassGameWidget(QWidget *parent = nullptr) : QWidget(parent) {}
 

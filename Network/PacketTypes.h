@@ -41,6 +41,7 @@ enum class QueryTypes
     CreateEntry,    //Добавить запись
     UpdateEntry,    //Изменить запись
     DeleteEntry,    //Удалить запись
+    Other
 };
 
 enum class ModelLoadingType

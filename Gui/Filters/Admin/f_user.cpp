@@ -20,7 +20,7 @@ void F_User::initFunSetFilters()
 
 }
 
-void F_User::initFunVisibletFilters()
+void F_User::initFunButton()
 {
 
 }

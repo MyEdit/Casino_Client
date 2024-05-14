@@ -18,7 +18,7 @@ public:
 
 private:
     void initFunSetFilters() override;
-    void initFunVisibletFilters() override;
+    void initFunButton() override;
     void hideCategory() override;
     void customizationLiteEdit() override;
 };

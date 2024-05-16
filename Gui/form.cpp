@@ -4,13 +4,7 @@
 Form::Form(QSharedPointer<Table> table, QWidget *parent) : QWidget(parent), ui(new Ui::Form), table(table)
 {
     ui->setupUi(this);
-    canJoin = table->canJoin();
-    settingInformation();
-    assigningValues();
-    setStyleSheet(constantStyleSheet);
-
-//    if(!canJoin)
-//        setEnabled(false);
+    update();
 }
 
 Form::~Form()
@@ -84,5 +78,18 @@ void Form::enterEvent(QEvent* event)
 void Form::leaveEvent(QEvent* event)
 {
     QWidget::leaveEvent(event);
+    setStyleSheet(constantStyleSheet);
+}
+
+QSharedPointer<Table> Form::getTable() const
+{
+    return table;
+}
+
+void Form::update()
+{
+    canJoin = table->canJoin();
+    settingInformation();
+    assigningValues();
     setStyleSheet(constantStyleSheet);
 }

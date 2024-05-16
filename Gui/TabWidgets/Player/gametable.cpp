@@ -16,17 +16,10 @@ GameTable::~GameTable()
 
 void GameTable::updateTables()
 {
-    QLayoutItem* item;
-    while ((item = ui->verticalLayoutContent->takeAt(0)) != nullptr) {
-        delete item->widget();
-        delete item;
-    }
+    QList<Form*> forms = this->findChildren<Form*>();
 
-    for(QSharedPointer<Table> table : Table::getCopyListTabels())
-    {
-        Form* formTable = new Form(table);
-        ui->verticalLayoutContent->addWidget(formTable);
-    }
+    deleteOldTable(forms);
+    renderNewTable(forms);
 }
 
 void GameTable::stop()
@@ -49,4 +42,44 @@ void GameTable::requestTables()
     });
 
     start();
+}
+
+void GameTable::deleteOldTable(QList<Form*>& forms)
+{
+    for (Form* form : forms)
+    {
+        bool found = false;
+        for (const QSharedPointer<Table>& newTable : Table::getCopyListTabels())
+        {
+            if (form->getTable()->getSettings().ID == newTable->getSettings().ID)
+            {
+                form->update();
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+        {
+            delete form;
+            forms.removeAll(form);
+        }
+    }
+}
+
+void GameTable::renderNewTable(QList<Form*>& forms)
+{
+    for (const QSharedPointer<Table>& newTable : Table::getCopyListTabels())
+    {
+        bool found = false;
+        for (Form* form : forms)
+        {
+            if (form->getTable()->getSettings().ID == newTable->getSettings().ID)
+            {
+                found = true;
+                break;
+            }
+        }
+        if (!found)
+            ui->verticalLayoutContent->addWidget(new Form(newTable));
+    }
 }

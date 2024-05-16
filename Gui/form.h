@@ -27,6 +27,9 @@ public:
     explicit Form(QSharedPointer<Table> table, QWidget *parent = nullptr);
     ~Form();
 
+    QSharedPointer<Table> getTable() const;
+    void update();
+
 private:
     void assigningValues();
     void paintEvent(QPaintEvent* event) override;

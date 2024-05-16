@@ -7,6 +7,8 @@
 #include "Gui/form.h"
 #include "Network/networkclient.h"
 
+class Form;
+
 namespace Ui {
 class GameTable;
 }
@@ -27,6 +29,8 @@ public:
 
 private:
     void requestTables();
+    void deleteOldTable(QList<Form*>& forms);
+    void renderNewTable(QList<Form*>& forms);
 };
 
 #endif // GAMETABLE_H

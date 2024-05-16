@@ -78,7 +78,8 @@ void Game::leave()
     if(menu)
         menu->setEnabled(true);
 
-    P_Authorization::playerW->getGameTabelsLoading()->start();
+    if (P_Authorization::playerW)
+        P_Authorization::playerW->getGameTabelsLoading()->start();
 }
 
 int Game::getTableID()

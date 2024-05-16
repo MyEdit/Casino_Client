@@ -9,12 +9,10 @@
 class P_Reconnection
 {
     static QSharedPointer<Reconnecting> reconnecting;
-    static const PacketTypes packettype;
 
 public:
     static void viewReconnecting();
     static void stopReconnecting();
-    static void sendUserData(QSharedPointer<User> user);
 };
 
 #endif // P_RECONNECTING_H

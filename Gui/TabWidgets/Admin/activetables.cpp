@@ -51,16 +51,16 @@ void ActiveTables::connects()
     connect(ui->addFilter, &QPushButton::clicked, this, &ActiveTables::addFilter);
     connect(ui->clearFilter, &QPushButton::clicked, this, &ActiveTables::clearFilter);
 
-    connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &ActiveTables::goToPage);
+    connect(ui->currentPage, &QLineEdit::textChanged, this, &ActiveTables::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &ActiveTables::search);
 
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &ActiveTables::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &ActiveTables::sorting);
 
-    connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &ActiveTables::setVisibleSort);
-    connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &ActiveTables::setVisibleSearch);
-    connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &ActiveTables::setVisibleEditing);
-    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &ActiveTables::setVisibleFiltr);
+    connect(ui->radioButton_Sorting, &QRadioButton::toggled, this, &ActiveTables::visibleSort);
+    connect(ui->radioButton_Search, &QRadioButton::toggled, this, &ActiveTables::visibleSearch);
+    connect(ui->radioButton_Editing, &QRadioButton::toggled, this, &ActiveTables::visibleEditing);
+    connect(ui->radioButton_Filtr, &QRadioButton::toggled, this, &ActiveTables::visibleFiltr);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ActiveTables::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &ActiveTables::sort);
@@ -70,14 +70,14 @@ void ActiveTables::connects()
 
 void ActiveTables::updateCurrentPageInLabel(const int currentPage)
 {
-    ui->labelCurrentPage->setText(QString::number(currentPage));
+    blockAndOperate(ui->currentPage, [&]() {ui->currentPage->setText(QString::number(currentPage));});
 }
 
 void ActiveTables::goToPage()
 {
-    if(ui->pageNumberToNavigate->text() == "0")
+    if(ui->currentPage->text() == "0")
     {
-        blockAndOperate(ui->pageNumberToNavigate, [&]() {ui->pageNumberToNavigate->clear();});
+        blockAndOperate(ui->currentPage, [&]() {ui->currentPage->clear();});
         return;
     }
 
@@ -126,9 +126,13 @@ void ActiveTables::prepReloadModels()
     }
 
     ui->labelMaxPage->setText("????");
-    ui->labelCurrentPage->setText("0");
+    blockAndOperate(ui->currentPage, [&]() {ui->currentPage->setText("0");});
 
-    ui->pageNumberToNavigate->clear();
+    QString where = pagination->getWhere();
+    if(defaultFilter == where || where.isEmpty())
+        ui->labelWhatKindFilter->setText("отсутствует");
+    else
+        ui->labelWhatKindFilter->setText("установлен");
 
     pagination->reloadModels();
 }
@@ -217,5 +221,5 @@ void ActiveTables::runSearch()
 
 void ActiveTables::runGoToPage()
 {
-    pagination->goToPage(ui->pageNumberToNavigate->text());
+    pagination->goToPage(ui->currentPage->text());
 }

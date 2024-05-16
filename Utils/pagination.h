@@ -50,6 +50,7 @@ public:
     void setSort(const QString& sort);
     void initializationModels();
     void setWhere(const QString& where);
+    QString getWhere() const;
 
 private:
     void goToNextModel();

@@ -53,16 +53,16 @@ void PlayerCredits::connects()
     connect(ui->addFilter, &QPushButton::clicked, this, &PlayerCredits::addFilter);
     connect(ui->clearFilter, &QPushButton::clicked, this, &PlayerCredits::clearFilter);
 
-    connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &PlayerCredits::goToPage);
+    connect(ui->currentPage, &QLineEdit::textChanged, this, &PlayerCredits::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &PlayerCredits::search);
 
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &PlayerCredits::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &PlayerCredits::sorting);
 
-    connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &PlayerCredits::setVisibleSort);
-    connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &PlayerCredits::setVisibleSearch);
-    connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &PlayerCredits::setVisibleEditing);
-    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &PlayerCredits::setVisibleFiltr);
+    connect(ui->radioButton_Sorting, &QRadioButton::toggled, this, &PlayerCredits::visibleSort);
+    connect(ui->radioButton_Search, &QRadioButton::toggled, this, &PlayerCredits::visibleSearch);
+    connect(ui->radioButton_Editing, &QRadioButton::toggled, this, &PlayerCredits::visibleEditing);
+    connect(ui->radioButton_Filtr, &QRadioButton::toggled, this, &PlayerCredits::visibleFiltr);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &PlayerCredits::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &PlayerCredits::sort);
@@ -72,14 +72,14 @@ void PlayerCredits::connects()
 
 void PlayerCredits::updateCurrentPageInLabel(const int currentPage)
 {
-    ui->labelCurrentPage->setText(QString::number(currentPage));
+    blockAndOperate(ui->currentPage, [&]() {ui->currentPage->setText(QString::number(currentPage));});
 }
 
 void PlayerCredits::goToPage()
 {
-    if(ui->pageNumberToNavigate->text() == "0")
+    if(ui->currentPage->text() == "0")
     {
-        blockAndOperate(ui->pageNumberToNavigate, [&]() {ui->pageNumberToNavigate->clear();});
+        blockAndOperate(ui->currentPage, [&]() {ui->currentPage->clear();});
         return;
     }
 
@@ -128,9 +128,7 @@ void PlayerCredits::prepReloadModels()
     }
 
     ui->labelMaxPage->setText("????");
-    ui->labelCurrentPage->setText("0");
-
-    ui->pageNumberToNavigate->clear();
+    blockAndOperate(ui->currentPage, [&]() {ui->currentPage->setText("0");});
 
     pagination->reloadModels();
 }
@@ -204,5 +202,5 @@ void PlayerCredits::runSearch()
 
 void PlayerCredits::runGoToPage()
 {
-    pagination->goToPage(ui->pageNumberToNavigate->text());
+    pagination->goToPage(ui->currentPage->text());
 }

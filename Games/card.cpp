@@ -82,14 +82,11 @@ QMap<QString, CardSuit> Card::CardSuits = {
     {"Spades", CardSuit::SUIT_SPADE}
 };
 
-Card::Card(CardRank rank, CardSuit suit)
-    : cardRank{ rank }, cardSuit{ suit } {}
-
-//TODO: Вероятно плохо создавать объект карты по ее ассету, избавиться от этого
-Card::Card(QString card)
+Card::Card(CardRank rank, CardSuit suit) :
+    cardRank{ rank },
+    cardSuit{ suit }
 {
-    cardRank = convertToRank(card);
-    cardSuit = convertToSuit(card);
+
 }
 
 CardRank Card::convertToRank(const QString& card)

@@ -51,10 +51,6 @@ protected:
     void startPagination();
     const QVariant getValueFromSelectedRow(QTableView* tableView, const int collumn);
     void showEvent(QShowEvent *event) override;
-    void setVisibleSort(const int arg);
-    void setVisibleSearch(const int arg);
-    void setVisibleEditing(const int arg);
-    void setVisibleFiltr(const int arg);
     virtual void search() = 0;
     virtual void setValueToMaxPage(const int maxPage) = 0;
     virtual void assigningValues();

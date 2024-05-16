@@ -48,15 +48,15 @@ void Profit::connects()
     connect(ui->addFilter, &QPushButton::clicked, this, &Profit::addFilter);
     connect(ui->clearFilter, &QPushButton::clicked, this, &Profit::clearFilter);
 
-    connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &Profit::goToPage);
+    connect(ui->currentPage, &QLineEdit::textChanged, this, &Profit::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &Profit::search);
 
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &Profit::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &Profit::sorting);
 
-    connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &Profit::setVisibleSort);
-    connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &Profit::setVisibleSearch);
-    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &Profit::setVisibleFiltr);
+    connect(ui->radioButton_Sorting, &QRadioButton::toggled, this, &Profit::visibleSort);
+    connect(ui->radioButton_Search, &QRadioButton::toggled, this, &Profit::visibleSearch);
+    connect(ui->radioButton_Filtr, &QRadioButton::toggled, this, &Profit::visibleFiltr);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Profit::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Profit::sort);
@@ -66,14 +66,14 @@ void Profit::connects()
 
 void Profit::updateCurrentPageInLabel(const int currentPage)
 {
-    ui->labelCurrentPage->setText(QString::number(currentPage));
+    blockAndOperate(ui->currentPage, [&]() {ui->currentPage->setText(QString::number(currentPage));});
 }
 
 void Profit::goToPage()
 {
-    if(ui->pageNumberToNavigate->text() == "0")
+    if(ui->currentPage->text() == "0")
     {
-        blockAndOperate(ui->pageNumberToNavigate, [&]() {ui->pageNumberToNavigate->clear();});
+        blockAndOperate(ui->currentPage, [&]() {ui->currentPage->clear();});
         return;
     }
 
@@ -122,11 +122,13 @@ void Profit::prepReloadModels()
     }
 
     ui->labelMaxPage->setText("????");
-    ui->labelCurrentPage->setText("0");
+    blockAndOperate(ui->currentPage, [&]() {ui->currentPage->setText("0");});
 
-    ui->pageNumberToNavigate->clear();
-
-
+    QString where = pagination->getWhere();
+    if(defaultFilter == where || where.isEmpty())
+        ui->labelWhatKindFilter->setText("отсутствует");
+    else
+        ui->labelWhatKindFilter->setText("установлен");
 
     pagination->reloadModels();
 }
@@ -200,5 +202,5 @@ void Profit::runSearch()
 
 void Profit::runGoToPage()
 {
-    pagination->goToPage(ui->pageNumberToNavigate->text());
+    pagination->goToPage(ui->currentPage->text());
 }

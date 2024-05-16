@@ -49,15 +49,15 @@ void Payments::connects()
     connect(ui->addFilter, &QPushButton::clicked, this, &Payments::addFilter);
     connect(ui->clearFilter, &QPushButton::clicked, this, &Payments::clearFilter);
 
-    connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &Payments::goToPage);
+    connect(ui->currentPage, &QLineEdit::textChanged, this, &Payments::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &Payments::search);
 
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &Payments::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &Payments::sorting);
 
-    connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &Payments::setVisibleSort);
-    connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &Payments::setVisibleSearch);
-    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &Payments::setVisibleFiltr);
+    connect(ui->radioButton_Sorting, &QRadioButton::toggled, this, &Payments::visibleSort);
+    connect(ui->radioButton_Search, &QRadioButton::toggled, this, &Payments::visibleSearch);
+    connect(ui->radioButton_Filtr, &QRadioButton::toggled, this, &Payments::visibleFiltr);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Payments::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Payments::sort);
@@ -67,14 +67,14 @@ void Payments::connects()
 
 void Payments::updateCurrentPageInLabel(const int currentPage)
 {
-    ui->labelCurrentPage->setText(QString::number(currentPage));
+    blockAndOperate(ui->currentPage, [&]() {ui->currentPage->setText(QString::number(currentPage));});
 }
 
 void Payments::goToPage()
 {
-    if(ui->pageNumberToNavigate->text() == "0")
+    if(ui->currentPage->text() == "0")
     {
-        blockAndOperate(ui->pageNumberToNavigate, [&]() {ui->pageNumberToNavigate->clear();});
+        blockAndOperate(ui->currentPage, [&]() {ui->currentPage->clear();});
         return;
     }
 
@@ -123,9 +123,13 @@ void Payments::prepReloadModels()
     }
 
     ui->labelMaxPage->setText("????");
-    ui->labelCurrentPage->setText("0");
+    blockAndOperate(ui->currentPage, [&]() {ui->currentPage->setText("0");});
 
-    ui->pageNumberToNavigate->clear();
+    QString where = pagination->getWhere();
+    if(defaultFilter == where || where.isEmpty())
+        ui->labelWhatKindFilter->setText("отсутствует");
+    else
+        ui->labelWhatKindFilter->setText("установлен");
 
     pagination->reloadModels();
 }
@@ -199,5 +203,5 @@ void Payments::runSearch()
 
 void Payments::runGoToPage()
 {
-    pagination->goToPage(ui->pageNumberToNavigate->text());
+    pagination->goToPage(ui->currentPage->text());
 }

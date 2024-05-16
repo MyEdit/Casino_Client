@@ -19,7 +19,6 @@ private:
 
 public:
     Card(CardRank rank, CardSuit suit);
-    Card(QString card);
 
     int value() const;
     CardRank getRank() const;

@@ -141,30 +141,6 @@ void BaseClassSearchWindow::showEvent(QShowEvent* event)
     startPagination();
 }
 
-void BaseClassSearchWindow::setVisibleSort(const int arg)
-{
-    bool flag = (arg == 2) ? true : false;
-    visibleSort(flag);
-}
-
-void BaseClassSearchWindow::setVisibleSearch(const int arg)
-{
-    bool flag = (arg == 2) ? true : false;
-    visibleSearch(flag);
-}
-
-void BaseClassSearchWindow::setVisibleEditing(const int arg)
-{
-    bool flag = (arg == 2) ? true : false;
-    visibleEditing(flag);
-}
-
-void BaseClassSearchWindow::setVisibleFiltr(const int arg)
-{
-    bool flag = (arg == 2) ? true : false;
-    visibleFiltr(flag);
-}
-
 void BaseClassSearchWindow::assigningValues()
 {
     typeSearch = '%';
@@ -187,11 +163,8 @@ void BaseClassSearchWindow::connects()
     connect(pagination.get(), &Pagination::blockInterface, this, &BaseClassSearchWindow::blockingInterface);
 
     connect(workingIsTableView.get(), &WorkingIsTableView::unlockInterface, this, &BaseClassSearchWindow::blockingInterface);
-
     connect(&goToPageTimer, &QTimer::timeout, this, &BaseClassSearchWindow::runGoToPage);
-
     connect(&searchTimer, &QTimer::timeout, this, &BaseClassSearchWindow::runSearch);
-
     connect(filter.get(), &BaseClasFilter::setFilter, this, &BaseClassSearchWindow::setFilter);
 }
 

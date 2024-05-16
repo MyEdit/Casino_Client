@@ -34,9 +34,7 @@ void PlayerPayments::prepReloadModels()
     }
 
     ui->labelMaxPage->setText("????");
-    ui->labelCurrentPage->setText("0");
-
-    ui->pageNumberToNavigate->clear();
+    blockAndOperate(ui->currentPage, [&]() {ui->currentPage->setText("0");});
 
     pagination->reloadModels();
 }
@@ -58,7 +56,7 @@ void PlayerPayments::assigningValues()
 
 void PlayerPayments::updateCurrentPageInLabel(const int currentPage)
 {
-    ui->labelCurrentPage->setText(QString::number(currentPage));
+    blockAndOperate(ui->currentPage, [&]() {ui->currentPage->setText(QString::number(currentPage));});
 }
 
 void PlayerPayments::creatingObjects()
@@ -70,9 +68,9 @@ void PlayerPayments::creatingObjects()
 
 void PlayerPayments::goToPage()
 {
-    if(ui->pageNumberToNavigate->text() == "0")
+    if(ui->currentPage->text() == "0")
     {
-        blockAndOperate(ui->pageNumberToNavigate, [&]() {ui->pageNumberToNavigate->clear();});
+        blockAndOperate(ui->currentPage, [&]() {ui->currentPage->clear();});
         return;
     }
 
@@ -91,15 +89,15 @@ void PlayerPayments::connects()
     connect(ui->addFilter, &QPushButton::clicked, this, &PlayerPayments::addFilter);
     connect(ui->clearFilter, &QPushButton::clicked, this, &PlayerPayments::clearFilter);
 
-    connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &PlayerPayments::goToPage);
+    connect(ui->currentPage, &QLineEdit::textChanged, this, &PlayerPayments::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &PlayerPayments::search);
 
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &PlayerPayments::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &PlayerPayments::sorting);
 
-    connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &PlayerPayments::setVisibleSort);
-    connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &PlayerPayments::setVisibleSearch);
-    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &PlayerPayments::setVisibleFiltr);
+    connect(ui->radioButton_Sorting, &QRadioButton::toggled, this, &PlayerPayments::visibleSort);
+    connect(ui->radioButton_Search, &QRadioButton::toggled, this, &PlayerPayments::visibleSearch);
+    connect(ui->radioButton_Filtr, &QRadioButton::toggled, this, &PlayerPayments::visibleFiltr);
 
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &PlayerPayments::selectTypeSearch);
 
@@ -197,5 +195,5 @@ void PlayerPayments::runSearch()
 
 void PlayerPayments::runGoToPage()
 {
-    pagination->goToPage(ui->pageNumberToNavigate->text());
+    pagination->goToPage(ui->currentPage->text());
 }

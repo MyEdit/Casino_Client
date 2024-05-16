@@ -54,16 +54,16 @@ void Users::connects()
     connect(ui->clearFilter, &QPushButton::clicked, this, &Users::clearFilter);
 
 
-    connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &Users::goToPage);
+    connect(ui->currentPage, &QLineEdit::textChanged, this, &Users::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &Users::search);
 
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &Users::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &Users::sorting);
 
-    connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &Users::setVisibleSort);
-    connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &Users::setVisibleSearch);
-    connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &Users::setVisibleEditing);
-    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &Users::setVisibleFiltr);
+    connect(ui->radioButton_Sorting, &QRadioButton::toggled, this, &Users::visibleSort);
+    connect(ui->radioButton_Search, &QRadioButton::toggled, this, &Users::visibleSearch);
+    connect(ui->radioButton_Editing, &QRadioButton::toggled, this, &Users::visibleEditing);
+    connect(ui->radioButton_Filtr, &QRadioButton::toggled, this, &Users::visibleFiltr);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Users::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Users::sort);
@@ -73,14 +73,14 @@ void Users::connects()
 
 void Users::updateCurrentPageInLabel(const int currentPage)
 {
-    ui->labelCurrentPage->setText(QString::number(currentPage));
+    blockAndOperate(ui->currentPage, [&]() {ui->currentPage->setText(QString::number(currentPage));});
 }
 
 void Users::goToPage()
 {
-    if(ui->pageNumberToNavigate->text() == "0")
+    if(ui->currentPage->text() == "0")
     {
-        blockAndOperate(ui->pageNumberToNavigate, [&]() {ui->pageNumberToNavigate->clear();});
+        blockAndOperate(ui->currentPage, [&]() {ui->currentPage->clear();});
         return;
     }
 
@@ -129,9 +129,13 @@ void Users::prepReloadModels()
     }
 
     ui->labelMaxPage->setText("????");
-    ui->labelCurrentPage->setText("0");
+    blockAndOperate(ui->currentPage, [&]() {ui->currentPage->setText("0");});
 
-    ui->pageNumberToNavigate->clear();
+    QString where = pagination->getWhere();
+    if(defaultFilter == where || where.isEmpty())
+        ui->labelWhatKindFilter->setText("отсутствует");
+    else
+        ui->labelWhatKindFilter->setText("установлен");
 
     pagination->reloadModels();
 }
@@ -232,5 +236,5 @@ void Users::runSearch()
 
 void Users::runGoToPage()
 {
-    pagination->goToPage(ui->pageNumberToNavigate->text());
+    pagination->goToPage(ui->currentPage->text());
 }

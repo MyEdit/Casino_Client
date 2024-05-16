@@ -218,6 +218,11 @@ void Pagination::setWhere(const QString& where)
     this->where = where;
 }
 
+QString Pagination::getWhere() const
+{
+    return where;
+}
+
 void Pagination::loadingMaxPage()
 {
     PacketTypes packettype = PacketTypes::P_Query;

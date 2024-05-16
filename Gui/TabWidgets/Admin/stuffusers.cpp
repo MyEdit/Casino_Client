@@ -52,16 +52,16 @@ void StuffUsers::connects()
     connect(ui->addFilter, &QPushButton::clicked, this, &StuffUsers::addFilter);
     connect(ui->clearFilter, &QPushButton::clicked, this, &StuffUsers::clearFilter);
 
-    connect(ui->pageNumberToNavigate, &QLineEdit::textChanged, this, &StuffUsers::goToPage);
+    connect(ui->currentPage, &QLineEdit::textChanged, this, &StuffUsers::goToPage);
     connect(ui->searchText, &QLineEdit::textChanged, this, &StuffUsers::search);
 
     connect(ui->checkBox, &QCheckBox::stateChanged, this, &StuffUsers::selectTypeSearch);
     connect(ui->sorting, &QCheckBox::stateChanged, this, &StuffUsers::sorting);
 
-    connect(ui->checkBox_Sorting, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleSort);
-    connect(ui->checkBox_Search, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleSearch);
-    connect(ui->checkBox_Editing, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleEditing);
-    connect(ui->checkBox_Filtr, &QCheckBox::stateChanged, this, &StuffUsers::setVisibleFiltr);
+    connect(ui->radioButton_Sorting, &QRadioButton::toggled, this, &StuffUsers::visibleSort);
+    connect(ui->radioButton_Search, &QRadioButton::toggled, this, &StuffUsers::visibleSearch);
+    connect(ui->radioButton_Editing, &QRadioButton::toggled, this, &StuffUsers::visibleEditing);
+    connect(ui->radioButton_Filtr, &QRadioButton::toggled, this, &StuffUsers::visibleFiltr);
 
     connect(ui->sortingColumn, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &StuffUsers::sort);
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &StuffUsers::sort);
@@ -71,14 +71,14 @@ void StuffUsers::connects()
 
 void StuffUsers::updateCurrentPageInLabel(const int currentPage)
 {
-    ui->labelCurrentPage->setText(QString::number(currentPage));
+    blockAndOperate(ui->currentPage, [&]() {ui->currentPage->setText(QString::number(currentPage));});
 }
 
 void StuffUsers::goToPage()
 {
-    if(ui->pageNumberToNavigate->text() == "0")
+    if(ui->currentPage->text() == "0")
     {
-        blockAndOperate(ui->pageNumberToNavigate, [&]() {ui->pageNumberToNavigate->clear();});
+        blockAndOperate(ui->currentPage, [&]() {ui->currentPage->clear();});
         return;
     }
 
@@ -126,9 +126,13 @@ void StuffUsers::prepReloadModels()
         ui->labelWhatKindSorting->setText("отсутствует");
     }
     ui->labelMaxPage->setText("????");
-    ui->labelCurrentPage->setText("0");
+    blockAndOperate(ui->currentPage, [&]() {ui->currentPage->setText("0");});
 
-    ui->pageNumberToNavigate->clear();
+    QString where = pagination->getWhere();
+    if(defaultFilter == where || where.isEmpty())
+        ui->labelWhatKindFilter->setText("отсутствует");
+    else
+        ui->labelWhatKindFilter->setText("установлен");
 
     pagination->reloadModels();
 }
@@ -216,5 +220,5 @@ void StuffUsers::runSearch()
 
 void StuffUsers::runGoToPage()
 {
-    pagination->goToPage(ui->pageNumberToNavigate->text());
+    pagination->goToPage(ui->currentPage->text());
 }

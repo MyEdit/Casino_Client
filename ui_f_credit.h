@@ -140,7 +140,7 @@ public:
     void retranslateUi(QDialog *F_Credit)
     {
         F_Credit->setWindowTitle(QApplication::translate("F_Credit", "\320\244\320\270\320\273\321\214\321\202\321\200 \320\262\321\201\320\265\321\205 \320\272\321\200\320\265\320\264\320\270\321\202\320\276\320\262", nullptr));
-        label->setText(QApplication::translate("F_Credit", "\320\222 \321\200\320\260\320\267\321\200\320\260\320\261\320\276\321\202\320\272\320\265 ...", nullptr));
+        label->setText(QApplication::translate("F_Credit", "\320\235\320\260 \321\201\320\276\320\263\320\273\320\260\321\201\320\276\320\262\320\260\320\275\320\270\320\270", nullptr));
         reset->setText(QApplication::translate("F_Credit", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214", nullptr));
         applyFilter->setText(QApplication::translate("F_Credit", "\320\237\321\200\320\270\320\274\320\265\320\275\320\270\321\202\321\214", nullptr));
     } // retranslateUi

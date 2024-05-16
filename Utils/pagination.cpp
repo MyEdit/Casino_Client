@@ -1,12 +1,14 @@
 ﻿#include "pagination.h"
 #include <QDebug>
 
-Pagination::Pagination(QWidget* parent, QTableView* table, QComboBox* column, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes) :
+Pagination::Pagination(QWidget* parent, QTableView* table, QComboBox* column, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes, QPushButton* prevButton, QPushButton* nextButton) :
     QWidget(parent),
     tableView(table),
     workingIsTableView(workingIsTableView),
     modelTypes(modelTypes),
-    column(column)
+    column(column),
+    prevButton(prevButton),
+    nextButton(nextButton)
 {
     creatingObjects();
     assigningValues();
@@ -78,6 +80,7 @@ void Pagination::prev()
 {
     if(currentPage > 1)
     {
+        nextButton->setEnabled(true);
         if(currentPageInModel() == minPageModel)
         {
             if(goToPrev)
@@ -88,6 +91,8 @@ void Pagination::prev()
                     return;
                 }
             }
+            else
+                prevButton->setEnabled(false);
         }
         else
         {
@@ -95,12 +100,15 @@ void Pagination::prev()
             updateTablePage();
         }
     }
+    else
+        prevButton->setEnabled(false);
 }
 
 void Pagination::next()
 {
     if (currentPage < maxPage)
     {
+        prevButton->setEnabled(true);
         if (currentPageInModel() == maxPageModel)
         {
             if (goToNext)
@@ -111,6 +119,8 @@ void Pagination::next()
                     return;
                 }
             }
+            else
+                nextButton->setEnabled(false);
         }
         else
         {
@@ -121,6 +131,7 @@ void Pagination::next()
     else
     {
         Notification::showNotification(TypeMessage::Warning, "Данных больше нет!");
+        nextButton->setEnabled(false);
     }
 }
 
@@ -161,6 +172,7 @@ void Pagination::acceptModel(QSharedPointer<ModelData> structModel)
     {
         models[1] = QSharedPointer<QStandardItemModel>(structModel->model);
         goToNext = true;
+        nextButton->setEnabled(true);
         break;
     }
 
@@ -176,6 +188,7 @@ void Pagination::acceptModel(QSharedPointer<ModelData> structModel)
     {
         models[2] = QSharedPointer<QStandardItemModel>(structModel->model);
         goToPrev = true;
+        prevButton->setEnabled(true);
         break;
     }
     }

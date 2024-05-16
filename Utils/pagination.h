@@ -35,9 +35,11 @@ class Pagination : public QWidget
     bool goToPrev = false;
     QString querySort {};
     QString where;
+    QPushButton* prevButton;
+    QPushButton* nextButton;
 
 public:
-    Pagination(QWidget* parent, QTableView* table, QComboBox* column, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes);
+    Pagination(QWidget* parent, QTableView* table, QComboBox* column, QSharedPointer<WorkingIsTableView> workingIsTableView, ModelTypes modelTypes, QPushButton* prevButton, QPushButton* nextButton);
 
     int getMaxPage();
     void prev();

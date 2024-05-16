@@ -32,7 +32,7 @@ void ActiveTables::assigningValues()
 void ActiveTables::creatingObjects()
 {
     workingIsTableView = QSharedPointer<WorkingIsTableView>(new WorkingIsTableView(ui->tableView, &boxsNameColumn));
-    pagination = QSharedPointer<Pagination>(new Pagination(this, ui->tableView, ui->searchColumn, workingIsTableView, modelTypes));
+    pagination = QSharedPointer<Pagination>(new Pagination(this, ui->tableView, ui->searchColumn, workingIsTableView, modelTypes, ui->prevButton, ui->nextButton));
     filter = QSharedPointer<F_Table>(new F_Table());
 }
 

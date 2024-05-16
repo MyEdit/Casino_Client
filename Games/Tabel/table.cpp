@@ -16,7 +16,8 @@ Table::Table(const QByteArray& data)
     QSharedPointer<QByteArray> gameData(new QByteArray());
     QSharedPointer<QByteArray> settingsData(new QByteArray());
     int currentNumPlayer;
-    stream >> *gameData >> *settingsData >> currentNumPlayer;
+    bool isGameRunning;
+    stream >> *gameData >> *settingsData >> currentNumPlayer >> isGameRunning;
 
     TableSettings settings = TableSettings::deserializeTableSettings(settingsData);
     QSharedPointer<BlackJack> blackJackGame(new BlackJack(settings.ID, gameData));
@@ -30,6 +31,7 @@ Table::Table(const QByteArray& data)
     }
 
     this->game = blackJackGame;
+    this->isGameRunning = isGameRunning;
     this->tableSettings = settings;
 }
 
@@ -53,7 +55,6 @@ QSharedPointer<Table> Table::getTable(int ID)
 
     return nullptr;
 }
-
 
 QSharedPointer<QByteArray> Table::serializeTable()
 {
@@ -110,6 +111,11 @@ int Table::getCurrentNumPlayer()
     return  players.size();
 }
 
+bool Table::getIsGameRunning()
+{
+    return isGameRunning;
+}
+
 void Table::openGameGUI()
 {   
     game->setMenu(WindowTracker::activeWindow);
@@ -140,10 +146,11 @@ QList<QSharedPointer<Table>>& Table::getTabels()
     return tables;
 }
 
-void Table::setNewData(TableSettings tableSettings, const QString& nameGame, QList<QSharedPointer<Player>> players)
+void Table::setNewData(TableSettings tableSettings, const QString& nameGame, QList<QSharedPointer<Player>> players, bool isGameRunning)
 {
     this->tableSettings = tableSettings;
     this->game->setGameName(nameGame);
+    this->isGameRunning = isGameRunning;
     this->players = players;
 }
 

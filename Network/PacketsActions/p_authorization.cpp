@@ -7,11 +7,16 @@ QSharedPointer<User> P_Authorization::user;
 QSharedPointer<Player> P_Authorization::player;
 QSharedPointer<StuffUser> P_Authorization::stuffUser;
 QMutex P_Authorization::accessMutex;
+Window_Auth* P_Authorization::windowAuth;
+
+void P_Authorization::setWindowAuth(Window_Auth *value)
+{
+    windowAuth = value;
+}
 
 void P_Authorization::openMainWindow(QSharedPointer<User> user)
 {
-    WindowTracker::activeWindow->close();
-
+    windowAuth->close();
     setActualUser(user);
 
     if(user->getRole() == Roles::User)
@@ -79,4 +84,16 @@ QSharedPointer<StuffUser> P_Authorization::getStuffuser()
 {
     QMutexLocker locker(&accessMutex);
     return stuffUser;
+}
+
+void P_Authorization::showAuthWindow()
+{
+    WindowTracker::activeWindow->close();
+    WindowTracker::activeWindow = nullptr;
+    P_Authorization::adminW = nullptr;
+    P_Authorization::playerW = nullptr;
+
+    windowAuth = new Window_Auth();
+    windowAuth->show();
+    WindowTracker::activeWindow = windowAuth;
 }

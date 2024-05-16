@@ -15,8 +15,8 @@ Pagination::Pagination(QWidget* parent, QTableView* table, QComboBox* column, QS
 
 void Pagination::start()
 {
-    loadingMaxPage();
     initializationModels();
+    loadingMaxPage();
 }
 
 void Pagination::creatingObjects()

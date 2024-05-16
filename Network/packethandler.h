@@ -3,6 +3,7 @@
 
 #include <QThread>
 #include "Gui/Notification/notification.h"
+#include "Gui/window_auth.h"
 #include "Network/PacketTypes.h"
 #include "Network/PacketsActions/p_authorization.h"
 #include "Network/PacketsActions/p_sendmodel.h"

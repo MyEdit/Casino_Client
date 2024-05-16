@@ -15,7 +15,7 @@ class GameTable : public QWidget
 {
     Q_OBJECT
     Ui::GameTable *ui;
-    QTimer* timer;
+    QSharedPointer<QTimer> timer;
 
 public:
     explicit GameTable(QWidget *parent = nullptr);

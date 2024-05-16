@@ -74,6 +74,7 @@ bool NetworkClient::start() const
     QObject::connect(packetHandler, &PacketHandler::signalViewNotification, this, &P_Notification::showNotification);
     QObject::connect(packetHandler, &PacketHandler::signalReconnecting, this, &P_Reconnection::viewReconnecting);
     QObject::connect(packetHandler, &PacketHandler::signalFinishReconnecting, this, &P_Reconnection::stopReconnecting);
+    QObject::connect(packetHandler, &PacketHandler::signalFinishReconnecting, this, &P_Authorization::showAuthWindow);
     QObject::connect(packetHandler, &PacketHandler::signalSetTables, this, &P_SendTables::setTables);
     QObject::connect(packetHandler, &PacketHandler::signalOpenGame, this, &P_ConnectPlayerToTable::openGameGUI);
     QObject::connect(packetHandler, &PacketHandler::signalUpdatePlayers, this, &P_ConnectPlayerToTable::updatePlayers);

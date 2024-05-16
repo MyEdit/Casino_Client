@@ -2,7 +2,7 @@
 #include "ui_window_admin.h"
 #include "Gui/window_auth.h"
 
-QWidget* WindowTracker::activeWindow = nullptr;
+//QWidget* WindowTracker::activeWindow = nullptr;
 
 Window_Admin::Window_Admin(QWidget *parent) : BaseClassMainMenu(parent), ui(new Ui::Window_Admin)
 {

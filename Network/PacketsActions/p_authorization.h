@@ -12,6 +12,7 @@
 
 class Window_Admin;
 class Window_Player;
+class Window_Auth;
 class Player;
 
 class P_Authorization : public QObject
@@ -23,6 +24,7 @@ class P_Authorization : public QObject
     static QSharedPointer<Player> player;
     static QSharedPointer<StuffUser> stuffUser;
     static QMutex accessMutex;
+    static Window_Auth* windowAuth;
 
 public:
     static Window_Admin* adminW;
@@ -35,6 +37,8 @@ public:
     static QSharedPointer<User>getUser();
     static QSharedPointer<Player> getPlayer();
     static QSharedPointer<StuffUser> getStuffuser();
+    static void showAuthWindow();
+    static void setWindowAuth(Window_Auth *value);
 };
 
 #endif // P_AUTHORIZATION_H

@@ -41,9 +41,9 @@ void GameTable::start()
 
 void GameTable::requestTables()
 {
-    timer = new QTimer(this);
+    timer = QSharedPointer<QTimer>(new QTimer(this));
 
-    connect(timer, &QTimer::timeout, this, [=]() {
+    connect(timer.get(), &QTimer::timeout, this, [=]() {
         PacketTypes packettype = PacketTypes::P_SendTables;
         NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
     });

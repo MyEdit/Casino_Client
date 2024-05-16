@@ -55,6 +55,7 @@ public:
     TableSettings getSettings();
     QSharedPointer<Game> getGame();
     int getCurrentNumPlayer();
+    bool getIsGameRunning();
     QList<QSharedPointer<Player>> getPlayers();
     static QSharedPointer<Table> getTable(int idTable);
     static QList<QSharedPointer<Table>>& getCopyListTabels();
@@ -70,7 +71,7 @@ public:
     QSharedPointer<QByteArray> serializeTable();
     void openGameGUI();
     void updatePlayers();
-    void setNewData(TableSettings tableSettings, const QString& nameGame, QList<QSharedPointer<Player>> players);
+    void setNewData(TableSettings tableSettings, const QString& nameGame, QList<QSharedPointer<Player>> players, bool isGameRunning);
 };
 
 #endif // TABLE_H

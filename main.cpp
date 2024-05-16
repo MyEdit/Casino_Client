@@ -4,6 +4,7 @@
 #include "Network/networkclient.h"
 
 NetworkClient network;
+QWidget* WindowTracker::activeWindow;
 
 int main(int argc, char *argv[])
 {
@@ -11,6 +12,7 @@ int main(int argc, char *argv[])
     Window_Auth w;
     WindowTracker::activeWindow = &w;
     w.show();
+    P_Authorization::setWindowAuth(&w);
 
     if (!network.init())
         Notification::showNotification(TypeMessage::Error, "Произошла ошибка при инициилизации сетевого кода");

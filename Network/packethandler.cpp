@@ -36,7 +36,7 @@ void PacketHandler::tryReconnectToServer()
 
     emit signalFinishReconnecting();
 
-    P_Reconnection::sendUserData(P_Authorization::getActualUser());
+    //P_Reconnection::sendUserData(P_Authorization::getActualUser());
     Message::logInfo("Reconnect to server successful");
 }
 
@@ -50,8 +50,8 @@ void PacketHandler::initPacketHandlerFunction()
         {PacketTypes::P_ConnectPlayerToTable,       [&]() {emit signalOpenGame(P_ConnectPlayerToTable::getTable());}},
         {PacketTypes::P_ConnectOtherPlayerToTable,  [&]() {emit  signalUpdatePlayers(P_ConnectPlayerToTable::getTable());}},
         {PacketTypes::P_SendTables,                 [&]() {P_SendTables::getTablesFromServer(); emit signalSetTables();}},
-        {PacketTypes::P_QueryWithoutResponce,       [&]() {emit signalSetQueryModel(P_Query::getResultFromServer());}},
-        {PacketTypes::P_Query,                      [&]() {}},
+        {PacketTypes::P_QueryWithoutResponce,       [&]() {}},
+        {PacketTypes::P_Query,                      [&]() {emit signalSetQueryModel(P_Query::getResultFromServer());}},
         {PacketTypes::P_UpdateGameProcessing,       [&]() {emit signalUpdateGameProcessing(P_UpdateGameProcessing::getData());}},
         {PacketTypes::P_GamePacket,                 [&]() {P_GamePacket::onGamePacketReceived();}},
         {PacketTypes::P_Search,                     [&]() {emit signalResultSearch(P_Search::getResultSearchFromServer());}},

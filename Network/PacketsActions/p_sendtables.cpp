@@ -24,14 +24,15 @@ void P_SendTables::getTablesFromServer()
         else
         {
             QSharedPointer<Table> table = Table::getTable(newTable->getSettings().ID);
-            table->setNewData(newTable->getSettings(), newTable->getGame()->getName(), newTable->getPlayers());
+            table->setNewData(newTable->getSettings(), newTable->getGame()->getName(), newTable->getPlayers(), newTable->getIsGameRunning());
         }
     }
 }
 
 void P_SendTables::setTables()
 {
-    P_Authorization::playerW->setTabels();
+    if (P_Authorization::playerW)
+        P_Authorization::playerW->setTabels();
 }
 
 void P_SendTables::deleteTable(const QList<QSharedPointer<Table>>& newTables)

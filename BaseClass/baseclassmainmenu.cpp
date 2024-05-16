@@ -12,12 +12,15 @@ void BaseClassMainMenu::settingVisual()
 
 void BaseClassMainMenu::changeUser()
 {
-    P_Authorization::adminW = nullptr;
-    P_Authorization::playerW = nullptr;
-    Window_Auth* w = new Window_Auth();
-    WindowTracker::activeWindow = w;
-    w->show();
-    delete this;
+    //P_Authorization::adminW = nullptr;
+    //P_Authorization::playerW = nullptr;
+    //Window_Auth* w = new Window_Auth();
+    //WindowTracker::activeWindow = w;
+    //w->show();
+    //delete this;
+
+
+    NetworkClient::onServerDisconnected();
 }
 
 /////////////////СОБЫТИЯ/////////////////

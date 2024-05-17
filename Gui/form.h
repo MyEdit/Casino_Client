@@ -38,6 +38,7 @@ private:
     void enterEvent(QEvent* event) override;
     void leaveEvent(QEvent* event) override;
     void settingInformation();
+    void updateTextIfDifferent(QLabel *label, const QString &newText);
 };
 
 #endif // FORM_H

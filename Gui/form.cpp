@@ -31,24 +31,19 @@ void Form::settingInformation()
 {
     const TableSettings& settings = table->getSettings();
 
-    if (ui->name->text() != table->getGame()->getName())
-        ui->name->setText(table->getGame()->getName());
-
-    if (ui->minBet->text() != QString::number(settings.minBet))
-        ui->minBet->setText(QString::number(settings.minBet));
-
-    if (ui->betStep->text() != QString::number(settings.stepBet))
-        ui->betStep->setText(QString::number(settings.stepBet));
-
-    if (ui->minBalance->text() != QString::number(settings.minBalance))
-        ui->minBalance->setText(QString::number(settings.minBalance));
-
-    if (ui->currentNumPlayer->text() != QString::number(table->getCurrentNumPlayer()))
-        ui->currentNumPlayer->setText(QString::number(table->getCurrentNumPlayer()));
-
-    if (ui->maxNumPlayer->text() != QString::number(settings.maxCountPlayers))
-        ui->maxNumPlayer->setText(QString::number(settings.maxCountPlayers));
+    updateTextIfDifferent(ui->name, table->getGame()->getName());
+    updateTextIfDifferent(ui->minBet, QString::number(settings.minBet));
+    updateTextIfDifferent(ui->betStep, QString::number(settings.stepBet));
+    updateTextIfDifferent(ui->minBalance, QString::number(settings.minBalance));
+    updateTextIfDifferent(ui->currentNumPlayer, QString::number(table->getCurrentNumPlayer()));
+    updateTextIfDifferent(ui->maxNumPlayer, QString::number(settings.maxCountPlayers));
 }
+
+void Form::updateTextIfDifferent(QLabel* label, const QString& newText)
+{
+    if (label->text() != newText)
+        label->setText(newText);
+};
 
 void Form::mousePressEvent(QMouseEvent* event)
 {

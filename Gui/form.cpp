@@ -4,7 +4,10 @@
 Form::Form(QSharedPointer<Table> table, QWidget *parent) : QWidget(parent), ui(new Ui::Form), table(table)
 {
     ui->setupUi(this);
-    update();
+    canJoin = table->canJoin();
+    settingInformation();
+    assigningValues();
+    setStyleSheet(constantStyleSheet);
 }
 
 Form::~Form()
@@ -26,12 +29,25 @@ void Form::paintEvent(QPaintEvent* event)
 
 void Form::settingInformation()
 {
-    ui->name->setText(table->getGame()->getName());
-    ui->minBet->setText(QString::number(table->getSettings().minBet));
-    ui->betStep->setText(QString::number(table->getSettings().stepBet));
-    ui->minBalance->setText(QString::number(table->getSettings().minBalance));
-    ui->currentNumPlayer->setText(QString::number(table->getCurrentNumPlayer()));
-    ui->maxNumPlayer->setText(QString::number(table->getSettings().maxCountPlayers));
+    const TableSettings& settings = table->getSettings();
+
+    if (ui->name->text() != table->getGame()->getName())
+        ui->name->setText(table->getGame()->getName());
+
+    if (ui->minBet->text() != QString::number(settings.minBet))
+        ui->minBet->setText(QString::number(settings.minBet));
+
+    if (ui->betStep->text() != QString::number(settings.stepBet))
+        ui->betStep->setText(QString::number(settings.stepBet));
+
+    if (ui->minBalance->text() != QString::number(settings.minBalance))
+        ui->minBalance->setText(QString::number(settings.minBalance));
+
+    if (ui->currentNumPlayer->text() != QString::number(table->getCurrentNumPlayer()))
+        ui->currentNumPlayer->setText(QString::number(table->getCurrentNumPlayer()));
+
+    if (ui->maxNumPlayer->text() != QString::number(settings.maxCountPlayers))
+        ui->maxNumPlayer->setText(QString::number(settings.maxCountPlayers));
 }
 
 void Form::mousePressEvent(QMouseEvent* event)
@@ -88,8 +104,11 @@ QSharedPointer<Table> Form::getTable() const
 
 void Form::update()
 {
-    canJoin = table->canJoin();
+    if(canJoin != table->canJoin())
+    {
+        canJoin = table->canJoin();
+        assigningValues();
+        setStyleSheet(constantStyleSheet);
+    }
     settingInformation();
-    assigningValues();
-    setStyleSheet(constantStyleSheet);
 }

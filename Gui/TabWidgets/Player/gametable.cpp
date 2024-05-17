@@ -14,13 +14,6 @@ GameTable::~GameTable()
     delete ui;
 }
 
-void GameTable::updateTables()
-{
-    QList<Form*> forms = this->findChildren<Form*>();
-
-    deleteOldTable(forms);
-    renderNewTable(forms);
-}
 
 void GameTable::stop()
 {
@@ -42,6 +35,14 @@ void GameTable::requestTables()
     });
 
     start();
+}
+
+void GameTable::updateTables()
+{
+    QList<Form*> forms = this->findChildren<Form*>();
+
+    deleteOldTable(forms);
+    renderNewTable(forms);
 }
 
 void GameTable::deleteOldTable(QList<Form*>& forms)

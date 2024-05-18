@@ -2,8 +2,6 @@
 #include "ui_window_admin.h"
 #include "Gui/window_auth.h"
 
-//QWidget* WindowTracker::activeWindow = nullptr;
-
 Window_Admin::Window_Admin(QWidget *parent) : BaseClassMainMenu(parent), ui(new Ui::Window_Admin)
 {
     ui->setupUi(this);
@@ -86,13 +84,8 @@ void Window_Admin::initUpdateTableFunction()
 void Window_Admin::settingUserInformation()
 {
     ui->fullNameEmployee->setText(fullName);
-    ui->post->setText(definingrRole());
+    ui->post->setText(getTextRole(role));
     uploadingPhotoEmployee();
-}
-
-const QString Window_Admin::definingrRole()
-{
-    return nameRole[role];
 }
 
 void Window_Admin::uploadingPhotoEmployee()
@@ -126,12 +119,6 @@ void Window_Admin::assigningValues()
         {ui->credits, ui->label},
         {ui->payments, ui->label_6},
         {ui->profit, ui->label_7}
-    };
-
-    nameRole =
-    {
-        {Roles::Admin, "Администратор"},
-        {Roles::TableManager, "Роспорядитель столов"}
     };
 }
 
@@ -230,7 +217,7 @@ void Window_Admin::rendering_UsersTab()
 
 void Window_Admin::rendering_WelcomeTab()
 {
-    welcomeTab = QSharedPointer<Welcome>::create(definingrRole() + " - " + P_Authorization::getStuffuser()->getName());
+    welcomeTab = QSharedPointer<Welcome>::create(getTextRole(role) + " - " + P_Authorization::getStuffuser()->getName());
     ui->tabWidget->addTab(welcomeTab.data(), "");
 }
 

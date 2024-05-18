@@ -40,7 +40,6 @@ class Window_Admin : public BaseClassMainMenu
     QSharedPointer<Payments> payments;
     QSharedPointer<Profit> profit;
     QSharedPointer<Welcome> welcomeTab;
-    QMap<Roles, QString> nameRole;
     QMap<ModelTypes, std::function<void(QSharedPointer<ModelData>)>> setModelFunction;
     QMap<ModelTypes, std::function<void()>> updateTableFunction;
 
@@ -64,7 +63,6 @@ private:
     void rendering_WelcomeTab() override;
     void uploadingPhotoEmployee();
     void settingUserInformation() override;
-    const QString definingrRole();
     void rendoringForTableManager();
     void rendoringForAdmin();
     void connects() override;

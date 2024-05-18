@@ -22,16 +22,15 @@ void P_SendModel::setModel(QSharedPointer<ModelData> set)
 
 }
 
-
 void P_SendModel::initMapTableNames()
 {
-    tableNames.insert(ModelTypes::Users, "Users");
+    tableNames.insert(ModelTypes::Users, "Users_pred");
     tableNames.insert(ModelTypes::ActiveTables, "ActiveTables_pred");
-    tableNames.insert(ModelTypes::StuffUsers, "StuffUsers");
-    tableNames.insert(ModelTypes::Banlist, "Banlist");
-    tableNames.insert(ModelTypes::Credits, "Credits");
-    tableNames.insert(ModelTypes::Payments, "Payments");
-    tableNames.insert(ModelTypes::Profit, "Profit");
+    tableNames.insert(ModelTypes::StuffUsers, "StuffUsers_pred");
+    tableNames.insert(ModelTypes::Banlist, "Banlist_pred");
+    tableNames.insert(ModelTypes::Credits, "Credits_pred");
+    tableNames.insert(ModelTypes::Payments, "Payments_pred");
+    tableNames.insert(ModelTypes::Profit, "Profit_pred");
 }
 
 const QString& P_SendModel::getTableName(ModelTypes modelType)

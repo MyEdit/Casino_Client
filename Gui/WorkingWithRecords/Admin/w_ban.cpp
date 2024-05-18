@@ -79,16 +79,14 @@ void W_Ban::onLoadForm()
 
 const QString W_Ban::getInsertQuery(QSharedPointer<Ban> ban)
 {
-    return QString("INSERT INTO Banlist (ID_User, Name, Reason) VALUES ('%1', '%2', '%3')")
+    return QString("INSERT INTO Banlist (ID_User, Reason) VALUES ('%1', '%2')")
             .arg(ban->getID())
-            .arg(ban->getFullName())
             .arg(ban->getReason());
 }
 
 const QString W_Ban::getUpdateQuery(QSharedPointer<Ban> ban)
 {
-    return QString("UPDATE Banlist SET Name = '%1', Reason = '%2' WHERE ID_User = '%3'")
-            .arg(ban->getFullName())
+    return QString("UPDATE Banlist SET Reason = '%1' WHERE ID_User = '%2'")
             .arg(ban->getReason())
             .arg(ban->getID());
 }

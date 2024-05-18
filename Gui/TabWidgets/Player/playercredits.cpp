@@ -9,7 +9,7 @@ PlayerCredits::PlayerCredits(QWidget *parent) :
 
     baseSetting();
 
-    defaultFilter = "and ID_User = '" + QString::number(P_Authorization::getPlayer()->getID()) + "'";
+    defaultFilter = "and [ID] IN (select ID_Credit from Credits where ID_User = '" + QString::number(P_Authorization::getPlayer()->getID()) + "')";
     pagination->setWhere(defaultFilter);
 }
 

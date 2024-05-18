@@ -9,7 +9,7 @@ PlayerPayments::PlayerPayments(QWidget *parent) :
 
     baseSetting();
 
-    defaultFilter = "and ID_User = '" + QString::number(P_Authorization::getPlayer()->getID()) + "'";
+    defaultFilter = "and [ID] IN (select ID_Payment from Payments where ID_User = '" + QString::number(P_Authorization::getPlayer()->getID()) + "')";
     pagination->setWhere(defaultFilter);
 }
 

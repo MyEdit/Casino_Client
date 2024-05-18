@@ -112,7 +112,7 @@ void W_StuffUser::setDefaultValues()
     ui->InputName->setText(defaultStuffUser->getFullName());
     ui->InputLogin->setText(defaultStuffUser->getLogin());
     ui->InputPassword->setText(defaultStuffUser->getPassword());
-    ui->ComboBoxRoles->setCurrentIndex(static_cast<int>(defaultStuffUser->getRole()) - 1);
+    ui->ComboBoxRoles->setCurrentText(BaseClassMainMenu::getTextRole(defaultStuffUser->getRole()));
 }
 
 void W_StuffUser::clearInput()

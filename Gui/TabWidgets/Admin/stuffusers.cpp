@@ -149,7 +149,7 @@ void StuffUsers::openEditRecotd()
     QString fullName = getValueFromSelectedRow(ui->tableView, 2).toString();
     QString login = getValueFromSelectedRow(ui->tableView, 3).toString();
     QString password = getValueFromSelectedRow(ui->tableView, 4).toString();
-    Roles role = static_cast<Roles>(getValueFromSelectedRow(ui->tableView, 5).toInt());
+    Roles role = BaseClassMainMenu::getRole(getValueFromSelectedRow(ui->tableView, 5).toString());
 
     QSharedPointer<ObjectStuffUser> stuffUser = QSharedPointer<ObjectStuffUser>::create(id, fullName, login, password, role);
     if (!stuffUser->inputDataIsValid())

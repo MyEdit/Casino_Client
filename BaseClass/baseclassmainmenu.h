@@ -12,6 +12,7 @@
 #include <QSharedPointer>
 #include <QTabBar>
 #include "Utils/windowtracker.h"
+#include "Network/PacketTypes.h"
 #include "Gui/TabWidgets/welcome.h"
 
 class BaseClassMainMenu : public QMainWindow
@@ -25,10 +26,13 @@ protected:
     QVector<QPushButton*> buttonSwitchingTab;
     QMap<QPushButton*, QLabel*> selectedButton;
     QSharedPointer<Welcome> welcomeTab;
+    static QMap<Roles, QString> nameRole;
 
 public:
     explicit BaseClassMainMenu(QWidget *parent = nullptr);
     static QSharedPointer<QPixmap> uploadingUserPhoto(QSharedPointer<QByteArray> data);
+    static QString getTextRole(Roles roles);
+    static Roles getRole(const QString& textRole);
 
 protected:
     void onNavigationsButton_clicked();

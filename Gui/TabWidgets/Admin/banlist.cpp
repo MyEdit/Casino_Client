@@ -154,7 +154,7 @@ void BanList::openEditRecotd()
 void BanList::deleting()
 {   
     QString table = "Banlist";
-    QString idColumn = "ID_User";
+    QString idColumn = "ID_Ban";
     int id = getValueFromSelectedRow(ui->tableView, 1).toInt();
 
     deleteRecord(table, idColumn, id);

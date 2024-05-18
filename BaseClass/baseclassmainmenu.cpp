@@ -1,6 +1,8 @@
 ﻿#include "baseclassmainmenu.h"
 #include "Gui/window_auth.h"
 
+QMap<Roles, QString> BaseClassMainMenu::nameRole;
+
 BaseClassMainMenu::BaseClassMainMenu(QWidget *parent) : QMainWindow(parent) {}
 
 void BaseClassMainMenu::settingVisual()
@@ -63,6 +65,12 @@ void BaseClassMainMenu::prepareStyleSheets()
                              "color: rgb(51, 41, 123);"
                              "padding: 5px;"
                              "text-align: left;}";
+
+    nameRole =
+    {
+        {Roles::Admin, "Администратор"},
+        {Roles::TableManager, "Распорядитель столов"}
+    };
 }
 
 QSharedPointer<QPixmap> BaseClassMainMenu::uploadingUserPhoto(QSharedPointer<QByteArray> data)
@@ -84,6 +92,24 @@ QSharedPointer<QPixmap> BaseClassMainMenu::uploadingUserPhoto(QSharedPointer<QBy
     painter.drawPixmap(0, 0, photo);
 
     return roundedPhoto;
+}
+
+QString BaseClassMainMenu::getTextRole(Roles roles)
+{
+    return nameRole[roles];
+}
+
+Roles BaseClassMainMenu::getRole(const QString &textRole)
+{
+    Roles role;
+
+    for (auto it = nameRole.begin(); it != nameRole.end(); it++)
+    {
+        if(it.value() == textRole)
+            role = it.key();
+    }
+
+    return role;
 }
 
 void BaseClassMainMenu::settingWindowPosition()

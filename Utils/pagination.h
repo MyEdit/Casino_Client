@@ -70,6 +70,8 @@ private:
     void searchInDB();
     void dataFoundInModel(QSharedPointer<ResultSearchInModel> resultSearch);
     void resultSearchInDB(QPair<ModelTypes, QString> result);
+    void handlePrevPage();
+    void handleNextPage();
 
 signals:
     void updateCurrentPageInLabel(int);

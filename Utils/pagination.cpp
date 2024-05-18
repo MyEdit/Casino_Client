@@ -78,30 +78,29 @@ int Pagination::getMaxPage()
 
 void Pagination::prev()
 {
-    if(currentPage > 1)
+    if (currentPage > 1)
     {
         nextButton->setEnabled(true);
-        if(currentPageInModel() == minPageModel)
-        {
-            if(goToPrev)
-            {
-                if(models[2]->rowCount() != 0)
-                {
-                    goToPrevModel();
-                    return;
-                }
-            }
-            else
-                prevButton->setEnabled(false);
-        }
-        else
-        {
-            currentPage--;
-            updateTablePage();
-        }
+        handlePrevPage();
     }
     else
         prevButton->setEnabled(false);
+}
+
+void Pagination::handlePrevPage()
+{
+    if (currentPageInModel() == minPageModel)
+    {
+        if (goToPrev && models[2]->rowCount() != 0)
+            goToPrevModel();
+        else
+            prevButton->setEnabled(false);
+    }
+    else
+    {
+        currentPage--;
+        updateTablePage();
+    }
 }
 
 void Pagination::next()
@@ -109,24 +108,7 @@ void Pagination::next()
     if (currentPage < maxPage)
     {
         prevButton->setEnabled(true);
-        if (currentPageInModel() == maxPageModel)
-        {
-            if (goToNext)
-            {
-                if (models[1]->rowCount() != 0)
-                {
-                    goToNextModel();
-                    return;
-                }
-            }
-            else
-                nextButton->setEnabled(false);
-        }
-        else
-        {
-            currentPage++;
-            updateTablePage();
-        }
+        handleNextPage();
     }
     else
     {
@@ -135,6 +117,21 @@ void Pagination::next()
     }
 }
 
+void Pagination::handleNextPage()
+{
+    if (currentPageInModel() == maxPageModel)
+    {
+        if (goToNext && models[1]->rowCount() != 0)
+            goToNextModel();
+        else
+            nextButton->setEnabled(false);
+    }
+    else
+    {
+        currentPage++;
+        updateTablePage();
+    }
+}
 
 void Pagination::goToNextModel()
 {

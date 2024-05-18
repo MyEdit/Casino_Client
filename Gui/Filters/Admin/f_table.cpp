@@ -19,23 +19,23 @@ void F_Table::initFunSetFilters()
 {
     functionsSetFilters =
     {
-        {ui->minBetStart0end100,        [&]() {return "MinBet >= '0' and MinBet <= '100'";}},
-        {ui->minBetStart100end200,      [&]() {return "MinBet >= '100' and MinBet <= '200'";}},
-        {ui->minBetStart200end300,      [&]() {return "MinBet >= '200' and MinBet <= '300'";}},
-        {ui->yourLimitsMinBet,          [&]() {return "MinBet >= '" + ui->minBetStart->text() + "' and MinBet <= '" + ui->minBetEnd->text() + "'";}},
-        {ui->quantity2,                 [&]() {return "MaxPlayers = '2'";}},
-        {ui->quantity3,                 [&]() {return "MaxPlayers = '3'";}},
-        {ui->quantity4,                 [&]() {return "MaxPlayers = '4'";}},
-        {ui->quantity5,                 [&]() {return "MaxPlayers = '5'";}},
-        {ui->quantity6,                 [&]() {return "MaxPlayers = '6'";}},
-        {ui->quantity7,                 [&]() {return "MaxPlayers = '7'";}},
-        {ui->yourLimitsMaxPlayers,      [&]() {return "MaxPlayers >= '" + ui->maxPlayersStart->text() + "' and MaxPlayers <= '" + ui->maxPlayersEnd->text() + "'";}},
-        {ui->minBalanceStart0end100,    [&]() {return "MinBalance >= '0' and MinBalance <= '100'";}},
-        {ui->minBalanceStart100end200,  [&]() {return "MinBalance >= '100' and MinBalance <= '200'";}},
-        {ui->minBalanceStart200end300,  [&]() {return "MinBalance >= '200' and MinBalance <= '300'";}},
-        {ui->yourLimitsMinBalance,      [&]() {return "MinBalance >= '" + ui->minBalanceStart->text() + "' and MinBalance <= '" + ui->minBalanceEnd->text() + "'";}},
-        {ui->nameBlackJack,             [&]() {return "NameGame = 'BlackJack'";}},
-        {ui->nameDevytka,               [&]() {return "NameGame = 'Девятка'";}}
+        {ui->minBetStart0end100,        [&]() {return "[Минимальная ставка] >= '0' and [Минимальная ставка] <= '100'";}},
+        {ui->minBetStart100end200,      [&]() {return "[Минимальная ставка] >= '100' and [Минимальная ставка] <= '200'";}},
+        {ui->minBetStart200end300,      [&]() {return "[Минимальная ставка] >= '200' and [Минимальная ставка] <= '300'";}},
+        {ui->yourLimitsMinBet,          [&]() {return "[Минимальная ставка] >= '" + ui->minBetStart->text() + "' and [Минимальная ставка] <= '" + ui->minBetEnd->text() + "'";}},
+        {ui->quantity2,                 [&]() {return "[Максимум игроков] = '2'";}},
+        {ui->quantity3,                 [&]() {return "[Максимум игроков] = '3'";}},
+        {ui->quantity4,                 [&]() {return "[Максимум игроков] = '4'";}},
+        {ui->quantity5,                 [&]() {return "[Максимум игроков] = '5'";}},
+        {ui->quantity6,                 [&]() {return "[Максимум игроков] = '6'";}},
+        {ui->quantity7,                 [&]() {return "[Максимум игроков] = '7'";}},
+        {ui->yourLimitsMaxPlayers,      [&]() {return "[Максимум игроков] >= '" + ui->maxPlayersStart->text() + "' and [Максимум игроков] <= '" + ui->maxPlayersEnd->text() + "'";}},
+        {ui->minBalanceStart0end100,    [&]() {return "[Минимальный баланс] >= '0' and [Минимальный баланс] <= '100'";}},
+        {ui->minBalanceStart100end200,  [&]() {return "[Минимальный баланс] >= '100' and [Минимальный баланс] <= '200'";}},
+        {ui->minBalanceStart200end300,  [&]() {return "[Минимальный баланс] >= '200' and [Минимальный баланс] <= '300'";}},
+        {ui->yourLimitsMinBalance,      [&]() {return "[Минимальный баланс] >= '" + ui->minBalanceStart->text() + "' and [Минимальный баланс] <= '" + ui->minBalanceEnd->text() + "'";}},
+        {ui->nameBlackJack,             [&]() {return "[Игра] = 'BlackJack'";}},
+        {ui->nameDevytka,               [&]() {return "[Игра] = 'Девятка'";}}
     };
 }
 
@@ -82,12 +82,15 @@ void F_Table::connects()
 
     connect(ui->minBetStart, &QLineEdit::textChanged, this, &F_Table::textChangeMinBet);
     connect(ui->minBetEnd, &QLineEdit::textChanged, this, &F_Table::textChangeMinBet);
+    connect(ui->yourLimitsMinBet, &QCheckBox::clicked, this, &F_Table::textChangeMinBet);
 
     connect(ui->maxPlayersStart, &QLineEdit::textChanged, this, &F_Table::textChangeMaxPlayers);
     connect(ui->maxPlayersEnd, &QLineEdit::textChanged, this, &F_Table::textChangeMaxPlayers);
+    connect(ui->yourLimitsMaxPlayers, &QCheckBox::clicked, this, &F_Table::textChangeMaxPlayers);
 
     connect(ui->minBalanceStart, &QLineEdit::textChanged, this, &F_Table::textChangeMinBalance);
     connect(ui->minBalanceEnd, &QLineEdit::textChanged, this, &F_Table::textChangeMinBalance);
+    connect(ui->yourLimitsMinBalance, &QCheckBox::clicked, this, &F_Table::textChangeMinBalance);
 }
 
 void F_Table::textChangeMinBet()

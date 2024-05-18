@@ -101,7 +101,7 @@ QString BaseClassMainMenu::getTextRole(Roles roles)
 
 Roles BaseClassMainMenu::getRole(const QString &textRole)
 {
-    Roles role;
+    Roles role = Roles::None;
 
     for (auto it = nameRole.begin(); it != nameRole.end(); it++)
     {

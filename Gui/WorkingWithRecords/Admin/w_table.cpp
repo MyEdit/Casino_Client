@@ -46,7 +46,6 @@ const QString W_Table::getMaxPlayers()
     return ui->InputMaxPlayer->currentText();
 }
 
-
 const QString W_Table::getMinBet()
 {
     return ui->InputMinBet->text();

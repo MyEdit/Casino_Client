@@ -14,7 +14,6 @@ GameTable::~GameTable()
     delete ui;
 }
 
-
 void GameTable::stop()
 {
     timer->stop();

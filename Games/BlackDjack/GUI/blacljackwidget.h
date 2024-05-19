@@ -4,13 +4,11 @@
 #include <QWidget>
 #include <QTimer>
 #include "Games/BlackDjack/GUI/InterfaceElements/blackjackbackground.h"
-#include "Games/InterfaceElements/playersiconswidget.h"
 #include "Games/card.h"
 #include "Users/player.h"
 #include "Games/blackjack.h"
 #include "BaseClass/baseclassgamewidget.h"
 
-class PlayersIconsWidget;
 class Player;
 
 namespace Ui {
@@ -22,14 +20,12 @@ class BlaclJackWidget : public BaseClassGameWidget
     Q_OBJECT
     Ui::BlaclJackWidget *ui;
     QSharedPointer<BlackJackBackground> background;
-    QSharedPointer<PlayersIconsWidget> playersIcons;
 
 public:
     explicit BlaclJackWidget(QWidget *parent = nullptr);
     ~BlaclJackWidget();
 
 private:
-    void updatePlayersIcons(QList<QSharedPointer<Player>> playes) override;
     void renderTakeCard(QSharedPointer<Card> card) override;
     void renderFakeTakeCard(const QString& nickname) override;
     void updateProcessing(const QString& data) override;
@@ -40,21 +36,11 @@ private:
     void renderingPlayersIcons();
     void resizeEvent(QResizeEvent *event) override;
     void connects();
-    void closeEvent(QCloseEvent* event) override;
     void updateTimer(const QString& time) override;
-    void takeCard();
-    void pass();
     void clearCardOnTable() override;
-    void changeEvent(QEvent *event) override;
-    void setMyScore(int score) override;
-    void startChekedTable() override;
-    void checkTableExistence() override;
-    void distributor(QSharedPointer<QueryData> data) override;
-    void showEvent(QShowEvent* event) override;
 
 private slots:
     void finished(bool isWin) override;
-    void insufficientBalance() override;
 
 private:
     friend class BlackJack;

@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     BaseClass/baseclasfilter.cpp \
+    BaseClass/baseclassgamewidget.cpp \
     BaseClass/baseclassmainmenu.cpp \
     BaseClass/baseclasssearchwindow.cpp \
     GUI/Objects/Admin/activetable.cpp \

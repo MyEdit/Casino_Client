@@ -208,6 +208,7 @@ RESOURCES += \
     resources.qrc
 
 DISTFILES += \
+    Docs.yml \
     Games/BlackDjack/assets/Standart/Clubs/10.png \
     Games/BlackDjack/assets/Standart/Clubs/2.png \
     Games/BlackDjack/assets/Standart/Clubs/3.png \

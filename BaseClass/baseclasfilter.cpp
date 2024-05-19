@@ -4,6 +4,8 @@ BaseClasFilter::BaseClasFilter(QWidget *parent) : QDialog(parent)
 {
 }
 
+/////////////////СОБЫТИЯ/////////////////
+
 void BaseClasFilter::reset()
 {
     hideCategory();
@@ -30,21 +32,6 @@ void BaseClasFilter::startSetting()
     hideCategory();
     customizationLiteEdit();
     setFilterWidgets();
-}
-
-void BaseClasFilter::resetCategory(QWidget *parent)
-{
-    QList<QPushButton*> pushbuttons = parent->findChildren<QPushButton*>();
-    for(QPushButton* pushbutton : pushbuttons)
-        setBoldButtonCategoty(pushbutton, false);
-
-    QList<QLineEdit*> lineEdits = parent->findChildren<QLineEdit*>();
-    for(QLineEdit* lineEdit : lineEdits)
-        lineEdit->clear();
-
-    QList<QCheckBox*> checkBoxs = parent->findChildren<QCheckBox*>();
-    for(QCheckBox* checkBox : checkBoxs)
-        checkBox->setChecked(false);
 }
 
 void BaseClasFilter::connects()
@@ -81,6 +68,23 @@ void BaseClasFilter::applyFilter()
 
     emit setFilter(filter);
     accept();
+}
+
+/////////////////РЕНДЕР/////////////////
+
+void BaseClasFilter::resetCategory(QWidget *parent)
+{
+    QList<QPushButton*> pushbuttons = parent->findChildren<QPushButton*>();
+    for(QPushButton* pushbutton : pushbuttons)
+        setBoldButtonCategoty(pushbutton, false);
+
+    QList<QLineEdit*> lineEdits = parent->findChildren<QLineEdit*>();
+    for(QLineEdit* lineEdit : lineEdits)
+        lineEdit->clear();
+
+    QList<QCheckBox*> checkBoxs = parent->findChildren<QCheckBox*>();
+    for(QCheckBox* checkBox : checkBoxs)
+        checkBox->setChecked(false);
 }
 
 void BaseClasFilter::visibleCategory()

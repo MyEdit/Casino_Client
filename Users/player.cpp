@@ -28,34 +28,10 @@ Player::Player(const QByteArray& data)
     this->photo = QSharedPointer<QByteArray>::create(photoData);
 }
 
-int Player::getID()
-{
-    return this->ID;
-}
-
-const QString& Player::getName()
-{
-    return this->name;
-}
-const QString& Player::getLogin()
-{
-    return this->login;
-}
-
-Roles Player::getRole()
-{
-    return this->role;
-}
-
 double Player::getBalance()
 {
     QMutexLocker locker(&accessMutex);
     return this->balance;
-}
-
-QSharedPointer<QByteArray> Player::getPhoto()
-{
-    return this->photo;
 }
 
 QSharedPointer<QByteArray> Player::serializeUser()

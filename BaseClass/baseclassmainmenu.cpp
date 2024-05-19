@@ -5,24 +5,22 @@ QMap<Roles, QString> BaseClassMainMenu::nameRole;
 
 BaseClassMainMenu::BaseClassMainMenu(QWidget *parent) : QMainWindow(parent) {}
 
-void BaseClassMainMenu::settingVisual()
+QString BaseClassMainMenu::getTextRole(Roles roles)
 {
-    QMap<QPushButton*, QLabel*>::iterator i;
-    for (i = selectedButton.begin(); i != selectedButton.end(); i++)
-        i.value()->setVisible(false);
+    return nameRole[roles];
 }
 
-void BaseClassMainMenu::changeUser()
+Roles BaseClassMainMenu::getRole(const QString &textRole)
 {
-    //P_Authorization::adminW = nullptr;
-    //P_Authorization::playerW = nullptr;
-    //Window_Auth* w = new Window_Auth();
-    //WindowTracker::activeWindow = w;
-    //w->show();
-    //delete this;
+    Roles role = Roles::None;
 
+    for (auto it = nameRole.begin(); it != nameRole.end(); it++)
+    {
+        if(it.value() == textRole)
+            role = it.key();
+    }
 
-    NetworkClient::onServerDisconnected();
+    return role;
 }
 
 /////////////////СОБЫТИЯ/////////////////
@@ -46,7 +44,19 @@ void BaseClassMainMenu::on_buttonExit_clicked()
     close();
 }
 
+void BaseClassMainMenu::changeUser()
+{
+    NetworkClient::onServerDisconnected();
+}
+
 /////////////////РЕНДЕР/////////////////
+
+void BaseClassMainMenu::settingVisual()
+{
+    QMap<QPushButton*, QLabel*>::iterator i;
+    for (i = selectedButton.begin(); i != selectedButton.end(); i++)
+        i.value()->setVisible(false);
+}
 
 void BaseClassMainMenu::prepareStyleSheets()
 {
@@ -92,24 +102,6 @@ QSharedPointer<QPixmap> BaseClassMainMenu::uploadingUserPhoto(QSharedPointer<QBy
     painter.drawPixmap(0, 0, photo);
 
     return roundedPhoto;
-}
-
-QString BaseClassMainMenu::getTextRole(Roles roles)
-{
-    return nameRole[roles];
-}
-
-Roles BaseClassMainMenu::getRole(const QString &textRole)
-{
-    Roles role = Roles::None;
-
-    for (auto it = nameRole.begin(); it != nameRole.end(); it++)
-    {
-        if(it.value() == textRole)
-            role = it.key();
-    }
-
-    return role;
 }
 
 void BaseClassMainMenu::settingWindowPosition()

@@ -30,13 +30,10 @@ void PacketHandler::tryReconnectToServer()
     emit signalReconnecting();
 
     while(!NetworkClient::connectToServer())
-    {
         sleep(5);
-    }
 
     emit signalFinishReconnecting();
 
-    //P_Reconnection::sendUserData(P_Authorization::getActualUser());
     Message::logInfo("Reconnect to server successful");
 }
 
@@ -50,14 +47,14 @@ void PacketHandler::initPacketHandlerFunction()
         {PacketTypes::P_ConnectPlayerToTable,       [&]() {emit signalOpenGame(P_ConnectPlayerToTable::getTable());}},
         {PacketTypes::P_ConnectOtherPlayerToTable,  [&]() {emit  signalUpdatePlayers(P_ConnectPlayerToTable::getTable());}},
         {PacketTypes::P_SendTables,                 [&]() {P_SendTables::getTablesFromServer(); emit signalSetTables();}},
-        {PacketTypes::P_QueryWithoutResponce,       [&]() {}},
+        {PacketTypes::P_QueryWithoutResponce,       [&]() {Message::logWarn("Пакет P_QueryWithoutResponce не имеет обработки");}},
         {PacketTypes::P_Query,                      [&]() {emit signalSetQueryModel(P_Query::getResultFromServer());}},
         {PacketTypes::P_UpdateGameProcessing,       [&]() {emit signalUpdateGameProcessing(P_UpdateGameProcessing::getData());}},
         {PacketTypes::P_GamePacket,                 [&]() {P_GamePacket::onGamePacketReceived();}},
         {PacketTypes::P_Search,                     [&]() {emit signalResultSearch(P_Search::getResultSearchFromServer());}},
         {PacketTypes::P_UpdateBalance,              [&]() {emit signalUpdateBalance(P_UpdateBalance::getNewBalance());}},
         {PacketTypes::P_Update,                     [&]() {emit signalUpdateTable(P_Update::getModelFromServer());}},
-        {PacketTypes::P_PlayerLeaveTable,           [&]() {}}
+        {PacketTypes::P_PlayerLeaveTable,           [&]() {Message::logWarn("Пакет P_PlayerLeaveTable не имеет обработки");}}
     };
 }
 

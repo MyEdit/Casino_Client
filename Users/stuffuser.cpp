@@ -26,30 +26,6 @@ StuffUser::StuffUser(const QByteArray& data)
     this->photo = QSharedPointer<QByteArray>::create(photoData);
 }
 
-int StuffUser::getID()
-{
-    return this->ID;
-}
-
-const QString& StuffUser::getName()
-{
-    return this->name;
-}
-const QString& StuffUser::getLogin()
-{
-    return this->login;
-}
-
-Roles StuffUser::getRole()
-{
-    return this->role;
-}
-
-QSharedPointer<QByteArray> StuffUser::getPhoto()
-{
-    return this->photo;
-}
-
 QSharedPointer<QByteArray> StuffUser::serializeUser()
 {
     QSharedPointer<QByteArray> byteArray(new QByteArray());

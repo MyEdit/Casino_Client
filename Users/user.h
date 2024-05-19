@@ -16,11 +16,11 @@ public:
     virtual ~User() {}
 
     //GETTERS
-    virtual int getID() = 0;
-    virtual const QString& getName() = 0;
-    virtual const QString& getLogin() = 0;
-    virtual Roles getRole() = 0;
-    virtual QSharedPointer<QByteArray> getPhoto() = 0;
+    int getID() const;
+    const QString& getName();
+    const QString& getLogin();
+    Roles getRole() const;
+    const QSharedPointer<QByteArray> getPhoto();
     virtual QSharedPointer<QByteArray> serializeUser() = 0;
 };
 

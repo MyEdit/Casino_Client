@@ -78,6 +78,7 @@ SOURCES += \
     Network/packethandler.cpp \
     Users/player.cpp \
     Users/stuffuser.cpp \
+    Users/user.cpp \
     Utils/pagination.cpp \
     Utils/searchmodule.cpp \
     Utils/serializer.cpp \

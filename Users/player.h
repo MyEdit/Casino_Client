@@ -23,12 +23,7 @@ public:
     void setGame(QSharedPointer<Game> game);
 
     //GETTERS
-    int getID() override;
-    const QString& getName() override;
-    const QString& getLogin() override;
-    Roles getRole() override;
     double getBalance();
-    QSharedPointer<QByteArray> getPhoto() override;
     QSharedPointer<Game> getGame();
     QVector<QSharedPointer<Card>> getHand();
     QSharedPointer<Card> getCardInHand(int index);

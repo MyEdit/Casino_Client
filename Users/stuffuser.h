@@ -10,13 +10,6 @@ public:
     StuffUser(const QByteArray& data);
     StuffUser();
 
-    //GETTERS
-    int getID() override;
-    const QString& getName() override;
-    const QString& getLogin() override;
-    Roles getRole() override;
-    QSharedPointer<QByteArray> getPhoto() override;
-
     //METHODS
     QSharedPointer<QByteArray> serializeUser() override;
 };

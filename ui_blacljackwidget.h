@@ -24,7 +24,7 @@ class Ui_BlaclJackWidget
 {
 public:
     QGridLayout *gridLayout;
-    QSpacerItem *verticalSpacer;
+    QLabel *label;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
     QPushButton *buttonTakeCard;
@@ -41,9 +41,12 @@ public:
         BlaclJackWidget->setMinimumSize(QSize(800, 0));
         gridLayout = new QGridLayout(BlaclJackWidget);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Expanding);
+        label = new QLabel(BlaclJackWidget);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/InterfaceEements/resources/Table.png")));
+        label->setScaledContents(true);
 
-        gridLayout->addItem(verticalSpacer, 0, 0, 1, 1);
+        gridLayout->addWidget(label, 0, 0, 1, 1);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
@@ -89,6 +92,7 @@ public:
     void retranslateUi(QWidget *BlaclJackWidget)
     {
         BlaclJackWidget->setWindowTitle(QApplication::translate("BlaclJackWidget", "Form", nullptr));
+        label->setText(QString());
         buttonTakeCard->setText(QApplication::translate("BlaclJackWidget", "\320\222\320\267\321\217\321\202\321\214 \320\272\320\260\321\200\321\202\321\203", nullptr));
         buttonDoNotTakeCard->setText(QApplication::translate("BlaclJackWidget", "\320\245\320\262\320\260\321\202\320\270\321\202", nullptr));
         labelGameProcess->setText(QApplication::translate("BlaclJackWidget", "\320\236\320\266\320\270\320\264\320\260\320\275\320\270\320\265 \320\274\320\270\320\275\320\270\320\274\320\260\320\273\321\214\320\275\320\276\320\263\320\276 \320\272\320\276\320\273-\320\262\320\260 \320\270\320\263\321\200\320\276\320\272\320\276\320\262...", nullptr));

@@ -29,11 +29,10 @@ public:
     void movingCard(QSharedPointer<Card> card);
     void movingFaceCard(const QRect& playerPosition);
     void clearTable();
+    void updateCardSize(int width, int height);
 
 private:
     void assigningValues();
-    void resizeEvent(QResizeEvent* event) override;
-    void paintEvent(QPaintEvent* event) override;
 
 private slots:
     void movingCardInGuiThread(QSharedPointer<Card> card);

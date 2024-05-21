@@ -41,7 +41,7 @@ public:
     {
         if (BlackJackBackground->objectName().isEmpty())
             BlackJackBackground->setObjectName(QString::fromUtf8("BlackJackBackground"));
-        BlackJackBackground->resize(920, 400);
+        BlackJackBackground->resize(716, 484);
         BlackJackBackground->setMinimumSize(QSize(650, 400));
         BlackJackBackground->setAutoFillBackground(false);
         BlackJackBackground->setStyleSheet(QString::fromUtf8("#BlackJackBackground{\n"

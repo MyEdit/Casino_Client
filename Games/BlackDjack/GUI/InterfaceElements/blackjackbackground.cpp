@@ -14,26 +14,6 @@ BlackJackBackground::~BlackJackBackground()
     delete ui;
 }
 
-void BlackJackBackground::resizeEvent(QResizeEvent *event)
-{
-    QWidget::resizeEvent(event);
-
-    int labelWidth = width() / 10;
-    int labelHeight = height() / 4;
-
-    QList<QLabel*> labels = findChildren<QLabel*>();
-    for (QLabel* label : labels)
-        label->setFixedSize(labelWidth, labelHeight);
-}
-
-void BlackJackBackground::paintEvent(QPaintEvent* event)
-{
-    QPainter painter( this );
-    painter.drawPixmap( 0, 0, QPixmap(":/InterfaceEements/resources/Table.png").scaled(size()));
-
-    QWidget::paintEvent(event);
-}
-
 void BlackJackBackground::movingCard(QSharedPointer<Card> card)
 {
     // Вызываем метод в потоке GUI с помощью invokeMethod
@@ -125,4 +105,11 @@ void BlackJackBackground::assigningValues()
     placeCardOnTable[3] = ui ->labelCard_4;
     placeCardOnTable[4] = ui ->labelCard_5;
     placeCardOnTable[5] = ui ->labelCard_6;
+}
+
+void BlackJackBackground::updateCardSize(int width, int height)
+{
+    QList<QLabel*> labels = findChildren<QLabel*>();
+    for (QLabel* label : labels)
+        label->setFixedSize(width, height);
 }

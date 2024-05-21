@@ -48,9 +48,9 @@ void BlaclJackWidget::resizeEvent(QResizeEvent* event)
 {
     QWidget::resizeEvent(event);
 
-    int w = width() / 1.3;
-    int h = height() / 1.3;
-    background->setFixedSize(w, h);
+    int w = width() / 10;
+    int h = height() / 4;
+    background->updateCardSize(w, h);
 }
 
 void BlaclJackWidget::renderTakeCard(QSharedPointer<Card> card)

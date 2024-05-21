@@ -267,12 +267,24 @@ DISTFILES += \
     Games/BlackDjack/assets/Standart/Spades/Пика.png \
     Games/BlackDjack/assets/Standart/shirt.png \
     Games/BlackDjack/assets/Колода.png \
+    resources/ChangeUser.png \
     resources/Player.png \
     resources/Table.png \
     resources/TestStuffPhoto.jpg \
     resources/Window_Auth_Background.png \
     resources/add.png \
+    resources/addFilter.png \
     resources/ban.png \
+    resources/banks/ChipCard.png \
+    resources/banks/mastercard.png \
+    resources/banks/mtsbank.png \
+    resources/banks/sberbank.png \
+    resources/banks/sbp.png \
+    resources/banks/visa.png \
+    resources/banks/vkpay.png \
+    resources/banks/webmoney.png \
+    resources/banks/yoomoney.png \
+    resources/clearFilter.png \
     resources/clearSearch.png \
     resources/delete.png \
     resources/edited.png \

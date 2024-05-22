@@ -22,13 +22,6 @@ void BlaclJackWidget::rendering()
     renderingTable();
     renderingPlayersIcons();
 
-    for (int i = 0; i < ui->horizontalLayout_2->count(); i++)
-    {
-        QWidget* widget = ui->horizontalLayout_2->itemAt(i)->widget();
-        if (widget)
-            widget->hide();
-    }
-
     blocingInterface(false);
 }
 
@@ -117,12 +110,6 @@ void BlaclJackWidget::updateTimer(const QString& time)
 
     if(time == "0")
     {
-        for (int i = 0; i < ui->horizontalLayout_2->count(); i++)
-        {
-            QWidget* widget = ui->horizontalLayout_2->itemAt(i)->widget();
-            if (widget)
-                widget->show();
-        }
         processing = "Игра началась";
         clearCardOnTable();
         setMyScore(0);

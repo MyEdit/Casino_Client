@@ -55,6 +55,7 @@ public:
         gridLayout->addItem(horizontalSpacer_2, 3, 4, 1, 1);
 
         layoutIcon_1 = new QVBoxLayout();
+        layoutIcon_1->setSpacing(0);
         layoutIcon_1->setObjectName(QString::fromUtf8("layoutIcon_1"));
 
         gridLayout->addLayout(layoutIcon_1, 7, 1, 1, 1);
@@ -64,6 +65,7 @@ public:
         gridLayout->addItem(verticalSpacer_4, 6, 5, 1, 1);
 
         layoutIcon_2 = new QVBoxLayout();
+        layoutIcon_2->setSpacing(0);
         layoutIcon_2->setObjectName(QString::fromUtf8("layoutIcon_2"));
 
         gridLayout->addLayout(layoutIcon_2, 5, 1, 1, 1);
@@ -81,26 +83,31 @@ public:
         gridLayout->addItem(verticalSpacer_3, 6, 1, 1, 1);
 
         layoutIcon_3 = new QVBoxLayout();
+        layoutIcon_3->setSpacing(0);
         layoutIcon_3->setObjectName(QString::fromUtf8("layoutIcon_3"));
 
         gridLayout->addLayout(layoutIcon_3, 3, 1, 1, 1);
 
         layoutIcon_4 = new QVBoxLayout();
+        layoutIcon_4->setSpacing(0);
         layoutIcon_4->setObjectName(QString::fromUtf8("layoutIcon_4"));
 
         gridLayout->addLayout(layoutIcon_4, 3, 3, 1, 1);
 
         layoutIcon_5 = new QVBoxLayout();
+        layoutIcon_5->setSpacing(0);
         layoutIcon_5->setObjectName(QString::fromUtf8("layoutIcon_5"));
 
         gridLayout->addLayout(layoutIcon_5, 3, 5, 1, 1);
 
         layoutIcon_6 = new QVBoxLayout();
+        layoutIcon_6->setSpacing(0);
         layoutIcon_6->setObjectName(QString::fromUtf8("layoutIcon_6"));
 
         gridLayout->addLayout(layoutIcon_6, 5, 5, 1, 1);
 
         layoutIcon_7 = new QVBoxLayout();
+        layoutIcon_7->setSpacing(0);
         layoutIcon_7->setObjectName(QString::fromUtf8("layoutIcon_7"));
 
         gridLayout->addLayout(layoutIcon_7, 7, 5, 1, 1);

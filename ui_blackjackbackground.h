@@ -24,9 +24,10 @@ class Ui_BlackJackBackground
 public:
     QVBoxLayout *verticalLayout;
     QSpacerItem *verticalSpacer;
+    QHBoxLayout *horizontalLayout;
+    QLabel *labelDeck;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer;
-    QLabel *labelDeck;
     QSpacerItem *horizontalSpacer_3;
     QLabel *labelCard_1;
     QLabel *labelCard_2;
@@ -53,12 +54,8 @@ public:
 
         verticalLayout->addItem(verticalSpacer);
 
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_2->addItem(horizontalSpacer);
-
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         labelDeck = new QLabel(BlackJackBackground);
         labelDeck->setObjectName(QString::fromUtf8("labelDeck"));
         QSizePolicy sizePolicy(QSizePolicy::Maximum, QSizePolicy::Maximum);
@@ -72,7 +69,16 @@ public:
 "	border-image: url(:/Games/BlackDjack/assets/\320\232\320\276\320\273\320\276\320\264\320\260.png);\n"
 "}"));
 
-        horizontalLayout_2->addWidget(labelDeck);
+        horizontalLayout->addWidget(labelDeck);
+
+
+        verticalLayout->addLayout(horizontalLayout);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_2->addItem(horizontalSpacer);
 
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
 

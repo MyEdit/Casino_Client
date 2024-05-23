@@ -38,8 +38,7 @@ public:
     {
         if (PlayerIcon->objectName().isEmpty())
             PlayerIcon->setObjectName(QString::fromUtf8("PlayerIcon"));
-        PlayerIcon->resize(140, 196);
-        PlayerIcon->setStyleSheet(QString::fromUtf8(""));
+        PlayerIcon->resize(200, 249);
         verticalLayout_4 = new QVBoxLayout(PlayerIcon);
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
         playerIcon = new QLabel(PlayerIcon);

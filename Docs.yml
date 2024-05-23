@@ -1,17 +1,37 @@
-#Класс отвечающий за серверный код
+﻿#Класс отвечающий за серверный код
 network/NetworkServer:
-    - sendToServer() - Шаблонный метод отправки пакета серверу с указанием ему размера пакета
-    - getMessageFromServer() - Шаблонный метод получения пакета от сервера
-    - getMessageFromServer() - Шаблонный метод получения пакета (QByteArray) от сервера
+    - static void sendToServer(const QString& message) -
+        Метод отправляет пакет серверу с указанием его размера.
+        Параметры:
+        const QString& message: Сообщение, которое нужно отправить серверу.
+
+    - template<typename T> static T getMessageFromServer() -
+        Шаблонный метод получает пакет от сервера.
+        Возвращаемое значение:
+        T: Объект, полученный от сервера.
+
+    - template<typename T> static typename std::enable_if<std::is_same<T, QByteArray>::value, T>::type getMessageFromServer(int size) -
+        Специализированный шаблонный метод получает пакет (QByteArray) от сервера.
+        Параметры:
+        int size: Размер пакета данных, который необходимо получить от сервера.
+        Возвращаемое значение:
+        T: Объект типа QByteArray, содержащий данные, полученные от сервера.
 
 #Классы отвечающие за обработку пакетов
 network/PacketActions:
 
 #Класс отвечающий за обработку входящих пакетов от сервера
 network/PacketHandler:
-    - clientHandler() - Обобщенный обработчик всех пакетов
-    - packetHandler() - Обработчик определенных пакетов
-    - tryReconnectToServer() - Метод вызываемый при дисконнекте от сервера
+    - void clientHandler() -
+        Обобщенный обработчик всех пакетов от сервера.
+
+    - void packetHandler(const PacketTypes packettype) -
+        Обработчик определенных пакетов от сервера.
+        Параметры:
+        const PacketTypes packettype: Тип пакета, который нужно обработать.
+
+    - void tryReconnectToServer() -
+        Метод вызываемый при дисконнекте от сервера для попытки повторного подключения.
 
 #Абстрактный класс пользователей
 Users/User:
@@ -24,34 +44,98 @@ Users/StuffUser:
 
 #Класс стола
 Games/Tabel/Table:
-    - addTable() - Добавляет новый стол в глобальную коллекцию
-    - canJoin() - Метод определяющий может ли игрок присоедениться к столу
-    - tryJoin() - Метод отправляющий пакет в сервер для присоединения клиента к столу
-    - updatePlayers() - Метод обновляющий информацию о игроках в GUI
+    - static QList<QSharedPointer<Table>>& getTables() -
+        Статический метод, возвращающий ссылку на глобальную коллекцию столов.
+        Возвращаемое значение:
+        QList<QSharedPointer<Table>>&: Ссылка на глобальную коллекцию столов.
+
+    - bool canJoin() -
+        Метод, определяющий, может ли игрок присоединиться к этому столу.
+        Возвращаемое значение:
+        bool: true, если игрок может присоединиться к столу, иначе false.
+
+    - void tryJoin() -
+        Метод, отправляющий пакет на сервер для присоединения клиента к столу.
+
+    - void updatePlayers() -
+        Метод, обновляющий информацию о игроках в графическом интерфейсе.
     
 #Абстрактный класс игры
 Games/Game:
-    - onGamePacketReceived() - Обработчик игровых пакетов
-    - takeCard() - Метод запрашивающий у сервера карту
-    - pass() - Метод оповещающий сервер о том что, игрок завершил свой ход
-    - onUpdateGameProcessing() - Метод обновляющий таймер (Время до начала игры) или отображающий о том, чей сейчас ход
-    - leave() - Метод обрабатывающий выход игрока из игрового стола
-    - createGUI() - Метод создающий GUI игры
-    - onTakeCard() - Метод обрабатывающий взятие карты
-    - onTakeCardAnotherPlayer() - Метод обрабатывающий взятие карты другим игроком
-    - onStartMove() - Метод обрабатывающий начало хода игрока
-    - onGameFinished() - Метод обрабатывающий финиш игры
-    - renderTakeCard() - Метод вызывающий рендер взятия карты
-    - renderTakeCardAnotherPlayer() - Метод вызывающий рендер взятия карты другим игроком
-    - unlockInterface() - Метод блокирующий/разблокирующий игровой интерфейс и вызывающий onUpdateGameProcessing()
-    - turn() - Метод отправляющий пакеты на сервер при взятии или пасе
+    - virtual void onGamePacketReceived() -
+        Виртуальный метод, обработчик игровых пакетов.
+
+    - virtual void takeCard() -
+        Виртуальный метод, запрашивающий у сервера карту.
+
+    - virtual void pass() -
+        Виртуальный метод, оповещающий сервер о том, что игрок завершил свой ход.
+
+    - virtual void onUpdateGameProcessing(const QString& data) -
+        Виртуальный метод, обновляющий таймер (время до начала игры) или отображающий информацию о текущем ходе.
+        Параметры:
+        const QString& data: Данные для обновления, например, время до начала игры или информация о текущем ходе.
+
+    - void leave() -
+        Метод, обрабатывающий выход игрока из игрового стола.
+
+    - virtual void createGUI() = 0 -
+        Чисто виртуальный метод, создающий графический интерфейс игры.
+
+    - virtual void onTakeCard() -
+        Виртуальный метод, вызываемый при взятии карты текущим игроком.
+
+    - virtual void onTakeCardAnotherPlayer() -
+        Виртуальный метод, вызываемый при взятии карты другим игроком.
+
+    - virtual void onStartMove() -
+        Виртуальный метод, вызываемый при начале хода игрока.
+
+    - virtual void onGameFinished(bool isWin) -
+        Виртуальный метод, обрабатывающий завершение игры.
+        Параметры:
+        bool isWin: Флаг, указывающий на победу или поражение.
+
+    - virtual void renderTakeCard(QSharedPointer<Card> card) -
+        Виртуальный метод, вызывающий рендеринг взятия карты.
+        Параметры:
+        QSharedPointer<Card> card: Указатель на карту, которую взял игрок.
+
+    - virtual void renderTakeCardAnotherPlayer(const QString &nickname) -
+        Виртуальный метод, вызывающий рендеринг взятия карты другим игроком.
+        Параметры:
+        const QString &nickname: Никнейм игрока, который взял карту.
+
+    - virtual void unlockInterface(const QString &nickname) -
+        Виртуальный метод, блокирующий/разблокирующий игровой интерфейс и вызывающий метод onUpdateGameProcessing().
+        Параметры:
+        const QString &nickname: Никнейм игрока, чей ход.
+
+    - virtual void turn(GamePackets gamePacket) -
+        Виртуальный метод, отправляющий пакеты на сервер при взятии карты или пасе.
+        Параметры:
+        GamePackets gamePacket: Пакет игры, который нужно отправить на сервер.
+
     
 #Класс игры BlackJack
 Games/BlackJack:
-    - renderTakeCard() - Метод вызывающий рендер взятия карты
-    - isBust() - Метод проверяющий перебор очков у игрока
-    - getPlayerScore() - Метод возвращающий кол-во очков у игрока
-    - createGUI() - Метод создающий GUI игры
+    - void renderTakeCard(QSharedPointer<Card> card) override -
+        Метод, вызывающий рендеринг взятия карты в игре BlackJack.
+        Параметры:
+        QSharedPointer<Card> card: Указатель на карту, которую взял игрок.
+
+    - bool isBust() -
+        Метод проверки перебора очков у игрока в игре BlackJack.
+        Возвращаемое значение:
+        bool: true, если у игрока перебор очков, иначе false.
+
+    - void createGUI() override -
+        Метод, создающий графический интерфейс игры BlackJack.
+
+    - int getPlayerScore() -
+        Метод, возвращающий количество очков у игрока в игре BlackJack.
+        Возвращаемое значение:
+        int: Количество очков у игрока.
     
 #Класс отображающий информацию об игроке во время игры (Кол-во карт, имя, кол-во очков)
 Games/InterfaceElements/PlayerIcon:
@@ -77,41 +161,102 @@ GUI/Form:
 //TODO: Уточнить у Андрей Алексеевича про uploadingUserPhoto
 #Базовый класс меню пользователя
 BaseClass/BaseClassMainMenu:
-    - uploadingUserPhoto() - Метод преобразовывающий QByteArray в QPixmap
-    - onNavigationsButton_clicked() - Метод обрабатывающий переключение между вкладками меню
-    - changeUser() - Метод обрабатывающий смену пользователя
-    - settingUserInformation() - Метод устанавливающий информацию о пользователе в меню
+    - static QSharedPointer<QPixmap> uploadingUserPhoto(QSharedPointer<QByteArray> data) -
+        Статический метод, преобразующий массив байтов в изображение в формате QPixmap.
+        Параметры:
+        QSharedPointer<QByteArray> data: Указатель на массив байтов с данными изображения.
+        Возвращаемое значение:
+        QSharedPointer<QPixmap>: Указатель на QPixmap с загруженным изображением.
+
+    - void onNavigationsButton_clicked() -
+        Метод, обрабатывающий событие нажатия на кнопки навигации в меню пользователя.
+
+    - void changeUser() -
+        Метод, обрабатывающий смену пользователя.
+
+    - virtual void settingUserInformation() = 0 -
+        Чисто виртуальный метод, устанавливающий информацию о пользователе в меню.
 
 #Базовый класс для игрового QWidget
 BaseClass/BaseClassGameWidget:
-    - updateProcessing() - Метод обновляющий таймер (Время до начала игры) или отображающий о том, чей сейчас ход
-    - renderTakeCard() - Метод вызывающий рендер взятия карты
-    - renderFakeTakeCard() - Метод вызывающий рендер взятия карты другим игроком
-    - pass() - Метод обрабатывающий событие завершения хода игроком
-    - startChekedTable() - Метод запускающий таймер
-    - checkTableExistence() - Метод запускающий проверку существования объекта стола
-    - distributor() - Метод обрабатывающий ответ от сервера существует ли объект стола
-    - showEvent() - Метод запускающий startChekedTable()
-    - closeEvent() - Метод отправляющий серверу информацию о том, что игрок вышел из игры
-    
+    - virtual void updateProcessing(const QString& data) = 0 -
+        Чисто виртуальный метод, обновляющий таймер (время до начала игры) или отображающий информацию о текущем ходе.
+        Параметры:
+        const QString& data: Данные для обновления, например, время до начала игры или информация о текущем ходе.
+
+    - virtual void renderTakeCard(QSharedPointer<Card> card) = 0 -
+        Чисто виртуальный метод, вызывающий рендеринг взятия карты.
+        Параметры:
+        QSharedPointer<Card> card: Указатель на карту, которую взял игрок.
+
+    - virtual void renderFakeTakeCard(const QString& nickname) = 0 -
+        Чисто виртуальный метод, вызывающий рендеринг взятия карты другим игроком.
+        Параметры:
+        const QString& nickname: Никнейм игрока, который взял карту.
+
+    - virtual void pass() -
+        Виртуальный метод, обрабатывающий событие завершения хода игрока.
+
+    - virtual void startChekedTable() -
+        Виртуальный метод, запускающий таймер.
+
+    - virtual void checkTableExistence() -
+        Виртуальный метод, запускающий проверку существования объекта стола.
+
+    - virtual void distributor(QSharedPointer<QueryData> data) -
+        Виртуальный метод, обрабатывающий ответ от сервера о существовании объекта стола.
+        Параметры:
+        QSharedPointer<QueryData> data: Указатель на данные запроса.
+
+    - void showEvent(QShowEvent* event) override -
+        Метод, запускающий startChekedTable() при отображении виджета.
+        QShowEvent* event: Событие отображения виджета.
+
+    - void closeEvent(QCloseEvent* event) override -
+        Метод, отправляющий серверу информацию о том, что игрок вышел из игры, при закрытии виджета.
+        Параметры:
+        QCloseEvent* event: Событие закрытия виджета.
+
 #Базовый класс для QWidget содержащий в себе поиск, сортировку, фильтрацию или пагинацию
 BaseClass/BaseClassSearchWindow:
-    - blockAndOperate() - Метод блокирующий сигналы от объекта QObject во время выполнения операции над ним
-    - search() - Метод запускающий таймер для поиска
-    - goToPage() - Метод запускающий таймер для перехода на указанную страницу
-    - onHeaderClicked() - Метод обработки нажатия на заголовок столбца в QTableView
-    - prepReloadModels() - Метод перезагружающий модели
-    - runSearch() - Метод запускающий поиск
-    - runGoToPage() - Метод запускающий переход на указаннную страницу
+    - void blockAndOperate(QObject* widget, const std::function<void()>& operation) -
+        Метод, блокирующий сигналы от объекта QObject во время выполнения операции над ним.
+        Параметры:
+        QObject* widget: Указатель на объект QObject, с которым будет выполнена операция.
+        const std::function<void()>& operation: Функция, выполняемая над объектом widget.
+
+    - virtual void search() = 0 -
+        Чисто виртуальный метод, запускающий таймер для выполнения операции поиска.
+
+    - virtual void goToPage() = 0 -
+        Чисто виртуальный метод, запускающий таймер для выполнения операции перехода на указанную страницу.
+
+    - virtual void onHeaderClicked(const int logicalIndex) = 0 -
+        Чисто виртуальный метод, обрабатывающий событие нажатия на заголовок столбца в QTableView.
+        Параметры:
+        const int logicalIndex: Логический индекс нажатого заголовка столбца.
+
+    - virtual void prepReloadModels() = 0 -
+        Чисто виртуальный метод, подготавливающий перезагрузку моделей.
+
+    - virtual void runSearch() = 0 -
+        Чисто виртуальный метод, запускающий операцию поиска.
+
+    - virtual void runGoToPage() = 0 -
+        Чисто виртуальный метод, запускающий операцию перехода на указанную страницу.
 
 #Базовый класс GUI для установки фильтров
 BaseClass/BaseClasFilter:
-    - applyFilter() - Метод обрабатывающий выбранные фильтры
+    - virtual void applyFilter(); -
+        Виртуальный метод, обрабатывающий выбранные фильтры.
 
 #Классы редактирования информации о записях в таблицах
 GUI/WorkingWithRecords/Admin/W_Ban | W_StuffUser | W_Table | W_User:
-    - on_bottonSave_clicked() - Метод сохранения информации о записи
-    - setDefaultValues() - Метод устанавливающий дефолтные значения о записи
+    - void on_bottonSave_clicked() -
+        Метод сохранения информации о записи.
+
+    - void setDefaultValues() -
+        Метод устанавливающий дефолтные значения о записи.
     
 #Класс GUI вкладки отображающая актуальную инфомацию о всех игровых столах
 GUI/TabWidgets/Player/GameTable:
@@ -119,6 +264,22 @@ GUI/TabWidgets/Player/GameTable:
     - updateTables() - Метод обновляющий информацию о столах
     - deleteOldTable() - Метод удаляющий недействительные столы и обновляющий информацию о актуальных столах
     - renderNewTable() - Метод рендера новых столов
+
+    - void requestTables(); -
+        Метод, который раз в секунду запрашивает актуальную информацию о столах.
+
+    - void deleteOldTable(QList<Form*>& forms); -
+        Метод, который удаляет недействительные столы и обновляет информацию о текущих столах.
+        Параметры:
+        QList<Form*>& forms: Список форм столов.
+
+    - void renderNewTable(QList<Form*>& forms); -
+        Метод, который рендерит новые столы.
+        Параметры:
+        QList<Form*>& forms: Список форм столов.
+
+    - void updateTables(); -
+        Метод, который обновляет информацию о столах.
 
 #Классы GUI вкладок у игрока (Кредиты, платежи)
 GUI/TabWidgets/Player/PlayerCredits | PlayerPayments:
@@ -128,8 +289,19 @@ GUI/TabWidgets/Admin/*:
 
 #Класс GUI уведомлений
 GUI/Notification/Notification:
-    - showNotification() - Метод отображающий оповещение
-    - setAlertProperties() - Метод устанавливающий параметры внешнего вида уведомления
+    - void setAlertProperties(const TypeMessage typeMessage, const QString& text, QWidget* parentForm = WindowTracker::activeWindow); -
+        Метод, устанавливающий параметры внешнего вида уведомления.
+        Параметры:
+        const TypeMessage typeMessage: Тип сообщения (например, информационное, предупреждение, ошибка).
+        const QString& text: Текст уведомления.
+        QWidget* parentForm = WindowTracker::activeWindow: Родительское окно для уведомления.
+
+    - static void showNotification(const TypeMessage typeMessage, const QString& text, QWidget* parentForm = WindowTracker::activeWindow); -
+        Статический метод, отображающий уведомление.
+        Параметры:
+        const TypeMessage typeMessage: Тип сообщения (например, информационное, предупреждение, ошибка).
+        const QString& text: Текст уведомления.
+        QWidget* parentForm = WindowTracker::activeWindow: Родительское окно для уведомления.
 
 #Классы GUI отвечающие за рендер окон фильтров
 GUI/Filters/Admin | Player /*:
@@ -139,24 +311,72 @@ Utils/WorkingIsTableView:
 
 #Класс сериализатора моделей для отправки клиентам
 Utils/Serializer:
-    - deserializationDataModel() - Десериализует QByteArray в модель (QStandardItemModel)
+    - static QSharedPointer<QStandardItemModel> deserializationDataModel(const QByteArray& receivedData); -
+        Статический метод, который десериализует данные из массива байтов в модель QStandardItemModel.
+        Параметры:
+        const QByteArray& receivedData: Массив байтов, который необходимо десериализовать.
+        Возвращаемое значение:
+        QSharedPointer<QStandardItemModel>: Умный указатель на объект модели QStandardItemModel, содержащей десериализованные данные.
     
 #Утилитарный класс отвечающий за логгирование информации, предупреждений, ошибок
 Utils/Message:
 
 #Класс поиска информации в модели или отправки запроса на сервер
-Utils/SearchModule:
-    - searchInModels() - Метод начинающий поиск в загруженных моделях
-    - searchInDB() - Метод отправляющий пакет поиска на сервер
+Utils/SearchModule:   
+    - void searchInModels(QVector<QSharedPointer<QStandardItemModel>>& models, const QString& searchText, const QString& typeSearch, int columnCurrentIndex, int rowsPerPage); -
+        Метод, начинающий поиск в загруженных моделях.
+        Параметры:
+        QVector<QSharedPointer<QStandardItemModel>>& models: Вектор умных указателей на объекты моделей QStandardItemModel, в которых нужно выполнять поиск.
+        const QString& searchText: Текст для поиска.
+        const QString& typeSearch: Тип поиска (искать в начале слова или точное совпадение).
+        int columnCurrentIndex: Индекс текущего столбца для поиска.
+        int rowsPerPage: Количество строк на странице.
+
+    - static void searchInDB(ModelTypes modelType, const QString& table, const QString& column, const QString& searchText, const QString& sort, const QString& where); -
+        Статический метод, отправляющий пакет поиска на сервер.
+        Параметры:
+        ModelTypes modelType: Тип модели, в которой нужно выполнить поиск.
+        const QString& table: Имя таблицы в базе данных, в которой нужно выполнить поиск.
+        const QString& column: Название столбца, в котором нужно выполнить поиск.
+        const QString& searchText: Текст для поиска.
+        const QString& sort: Параметр для сортировки результатов поиска.
+        const QString& where: Фильтр.
    
 #Класс реализующий пагинацию
 Utils/Pagination:
-    - updateTablePage() - Метод лимитирующий максимальное кол-во строк в одной таблице
-    - handleNextPage() - Метод проверяющий необходимость переключения на следующую модель
-    - handlePrevPage() - Метод проверяющий необходимость переключения на предыдущую модель
-    - goToNextModel() - Метод переключения на следующую модель
-    - goToPrevModel() - Метод переключения на предыдущую модель
-    - acceptModel() - Обработчик входящих моделей от сервера
-    - goToPage() - Метод переключающий страницу на указанную
-    - search() - Метод запускающий поиск
-    - loadingModel() - Метод запрашивающий модель у сервера
+    - void updateTablePage(); -
+        Метод, который ограничивает видимое количество строк в одной таблице.
+
+    - void handlePrevPage(); -
+        Метод, который проверяет необходимость переключения на предыдущую страницу модели.
+
+    - void handleNextPage(); -
+        Метод, который проверяет необходимость переключения на следующую страницу модели.
+
+    - void goToNextModel(); -
+        Метод, который переключает на следующую модель.
+
+    - void goToPrevModel(); -
+        Метод, который переключает на предыдущую модель.
+
+    - void acceptModel(QSharedPointer<ModelData> structModel); -
+        Метод, обрабатывающий входящие модели от сервера.
+        Параметры:
+        QSharedPointer<ModelData> structModel: Умный указатель на структуру модели.
+
+    - void goToPage(const QString& page); -
+        Метод, который переключает страницу на указанную.
+        Параметры:
+        const QString& page: Страница, на которую необходимо переключиться.
+
+    - void search(const QString& searchText, const QString& typeSearch); -
+        Метод, который запускает поиск.
+        Параметры:
+        const QString& searchText: Текст для поиска.
+        const QString& typeSearch: Тип поиска.
+
+    - void loadingModel(const ModelLoadingType type, const int offset); -
+        Метод, который запрашивает модель у сервера.
+        Параметры:
+        const ModelLoadingType type: Тип загрузки модели.
+        const int offset: Смещение для загрузки модели.

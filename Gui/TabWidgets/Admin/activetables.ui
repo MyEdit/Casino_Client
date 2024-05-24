@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1064</width>
+    <width>1224</width>
     <height>586</height>
    </rect>
   </property>
@@ -79,6 +79,9 @@
        <property name="text">
         <string>Скрыть инстурменты</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -96,6 +99,9 @@
      </item>
      <item>
       <widget class="QPushButton" name="refreshData">
+       <property name="toolTip">
+        <string>Обновить данные</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
     background-color: white;
@@ -184,6 +190,9 @@ QPushButton:pressed {
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_search">
+       <property name="toolTip">
+        <string>Поиск</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
     background-color: white;
@@ -219,6 +228,9 @@ QPushButton:pressed {
      </item>
      <item>
       <widget class="QPushButton" name="clearSearch">
+       <property name="toolTip">
+        <string>Очистить поиск</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
     background-color: white;
@@ -271,6 +283,12 @@ QPushButton:pressed {
     <layout class="QHBoxLayout" name="horizontalLayout_8">
      <item>
       <widget class="QLabel" name="label_3">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>44</height>
+        </size>
+       </property>
        <property name="font">
         <font>
          <family>Segoe UI</family>
@@ -356,6 +374,9 @@ QPushButton:pressed {
      </item>
      <item>
       <widget class="QPushButton" name="addFilter">
+       <property name="toolTip">
+        <string>Добавить фильтр</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
     background-color: white;
@@ -391,6 +412,9 @@ QPushButton:pressed {
      </item>
      <item>
       <widget class="QPushButton" name="clearFilter">
+       <property name="toolTip">
+        <string>Сбросить фильтр</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
     background-color: white;
@@ -433,6 +457,9 @@ QPushButton:pressed {
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Добавить запись</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
@@ -477,6 +504,9 @@ QPushButton:pressed {
          <bold>true</bold>
         </font>
        </property>
+       <property name="toolTip">
+        <string>Редактировать запись</string>
+       </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
     background-color: white;
@@ -516,6 +546,9 @@ QPushButton:pressed {
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Удалить запись</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
@@ -563,6 +596,9 @@ QPushButton:pressed {
     </layout>
    </item>
    <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2"/>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_10">
      <property name="rightMargin">
       <number>9</number>
@@ -574,6 +610,9 @@ QPushButton:pressed {
          <family>Segoe UI</family>
          <pointsize>18</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Предыдущая страница</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {
@@ -706,6 +745,9 @@ QPushButton:pressed {
          <family>Segoe UI</family>
          <pointsize>18</pointsize>
         </font>
+       </property>
+       <property name="toolTip">
+        <string>Следующая страница</string>
        </property>
        <property name="styleSheet">
         <string notr="true">QPushButton {

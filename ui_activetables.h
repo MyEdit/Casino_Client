@@ -59,6 +59,7 @@ public:
     QPushButton *editTable;
     QPushButton *deleteTable;
     QSpacerItem *horizontalSpacer_13;
+    QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_10;
     QPushButton *prevButton;
     QSpacerItem *horizontalSpacer_15;
@@ -82,7 +83,7 @@ public:
     {
         if (ActiveTables->objectName().isEmpty())
             ActiveTables->setObjectName(QString::fromUtf8("ActiveTables"));
-        ActiveTables->resize(1064, 586);
+        ActiveTables->resize(1224, 586);
         verticalLayout = new QVBoxLayout(ActiveTables);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout_2 = new QHBoxLayout();
@@ -117,6 +118,7 @@ public:
         radioButton = new QRadioButton(ActiveTables);
         radioButton->setObjectName(QString::fromUtf8("radioButton"));
         radioButton->setFont(font);
+        radioButton->setChecked(true);
 
         horizontalLayout_2->addWidget(radioButton);
 
@@ -250,6 +252,7 @@ public:
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         label_3 = new QLabel(ActiveTables);
         label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setMinimumSize(QSize(0, 44));
         label_3->setFont(font1);
 
         horizontalLayout_8->addWidget(label_3);
@@ -430,6 +433,11 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_8);
 
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
+
+        verticalLayout->addLayout(verticalLayout_2);
+
         horizontalLayout_10 = new QHBoxLayout();
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
         horizontalLayout_10->setContentsMargins(-1, -1, 9, -1);
@@ -595,11 +603,20 @@ public:
         radioButton_Editing->setText(QApplication::translate("ActiveTables", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\320\275\320\270\320\265", nullptr));
         radioButton_Filtr->setText(QApplication::translate("ActiveTables", "\320\244\320\270\320\273\321\214\321\202\321\200\320\260\321\206\320\270\321\217", nullptr));
         radioButton->setText(QApplication::translate("ActiveTables", "\320\241\320\272\321\200\321\213\321\202\321\214 \320\270\320\275\321\201\321\202\321\203\321\200\320\274\320\265\320\275\321\202\321\213", nullptr));
+#ifndef QT_NO_TOOLTIP
+        refreshData->setToolTip(QApplication::translate("ActiveTables", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\321\214 \320\264\320\260\320\275\320\275\321\213\320\265", nullptr));
+#endif // QT_NO_TOOLTIP
         refreshData->setText(QString());
         label->setText(QApplication::translate("ActiveTables", "\320\237\320\276\320\270\321\201\320\272:", nullptr));
         checkBox->setText(QApplication::translate("ActiveTables", "\320\242\320\276\321\207\320\275\320\276\320\265 \n"
 "\321\201\320\276\320\262\320\277\320\260\320\264\320\265\320\275\320\270\320\265", nullptr));
+#ifndef QT_NO_TOOLTIP
+        pushButton_search->setToolTip(QApplication::translate("ActiveTables", "\320\237\320\276\320\270\321\201\320\272", nullptr));
+#endif // QT_NO_TOOLTIP
         pushButton_search->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        clearSearch->setToolTip(QApplication::translate("ActiveTables", "\320\236\321\207\320\270\321\201\321\202\320\270\321\202\321\214 \320\277\320\276\320\270\321\201\320\272", nullptr));
+#endif // QT_NO_TOOLTIP
         clearSearch->setText(QString());
         label_3->setText(QApplication::translate("ActiveTables", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \321\201\321\202\320\276\320\273\320\261\320\265\321\206:", nullptr));
         label_2->setText(QApplication::translate("ActiveTables", "\320\277\320\276", nullptr));
@@ -607,13 +624,34 @@ public:
         typeSorting->setItemText(1, QApplication::translate("ActiveTables", "\321\203\320\261\321\213\320\262\320\260\320\275\320\270\321\216", nullptr));
 
         sorting->setText(QApplication::translate("ActiveTables", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
+#ifndef QT_NO_TOOLTIP
+        addFilter->setToolTip(QApplication::translate("ActiveTables", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214 \321\204\320\270\320\273\321\214\321\202\321\200", nullptr));
+#endif // QT_NO_TOOLTIP
         addFilter->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        clearFilter->setToolTip(QApplication::translate("ActiveTables", "\320\241\320\261\321\200\320\276\321\201\320\270\321\202\321\214 \321\204\320\270\320\273\321\214\321\202\321\200", nullptr));
+#endif // QT_NO_TOOLTIP
         clearFilter->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        addTable->setToolTip(QApplication::translate("ActiveTables", "\320\224\320\276\320\261\320\260\320\262\320\270\321\202\321\214 \320\267\320\260\320\277\320\270\321\201\321\214", nullptr));
+#endif // QT_NO_TOOLTIP
         addTable->setText(QString());
+#ifndef QT_NO_TOOLTIP
+        editTable->setToolTip(QApplication::translate("ActiveTables", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\321\202\321\214 \320\267\320\260\320\277\320\270\321\201\321\214", nullptr));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_TOOLTIP
+        deleteTable->setToolTip(QApplication::translate("ActiveTables", "\320\243\320\264\320\260\320\273\320\270\321\202\321\214 \320\267\320\260\320\277\320\270\321\201\321\214", nullptr));
+#endif // QT_NO_TOOLTIP
+#ifndef QT_NO_TOOLTIP
+        prevButton->setToolTip(QApplication::translate("ActiveTables", "\320\237\321\200\320\265\320\264\321\213\320\264\321\203\321\211\320\260\321\217 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\260", nullptr));
+#endif // QT_NO_TOOLTIP
         prevButton->setText(QString());
         label_4->setText(QApplication::translate("ActiveTables", "\320\242\320\265\320\272\321\203\321\211\320\260\321\217 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\260:", nullptr));
         label_5->setText(QApplication::translate("ActiveTables", "/", nullptr));
         labelMaxPage->setText(QApplication::translate("ActiveTables", "????", nullptr));
+#ifndef QT_NO_TOOLTIP
+        nextButton->setToolTip(QApplication::translate("ActiveTables", "\320\241\320\273\320\265\320\264\321\203\321\216\321\211\320\260\321\217 \321\201\321\202\321\200\320\260\320\275\320\270\321\206\320\260", nullptr));
+#endif // QT_NO_TOOLTIP
         nextButton->setText(QString());
         label_7->setText(QApplication::translate("ActiveTables", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260:", nullptr));
         labelWhatKindSorting->setText(QApplication::translate("ActiveTables", "\320\276\321\202\321\201\321\203\321\202\321\201\321\202\320\262\321\203\320\265\321\202", nullptr));

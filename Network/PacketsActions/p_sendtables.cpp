@@ -53,17 +53,6 @@ void P_SendTables::deleteTable(const QList<QSharedPointer<Table>>& newTables)
         }
 
         if (!found)
-        {
-            QSharedPointer<Game> game = P_Authorization::getPlayer()->getGame();
-            if(game)
-            {
-                if(game->getTableID() == it->get()->getSettings().ID)
-                {
-                    if(game->getGUI())
-                        QMetaObject::invokeMethod(game->getGUI().get(), "close", Qt::QueuedConnection);
-                }
-            }
             oldTables.erase(it);
-        }
     }
 }

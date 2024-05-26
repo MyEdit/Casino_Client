@@ -56,6 +56,7 @@ void BaseClassGameWidget::closeEvent(QCloseEvent* event)
 {
     QWidget::closeEvent(event);
     timerCheckTable->stop();
+    P_Authorization::getPlayer()->clearCardsInHand();
     P_Authorization::getPlayer()->getGame()->leave();
 }
 

@@ -31,7 +31,7 @@ QSharedPointer<QByteArray> Game::serializeGame()
 
 void Game::updatePlayersIcons(QList<QSharedPointer<Player> > players)
 {
-    GUI->updatePlayersIcons(players);
+    emit signalUpdatePlayersIcons(players);
 }
 
 void Game::setGameName(const QString& nameGame)
@@ -52,21 +52,28 @@ void Game::takeCard()
 void Game::pass()
 {
     this->turn(GamePackets::P_PassMove);
-    GUI->blocingInterface(false);
+    emit signalBlocingInterface(false);
 }
 
 void Game::setConnects()
 {
-    QObject::connect(this, &Game::signalTakeCard, this, &Game::renderTakeCard);
-    QObject::connect(this, &Game::signalTakeCardAnotherPlayer, this, &Game::renderTakeCardAnotherPlayer);
-    QObject::connect(this, &Game::signalStartMove, this, &Game::unlockInterface);
+    QObject::connect(this, &Game::signalStartMove, GUI.get(), &BaseClassGameWidget::unlockInterface);
+    QObject::connect(this, &Game::signalTakeCard, GUI.get(), &BaseClassGameWidget::renderTakeCard);
+    QObject::connect(this, &Game::signalTakeCardAnotherPlayer, GUI.get(), &BaseClassGameWidget::renderFakeTakeCard);
+    QObject::connect(this, &Game::signalUpdateTimer, GUI.get(), &BaseClassGameWidget::updateTimer);
+    QObject::connect(this, &Game::signalUpdateProcessing, GUI.get(), &BaseClassGameWidget::updateProcessing);
+    QObject::connect(this, &Game::signalBlocingInterface, GUI.get(), &BaseClassGameWidget::blocingInterface);
+    QObject::connect(this, &Game::signalUpdatePlayersIcons, GUI.get(), &BaseClassGameWidget::updatePlayersIcons);
+    QObject::connect(this, &Game::signalClearCardOnTable, GUI.get(), &BaseClassGameWidget::clearCardOnTable);
+    QObject::connect(this, &Game::signalFinished, GUI.get(), &BaseClassGameWidget::finished);
+    QObject::connect(this, &Game::signalInsufficientBalance, GUI.get(), &BaseClassGameWidget::insufficientBalance);
 }
 
 void Game::onTakeCard()
 {
     CardRank cardRank = NetworkClient::getMessageFromServer<CardRank>();
     CardSuit cardSuit = NetworkClient::getMessageFromServer<CardSuit>();
-    emit signalTakeCard(QSharedPointer<Card>(new Card(cardRank, cardSuit)));
+    renderTakeCard(QSharedPointer<Card>(new Card(cardRank, cardSuit)));
 }
 
 void Game::leave()
@@ -90,30 +97,24 @@ int Game::getTableID()
 void Game::onGameFinished(bool isWin)
 {
     QSharedPointer<Player> player = P_Authorization::getPlayer();
-    QMetaObject::invokeMethod(GUI.get(), "finished", Qt::QueuedConnection, Q_ARG(bool, isWin));
+    emit signalFinished(isWin);
 
-    GUI->clearCardOnTable();
+    emit signalClearCardOnTable();
     player->clearCardsInHand();
 
     if (player->getBalance() < Table::getTable(idTable)->getSettings().minBalance)
-        QMetaObject::invokeMethod(GUI.get(), "insufficientBalance", Qt::QueuedConnection);
+        emit signalInsufficientBalance();
 }
 
 void Game::renderTakeCard(QSharedPointer<Card> card)
 {
-    GUI->renderTakeCard(card);
     P_Authorization::getPlayer()->addCardInHand(card);
+    emit signalTakeCard(card);
 }
 
 void Game::renderTakeCardAnotherPlayer(const QString &nicname)
 {
-    GUI->renderFakeTakeCard(nicname);
-}
-
-void Game::unlockInterface(const QString &nickname)
-{
-    onUpdateGameProcessing(nickname);
-    GUI->blocingInterface(true);
+    emit signalTakeCardAnotherPlayer(nicname);
 }
 
 void Game::turn(Game::GamePackets gamePacket)
@@ -126,7 +127,8 @@ void Game::turn(Game::GamePackets gamePacket)
 
 void Game::onTakeCardAnotherPlayer()
 {
-    emit signalTakeCardAnotherPlayer(NetworkClient::getMessageFromServer());
+    QString nicname = NetworkClient::getMessageFromServer();
+    renderTakeCardAnotherPlayer(nicname);
 }
 
 void Game::onStartMove()
@@ -139,9 +141,14 @@ void Game::onUpdateGameProcessing(const QString &data)
     bool ok;
     data.toInt(&ok);
     if(ok)
-        GUI->updateTimer(data);
+        emit signalUpdateTimer(data);
     else
-        GUI->updateProcessing(data);
+        emit signalUpdateProcessing(data);
+}
+
+void Game::createGUI()
+{
+    setConnects();
 }
 
 void Game::onGamePacketReceived()

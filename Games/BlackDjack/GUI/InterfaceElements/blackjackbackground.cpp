@@ -16,12 +16,6 @@ BlackJackBackground::~BlackJackBackground()
 
 void BlackJackBackground::movingCard(QSharedPointer<Card> card)
 {
-    // Вызываем метод в потоке GUI с помощью invokeMethod
-    QMetaObject::invokeMethod(this, "movingCardInGuiThread", Qt::QueuedConnection, Q_ARG(QSharedPointer<Card>, card));
-}
-
-void BlackJackBackground::movingCardInGuiThread(QSharedPointer<Card> card)
-{
     QString filePatch = Card::getCardTexture(*card);
 
     if(placeCardOnTable.size() == numMovePlayer)
@@ -51,24 +45,10 @@ void BlackJackBackground::movingCardInGuiThread(QSharedPointer<Card> card)
     {
         tempLabel->deleteLater();
         label->setStyleSheet("image: url(" + filePatch + ");");
-    });
+    });;
 }
 
 void BlackJackBackground::movingFaceCard(const QRect &playerPosition)
-{
-    // Вызываем метод в потоке GUI с помощью invokeMethod
-    QMetaObject::invokeMethod(this, "movingFaceInGuiThread", Qt::QueuedConnection, Q_ARG(const QRect, playerPosition));
-}
-
-void BlackJackBackground::clearTable()
-{
-    for(int i = 0; i < placeCardOnTable.size(); i++)
-        placeCardOnTable[i]->setStyleSheet("QLabel {border: 2px solid  rgb(255, 255, 255); border-radius: 10px;}");
-
-    numMovePlayer = 0;
-}
-
-void BlackJackBackground::movingFaceInGuiThread(const QRect &playerPosition)
 {
     QString filePatch = "://Games/BlackDjack/assets/Standart/shirt.png";
 
@@ -93,6 +73,14 @@ void BlackJackBackground::movingFaceInGuiThread(const QRect &playerPosition)
     {
         tempLabel->deleteLater();
     });
+}
+
+void BlackJackBackground::clearTable()
+{
+    for(int i = 0; i < placeCardOnTable.size(); i++)
+        placeCardOnTable[i]->setStyleSheet("QLabel {border: 2px solid  rgb(255, 255, 255); border-radius: 10px;}");
+
+    numMovePlayer = 0;
 }
 
 void BlackJackBackground::assigningValues()

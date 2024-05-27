@@ -60,6 +60,12 @@ void BaseClassGameWidget::closeEvent(QCloseEvent* event)
     P_Authorization::getPlayer()->getGame()->leave();
 }
 
+void BaseClassGameWidget::unlockInterface(const QString &nickname)
+{
+    updateProcessing(nickname);
+    blocingInterface(true);
+}
+
 void BaseClassGameWidget::finished(bool isWin)
 {
     if(isWin)

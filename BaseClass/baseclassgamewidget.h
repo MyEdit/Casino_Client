@@ -28,6 +28,7 @@ public:
     virtual void updateTimer(const QString& time) = 0;
     virtual void setMyScore(int score);
     virtual void clearCardOnTable() = 0;
+    virtual void unlockInterface(const QString &nickname);
 
 protected:
     virtual void takeCard();
@@ -39,7 +40,7 @@ protected:
     void showEvent(QShowEvent* event) override;
     void closeEvent(QCloseEvent* event) override;
 
-protected slots:
+public slots:
     virtual void finished(bool isWin);
     virtual void insufficientBalance();
 };

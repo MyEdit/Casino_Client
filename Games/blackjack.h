@@ -26,6 +26,9 @@ public:
 
 private:
     void renderTakeCard(QSharedPointer<Card> card) override;
+
+signals:
+    void signalSetMyScore(int score);
 };
 
 #endif // BLACKJACK_H

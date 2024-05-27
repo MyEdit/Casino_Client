@@ -33,10 +33,6 @@ public:
 
 private:
     void assigningValues();
-
-private slots:
-    void movingCardInGuiThread(QSharedPointer<Card> card);
-    void movingFaceInGuiThread(const QRect &playerPosition);
 };
 
 #endif // BLACKJECKBACKGTOUND_H

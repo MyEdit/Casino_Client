@@ -12,7 +12,6 @@ BlackJack::BlackJack(int idTable, QSharedPointer<QByteArray> data)
 {
     this->idTable = idTable;
     this->nameGame = QString::fromUtf8(*data);
-    setConnects();
 }
 
 void BlackJack::renderTakeCard(QSharedPointer<Card> card)
@@ -22,7 +21,7 @@ void BlackJack::renderTakeCard(QSharedPointer<Card> card)
     if(isBust())
         pass();
 
-    GUI->setMyScore(getPlayerScore());
+    emit signalSetMyScore(getPlayerScore());
 }
 
 bool BlackJack::isBust()
@@ -41,4 +40,6 @@ int BlackJack::getPlayerScore()
 void BlackJack::createGUI()
 {
     GUI = QSharedPointer<BlaclJackWidget>(new BlaclJackWidget());
+    QObject::connect(this, &BlackJack::signalSetMyScore, GUI.get(), &BaseClassGameWidget::setMyScore);
+    Game::createGUI();
 }

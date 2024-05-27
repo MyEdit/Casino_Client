@@ -46,7 +46,7 @@ public:
     virtual void onGamePacketReceived();
     virtual void onUpdateGameProcessing(const QString& data);
 
-    virtual void createGUI() = 0;
+    virtual void createGUI();
 
     void setGameName(const QString& nameGame);
     void setMenu(QWidget* menu);
@@ -62,7 +62,6 @@ protected:
 
     virtual void renderTakeCard(QSharedPointer<Card> card);
     virtual void renderTakeCardAnotherPlayer(const QString &nicname);
-    virtual void unlockInterface(const QString &nickname);
     virtual void turn(GamePackets gamePacket);
 
     void initPacketHandlerFunction();
@@ -71,6 +70,13 @@ signals:
     void signalTakeCard(const QSharedPointer<Card>);
     void signalTakeCardAnotherPlayer(const QString &nicname);
     void signalStartMove(const QString &nicname);
+    void signalUpdateTimer(const QString &data);
+    void signalUpdateProcessing(const QString &data);
+    void signalBlocingInterface(const bool flag);
+    void signalUpdatePlayersIcons(QList<QSharedPointer<Player> > players);
+    void signalClearCardOnTable();
+    void signalFinished(const bool isWin);
+    void signalInsufficientBalance();
 };
 
 #endif // GAME_H

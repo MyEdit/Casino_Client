@@ -36,12 +36,6 @@ void Pagination::updateTablePage()
     int startIndex = (currentPageInModel() - 1) * rowsPerPage;
     int endIndex = startIndex + rowsPerPage;
 
-    if(!tableView->model())
-    {
-        emit blockInterface(true);
-        return;
-    }
-
     int rowCountModel = tableView->model()->rowCount();
     for (int row = 0; row < rowCountModel; row++)
     {

@@ -77,7 +77,7 @@
         </font>
        </property>
        <property name="text">
-        <string>Скрыть инстурментыы</string>
+        <string>Скрыть инстурменты</string>
        </property>
        <property name="checked">
         <bool>true</bool>

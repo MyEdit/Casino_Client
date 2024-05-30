@@ -98,6 +98,7 @@ void Game::onGameFinished(bool isWin)
 {
     QSharedPointer<Player> player = P_Authorization::getPlayer();
     emit signalFinished(isWin);
+//    QMetaObject::invokeMethod(GUI.get(), "finished", Qt::QueuedConnection, Q_ARG(bool, isWin));
 
     emit signalClearCardOnTable();
     player->clearCardsInHand();

@@ -19,6 +19,8 @@ public:
     explicit Profit(QWidget *parent = nullptr);
     ~Profit();
 
+    void update() override;
+
 private:
     void prepReloadModels() override;
     void setValueToMaxPage(const int maxPage) override;
@@ -40,6 +42,9 @@ private:
     void addFilter() override;
     void runSearch() override;
     void runGoToPage() override;
+    void setAmoutProfit(QString amout);
+    void requestAmountProfit();
+    void distributor(QSharedPointer<QueryData> data);
 };
 
 #endif // PROFIT_H

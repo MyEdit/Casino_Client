@@ -69,6 +69,8 @@ public:
     QLabel *label_7;
     QLabel *labelWhatKindSorting;
     QSpacerItem *horizontalSpacer;
+    QLabel *label_6;
+    QLabel *amoutProfit;
     QHBoxLayout *horizontalLayout_3;
     QLabel *label_9;
     QLabel *labelWhatKindFilter;
@@ -471,6 +473,18 @@ public:
 
         horizontalLayout->addItem(horizontalSpacer);
 
+        label_6 = new QLabel(Profit);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        label_6->setFont(font1);
+
+        horizontalLayout->addWidget(label_6);
+
+        amoutProfit = new QLabel(Profit);
+        amoutProfit->setObjectName(QString::fromUtf8("amoutProfit"));
+        amoutProfit->setFont(font1);
+
+        horizontalLayout->addWidget(amoutProfit);
+
 
         verticalLayout->addLayout(horizontalLayout);
 
@@ -553,6 +567,8 @@ public:
         nextButton->setText(QString());
         label_7->setText(QApplication::translate("Profit", "\320\241\320\276\321\200\321\202\320\270\321\200\320\276\320\262\320\272\320\260:", nullptr));
         labelWhatKindSorting->setText(QApplication::translate("Profit", "\320\276\321\202\321\201\321\203\321\202\321\201\321\202\320\262\321\203\320\265\321\202", nullptr));
+        label_6->setText(QApplication::translate("Profit", "\320\241\321\203\320\274\320\274\320\260 \320\277\321\200\320\270\320\261\321\213\320\273\320\270:", nullptr));
+        amoutProfit->setText(QApplication::translate("Profit", "???", nullptr));
         label_9->setText(QApplication::translate("Profit", "\320\244\320\270\320\273\321\214\321\202\321\200:", nullptr));
         labelWhatKindFilter->setText(QApplication::translate("Profit", "\320\276\321\202\321\201\321\203\321\202\321\201\321\202\320\262\321\203\320\265\321\202", nullptr));
     } // retranslateUi

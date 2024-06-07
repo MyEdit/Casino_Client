@@ -6,6 +6,7 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QCheckBox>
+#include <QRadioButton>
 #include <functional>
 #include <QValidator>
 #include <QDebug>

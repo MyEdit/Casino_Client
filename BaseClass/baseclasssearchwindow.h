@@ -36,7 +36,7 @@ public:
     BaseClassSearchWindow(QWidget *parent);
 
     void setModel(QSharedPointer<ModelData> model);
-    void update();
+    virtual void update();
 
 protected:
     void workingWithTableView();

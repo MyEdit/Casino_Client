@@ -603,7 +603,7 @@ public:
         radioButton_Search->setText(QApplication::translate("Users", "\320\237\320\276\320\270\321\201\320\272", nullptr));
         radioButton_Filtr->setText(QApplication::translate("Users", "\320\244\320\270\320\273\321\214\321\202\321\200\320\260\321\206\320\270\321\217", nullptr));
         radioButton_Editing->setText(QApplication::translate("Users", "\320\240\320\265\320\264\320\260\320\272\321\202\320\270\321\200\320\276\320\262\320\260\320\275\320\270\320\265", nullptr));
-        radioButton->setText(QApplication::translate("Users", "\320\241\320\272\321\200\321\213\321\202\321\214 \320\270\320\275\321\201\321\202\321\203\321\200\320\274\320\265\320\275\321\202\321\213\321\213", nullptr));
+        radioButton->setText(QApplication::translate("Users", "\320\241\320\272\321\200\321\213\321\202\321\214 \320\270\320\275\321\201\321\202\321\203\321\200\320\274\320\265\320\275\321\202\321\213", nullptr));
 #ifndef QT_NO_TOOLTIP
         refreshData->setToolTip(QApplication::translate("Users", "\320\236\320\261\320\275\320\276\320\262\320\270\321\202\321\214 \320\264\320\260\320\275\320\275\321\213\320\265", nullptr));
 #endif // QT_NO_TOOLTIP

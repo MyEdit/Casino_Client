@@ -702,6 +702,32 @@ QPushButton:pressed {
        </property>
       </spacer>
      </item>
+     <item>
+      <widget class="QLabel" name="label_6">
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Сумма прибыли:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="amoutProfit">
+       <property name="font">
+        <font>
+         <family>Segoe UI</family>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>???</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>

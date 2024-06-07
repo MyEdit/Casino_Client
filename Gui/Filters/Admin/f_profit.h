@@ -21,6 +21,9 @@ private:
     void initFunButton() override;
     void hideCategory() override;
     void customizationLiteEdit() override;
+    void connects() override;
+    void specificDateChanged();
+    void yourLimitsDateChanged();
 };
 
 #endif // F_PROFIT_H

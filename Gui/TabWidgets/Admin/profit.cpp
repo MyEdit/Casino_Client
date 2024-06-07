@@ -7,6 +7,7 @@ Profit::Profit(QWidget *parent) :
 {
     ui->setupUi(this);
     baseSetting();
+    requestAmountProfit();
 }
 
 Profit::~Profit()
@@ -62,6 +63,8 @@ void Profit::connects()
     connect(ui->typeSorting, QOverload<int>::of(&QComboBox::currentIndexChanged), this, &Profit::sort);
 
     connect(ui->tableView->horizontalHeader(), &QHeaderView::sectionClicked, this, &Profit::onHeaderClicked);
+
+    connect(NetworkClient::packetHandler, &PacketHandler::signalSetQueryModel, this, &Profit::distributor);
 }
 
 void Profit::updateCurrentPageInLabel(const int currentPage)
@@ -130,6 +133,7 @@ void Profit::prepReloadModels()
     else
         ui->labelWhatKindFilter->setText("установлен");
 
+    requestAmountProfit();
     pagination->reloadModels();
 }
 
@@ -203,4 +207,38 @@ void Profit::runSearch()
 void Profit::runGoToPage()
 {
     pagination->goToPage(ui->currentPage->text());
+}
+
+void Profit::setAmoutProfit(QString amout)
+{
+    ui->amoutProfit->setText(amout);
+}
+
+void Profit::requestAmountProfit()
+{
+    PacketTypes packettype = PacketTypes::P_Query;
+    QString query = "SELECT round(sum([Сумма]), 2) from Profit_pred where 1=1 " + pagination->getWhere();
+    QueryTypes queryTypes = QueryTypes::Other;
+
+    NetworkClient::sendToServer(&packettype, sizeof(PacketTypes));
+    NetworkClient::sendToServer(&queryTypes, sizeof(QueryTypes));
+    NetworkClient::sendToServer(&modelTypes, sizeof(ModelTypes));
+    NetworkClient::sendToServer(query);
+}
+
+void Profit::distributor(QSharedPointer<QueryData> data)
+{
+    if(data->modelTypes != modelTypes)
+        return;
+
+    if(data->queryTypes != QueryTypes::Other)
+        return;
+
+    setAmoutProfit(data->result);
+}
+
+void Profit::update()
+{
+    BaseClassSearchWindow::update();
+    requestAmountProfit();
 }

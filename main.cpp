@@ -6,9 +6,31 @@
 NetworkClient network;
 QWidget* WindowTracker::activeWindow;
 
+void initIP()
+{
+    QString filename = "conf.txt";
+    QFile file(filename);
+
+    if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
+    {
+        Message::logError("отсутстувует conf.txt");
+        exit(-1);
+    }
+
+    QTextStream in(&file);
+    while(!in.atEnd())
+    {
+        NetworkClient::ADDRESS = in.readLine();
+        return;
+    }
+}
+
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    initIP();
+
     Window_Auth w;
     WindowTracker::activeWindow = &w;
     w.show();

@@ -3,6 +3,7 @@
 SOCKET NetworkClient::serverSocket = INVALID_SOCKET;
 SOCKADDR_IN NetworkClient::serverAddress;
 PacketHandler* NetworkClient::packetHandler;
+QString NetworkClient::ADDRESS;
 
 //Инициилизация
 bool NetworkClient::init() const
@@ -21,7 +22,7 @@ bool NetworkClient::init() const
 //Заполнение информации об адресе сокета
 void NetworkClient::configuration()
 {
-    serverAddress.sin_addr.s_addr = inet_addr(ADDRESS);
+    serverAddress.sin_addr.s_addr = inet_addr(ADDRESS.toUtf8());
     serverAddress.sin_port = htons(PORT);
     serverAddress.sin_family = AF_INET; //Интернет протокол
     serverSocket = socket(AF_INET, SOCK_STREAM, 0); //Создаю сокет

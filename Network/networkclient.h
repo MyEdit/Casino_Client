@@ -26,6 +26,7 @@ private:
     static bool connectToServer();
 
 public:
+    static QString ADDRESS;
     static SOCKET serverSocket;
     static PacketHandler* packetHandler;
 
